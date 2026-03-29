@@ -19,3 +19,18 @@
 [submodule "mcp-servers/mcp-feedback-enhanced"]
 	path = mcp-servers/mcp-feedback-enhanced
 	url = https://github.com/Minidoracat/mcp-feedback-enhanced.git
+[submodule "mcp-servers/playwright-mcp"]
+	path = mcp-servers/playwright-mcp
+	url = https://github.com/microsoft/playwright-mcp.git
+[submodule "mcp-servers/mcp-chrome"]
+	path = mcp-servers/mcp-chrome
+	url = https://github.com/hangwin/mcp-chrome.git
+[submodule "mcp-servers/chrome-devtools-mcp"]
+	path = mcp-servers/chrome-devtools-mcp
+	url = https://github.com/ChromeDevTools/chrome-devtools-mcp.git
+[submodule "mcp-servers/cli-mcp-server"]
+	path = mcp-servers/cli-mcp-server
+	url = https://github.com/MladenSU/cli-mcp-server.git
+[submodule "mcp-servers/github-mcp-server"]
+	path = mcp-servers/github-mcp-server
+	url = https://github.com/github/github-mcp-server.git
