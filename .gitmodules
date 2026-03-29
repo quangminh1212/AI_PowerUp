@@ -121,3 +121,15 @@
 [submodule "mcp-servers/apify-mcp"]
 	path = mcp-servers/apify-mcp
 	url = https://github.com/apify/apify-mcp-server.git
+[submodule "frameworks/taskweaver"]
+	path = frameworks/taskweaver
+	url = https://github.com/microsoft/TaskWeaver.git
+[submodule "frameworks/chatdev"]
+	path = frameworks/chatdev
+	url = https://github.com/OpenBMB/ChatDev.git
+[submodule "frameworks/guidance"]
+	path = frameworks/guidance
+	url = https://github.com/guidance-ai/guidance.git
+[submodule "frameworks/outlines"]
+	path = frameworks/outlines
+	url = https://github.com/outlines-dev/outlines.git
