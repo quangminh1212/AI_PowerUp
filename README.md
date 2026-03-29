@@ -1,8 +1,8 @@
 # AI Advanced Cognitive Skills & Intelligence Hub
 
-The definitive, production-grade ecosystem for AI Agents. Integrates the world's leading open-source frameworks, memory layers, coding agents, infrastructure tools, training pipelines, evaluation harnesses, security guardrails, vision/audio AI, and Model Context Protocol (MCP) servers — all organized as Git submodules (reference-only) for maximum modularity.
+The definitive, production-grade ecosystem for AI Agents. Integrates the world's leading open-source frameworks, reasoning engines, open-weight models, memory layers, coding agents, infrastructure tools, training pipelines, evaluation harnesses, security guardrails, vision/audio AI, and Model Context Protocol (MCP) servers — all organized as Git submodules (reference-only) for maximum modularity.
 
-## Ecosystem Architecture (144 Submodules / 14 Categories)
+## Ecosystem Architecture (182 Submodules / 16 Categories)
 
 ### 1. Core Cognitive Skills (`skills/`)
 Explicit reasoning techniques and curated knowledge resources:
@@ -146,6 +146,29 @@ Extensive Model Context Protocol integrations (25 servers):
 - **Browser**: `mcp-chrome`, `playwright-mcp`, `chrome-devtools-mcp`.
 - **CI/CD & Tools**: `github-mcp-server`, `cli-mcp-server`, `MCPRules`, `context7`, `mcp-feedback-enhanced`.
 
+### 15. Reasoning & Cognitive Architecture (`reasoning/`) ⭐ NEW
+Advanced reasoning, self-reflection, and cognitive frameworks:
+- **Curated Research**: `Awesome-LLM-Reasoning` — Comprehensive reasoning papers collection.
+- **Core Techniques**: `tree-of-thoughts` (Princeton), `chain-of-thought-hub`, `chain-of-verification`.
+- **Self-Improvement**: `self-refine`, `reflexion`, `self-rag` — Self-correction and retrieval-augmented generation.
+- **Agent Reasoning**: `camel` (~10k★), `agentscope` (Alibaba), `voyager` (MineDojo), `letta` (ex-MemGPT).
+- **Optimization**: `adalflow` (PyTorch-style LLM optimization), `tensorzero` (LLM engineering platform), `textgrad` (text-based gradient descent).
+- **Tool Use**: `gorilla` (API calling), `toolformer-pytorch`, `minichain`, `ell`.
+- **Knowledge Graphs**: `graphiti` — Temporal knowledge graphs for agent memory.
+- **Training**: `litgpt` (Lightning AI) — Pretrain/finetune/deploy any LLM.
+- **OpenDevin**: Alternative open-source coding agent with reasoning.
+
+### 16. Open-Weight Models (`models/`) ⭐ NEW
+Top open-source/open-weight AI model repositories:
+- **DeepSeek**: `deepseek-r1` (reasoning), `deepseek-v3`, `deepseek-coder`.
+- **Qwen**: `qwen`, `qwen2.5` — Alibaba's frontier models.
+- **Meta Llama**: `llama`, `llama-models` — Foundation models.
+- **Mistral**: `mistral-inference` — Efficient European models.
+- **Microsoft**: `phi-cookbook` — Phi-3/4 guides and examples.
+- **Google**: `gemma` — Lightweight open models.
+- **Apple**: `corenet` (OpenELM) — On-device models.
+- **Others**: `yi` (01.AI), `internlm` (Shanghai AI Lab), `chatglm` (Tsinghua).
+
 ## Quick Start
 
 ```bash
@@ -164,7 +187,7 @@ cd infrastructure/ollama && ollama serve
 ```
 
 ## Project Statistics
-- **Total Submodules**: 144
-- **Categories**: 14
-- **Combined GitHub Stars**: ~4M+ ★
+- **Total Submodules**: 182
+- **Categories**: 16
+- **Combined GitHub Stars**: ~5M+ ★
 - **Storage Mode**: Reference-only (no data cloned by default)

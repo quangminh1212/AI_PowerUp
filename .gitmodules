@@ -430,3 +430,117 @@
 [submodule "platforms/fastgpt"]
 	path = platforms/fastgpt
 	url = https://github.com/labring/FastGPT.git
+[submodule "reasoning/Awesome-LLM-Reasoning"]
+	path = reasoning/Awesome-LLM-Reasoning
+	url = https://github.com/atfortes/Awesome-LLM-Reasoning.git
+[submodule "reasoning/chain-of-thought-hub"]
+	path = reasoning/chain-of-thought-hub
+	url = https://github.com/FranxYao/chain-of-thought-hub.git
+[submodule "reasoning/tree-of-thoughts"]
+	path = reasoning/tree-of-thoughts
+	url = https://github.com/princeton-nlp/tree-of-thought-llm.git
+[submodule "reasoning/self-refine"]
+	path = reasoning/self-refine
+	url = https://github.com/madaan/self-refine.git
+[submodule "reasoning/reflexion"]
+	path = reasoning/reflexion
+	url = https://github.com/noahshinn/reflexion.git
+[submodule "reasoning/voyager"]
+	path = reasoning/voyager
+	url = https://github.com/MineDojo/Voyager.git
+[submodule "reasoning/camel"]
+	path = reasoning/camel
+	url = https://github.com/camel-ai/camel.git
+[submodule "reasoning/agentscope"]
+	path = reasoning/agentscope
+	url = https://github.com/modelscope/agentscope.git
+[submodule "reasoning/self-rag"]
+	path = reasoning/self-rag
+	url = https://github.com/AkariAsai/self-rag.git
+[submodule "reasoning/graphiti"]
+	path = reasoning/graphiti
+	url = https://github.com/getzep/graphiti.git
+[submodule "reasoning/adalflow"]
+	path = reasoning/adalflow
+	url = https://github.com/SylphAI-Inc/AdalFlow.git
+[submodule "reasoning/tensorzero"]
+	path = reasoning/tensorzero
+	url = https://github.com/tensorzero/tensorzero.git
+[submodule "reasoning/chain-of-verification"]
+	path = reasoning/chain-of-verification
+	url = https://github.com/ritun16/chain-of-verification.git
+[submodule "reasoning/letta"]
+	path = reasoning/letta
+	url = https://github.com/letta-ai/letta.git
+[submodule "reasoning/litgpt"]
+	path = reasoning/litgpt
+	url = https://github.com/Lightning-AI/litgpt.git
+[submodule "reasoning/minichain"]
+	path = reasoning/minichain
+	url = https://github.com/srush/MiniChain.git
+[submodule "reasoning/gorilla"]
+	path = reasoning/gorilla
+	url = https://github.com/ShishirPatil/gorilla.git
+[submodule "reasoning/toolformer"]
+	path = reasoning/toolformer
+	url = https://github.com/lucidrains/toolformer-pytorch.git
+[submodule "reasoning/textgrad"]
+	path = reasoning/textgrad
+	url = https://github.com/zou-group/textgrad.git
+[submodule "reasoning/ell"]
+	path = reasoning/ell
+	url = https://github.com/MadcowD/ell.git
+[submodule "reasoning/opendevin"]
+	path = reasoning/opendevin
+	url = https://github.com/OpenDevin/OpenDevin.git
+[submodule "models/deepseek-coder"]
+	path = models/deepseek-coder
+	url = https://github.com/deepseek-ai/DeepSeek-Coder.git
+[submodule "models/deepseek-v3"]
+	path = models/deepseek-v3
+	url = https://github.com/deepseek-ai/DeepSeek-V3.git
+[submodule "models/deepseek-r1"]
+	path = models/deepseek-r1
+	url = https://github.com/deepseek-ai/DeepSeek-R1.git
+[submodule "models/qwen"]
+	path = models/qwen
+	url = https://github.com/QwenLM/Qwen.git
+[submodule "models/qwen2.5"]
+	path = models/qwen2.5
+	url = https://github.com/QwenLM/Qwen2.5.git
+[submodule "models/llama"]
+	path = models/llama
+	url = https://github.com/meta-llama/llama.git
+[submodule "models/llama-models"]
+	path = models/llama-models
+	url = https://github.com/meta-llama/llama-models.git
+[submodule "models/mistral-inference"]
+	path = models/mistral-inference
+	url = https://github.com/mistralai/mistral-inference.git
+[submodule "models/phi-cookbook"]
+	path = models/phi-cookbook
+	url = https://github.com/microsoft/Phi-3CookBook.git
+[submodule "models/gemma"]
+	path = models/gemma
+	url = https://github.com/google/gemma_pytorch.git
+[submodule "models/corenet"]
+	path = models/corenet
+	url = https://github.com/apple/corenet.git
+[submodule "models/yi"]
+	path = models/yi
+	url = https://github.com/01-ai/Yi.git
+[submodule "models/internlm"]
+	path = models/internlm
+	url = https://github.com/InternLM/InternLM.git
+[submodule "models/chatglm"]
+	path = models/chatglm
+	url = https://github.com/THUDM/ChatGLM-6B.git
+[submodule "knowledge/awesome-ai-agents"]
+	path = knowledge/awesome-ai-agents
+	url = https://github.com/e2b-dev/awesome-ai-agents.git
+[submodule "knowledge/llm-zoomcamp"]
+	path = knowledge/llm-zoomcamp
+	url = https://github.com/DataTalksClub/llm-zoomcamp.git
+[submodule "knowledge/awesome-chatgpt-prompts"]
+	path = knowledge/awesome-chatgpt-prompts
+	url = https://github.com/f/awesome-chatgpt-prompts.git
