@@ -1,0 +1,21 @@
+[submodule "frameworks/superpowers"]
+	path = frameworks/superpowers
+	url = https://github.com/obra/superpowers.git
+[submodule "frameworks/ccpm"]
+	path = frameworks/ccpm
+	url = https://github.com/automazeio/ccpm.git
+[submodule "memory/mem0"]
+	path = memory/mem0
+	url = https://github.com/mem0ai/mem0.git
+[submodule "memory/cipher"]
+	path = memory/cipher
+	url = https://github.com/campfirein/cipher.git
+[submodule "mcp-servers/MCPRules"]
+	path = mcp-servers/MCPRules
+	url = https://github.com/bartwisch/MCPRules.git
+[submodule "mcp-servers/context7"]
+	path = mcp-servers/context7
+	url = https://github.com/upstash/context7.git
+[submodule "mcp-servers/mcp-feedback-enhanced"]
+	path = mcp-servers/mcp-feedback-enhanced
+	url = https://github.com/Minidoracat/mcp-feedback-enhanced.git
