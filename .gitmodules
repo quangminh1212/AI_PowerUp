@@ -133,3 +133,15 @@
 [submodule "frameworks/outlines"]
 	path = frameworks/outlines
 	url = https://github.com/outlines-dev/outlines.git
+[submodule "skills/fabric"]
+	path = skills/fabric
+	url = https://github.com/danielmiessler/fabric.git
+[submodule "skills/awesome-cursorrules"]
+	path = skills/awesome-cursorrules
+	url = https://github.com/PatrickJS/awesome-cursorrules.git
+[submodule "skills/chatgpt-autoexpert"]
+	path = skills/chatgpt-autoexpert
+	url = https://github.com/spdustin/ChatGPT-AutoExpert.git
+[submodule "skills/anthropic-cookbook"]
+	path = skills/anthropic-cookbook
+	url = https://github.com/anthropics/anthropic-cookbook.git
