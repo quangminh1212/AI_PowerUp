@@ -61,3 +61,63 @@
 [submodule "mcp-servers/milvus-mcp"]
 	path = mcp-servers/milvus-mcp
 	url = https://github.com/zilliztech/mcp-server-milvus.git
+[submodule "frameworks/babyagi"]
+	path = frameworks/babyagi
+	url = https://github.com/yoheinakajima/babyagi.git
+[submodule "frameworks/open-interpreter"]
+	path = frameworks/open-interpreter
+	url = https://github.com/OpenInterpreter/open-interpreter.git
+[submodule "frameworks/dspy"]
+	path = frameworks/dspy
+	url = https://github.com/stanfordnlp/dspy.git
+[submodule "memory/memgpt"]
+	path = memory/memgpt
+	url = https://github.com/cpacker/MemGPT.git
+[submodule "frameworks/embedchain"]
+	path = frameworks/embedchain
+	url = https://github.com/embedchain/embedchain.git
+[submodule "frameworks/devika"]
+	path = frameworks/devika
+	url = https://github.com/stitionai/devika.git
+[submodule "frameworks/swarms"]
+	path = frameworks/swarms
+	url = https://github.com/kyegomez/swarms.git
+[submodule "skills/browser-use"]
+	path = skills/browser-use
+	url = https://github.com/browser-use/browser-use.git
+[submodule "mcp-servers/brave-search"]
+	path = mcp-servers/brave-search
+	url = https://github.com/brave/brave-search-mcp-server.git
+[submodule "mcp-servers/cloudflare-mcp"]
+	path = mcp-servers/cloudflare-mcp
+	url = https://github.com/cloudflare/mcp-server-cloudflare.git
+[submodule "mcp-servers/agentops-mcp"]
+	path = mcp-servers/agentops-mcp
+	url = https://github.com/AgentOps-AI/agentops-mcp.git
+[submodule "mcp-servers/exa-mcp"]
+	path = mcp-servers/exa-mcp
+	url = https://github.com/exa-labs/exa-mcp-server.git
+[submodule "mcp-servers/notion-mcp"]
+	path = mcp-servers/notion-mcp
+	url = https://github.com/makenotion/notion-mcp-server.git
+[submodule "mcp-servers/pinecone-mcp"]
+	path = mcp-servers/pinecone-mcp
+	url = https://github.com/pinecone-io/pinecone-mcp.git
+[submodule "mcp-servers/redis-mcp"]
+	path = mcp-servers/redis-mcp
+	url = https://github.com/redis/mcp-redis.git
+[submodule "mcp-servers/mongodb-mcp"]
+	path = mcp-servers/mongodb-mcp
+	url = https://github.com/mongodb-js/mongodb-mcp-server.git
+[submodule "mcp-servers/elasticsearch-mcp"]
+	path = mcp-servers/elasticsearch-mcp
+	url = https://github.com/elastic/mcp-server-elasticsearch.git
+[submodule "mcp-servers/auth0-mcp"]
+	path = mcp-servers/auth0-mcp
+	url = https://github.com/auth0/auth0-mcp-server.git
+[submodule "mcp-servers/langfuse-mcp"]
+	path = mcp-servers/langfuse-mcp
+	url = https://github.com/langfuse/mcp-server-langfuse.git
+[submodule "mcp-servers/apify-mcp"]
+	path = mcp-servers/apify-mcp
+	url = https://github.com/apify/apify-mcp-server.git
