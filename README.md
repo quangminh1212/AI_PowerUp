@@ -1,45 +1,54 @@
-# AI Advanced Cognitive Skills Repository
+# AI Advanced Cognitive Skills & Intelligence Hub
 
-Đây là bộ sưu tập các kỹ năng tư duy bậc cao (Advanced Cognitive Skills Framework) dành cho Trí Tuệ Nhân Tạo (AI). Bộ kỹ năng này ép AI phải sử dụng các vùng "tư duy rành mạch" thay vì dựa vào kinh nghiệm cũ mơ hồ hoặc dự đoán sai số, nhằm giúp AI đưa ra kết quả thông minh hơn và tiệm cận với 0 lỗi (zero-defect).
+This repository serves as the definitive ecosystem for Advanced Cognitive Skills and Agentic capabilities for Artificial Intelligence. By integrating the world's leading open-source frameworks, memories, logic systems, and Model Context Protocol (MCP) servers, this project equips AI with "explicit reasoning" areas rather than relying on ambiguous patterns or hallucinations, aiming for highly intelligent, zero-defect outcomes.
 
-## Cấu trúc Hệ Sinh Thái
-Dự án được phân chia theo chuẩn quốc tế nhằm module hóa các năng lực của AI:
+## Ecosystem Architecture
+The project is modularized by international standards to cleanly separate AI capabilities:
 
-### 1. Kỹ năng tư duy cốt lõi (`skills/`)
-Mô phỏng các vùng "tư duy rành mạch" thay vì dựa vào kinh nghiệm cũ mơ hồ hoặc dự đoán sai số:
-- `first-principles-thinking`: Tư duy Sơ nguyên.
-- `self-correction-loop`: Vòng lặp Tự Đánh Giá & Phản Biện.
-- `system-impact-analyzer`: Tư duy Phân tích Hậu Quả Hệ Thống.
-- `devil-advocate`: Đóng vai Ác Quỷ Phản Biện Tìm Lỗi.
-- `ooda-loop`: Quy trình Phản Ứng Nhanh Kỹ Thuật (Quan sát - Hướng - Quyết - Hành).
-- `design-thinking`: Góc nhìn Thấu hiểu UX/Người dùng khi Thiết kế UI.
-- `tdd-advanced`: Viết Code không hỏng bằng Vòng lặp Test Đỏ/Xanh khắt khe.
+### 1. Core Cognitive Skills (`skills/`)
+Simulates "explicit reasoning" processes, forcing the agent to think critically:
+- `first-principles-thinking`: Fundamental root-cause problem solving.
+- `self-correction-loop`: Continuous evaluation and critical self-correction.
+- `system-impact-analyzer`: Analysis of cascading systemic consequences.
+- `devil-advocate`: Relentless error discovery through counter-argumentation.
+- `ooda-loop`: Rapid technical response via Observe, Orient, Decide, Act.
+- `design-thinking`: Empathic UX/User perspective application.
+- `tdd-advanced`: Zero-defect coding via rigorous Red/Green testing loops.
+- **External Skills Integration**: Includes tools like `browser-use` for advanced DOM-aware browser automation.
 
-### 2. Khung điều phối & Phương pháp luận (`frameworks/`)
-Các nền tảng Orchestration và luận điểm phát triển phần mềm được tinh tuyển:
-- `superpowers`: An agentic skills framework & software development methodology.
-- `ccpm`: Project management skill system cho Agents qua GitHub Issues và Git worktrees.
+### 2. Orchestration Frameworks & Methodologies (`frameworks/`)
+A massive collection of top-tier orchestration platforms and AI agent frameworks:
+- **Autonomous Agents**: `AutoGPT`, `babyagi`, `devika`, `open-interpreter`.
+- **Multi-Agent Systems**: `autogen`, `crewAI`, `MetaGPT`, `smolagents`, `swarms`, `chatdev`.
+- **Agentic Pipelines & LLM Routing**: `dspy`, `guidance`, `outlines`.
+- **Data-Driven & Workflow Automation**: `embedchain`, `taskweaver`.
+- **Project Management**: `superpowers`, `ccpm`.
 
-### 3. Vùng nhớ lưu trữ (`memory/`)
-Các hệ thống Memory layer cấp cho AI bộ nhớ dài hạn và quản lý Session:
-- `mem0`: Universal memory layer cho AI Agents.
-- `cipher`: Bộ nhớ mã nguồn mở tối ưu riêng cho nhóm coding agents.
+### 3. Persistent Memory Layers (`memory/`)
+State-of-the-art memory systems granting AI boundless long-term memory and session management:
+- `mem0`: The universal memory layer for personalized AI Agents.
+- `cipher`: Open-source persistent memory optimized specifically for coding agents.
+- `memgpt`: Operating system inspired architecture allowing boundless context windows via virtual memory virtualization.
 
-### 4. Máy chủ giao thức ngữ cảnh (`mcp-servers/`)
-Các Model Context Protocol (MCP) servers cung cấp APIs mở rộng và Integration tools:
-- `MCPRules`: Quản lý lập trình guidelines và rules logic.
-- `context7`: Up-to-date doc queries cho AI editors (Upstash).
-- `github-mcp-server`: Quản trị GitHub CI/CD, Issues, Pull Requests trực tiếp.
-- `mcp-chrome` / `playwright-mcp` / `chrome-devtools-mcp`: Mở rộng năng lực kiểm thử UI và Web interaction.
-- `cli-mcp-server`: Tương tác qua Command Line với Security Policies khắt khe.
-- `mcp-feedback-enhanced`: Nhận command execution + user interaction.
+### 4. Model Context Protocol Servers (`mcp-servers/`)
+An extensive suite of specialized MCP servers providing deep external integrations and APIs:
+- **Official Utilities**: `official-servers` (Time, Filesystem, Git, SQLite, Sequential Thinking, etc.).
+- **Vector & Graph Storage**: `pinecone-mcp`, `chroma-mcp`, `mcp-qdrant`, `milvus-mcp`, `neo4j-mcp`.
+- **Databases & Logging**: `redis-mcp`, `mongodb-mcp`, `elasticsearch-mcp`.
+- **Searches & Scraping**: `brave-search`, `exa-mcp`, `apify-mcp`.
+- **DevOps & Tracking**: `agentops-mcp`, `langfuse-mcp`, `cloudflare-mcp`.
+- **Workspaces & Auth**: `notion-mcp`, `auth0-mcp`.
+- **Browser Automation**: `mcp-chrome`, `playwright-mcp`, `chrome-devtools-mcp`.
+- **CI/CD & CLI Control**: `github-mcp-server`, `cli-mcp-server`.
+- **Guidelines & Doc Retrieval**: `MCPRules`, `context7`.
 
-## Hướng dẫn cài đặt cho AI Agent
-1. **Phục hồi toàn bộ Submodules (Frameworks, Servers, Memory):**
-   Chạy lệnh sau tại thư mục gốc để tải trọn bộ sinh thái mã nguồn mở:
+## AI Agent Setup Instructions
+
+1. **Initialize the Ecosystem (Frameworks, Servers, Memory):**
+   Run the following command in the root directory to fetch the entire suite of open-source submodules:
    ```bash
    git submodule update --init --recursive
    ```
-2. **Kích hoạt Skills nội bộ:**
-   Yêu cầu Agent copy (hoặc symlink) toàn bộ thư mục bên trong `skills/` vào thư mục `~/.agent/skills/` để kích hoạt tính năng **Auto Skill Discovery**.
-   Sau đó Agent sẽ tự động phân tích và import các MCP/Framework theo ngữ cảnh công việc.
+
+2. **Activate Internal Skills:**
+   The AI Agent MUST copy (or symlink) the entire contents of `skills/` into its `~/.agent/skills/` directory to enable **Auto Skill Discovery**. This ensures the agent will automatically analyze and import the necessary cognitive techniques, MCPs, or frameworks depending on the context of its upcoming task.
