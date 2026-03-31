@@ -11,16 +11,16 @@ This directory contains **40 submodules** covering the complete data processing 
 ### Web Crawling & Scraping
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`firecrawl`](https://github.com/mendableai/firecrawl) | Mendable | Turn websites into LLM-ready markdown (~25k★) |
+| [`firecrawl`](https://github.com/mendableai/firecrawl) | Mendable | Turn websites into LLM-ready markdown |
 | [`crawl4ai`](https://github.com/unclecode/crawl4ai) | unclecode | Fast async web crawler optimized for AI/LLM data extraction |
 | [`scrapegraph-ai`](https://github.com/VinciGit00/Scrapegraph-ai) | VinciGit00 | AI-powered web scraping with knowledge graphs |
 
 ### RAG Engines & Knowledge Systems
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`ragflow`](https://github.com/infiniflow/ragflow) | InfiniFlow | Deep document understanding RAG engine (~35k★) |
-| [`graphrag`](https://github.com/microsoft/graphrag) | Microsoft | Knowledge-graph-based RAG for complex queries (~25k★) |
-| [`storm`](https://github.com/stanford-oval/storm) | Stanford OVAL | LLM-powered research and wiki-article generation (~22k★) |
+| [`ragflow`](https://github.com/infiniflow/ragflow) | InfiniFlow | Deep document understanding RAG engine |
+| [`graphrag`](https://github.com/microsoft/graphrag) | Microsoft | Knowledge-graph-based RAG for complex queries |
+| [`storm`](https://github.com/stanford-oval/storm) | Stanford OVAL | LLM-powered research and wiki-article generation |
 | [`khoj`](https://github.com/khoj-ai/khoj) | Khoj AI | Personal AI assistant with long-term memory |
 | [`kotaemon`](https://github.com/Cinnamon/kotaemon) | Cinnamon | Open-source RAG-based chat with documents |
 | [`quivr`](https://github.com/QuivrHQ/quivr) | Quivr | Second brain powered by generative AI |
@@ -55,15 +55,15 @@ This directory contains **40 submodules** covering the complete data processing 
 | [`faiss`](https://github.com/facebookresearch/faiss) | Meta | Efficient billion-scale similarity search |
 | [`weaviate`](https://github.com/weaviate/weaviate) | Weaviate | Cloud-native vector search engine |
 | [`lancedb`](https://github.com/lancedb/lancedb) | LanceDB | Serverless vector database built on Lance format |
-| [`milvus`](https://github.com/milvus-io/milvus) | Milvus | Cloud-native vector database for enterprise (~35k★) |
+| [`milvus`](https://github.com/milvus-io/milvus) | Milvus | Cloud-native vector database for enterprise |
 | [`pgvector`](https://github.com/pgvector/pgvector) | pgvector | Vector similarity search for PostgreSQL |
-| [`qdrant`](https://github.com/qdrant/qdrant) | Qdrant | High-performance vector search engine in Rust (~25k★) |
+| [`qdrant`](https://github.com/qdrant/qdrant) | Qdrant | High-performance vector search engine in Rust |
 
 ### Embeddings & Retrieval
 | Submodule | Source | Description |
 |-----------|--------|-------------|
 | [`embeddings`](https://github.com/huggingface/text-embeddings-inference) | Hugging Face | High-performance text embeddings inference |
-| [`sentence-transformers`](https://github.com/UKPLab/sentence-transformers) | UKP Lab | State-of-the-art sentence and text embeddings (~20k★) |
+| [`sentence-transformers`](https://github.com/UKPLab/sentence-transformers) | UKP Lab | State-of-the-art sentence and text embeddings |
 | [`nemo-retriever`](https://github.com/NVIDIA/NeMo-Retriever) | NVIDIA | Enterprise retrieval models and microservices |
 | [`kg-gen`](https://github.com/whyhow-ai/kg-gen) | WhyHow AI | Knowledge graph generation from text |
 
@@ -77,7 +77,7 @@ This directory contains **40 submodules** covering the complete data processing 
 ### Annotation & Labeling
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`label-studio`](https://github.com/HumanSignal/label-studio) | HumanSignal | Multi-type data labeling — text, image, audio, video (~20k★) |
+| [`label-studio`](https://github.com/HumanSignal/label-studio) | HumanSignal | Multi-type data labeling — text, image, audio, video |
 | [`cvat`](https://github.com/cvat-ai/cvat) | CVAT AI | Computer vision annotation tool |
 
 ## Key Capabilities

@@ -11,10 +11,10 @@ This directory contains **39 submodules** providing the complete infrastructure 
 ### Local LLM Runners
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`ollama`](https://github.com/ollama/ollama) | Ollama | Run LLMs locally with one command (~130k★) |
-| [`llamacpp`](https://github.com/ggml-org/llama.cpp) | GGML | Lightweight LLM inference in C/C++ (~80k★) |
-| [`gpt4all`](https://github.com/nomic-ai/gpt4all) | Nomic AI | Run LLMs locally on consumer hardware (~75k★) |
-| [`llamafile`](https://github.com/Mozilla-Ocho/llamafile) | Mozilla | Single-file executable LLM distribution (~25k★) |
+| [`ollama`](https://github.com/ollama/ollama) | Ollama | Run LLMs locally with one command |
+| [`llamacpp`](https://github.com/ggml-org/llama.cpp) | GGML | Lightweight LLM inference in C/C++ |
+| [`gpt4all`](https://github.com/nomic-ai/gpt4all) | Nomic AI | Run LLMs locally on consumer hardware |
+| [`llamafile`](https://github.com/Mozilla-Ocho/llamafile) | Mozilla | Single-file executable LLM distribution |
 | [`localai`](https://github.com/mudler/LocalAI) | mudler | OpenAI-compatible local AI server |
 | [`localGPT`](https://github.com/PromtEngineer/localGPT) | PromptEngineer | Chat with documents using local LLMs |
 | [`privateGPT`](https://github.com/zylon-ai/private-gpt) | Zylon AI | Private, enterprise-grade local AI |
@@ -23,21 +23,21 @@ This directory contains **39 submodules** providing the complete infrastructure 
 ### High-Performance Inference
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`vllm`](https://github.com/vllm-project/vllm) | vLLM | Fastest LLM inference engine with PagedAttention (~50k★) |
+| [`vllm`](https://github.com/vllm-project/vllm) | vLLM | Fastest LLM inference engine with PagedAttention |
 | [`sglang`](https://github.com/sgl-project/sglang) | SGLang | Structured generation language for fast serving |
 | [`mlc-llm`](https://github.com/mlc-ai/mlc-llm) | MLC AI | Universal LLM deployment on any device |
 | [`infinity`](https://github.com/michaelfeil/infinity) | michaelfeil | High-throughput embedding inference server |
 | [`candle`](https://github.com/huggingface/candle) | Hugging Face | Minimalist ML framework in Rust |
 | [`gemma-cpp`](https://github.com/google/gemma.cpp) | Google | Lightweight Gemma inference in C++ |
 | [`whisper-cpp`](https://github.com/ggerganov/whisper.cpp) | ggerganov | Whisper speech recognition in C/C++ |
-| [`exo`](https://github.com/exo-explore/exo) | Exo | Run AI clusters at home using everyday devices (~20k★) |
-| [`openllm`](https://github.com/bentoml/OpenLLM) | BentoML | Operating LLMs in production (~10k★) |
+| [`exo`](https://github.com/exo-explore/exo) | Exo | Run AI clusters at home using everyday devices |
+| [`openllm`](https://github.com/bentoml/OpenLLM) | BentoML | Operating LLMs in production |
 
 ### Web UIs & Chat Interfaces
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`open-webui`](https://github.com/open-webui/open-webui) | Open WebUI | Self-hosted ChatGPT-like interface (~80k★) |
-| [`lobe-chat`](https://github.com/lobehub/lobe-chat) | LobeHub | Modern AI chat framework (~60k★) |
+| [`open-webui`](https://github.com/open-webui/open-webui) | Open WebUI | Self-hosted ChatGPT-like interface |
+| [`lobe-chat`](https://github.com/lobehub/lobe-chat) | LobeHub | Modern AI chat framework |
 | [`text-generation-webui`](https://github.com/oobabooga/text-generation-webui) | oobabooga | Gradio web UI for LLM text generation |
 | [`anything-llm`](https://github.com/Mintplex-Labs/anything-llm) | Mintplex | Full-stack AI application platform |
 | [`librechat`](https://github.com/danny-avila/LibreChat) | danny-avila | Multi-model chat interface with plugin support |
@@ -46,14 +46,14 @@ This directory contains **39 submodules** providing the complete infrastructure 
 | [`chatbot-ui`](https://github.com/mckaywrigley/chatbot-ui) | McKay Wrigley | Open-source AI chat interface |
 | [`hf-chat-ui`](https://github.com/huggingface/chat-ui) | Hugging Face | Official HuggingChat web interface |
 | [`lmstudio`](https://github.com/lmstudio-ai/lms) | LM Studio | Desktop app for local LLM management |
-| [`astrbot`](https://github.com/AstrBotDevs/AstrBot) | AstrBot | IM chatbot infrastructure for messaging platforms (~28k★) |
+| [`astrbot`](https://github.com/AstrBotDevs/AstrBot) | AstrBot | IM chatbot infrastructure for messaging platforms |
 
 ### LLM Proxy & Gateway
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`litellm`](https://github.com/BerriAI/litellm) | BerriAI | Unified proxy for 100+ LLM providers (~20k★) |
+| [`litellm`](https://github.com/BerriAI/litellm) | BerriAI | Unified proxy for 100+ LLM providers |
 | [`llm-cli`](https://github.com/simonw/llm) | Simon Willison | CLI tool for interacting with any LLM |
-| [`ai-gateway`](https://github.com/Portkey-AI/gateway) | Portkey | Production AI gateway with routing and fallbacks (~6k★) |
+| [`ai-gateway`](https://github.com/Portkey-AI/gateway) | Portkey | Production AI gateway with routing and fallbacks |
 
 ### Model Serving & MLOps
 | Submodule | Source | Description |
@@ -65,8 +65,8 @@ This directory contains **39 submodules** providing the complete infrastructure 
 ### Cloud Orchestration
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`skypilot`](https://github.com/skypilot-org/skypilot) | SkyPilot | Run AI on any cloud with auto cost optimization (~7k★) |
-| [`dstack`](https://github.com/dstackai/dstack) | dstack | Open-source GPU orchestration for AI workloads (~5k★) |
+| [`skypilot`](https://github.com/skypilot-org/skypilot) | SkyPilot | Run AI on any cloud with auto cost optimization |
+| [`dstack`](https://github.com/dstackai/dstack) | dstack | Open-source GPU orchestration for AI workloads |
 
 ### Tokenization & Translation
 | Submodule | Source | Description |

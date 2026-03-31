@@ -11,7 +11,7 @@ This directory contains **37 submodules** spanning the full model training spect
 ### Distributed Training
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`DeepSpeed`](https://github.com/microsoft/DeepSpeed) | Microsoft | Ultra-efficient distributed training (~37k★) |
+| [`DeepSpeed`](https://github.com/microsoft/DeepSpeed) | Microsoft | Ultra-efficient distributed training |
 | [`deepspeed-examples`](https://github.com/microsoft/DeepSpeedExamples) | Microsoft | DeepSpeed usage examples and recipes |
 | [`deepspeed-mii`](https://github.com/microsoft/DeepSpeed-MII) | Microsoft | Model Implementations for Inference |
 | [`megatron-lm`](https://github.com/NVIDIA/Megatron-LM) | NVIDIA | Large-scale distributed LLM training |
@@ -23,8 +23,8 @@ This directory contains **37 submodules** spanning the full model training spect
 ### Fine-Tuning
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`LLaMA-Factory`](https://github.com/hiyouga/LLaMA-Factory) | hiyouga | One-stop LLM fine-tuning platform (~50k★) |
-| [`unsloth`](https://github.com/unslothai/unsloth) | Unsloth | 2x faster fine-tuning with 80% less memory (~30k★) |
+| [`LLaMA-Factory`](https://github.com/hiyouga/LLaMA-Factory) | hiyouga | One-stop LLM fine-tuning platform |
+| [`unsloth`](https://github.com/unslothai/unsloth) | Unsloth | 2x faster fine-tuning with 80% less memory |
 | [`peft`](https://github.com/huggingface/peft) | Hugging Face | Parameter-efficient fine-tuning (LoRA, QLoRA, etc.) |
 | [`lora`](https://github.com/microsoft/LoRA) | Microsoft | Original Low-Rank Adaptation implementation |
 | [`axolotl`](https://github.com/axolotl-ai-cloud/axolotl) | Axolotl | Streamlined LLM fine-tuning toolkit |
@@ -34,7 +34,7 @@ This directory contains **37 submodules** spanning the full model training spect
 | [`mistral-finetune`](https://github.com/mistralai/mistral-finetune) | Mistral AI | Official Mistral fine-tuning toolkit |
 | [`nanotron`](https://github.com/huggingface/nanotron) | Hugging Face | Minimalist large model training |
 | [`alignment-handbook`](https://github.com/huggingface/alignment-handbook) | Hugging Face | Robust alignment recipes for LLMs |
-| [`openrlhf`](https://github.com/OpenRLHF/OpenRLHF) | OpenRLHF | High-performance RLHF framework (~7k★) |
+| [`openrlhf`](https://github.com/OpenRLHF/OpenRLHF) | OpenRLHF | High-performance RLHF framework |
 | [`verl`](https://github.com/volcengine/verl) | Volcengine | Volcano Engine RL for LLM training |
 | [`olive`](https://github.com/microsoft/Olive) | Microsoft | Hardware-aware model optimization toolkit |
 | [`petals`](https://github.com/bigscience-workshop/petals) | BigScience | Run LLMs collaboratively over the internet |
@@ -63,7 +63,7 @@ This directory contains **37 submodules** spanning the full model training spect
 ### Core Frameworks
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`transformers`](https://github.com/huggingface/transformers) | Hugging Face | The standard library for pretrained models (~145k★) |
+| [`transformers`](https://github.com/huggingface/transformers) | Hugging Face | The standard library for pretrained models |
 | [`jax`](https://github.com/google/jax) | Google | High-performance numerical computing with autograd |
 | [`keras`](https://github.com/keras-team/keras) | Keras | Multi-backend deep learning API |
 

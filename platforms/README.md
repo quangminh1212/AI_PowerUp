@@ -11,19 +11,19 @@ This directory contains **14 submodules** of production-ready AI platforms — f
 ### Visual AI Workflow Builders
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`dify`](https://github.com/langgenius/dify) | Dify | Open-source LLMOps platform with visual builder (~85k★) |
-| [`flowise`](https://github.com/FlowiseAI/Flowise) | Flowise | Drag & drop LLM flow builder (~40k★) |
+| [`dify`](https://github.com/langgenius/dify) | Dify | Open-source LLMOps platform with visual builder |
+| [`flowise`](https://github.com/FlowiseAI/Flowise) | Flowise | Drag & drop LLM flow builder |
 | [`flowise-embed`](https://github.com/FlowiseAI/FlowiseChatEmbed) | Flowise | Embeddable chat widget for Flowise |
-| [`langflow`](https://github.com/langflow-ai/langflow) | Langflow | Visual framework for multi-agent AI (~60k★) |
-| [`n8n`](https://github.com/n8n-io/n8n) | n8n | Fair-code workflow automation platform (~70k★) |
+| [`langflow`](https://github.com/langflow-ai/langflow) | Langflow | Visual framework for multi-agent AI |
+| [`n8n`](https://github.com/n8n-io/n8n) | n8n | Fair-code workflow automation platform |
 | [`fastgpt`](https://github.com/labring/FastGPT) | Sealos | Knowledge-base QA platform with visual orchestration |
 | [`maxkb`](https://github.com/1Panel-dev/MaxKB) | 1Panel | Knowledge-base QA system with RAG pipeline |
 
 ### Chat Applications
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`chatgpt-next`](https://github.com/ChatGPTNextWeb/ChatGPT-Next-Web) | CNXW | Cross-platform ChatGPT interface (~80k★) |
-| [`gpt-academic`](https://github.com/binary-husky/gpt_academic) | binary-husky | Academic writing & research assistant (~68k★) |
+| [`chatgpt-next`](https://github.com/ChatGPTNextWeb/ChatGPT-Next-Web) | CNXW | Cross-platform ChatGPT interface |
+| [`gpt-academic`](https://github.com/binary-husky/gpt_academic) | binary-husky | Academic writing & research assistant |
 
 ### Chatbot Frameworks
 | Submodule | Source | Description |
@@ -34,7 +34,7 @@ This directory contains **14 submodules** of production-ready AI platforms — f
 ### API & Agent Management
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`oneapi`](https://github.com/songquanpeng/one-api) | songquanpeng | Multi-LLM API proxy — unified management (~25k★) |
+| [`oneapi`](https://github.com/songquanpeng/one-api) | songquanpeng | Multi-LLM API proxy — unified management |
 | [`opengpts`](https://github.com/langchain-ai/opengpts) | LangChain | Open-source GPTs alternative by LangChain |
 | [`vane`](https://github.com/nicobailon/vane) | nicobailon | AI agent orchestration platform |
 

@@ -11,7 +11,7 @@ This directory contains **16 submodules** covering the complete audio AI pipelin
 ### Speech-to-Text (ASR)
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`whisper`](https://github.com/openai/whisper) | OpenAI | Industry-standard speech recognition — 99 languages (~80k★) |
+| [`whisper`](https://github.com/openai/whisper) | OpenAI | Industry-standard speech recognition — 99 languages |
 | [`WhisperX`](https://github.com/m-bain/whisperX) | m-bain | Whisper with word-level timestamps and speaker diarization |
 | [`coqui-stt`](https://github.com/coqui-ai/STT) | Coqui AI | Deep learning speech-to-text engine |
 | [`speechbrain`](https://github.com/speechbrain/speechbrain) | SpeechBrain | All-in-one speech toolkit (ASR, TTS, speaker ID, separation) |
@@ -19,19 +19,19 @@ This directory contains **16 submodules** covering the complete audio AI pipelin
 ### Text-to-Speech (TTS)
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`TTS`](https://github.com/coqui-ai/TTS) | Coqui AI | Deep learning TTS toolkit with many voice models (~40k★) |
-| [`ChatTTS`](https://github.com/2noise/ChatTTS) | 2noise | Conversational TTS with prosody and emotion control (~35k★) |
-| [`bark`](https://github.com/suno-ai/bark) | Suno AI | Text-to-audio generation with music and sound effects (~40k★) |
-| [`fish-speech`](https://github.com/fishaudio/fish-speech) | FishAudio | Fast multilingual TTS with zero-shot voice cloning (~20k★) |
-| [`dia`](https://github.com/nari-labs/dia) | Nari Labs | High-quality TTS model (~20k★) |
-| [`kokoro`](https://github.com/hexgrad/kokoro) | Hexgrad | Ultra-fast lightweight TTS engine (~7k★) |
-| [`orpheus-tts`](https://github.com/canopylabs/orpheus-tts) | Canopy Labs | Emotion-aware TTS with nuanced speech (~4k★) |
+| [`TTS`](https://github.com/coqui-ai/TTS) | Coqui AI | Deep learning TTS toolkit with many voice models |
+| [`ChatTTS`](https://github.com/2noise/ChatTTS) | 2noise | Conversational TTS with prosody and emotion control |
+| [`bark`](https://github.com/suno-ai/bark) | Suno AI | Text-to-audio generation with music and sound effects |
+| [`fish-speech`](https://github.com/fishaudio/fish-speech) | FishAudio | Fast multilingual TTS with zero-shot voice cloning |
+| [`dia`](https://github.com/nari-labs/dia) | Nari Labs | High-quality TTS model |
+| [`kokoro`](https://github.com/hexgrad/kokoro) | Hexgrad | Ultra-fast lightweight TTS engine |
+| [`orpheus-tts`](https://github.com/canopylabs/orpheus-tts) | Canopy Labs | Emotion-aware TTS with nuanced speech |
 | [`csm`](https://github.com/SesameAI/csm) | Sesame AI | Conversational Speech Model for natural dialogue |
 
 ### Voice Cloning & Conversion
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`OpenVoice`](https://github.com/myshell-ai/OpenVoice) | MyShell AI | Instant zero-shot voice cloning (~35k★) |
+| [`OpenVoice`](https://github.com/myshell-ai/OpenVoice) | MyShell AI | Instant zero-shot voice cloning |
 | [`voicecraft`](https://github.com/jasonppy/VoiceCraft) | Jason Ppy | Voice editing and synthesis via neural codec language models |
 | [`f5-tts`](https://github.com/SWivid/F5-TTS) | SWivid | Diffusion-based zero-shot TTS with flow matching |
 | [`mars5-tts`](https://github.com/Camb-ai/MARS5-TTS) | Camb AI | Two-stage multilingual speech synthesis |

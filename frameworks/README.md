@@ -11,19 +11,19 @@ This directory houses **71 submodules** covering the full spectrum of AI develop
 ### Foundational LLM Frameworks
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`langchain`](https://github.com/langchain-ai/langchain) | LangChain | The most popular LLM application framework (~131k★) |
-| [`llama_index`](https://github.com/run-llama/llama_index) | LlamaIndex | Data framework for LLM applications (~48k★) |
-| [`semantic-kernel`](https://github.com/microsoft/semantic-kernel) | Microsoft | AI orchestration SDK for .NET/Python/Java (~25k★) |
+| [`langchain`](https://github.com/langchain-ai/langchain) | LangChain | The most popular LLM application framework |
+| [`llama_index`](https://github.com/run-llama/llama_index) | LlamaIndex | Data framework for LLM applications |
+| [`semantic-kernel`](https://github.com/microsoft/semantic-kernel) | Microsoft | AI orchestration SDK for .NET/Python/Java |
 | [`haystack`](https://github.com/deepset-ai/haystack) | deepset | End-to-end NLP/RAG framework |
 | [`llama-stack`](https://github.com/meta-llama/llama-stack) | Meta | Official Llama application stack |
-| [`lightrag`](https://github.com/HKUDS/LightRAG) | HKUDS | Ultra-fast RAG with knowledge graphs (~20k★) |
+| [`lightrag`](https://github.com/HKUDS/LightRAG) | HKUDS | Ultra-fast RAG with knowledge graphs |
 
 ### Agent Workflows & Structured Output
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`langgraph`](https://github.com/langchain-ai/langgraph) | LangChain | Stateful multi-agent workflow graphs (~28k★) |
-| [`pydantic-ai`](https://github.com/pydantic/pydantic-ai) | Pydantic | Type-safe AI agents with Pydantic validation (~16k★) |
-| [`openai-agents-python`](https://github.com/openai/openai-agents-python) | OpenAI | Official OpenAI agent SDK (~20k★) |
+| [`langgraph`](https://github.com/langchain-ai/langgraph) | LangChain | Stateful multi-agent workflow graphs |
+| [`pydantic-ai`](https://github.com/pydantic/pydantic-ai) | Pydantic | Type-safe AI agents with Pydantic validation |
+| [`openai-agents-python`](https://github.com/openai/openai-agents-python) | OpenAI | Official OpenAI agent SDK |
 | [`dspy`](https://github.com/stanfordnlp/dspy) | Stanford NLP | Programming (not prompting) LLMs with automatic optimization |
 | [`guidance`](https://github.com/guidance-ai/guidance) | guidance-ai | Structured and constrained generation engine |
 | [`outlines`](https://github.com/outlines-dev/outlines) | outlines-dev | JSON/regex-constrained text generation |
@@ -35,8 +35,8 @@ This directory houses **71 submodules** covering the full spectrum of AI develop
 ### Multimodal & Tool Agents
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`agno`](https://github.com/agno-agi/agno) | Agno | Multimodal agent framework (~21k★, formerly Phidata) |
-| [`composio`](https://github.com/composio-dev/composio) | Composio | 250+ tool integrations for AI agents (~16k★) |
+| [`agno`](https://github.com/agno-agi/agno) | Agno | Multimodal agent framework (formerly Phidata) |
+| [`composio`](https://github.com/composio-dev/composio) | Composio | 250+ tool integrations for AI agents |
 | [`openai-swarm`](https://github.com/openai/swarm) | OpenAI | Lightweight agent handoff orchestration |
 | [`code-interpreter`](https://github.com/e2b-dev/code-interpreter) | E2B | Sandboxed code execution environment for AI |
 | [`bmtools`](https://github.com/OpenBMB/BMTools) | OpenBMB | Tool learning for big models |
@@ -51,13 +51,13 @@ This directory houses **71 submodules** covering the full spectrum of AI develop
 | [`autogen`](https://github.com/microsoft/autogen) | Microsoft | Multi-agent conversation framework |
 | [`autogen-core`](https://github.com/microsoft/autogen) | Microsoft | AutoGen core library |
 | [`ag2`](https://github.com/ag2ai/ag2) | AG2 | Next-gen multi-agent framework (AutoGen fork) |
-| [`crewAI`](https://github.com/crewAIInc/crewAI) | CrewAI | Role-based AI agent crews (~30k★) |
+| [`crewAI`](https://github.com/crewAIInc/crewAI) | CrewAI | Role-based AI agent crews |
 | [`crew-ai-tools`](https://github.com/crewAIInc/crewAI-tools) | CrewAI | Tool extensions for CrewAI |
 | [`MetaGPT`](https://github.com/geekan/MetaGPT) | geekan | Multi-agent meta programming framework |
 | [`smolagents`](https://github.com/huggingface/smolagents) | Hugging Face | Lightweight agent framework from HF |
 | [`swarms`](https://github.com/kyegomez/swarms) | kyegomez | Scalable multi-agent swarm intelligence |
 | [`chatdev`](https://github.com/OpenBMB/ChatDev) | OpenBMB | AI-powered virtual software company |
-| [`camel-ai`](https://github.com/camel-ai/camel) | CAMEL AI | Communicative agents for multi-agent exploration (~10k★) |
+| [`camel-ai`](https://github.com/camel-ai/camel) | CAMEL AI | Communicative agents for multi-agent exploration |
 | [`atomic-agents`](https://github.com/BrainBlend-AI/atomic-agents) | BrainBlend | Modular composable agent framework |
 | [`agentgpt`](https://github.com/reworkd/AgentGPT) | Reworkd | Browser-based autonomous agent platform |
 
@@ -73,8 +73,8 @@ This directory houses **71 submodules** covering the full spectrum of AI develop
 |-----------|--------|-------------|
 | [`embedchain`](https://github.com/embedchain/embedchain) | embedchain | Simple RAG framework |
 | [`taskweaver`](https://github.com/microsoft/TaskWeaver) | Microsoft | Code-first agent framework |
-| [`promptflow`](https://github.com/microsoft/promptflow) | Microsoft | LLM workflow automation and evaluation (~12k★) |
-| [`chainlit`](https://github.com/Chainlit/chainlit) | Chainlit | Conversational AI app builder (~12k★) |
+| [`promptflow`](https://github.com/microsoft/promptflow) | Microsoft | LLM workflow automation and evaluation |
+| [`chainlit`](https://github.com/Chainlit/chainlit) | Chainlit | Conversational AI app builder |
 | [`semantic-router`](https://github.com/aurelio-labs/semantic-router) | Aurelio Labs | Semantic intent routing for LLMs |
 | [`canals`](https://github.com/deepset-ai/canals) | deepset | DAG pipeline architecture |
 | [`celery`](https://github.com/celery/celery) | Celery | Distributed task queue for async workflows |
@@ -85,7 +85,7 @@ This directory houses **71 submodules** covering the full spectrum of AI develop
 ### Memory & Context
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`mem0ai`](https://github.com/mem0ai/mem0) | Mem0 | Memory layer for personalized AI applications (~25k★) |
+| [`mem0ai`](https://github.com/mem0ai/mem0) | Mem0 | Memory layer for personalized AI applications |
 
 ### Sandboxing & Security
 | Submodule | Source | Description |
@@ -96,8 +96,8 @@ This directory houses **71 submodules** covering the full spectrum of AI develop
 ### UI Builders
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`gradio`](https://github.com/gradio-app/gradio) | Gradio | ML demo UI builder — 3 lines of code (~40k★) |
-| [`streamlit`](https://github.com/streamlit/streamlit) | Streamlit | Data app framework for rapid prototyping (~40k★) |
+| [`gradio`](https://github.com/gradio-app/gradio) | Gradio | ML demo UI builder — 3 lines of code |
+| [`streamlit`](https://github.com/streamlit/streamlit) | Streamlit | Data app framework for rapid prototyping |
 
 ### Core ML & NLP Libraries
 | Submodule | Source | Description |

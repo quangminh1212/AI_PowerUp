@@ -11,11 +11,11 @@ This directory contains **39 submodules** of the world's leading AI-powered codi
 ### Autonomous Coding Agents
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`AutoGPT`](https://github.com/Significant-Gravitas/AutoGPT) | Significant Gravitas | Pioneer autonomous AI agent with memory and tool use (~175k★) |
-| [`openhands`](https://github.com/All-Hands-AI/OpenHands) | All-Hands-AI | Multi-tool open-source coding platform (~54k★) |
-| [`codex`](https://github.com/openai/codex) | OpenAI | Terminal-native agentic coding from OpenAI (~66k★) |
-| [`gpt-pilot`](https://github.com/Pythagora-io/gpt-pilot) | Pythagora | Full-app generation from natural language specifications (~35k★) |
-| [`swe-agent`](https://github.com/SWE-agent/SWE-agent) | Princeton NLP | State-of-the-art autonomous software engineering (~20k★) |
+| [`AutoGPT`](https://github.com/Significant-Gravitas/AutoGPT) | Significant Gravitas | Pioneer autonomous AI agent with memory and tool use |
+| [`openhands`](https://github.com/All-Hands-AI/OpenHands) | All-Hands-AI | Multi-tool open-source coding platform |
+| [`codex`](https://github.com/openai/codex) | OpenAI | Terminal-native agentic coding from OpenAI |
+| [`gpt-pilot`](https://github.com/Pythagora-io/gpt-pilot) | Pythagora | Full-app generation from natural language specifications |
+| [`swe-agent`](https://github.com/SWE-agent/SWE-agent) | Princeton NLP | State-of-the-art autonomous software engineering |
 | [`open-swe`](https://github.com/langchain-ai/open-swe) | LangChain | Async open-source SWE agent built on LangGraph |
 | [`deepagents`](https://github.com/langchain-ai/deepagents) | LangChain | Deep-learning-powered agent harness for complex tasks |
 | [`deer-flow`](https://github.com/bytedance/deer-flow) | ByteDance | Long-horizon SuperAgent for complex multi-step workflows |
@@ -30,7 +30,7 @@ This directory contains **39 submodules** of the world's leading AI-powered codi
 | Submodule | Source | Description |
 |-----------|--------|-------------|
 | [`claude-code`](https://github.com/anthropics/claude-code) | Anthropic | Agentic terminal-native coder with full codebase understanding |
-| [`aider`](https://github.com/paul-gauthier/aider) | Paul Gauthier | Git-native AI pair programmer with multi-model support (~42k★) |
+| [`aider`](https://github.com/paul-gauthier/aider) | Paul Gauthier | Git-native AI pair programmer with multi-model support |
 | [`gemini-cli`](https://github.com/google-gemini/gemini-cli) | Google | Gemini-powered command-line coding agent |
 | [`goose`](https://github.com/block-open-source/goose) | Block | Open-source AI developer agent from Square/Cash App |
 | [`mentat`](https://github.com/AbanteAI/mentat) | AbanteAI | Terminal-native AI coding assistant with undo/redo |
@@ -39,12 +39,12 @@ This directory contains **39 submodules** of the world's leading AI-powered codi
 ### IDE Extensions & AI Editors
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`continue`](https://github.com/continuedev/continue) | Continue | Open-source AI code assistant for VS Code & JetBrains (~25k★) |
+| [`continue`](https://github.com/continuedev/continue) | Continue | Open-source AI code assistant for VS Code & JetBrains |
 | [`cline`](https://github.com/cline/cline) | Cline | Autonomous coding agent inside VS Code |
 | [`cursor`](https://github.com/getcursor/cursor) | Cursor | AI-first code editor with multi-file context |
 | [`roo-code`](https://github.com/rooVetGit/Roo-Code) | Roo Code | Smart AI code assistant for VS Code |
 | [`void`](https://github.com/voideditor/void) | Void | Open-source AI-powered code editor |
-| [`tabby`](https://github.com/TabbyML/tabby) | TabbyML | Self-hosted AI code completion and chat (~30k★) |
+| [`tabby`](https://github.com/TabbyML/tabby) | TabbyML | Self-hosted AI code completion and chat |
 | [`aide`](https://github.com/codestoryai/aide) | CodeStory | AI-native IDE with deep codebase understanding |
 
 ### Code Generation & Review
@@ -58,7 +58,7 @@ This directory contains **39 submodules** of the world's leading AI-powered codi
 ### Browser Automation & Web Agents
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`skyvern`](https://github.com/Skyvern-AI/skyvern) | Skyvern AI | Browser automation with visual page understanding (~10k★) |
+| [`skyvern`](https://github.com/Skyvern-AI/skyvern) | Skyvern AI | Browser automation with visual page understanding |
 | [`lavague`](https://github.com/lavague-ai/LaVague) | LaVague | AI web agent for browser task automation |
 
 ### Research & Code Search

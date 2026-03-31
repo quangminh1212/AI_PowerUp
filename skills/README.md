@@ -19,11 +19,11 @@ This directory contains **26 submodules** of battle-tested prompt engineering re
 ### Prompt Engineering
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`prompt-engineering-guide`](https://github.com/dair-ai/Prompt-Engineering-Guide) | DAIR.AI | Comprehensive prompt engineering guide (~55k★) |
+| [`prompt-engineering-guide`](https://github.com/dair-ai/Prompt-Engineering-Guide) | DAIR.AI | Comprehensive prompt engineering guide |
 | [`prompt-engineering`](https://github.com/brexhq/prompt-engineering) | Brex | Enterprise prompt engineering patterns and tips |
 | [`ai-prompts`](https://github.com/mustvlad/ChatGPT-System-Prompts) | mustvlad | Collection of system prompt examples |
 | [`chatgpt-autoexpert`](https://github.com/spdustin/ChatGPT-AutoExpert) | spdustin | Supercharged ChatGPT system prompts |
-| [`instructor`](https://github.com/jxnl/instructor) | jxnl | Structured output extraction from LLMs (~10k★) |
+| [`instructor`](https://github.com/jxnl/instructor) | jxnl | Structured output extraction from LLMs |
 | [`instructor-ai`](https://github.com/instructor-ai/instructor) | Instructor AI | Multi-language structured extraction library |
 
 ### Agent Skills & Development
@@ -33,8 +33,8 @@ This directory contains **26 submodules** of battle-tested prompt engineering re
 | [`awesome-cursorrules`](https://github.com/PatrickJS/awesome-cursorrules) | PatrickJS | Curated Cursor AI rules collection |
 | [`awesome-mcp-servers`](https://github.com/punkpeye/awesome-mcp-servers) | punkpeye | Curated MCP server collection |
 | [`claude-code-action`](https://github.com/anthropics/claude-code-action) | Anthropic | Claude Code in GitHub Actions |
-| [`browser-use`](https://github.com/browser-use/browser-use) | browser-use | AI agent browser automation (~55k★) |
-| [`fabric`](https://github.com/danielmiessler/fabric) | danielmiessler | AI augmentation framework with patterns (~35k★) |
+| [`browser-use`](https://github.com/browser-use/browser-use) | browser-use | AI agent browser automation |
+| [`fabric`](https://github.com/danielmiessler/fabric) | danielmiessler | AI augmentation framework with patterns |
 | [`rags`](https://github.com/run-llama/rags) | LlamaIndex | RAG recipe collection |
 | [`search-with-lepton`](https://github.com/leptonai/search_with_lepton) | Lepton AI | AI-powered search engine reference |
 | [`lobe-chat-agents`](https://github.com/lobehub/lobe-chat-agents) | LobeHub | Agent marketplace for LobeChat |

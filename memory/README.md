@@ -10,8 +10,8 @@ This directory contains **3 submodules** focused on long-term memory for AI syst
 
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`mem0`](https://github.com/mem0ai/mem0) | Mem0 | Memory layer for personalized AI applications (~25k★) — stores user preferences, context, and history across sessions |
-| [`memgpt`](https://github.com/cpacker/MemGPT) | cpacker | OS-inspired LLM memory management (~13k★, now Letta) — virtual context window with tiered memory for unlimited conversations |
+| [`mem0`](https://github.com/mem0ai/mem0) | Mem0 | Memory layer for personalized AI applications — stores user preferences, context, and history across sessions |
+| [`memgpt`](https://github.com/cpacker/MemGPT) | cpacker | OS-inspired LLM memory management (now Letta) — virtual context window with tiered memory for unlimited conversations |
 | [`cipher`](https://github.com/nicobailon/cipher) | nicobailon | Encrypted memory storage for sensitive AI contexts |
 
 ## Key Capabilities

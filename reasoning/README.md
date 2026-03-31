@@ -23,7 +23,7 @@ This directory contains **24 submodules** exploring the frontiers of LLM reasoni
 ### Tool Use & Function Calling
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`gorilla`](https://github.com/ShishirPatil/gorilla) | UC Berkeley | API call generation for LLMs (~12k★) |
+| [`gorilla`](https://github.com/ShishirPatil/gorilla) | UC Berkeley | API call generation for LLMs |
 | [`toolformer`](https://github.com/lucidrains/toolformer-pytorch) | lucidrains | PyTorch implementation of tool-learning |
 | [`prompttools`](https://github.com/hegelai/prompttools) | hegelai | Testing and experimentation for prompts and LLMs |
 | [`ell`](https://github.com/MadcowD/ell) | MadcowD | Prompt engineering as a language — tracking and versioning |
@@ -32,14 +32,14 @@ This directory contains **24 submodules** exploring the frontiers of LLM reasoni
 | Submodule | Source | Description |
 |-----------|--------|-------------|
 | [`letta`](https://github.com/cpacker/MemGPT) | cpacker | Stateful agents with long-term memory (MemGPT) |
-| [`opendevin`](https://github.com/All-Hands-AI/OpenHands) | All-Hands AI | AI software development agent (~55k★) |
+| [`opendevin`](https://github.com/All-Hands-AI/OpenHands) | All-Hands AI | AI software development agent |
 | [`agentscope`](https://github.com/modelscope/agentscope) | ModelScope | Multi-agent platform with fault tolerance |
 | [`voyager`](https://github.com/MineDojo/Voyager) | MineDojo | LLM-powered lifelong learning agent in Minecraft |
 | [`phidata`](https://github.com/phidatahq/phidata) | Phidata | Build agents with memory, knowledge, and tools |
 | [`adalflow`](https://github.com/SylphAI-Inc/AdalFlow) | SylphAI | Building and auto-optimizing LLM task pipelines |
 | [`camel`](https://github.com/camel-ai/camel) | CAMEL AI | Communicative agents for multi-agent exploration |
 | [`graphiti`](https://github.com/getzep/graphiti) | Zep | Temporal knowledge graph for agent memory |
-| [`tensorzero`](https://github.com/tensorzero/tensorzero) | TensorZero | Data and learning platform for LLM applications (~8k★) |
+| [`tensorzero`](https://github.com/tensorzero/tensorzero) | TensorZero | Data and learning platform for LLM applications |
 
 ### Gradient-Based Prompt Optimization
 | Submodule | Source | Description |

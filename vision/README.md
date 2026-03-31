@@ -11,10 +11,10 @@ This directory contains **32 submodules** covering the full computer vision AI s
 ### Image Generation
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`diffusers`](https://github.com/huggingface/diffusers) | Hugging Face | The standard diffusion model library (~28k★) — Stable Diffusion, FLUX, Kolors, SDXL |
+| [`diffusers`](https://github.com/huggingface/diffusers) | Hugging Face | The standard diffusion model library — Stable Diffusion, FLUX, Kolors, SDXL |
 | [`stable-diffusion-original`](https://github.com/CompVis/stable-diffusion) | CompVis | Original Stable Diffusion research code |
-| [`stable-diffusion-webui`](https://github.com/AUTOMATIC1111/stable-diffusion-webui) | AUTOMATIC1111 | Most popular SD web UI (~150k★) |
-| [`ComfyUI`](https://github.com/comfyanonymous/ComfyUI) | comfyanonymous | Node-based diffusion workflow engine (~80k★) |
+| [`stable-diffusion-webui`](https://github.com/AUTOMATIC1111/stable-diffusion-webui) | AUTOMATIC1111 | Most popular SD web UI |
+| [`ComfyUI`](https://github.com/comfyanonymous/ComfyUI) | comfyanonymous | Node-based diffusion workflow engine |
 | [`invokeai`](https://github.com/invoke-ai/InvokeAI) | InvokeAI | Creative engine for Stable Diffusion |
 | [`fooocus`](https://github.com/lllyasviel/Fooocus) | lllyasviel | One-click Stable Diffusion with optimized UI |
 | [`kohya-ss`](https://github.com/kohya-ss/sd-scripts) | kohya-ss | Training scripts for Stable Diffusion models |
@@ -34,15 +34,15 @@ This directory contains **32 submodules** covering the full computer vision AI s
 | [`photomaker`](https://github.com/TencentARC/PhotoMaker) | TencentARC | Customizable realistic photo generation |
 | [`instruct-pix2pix`](https://github.com/timothybrooks/instruct-pix2pix) | timothybrooks | Image editing via text instructions |
 | [`realesrgan`](https://github.com/xinntao/Real-ESRGAN) | xinntao | Practical image/video restoration and super-resolution |
-| [`deep-live-cam`](https://github.com/hacksider/Deep-Live-Cam) | hacksider | Real-time face swap and deepfake (~45k★) |
+| [`deep-live-cam`](https://github.com/hacksider/Deep-Live-Cam) | hacksider | Real-time face swap and deepfake |
 
 ### Object Detection & Segmentation
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`segment-anything`](https://github.com/facebookresearch/segment-anything) | Meta | Foundation model for image segmentation (~50k★) |
+| [`segment-anything`](https://github.com/facebookresearch/segment-anything) | Meta | Foundation model for image segmentation |
 | [`sam2`](https://github.com/facebookresearch/sam2) | Meta | Segment Anything Model 2 — video + image segmentation |
 | [`grounding-dino`](https://github.com/IDEA-Research/GroundingDINO) | IDEA Research | Open-set object detection with language grounding |
-| [`ultralytics`](https://github.com/ultralytics/ultralytics) | Ultralytics | YOLOv8 — real-time object detection (~40k★) |
+| [`ultralytics`](https://github.com/ultralytics/ultralytics) | Ultralytics | YOLOv8 — real-time object detection |
 | [`yolov9`](https://github.com/WongKinYiu/yolov9) | WongKinYiu | Next-generation YOLO architecture |
 | [`detectron2`](https://github.com/facebookresearch/detectron2) | Meta | Detection and segmentation platform |
 | [`mmdetection`](https://github.com/open-mmlab/mmdetection) | OpenMMLab | Object detection toolbox |

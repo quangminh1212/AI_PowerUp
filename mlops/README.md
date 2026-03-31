@@ -11,7 +11,7 @@ This directory contains **15 submodules** covering production MLOps infrastructu
 ### Workflow Orchestration
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`kubeflow`](https://github.com/kubeflow/kubeflow) | Kubeflow | ML toolkit for Kubernetes (~14k★) |
+| [`kubeflow`](https://github.com/kubeflow/kubeflow) | Kubeflow | ML toolkit for Kubernetes |
 | [`metaflow`](https://github.com/Netflix/metaflow) | Netflix | Human-centric ML workflow framework |
 | [`prefect`](https://github.com/PrefectHQ/prefect) | Prefect | Modern workflow orchestration |
 | [`dagster`](https://github.com/dagster-io/dagster) | Dagster | Data orchestration with software-defined assets |

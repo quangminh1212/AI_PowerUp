@@ -30,7 +30,7 @@ This directory contains **44 submodules** of the world's leading open-weight AI 
 | Submodule | Source | Description |
 |-----------|--------|-------------|
 | [`qwen`](https://github.com/QwenLM/Qwen) | Alibaba | Qwen foundation model |
-| [`qwen2.5`](https://github.com/QwenLM/Qwen2.5) | Alibaba | Qwen 2.5 — top open model (~25k★) |
+| [`qwen2.5`](https://github.com/QwenLM/Qwen2.5) | Alibaba | Qwen 2.5 — top open model |
 | [`qwen3`](https://github.com/QwenLM/Qwen3) | Alibaba | Latest Qwen 3 model family |
 
 ### Mistral
@@ -75,7 +75,7 @@ This directory contains **44 submodules** of the world's leading open-weight AI 
 ### Alternative Architectures
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`rwkv`](https://github.com/BlinkDL/RWKV-LM) | BlinkDL | RNN-based language model — linear attention (~14k★) |
+| [`rwkv`](https://github.com/BlinkDL/RWKV-LM) | BlinkDL | RNN-based language model — linear attention |
 | [`bitnet`](https://github.com/microsoft/BitNet) | Microsoft | 1-bit LLM architecture for extreme efficiency |
 | [`moshi`](https://github.com/kyutai-labs/moshi) | Kyutai | Full-duplex speech-text foundation model |
 | [`jamba`](https://github.com/AI21Labs/Jamba) | AI21 Labs | Mamba-Transformer hybrid architecture |

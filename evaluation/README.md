@@ -12,14 +12,14 @@ This directory contains **17 submodules** covering the full evaluation lifecycle
 | Submodule | Source | Description |
 |-----------|--------|-------------|
 | [`lm-evaluation-harness`](https://github.com/EleutherAI/lm-evaluation-harness) | EleutherAI | Industry-standard LLM benchmark framework (200+ tasks) |
-| [`OpenCompass`](https://github.com/open-compass/OpenCompass) | COMPASS | Comprehensive LLM evaluation platform (~8k★) |
+| [`OpenCompass`](https://github.com/open-compass/OpenCompass) | COMPASS | Comprehensive LLM evaluation platform |
 | [`swe-bench`](https://github.com/princeton-nlp/SWE-bench) | Princeton NLP | Benchmark for AI coding on real GitHub issues |
 | [`mteb`](https://github.com/embeddings-benchmark/mteb) | MTEB | Massive text embedding benchmark (58 datasets) |
 | [`vlm-eval`](https://github.com/open-compass/VLMEvalKit) | COMPASS | Vision-language model evaluation toolkit |
 | [`lmms-eval`](https://github.com/EvolvingLMMs-Lab/lmms-eval) | EvolvingLMMs | Large multimodal model evaluation suite |
 | [`evals`](https://github.com/openai/evals) | OpenAI | OpenAI's evaluation framework for LLMs |
 | [`simple-evals`](https://github.com/openai/simple-evals) | OpenAI | Lightweight evaluation scripts for common benchmarks |
-| [`chatbot-arena`](https://github.com/lm-sys/FastChat) | LMSYS | Chatbot Arena — human preference evaluation platform (~37k★) |
+| [`chatbot-arena`](https://github.com/lm-sys/FastChat) | LMSYS | Chatbot Arena — human preference evaluation platform |
 
 ### LLM Testing & Quality
 | Submodule | Source | Description |
@@ -32,7 +32,7 @@ This directory contains **17 submodules** covering the full evaluation lifecycle
 ### Observability & Monitoring
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`langfuse`](https://github.com/langfuse/langfuse) | Langfuse | Open-source LLM observability — traces, prompts, evals (~10k★) |
+| [`langfuse`](https://github.com/langfuse/langfuse) | Langfuse | Open-source LLM observability — traces, prompts, evals |
 | [`langsmith-sdk`](https://github.com/langchain-ai/langsmith-sdk) | LangChain | Debug, test, and monitor LangChain applications |
 | [`phoenix`](https://github.com/Arize-AI/phoenix) | Arize AI | AI observability with trace visualization |
 | [`helicone`](https://github.com/Helicone/helicone) | Helicone | LLM proxy with logging, caching, and cost tracking |

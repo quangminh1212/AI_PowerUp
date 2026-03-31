@@ -10,9 +10,9 @@ This directory contains **5+ submodules** focused on AI safety — from prompt i
 
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`NeMo-Guardrails`](https://github.com/NVIDIA/NeMo-Guardrails) | NVIDIA | Programmable guardrails for LLM apps (~5k★) — Colang rules for topic control, factuality, and jailbreak prevention |
-| [`guardrails`](https://github.com/guardrails-ai/guardrails) | Guardrails AI | Output validation framework for LLMs (~5k★) — structured output enforcement and hallucination detection |
-| [`garak`](https://github.com/leondz/garak) | leondz | LLM vulnerability scanner — automated red-teaming (~3k★) |
+| [`NeMo-Guardrails`](https://github.com/NVIDIA/NeMo-Guardrails) | NVIDIA | Programmable guardrails for LLM apps — Colang rules for topic control, factuality, and jailbreak prevention |
+| [`guardrails`](https://github.com/guardrails-ai/guardrails) | Guardrails AI | Output validation framework for LLMs — structured output enforcement and hallucination detection |
+| [`garak`](https://github.com/leondz/garak) | leondz | LLM vulnerability scanner — automated red-teaming |
 | [`llm-guard`](https://github.com/protectai/llm-guard) | Protect AI | Input/output guardrails for LLM interactions |
 | [`rebuff`](https://github.com/protectai/rebuff) | Protect AI | Prompt injection detection service |
 

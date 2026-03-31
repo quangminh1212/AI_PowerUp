@@ -10,9 +10,9 @@ This directory contains **6+ submodules** of leading AI video generation models 
 
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`CogVideo`](https://github.com/THUDM/CogVideo) | Tsinghua | Text-to-video diffusion model (~12k★) — CogVideoX for high-quality generation |
-| [`Open-Sora`](https://github.com/hpcaitech/Open-Sora) | HPC-AI Tech | Open reproduction of Sora-like video generation (~24k★) |
-| [`hunyuan-video`](https://github.com/Tencent/HunyuanVideo) | Tencent | Open video generation foundation model (~7k★) |
+| [`CogVideo`](https://github.com/THUDM/CogVideo) | Tsinghua | Text-to-video diffusion model — CogVideoX for high-quality generation |
+| [`Open-Sora`](https://github.com/hpcaitech/Open-Sora) | HPC-AI Tech | Open reproduction of Sora-like video generation |
+| [`hunyuan-video`](https://github.com/Tencent/HunyuanVideo) | Tencent | Open video generation foundation model |
 | [`AnimateDiff`](https://github.com/guoyww/AnimateDiff) | guoyww | Animate personalized text-to-image models into videos |
 | [`stable-video`](https://github.com/Stability-AI/generative-models) | Stability AI | Stable Video Diffusion for video synthesis |
 | [`moneyprinter`](https://github.com/FujiwaraChoki/MoneyPrinter) | FujiwaraChoki | Automated short video generation pipeline |

@@ -10,9 +10,9 @@ This directory contains **8 submodules** of leading multimodal (vision-language)
 
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`llava-next`](https://github.com/LLaVA-VL/LLaVA-NeXT) | LLaVA-VL | Latest LLaVA visual instruction tuning (~3k★) |
+| [`llava-next`](https://github.com/LLaVA-VL/LLaVA-NeXT) | LLaVA-VL | Latest LLaVA visual instruction tuning |
 | [`qwen-vl`](https://github.com/QwenLM/Qwen-VL) | Qwen | Vision-language model powering Qwen visual chat |
-| [`internvl`](https://github.com/OpenGVLab/InternVL) | OpenGVLab | Scaling vision foundation model to 6B params (~8k★) |
+| [`internvl`](https://github.com/OpenGVLab/InternVL) | OpenGVLab | Scaling vision foundation model to 6B params |
 | [`florence2`](https://github.com/microsoft/Florence-2) | Microsoft | Unified vision foundation model — captioning, grounding, OCR |
 | [`minigpt4`](https://github.com/Vision-CAIR/MiniGPT-4) | Vision-CAIR | Enhancing vision-language understanding with GPT-4 |
 | [`moondream`](https://github.com/vikhyat/moondream) | vikhyat | Tiny powerful vision-language model (1.8B) |
