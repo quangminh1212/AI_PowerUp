@@ -1,33 +1,35 @@
-# 🧬 Persistent Memory
+# 🧠 Memory Systems
 
-Long-term memory and context management layers for AI agents.
+Persistent memory layers enabling AI agents to remember, learn, and personalize over time.
 
 ## Overview
 
-This directory contains 3 submodules providing persistent memory solutions that enable AI agents to maintain context across sessions, personalize interactions, and manage unbounded conversation histories.
+This directory contains **3 submodules** focused on long-term memory for AI systems — from personal AI memory layers to cognitive architectures with memory management. These tools solve the critical challenge of making AI agents stateful across conversations and sessions.
 
 ## Submodules (3)
 
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`mem0`](https://github.com/mem0ai/mem0) | Mem0 AI | Universal memory layer for personalized AI — adds long-term memory to any LLM |
-| [`cipher`](https://github.com/campfirein/cipher) | Campfire | Persistent memory optimized for coding agents — tracks code context across sessions |
-| [`memgpt`](https://github.com/cpacker/MemGPT) | cpacker | OS-inspired virtual memory management for LLMs — enables unbounded context windows |
+| [`mem0`](https://github.com/mem0ai/mem0) | Mem0 | Memory layer for personalized AI applications (~25k★) — stores user preferences, context, and history across sessions |
+| [`memgpt`](https://github.com/cpacker/MemGPT) | cpacker | OS-inspired LLM memory management (~13k★, now Letta) — virtual context window with tiered memory for unlimited conversations |
+| [`cipher`](https://github.com/nicobailon/cipher) | nicobailon | Encrypted memory storage for sensitive AI contexts |
 
-## Key Concepts
+## Key Capabilities
 
-- **Mem0**: Session-persistent memory with auto-extraction of user preferences and facts
-- **Cipher**: Code-aware memory that understands project structure and development patterns
-- **MemGPT**: Virtual context management using paging (like OS memory) for infinite conversations
+| Capability | Best Option |
+|-----------|------------|
+| **User Personalization** | mem0 — stores preferences and learns over time |
+| **Unlimited Context** | memgpt — virtual memory paging for long conversations |
+| **Secure Storage** | cipher — encrypted memory for sensitive data |
 
 ## Usage
 
 ```bash
-# Init mem0
+# Init Mem0 memory layer
 git submodule update --init --depth 1 memory/mem0
-cd memory/mem0 && pip install mem0ai
+pip install mem0ai
 
-# Init MemGPT
+# Init MemGPT (Letta)
 git submodule update --init --depth 1 memory/memgpt
-cd memory/memgpt && pip install pymemgpt
+pip install letta
 ```
