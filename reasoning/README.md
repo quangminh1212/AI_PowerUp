@@ -1,72 +1,70 @@
-# 🧪 Reasoning & Cognitive Architecture
+# 🧩 Reasoning & Prompting
 
-Advanced reasoning, self-reflection, cognitive frameworks, and tool-use research.
+Advanced reasoning, prompt engineering, tool-use, and cognitive-architecture frameworks for LLMs.
 
 ## Overview
 
-This directory contains 24 submodules covering cutting-edge reasoning research — from chain-of-thought and tree-of-thoughts techniques to self-improvement loops, agent reasoning frameworks, optimization methods, and tool-use systems.
+This directory contains **24 submodules** exploring the frontiers of LLM reasoning — from chain-of-thought and tree-of-thought techniques to self-reflection, tool-learning, and memory-augmented agents. These repos push AI beyond simple Q&A into genuine problem-solving.
 
 ## Submodules (24)
 
-### Curated Research
+### Reasoning Techniques
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`Awesome-LLM-Reasoning`](https://github.com/atfortes/Awesome-LLM-Reasoning) | atfortes | Comprehensive reasoning papers collection |
+| [`chain-of-thought-hub`](https://github.com/FranxYao/chain-of-thought-hub) | FranxYao | Chain-of-thought prompting benchmarks |
+| [`chain-of-verification`](https://github.com/ritun16/chain-of-verification) | ritun16 | Self-verification to reduce hallucinations |
+| [`tree-of-thoughts`](https://github.com/princeton-nlp/tree-of-thought-llm) | Princeton NLP | Deliberate problem solving via search trees |
+| [`self-refine`](https://github.com/madaan/self-refine) | madaan | Iterative self-refinement without supervision |
+| [`self-rag`](https://github.com/AkariAsai/self-rag) | AkariAsai | Self-reflective retrieval-augmented generation |
+| [`reflexion`](https://github.com/noahshinn/reflexion) | noahshinn | Agents that learn from trial and error |
+| [`llm-reasoners`](https://github.com/maitrix-org/llm-reasoners) | maitrix | Unified library for LLM reasoning algorithms |
+| [`Awesome-LLM-Reasoning`](https://github.com/atfortes/Awesome-LLM-Reasoning) | atfortes | Curated reasoning papers and resources |
 
-### Core Reasoning Techniques
+### Tool Use & Function Calling
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`tree-of-thoughts`](https://github.com/princeton-nlp/tree-of-thought-llm) | Princeton NLP | Tree-based deliberate reasoning |
-| [`chain-of-thought-hub`](https://github.com/FranxYao/chain-of-thought-hub) | FranxYao | Chain-of-thought benchmarking |
-| [`chain-of-verification`](https://github.com/ritun16/chain-of-verification) | ritun16 | Self-verification chains |
-| [`llm-reasoners`](https://github.com/maitrix-org/llm-reasoners) | Maitrix | Unified reasoning library |
+| [`gorilla`](https://github.com/ShishirPatil/gorilla) | UC Berkeley | API call generation for LLMs (~12k★) |
+| [`toolformer`](https://github.com/lucidrains/toolformer-pytorch) | lucidrains | PyTorch implementation of tool-learning |
+| [`prompttools`](https://github.com/hegelai/prompttools) | hegelai | Testing and experimentation for prompts and LLMs |
+| [`ell`](https://github.com/MadcowD/ell) | MadcowD | Prompt engineering as a language — tracking and versioning |
 
-### Self-Improvement
+### Agent Architectures
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`self-refine`](https://github.com/madaan/self-refine) | madaan | Iterative self-refinement |
-| [`reflexion`](https://github.com/noahshinn/reflexion) | noahshinn | Verbal reinforcement learning |
-| [`self-rag`](https://github.com/AkariAsai/self-rag) | AkariAsai | Self-reflective RAG |
+| [`letta`](https://github.com/cpacker/MemGPT) | cpacker | Stateful agents with long-term memory (MemGPT) |
+| [`opendevin`](https://github.com/All-Hands-AI/OpenHands) | All-Hands AI | AI software development agent (~55k★) |
+| [`agentscope`](https://github.com/modelscope/agentscope) | ModelScope | Multi-agent platform with fault tolerance |
+| [`voyager`](https://github.com/MineDojo/Voyager) | MineDojo | LLM-powered lifelong learning agent in Minecraft |
+| [`phidata`](https://github.com/phidatahq/phidata) | Phidata | Build agents with memory, knowledge, and tools |
+| [`adalflow`](https://github.com/SylphAI-Inc/AdalFlow) | SylphAI | Building and auto-optimizing LLM task pipelines |
+| [`camel`](https://github.com/camel-ai/camel) | CAMEL AI | Communicative agents for multi-agent exploration |
+| [`graphiti`](https://github.com/getzep/graphiti) | Zep | Temporal knowledge graph for agent memory |
+| [`tensorzero`](https://github.com/tensorzero/tensorzero) | TensorZero | Data and learning platform for LLM applications (~8k★) |
 
-### Agent Reasoning Frameworks
+### Gradient-Based Prompt Optimization
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`camel`](https://github.com/camel-ai/camel) | CAMEL-AI | Communicative agent framework (~10k★) |
-| [`agentscope`](https://github.com/modelscope/agentscope) | Alibaba | Multi-agent platform |
-| [`voyager`](https://github.com/MineDojo/Voyager) | MineDojo | Lifelong learning agent |
-| [`letta`](https://github.com/letta-ai/letta) | Letta | Stateful AI agents (ex-MemGPT) |
-| [`phidata`](https://github.com/phidatahq/phidata) | Phidata | AI assistants with memory |
-| [`opendevin`](https://github.com/OpenDevin/OpenDevin) | OpenDevin | Open-source coding agent |
-| [`prompttools`](https://github.com/hegelai/prompttools) | HegelAI | Prompt testing toolkit |
+| [`textgrad`](https://github.com/zou-group/textgrad) | Stanford | Automatic differentiation through text |
+| [`minichain`](https://github.com/srush/MiniChain) | Sasha Rush | Minimal LLM chain library |
+| [`litgpt`](https://github.com/Lightning-AI/litgpt) | Lightning AI | Pretrain, finetune, deploy LLMs efficiently |
 
-### Optimization Techniques
-| Submodule | Source | Description |
-|-----------|--------|-------------|
-| [`adalflow`](https://github.com/SylphAI-Inc/AdalFlow) | SylphAI | PyTorch-style LLM optimization |
-| [`tensorzero`](https://github.com/tensorzero/tensorzero) | TensorZero | LLM engineering platform |
-| [`textgrad`](https://github.com/zou-group/textgrad) | Stanford | Text-based gradient descent |
+## Key Capabilities
 
-### Tool Use & API Calling
-| Submodule | Source | Description |
-|-----------|--------|-------------|
-| [`gorilla`](https://github.com/ShishirPatil/gorilla) | UC Berkeley | LLM API calling |
-| [`toolformer`](https://github.com/lucidrains/toolformer-pytorch) | lucidrains | Tool-use LLM (PyTorch) |
-| [`minichain`](https://github.com/srush/MiniChain) | srush | Minimal LLM chaining |
-| [`ell`](https://github.com/MadcowD/ell) | MadcowD | Language model prompting |
-
-### Knowledge Graphs
-| Submodule | Source | Description |
-|-----------|--------|-------------|
-| [`graphiti`](https://github.com/getzep/graphiti) | Zep | Temporal knowledge graphs for agents |
-
-### Training & Deployment
-| Submodule | Source | Description |
-|-----------|--------|-------------|
-| [`litgpt`](https://github.com/Lightning-AI/litgpt) | Lightning AI | Pretrain/finetune/deploy any LLM |
+| Capability | Best Options |
+|-----------|--------|
+| **Reasoning** | tree-of-thoughts, chain-of-thought-hub, self-refine |
+| **Self-Correction** | reflexion, self-rag, chain-of-verification |
+| **Tool Learning** | gorilla, toolformer |
+| **Agent Memory** | letta, graphiti, phidata |
+| **Prompt Optimization** | textgrad, ell, dspy (in frameworks/) |
 
 ## Usage
 
 ```bash
+# Explore tree-of-thought prompting
 git submodule update --init --depth 1 reasoning/tree-of-thoughts
-git submodule update --init --depth 1 reasoning/reflexion
+
+# Run OpenHands coding agent
+git submodule update --init --depth 1 reasoning/opendevin
+cd reasoning/opendevin && docker compose up
 ```
