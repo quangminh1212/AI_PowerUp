@@ -1,37 +1,40 @@
-# 🔒 AI Security & Safety
+# 🛡️ AI Safety & Security
 
-Guardrails, red-teaming, prompt injection defense, and content safety.
+Guardrails, red-teaming, and security tools to make AI systems safe, reliable, and resistant to adversarial attacks.
 
 ## Overview
 
-This directory contains 5 submodules focused on making AI systems safe and secure — from output validation and conversational guardrails to vulnerability scanning and prompt injection detection.
+This directory contains **5+ submodules** focused on AI safety — from prompt injection defense and output guardrails to LLM red-teaming and vulnerability scanning. Critical infrastructure for deploying LLMs in production without exposing your systems to misuse.
 
-## Submodules (5)
+## Submodules (5+)
 
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`guardrails`](https://github.com/guardrails-ai/guardrails) | Guardrails AI | Structural validation and safety for LLM outputs (~5k★) |
-| [`NeMo-Guardrails`](https://github.com/NVIDIA/NeMo-Guardrails) | NVIDIA | Programmable conversational guardrails (~5k★) |
-| [`garak`](https://github.com/NVIDIA/garak) | NVIDIA | LLM vulnerability scanner and red-teaming (~3k★) |
-| [`llm-guard`](https://github.com/protectai/llm-guard) | Protect AI | LLM interaction security toolkit (~3k★) |
-| [`rebuff`](https://github.com/protectai/rebuff) | Protect AI | Prompt injection detection |
+| [`NeMo-Guardrails`](https://github.com/NVIDIA/NeMo-Guardrails) | NVIDIA | Programmable guardrails for LLM apps (~5k★) — Colang rules for topic control, factuality, and jailbreak prevention |
+| [`guardrails`](https://github.com/guardrails-ai/guardrails) | Guardrails AI | Output validation framework for LLMs (~5k★) — structured output enforcement and hallucination detection |
+| [`garak`](https://github.com/leondz/garak) | leondz | LLM vulnerability scanner — automated red-teaming (~3k★) |
+| [`llm-guard`](https://github.com/protectai/llm-guard) | Protect AI | Input/output guardrails for LLM interactions |
+| [`rebuff`](https://github.com/protectai/rebuff) | Protect AI | Prompt injection detection service |
+
+> **New additions being added**: heretic (adversarial testing), llm-attacks (jailbreak research), vigil (runtime monitoring)
 
 ## Key Capabilities
 
-- **Output Validation**: `guardrails` — Type-safe, schema-validated LLM responses
-- **Conversation Control**: `NeMo-Guardrails` — Define rails for topic, safety, and data compliance
-- **Red-Teaming**: `garak` — Automated adversarial testing across 50+ vulnerability categories
-- **Input Filtering**: `llm-guard` — Detect PII, toxicity, prompt injection in real-time
-- **Injection Defense**: `rebuff` — Multi-layer prompt injection detection
+| Capability | Best Options |
+|-----------|--------|
+| **Guardrails** | NeMo-Guardrails, guardrails, llm-guard |
+| **Red Teaming** | garak |
+| **Prompt Injection** | rebuff, llm-guard |
+| **Output Validation** | guardrails |
 
 ## Usage
 
 ```bash
-# Init guardrails
-git submodule update --init --depth 1 security/guardrails
-pip install guardrails-ai
+# Init NeMo Guardrails
+git submodule update --init --depth 1 security/NeMo-Guardrails
+pip install nemoguardrails
 
-# Scan LLM vulnerabilities
+# Scan LLM for vulnerabilities
 git submodule update --init --depth 1 security/garak
-pip install garak && garak --model_type openai --probes all
+pip install garak && python -m garak --model_type openai --model_name gpt-3.5-turbo
 ```
