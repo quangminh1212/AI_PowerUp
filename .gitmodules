@@ -1552,7 +1552,7 @@
 	url = https://github.com/google-deepmind/gemma.git
 [submodule "models/command-r"]
 	path = models/command-r
-	url = https://github.com/CohereForAI/c4ai-command-r.git
+	url = https://github.com/cohere-ai/cohere-toolkit.git
 [submodule "models/command-r-plus"]
 	path = models/command-r-plus
 	url = https://github.com/CohereForAI/c4ai-command-r-plus.git
@@ -1564,7 +1564,7 @@
 	url = https://github.com/upstage/SOLAR.git
 [submodule "models/nemotron"]
 	path = models/nemotron
-	url = https://github.com/NVIDIA/Nemotron-4-340B.git
+	url = https://github.com/NVIDIA/NeMo.git
 [submodule "models/olmo-2"]
 	path = models/olmo-2
 	url = https://github.com/allenai/OLMo.git
@@ -2144,3 +2144,117 @@
 [submodule "robotics/lerobot-hf"]
 	path = robotics/lerobot-hf
 	url = https://github.com/huggingface/lerobot.git
+[submodule "frameworks/livekit-agents"]
+	path = frameworks/livekit-agents
+	url = https://github.com/livekit/agents.git
+[submodule "frameworks/agentkit"]
+	path = frameworks/agentkit
+	url = https://github.com/coinbase/agentkit.git
+[submodule "frameworks/llama-agents"]
+	path = frameworks/llama-agents
+	url = https://github.com/run-llama/llama-agents.git
+[submodule "frameworks/agency-swarm"]
+	path = frameworks/agency-swarm
+	url = https://github.com/VRSEN/agency-swarm.git
+[submodule "frameworks/instructor-js"]
+	path = frameworks/instructor-js
+	url = https://github.com/instructor-ai/instructor-js.git
+[submodule "frameworks/aisuite"]
+	path = frameworks/aisuite
+	url = https://github.com/andrewyng/aisuite.git
+[submodule "frameworks/burr"]
+	path = frameworks/burr
+	url = https://github.com/dagworks-inc/burr.git
+[submodule "frameworks/pocket-flow"]
+	path = frameworks/pocket-flow
+	url = https://github.com/The-Pocket/PocketFlow.git
+[submodule "frameworks/crawl4ai-fw"]
+	path = frameworks/crawl4ai-fw
+	url = https://github.com/unclecode/crawl4ai.git
+[submodule "frameworks/langroid"]
+	path = frameworks/langroid
+	url = https://github.com/langroid/langroid.git
+[submodule "frameworks/rivet"]
+	path = frameworks/rivet
+	url = https://github.com/Ironclad/rivet.git
+[submodule "agents/kortix-suna"]
+	path = agents/kortix-suna
+	url = https://github.com/kortix-ai/suna.git
+[submodule "agents/browser-use-agent"]
+	path = agents/browser-use-agent
+	url = https://github.com/browser-use/browser-use.git
+[submodule "agents/khoj-agent"]
+	path = agents/khoj-agent
+	url = https://github.com/khoj-ai/khoj.git
+[submodule "agents/composio-agent"]
+	path = agents/composio-agent
+	url = https://github.com/ComposioHQ/composio.git
+[submodule "agents/gptme"]
+	path = agents/gptme
+	url = https://github.com/ErikBjare/gptme.git
+[submodule "agents/openai-codex"]
+	path = agents/openai-codex
+	url = https://github.com/openai/codex.git
+[submodule "agents/devika-v2"]
+	path = agents/devika-v2
+	url = https://github.com/stitionai/devika.git
+[submodule "agents/micro-agent"]
+	path = agents/micro-agent
+	url = https://github.com/BuilderIO/micro-agent.git
+[submodule "agents/rawdog"]
+	path = agents/rawdog
+	url = https://github.com/AbanteAI/rawdog.git
+[submodule "models/granite"]
+	path = models/granite
+	url = https://github.com/ibm-granite/granite-code-models.git
+[submodule "models/arctic"]
+	path = models/arctic
+	url = https://github.com/Snowflake-Labs/snowflake-arctic.git
+[submodule "models/exaone"]
+	path = models/exaone
+	url = https://github.com/LG-AI-EXAONE/EXAONE-3.5.git
+[submodule "models/smollm2"]
+	path = models/smollm2
+	url = https://github.com/huggingface/smollm.git
+[submodule "models/openelm"]
+	path = models/openelm
+	url = https://github.com/apple/corenet.git
+[submodule "models/megrez"]
+	path = models/megrez
+	url = https://github.com/infinigence/Infini-Megrez.git
+[submodule "mcp-servers/aws-mcp"]
+	path = mcp-servers/aws-mcp
+	url = https://github.com/awslabs/mcp.git
+[submodule "mcp-servers/mcp-go-sdk"]
+	path = mcp-servers/mcp-go-sdk
+	url = https://github.com/mark3labs/mcp-go.git
+[submodule "mcp-servers/mcp-csharp-sdk"]
+	path = mcp-servers/mcp-csharp-sdk
+	url = https://github.com/modelcontextprotocol/csharp-sdk.git
+[submodule "mcp-servers/linear-mcp"]
+	path = mcp-servers/linear-mcp
+	url = https://github.com/jerhadf/linear-mcp-server.git
+[submodule "mcp-servers/mcp-proxy"]
+	path = mcp-servers/mcp-proxy
+	url = https://github.com/nicepkg/aide.git
+[submodule "mcp-servers/mcp-java-sdk"]
+	path = mcp-servers/mcp-java-sdk
+	url = https://github.com/modelcontextprotocol/java-sdk.git
+[submodule "mcp-servers/mcp-kotlin-sdk"]
+	path = mcp-servers/mcp-kotlin-sdk
+	url = https://github.com/modelcontextprotocol/kotlin-sdk.git
+[submodule "data-rag/ragatouille"]
+	path = data-rag/ragatouille
+	url = https://github.com/AnswerDotAI/RAGatouille.git
+[submodule "data-rag/openparse"]
+	path = data-rag/openparse
+	url = https://github.com/Filimoa/open-parse.git
+[submodule "data-rag/infinity-emb"]
+	path = data-rag/infinity-emb
+	url = https://github.com/michaelfeil/infinity.git
+[submodule "data-rag/colbert"]
+	path = data-rag/colbert
+	url = https://github.com/stanford-futuredata/ColBERT.git
+[submodule "data-rag/raptor-rag"]
+	path = data-rag/raptor-rag
+	url = https://github.com/parthsarthi03/raptor.git
