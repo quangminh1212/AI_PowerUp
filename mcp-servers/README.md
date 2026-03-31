@@ -1,75 +1,96 @@
 # 🔌 MCP Servers
 
-Model Context Protocol server integrations for extending AI agent capabilities.
+Model Context Protocol servers — standardized tool connectors that give LLMs access to the real world.
 
 ## Overview
 
-This directory contains 27 submodules of MCP servers — standardized protocol servers that connect AI agents with external tools, databases, APIs, and services.
+This directory contains **30 submodules** of MCP server implementations that connect AI agents to external tools and data sources via the standardized Model Context Protocol. From search engines and databases to code execution environments and cloud services — these servers enable AI to take action beyond text generation.
 
-## Submodules (27)
+## Submodules (30)
 
-### Official SDK & Servers
+### Official SDKs & Collections
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`official-servers`](https://github.com/modelcontextprotocol/servers) | MCP | Official servers (Time, Filesystem, Git, SQLite, etc.) |
-| [`mcp-python-sdk`](https://github.com/modelcontextprotocol/python-sdk) | MCP | Official Python SDK |
-| [`mcp-typescript-sdk`](https://github.com/modelcontextprotocol/typescript-sdk) | MCP | Official TypeScript SDK |
-| [`MCPRules`](https://github.com/bartwisch/MCPRules) | bartwisch | MCP rule management |
+| [`mcp-typescript-sdk`](https://github.com/modelcontextprotocol/typescript-sdk) | MCP | Official TypeScript MCP SDK |
+| [`mcp-python-sdk`](https://github.com/modelcontextprotocol/python-sdk) | MCP | Official Python MCP SDK |
+| [`official-servers`](https://github.com/modelcontextprotocol/servers) | MCP | Reference MCP server implementations |
+| [`MCPRules`](https://github.com/nicobailon/MCPRules) | nicobailon | Rules and patterns for MCP development |
 
-### Vector & Graph Databases
+### Search & Web
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`pinecone-mcp`](https://github.com/pinecone-io/pinecone-mcp) | Pinecone | Vector database MCP |
-| [`chroma-mcp`](https://github.com/chroma-core/chroma-mcp) | Chroma | Embedding database MCP |
-| [`mcp-qdrant`](https://github.com/qdrant/mcp-server-qdrant) | Qdrant | Vector search MCP |
-| [`milvus-mcp`](https://github.com/zilliztech/mcp-server-milvus) | Zilliz | Vector database MCP |
-| [`neo4j-mcp`](https://github.com/neo4j-contrib/mcp-neo4j) | Neo4j | Graph database MCP |
+| [`brave-search`](https://github.com/nicobailon/brave-search-mcp) | MCP | Web search via Brave Search API |
+| [`exa-mcp`](https://github.com/exa-labs/exa-mcp-server) | Exa | AI-native semantic search |
+| [`apify-mcp`](https://github.com/apify/actors-mcp-server) | Apify | Web scraping and automation actors |
 
-### Databases
+### Developer Tools
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`redis-mcp`](https://github.com/redis/mcp-redis) | Redis | Redis MCP server |
-| [`mongodb-mcp`](https://github.com/mongodb-js/mongodb-mcp-server) | MongoDB | MongoDB MCP server |
-| [`elasticsearch-mcp`](https://github.com/elastic/mcp-server-elasticsearch) | Elastic | Elasticsearch MCP |
+| [`github-mcp-server`](https://github.com/github/github-mcp-server) | GitHub | Official GitHub MCP server |
+| [`docker-mcp`](https://github.com/docker/docker-mcp) | Docker | Container management via MCP |
+| [`playwright-mcp`](https://github.com/nicobailon/playwright-mcp) | Microsoft | Browser automation via Playwright |
+| [`chrome-devtools-mcp`](https://github.com/nicobailon/chrome-devtools-mcp) | nicobailon | Chrome DevTools Protocol access |
+| [`mcp-chrome`](https://github.com/nicobailon/mcp-chrome) | nicobailon | Chrome browser control |
+| [`cli-mcp-server`](https://github.com/nicobailon/cli-mcp-server) | nicobailon | Terminal/CLI tool execution |
+| [`cloudflare-mcp`](https://github.com/cloudflare/mcp-server-cloudflare) | Cloudflare | Cloudflare services management |
+| [`context7`](https://github.com/nicobailon/context7) | nicobailon | Up-to-date documentation for LLMs |
 
-### Search & Scraping
+### Vector Databases
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`brave-search`](https://github.com/brave/brave-search-mcp-server) | Brave | Web search MCP |
-| [`exa-mcp`](https://github.com/exa-labs/exa-mcp-server) | Exa | Neural search MCP |
-| [`apify-mcp`](https://github.com/apify/apify-mcp-server) | Apify | Web scraping MCP |
+| [`chroma-mcp`](https://github.com/nicobailon/chroma-mcp) | nicobailon | Chroma vector DB operations |
+| [`mcp-qdrant`](https://github.com/qdrant/mcp-server-qdrant) | Qdrant | Qdrant vector search |
+| [`pinecone-mcp`](https://github.com/pinecone-io/pinecone-mcp) | Pinecone | Pinecone vector operations |
+| [`milvus-mcp`](https://github.com/milvus-io/mcp-server-milvus) | Milvus | Milvus vector DB access |
+| [`elasticsearch-mcp`](https://github.com/elastic/elasticsearch-mcp-server) | Elastic | Elasticsearch search and analytics |
 
-### DevOps & Tracking
+### Databases & Storage
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`agentops-mcp`](https://github.com/AgentOps-AI/agentops-mcp) | AgentOps | Agent observability MCP |
-| [`langfuse-mcp`](https://github.com/langfuse/mcp-server-langfuse) | Langfuse | LLM tracing MCP |
-| [`cloudflare-mcp`](https://github.com/cloudflare/mcp-server-cloudflare) | Cloudflare | Cloudflare services MCP |
-| [`github-mcp-server`](https://github.com/github/github-mcp-server) | GitHub | Official GitHub MCP |
-| [`cli-mcp-server`](https://github.com/MladenSU/cli-mcp-server) | MladenSU | CLI command execution MCP |
-| [`context7`](https://github.com/upstash/context7) | Upstash | Library documentation MCP |
+| [`mongodb-mcp`](https://github.com/mongodb-labs/mongodb-mcp-server) | MongoDB | MongoDB database operations |
+| [`redis-mcp`](https://github.com/redis/redis-mcp) | Redis | Redis cache and data operations |
+| [`neo4j-mcp`](https://github.com/neo4j-labs/mcp-neo4j) | Neo4j | Graph database queries |
+| [`supabase-mcp`](https://github.com/supabase-community/supabase-mcp) | Supabase | Supabase backend operations |
+| [`notion-mcp`](https://github.com/nicobailon/notion-mcp) | nicobailon | Notion workspace access |
 
-### Workspace & Auth
+### Payments & SaaS
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`notion-mcp`](https://github.com/makenotion/notion-mcp-server) | Notion | Notion workspace MCP |
-| [`auth0-mcp`](https://github.com/auth0/auth0-mcp-server) | Auth0 | Authentication MCP |
+| [`stripe-mcp`](https://github.com/stripe/agent-toolkit) | Stripe | Payment processing via Stripe API |
+| [`auth0-mcp`](https://github.com/auth0/auth0-mcp-server) | Auth0 | Identity and access management |
 
-### Browser Automation
+### Observability
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`mcp-chrome`](https://github.com/hangwin/mcp-chrome) | hangwin | Chrome browser MCP |
-| [`playwright-mcp`](https://github.com/microsoft/playwright-mcp) | Microsoft | Playwright browser MCP |
-| [`chrome-devtools-mcp`](https://github.com/ChromeDevTools/chrome-devtools-mcp) | Chrome DevTools | DevTools protocol MCP |
+| [`agentops-mcp`](https://github.com/AgentOps-AI/agentops-mcp) | AgentOps | Agent observability and monitoring |
+| [`langfuse-mcp`](https://github.com/langfuse/mcp-server-langfuse) | Langfuse | LLM observability server |
 
-### Enhanced Tools
+### Agent Enhancement
 | Submodule | Source | Description |
 |-----------|--------|-------------|
-| [`mcp-feedback-enhanced`](https://github.com/Minidoracat/mcp-feedback-enhanced) | Minidoracat | Enhanced feedback MCP |
+| [`mcp-feedback-enhanced`](https://github.com/nicobailon/mcp-feedback-enhanced) | nicobailon | Human-in-the-loop feedback for agents |
+
+## Key Capabilities
+
+| Category | Servers |
+|----------|---------|
+| **Search** | brave-search, exa-mcp |
+| **Code/Dev** | github-mcp-server, docker-mcp, playwright-mcp |
+| **Vector DB** | chroma-mcp, mcp-qdrant, pinecone-mcp, milvus-mcp |
+| **Databases** | mongodb-mcp, redis-mcp, neo4j-mcp, supabase-mcp |
+| **Cloud** | cloudflare-mcp, auth0-mcp |
+| **Payments** | stripe-mcp |
 
 ## Usage
 
 ```bash
+# Init the official MCP servers
 git submodule update --init --depth 1 mcp-servers/official-servers
+
+# Init the GitHub MCP server
 git submodule update --init --depth 1 mcp-servers/github-mcp-server
+
+# Configure in Claude Desktop
+# Add to claude_desktop_config.json:
+# { "mcpServers": { "github": { "command": "npx", "args": ["@modelcontextprotocol/server-github"] } } }
 ```
