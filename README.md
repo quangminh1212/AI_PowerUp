@@ -12,11 +12,11 @@ Explicit reasoning techniques, prompt engineering, and curated knowledge resourc
 - **Curated Lists**: `awesome-claude-code`, `awesome-mcp-servers`, `awesome-cursorrules`, `lobe-chat-agents`.
 - **CI/CD**: `claude-code-action`, `browser-use` (~58k★), `search-with-lepton`, `rags`.
 
-### 2. Orchestration Frameworks (`frameworks/`) — 64 submodules
+### 2. Orchestration Frameworks (`frameworks/`) — 66 submodules
 The world's best AI agent orchestration platforms:
 - **Foundational**: `langchain` (~131k★), `llama_index` (~48k★), `semantic-kernel` (~25k★), `haystack`.
-- **Agent Workflows**: `langgraph` (~28k★), `pydantic-ai` (~16k★), `openai-agents-python` (~20k★).
-- **Multi-Agent**: `autogen`, `ag2` (AutoGen successor), `crewAI`, `MetaGPT`, `smolagents`, `swarms`, `chatdev`, `owl` (CAMEL-AI).
+- **Agent Workflows**: `langgraph` (~28k★), `pydantic-ai` (~16k★), `openai-agents-python` (~20k★), `phidata` (~15k★).
+- **Multi-Agent**: `autogen`, `ag2` (AutoGen successor), `crewAI`, `eliza` (~15k★), `MetaGPT`, `smolagents`, `swarms`, `chatdev`, `owl` (CAMEL-AI).
 - **Google**: `google-adk` (Agent Dev Kit), `a2a-python` (Agent-to-Agent).
 - **Autonomous**: `babyagi`, `devika`, `open-interpreter`, `agentgpt`.
 - **MCP & Memory**: `mcp-agent`, `langmem`, `controlflow`.
@@ -25,11 +25,14 @@ The world's best AI agent orchestration platforms:
 - **UI**: `gradio` (~40k★), `streamlit` (~40k★), `chainlit`.
 - **Core ML**: `pytorch`, `spacy`, `fastapi`, `tinygrad`, `transformers-js`, `jina`, `vercel-ai-sdk`, `mastra`.
 
-### 3. AI Coding Agents (`agents/`) — 30 submodules
+### 3. AI Coding Agents (`agents/`) — 34 submodules
 Terminal-native and IDE-integrated coding assistants:
 - `AutoGPT` (~175k★), `openhands` (~54k★), `codex` (~66k★), `claude-code`, `aider` (~42k★).
 - `gpt-pilot` (~35k★), `swe-agent` (~20k★), `tabby` (~30k★), `continue` (~25k★).
 - `cline`, `cursor`, `roo-code`, `void`, `gemini-cli`, `goose`, `bolt-new`.
+- **Generalist / OS UI**: `OS-Copilot`, `UFO`.
+- **Browser / Web**: `Skyvern`.
+- **Agentic Reasoning**: `XAgent`.
 - **New**: `agent-zero`, `anthropic-quickstarts`, `sweep`, `mentat`, `plandex`, `gpt-runner`.
 
 ### 4. AI Platforms (`platforms/`) — 11 submodules
@@ -37,11 +40,12 @@ Production-ready low-code/visual AI app builders:
 - `dify` (~135k★), `langflow` (~146k★), `n8n` (~182k★), `flowise` (~35k★), `fastgpt` (~25k★).
 - `botpress`, `rasa`, `opengpts`, `oneapi` (multi-provider API proxy).
 
-### 5. Persistent Memory (`memory/`) — 3 submodules
-- `mem0`, `cipher`, `memgpt` (OS-inspired virtual memory).
+### 5. Persistent Memory (`memory/`) — 4 submodules
+- `mem0`, `cipher`, `memgpt` (OS-inspired virtual memory), `zep`.
 
-### 6. Training & Fine-tuning (`training/`) — 33 submodules
+### 6. Training & Fine-tuning (`training/`) — 36 submodules
 - **Core**: `transformers` (~145k★), `keras`, `jax`, `accelerate`, `pytorch-lightning`.
+- **RLHF / Post-Training**: `OpenRLHF` (Scaling), `verl` (Volcengine), `alignment-handbook`.
 - **Fine-tuning**: `LLaMA-Factory` (~50k★), `unsloth` (~30k★), `axolotl`, `torchtune`, `ms-swift`.
 - **PEFT**: `peft` (~18k★), `lora`, `trl` (~12k★).
 - **Distributed**: `DeepSpeed` (~40k★), `megatron-lm`, `nemo`, `colossalai`, `gpt-neox`, `petals`.
@@ -57,9 +61,9 @@ Production-ready low-code/visual AI app builders:
 - **Proxy**: `litellm` (~30k★), `llm-cli`.
 - **MLOps**: `mlflow`, `ray`, `bentoml`.
 
-### 8. Data & RAG Pipelines (`data-rag/`) — 36 submodules
+### 8. Data & RAG Pipelines (`data-rag/`) — 37 submodules
 - **Crawling**: `firecrawl` (~100k★), `crawl4ai` (~61k★), `scrapegraph-ai`.
-- **RAG**: `ragflow` (~76k★), `graphrag` (~32k★), `khoj`, `kotaemon`, `quivr`, `txtai`, `r2r`.
+- **RAG**: `ragflow` (~76k★), `graphrag` (~32k★), `khoj`, `kotaemon`, `quivr`, `txtai`, `r2r`, `storm`.
 - **Document**: `docling` (~57k★), `marker`, `markitdown`, `unstructured`, `llama-parse`, `MegaParse`.
 - **OCR**: `surya`, `tesseract`, `EasyOCR`, `doctr`.
 - **Vector DB**: `chroma`, `faiss`, `weaviate`, `lancedb`, `milvus`, `qdrant`, `pgvector`.
@@ -75,13 +79,14 @@ Production-ready low-code/visual AI app builders:
 ### 10. AI Security & Safety (`security/`) — 5 submodules
 - `guardrails`, `NeMo-Guardrails`, `garak`, `llm-guard`, `rebuff`.
 
-### 11. Vision & Image AI (`vision/`) — 29 submodules
+### 11. Vision & Image AI (`vision/`) — 30 submodules
 - **Generation**: `stable-diffusion-webui` (~148k★), `ComfyUI` (~80k★), `fooocus`, `invokeai`, `flux`, `diffusers`.
 - **Image Edit**: `instruct-pix2pix`, `photomaker`, `instantid`, `realesrgan`.
 - **Models**: `imagen-pytorch`, `dalle2-pytorch`.
 - **Segmentation**: `segment-anything` (~50k★), `sam2`, `grounding-dino`.
 - **Detection**: `ultralytics` (~40k★), `detectron2`, `mmdetection`, `supervision`, `yolov9`.
 - **3D**: `shap-e`, `point-e`, `depth-anything`.
+- **Parsing/UI Understanding**: `OmniParser` (~6k★).
 
 ### 12. Voice & Audio AI (`audio/`) — 16 submodules
 - **ASR**: `whisper` (~80k★), `WhisperX`, `speechbrain`, `coqui-stt`.
@@ -110,15 +115,18 @@ Production-ready low-code/visual AI app builders:
 - **Browser**: `mcp-chrome`, `playwright-mcp`, `chrome-devtools-mcp`.
 - **Tools**: `cli-mcp-server`, `MCPRules`, `context7`, `mcp-feedback-enhanced`.
 
-### 16. Reasoning & Cognitive Architecture (`reasoning/`) — 24 submodules
+### 16. Reasoning & Cognitive Architecture (`reasoning/`) — 26 submodules
 - **Core**: `tree-of-thoughts`, `chain-of-thought-hub`, `chain-of-verification`.
+- **Logic & Symbolic**: `lean4` (Prover).
+- **Simulations**: `ai-town`.
 - **Self-Improvement**: `self-refine`, `reflexion`, `self-rag`.
 - **Agent Reasoning**: `camel` (~10k★), `agentscope`, `voyager`, `letta`.
 - **Optimization**: `adalflow`, `tensorzero`, `textgrad`.
 - **Tool Use**: `gorilla`, `toolformer`, `minichain`, `ell`.
 - **Knowledge Graphs**: `graphiti`.
 
-### 17. Open-Weight Models (`models/`) — 40 submodules
+### 17. Open-Weight Models (`models/`) — 42 submodules
+- **Reasoning Replications**: `open-r1` (HuggingFace), `Marco-o1` (AIDC).
 - **DeepSeek**: `deepseek-r1`, `deepseek-v3`, `deepseek-v2`, `deepseek-coder`, `deepseek-coder-v2`.
 - **Qwen**: `qwen`, `qwen2.5`, `qwen3`.
 - **Meta Llama**: `llama`, `llama3`, `llama-models`, `codellama`, `purple-llama`.
@@ -170,7 +178,7 @@ cd infrastructure/ollama && ollama serve
 ```
 
 ## Project Statistics
-- **Total Submodules**: 457
+- **Total Submodules**: 473
 - **Categories**: 20
 - **Combined GitHub Stars**: ~10M+ ★
 - **Storage Mode**: Reference-only (no data cloned by default)
