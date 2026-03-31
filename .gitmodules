@@ -2435,3 +2435,136 @@
 [submodule "data-rag/unstract"]
 	path = data-rag/unstract
 	url = https://github.com/Zipstack/unstract.git
+
+[submodule "agents/maestro"]
+        path = agents/maestro
+        url = https://github.com/Doriandarko/maestro.git
+[submodule "frameworks/griptape"]
+        path = frameworks/griptape
+        url = https://github.com/griptape-ai/griptape.git
+[submodule "frameworks/bee-agent-framework"]
+        path = frameworks/bee-agent-framework
+        url = https://github.com/i-am-bee/bee-agent-framework.git
+[submodule "frameworks/praisonai"]
+        path = frameworks/praisonai
+        url = https://github.com/MervinPraison/PraisonAI.git
+[submodule "frameworks/julep"]
+        path = frameworks/julep
+        url = https://github.com/julep-ai/julep.git
+[submodule "frameworks/llama-deploy"]
+        path = frameworks/llama-deploy
+        url = https://github.com/run-llama/llama_deploy.git
+[submodule "frameworks/daytona"]
+        path = frameworks/daytona
+        url = https://github.com/daytonaio/daytona.git
+[submodule "frameworks/copilotkit"]
+        path = frameworks/copilotkit
+        url = https://github.com/CopilotKit/CopilotKit.git
+[submodule "models/deepseek-prover"]
+        path = models/deepseek-prover
+        url = https://github.com/deepseek-ai/DeepSeek-Prover-V1.5.git
+[submodule "evaluation/opik"]
+        path = evaluation/opik
+        url = https://github.com/comet-ml/opik.git
+[submodule "evaluation/trulens"]
+        path = evaluation/trulens
+        url = https://github.com/truera/trulens.git
+[submodule "evaluation/giskard"]
+        path = evaluation/giskard
+        url = https://github.com/Giskard-AI/giskard.git
+[submodule "evaluation/uptrain"]
+        path = evaluation/uptrain
+        url = https://github.com/uptrain-ai/uptrain.git
+[submodule "evaluation/logfire"]
+        path = evaluation/logfire
+        url = https://github.com/pydantic/logfire.git
+[submodule "security/adversarial-robustness-toolbox"]
+        path = security/adversarial-robustness-toolbox
+        url = https://github.com/Trusted-AI/adversarial-robustness-toolbox.git
+[submodule "security/agentic-security"]
+        path = security/agentic-security
+        url = https://github.com/msoedov/agentic-security.git
+[submodule "infrastructure/gpustack"]
+        path = infrastructure/gpustack
+        url = https://github.com/gpustack/gpustack.git
+[submodule "infrastructure/nitro"]
+        path = infrastructure/nitro
+        url = https://github.com/janhq/nitro.git
+[submodule "data-rag/nano-graphrag"]
+        path = data-rag/nano-graphrag
+        url = https://github.com/gusye1234/nano-graphrag.git
+[submodule "data-rag/reader"]
+        path = data-rag/reader
+        url = https://github.com/jina-ai/reader.git
+[submodule "data-rag/docetl"]
+        path = data-rag/docetl
+        url = https://github.com/ucbepic/docetl.git
+[submodule "data-rag/paperqa"]
+        path = data-rag/paperqa
+        url = https://github.com/Future-House/paper-qa.git
+[submodule "data-rag/cognita"]
+        path = data-rag/cognita
+        url = https://github.com/truefoundry/cognita.git
+[submodule "data-rag/ragchecker"]
+        path = data-rag/ragchecker
+        url = https://github.com/amazon-science/RAGChecker.git
+[submodule "mcp-servers/mcp-rust-sdk"]
+        path = mcp-servers/mcp-rust-sdk
+        url = https://github.com/modelcontextprotocol/rust-sdk.git
+[submodule "video/step-video"]
+        path = video/step-video
+        url = https://github.com/stepfun-ai/Step-Video.git
+[submodule "audio/melo-tts"]
+        path = audio/melo-tts
+        url = https://github.com/myshell-ai/MeloTTS.git
+[submodule "vision/pixart"]
+        path = vision/pixart
+        url = https://github.com/PixArt-alpha/PixArt-alpha.git
+[submodule "vision/stable-cascade"]
+        path = vision/stable-cascade
+        url = https://github.com/Stability-AI/StableCascade.git
+[submodule "multimodal/janus"]
+        path = multimodal/janus
+        url = https://github.com/deepseek-ai/Janus.git
+[submodule "multimodal/mantis"]
+        path = multimodal/mantis
+        url = https://github.com/TIGER-AI-Lab/Mantis.git
+[submodule "reasoning/s1"]
+        path = reasoning/s1
+        url = https://github.com/simplescaling/s1.git
+[submodule "reasoning/openr"]
+        path = reasoning/openr
+        url = https://github.com/openreasoner/openr.git
+[submodule "training/liger-kernel"]
+        path = training/liger-kernel
+        url = https://github.com/linkedin/Liger-Kernel.git
+[submodule "training/torchao"]
+        path = training/torchao
+        url = https://github.com/pytorch/ao.git
+[submodule "training/composer"]
+        path = training/composer
+        url = https://github.com/mosaicml/composer.git
+[submodule "knowledge/anthropic-courses"]
+        path = knowledge/anthropic-courses
+        url = https://github.com/anthropics/courses.git
+[submodule "knowledge/agentic-patterns"]
+        path = knowledge/agentic-patterns
+        url = https://github.com/neural-maze/agentic-patterns.git
+[submodule "platforms/typebot"]
+        path = platforms/typebot
+        url = https://github.com/baptisteArno/typebot.io.git
+[submodule "platforms/agentcloud"]
+        path = platforms/agentcloud
+        url = https://github.com/rnadigital/agentcloud.git
+[submodule "platforms/activepieces"]
+        path = platforms/activepieces
+        url = https://github.com/activepieces/activepieces.git
+[submodule "platforms/windmill"]
+        path = platforms/windmill
+        url = https://github.com/windmill-labs/windmill.git
+[submodule "platforms/automatisch"]
+        path = platforms/automatisch
+        url = https://github.com/automatisch/automatisch.git
+[submodule "platforms/openwebui-pipelines"]
+        path = platforms/openwebui-pipelines
+        url = https://github.com/open-webui/pipelines.git

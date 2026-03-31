@@ -2,7 +2,7 @@
 
 The definitive, production-grade ecosystem for AI Agents. Integrates the world's leading open-source frameworks, reasoning engines, open-weight models, memory layers, coding agents, infrastructure tools, training pipelines, evaluation harnesses, security guardrails, vision/audio/video AI, MLOps, robotics, multimodal models, and Model Context Protocol (MCP) servers — all organized as Git submodules (reference-only) for maximum modularity.
 
-## Ecosystem Architecture (524 Submodules / 20 Categories)
+## Ecosystem Architecture (568 Submodules / 20 Categories)
 
 ### 1. Core Cognitive Skills (`skills/`) — 26 submodules
 Explicit reasoning techniques, prompt engineering, and curated knowledge resources.
@@ -12,7 +12,7 @@ Explicit reasoning techniques, prompt engineering, and curated knowledge resourc
 - **Curated Lists**: `awesome-claude-code`, `awesome-mcp-servers`, `awesome-cursorrules`, `lobe-chat-agents`.
 - **CI/CD**: `claude-code-action`, `browser-use`, `search-with-lepton`, `rags`.
 
-### 2. Orchestration Frameworks (`frameworks/`) — 82 submodules
+### 2. Orchestration Frameworks (`frameworks/`) — 89 submodules
 The world's best AI agent orchestration platforms:
 - **Foundational**: `langchain`, `llama_index`, `semantic-kernel`, `haystack`.
 - **Agent Workflows**: `langgraph`, `pydantic-ai`, `openai-agents-python`, `phidata`.
@@ -25,8 +25,9 @@ The world's best AI agent orchestration platforms:
 - **UI**: `gradio`, `streamlit`, `chainlit`.
 - **Core ML**: `pytorch`, `spacy`, `fastapi`, `tinygrad`, `transformers-js`, `jina`, `vercel-ai-sdk`, `mastra`.
 - **New**: `livekit-agents` (voice AI), `agentkit` (Coinbase), `llama-agents`, `agency-swarm`, `instructor-js`, `aisuite`, `burr`, `pocket-flow`, `langroid`, `rivet`, `crawl4ai-fw`.
+- **v4 New**: `griptape` (enterprise agents), `bee-agent-framework` (IBM), `praisonai` (multi-agent), `julep` (stateful agents), `llama-deploy` (LlamaIndex deploy), `daytona` (dev environments for agents), `copilotkit` (AI copilots in React apps).
 
-### 3. AI Coding Agents (`agents/`) — 48 submodules
+### 3. AI Coding Agents (`agents/`) — 49 submodules
 Terminal-native and IDE-integrated coding assistants:
 - `AutoGPT`, `openhands`, `codex`, `claude-code`, `aider`.
 - `gpt-pilot`, `swe-agent`, `tabby`, `continue`.
@@ -36,18 +37,20 @@ Terminal-native and IDE-integrated coding assistants:
 - **Agentic Reasoning**: `XAgent`.
 - **New**: `agent-zero`, `anthropic-quickstarts`, `sweep`, `mentat`, `plandex`, `gpt-runner`.
 - **Newest**: `kortix-suna`, `openai-codex`, `composio-agent`, `gptme`, `khoj-agent`, `micro-agent`, `rawdog`, `multi-on`.
+- **v4 New**: `maestro` (Claude orchestration agent by Doriandarko).
 
-### 4. AI Platforms (`platforms/`) — 16 submodules
+### 4. AI Platforms (`platforms/`) — 22 submodules
 Production-ready low-code/visual AI app builders:
 - `dify`, `langflow`, `n8n`, `flowise`, `fastgpt`.
 - `botpress`, `rasa`, `opengpts`, `oneapi` (multi-provider API proxy).
-- **New**: `ragapp` (RAG-as-a-service), `openwebui-pipelines`, `typebot`, `agentcloud`, `activepieces`, `windmill`, `automatisch`.
+- **New**: `ragapp` (RAG-as-a-service).
+- **v4 New**: `typebot` (conversational forms), `agentcloud` (multi-agent platform), `activepieces` (no-code automation), `windmill` (workflow engine), `automatisch` (Zapier alternative), `openwebui-pipelines` (Open WebUI extensibility).
 
 ### 5. Persistent Memory (`memory/`) — 7 submodules
 - `mem0`, `cipher`, `memgpt` (OS-inspired virtual memory), `zep`.
 - **New**: `cognee` (cognitive memory), `memoripy` (persistent memory), `openmemory`.
 
-### 6. Training & Fine-tuning (`training/`) — 43 submodules
+### 6. Training & Fine-tuning (`training/`) — 46 submodules
 - **Core**: `transformers`, `keras`, `jax`, `accelerate`, `pytorch-lightning`.
 - **RLHF / Post-Training**: `OpenRLHF` (Scaling), `verl` (Volcengine), `alignment-handbook`.
 - **Fine-tuning**: `LLaMA-Factory`, `unsloth`, `axolotl`, `torchtune`, `ms-swift`.
@@ -58,16 +61,18 @@ Production-ready low-code/visual AI app builders:
 - **GPU**: `flash-attention`, `cutlass`, `ggml`.
 - **Apple**: `mlx`, `mlx-examples`.
 - **New**: `litgpt` (Lightning), `open-instruct` (AllenAI).
+- **v4 New**: `liger-kernel` (LinkedIn triton kernels for training), `torchao` (PyTorch quantization & sparsity), `composer` (MosaicML distributed training).
 
-### 7. LLM Infrastructure (`infrastructure/`) — 46 submodules
+### 7. LLM Infrastructure (`infrastructure/`) — 48 submodules
 - **Local**: `ollama`, `llamacpp`, `gpt4all`, `llamafile`, `localai`, `koboldcpp`, `cortex`.
 - **Inference**: `vllm`, `sglang`, `mlc-llm`, `candle`, `mistral-rs`, `aphrodite`, `tabbyapi`.
 - **Web UIs**: `open-webui`, `lobe-chat`, `text-generation-webui`, `anything-llm`, `librechat`, `chatbox`, `jan`, `nextchat`.
 - **Proxy**: `litellm`, `llm-cli`.
 - **CLI**: `aichat` (multi-provider terminal chat).
 - **MLOps**: `mlflow`, `ray`, `bentoml`.
+- **v4 New**: `gpustack` (multi-GPU management), `nitro` (Jan inference engine).
 
-### 8. Data & RAG Pipelines (`data-rag/`) — 48 submodules
+### 8. Data & RAG Pipelines (`data-rag/`) — 54 submodules
 - **Crawling**: `firecrawl`, `crawl4ai`, `scrapegraph-ai`.
 - **RAG**: `ragflow`, `graphrag`, `khoj`, `kotaemon`, `quivr`, `txtai`, `r2r`, `storm`, `ragatouille` (ColBERT RAG), `raptor-rag` (tree-structured), `rags-langchain`.
 - **Document**: `docling`, `marker`, `markitdown`, `unstructured`, `llama-parse`, `MegaParse`, `openparse`, `zerox`, `unstract`.
@@ -76,17 +81,20 @@ Production-ready low-code/visual AI app builders:
 - **Embeddings**: `embeddings`, `sentence-transformers`, `infinity-emb`, `colbert`.
 - **Knowledge Graph**: `kg-gen` (LLM-powered KG extraction).
 - **Datasets**: `hf-datasets`, `nemo-curator`, `fiftyone`.
+- **v4 New**: `nano-graphrag` (lightweight GraphRAG), `reader` (Jina URL→LLM text), `docetl` (document ETL pipeline), `paperqa` (scientific paper QA), `cognita` (production RAG by TrueFoundry), `ragchecker` (Amazon RAG evaluation).
 
-### 9. AI Evaluation & Testing (`evaluation/`) — 23 submodules
+### 9. AI Evaluation & Testing (`evaluation/`) — 28 submodules
 - **Benchmarking**: `lm-evaluation-harness`, `OpenCompass`, `swe-bench`, `mteb`, `vlm-eval`, `lmms-eval`, `evals`, `bigcodebench`, `human-eval`, `evalplus`, `arena-hard`.
 - **Testing**: `deepeval`, `promptfoo`, `ragas`, `inspect-ai`.
 - **Observability**: `langfuse`, `langsmith-sdk`, `phoenix`, `helicone`, `agentops`, `wandb`.
+- **v4 New**: `opik` (Comet LLM eval), `trulens` (TruEra evaluation), `giskard` (ML testing & QA), `uptrain` (LLM output evaluation), `logfire` (Pydantic observability).
 
-### 10. AI Security & Safety (`security/`) — 11 submodules
+### 10. AI Security & Safety (`security/`) — 13 submodules
 - `guardrails`, `NeMo-Guardrails`, `garak`, `llm-guard`, `rebuff`.
 - **New**: `pyrit` (Microsoft red-teaming), `llm-security` (prompt injection research), `ai-exploits` (ProtectAI), `llm-attacks`, `vigil`, `heretic`.
+- **v4 New**: `adversarial-robustness-toolbox` (IBM Trusted AI), `agentic-security` (automated agent pentesting).
 
-### 11. Vision & Image AI (`vision/`) — 38 submodules
+### 11. Vision & Image AI (`vision/`) — 40 submodules
 - **Generation**: `stable-diffusion-webui`, `ComfyUI`, `fooocus`, `invokeai`, `flux`, `diffusers`, `hunyuan-dit`, `stable-diffusion-3`.
 - **Image Edit**: `instruct-pix2pix`, `photomaker`, `instantid`, `realesrgan`, `ic-light`, `omost`.
 - **Background Removal**: `rembg`, `birefnet`.
@@ -96,29 +104,33 @@ Production-ready low-code/visual AI app builders:
 - **Detection**: `ultralytics`, `detectron2`, `mmdetection`, `supervision`, `yolov9`.
 - **3D**: `shap-e`, `point-e`, `depth-anything`.
 - **Parsing/UI Understanding**: `OmniParser`.
+- **v4 New**: `pixart` (PixArt-α fast DiT generation), `stable-cascade` (Stability AI latent cascade).
 
-### 12. Voice & Audio AI (`audio/`) — 25 submodules
+### 12. Voice & Audio AI (`audio/`) — 26 submodules
 - **ASR**: `whisper`, `WhisperX`, `speechbrain`, `coqui-stt`, `faster-whisper`, `insanely-fast-whisper`, `whisper-streaming`.
 - **TTS**: `TTS`, `ChatTTS`, `bark`, `fish-speech`, `parler-tts`, `f5-tts`, `mars5-tts`, `voicecraft`, `sesame-csm`, `spark-tts`, `outetts`, `piper`, `kokoro`, `dia`.
 - **Voice Clone**: `OpenVoice`.
 - **Audio Gen**: `audiocraft`, `stable-audio`.
 - **Speaker**: `pyannote-audio`.
+- **v4 New**: `melo-tts` (MyShell multilingual TTS).
 
-### 13. Video AI (`video/`) — 13 submodules
+### 13. Video AI (`video/`) — 14 submodules
 - `Open-Sora`, `CogVideo`, `AnimateDiff`, `hunyuan-video`, `stable-video`.
 - **New**: `open-sora-plan` (PKU), `live-portrait` (Kwai), `hallo` (portrait animation), `memo` (avatar), `ltx-video`, `mochi`, `wan-video`, `moneyprinter`.
+- **v4 New**: `step-video` (StepFun text-to-video).
 
-### 14. Knowledge & Learning (`knowledge/`) — 38 submodules
+### 14. Knowledge & Learning (`knowledge/`) — 40 submodules
 - **Courses**: `generative-ai-for-beginners`, `llm-course`, `ai-agents-masterclass`, `llm-zoomcamp`, `hands-on-llm`, `made-with-ml`, `ml-systems-design`.
 - **SDKs**: `openai-python`, `anthropic-sdk-python`.
 - **Educational**: `nanogpt`, `mingpt`, `llm-c` (Karpathy), `nvidia-ai-examples`, `tuning-playbook`.
 - **Curated**: `Awesome-LLM`, `Awesome-LLMOps`, `awesome-ai-agents`, `awesome-chatgpt-prompts`, `awesome-genai`, `papers-with-code`.
 - **Roadmaps**: `developer-roadmap`, `ai-expert-roadmap`, `system-design-primer`, `coding-interview`, `build-your-own-x`, `free-programming-books`.
-- **New**: `prompt-engineering-for-devs` (DAIR.AI), `llm-agents-papers`, `awesome-ai-coding`, `ml-papers-explained`, `llm-cookbook`, `agentic-patterns`, `openai-cookbook`, `anthropic-courses`, `ml-engineering`.
+- **New**: `prompt-engineering-for-devs` (DAIR.AI), `llm-agents-papers`, `awesome-ai-coding`, `ml-papers-explained`, `llm-cookbook`, `ml-engineering`.
+- **v4 New**: `anthropic-courses` (official Anthropic courses), `agentic-patterns` (agentic design patterns).
 
-### 15. MCP Servers (`mcp-servers/`) — 40 submodules
+### 15. MCP Servers (`mcp-servers/`) — 41 submodules
 - **Official**: `official-servers`, `mcp-python-sdk`, `mcp-typescript-sdk`.
-- **Multi-language SDKs**: `mcp-go-sdk`, `mcp-csharp-sdk`, `mcp-java-sdk`, `mcp-kotlin-sdk`.
+- **Multi-language SDKs**: `mcp-go-sdk`, `mcp-csharp-sdk`, `mcp-java-sdk`, `mcp-kotlin-sdk`, `mcp-rust-sdk`.
 - **Vector/Graph**: `pinecone-mcp`, `chroma-mcp`, `mcp-qdrant`, `milvus-mcp`, `neo4j-mcp`.
 - **Databases**: `redis-mcp`, `mongodb-mcp`, `elasticsearch-mcp`, `supabase-mcp`.
 - **Search**: `brave-search`, `exa-mcp`, `apify-mcp`.
@@ -129,7 +141,7 @@ Production-ready low-code/visual AI app builders:
 - **Proxy**: `mcp-proxy`.
 - **Tools**: `cli-mcp-server`, `MCPRules`, `context7`, `mcp-feedback-enhanced`.
 
-### 16. Reasoning & Cognitive Architecture (`reasoning/`) — 29 submodules
+### 16. Reasoning & Cognitive Architecture (`reasoning/`) — 31 submodules
 - **Core**: `tree-of-thoughts`, `chain-of-thought-hub`, `chain-of-verification`.
 - **Logic & Symbolic**: `lean4` (Prover).
 - **Simulations**: `ai-town`.
@@ -139,10 +151,11 @@ Production-ready low-code/visual AI app builders:
 - **Tool Use**: `gorilla`, `toolformer`, `minichain`, `ell`.
 - **Knowledge Graphs**: `graphiti`.
 - **New**: `search-o1` (reasoning-in-search), `prime-rl` (PrimeIntellect RL), `bshr-loop` (meta-reasoning).
+- **v4 New**: `s1` (simple test-time scaling), `openr` (Open Reasoner framework).
 
-### 17. Open-Weight Models (`models/`) — 53 submodules
+### 17. Open-Weight Models (`models/`) — 54 submodules
 - **Reasoning Replications**: `open-r1` (HuggingFace), `Marco-o1` (AIDC).
-- **DeepSeek**: `deepseek-r1`, `deepseek-v3`, `deepseek-v2`, `deepseek-coder`, `deepseek-coder-v2`.
+- **DeepSeek**: `deepseek-r1`, `deepseek-v3`, `deepseek-v2`, `deepseek-coder`, `deepseek-coder-v2`, `deepseek-prover`.
 - **Qwen**: `qwen`, `qwen2.5`, `qwen3`.
 - **Meta Llama**: `llama`, `llama3`, `llama-models`, `codellama`, `purple-llama`.
 - **Mistral**: `mistral-inference`, `mistral-common`.
@@ -178,11 +191,12 @@ Simulation, navigation, and physical AI:
 - **Data**: `openx` (Open X-Embodiment).
 - **New**: `openpi` (Physical Intelligence π₀), `genesis` (generative physics), `dora-rs` (modular robotics).
 
-### 20. Multimodal AI (`multimodal/`) — 15 submodules
+### 20. Multimodal AI (`multimodal/`) — 17 submodules
 Vision-language and multimodal foundation models:
 - `llava-next`, `internvl` (OpenGVLab), `qwen-vl` (Alibaba).
 - `minigpt4`, `moondream`, `cambrian`, `ferret` (Apple), `florence2` (Microsoft).
-- **New**: `deepseek-vl` (DeepSeek Vision), `molmo` (AllenAI), `paligemma` (Google), `gemini-cookbook` (Google), `cogagent` (Zhipu), `fuyu` (Adept), `mantis`.
+- **New**: `deepseek-vl` (DeepSeek Vision), `molmo` (AllenAI), `paligemma` (Google), `gemini-cookbook` (Google), `cogagent` (Zhipu), `fuyu` (Adept).
+- **v4 New**: `janus` (DeepSeek unified multimodal), `mantis` (TIGER-AI interleaved multimodal).
 
 ## Quick Start
 
@@ -202,7 +216,8 @@ cd infrastructure/ollama && ollama serve
 ```
 
 ## Project Statistics
-- **Total Submodules**: 524
+- **Total Submodules**: 568
 - **Categories**: 20
 - **Storage Mode**: Reference-only (no data cloned by default)
 - **New in v3**: 103 new repos across all categories — expanded MCP SDKs, security tools, voice/video AI, robotics, MLOps, and multimodal models
+- **New in v4**: 44 new repos — enterprise agent frameworks, RAG evaluation, LLM observability, security testing, training optimization, multimodal reasoning, and workflow automation platforms
