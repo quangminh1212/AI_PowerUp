@@ -1,0 +1,4107 @@
+[
+  {
+    "path": "agents/AutoGPT",
+    "url": "https://github.com/Significant-Gravitas/AutoGPT.git",
+    "name": "agents/AutoGPT"
+  },
+  {
+    "path": "agents/OS-Copilot",
+    "url": "https://github.com/os-copilot/OS-Copilot.git",
+    "name": "agents/OS-Copilot"
+  },
+  {
+    "path": "agents/Skyvern",
+    "url": "https://github.com/Skywork/Skyvern.git",
+    "name": "agents/Skyvern"
+  },
+  {
+    "path": "agents/UFO",
+    "url": "https://github.com/microsoft/UFO.git",
+    "name": "agents/UFO"
+  },
+  {
+    "path": "agents/XAgent",
+    "url": "https://github.com/OpenBMB/XAgent.git",
+    "name": "agents/XAgent"
+  },
+  {
+    "path": "agents/agent-zero",
+    "url": "https://github.com/frdel/agent-zero.git",
+    "name": "agents/agent-zero"
+  },
+  {
+    "path": "agents/agentless",
+    "url": "https://github.com/OpenAutoCoder/Agentless.git",
+    "name": "agents/agentless"
+  },
+  {
+    "path": "agents/agentscope",
+    "url": "https://github.com/modelscope/agentscope.git",
+    "name": "agents/agentscope"
+  },
+  {
+    "path": "agents/agentverse",
+    "url": "https://github.com/OpenBMB/AgentVerse.git",
+    "name": "agents/agentverse"
+  },
+  {
+    "path": "agents/aide",
+    "url": "https://github.com/codestoryai/aide.git",
+    "name": "agents/aide"
+  },
+  {
+    "path": "agents/aider",
+    "url": "https://github.com/paul-gauthier/aider.git",
+    "name": "agents/aider"
+  },
+  {
+    "path": "agents/anthropic-quickstarts",
+    "url": "https://github.com/anthropics/anthropic-quickstarts.git",
+    "name": "agents/anthropic-quickstarts"
+  },
+  {
+    "path": "agents/astra",
+    "url": "https://github.com/awslabs/multi-agent-orchestrator.git",
+    "name": "agents/astra"
+  },
+  {
+    "path": "agents/autogen-studio",
+    "url": "https://github.com/microsoft/autogen.git",
+    "name": "agents/autogen-studio"
+  },
+  {
+    "path": "agents/autogpt-researcher",
+    "url": "https://github.com/Significant-Gravitas/AutoGPT.git",
+    "name": "agents/autogpt-researcher"
+  },
+  {
+    "path": "agents/babyagi",
+    "url": "https://github.com/yoheinakajima/babyagi.git",
+    "name": "agents/babyagi"
+  },
+  {
+    "path": "agents/bolt-new",
+    "url": "https://github.com/stackblitz/bolt.new.git",
+    "name": "agents/bolt-new"
+  },
+  {
+    "path": "agents/browser-use-agent",
+    "url": "https://github.com/browser-use/browser-use.git",
+    "name": "agents/browser-use-agent"
+  },
+  {
+    "path": "agents/camel-agents",
+    "url": "https://github.com/camel-ai/camel.git",
+    "name": "agents/camel-agents"
+  },
+  {
+    "path": "agents/chatdev",
+    "url": "https://github.com/OpenBMB/ChatDev.git",
+    "name": "agents/chatdev"
+  },
+  {
+    "path": "agents/claude-code",
+    "url": "https://github.com/anthropics/claude-code.git",
+    "name": "agents/claude-code"
+  },
+  {
+    "path": "agents/cline",
+    "url": "https://github.com/cline/cline.git",
+    "name": "agents/cline"
+  },
+  {
+    "path": "agents/codegeex",
+    "url": "https://github.com/THUDM/CodeGeeX.git",
+    "name": "agents/codegeex"
+  },
+  {
+    "path": "agents/codegeex-agent",
+    "url": "https://github.com/THUDM/CodeGeeX.git",
+    "name": "agents/codegeex-agent"
+  },
+  {
+    "path": "agents/codestral",
+    "url": "https://github.com/mistralai/codestral.git",
+    "name": "agents/codestral"
+  },
+  {
+    "path": "agents/codex",
+    "url": "https://github.com/openai/codex.git",
+    "name": "agents/codex"
+  },
+  {
+    "path": "agents/codex-cli",
+    "url": "https://github.com/openai/codex.git",
+    "name": "agents/codex-cli"
+  },
+  {
+    "path": "agents/composio-agent",
+    "url": "https://github.com/ComposioHQ/composio.git",
+    "name": "agents/composio-agent"
+  },
+  {
+    "path": "agents/continue",
+    "url": "https://github.com/continuedev/continue.git",
+    "name": "agents/continue"
+  },
+  {
+    "path": "agents/crewai-examples",
+    "url": "https://github.com/crewAIInc/crewAI-examples.git",
+    "name": "agents/crewai-examples"
+  },
+  {
+    "path": "agents/crewai-tools",
+    "url": "https://github.com/crewAIInc/crewAI-tools.git",
+    "name": "agents/crewai-tools"
+  },
+  {
+    "path": "agents/cursor",
+    "url": "https://github.com/getcursor/cursor.git",
+    "name": "agents/cursor"
+  },
+  {
+    "path": "agents/deepagents",
+    "url": "https://github.com/langchain-ai/deepagents.git",
+    "name": "agents/deepagents"
+  },
+  {
+    "path": "agents/deepseek-coder-agent",
+    "url": "https://github.com/deepseek-ai/DeepSeek-Coder.git",
+    "name": "agents/deepseek-coder-agent"
+  },
+  {
+    "path": "agents/deer-flow",
+    "url": "https://github.com/bytedance/deer-flow.git",
+    "name": "agents/deer-flow"
+  },
+  {
+    "path": "agents/devika",
+    "url": "https://github.com/stitionai/devika.git",
+    "name": "agents/devika"
+  },
+  {
+    "path": "agents/devika-v2",
+    "url": "https://github.com/stitionai/devika.git",
+    "name": "agents/devika-v2"
+  },
+  {
+    "path": "agents/devin",
+    "url": "https://github.com/cognition-labs/devin.git",
+    "name": "agents/devin"
+  },
+  {
+    "path": "agents/devon",
+    "url": "https://github.com/entropy-research/Devon.git",
+    "name": "agents/devon"
+  },
+  {
+    "path": "agents/gemini-cli",
+    "url": "https://github.com/google-gemini/gemini-cli.git",
+    "name": "agents/gemini-cli"
+  },
+  {
+    "path": "agents/goose",
+    "url": "https://github.com/block-open-source/goose.git",
+    "name": "agents/goose"
+  },
+  {
+    "path": "agents/gpt-pilot",
+    "url": "https://github.com/Pythagora-io/gpt-pilot.git",
+    "name": "agents/gpt-pilot"
+  },
+  {
+    "path": "agents/gpt-researcher",
+    "url": "https://github.com/assafelovic/gpt-researcher.git",
+    "name": "agents/gpt-researcher"
+  },
+  {
+    "path": "agents/gpt-runner",
+    "url": "https://github.com/nicepkg/gpt-runner.git",
+    "name": "agents/gpt-runner"
+  },
+  {
+    "path": "agents/gptme",
+    "url": "https://github.com/ErikBjare/gptme.git",
+    "name": "agents/gptme"
+  },
+  {
+    "path": "agents/hermes-agent",
+    "url": "https://github.com/NousResearch/hermes-agent.git",
+    "name": "agents/hermes-agent"
+  },
+  {
+    "path": "agents/jarvis",
+    "url": "https://github.com/microsoft/JARVIS.git",
+    "name": "agents/jarvis"
+  },
+  {
+    "path": "agents/jarvis-ai",
+    "url": "https://github.com/microsoft/JARVIS.git",
+    "name": "agents/jarvis-ai"
+  },
+  {
+    "path": "agents/khoj-agent",
+    "url": "https://github.com/khoj-ai/khoj.git",
+    "name": "agents/khoj-agent"
+  },
+  {
+    "path": "agents/kortix-suna",
+    "url": "https://github.com/kortix-ai/suna.git",
+    "name": "agents/kortix-suna"
+  },
+  {
+    "path": "agents/langgraph-examples",
+    "url": "https://github.com/langchain-ai/langgraph.git",
+    "name": "agents/langgraph-examples"
+  },
+  {
+    "path": "agents/lavague",
+    "url": "https://github.com/lavague-ai/LaVague.git",
+    "name": "agents/lavague"
+  },
+  {
+    "path": "agents/llama-agents",
+    "url": "https://github.com/run-llama/llama-agents.git",
+    "name": "agents/llama-agents"
+  },
+  {
+    "path": "agents/maestro",
+    "url": "https://github.com/Doriandarko/maestro.git",
+    "name": "agents/maestro"
+  },
+  {
+    "path": "agents/marscode",
+    "url": "https://github.com/MarsCodeAI/marscode.git",
+    "name": "agents/marscode"
+  },
+  {
+    "path": "agents/mentat",
+    "url": "https://github.com/AbanteAI/mentat.git",
+    "name": "agents/mentat"
+  },
+  {
+    "path": "agents/meta-agent",
+    "url": "https://github.com/geekan/MetaGPT.git",
+    "name": "agents/meta-agent"
+  },
+  {
+    "path": "agents/metagpt-agent",
+    "url": "https://github.com/geekan/MetaGPT.git",
+    "name": "agents/metagpt-agent"
+  },
+  {
+    "path": "agents/micro-agent",
+    "url": "https://github.com/BuilderIO/micro-agent.git",
+    "name": "agents/micro-agent"
+  },
+  {
+    "path": "agents/open-interpreter",
+    "url": "https://github.com/OpenInterpreter/open-interpreter.git",
+    "name": "agents/open-interpreter"
+  },
+  {
+    "path": "agents/open-swe",
+    "url": "https://github.com/langchain-ai/open-swe.git",
+    "name": "agents/open-swe"
+  },
+  {
+    "path": "agents/openai-codex",
+    "url": "https://github.com/openai/codex.git",
+    "name": "agents/openai-codex"
+  },
+  {
+    "path": "agents/opendevin",
+    "url": "https://github.com/OpenDevin/OpenDevin.git",
+    "name": "agents/opendevin"
+  },
+  {
+    "path": "agents/openhands",
+    "url": "https://github.com/All-Hands-AI/OpenHands.git",
+    "name": "agents/openhands"
+  },
+  {
+    "path": "agents/owl-agents",
+    "url": "https://github.com/camel-ai/owl.git",
+    "name": "agents/owl-agents"
+  },
+  {
+    "path": "agents/plandex",
+    "url": "https://github.com/plandex-ai/plandex.git",
+    "name": "agents/plandex"
+  },
+  {
+    "path": "agents/pr-agent",
+    "url": "https://github.com/Codium-ai/pr-agent.git",
+    "name": "agents/pr-agent"
+  },
+  {
+    "path": "agents/rawdog",
+    "url": "https://github.com/AbanteAI/rawdog.git",
+    "name": "agents/rawdog"
+  },
+  {
+    "path": "agents/roo-code",
+    "url": "https://github.com/rooVetGit/Roo-Code.git",
+    "name": "agents/roo-code"
+  },
+  {
+    "path": "agents/screenshot-to-code",
+    "url": "https://github.com/abi/screenshot-to-code.git",
+    "name": "agents/screenshot-to-code"
+  },
+  {
+    "path": "agents/skyvern",
+    "url": "https://github.com/Skyvern-AI/skyvern.git",
+    "name": "agents/skyvern"
+  },
+  {
+    "path": "agents/sourcegraph",
+    "url": "https://github.com/sourcegraph/sourcegraph-public-snapshot.git",
+    "name": "agents/sourcegraph"
+  },
+  {
+    "path": "agents/superagent",
+    "url": "https://github.com/homanp/superagent.git",
+    "name": "agents/superagent"
+  },
+  {
+    "path": "agents/swe-agent",
+    "url": "https://github.com/SWE-agent/SWE-agent.git",
+    "name": "agents/swe-agent"
+  },
+  {
+    "path": "agents/sweep",
+    "url": "https://github.com/sweepai/sweep.git",
+    "name": "agents/sweep"
+  },
+  {
+    "path": "agents/tabby",
+    "url": "https://github.com/TabbyML/tabby.git",
+    "name": "agents/tabby"
+  },
+  {
+    "path": "agents/taskweaver",
+    "url": "https://github.com/microsoft/TaskWeaver.git",
+    "name": "agents/taskweaver"
+  },
+  {
+    "path": "agents/void",
+    "url": "https://github.com/voideditor/void.git",
+    "name": "agents/void"
+  },
+  {
+    "path": "agents/windsurf",
+    "url": "https://github.com/CodeiumHQ/windsurf.git",
+    "name": "agents/windsurf"
+  },
+  {
+    "path": "agents/xagent",
+    "url": "https://github.com/OpenBMB/XAgent.git",
+    "name": "agents/xagent"
+  },
+  {
+    "path": "audio/ChatTTS",
+    "url": "https://github.com/2noise/ChatTTS.git",
+    "name": "audio/ChatTTS"
+  },
+  {
+    "path": "audio/OpenVoice",
+    "url": "https://github.com/myshell-ai/OpenVoice.git",
+    "name": "audio/OpenVoice"
+  },
+  {
+    "path": "audio/TTS",
+    "url": "https://github.com/coqui-ai/TTS.git",
+    "name": "audio/TTS"
+  },
+  {
+    "path": "audio/WhisperX",
+    "url": "https://github.com/m-bain/whisperX.git",
+    "name": "audio/WhisperX"
+  },
+  {
+    "path": "audio/audiocraft",
+    "url": "https://github.com/facebookresearch/audiocraft.git",
+    "name": "audio/audiocraft"
+  },
+  {
+    "path": "audio/bark",
+    "url": "https://github.com/suno-ai/bark.git",
+    "name": "audio/bark"
+  },
+  {
+    "path": "audio/coqui-stt",
+    "url": "https://github.com/coqui-ai/STT.git",
+    "name": "audio/coqui-stt"
+  },
+  {
+    "path": "audio/dia",
+    "url": "https://github.com/nari-labs/dia.git",
+    "name": "audio/dia"
+  },
+  {
+    "path": "audio/f5-tts",
+    "url": "https://github.com/SWivid/F5-TTS.git",
+    "name": "audio/f5-tts"
+  },
+  {
+    "path": "audio/faster-whisper",
+    "url": "https://github.com/SYSTRAN/faster-whisper.git",
+    "name": "audio/faster-whisper"
+  },
+  {
+    "path": "audio/fish-speech",
+    "url": "https://github.com/fishaudio/fish-speech.git",
+    "name": "audio/fish-speech"
+  },
+  {
+    "path": "audio/insanely-fast-whisper",
+    "url": "https://github.com/Vaibhavs10/insanely-fast-whisper.git",
+    "name": "audio/insanely-fast-whisper"
+  },
+  {
+    "path": "audio/kokoro",
+    "url": "https://github.com/hexgrad/kokoro.git",
+    "name": "audio/kokoro"
+  },
+  {
+    "path": "audio/mars5-tts",
+    "url": "https://github.com/Camb-ai/MARS5-TTS.git",
+    "name": "audio/mars5-tts"
+  },
+  {
+    "path": "audio/melo-tts",
+    "url": "https://github.com/myshell-ai/MeloTTS.git",
+    "name": "audio/melo-tts"
+  },
+  {
+    "path": "audio/outetts",
+    "url": "https://github.com/edwko/OuteTTS.git",
+    "name": "audio/outetts"
+  },
+  {
+    "path": "audio/parler-tts",
+    "url": "https://github.com/huggingface/parler-tts.git",
+    "name": "audio/parler-tts"
+  },
+  {
+    "path": "audio/piper",
+    "url": "https://github.com/rhasspy/piper.git",
+    "name": "audio/piper"
+  },
+  {
+    "path": "audio/pyannote-audio",
+    "url": "https://github.com/pyannote/pyannote-audio.git",
+    "name": "audio/pyannote-audio"
+  },
+  {
+    "path": "audio/sesame-csm",
+    "url": "https://github.com/SesameAILabs/csm.git",
+    "name": "audio/sesame-csm"
+  },
+  {
+    "path": "audio/spark-tts",
+    "url": "https://github.com/SparkAudio/Spark-TTS.git",
+    "name": "audio/spark-tts"
+  },
+  {
+    "path": "audio/speechbrain",
+    "url": "https://github.com/speechbrain/speechbrain.git",
+    "name": "audio/speechbrain"
+  },
+  {
+    "path": "audio/stable-audio",
+    "url": "https://github.com/Stability-AI/stable-audio-tools.git",
+    "name": "audio/stable-audio"
+  },
+  {
+    "path": "audio/voicecraft",
+    "url": "https://github.com/jasonppy/VoiceCraft.git",
+    "name": "audio/voicecraft"
+  },
+  {
+    "path": "audio/whisper",
+    "url": "https://github.com/openai/whisper.git",
+    "name": "audio/whisper"
+  },
+  {
+    "path": "audio/whisper-streaming",
+    "url": "https://github.com/ufal/whisper_streaming.git",
+    "name": "audio/whisper-streaming"
+  },
+  {
+    "path": "data-rag/EasyOCR",
+    "url": "https://github.com/JaidedAI/EasyOCR.git",
+    "name": "data-rag/EasyOCR"
+  },
+  {
+    "path": "data-rag/MegaParse",
+    "url": "https://github.com/QuivrHQ/MegaParse.git",
+    "name": "data-rag/MegaParse"
+  },
+  {
+    "path": "data-rag/autorag",
+    "url": "https://github.com/Marker-Inc-Korea/AutoRAG.git",
+    "name": "data-rag/autorag"
+  },
+  {
+    "path": "data-rag/chroma",
+    "url": "https://github.com/chroma-core/chroma.git",
+    "name": "data-rag/chroma"
+  },
+  {
+    "path": "data-rag/cognita",
+    "url": "https://github.com/truefoundry/cognita.git",
+    "name": "data-rag/cognita"
+  },
+  {
+    "path": "data-rag/colbert",
+    "url": "https://github.com/stanford-futuredata/ColBERT.git",
+    "name": "data-rag/colbert"
+  },
+  {
+    "path": "data-rag/crawl4ai",
+    "url": "https://github.com/unclecode/crawl4ai.git",
+    "name": "data-rag/crawl4ai"
+  },
+  {
+    "path": "data-rag/cvat",
+    "url": "https://github.com/cvat-ai/cvat.git",
+    "name": "data-rag/cvat"
+  },
+  {
+    "path": "data-rag/docetl",
+    "url": "https://github.com/ucbepic/docetl.git",
+    "name": "data-rag/docetl"
+  },
+  {
+    "path": "data-rag/docling",
+    "url": "https://github.com/docling-project/docling.git",
+    "name": "data-rag/docling"
+  },
+  {
+    "path": "data-rag/docling-ibm",
+    "url": "https://github.com/DS4SD/docling.git",
+    "name": "data-rag/docling-ibm"
+  },
+  {
+    "path": "data-rag/doctr",
+    "url": "https://github.com/mindee/doctr.git",
+    "name": "data-rag/doctr"
+  },
+  {
+    "path": "data-rag/embeddings",
+    "url": "https://github.com/FlagOpen/FlagEmbedding.git",
+    "name": "data-rag/embeddings"
+  },
+  {
+    "path": "data-rag/faiss",
+    "url": "https://github.com/facebookresearch/faiss.git",
+    "name": "data-rag/faiss"
+  },
+  {
+    "path": "data-rag/fiftyone",
+    "url": "https://github.com/voxel51/fiftyone.git",
+    "name": "data-rag/fiftyone"
+  },
+  {
+    "path": "data-rag/firecrawl",
+    "url": "https://github.com/mendableai/firecrawl.git",
+    "name": "data-rag/firecrawl"
+  },
+  {
+    "path": "data-rag/graphrag",
+    "url": "https://github.com/microsoft/graphrag.git",
+    "name": "data-rag/graphrag"
+  },
+  {
+    "path": "data-rag/hf-datasets",
+    "url": "https://github.com/huggingface/datasets.git",
+    "name": "data-rag/hf-datasets"
+  },
+  {
+    "path": "data-rag/infinity-emb",
+    "url": "https://github.com/michaelfeil/infinity.git",
+    "name": "data-rag/infinity-emb"
+  },
+  {
+    "path": "data-rag/kg-gen",
+    "url": "https://github.com/stair-lab/kg-gen.git",
+    "name": "data-rag/kg-gen"
+  },
+  {
+    "path": "data-rag/khoj",
+    "url": "https://github.com/khoj-ai/khoj.git",
+    "name": "data-rag/khoj"
+  },
+  {
+    "path": "data-rag/kotaemon",
+    "url": "https://github.com/cinnamon/kotaemon.git",
+    "name": "data-rag/kotaemon"
+  },
+  {
+    "path": "data-rag/label-studio",
+    "url": "https://github.com/HumanSignal/label-studio.git",
+    "name": "data-rag/label-studio"
+  },
+  {
+    "path": "data-rag/lancedb",
+    "url": "https://github.com/lancedb/lancedb.git",
+    "name": "data-rag/lancedb"
+  },
+  {
+    "path": "data-rag/langextract",
+    "url": "https://github.com/google/langextract.git",
+    "name": "data-rag/langextract"
+  },
+  {
+    "path": "data-rag/llama-parse",
+    "url": "https://github.com/run-llama/llama_parse.git",
+    "name": "data-rag/llama-parse"
+  },
+  {
+    "path": "data-rag/marker",
+    "url": "https://github.com/VikParuchuri/marker.git",
+    "name": "data-rag/marker"
+  },
+  {
+    "path": "data-rag/markitdown",
+    "url": "https://github.com/microsoft/markitdown.git",
+    "name": "data-rag/markitdown"
+  },
+  {
+    "path": "data-rag/milvus",
+    "url": "https://github.com/milvus-io/milvus.git",
+    "name": "data-rag/milvus"
+  },
+  {
+    "path": "data-rag/nano-graphrag",
+    "url": "https://github.com/gusye1234/nano-graphrag.git",
+    "name": "data-rag/nano-graphrag"
+  },
+  {
+    "path": "data-rag/nemo-curator",
+    "url": "https://github.com/NVIDIA/NeMo-Curator.git",
+    "name": "data-rag/nemo-curator"
+  },
+  {
+    "path": "data-rag/nemo-retriever",
+    "url": "https://github.com/NVIDIA/NeMo-Retriever.git",
+    "name": "data-rag/nemo-retriever"
+  },
+  {
+    "path": "data-rag/openparse",
+    "url": "https://github.com/Filimoa/open-parse.git",
+    "name": "data-rag/openparse"
+  },
+  {
+    "path": "data-rag/paperqa",
+    "url": "https://github.com/Future-House/paper-qa.git",
+    "name": "data-rag/paperqa"
+  },
+  {
+    "path": "data-rag/pgvector",
+    "url": "https://github.com/pgvector/pgvector.git",
+    "name": "data-rag/pgvector"
+  },
+  {
+    "path": "data-rag/qdrant",
+    "url": "https://github.com/qdrant/qdrant.git",
+    "name": "data-rag/qdrant"
+  },
+  {
+    "path": "data-rag/quivr",
+    "url": "https://github.com/QuivrHQ/quivr.git",
+    "name": "data-rag/quivr"
+  },
+  {
+    "path": "data-rag/r2r",
+    "url": "https://github.com/SciPhi-AI/R2R.git",
+    "name": "data-rag/r2r"
+  },
+  {
+    "path": "data-rag/ragatouille",
+    "url": "https://github.com/AnswerDotAI/RAGatouille.git",
+    "name": "data-rag/ragatouille"
+  },
+  {
+    "path": "data-rag/ragchecker",
+    "url": "https://github.com/amazon-science/RAGChecker.git",
+    "name": "data-rag/ragchecker"
+  },
+  {
+    "path": "data-rag/ragflow",
+    "url": "https://github.com/infiniflow/ragflow.git",
+    "name": "data-rag/ragflow"
+  },
+  {
+    "path": "data-rag/rags-langchain",
+    "url": "https://github.com/langchain-ai/rag-from-scratch.git",
+    "name": "data-rag/rags-langchain"
+  },
+  {
+    "path": "data-rag/raptor-rag",
+    "url": "https://github.com/parthsarthi03/raptor.git",
+    "name": "data-rag/raptor-rag"
+  },
+  {
+    "path": "data-rag/reader",
+    "url": "https://github.com/jina-ai/reader.git",
+    "name": "data-rag/reader"
+  },
+  {
+    "path": "data-rag/scrapegraph-ai",
+    "url": "https://github.com/ScrapeGraphAI/Scrapegraph-ai.git",
+    "name": "data-rag/scrapegraph-ai"
+  },
+  {
+    "path": "data-rag/sentence-transformers",
+    "url": "https://github.com/UKPLab/sentence-transformers.git",
+    "name": "data-rag/sentence-transformers"
+  },
+  {
+    "path": "data-rag/storm",
+    "url": "https://github.com/stanford-oval/storm.git",
+    "name": "data-rag/storm"
+  },
+  {
+    "path": "data-rag/surya",
+    "url": "https://github.com/VikParuchuri/surya.git",
+    "name": "data-rag/surya"
+  },
+  {
+    "path": "data-rag/tesseract",
+    "url": "https://github.com/tesseract-ocr/tesseract.git",
+    "name": "data-rag/tesseract"
+  },
+  {
+    "path": "data-rag/txtai",
+    "url": "https://github.com/neuml/txtai.git",
+    "name": "data-rag/txtai"
+  },
+  {
+    "path": "data-rag/unstract",
+    "url": "https://github.com/Zipstack/unstract.git",
+    "name": "data-rag/unstract"
+  },
+  {
+    "path": "data-rag/unstructured",
+    "url": "https://github.com/Unstructured-IO/unstructured.git",
+    "name": "data-rag/unstructured"
+  },
+  {
+    "path": "data-rag/weaviate",
+    "url": "https://github.com/weaviate/weaviate.git",
+    "name": "data-rag/weaviate"
+  },
+  {
+    "path": "data-rag/zerox",
+    "url": "https://github.com/getomni-ai/zerox.git",
+    "name": "data-rag/zerox"
+  },
+  {
+    "path": "evaluation/OpenCompass",
+    "url": "https://github.com/open-compass/OpenCompass.git",
+    "name": "evaluation/OpenCompass"
+  },
+  {
+    "path": "evaluation/agent-bench",
+    "url": "https://github.com/THUDM/AgentBench.git",
+    "name": "evaluation/agent-bench"
+  },
+  {
+    "path": "evaluation/agentops",
+    "url": "https://github.com/AgentOps-AI/agentops.git",
+    "name": "evaluation/agentops"
+  },
+  {
+    "path": "evaluation/arena-hard",
+    "url": "https://github.com/lm-sys/arena-hard-auto.git",
+    "name": "evaluation/arena-hard"
+  },
+  {
+    "path": "evaluation/bigcodebench",
+    "url": "https://github.com/bigcode-project/bigcodebench.git",
+    "name": "evaluation/bigcodebench"
+  },
+  {
+    "path": "evaluation/chatbot-arena",
+    "url": "https://github.com/lm-sys/FastChat.git",
+    "name": "evaluation/chatbot-arena"
+  },
+  {
+    "path": "evaluation/deepeval",
+    "url": "https://github.com/confident-ai/deepeval.git",
+    "name": "evaluation/deepeval"
+  },
+  {
+    "path": "evaluation/evalplus",
+    "url": "https://github.com/evalplus/evalplus.git",
+    "name": "evaluation/evalplus"
+  },
+  {
+    "path": "evaluation/evals",
+    "url": "https://github.com/openai/evals.git",
+    "name": "evaluation/evals"
+  },
+  {
+    "path": "evaluation/giskard",
+    "url": "https://github.com/Giskard-AI/giskard.git",
+    "name": "evaluation/giskard"
+  },
+  {
+    "path": "evaluation/gpqa",
+    "url": "https://github.com/idavidrein/gpqa.git",
+    "name": "evaluation/gpqa"
+  },
+  {
+    "path": "evaluation/helicone",
+    "url": "https://github.com/Helicone/helicone.git",
+    "name": "evaluation/helicone"
+  },
+  {
+    "path": "evaluation/human-eval",
+    "url": "https://github.com/openai/human-eval.git",
+    "name": "evaluation/human-eval"
+  },
+  {
+    "path": "evaluation/humaneval",
+    "url": "https://github.com/openai/human-eval.git",
+    "name": "evaluation/humaneval"
+  },
+  {
+    "path": "evaluation/ifeval",
+    "url": "https://github.com/google-research/google-research.git",
+    "name": "evaluation/ifeval"
+  },
+  {
+    "path": "evaluation/inspect-ai",
+    "url": "https://github.com/UKGovernmentBEIS/inspect_ai.git",
+    "name": "evaluation/inspect-ai"
+  },
+  {
+    "path": "evaluation/langfuse",
+    "url": "https://github.com/langfuse/langfuse.git",
+    "name": "evaluation/langfuse"
+  },
+  {
+    "path": "evaluation/langsmith",
+    "url": "https://github.com/langchain-ai/langsmith-sdk.git",
+    "name": "evaluation/langsmith"
+  },
+  {
+    "path": "evaluation/langsmith-sdk",
+    "url": "https://github.com/langchain-ai/langsmith-sdk.git",
+    "name": "evaluation/langsmith-sdk"
+  },
+  {
+    "path": "evaluation/livecodebench",
+    "url": "https://github.com/LiveCodeBench/LiveCodeBench.git",
+    "name": "evaluation/livecodebench"
+  },
+  {
+    "path": "evaluation/lm-eval-harness",
+    "url": "https://github.com/EleutherAI/lm-evaluation-harness.git",
+    "name": "evaluation/lm-eval-harness"
+  },
+  {
+    "path": "evaluation/lm-evaluation-harness",
+    "url": "https://github.com/EleutherAI/lm-evaluation-harness.git",
+    "name": "evaluation/lm-evaluation-harness"
+  },
+  {
+    "path": "evaluation/lmms-eval",
+    "url": "https://github.com/EvolvingLMMs-Lab/lmms-eval.git",
+    "name": "evaluation/lmms-eval"
+  },
+  {
+    "path": "evaluation/logfire",
+    "url": "https://github.com/pydantic/logfire.git",
+    "name": "evaluation/logfire"
+  },
+  {
+    "path": "evaluation/long-bench",
+    "url": "https://github.com/THUDM/LongBench.git",
+    "name": "evaluation/long-bench"
+  },
+  {
+    "path": "evaluation/longbench",
+    "url": "https://github.com/THUDM/LongBench.git",
+    "name": "evaluation/longbench"
+  },
+  {
+    "path": "evaluation/mathvista",
+    "url": "https://github.com/lupantech/MathVista.git",
+    "name": "evaluation/mathvista"
+  },
+  {
+    "path": "evaluation/mbpp",
+    "url": "https://github.com/google-research/google-research.git",
+    "name": "evaluation/mbpp"
+  },
+  {
+    "path": "evaluation/mmlu-pro",
+    "url": "https://github.com/TIGER-AI-Lab/mmlu-pro.git",
+    "name": "evaluation/mmlu-pro"
+  },
+  {
+    "path": "evaluation/mmmu",
+    "url": "https://github.com/MMMU-Benchmark/MMMU.git",
+    "name": "evaluation/mmmu"
+  },
+  {
+    "path": "evaluation/mteb",
+    "url": "https://github.com/embeddings-benchmark/mteb.git",
+    "name": "evaluation/mteb"
+  },
+  {
+    "path": "evaluation/multilingual",
+    "url": "https://github.com/facebookresearch/multilingual.git",
+    "name": "evaluation/multilingual"
+  },
+  {
+    "path": "evaluation/needle-in-haystack",
+    "url": "https://github.com/gkamradt/LLMTest_NeedleInAHaystack.git",
+    "name": "evaluation/needle-in-haystack"
+  },
+  {
+    "path": "evaluation/opencompass",
+    "url": "https://github.com/open-compass/OpenCompass.git",
+    "name": "evaluation/opencompass"
+  },
+  {
+    "path": "evaluation/opik",
+    "url": "https://github.com/comet-ml/opik.git",
+    "name": "evaluation/opik"
+  },
+  {
+    "path": "evaluation/phoenix",
+    "url": "https://github.com/Arize-ai/phoenix.git",
+    "name": "evaluation/phoenix"
+  },
+  {
+    "path": "evaluation/promptfoo",
+    "url": "https://github.com/promptfoo/promptfoo.git",
+    "name": "evaluation/promptfoo"
+  },
+  {
+    "path": "evaluation/ragas",
+    "url": "https://github.com/explodinggradients/ragas.git",
+    "name": "evaluation/ragas"
+  },
+  {
+    "path": "evaluation/simple-evals",
+    "url": "https://github.com/openai/simple-evals.git",
+    "name": "evaluation/simple-evals"
+  },
+  {
+    "path": "evaluation/swe-bench",
+    "url": "https://github.com/princeton-nlp/SWE-bench.git",
+    "name": "evaluation/swe-bench"
+  },
+  {
+    "path": "evaluation/trulens",
+    "url": "https://github.com/truera/trulens.git",
+    "name": "evaluation/trulens"
+  },
+  {
+    "path": "evaluation/uptrain",
+    "url": "https://github.com/uptrain-ai/uptrain.git",
+    "name": "evaluation/uptrain"
+  },
+  {
+    "path": "evaluation/vlm-eval",
+    "url": "https://github.com/open-compass/VLMEvalKit.git",
+    "name": "evaluation/vlm-eval"
+  },
+  {
+    "path": "evaluation/wandb",
+    "url": "https://github.com/wandb/wandb.git",
+    "name": "evaluation/wandb"
+  },
+  {
+    "path": "frameworks/MetaGPT",
+    "url": "https://github.com/geekan/MetaGPT.git",
+    "name": "frameworks/MetaGPT"
+  },
+  {
+    "path": "frameworks/a2a-python",
+    "url": "https://github.com/google/a2a-python.git",
+    "name": "frameworks/a2a-python"
+  },
+  {
+    "path": "frameworks/ag2",
+    "url": "https://github.com/ag2ai/ag2.git",
+    "name": "frameworks/ag2"
+  },
+  {
+    "path": "frameworks/agency-swarm",
+    "url": "https://github.com/VRSEN/agency-swarm.git",
+    "name": "frameworks/agency-swarm"
+  },
+  {
+    "path": "frameworks/agentgpt",
+    "url": "https://github.com/reworkd/AgentGPT.git",
+    "name": "frameworks/agentgpt"
+  },
+  {
+    "path": "frameworks/agentkit",
+    "url": "https://github.com/coinbase/agentkit.git",
+    "name": "frameworks/agentkit"
+  },
+  {
+    "path": "frameworks/agno",
+    "url": "https://github.com/agno-agi/agno.git",
+    "name": "frameworks/agno"
+  },
+  {
+    "path": "frameworks/aisuite",
+    "url": "https://github.com/andrewyng/aisuite.git",
+    "name": "frameworks/aisuite"
+  },
+  {
+    "path": "frameworks/atomic-agents",
+    "url": "https://github.com/BrainBlend-AI/atomic-agents.git",
+    "name": "frameworks/atomic-agents"
+  },
+  {
+    "path": "frameworks/autogen",
+    "url": "https://github.com/microsoft/autogen.git",
+    "name": "frameworks/autogen"
+  },
+  {
+    "path": "frameworks/autogen-core",
+    "url": "https://github.com/microsoft/autogen.git",
+    "name": "frameworks/autogen-core"
+  },
+  {
+    "path": "frameworks/babyagi",
+    "url": "https://github.com/yoheinakajima/babyagi.git",
+    "name": "frameworks/babyagi"
+  },
+  {
+    "path": "frameworks/bee-agent-framework",
+    "url": "https://github.com/i-am-bee/bee-agent-framework.git",
+    "name": "frameworks/bee-agent-framework"
+  },
+  {
+    "path": "frameworks/bmtools",
+    "url": "https://github.com/OpenBMB/BMTools.git",
+    "name": "frameworks/bmtools"
+  },
+  {
+    "path": "frameworks/burr",
+    "url": "https://github.com/dagworks-inc/burr.git",
+    "name": "frameworks/burr"
+  },
+  {
+    "path": "frameworks/camel-ai",
+    "url": "https://github.com/camel-ai/camel.git",
+    "name": "frameworks/camel-ai"
+  },
+  {
+    "path": "frameworks/canals",
+    "url": "https://github.com/deepset-ai/canals.git",
+    "name": "frameworks/canals"
+  },
+  {
+    "path": "frameworks/ccpm",
+    "url": "https://github.com/automazeio/ccpm.git",
+    "name": "frameworks/ccpm"
+  },
+  {
+    "path": "frameworks/celery",
+    "url": "https://github.com/celery/celery.git",
+    "name": "frameworks/celery"
+  },
+  {
+    "path": "frameworks/chainlit",
+    "url": "https://github.com/Chainlit/chainlit.git",
+    "name": "frameworks/chainlit"
+  },
+  {
+    "path": "frameworks/chatdev",
+    "url": "https://github.com/OpenBMB/ChatDev.git",
+    "name": "frameworks/chatdev"
+  },
+  {
+    "path": "frameworks/code-interpreter",
+    "url": "https://github.com/e2b-dev/code-interpreter.git",
+    "name": "frameworks/code-interpreter"
+  },
+  {
+    "path": "frameworks/cohere-toolkit",
+    "url": "https://github.com/cohere-ai/cohere-toolkit.git",
+    "name": "frameworks/cohere-toolkit"
+  },
+  {
+    "path": "frameworks/colossalai",
+    "url": "https://github.com/hpcaitech/ColossalAI.git",
+    "name": "frameworks/colossalai"
+  },
+  {
+    "path": "frameworks/composio",
+    "url": "https://github.com/composio-dev/composio.git",
+    "name": "frameworks/composio"
+  },
+  {
+    "path": "frameworks/controlflow",
+    "url": "https://github.com/PrefectHQ/ControlFlow.git",
+    "name": "frameworks/controlflow"
+  },
+  {
+    "path": "frameworks/copilotkit",
+    "url": "https://github.com/CopilotKit/CopilotKit.git",
+    "name": "frameworks/copilotkit"
+  },
+  {
+    "path": "frameworks/crawl4ai-fw",
+    "url": "https://github.com/unclecode/crawl4ai.git",
+    "name": "frameworks/crawl4ai-fw"
+  },
+  {
+    "path": "frameworks/crew-ai-tools",
+    "url": "https://github.com/crewAIInc/crewAI-tools.git",
+    "name": "frameworks/crew-ai-tools"
+  },
+  {
+    "path": "frameworks/crewAI",
+    "url": "https://github.com/crewAIInc/crewAI.git",
+    "name": "frameworks/crewAI"
+  },
+  {
+    "path": "frameworks/daytona",
+    "url": "https://github.com/daytonaio/daytona.git",
+    "name": "frameworks/daytona"
+  },
+  {
+    "path": "frameworks/devika",
+    "url": "https://github.com/stitionai/devika.git",
+    "name": "frameworks/devika"
+  },
+  {
+    "path": "frameworks/dspy",
+    "url": "https://github.com/stanfordnlp/dspy.git",
+    "name": "frameworks/dspy"
+  },
+  {
+    "path": "frameworks/eliza",
+    "url": "https://github.com/elizaOS/eliza.git",
+    "name": "frameworks/eliza"
+  },
+  {
+    "path": "frameworks/embedchain",
+    "url": "https://github.com/embedchain/embedchain.git",
+    "name": "frameworks/embedchain"
+  },
+  {
+    "path": "frameworks/fastapi",
+    "url": "https://github.com/fastapi/fastapi.git",
+    "name": "frameworks/fastapi"
+  },
+  {
+    "path": "frameworks/google-adk",
+    "url": "https://github.com/google/adk-python.git",
+    "name": "frameworks/google-adk"
+  },
+  {
+    "path": "frameworks/gradio",
+    "url": "https://github.com/gradio-app/gradio.git",
+    "name": "frameworks/gradio"
+  },
+  {
+    "path": "frameworks/griptape",
+    "url": "https://github.com/griptape-ai/griptape.git",
+    "name": "frameworks/griptape"
+  },
+  {
+    "path": "frameworks/guidance",
+    "url": "https://github.com/guidance-ai/guidance.git",
+    "name": "frameworks/guidance"
+  },
+  {
+    "path": "frameworks/haystack",
+    "url": "https://github.com/deepset-ai/haystack.git",
+    "name": "frameworks/haystack"
+  },
+  {
+    "path": "frameworks/instructor-js",
+    "url": "https://github.com/instructor-ai/instructor-js.git",
+    "name": "frameworks/instructor-js"
+  },
+  {
+    "path": "frameworks/jina",
+    "url": "https://github.com/jina-ai/jina.git",
+    "name": "frameworks/jina"
+  },
+  {
+    "path": "frameworks/julep",
+    "url": "https://github.com/julep-ai/julep.git",
+    "name": "frameworks/julep"
+  },
+  {
+    "path": "frameworks/langchain",
+    "url": "https://github.com/langchain-ai/langchain.git",
+    "name": "frameworks/langchain"
+  },
+  {
+    "path": "frameworks/langgraph",
+    "url": "https://github.com/langchain-ai/langgraph.git",
+    "name": "frameworks/langgraph"
+  },
+  {
+    "path": "frameworks/langmem",
+    "url": "https://github.com/langchain-ai/langmem.git",
+    "name": "frameworks/langmem"
+  },
+  {
+    "path": "frameworks/langroid",
+    "url": "https://github.com/langroid/langroid.git",
+    "name": "frameworks/langroid"
+  },
+  {
+    "path": "frameworks/lerobot",
+    "url": "https://github.com/huggingface/lerobot.git",
+    "name": "frameworks/lerobot"
+  },
+  {
+    "path": "frameworks/lightrag",
+    "url": "https://github.com/HKUDS/LightRAG.git",
+    "name": "frameworks/lightrag"
+  },
+  {
+    "path": "frameworks/litserve",
+    "url": "https://github.com/Lightning-AI/LitServe.git",
+    "name": "frameworks/litserve"
+  },
+  {
+    "path": "frameworks/livekit-agents",
+    "url": "https://github.com/livekit/agents.git",
+    "name": "frameworks/livekit-agents"
+  },
+  {
+    "path": "frameworks/llama-agents",
+    "url": "https://github.com/run-llama/llama-agents.git",
+    "name": "frameworks/llama-agents"
+  },
+  {
+    "path": "frameworks/llama-deploy",
+    "url": "https://github.com/run-llama/llama_deploy.git",
+    "name": "frameworks/llama-deploy"
+  },
+  {
+    "path": "frameworks/llama-stack",
+    "url": "https://github.com/meta-llama/llama-stack.git",
+    "name": "frameworks/llama-stack"
+  },
+  {
+    "path": "frameworks/llama_index",
+    "url": "https://github.com/run-llama/llama_index.git",
+    "name": "frameworks/llama_index"
+  },
+  {
+    "path": "frameworks/llmware",
+    "url": "https://github.com/llmware-ai/llmware.git",
+    "name": "frameworks/llmware"
+  },
+  {
+    "path": "frameworks/marvin",
+    "url": "https://github.com/prefecthq/marvin.git",
+    "name": "frameworks/marvin"
+  },
+  {
+    "path": "frameworks/mastra",
+    "url": "https://github.com/mastra-ai/mastra.git",
+    "name": "frameworks/mastra"
+  },
+  {
+    "path": "frameworks/mcp-agent",
+    "url": "https://github.com/lastmile-ai/mcp-agent.git",
+    "name": "frameworks/mcp-agent"
+  },
+  {
+    "path": "frameworks/mem0ai",
+    "url": "https://github.com/mem0ai/mem0.git",
+    "name": "frameworks/mem0ai"
+  },
+  {
+    "path": "frameworks/mirascope",
+    "url": "https://github.com/Mirascope/mirascope.git",
+    "name": "frameworks/mirascope"
+  },
+  {
+    "path": "frameworks/onnxruntime",
+    "url": "https://github.com/microsoft/onnxruntime.git",
+    "name": "frameworks/onnxruntime"
+  },
+  {
+    "path": "frameworks/open-interpreter",
+    "url": "https://github.com/OpenInterpreter/open-interpreter.git",
+    "name": "frameworks/open-interpreter"
+  },
+  {
+    "path": "frameworks/openai-agents-python",
+    "url": "https://github.com/openai/openai-agents-python.git",
+    "name": "frameworks/openai-agents-python"
+  },
+  {
+    "path": "frameworks/openai-swarm",
+    "url": "https://github.com/openai/swarm.git",
+    "name": "frameworks/openai-swarm"
+  },
+  {
+    "path": "frameworks/opensandbox",
+    "url": "https://github.com/alibaba/OpenSandbox.git",
+    "name": "frameworks/opensandbox"
+  },
+  {
+    "path": "frameworks/openviking",
+    "url": "https://github.com/volcengine/OpenViking.git",
+    "name": "frameworks/openviking"
+  },
+  {
+    "path": "frameworks/outlines",
+    "url": "https://github.com/outlines-dev/outlines.git",
+    "name": "frameworks/outlines"
+  },
+  {
+    "path": "frameworks/owl",
+    "url": "https://github.com/camel-ai/owl.git",
+    "name": "frameworks/owl"
+  },
+  {
+    "path": "frameworks/phidata",
+    "url": "https://github.com/phidatahq/phidata.git",
+    "name": "frameworks/phidata"
+  },
+  {
+    "path": "frameworks/pocket-flow",
+    "url": "https://github.com/The-Pocket/PocketFlow.git",
+    "name": "frameworks/pocket-flow"
+  },
+  {
+    "path": "frameworks/praisonai",
+    "url": "https://github.com/MervinPraison/PraisonAI.git",
+    "name": "frameworks/praisonai"
+  },
+  {
+    "path": "frameworks/promptflow",
+    "url": "https://github.com/microsoft/promptflow.git",
+    "name": "frameworks/promptflow"
+  },
+  {
+    "path": "frameworks/pydantic-ai",
+    "url": "https://github.com/pydantic/pydantic-ai.git",
+    "name": "frameworks/pydantic-ai"
+  },
+  {
+    "path": "frameworks/pytorch",
+    "url": "https://github.com/pytorch/pytorch.git",
+    "name": "frameworks/pytorch"
+  },
+  {
+    "path": "frameworks/qwen-agent",
+    "url": "https://github.com/QwenLM/Qwen-Agent.git",
+    "name": "frameworks/qwen-agent"
+  },
+  {
+    "path": "frameworks/rivet",
+    "url": "https://github.com/Ironclad/rivet.git",
+    "name": "frameworks/rivet"
+  },
+  {
+    "path": "frameworks/semantic-kernel",
+    "url": "https://github.com/microsoft/semantic-kernel.git",
+    "name": "frameworks/semantic-kernel"
+  },
+  {
+    "path": "frameworks/semantic-router",
+    "url": "https://github.com/aurelio-labs/semantic-router.git",
+    "name": "frameworks/semantic-router"
+  },
+  {
+    "path": "frameworks/smolagents",
+    "url": "https://github.com/huggingface/smolagents.git",
+    "name": "frameworks/smolagents"
+  },
+  {
+    "path": "frameworks/spacy",
+    "url": "https://github.com/explosion/spaCy.git",
+    "name": "frameworks/spacy"
+  },
+  {
+    "path": "frameworks/spring-ai",
+    "url": "https://github.com/spring-projects/spring-ai.git",
+    "name": "frameworks/spring-ai"
+  },
+  {
+    "path": "frameworks/streamlit",
+    "url": "https://github.com/streamlit/streamlit.git",
+    "name": "frameworks/streamlit"
+  },
+  {
+    "path": "frameworks/superpowers",
+    "url": "https://github.com/obra/superpowers.git",
+    "name": "frameworks/superpowers"
+  },
+  {
+    "path": "frameworks/swarms",
+    "url": "https://github.com/kyegomez/swarms.git",
+    "name": "frameworks/swarms"
+  },
+  {
+    "path": "frameworks/taskweaver",
+    "url": "https://github.com/microsoft/TaskWeaver.git",
+    "name": "frameworks/taskweaver"
+  },
+  {
+    "path": "frameworks/tinygrad",
+    "url": "https://github.com/tinygrad/tinygrad.git",
+    "name": "frameworks/tinygrad"
+  },
+  {
+    "path": "frameworks/transformers-js",
+    "url": "https://github.com/xenova/transformers.js.git",
+    "name": "frameworks/transformers-js"
+  },
+  {
+    "path": "frameworks/typechat",
+    "url": "https://github.com/microsoft/TypeChat.git",
+    "name": "frameworks/typechat"
+  },
+  {
+    "path": "frameworks/vercel-ai-sdk",
+    "url": "https://github.com/vercel/ai.git",
+    "name": "frameworks/vercel-ai-sdk"
+  },
+  {
+    "path": "infrastructure/LibreTranslate",
+    "url": "https://github.com/LibreTranslate/LibreTranslate.git",
+    "name": "infrastructure/LibreTranslate"
+  },
+  {
+    "path": "infrastructure/ai-gateway",
+    "url": "https://github.com/Portkey-AI/gateway.git",
+    "name": "infrastructure/ai-gateway"
+  },
+  {
+    "path": "infrastructure/aichat",
+    "url": "https://github.com/sigoden/aichat.git",
+    "name": "infrastructure/aichat"
+  },
+  {
+    "path": "infrastructure/anything-llm",
+    "url": "https://github.com/Mintplex-Labs/anything-llm.git",
+    "name": "infrastructure/anything-llm"
+  },
+  {
+    "path": "infrastructure/aphrodite",
+    "url": "https://github.com/PygmalionAI/aphrodite-engine.git",
+    "name": "infrastructure/aphrodite"
+  },
+  {
+    "path": "infrastructure/astrbot",
+    "url": "https://github.com/AstrBotDevs/AstrBot.git",
+    "name": "infrastructure/astrbot"
+  },
+  {
+    "path": "infrastructure/bentoml",
+    "url": "https://github.com/bentoml/BentoML.git",
+    "name": "infrastructure/bentoml"
+  },
+  {
+    "path": "infrastructure/candle",
+    "url": "https://github.com/huggingface/candle.git",
+    "name": "infrastructure/candle"
+  },
+  {
+    "path": "infrastructure/chatbot-ui",
+    "url": "https://github.com/mckaywrigley/chatbot-ui.git",
+    "name": "infrastructure/chatbot-ui"
+  },
+  {
+    "path": "infrastructure/chatbox",
+    "url": "https://github.com/Bin-Huang/chatbox.git",
+    "name": "infrastructure/chatbox"
+  },
+  {
+    "path": "infrastructure/cortex",
+    "url": "https://github.com/janhq/cortex.cpp.git",
+    "name": "infrastructure/cortex"
+  },
+  {
+    "path": "infrastructure/dstack",
+    "url": "https://github.com/dstackai/dstack.git",
+    "name": "infrastructure/dstack"
+  },
+  {
+    "path": "infrastructure/exo",
+    "url": "https://github.com/exo-explore/exo.git",
+    "name": "infrastructure/exo"
+  },
+  {
+    "path": "infrastructure/gemma-cpp",
+    "url": "https://github.com/google/gemma.cpp.git",
+    "name": "infrastructure/gemma-cpp"
+  },
+  {
+    "path": "infrastructure/gpt4all",
+    "url": "https://github.com/nomic-ai/gpt4all.git",
+    "name": "infrastructure/gpt4all"
+  },
+  {
+    "path": "infrastructure/gpustack",
+    "url": "https://github.com/gpustack/gpustack.git",
+    "name": "infrastructure/gpustack"
+  },
+  {
+    "path": "infrastructure/h2ogpt",
+    "url": "https://github.com/h2oai/h2ogpt.git",
+    "name": "infrastructure/h2ogpt"
+  },
+  {
+    "path": "infrastructure/hf-chat-ui",
+    "url": "https://github.com/huggingface/chat-ui.git",
+    "name": "infrastructure/hf-chat-ui"
+  },
+  {
+    "path": "infrastructure/infinity",
+    "url": "https://github.com/infiniflow/infinity.git",
+    "name": "infrastructure/infinity"
+  },
+  {
+    "path": "infrastructure/jan",
+    "url": "https://github.com/janhq/jan.git",
+    "name": "infrastructure/jan"
+  },
+  {
+    "path": "infrastructure/koboldcpp",
+    "url": "https://github.com/LostRuins/koboldcpp.git",
+    "name": "infrastructure/koboldcpp"
+  },
+  {
+    "path": "infrastructure/librechat",
+    "url": "https://github.com/danny-avila/LibreChat.git",
+    "name": "infrastructure/librechat"
+  },
+  {
+    "path": "infrastructure/litellm",
+    "url": "https://github.com/BerriAI/litellm.git",
+    "name": "infrastructure/litellm"
+  },
+  {
+    "path": "infrastructure/llamacpp",
+    "url": "https://github.com/ggerganov/llama.cpp.git",
+    "name": "infrastructure/llamacpp"
+  },
+  {
+    "path": "infrastructure/llamafile",
+    "url": "https://github.com/Mozilla-Ocho/llamafile.git",
+    "name": "infrastructure/llamafile"
+  },
+  {
+    "path": "infrastructure/llm-cli",
+    "url": "https://github.com/simonw/llm.git",
+    "name": "infrastructure/llm-cli"
+  },
+  {
+    "path": "infrastructure/lmstudio",
+    "url": "https://github.com/lmstudio-ai/lms.git",
+    "name": "infrastructure/lmstudio"
+  },
+  {
+    "path": "infrastructure/lobe-chat",
+    "url": "https://github.com/lobehub/lobe-chat.git",
+    "name": "infrastructure/lobe-chat"
+  },
+  {
+    "path": "infrastructure/localGPT",
+    "url": "https://github.com/PromtEngineer/localGPT.git",
+    "name": "infrastructure/localGPT"
+  },
+  {
+    "path": "infrastructure/localai",
+    "url": "https://github.com/mudler/LocalAI.git",
+    "name": "infrastructure/localai"
+  },
+  {
+    "path": "infrastructure/mistral-rs",
+    "url": "https://github.com/EricLBuehler/mistral.rs.git",
+    "name": "infrastructure/mistral-rs"
+  },
+  {
+    "path": "infrastructure/mlc-llm",
+    "url": "https://github.com/mlc-ai/mlc-llm.git",
+    "name": "infrastructure/mlc-llm"
+  },
+  {
+    "path": "infrastructure/mlflow",
+    "url": "https://github.com/mlflow/mlflow.git",
+    "name": "infrastructure/mlflow"
+  },
+  {
+    "path": "infrastructure/nextchat",
+    "url": "https://github.com/ChatGPTNextWeb/ChatGPT-Next-Web.git",
+    "name": "infrastructure/nextchat"
+  },
+  {
+    "path": "infrastructure/nitro",
+    "url": "https://github.com/janhq/nitro.git",
+    "name": "infrastructure/nitro"
+  },
+  {
+    "path": "infrastructure/ollama",
+    "url": "https://github.com/ollama/ollama.git",
+    "name": "infrastructure/ollama"
+  },
+  {
+    "path": "infrastructure/open-webui",
+    "url": "https://github.com/open-webui/open-webui.git",
+    "name": "infrastructure/open-webui"
+  },
+  {
+    "path": "infrastructure/openllm",
+    "url": "https://github.com/bentoml/OpenLLM.git",
+    "name": "infrastructure/openllm"
+  },
+  {
+    "path": "infrastructure/privateGPT",
+    "url": "https://github.com/zylon-ai/private-gpt.git",
+    "name": "infrastructure/privateGPT"
+  },
+  {
+    "path": "infrastructure/ray",
+    "url": "https://github.com/ray-project/ray.git",
+    "name": "infrastructure/ray"
+  },
+  {
+    "path": "infrastructure/sglang",
+    "url": "https://github.com/sgl-project/sglang.git",
+    "name": "infrastructure/sglang"
+  },
+  {
+    "path": "infrastructure/skypilot",
+    "url": "https://github.com/skypilot-org/skypilot.git",
+    "name": "infrastructure/skypilot"
+  },
+  {
+    "path": "infrastructure/tabbyapi",
+    "url": "https://github.com/theroyallab/tabbyAPI.git",
+    "name": "infrastructure/tabbyapi"
+  },
+  {
+    "path": "infrastructure/text-generation-webui",
+    "url": "https://github.com/oobabooga/text-generation-webui.git",
+    "name": "infrastructure/text-generation-webui"
+  },
+  {
+    "path": "infrastructure/tiktoken",
+    "url": "https://github.com/openai/tiktoken.git",
+    "name": "infrastructure/tiktoken"
+  },
+  {
+    "path": "infrastructure/tokenizers",
+    "url": "https://github.com/huggingface/tokenizers.git",
+    "name": "infrastructure/tokenizers"
+  },
+  {
+    "path": "infrastructure/vllm",
+    "url": "https://github.com/vllm-project/vllm.git",
+    "name": "infrastructure/vllm"
+  },
+  {
+    "path": "infrastructure/whisper-cpp",
+    "url": "https://github.com/ggerganov/whisper.cpp.git",
+    "name": "infrastructure/whisper-cpp"
+  },
+  {
+    "path": "knowledge/Awesome-LLM",
+    "url": "https://github.com/Hannibal046/Awesome-LLM.git",
+    "name": "knowledge/Awesome-LLM"
+  },
+  {
+    "path": "knowledge/Awesome-LLMOps",
+    "url": "https://github.com/tensorchord/Awesome-LLMOps.git",
+    "name": "knowledge/Awesome-LLMOps"
+  },
+  {
+    "path": "knowledge/agentic-patterns",
+    "url": "https://github.com/neural-maze/agentic-patterns.git",
+    "name": "knowledge/agentic-patterns"
+  },
+  {
+    "path": "knowledge/ai-agents-2024",
+    "url": "https://github.com/NirDiamant/GenAI_Agents.git",
+    "name": "knowledge/ai-agents-2024"
+  },
+  {
+    "path": "knowledge/ai-agents-masterclass",
+    "url": "https://github.com/NirDiamant/GenAI_Agents.git",
+    "name": "knowledge/ai-agents-masterclass"
+  },
+  {
+    "path": "knowledge/ai-collection",
+    "url": "https://github.com/ai-collection/ai-collection.git",
+    "name": "knowledge/ai-collection"
+  },
+  {
+    "path": "knowledge/ai-expert-roadmap",
+    "url": "https://github.com/AMAI-GmbH/AI-Expert-Roadmap.git",
+    "name": "knowledge/ai-expert-roadmap"
+  },
+  {
+    "path": "knowledge/ai-for-beginners",
+    "url": "https://github.com/microsoft/AI-For-Beginners.git",
+    "name": "knowledge/ai-for-beginners"
+  },
+  {
+    "path": "knowledge/ai-roadmap",
+    "url": "https://github.com/AMAI-GmbH/AI-Expert-Roadmap.git",
+    "name": "knowledge/ai-roadmap"
+  },
+  {
+    "path": "knowledge/alphafold",
+    "url": "https://github.com/google-deepmind/alphafold.git",
+    "name": "knowledge/alphafold"
+  },
+  {
+    "path": "knowledge/anthropic-courses",
+    "url": "https://github.com/anthropics/courses.git",
+    "name": "knowledge/anthropic-courses"
+  },
+  {
+    "path": "knowledge/anthropic-sdk-python",
+    "url": "https://github.com/anthropics/anthropic-sdk-python.git",
+    "name": "knowledge/anthropic-sdk-python"
+  },
+  {
+    "path": "knowledge/awesome-ai-agents",
+    "url": "https://github.com/e2b-dev/awesome-ai-agents.git",
+    "name": "knowledge/awesome-ai-agents"
+  },
+  {
+    "path": "knowledge/awesome-ai-coding",
+    "url": "https://github.com/sourcegraph/awesome-code-ai.git",
+    "name": "knowledge/awesome-ai-coding"
+  },
+  {
+    "path": "knowledge/awesome-ai-guidelines",
+    "url": "https://github.com/EthicalML/awesome-production-machine-learning.git",
+    "name": "knowledge/awesome-ai-guidelines"
+  },
+  {
+    "path": "knowledge/awesome-chatgpt-prompts",
+    "url": "https://github.com/f/awesome-chatgpt-prompts.git",
+    "name": "knowledge/awesome-chatgpt-prompts"
+  },
+  {
+    "path": "knowledge/awesome-deep-learning",
+    "url": "https://github.com/ChristosChristofidis/awesome-deep-learning.git",
+    "name": "knowledge/awesome-deep-learning"
+  },
+  {
+    "path": "knowledge/awesome-genai",
+    "url": "https://github.com/aishwaryanr/awesome-generative-ai-guide.git",
+    "name": "knowledge/awesome-genai"
+  },
+  {
+    "path": "knowledge/awesome-genai-guide",
+    "url": "https://github.com/aishwaryanr/awesome-generative-ai-guide.git",
+    "name": "knowledge/awesome-genai-guide"
+  },
+  {
+    "path": "knowledge/awesome-machine-learning",
+    "url": "https://github.com/josephmisiti/awesome-machine-learning.git",
+    "name": "knowledge/awesome-machine-learning"
+  },
+  {
+    "path": "knowledge/build-your-own-x",
+    "url": "https://github.com/codecrafters-io/build-your-own-x.git",
+    "name": "knowledge/build-your-own-x"
+  },
+  {
+    "path": "knowledge/coding-interview",
+    "url": "https://github.com/jwasham/coding-interview-university.git",
+    "name": "knowledge/coding-interview"
+  },
+  {
+    "path": "knowledge/cs224n",
+    "url": "https://github.com/rohanpaul/CS224n.git",
+    "name": "knowledge/cs224n"
+  },
+  {
+    "path": "knowledge/cs231n",
+    "url": "https://github.com/cs231n/cs231n.github.io.git",
+    "name": "knowledge/cs231n"
+  },
+  {
+    "path": "knowledge/deep-learning-book",
+    "url": "https://github.com/janishar/mit-deep-learning-book-pdf.git",
+    "name": "knowledge/deep-learning-book"
+  },
+  {
+    "path": "knowledge/deeplearning-ai",
+    "url": "https://github.com/mbadry1/DeepLearning.ai-Summary.git",
+    "name": "knowledge/deeplearning-ai"
+  },
+  {
+    "path": "knowledge/deepseek-cookbook",
+    "url": "https://github.com/deepseek-ai/DeepSeek-Coder.git",
+    "name": "knowledge/deepseek-cookbook"
+  },
+  {
+    "path": "knowledge/developer-roadmap",
+    "url": "https://github.com/kamranahmedse/developer-roadmap.git",
+    "name": "knowledge/developer-roadmap"
+  },
+  {
+    "path": "knowledge/fastai",
+    "url": "https://github.com/fastai/fastbook.git",
+    "name": "knowledge/fastai"
+  },
+  {
+    "path": "knowledge/free-programming-books",
+    "url": "https://github.com/EbookFoundation/free-programming-books.git",
+    "name": "knowledge/free-programming-books"
+  },
+  {
+    "path": "knowledge/generative-ai-for-beginners",
+    "url": "https://github.com/microsoft/generative-ai-for-beginners.git",
+    "name": "knowledge/generative-ai-for-beginners"
+  },
+  {
+    "path": "knowledge/hands-on-llm",
+    "url": "https://github.com/HandsOnLLM/Hands-On-Large-Language-Models.git",
+    "name": "knowledge/hands-on-llm"
+  },
+  {
+    "path": "knowledge/huggingface-course",
+    "url": "https://github.com/huggingface/course.git",
+    "name": "knowledge/huggingface-course"
+  },
+  {
+    "path": "knowledge/llama-recipes",
+    "url": "https://github.com/facebookresearch/llama-recipes.git",
+    "name": "knowledge/llama-recipes"
+  },
+  {
+    "path": "knowledge/llama3-cookbook",
+    "url": "https://github.com/meta-llama/llama-recipes.git",
+    "name": "knowledge/llama3-cookbook"
+  },
+  {
+    "path": "knowledge/llm-agents-papers",
+    "url": "https://github.com/AGI-Edgerunners/LLM-Agents-Papers.git",
+    "name": "knowledge/llm-agents-papers"
+  },
+  {
+    "path": "knowledge/llm-c",
+    "url": "https://github.com/karpathy/llm.c.git",
+    "name": "knowledge/llm-c"
+  },
+  {
+    "path": "knowledge/llm-course",
+    "url": "https://github.com/mlabonne/llm-course.git",
+    "name": "knowledge/llm-course"
+  },
+  {
+    "path": "knowledge/llm-zoomcamp",
+    "url": "https://github.com/DataTalksClub/llm-zoomcamp.git",
+    "name": "knowledge/llm-zoomcamp"
+  },
+  {
+    "path": "knowledge/llms-from-scratch",
+    "url": "https://github.com/rasbt/LLMs-from-scratch.git",
+    "name": "knowledge/llms-from-scratch"
+  },
+  {
+    "path": "knowledge/made-with-ml",
+    "url": "https://github.com/GokuMohandas/Made-With-ML.git",
+    "name": "knowledge/made-with-ml"
+  },
+  {
+    "path": "knowledge/mingpt",
+    "url": "https://github.com/karpathy/minGPT.git",
+    "name": "knowledge/mingpt"
+  },
+  {
+    "path": "knowledge/minimind",
+    "url": "https://github.com/jingyaogong/minimind.git",
+    "name": "knowledge/minimind"
+  },
+  {
+    "path": "knowledge/mit-6-034",
+    "url": "https://github.com/llSourcell/MIT_6.034.git",
+    "name": "knowledge/mit-6-034"
+  },
+  {
+    "path": "knowledge/mit-6-s191",
+    "url": "https://github.com/aamini/introtodeeplearning.git",
+    "name": "knowledge/mit-6-s191"
+  },
+  {
+    "path": "knowledge/ml-engineering",
+    "url": "https://github.com/stas00/ml-engineering.git",
+    "name": "knowledge/ml-engineering"
+  },
+  {
+    "path": "knowledge/ml-papers-explained",
+    "url": "https://github.com/dair-ai/ML-Papers-Explained.git",
+    "name": "knowledge/ml-papers-explained"
+  },
+  {
+    "path": "knowledge/ml-systems-design",
+    "url": "https://github.com/chiphuyen/machine-learning-systems-design.git",
+    "name": "knowledge/ml-systems-design"
+  },
+  {
+    "path": "knowledge/nanogpt",
+    "url": "https://github.com/karpathy/nanoGPT.git",
+    "name": "knowledge/nanogpt"
+  },
+  {
+    "path": "knowledge/nvidia-ai-examples",
+    "url": "https://github.com/NVIDIA/GenerativeAIExamples.git",
+    "name": "knowledge/nvidia-ai-examples"
+  },
+  {
+    "path": "knowledge/openai-python",
+    "url": "https://github.com/openai/openai-python.git",
+    "name": "knowledge/openai-python"
+  },
+  {
+    "path": "knowledge/papers-with-code",
+    "url": "https://github.com/paperswithcode/paperswithcode-data.git",
+    "name": "knowledge/papers-with-code"
+  },
+  {
+    "path": "knowledge/prompt-engineering-for-devs",
+    "url": "https://github.com/brexhq/prompt-engineering.git",
+    "name": "knowledge/prompt-engineering-for-devs"
+  },
+  {
+    "path": "knowledge/qwen-cookbook",
+    "url": "https://github.com/QwenLM/Qwen-Agent.git",
+    "name": "knowledge/qwen-cookbook"
+  },
+  {
+    "path": "knowledge/stable-diffusion-book",
+    "url": "https://github.com/camenduru/stable-diffusion-webui-colab.git",
+    "name": "knowledge/stable-diffusion-book"
+  },
+  {
+    "path": "knowledge/stanford-cs229",
+    "url": "https://github.com/cycleuser/Stanford-CS229.git",
+    "name": "knowledge/stanford-cs229"
+  },
+  {
+    "path": "knowledge/system-design-primer",
+    "url": "https://github.com/donnemartin/system-design-primer.git",
+    "name": "knowledge/system-design-primer"
+  },
+  {
+    "path": "knowledge/transformers-book",
+    "url": "https://github.com/nlp-with-transformers/nlp-transformers-book.git",
+    "name": "knowledge/transformers-book"
+  },
+  {
+    "path": "knowledge/tuning-playbook",
+    "url": "https://github.com/google-research/tuning_playbook.git",
+    "name": "knowledge/tuning-playbook"
+  },
+  {
+    "path": "mcp-servers/MCPRules",
+    "url": "https://github.com/bartwisch/MCPRules.git",
+    "name": "mcp-servers/MCPRules"
+  },
+  {
+    "path": "mcp-servers/agentops-mcp",
+    "url": "https://github.com/AgentOps-AI/agentops-mcp.git",
+    "name": "mcp-servers/agentops-mcp"
+  },
+  {
+    "path": "mcp-servers/apify-mcp",
+    "url": "https://github.com/apify/apify-mcp-server.git",
+    "name": "mcp-servers/apify-mcp"
+  },
+  {
+    "path": "mcp-servers/auth0-mcp",
+    "url": "https://github.com/auth0/auth0-mcp-server.git",
+    "name": "mcp-servers/auth0-mcp"
+  },
+  {
+    "path": "mcp-servers/aws-mcp",
+    "url": "https://github.com/awslabs/mcp.git",
+    "name": "mcp-servers/aws-mcp"
+  },
+  {
+    "path": "mcp-servers/brave-search",
+    "url": "https://github.com/brave/brave-search-mcp-server.git",
+    "name": "mcp-servers/brave-search"
+  },
+  {
+    "path": "mcp-servers/chroma-mcp",
+    "url": "https://github.com/chroma-core/chroma-mcp.git",
+    "name": "mcp-servers/chroma-mcp"
+  },
+  {
+    "path": "mcp-servers/chrome-devtools-mcp",
+    "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp.git",
+    "name": "mcp-servers/chrome-devtools-mcp"
+  },
+  {
+    "path": "mcp-servers/cli-mcp-server",
+    "url": "https://github.com/MladenSU/cli-mcp-server.git",
+    "name": "mcp-servers/cli-mcp-server"
+  },
+  {
+    "path": "mcp-servers/cloudflare-mcp",
+    "url": "https://github.com/cloudflare/mcp-server-cloudflare.git",
+    "name": "mcp-servers/cloudflare-mcp"
+  },
+  {
+    "path": "mcp-servers/context7",
+    "url": "https://github.com/upstash/context7.git",
+    "name": "mcp-servers/context7"
+  },
+  {
+    "path": "mcp-servers/docker-mcp",
+    "url": "https://github.com/docker/mcp-server-docker.git",
+    "name": "mcp-servers/docker-mcp"
+  },
+  {
+    "path": "mcp-servers/elasticsearch-mcp",
+    "url": "https://github.com/elastic/mcp-server-elasticsearch.git",
+    "name": "mcp-servers/elasticsearch-mcp"
+  },
+  {
+    "path": "mcp-servers/exa-mcp",
+    "url": "https://github.com/exa-labs/exa-mcp-server.git",
+    "name": "mcp-servers/exa-mcp"
+  },
+  {
+    "path": "mcp-servers/firecrawl-mcp",
+    "url": "https://github.com/firecrawl/firecrawl-mcp-server.git",
+    "name": "mcp-servers/firecrawl-mcp"
+  },
+  {
+    "path": "mcp-servers/github-mcp-server",
+    "url": "https://github.com/github/github-mcp-server.git",
+    "name": "mcp-servers/github-mcp-server"
+  },
+  {
+    "path": "mcp-servers/langfuse-mcp",
+    "url": "https://github.com/langfuse/mcp-server-langfuse.git",
+    "name": "mcp-servers/langfuse-mcp"
+  },
+  {
+    "path": "mcp-servers/linear-mcp",
+    "url": "https://github.com/jerhadf/linear-mcp-server.git",
+    "name": "mcp-servers/linear-mcp"
+  },
+  {
+    "path": "mcp-servers/mcp-chrome",
+    "url": "https://github.com/hangwin/mcp-chrome.git",
+    "name": "mcp-servers/mcp-chrome"
+  },
+  {
+    "path": "mcp-servers/mcp-csharp-sdk",
+    "url": "https://github.com/modelcontextprotocol/csharp-sdk.git",
+    "name": "mcp-servers/mcp-csharp-sdk"
+  },
+  {
+    "path": "mcp-servers/mcp-feedback-enhanced",
+    "url": "https://github.com/Minidoracat/mcp-feedback-enhanced.git",
+    "name": "mcp-servers/mcp-feedback-enhanced"
+  },
+  {
+    "path": "mcp-servers/mcp-go-sdk",
+    "url": "https://github.com/mark3labs/mcp-go.git",
+    "name": "mcp-servers/mcp-go-sdk"
+  },
+  {
+    "path": "mcp-servers/mcp-java-sdk",
+    "url": "https://github.com/modelcontextprotocol/java-sdk.git",
+    "name": "mcp-servers/mcp-java-sdk"
+  },
+  {
+    "path": "mcp-servers/mcp-kotlin-sdk",
+    "url": "https://github.com/modelcontextprotocol/kotlin-sdk.git",
+    "name": "mcp-servers/mcp-kotlin-sdk"
+  },
+  {
+    "path": "mcp-servers/mcp-proxy",
+    "url": "https://github.com/nicepkg/aide.git",
+    "name": "mcp-servers/mcp-proxy"
+  },
+  {
+    "path": "mcp-servers/mcp-python-sdk",
+    "url": "https://github.com/modelcontextprotocol/python-sdk.git",
+    "name": "mcp-servers/mcp-python-sdk"
+  },
+  {
+    "path": "mcp-servers/mcp-qdrant",
+    "url": "https://github.com/qdrant/mcp-server-qdrant.git",
+    "name": "mcp-servers/mcp-qdrant"
+  },
+  {
+    "path": "mcp-servers/mcp-rust-sdk",
+    "url": "https://github.com/modelcontextprotocol/rust-sdk.git",
+    "name": "mcp-servers/mcp-rust-sdk"
+  },
+  {
+    "path": "mcp-servers/mcp-typescript-sdk",
+    "url": "https://github.com/modelcontextprotocol/typescript-sdk.git",
+    "name": "mcp-servers/mcp-typescript-sdk"
+  },
+  {
+    "path": "mcp-servers/memory-mcp",
+    "url": "https://github.com/modelcontextprotocol/servers.git",
+    "name": "mcp-servers/memory-mcp"
+  },
+  {
+    "path": "mcp-servers/milvus-mcp",
+    "url": "https://github.com/zilliztech/mcp-server-milvus.git",
+    "name": "mcp-servers/milvus-mcp"
+  },
+  {
+    "path": "mcp-servers/mongodb-mcp",
+    "url": "https://github.com/mongodb-js/mongodb-mcp-server.git",
+    "name": "mcp-servers/mongodb-mcp"
+  },
+  {
+    "path": "mcp-servers/neo4j-mcp",
+    "url": "https://github.com/neo4j-contrib/mcp-neo4j.git",
+    "name": "mcp-servers/neo4j-mcp"
+  },
+  {
+    "path": "mcp-servers/notion-mcp",
+    "url": "https://github.com/makenotion/notion-mcp-server.git",
+    "name": "mcp-servers/notion-mcp"
+  },
+  {
+    "path": "mcp-servers/official-servers",
+    "url": "https://github.com/modelcontextprotocol/servers.git",
+    "name": "mcp-servers/official-servers"
+  },
+  {
+    "path": "mcp-servers/perplexity-mcp",
+    "url": "https://github.com/ppl-ai/modelcontextprotocol.git",
+    "name": "mcp-servers/perplexity-mcp"
+  },
+  {
+    "path": "mcp-servers/pinecone-mcp",
+    "url": "https://github.com/pinecone-io/pinecone-mcp.git",
+    "name": "mcp-servers/pinecone-mcp"
+  },
+  {
+    "path": "mcp-servers/playwright-mcp",
+    "url": "https://github.com/microsoft/playwright-mcp.git",
+    "name": "mcp-servers/playwright-mcp"
+  },
+  {
+    "path": "mcp-servers/redis-mcp",
+    "url": "https://github.com/redis/mcp-redis.git",
+    "name": "mcp-servers/redis-mcp"
+  },
+  {
+    "path": "mcp-servers/stripe-mcp",
+    "url": "https://github.com/stripe/agent-toolkit.git",
+    "name": "mcp-servers/stripe-mcp"
+  },
+  {
+    "path": "mcp-servers/supabase-mcp",
+    "url": "https://github.com/supabase-community/supabase-mcp.git",
+    "name": "mcp-servers/supabase-mcp"
+  },
+  {
+    "path": "memory/cipher",
+    "url": "https://github.com/campfirein/cipher.git",
+    "name": "memory/cipher"
+  },
+  {
+    "path": "memory/cognee",
+    "url": "https://github.com/topoteretes/cognee.git",
+    "name": "memory/cognee"
+  },
+  {
+    "path": "memory/hindsight",
+    "url": "https://github.com/vectorize-io/hindsight.git",
+    "name": "memory/hindsight"
+  },
+  {
+    "path": "memory/mem0",
+    "url": "https://github.com/mem0ai/mem0.git",
+    "name": "memory/mem0"
+  },
+  {
+    "path": "memory/memgpt",
+    "url": "https://github.com/cpacker/MemGPT.git",
+    "name": "memory/memgpt"
+  },
+  {
+    "path": "memory/memoripy",
+    "url": "https://github.com/caspianmoon/memoripy.git",
+    "name": "memory/memoripy"
+  },
+  {
+    "path": "memory/openmemory",
+    "url": "https://github.com/mem0ai/mem0.git",
+    "name": "memory/openmemory"
+  },
+  {
+    "path": "memory/zep",
+    "url": "https://github.com/getzep/zep.git",
+    "name": "memory/zep"
+  },
+  {
+    "path": "mlops/argo-workflows",
+    "url": "https://github.com/argoproj/argo-workflows.git",
+    "name": "mlops/argo-workflows"
+  },
+  {
+    "path": "mlops/clearml",
+    "url": "https://github.com/allegroai/clearml.git",
+    "name": "mlops/clearml"
+  },
+  {
+    "path": "mlops/dagster",
+    "url": "https://github.com/dagster-io/dagster.git",
+    "name": "mlops/dagster"
+  },
+  {
+    "path": "mlops/dvc",
+    "url": "https://github.com/iterative/dvc.git",
+    "name": "mlops/dvc"
+  },
+  {
+    "path": "mlops/evidently",
+    "url": "https://github.com/evidentlyai/evidently.git",
+    "name": "mlops/evidently"
+  },
+  {
+    "path": "mlops/feast",
+    "url": "https://github.com/feast-dev/feast.git",
+    "name": "mlops/feast"
+  },
+  {
+    "path": "mlops/flyte",
+    "url": "https://github.com/flyteorg/flyte.git",
+    "name": "mlops/flyte"
+  },
+  {
+    "path": "mlops/great-expectations",
+    "url": "https://github.com/great-expectations/great_expectations.git",
+    "name": "mlops/great-expectations"
+  },
+  {
+    "path": "mlops/hamilton",
+    "url": "https://github.com/DAGWorks-Inc/hamilton.git",
+    "name": "mlops/hamilton"
+  },
+  {
+    "path": "mlops/kubeflow",
+    "url": "https://github.com/kubeflow/kubeflow.git",
+    "name": "mlops-kubeflow"
+  },
+  {
+    "path": "mlops/metaflow",
+    "url": "https://github.com/Netflix/metaflow.git",
+    "name": "mlops/metaflow"
+  },
+  {
+    "path": "mlops/mlops-zoomcamp",
+    "url": "https://github.com/DataTalksClub/mlops-zoomcamp.git",
+    "name": "mlops/mlops-zoomcamp"
+  },
+  {
+    "path": "mlops/modal",
+    "url": "https://github.com/modal-labs/modal-examples.git",
+    "name": "mlops/modal"
+  },
+  {
+    "path": "mlops/prefect",
+    "url": "https://github.com/PrefectHQ/prefect.git",
+    "name": "mlops/prefect"
+  },
+  {
+    "path": "mlops/seldon-core",
+    "url": "https://github.com/SeldonIO/seldon-core.git",
+    "name": "mlops/seldon-core"
+  },
+  {
+    "path": "mlops/triton-server",
+    "url": "https://github.com/triton-inference-server/server.git",
+    "name": "mlops/triton-server"
+  },
+  {
+    "path": "mlops/wandb-weave",
+    "url": "https://github.com/wandb/weave.git",
+    "name": "mlops/wandb-weave"
+  },
+  {
+    "path": "mlops/zenml",
+    "url": "https://github.com/zenml-io/zenml.git",
+    "name": "mlops/zenml"
+  },
+  {
+    "path": "models/Marco-o1",
+    "url": "https://github.com/AIDC-AI/Marco-o1.git",
+    "name": "models/Marco-o1"
+  },
+  {
+    "path": "models/StableLM",
+    "url": "https://github.com/Stability-AI/StableLM.git",
+    "name": "models/StableLM"
+  },
+  {
+    "path": "models/arctic",
+    "url": "https://github.com/Snowflake-Labs/snowflake-arctic.git",
+    "name": "models/arctic"
+  },
+  {
+    "path": "models/bitnet",
+    "url": "https://github.com/microsoft/BitNet.git",
+    "name": "models/bitnet"
+  },
+  {
+    "path": "models/chatglm",
+    "url": "https://github.com/THUDM/ChatGLM-6B.git",
+    "name": "models/chatglm"
+  },
+  {
+    "path": "models/chatglm3",
+    "url": "https://github.com/THUDM/ChatGLM3.git",
+    "name": "models/chatglm3"
+  },
+  {
+    "path": "models/clip",
+    "url": "https://github.com/openai/CLIP.git",
+    "name": "models/clip"
+  },
+  {
+    "path": "models/codegeex",
+    "url": "https://github.com/THUDM/CodeGeeX.git",
+    "name": "models/codegeex"
+  },
+  {
+    "path": "models/codegeex2",
+    "url": "https://github.com/THUDM/CodeGeeX2.git",
+    "name": "models/codegeex2"
+  },
+  {
+    "path": "models/codellama",
+    "url": "https://github.com/meta-llama/codellama.git",
+    "name": "models/codellama"
+  },
+  {
+    "path": "models/cogagent",
+    "url": "https://github.com/THUDM/CogAgent.git",
+    "name": "models/cogagent"
+  },
+  {
+    "path": "models/cogvlm",
+    "url": "https://github.com/THUDM/CogVLM.git",
+    "name": "models/cogvlm"
+  },
+  {
+    "path": "models/cogvlm2",
+    "url": "https://github.com/THUDM/CogVLM2.git",
+    "name": "models/cogvlm2"
+  },
+  {
+    "path": "models/command-r",
+    "url": "https://github.com/cohere-ai/cohere-toolkit.git",
+    "name": "models/command-r"
+  },
+  {
+    "path": "models/command-r-plus",
+    "url": "https://github.com/CohereForAI/c4ai-command-r-plus.git",
+    "name": "models/command-r-plus"
+  },
+  {
+    "path": "models/corenet",
+    "url": "https://github.com/apple/corenet.git",
+    "name": "models/corenet"
+  },
+  {
+    "path": "models/dbrx",
+    "url": "https://github.com/databricks/dbrx.git",
+    "name": "models/dbrx"
+  },
+  {
+    "path": "models/deepmind-gemma",
+    "url": "https://github.com/google-deepmind/gemma.git",
+    "name": "models/deepmind-gemma"
+  },
+  {
+    "path": "models/deepseek-coder",
+    "url": "https://github.com/deepseek-ai/DeepSeek-Coder.git",
+    "name": "models/deepseek-coder"
+  },
+  {
+    "path": "models/deepseek-coder-v2",
+    "url": "https://github.com/deepseek-ai/DeepSeek-Coder-V2.git",
+    "name": "models/deepseek-coder-v2"
+  },
+  {
+    "path": "models/deepseek-llm",
+    "url": "https://github.com/deepseek-ai/DeepSeek-LLM.git",
+    "name": "models/deepseek-llm"
+  },
+  {
+    "path": "models/deepseek-math",
+    "url": "https://github.com/deepseek-ai/DeepSeek-Math.git",
+    "name": "models/deepseek-math"
+  },
+  {
+    "path": "models/deepseek-prover",
+    "url": "https://github.com/deepseek-ai/DeepSeek-Prover-V1.5.git",
+    "name": "models/deepseek-prover"
+  },
+  {
+    "path": "models/deepseek-r1",
+    "url": "https://github.com/deepseek-ai/DeepSeek-R1.git",
+    "name": "models/deepseek-r1"
+  },
+  {
+    "path": "models/deepseek-v2",
+    "url": "https://github.com/deepseek-ai/DeepSeek-V2.git",
+    "name": "models/deepseek-v2"
+  },
+  {
+    "path": "models/deepseek-v3",
+    "url": "https://github.com/deepseek-ai/DeepSeek-V3.git",
+    "name": "models/deepseek-v3"
+  },
+  {
+    "path": "models/exaone",
+    "url": "https://github.com/LG-AI-EXAONE/EXAONE-3.5.git",
+    "name": "models/exaone"
+  },
+  {
+    "path": "models/gemma",
+    "url": "https://github.com/google/gemma_pytorch.git",
+    "name": "models/gemma"
+  },
+  {
+    "path": "models/gemma2",
+    "url": "https://github.com/google-deepmind/gemma.git",
+    "name": "models/gemma2"
+  },
+  {
+    "path": "models/gemma3",
+    "url": "https://github.com/google-deepmind/gemma.git",
+    "name": "models/gemma3"
+  },
+  {
+    "path": "models/glm-4v",
+    "url": "https://github.com/THUDM/GLM-4V.git",
+    "name": "models/glm-4v"
+  },
+  {
+    "path": "models/glm-edge",
+    "url": "https://github.com/THUDM/GLM-Edge.git",
+    "name": "models/glm-edge"
+  },
+  {
+    "path": "models/glm4",
+    "url": "https://github.com/THUDM/GLM-4.git",
+    "name": "models/glm4"
+  },
+  {
+    "path": "models/granite",
+    "url": "https://github.com/ibm-granite/granite-code-models.git",
+    "name": "models/granite"
+  },
+  {
+    "path": "models/grin-moe",
+    "url": "https://github.com/microsoft/GRIN-MoE.git",
+    "name": "models/grin-moe"
+  },
+  {
+    "path": "models/grok",
+    "url": "https://github.com/xai-org/grok-1.git",
+    "name": "models/grok"
+  },
+  {
+    "path": "models/internlm",
+    "url": "https://github.com/InternLM/InternLM.git",
+    "name": "models/internlm"
+  },
+  {
+    "path": "models/internlm-math",
+    "url": "https://github.com/InternLM/internlm-math.git",
+    "name": "models/internlm-math"
+  },
+  {
+    "path": "models/internlm3",
+    "url": "https://github.com/InternLM/InternLM.git",
+    "name": "models/internlm3"
+  },
+  {
+    "path": "models/jamba",
+    "url": "https://github.com/AI21Labs/Jamba.git",
+    "name": "models/jamba"
+  },
+  {
+    "path": "models/llama",
+    "url": "https://github.com/meta-llama/llama.git",
+    "name": "models/llama"
+  },
+  {
+    "path": "models/llama-models",
+    "url": "https://github.com/meta-llama/llama-models.git",
+    "name": "models/llama-models"
+  },
+  {
+    "path": "models/llama3",
+    "url": "https://github.com/meta-llama/llama3.git",
+    "name": "models/llama3"
+  },
+  {
+    "path": "models/llava",
+    "url": "https://github.com/haotian-liu/LLaVA.git",
+    "name": "models/llava"
+  },
+  {
+    "path": "models/marco-o1",
+    "url": "https://github.com/AIDC-AI/Marco-o1.git",
+    "name": "models/marco-o1"
+  },
+  {
+    "path": "models/megrez",
+    "url": "https://github.com/infinigence/Infini-Megrez.git",
+    "name": "models/megrez"
+  },
+  {
+    "path": "models/minicpm",
+    "url": "https://github.com/OpenBMB/MiniCPM.git",
+    "name": "models/minicpm"
+  },
+  {
+    "path": "models/minicpm-o",
+    "url": "https://github.com/OpenBMB/MiniCPM-o.git",
+    "name": "models/minicpm-o"
+  },
+  {
+    "path": "models/minicpm-v",
+    "url": "https://github.com/OpenBMB/MiniCPM-V.git",
+    "name": "models/minicpm-v"
+  },
+  {
+    "path": "models/mistral-common",
+    "url": "https://github.com/mistralai/mistral-common.git",
+    "name": "models/mistral-common"
+  },
+  {
+    "path": "models/mistral-inference",
+    "url": "https://github.com/mistralai/mistral-inference.git",
+    "name": "models/mistral-inference"
+  },
+  {
+    "path": "models/mixtral",
+    "url": "https://github.com/mistralai/mixtral-inference.git",
+    "name": "models/mixtral"
+  },
+  {
+    "path": "models/moshi",
+    "url": "https://github.com/kyutai-labs/moshi.git",
+    "name": "models/moshi"
+  },
+  {
+    "path": "models/nemotron",
+    "url": "https://github.com/NVIDIA/NeMo.git",
+    "name": "models/nemotron"
+  },
+  {
+    "path": "models/olmo",
+    "url": "https://github.com/allenai/OLMo.git",
+    "name": "models/olmo"
+  },
+  {
+    "path": "models/olmo-2",
+    "url": "https://github.com/allenai/OLMo.git",
+    "name": "models/olmo-2"
+  },
+  {
+    "path": "models/olmo-model",
+    "url": "https://github.com/allenai/OLMo.git",
+    "name": "models/olmo-model"
+  },
+  {
+    "path": "models/olmoe",
+    "url": "https://github.com/allenai/OLMoE.git",
+    "name": "models/olmoe"
+  },
+  {
+    "path": "models/olmoe-model",
+    "url": "https://github.com/allenai/OLMoE.git",
+    "name": "models/olmoe-model"
+  },
+  {
+    "path": "models/open-r1",
+    "url": "https://github.com/huggingface/open-r1.git",
+    "name": "models/open-r1"
+  },
+  {
+    "path": "models/openchat",
+    "url": "https://github.com/imoneoi/openchat.git",
+    "name": "models/openchat"
+  },
+  {
+    "path": "models/openelm",
+    "url": "https://github.com/apple/corenet.git",
+    "name": "models/openelm"
+  },
+  {
+    "path": "models/orca",
+    "url": "https://github.com/microsoft/Orca.git",
+    "name": "models/orca"
+  },
+  {
+    "path": "models/orca2",
+    "url": "https://github.com/microsoft/Orca2.git",
+    "name": "models/orca2"
+  },
+  {
+    "path": "models/phi-3",
+    "url": "https://github.com/microsoft/Phi-3CookBook.git",
+    "name": "models/phi-3"
+  },
+  {
+    "path": "models/phi-cookbook",
+    "url": "https://github.com/microsoft/Phi-3CookBook.git",
+    "name": "models/phi-cookbook"
+  },
+  {
+    "path": "models/phi3",
+    "url": "https://github.com/microsoft/Phi-3CookBook.git",
+    "name": "models/phi3"
+  },
+  {
+    "path": "models/phi4",
+    "url": "https://github.com/microsoft/Phi-4.git",
+    "name": "models/phi4"
+  },
+  {
+    "path": "models/purple-llama",
+    "url": "https://github.com/meta-llama/PurpleLlama.git",
+    "name": "models/purple-llama"
+  },
+  {
+    "path": "models/purple-llama-guard",
+    "url": "https://github.com/meta-llama/PurpleLlama.git",
+    "name": "models/purple-llama-guard"
+  },
+  {
+    "path": "models/qwen",
+    "url": "https://github.com/QwenLM/Qwen.git",
+    "name": "models/qwen"
+  },
+  {
+    "path": "models/qwen-coder",
+    "url": "https://github.com/QwenLM/Qwen2.5-Coder.git",
+    "name": "models/qwen-coder"
+  },
+  {
+    "path": "models/qwen-math",
+    "url": "https://github.com/QwenLM/Qwen2-Math.git",
+    "name": "models/qwen-math"
+  },
+  {
+    "path": "models/qwen3",
+    "url": "https://github.com/QwenLM/Qwen3.git",
+    "name": "models/qwen3"
+  },
+  {
+    "path": "models/qwq",
+    "url": "https://github.com/QwenLM/QwQ.git",
+    "name": "models/qwq"
+  },
+  {
+    "path": "models/rwkv",
+    "url": "https://github.com/BlinkDL/RWKV-LM.git",
+    "name": "models/rwkv"
+  },
+  {
+    "path": "models/smollm",
+    "url": "https://github.com/huggingface/smollm.git",
+    "name": "models/smollm"
+  },
+  {
+    "path": "models/smollm2",
+    "url": "https://github.com/huggingface/smollm.git",
+    "name": "models/smollm2"
+  },
+  {
+    "path": "models/solar",
+    "url": "https://github.com/upstage/SOLAR.git",
+    "name": "models/solar"
+  },
+  {
+    "path": "models/starcoder",
+    "url": "https://github.com/bigcode-project/starcoder.git",
+    "name": "models/starcoder"
+  },
+  {
+    "path": "models/starcoder2",
+    "url": "https://github.com/bigcode-project/starcoder2.git",
+    "name": "models/starcoder2"
+  },
+  {
+    "path": "models/visualglm",
+    "url": "https://github.com/THUDM/VisualGLM-6B.git",
+    "name": "models/visualglm"
+  },
+  {
+    "path": "models/wizardcoder",
+    "url": "https://github.com/nlpxucan/WizardLM.git",
+    "name": "models/wizardcoder"
+  },
+  {
+    "path": "models/wizardlm",
+    "url": "https://github.com/nlpxucan/WizardLM.git",
+    "name": "models/wizardlm"
+  },
+  {
+    "path": "models/yi",
+    "url": "https://github.com/01-ai/Yi.git",
+    "name": "models/yi"
+  },
+  {
+    "path": "multimodal/cambrian",
+    "url": "https://github.com/cambrian-mllm/cambrian.git",
+    "name": "multimodal/cambrian"
+  },
+  {
+    "path": "multimodal/cogagent",
+    "url": "https://github.com/THUDM/CogAgent.git",
+    "name": "multimodal/cogagent"
+  },
+  {
+    "path": "multimodal/deepseek-vl",
+    "url": "https://github.com/deepseek-ai/DeepSeek-VL.git",
+    "name": "multimodal/deepseek-vl"
+  },
+  {
+    "path": "multimodal/ferret",
+    "url": "https://github.com/apple/ml-ferret.git",
+    "name": "multimodal/ferret"
+  },
+  {
+    "path": "multimodal/florence2",
+    "url": "https://github.com/microsoft/Florence-2-base.git",
+    "name": "multimodal/florence2"
+  },
+  {
+    "path": "multimodal/gemini-cookbook",
+    "url": "https://github.com/google-gemini/cookbook.git",
+    "name": "multimodal/gemini-cookbook"
+  },
+  {
+    "path": "multimodal/internvl",
+    "url": "https://github.com/OpenGVLab/InternVL.git",
+    "name": "multimodal/internvl"
+  },
+  {
+    "path": "multimodal/janus",
+    "url": "https://github.com/deepseek-ai/Janus.git",
+    "name": "multimodal/janus"
+  },
+  {
+    "path": "multimodal/llava-next",
+    "url": "https://github.com/LLaVA-VL/LLaVA-NeXT.git",
+    "name": "multimodal/llava-next"
+  },
+  {
+    "path": "multimodal/mantis",
+    "url": "https://github.com/TIGER-AI-Lab/Mantis.git",
+    "name": "multimodal/mantis"
+  },
+  {
+    "path": "multimodal/minigpt4",
+    "url": "https://github.com/Vision-CAIR/MiniGPT-4.git",
+    "name": "multimodal/minigpt4"
+  },
+  {
+    "path": "multimodal/molmo",
+    "url": "https://github.com/allenai/molmo.git",
+    "name": "multimodal/molmo"
+  },
+  {
+    "path": "multimodal/moondream",
+    "url": "https://github.com/vikhyat/moondream.git",
+    "name": "multimodal/moondream"
+  },
+  {
+    "path": "multimodal/ovis",
+    "url": "https://github.com/AIDC-AI/Ovis.git",
+    "name": "multimodal/ovis"
+  },
+  {
+    "path": "multimodal/paligemma",
+    "url": "https://github.com/google-research/big_vision.git",
+    "name": "multimodal/paligemma"
+  },
+  {
+    "path": "multimodal/pixtral",
+    "url": "https://github.com/mistralai/mistral-common.git",
+    "name": "multimodal/pixtral"
+  },
+  {
+    "path": "multimodal/qwen-vl",
+    "url": "https://github.com/QwenLM/Qwen-VL.git",
+    "name": "multimodal/qwen-vl"
+  },
+  {
+    "path": "platforms/activepieces",
+    "url": "https://github.com/activepieces/activepieces.git",
+    "name": "platforms/activepieces"
+  },
+  {
+    "path": "platforms/agentcloud",
+    "url": "https://github.com/rnadigital/agentcloud.git",
+    "name": "platforms/agentcloud"
+  },
+  {
+    "path": "platforms/automatisch",
+    "url": "https://github.com/automatisch/automatisch.git",
+    "name": "platforms/automatisch"
+  },
+  {
+    "path": "platforms/botpress",
+    "url": "https://github.com/botpress/botpress.git",
+    "name": "platforms/botpress"
+  },
+  {
+    "path": "platforms/chatgpt-next",
+    "url": "https://github.com/ChatGPTNextWeb/ChatGPT-Next-Web.git",
+    "name": "platforms/chatgpt-next"
+  },
+  {
+    "path": "platforms/dify",
+    "url": "https://github.com/langgenius/dify.git",
+    "name": "platforms/dify"
+  },
+  {
+    "path": "platforms/fastgpt",
+    "url": "https://github.com/labring/FastGPT.git",
+    "name": "platforms/fastgpt"
+  },
+  {
+    "path": "platforms/flowise",
+    "url": "https://github.com/FlowiseAI/Flowise.git",
+    "name": "platforms/flowise"
+  },
+  {
+    "path": "platforms/flowise-embed",
+    "url": "https://github.com/FlowiseAI/FlowiseChatEmbed.git",
+    "name": "platforms/flowise-embed"
+  },
+  {
+    "path": "platforms/gpt-academic",
+    "url": "https://github.com/binary-husky/gpt_academic.git",
+    "name": "platforms/gpt-academic"
+  },
+  {
+    "path": "platforms/langflow",
+    "url": "https://github.com/langflow-ai/langflow.git",
+    "name": "platforms/langflow"
+  },
+  {
+    "path": "platforms/maxkb",
+    "url": "https://github.com/1Panel-dev/MaxKB.git",
+    "name": "platforms/maxkb"
+  },
+  {
+    "path": "platforms/n8n",
+    "url": "https://github.com/n8n-io/n8n.git",
+    "name": "platforms/n8n"
+  },
+  {
+    "path": "platforms/oneapi",
+    "url": "https://github.com/songquanpeng/one-api.git",
+    "name": "platforms/oneapi"
+  },
+  {
+    "path": "platforms/opengpts",
+    "url": "https://github.com/langchain-ai/opengpts.git",
+    "name": "platforms/opengpts"
+  },
+  {
+    "path": "platforms/openwebui-pipelines",
+    "url": "https://github.com/open-webui/pipelines.git",
+    "name": "platforms/openwebui-pipelines"
+  },
+  {
+    "path": "platforms/ragapp",
+    "url": "https://github.com/ragapp/ragapp.git",
+    "name": "platforms/ragapp"
+  },
+  {
+    "path": "platforms/rasa",
+    "url": "https://github.com/RasaHQ/rasa.git",
+    "name": "platforms/rasa"
+  },
+  {
+    "path": "platforms/typebot",
+    "url": "https://github.com/baptisteArno/typebot.io.git",
+    "name": "platforms/typebot"
+  },
+  {
+    "path": "platforms/vane",
+    "url": "https://github.com/ItzCrazyKns/Vane.git",
+    "name": "platforms/vane"
+  },
+  {
+    "path": "platforms/windmill",
+    "url": "https://github.com/windmill-labs/windmill.git",
+    "name": "platforms/windmill"
+  },
+  {
+    "path": "reasoning/Awesome-LLM-Reasoning",
+    "url": "https://github.com/atfortes/Awesome-LLM-Reasoning.git",
+    "name": "reasoning/Awesome-LLM-Reasoning"
+  },
+  {
+    "path": "reasoning/adalflow",
+    "url": "https://github.com/SylphAI-Inc/AdalFlow.git",
+    "name": "reasoning/adalflow"
+  },
+  {
+    "path": "reasoning/agent-tuning",
+    "url": "https://github.com/THUDM/AgentTuning.git",
+    "name": "reasoning/agent-tuning"
+  },
+  {
+    "path": "reasoning/agentscope",
+    "url": "https://github.com/modelscope/agentscope.git",
+    "name": "reasoning/agentscope"
+  },
+  {
+    "path": "reasoning/agenttuning",
+    "url": "https://github.com/THUDM/AgentTuning.git",
+    "name": "reasoning/agenttuning"
+  },
+  {
+    "path": "reasoning/ai-town",
+    "url": "https://github.com/a16z-infra/ai-town.git",
+    "name": "reasoning/ai-town"
+  },
+  {
+    "path": "reasoning/bshr-loop",
+    "url": "https://github.com/daveshap/BSHR_Loop.git",
+    "name": "reasoning/bshr-loop"
+  },
+  {
+    "path": "reasoning/camel",
+    "url": "https://github.com/camel-ai/camel.git",
+    "name": "reasoning/camel"
+  },
+  {
+    "path": "reasoning/chain-of-thought-hub",
+    "url": "https://github.com/FranxYao/chain-of-thought-hub.git",
+    "name": "reasoning/chain-of-thought-hub"
+  },
+  {
+    "path": "reasoning/chain-of-verification",
+    "url": "https://github.com/ritun16/chain-of-verification.git",
+    "name": "reasoning/chain-of-verification"
+  },
+  {
+    "path": "reasoning/code-rag",
+    "url": "https://github.com/THUDM/CodeRAG.git",
+    "name": "reasoning/code-rag"
+  },
+  {
+    "path": "reasoning/cot-collection",
+    "url": "https://github.com/yaodongC/awesome-instruction-tuning.git",
+    "name": "reasoning/cot-collection"
+  },
+  {
+    "path": "reasoning/deepseek-r1",
+    "url": "https://github.com/deepseek-ai/DeepSeek-R1.git",
+    "name": "reasoning/deepseek-r1"
+  },
+  {
+    "path": "reasoning/ell",
+    "url": "https://github.com/MadcowD/ell.git",
+    "name": "reasoning/ell"
+  },
+  {
+    "path": "reasoning/gorilla",
+    "url": "https://github.com/ShishirPatil/gorilla.git",
+    "name": "reasoning/gorilla"
+  },
+  {
+    "path": "reasoning/graph-of-thoughts",
+    "url": "https://github.com/spcl/graph-of-thoughts.git",
+    "name": "reasoning/graph-of-thoughts"
+  },
+  {
+    "path": "reasoning/graphiti",
+    "url": "https://github.com/getzep/graphiti.git",
+    "name": "reasoning/graphiti"
+  },
+  {
+    "path": "reasoning/hugginggpt",
+    "url": "https://github.com/microsoft/JARVIS.git",
+    "name": "reasoning/hugginggpt"
+  },
+  {
+    "path": "reasoning/lean4",
+    "url": "https://github.com/leanprover/lean4.git",
+    "name": "reasoning/lean4"
+  },
+  {
+    "path": "reasoning/letta",
+    "url": "https://github.com/letta-ai/letta.git",
+    "name": "reasoning/letta"
+  },
+  {
+    "path": "reasoning/litgpt",
+    "url": "https://github.com/Lightning-AI/litgpt.git",
+    "name": "reasoning/litgpt"
+  },
+  {
+    "path": "reasoning/llm-reasoners",
+    "url": "https://github.com/maitrix-org/llm-reasoners.git",
+    "name": "reasoning/llm-reasoners"
+  },
+  {
+    "path": "reasoning/long-align",
+    "url": "https://github.com/THUDM/LongAlign.git",
+    "name": "reasoning/long-align"
+  },
+  {
+    "path": "reasoning/long-cite",
+    "url": "https://github.com/THUDM/LongCite.git",
+    "name": "reasoning/long-cite"
+  },
+  {
+    "path": "reasoning/long-reward",
+    "url": "https://github.com/THUDM/LongReward.git",
+    "name": "reasoning/long-reward"
+  },
+  {
+    "path": "reasoning/longcite",
+    "url": "https://github.com/THUDM/LongCite.git",
+    "name": "reasoning/longcite"
+  },
+  {
+    "path": "reasoning/longreward",
+    "url": "https://github.com/THUDM/LongReward.git",
+    "name": "reasoning/longreward"
+  },
+  {
+    "path": "reasoning/minichain",
+    "url": "https://github.com/srush/MiniChain.git",
+    "name": "reasoning/minichain"
+  },
+  {
+    "path": "reasoning/minicpm-r",
+    "url": "https://github.com/OpenBMB/MiniCPM.git",
+    "name": "reasoning/minicpm-r"
+  },
+  {
+    "path": "reasoning/o1-journey",
+    "url": "https://github.com/GAIR-NLP/O1-Journey.git",
+    "name": "reasoning/o1-journey"
+  },
+  {
+    "path": "reasoning/open-r1",
+    "url": "https://github.com/huggingface/open-r1.git",
+    "name": "reasoning/open-r1"
+  },
+  {
+    "path": "reasoning/opendevin",
+    "url": "https://github.com/OpenDevin/OpenDevin.git",
+    "name": "reasoning/opendevin"
+  },
+  {
+    "path": "reasoning/openr",
+    "url": "https://github.com/openreasoner/openr.git",
+    "name": "reasoning/openr"
+  },
+  {
+    "path": "reasoning/phidata",
+    "url": "https://github.com/phidatahq/phidata.git",
+    "name": "reasoning/phidata"
+  },
+  {
+    "path": "reasoning/prime-rl",
+    "url": "https://github.com/PRIME-RL/PRIME.git",
+    "name": "reasoning/prime-rl"
+  },
+  {
+    "path": "reasoning/prompttools",
+    "url": "https://github.com/hegelai/prompttools.git",
+    "name": "reasoning/prompttools"
+  },
+  {
+    "path": "reasoning/reasoning-with-llms",
+    "url": "https://github.com/atfortes/Awesome-LLM-Reasoning.git",
+    "name": "reasoning/reasoning-with-llms"
+  },
+  {
+    "path": "reasoning/reflexion",
+    "url": "https://github.com/noahshinn/reflexion.git",
+    "name": "reasoning/reflexion"
+  },
+  {
+    "path": "reasoning/s1",
+    "url": "https://github.com/simplescaling/s1.git",
+    "name": "reasoning/s1"
+  },
+  {
+    "path": "reasoning/search-o1",
+    "url": "https://github.com/sunnynexus/Search-o1.git",
+    "name": "reasoning/search-o1"
+  },
+  {
+    "path": "reasoning/self-oss-instruct",
+    "url": "https://github.com/bigcode-project/self-oss-instruct.git",
+    "name": "reasoning/self-oss-instruct"
+  },
+  {
+    "path": "reasoning/self-rag",
+    "url": "https://github.com/AkariAsai/self-rag.git",
+    "name": "reasoning/self-rag"
+  },
+  {
+    "path": "reasoning/self-refine",
+    "url": "https://github.com/madaan/self-refine.git",
+    "name": "reasoning/self-refine"
+  },
+  {
+    "path": "reasoning/skywork-o1",
+    "url": "https://github.com/SkyworkAI/Skywork-o1.git",
+    "name": "reasoning/skywork-o1"
+  },
+  {
+    "path": "reasoning/step-o1",
+    "url": "https://github.com/stepfun-ai/Step1.git",
+    "name": "reasoning/step-o1"
+  },
+  {
+    "path": "reasoning/task-matrix",
+    "url": "https://github.com/microsoft/TaskMatrix.git",
+    "name": "reasoning/task-matrix"
+  },
+  {
+    "path": "reasoning/taskmatrix",
+    "url": "https://github.com/microsoft/TaskMatrix.git",
+    "name": "reasoning/taskmatrix"
+  },
+  {
+    "path": "reasoning/tensorzero",
+    "url": "https://github.com/tensorzero/tensorzero.git",
+    "name": "reasoning/tensorzero"
+  },
+  {
+    "path": "reasoning/textgrad",
+    "url": "https://github.com/zou-group/textgrad.git",
+    "name": "reasoning/textgrad"
+  },
+  {
+    "path": "reasoning/tool-bench",
+    "url": "https://github.com/THUDM/ToolBench.git",
+    "name": "reasoning/tool-bench"
+  },
+  {
+    "path": "reasoning/toolformer",
+    "url": "https://github.com/lucidrains/toolformer-pytorch.git",
+    "name": "reasoning/toolformer"
+  },
+  {
+    "path": "reasoning/tree-of-thoughts",
+    "url": "https://github.com/princeton-nlp/tree-of-thought-llm.git",
+    "name": "reasoning/tree-of-thoughts"
+  },
+  {
+    "path": "reasoning/ultrainteract",
+    "url": "https://github.com/OpenBMB/UltraInteract.git",
+    "name": "reasoning/ultrainteract"
+  },
+  {
+    "path": "reasoning/visual-chatgpt",
+    "url": "https://github.com/microsoft/visual-chatgpt.git",
+    "name": "reasoning/visual-chatgpt"
+  },
+  {
+    "path": "reasoning/voyager",
+    "url": "https://github.com/MineDojo/Voyager.git",
+    "name": "reasoning/voyager"
+  },
+  {
+    "path": "reasoning/web-glm",
+    "url": "https://github.com/THUDM/WebGLM.git",
+    "name": "reasoning/web-glm"
+  },
+  {
+    "path": "reasoning/webglm",
+    "url": "https://github.com/THUDM/WebGLM.git",
+    "name": "reasoning/webglm"
+  },
+  {
+    "path": "robotics/dora-rs",
+    "url": "https://github.com/dora-rs/dora.git",
+    "name": "robotics/dora-rs"
+  },
+  {
+    "path": "robotics/genesis",
+    "url": "https://github.com/Genesis-Embodied-AI/Genesis.git",
+    "name": "robotics/genesis"
+  },
+  {
+    "path": "robotics/gymnasium",
+    "url": "https://github.com/Farama-Foundation/Gymnasium.git",
+    "name": "robotics/gymnasium"
+  },
+  {
+    "path": "robotics/habitat-lab",
+    "url": "https://github.com/facebookresearch/habitat-lab.git",
+    "name": "robotics/habitat-lab"
+  },
+  {
+    "path": "robotics/habitat-sim",
+    "url": "https://github.com/facebookresearch/habitat-sim.git",
+    "name": "robotics/habitat-sim"
+  },
+  {
+    "path": "robotics/isaaclab",
+    "url": "https://github.com/isaac-sim/IsaacLab.git",
+    "name": "robotics/isaaclab"
+  },
+  {
+    "path": "robotics/lerobot-hf",
+    "url": "https://github.com/huggingface/lerobot.git",
+    "name": "robotics/lerobot-hf"
+  },
+  {
+    "path": "robotics/mujoco",
+    "url": "https://github.com/google-deepmind/mujoco.git",
+    "name": "robotics/mujoco"
+  },
+  {
+    "path": "robotics/nav2",
+    "url": "https://github.com/ros-navigation/navigation2.git",
+    "name": "robotics/nav2"
+  },
+  {
+    "path": "robotics/open-x-embodiment",
+    "url": "https://github.com/google-deepmind/open_x_embodiment.git",
+    "name": "robotics/open-x-embodiment"
+  },
+  {
+    "path": "robotics/openpi",
+    "url": "https://github.com/Physical-Intelligence/openpi.git",
+    "name": "robotics/openpi"
+  },
+  {
+    "path": "robotics/openx",
+    "url": "https://github.com/google-deepmind/open_x_embodiment.git",
+    "name": "robotics/openx"
+  },
+  {
+    "path": "robotics/pybullet",
+    "url": "https://github.com/bulletphysics/bullet3.git",
+    "name": "robotics/pybullet"
+  },
+  {
+    "path": "robotics/robosuite",
+    "url": "https://github.com/ARISE-Initiative/robosuite.git",
+    "name": "robotics/robosuite"
+  },
+  {
+    "path": "robotics/ros2",
+    "url": "https://github.com/ros2/ros2.git",
+    "name": "robotics/ros2"
+  },
+  {
+    "path": "security/NeMo-Guardrails",
+    "url": "https://github.com/NVIDIA/NeMo-Guardrails.git",
+    "name": "security/NeMo-Guardrails"
+  },
+  {
+    "path": "security/adversarial-robustness-toolbox",
+    "url": "https://github.com/Trusted-AI/adversarial-robustness-toolbox.git",
+    "name": "security/adversarial-robustness-toolbox"
+  },
+  {
+    "path": "security/agentic-security",
+    "url": "https://github.com/msoedov/agentic-security.git",
+    "name": "security/agentic-security"
+  },
+  {
+    "path": "security/ai-exploits",
+    "url": "https://github.com/protectai/ai-exploits.git",
+    "name": "security/ai-exploits"
+  },
+  {
+    "path": "security/garak",
+    "url": "https://github.com/NVIDIA/garak.git",
+    "name": "security/garak"
+  },
+  {
+    "path": "security/guardrails",
+    "url": "https://github.com/guardrails-ai/guardrails.git",
+    "name": "security/guardrails"
+  },
+  {
+    "path": "security/heretic",
+    "url": "https://github.com/p-e-w/heretic.git",
+    "name": "security/heretic"
+  },
+  {
+    "path": "security/llm-attacks",
+    "url": "https://github.com/llm-attacks/llm-attacks.git",
+    "name": "security/llm-attacks"
+  },
+  {
+    "path": "security/llm-guard",
+    "url": "https://github.com/protectai/llm-guard.git",
+    "name": "security/llm-guard"
+  },
+  {
+    "path": "security/llm-security",
+    "url": "https://github.com/greshake/llm-security.git",
+    "name": "security/llm-security"
+  },
+  {
+    "path": "security/pyrit",
+    "url": "https://github.com/Azure/PyRIT.git",
+    "name": "security/pyrit"
+  },
+  {
+    "path": "security/rebuff",
+    "url": "https://github.com/protectai/rebuff.git",
+    "name": "security/rebuff"
+  },
+  {
+    "path": "security/vigil",
+    "url": "https://github.com/deadbits/vigil-llm.git",
+    "name": "security/vigil"
+  },
+  {
+    "path": "skills/ai-prompts",
+    "url": "https://github.com/instructa/ai-prompts.git",
+    "name": "skills/ai-prompts"
+  },
+  {
+    "path": "skills/anthropic-cookbook",
+    "url": "https://github.com/anthropics/anthropic-cookbook.git",
+    "name": "skills/anthropic-cookbook"
+  },
+  {
+    "path": "skills/awesome-claude-code",
+    "url": "https://github.com/hesreallyhim/awesome-claude-code.git",
+    "name": "skills/awesome-claude-code"
+  },
+  {
+    "path": "skills/awesome-cursorrules",
+    "url": "https://github.com/PatrickJS/awesome-cursorrules.git",
+    "name": "skills/awesome-cursorrules"
+  },
+  {
+    "path": "skills/awesome-mcp-servers",
+    "url": "https://github.com/TensorBlock/awesome-mcp-servers.git",
+    "name": "skills/awesome-mcp-servers"
+  },
+  {
+    "path": "skills/browser-use",
+    "url": "https://github.com/browser-use/browser-use.git",
+    "name": "skills/browser-use"
+  },
+  {
+    "path": "skills/chatgpt-autoexpert",
+    "url": "https://github.com/spdustin/ChatGPT-AutoExpert.git",
+    "name": "skills/chatgpt-autoexpert"
+  },
+  {
+    "path": "skills/claude-code-action",
+    "url": "https://github.com/anthropics/claude-code-action.git",
+    "name": "skills/claude-code-action"
+  },
+  {
+    "path": "skills/fabric",
+    "url": "https://github.com/danielmiessler/fabric.git",
+    "name": "skills/fabric"
+  },
+  {
+    "path": "skills/gemini-cookbook",
+    "url": "https://github.com/google-gemini/cookbook.git",
+    "name": "skills/gemini-cookbook"
+  },
+  {
+    "path": "skills/google-ai-docs",
+    "url": "https://github.com/google/generative-ai-docs.git",
+    "name": "skills/google-ai-docs"
+  },
+  {
+    "path": "skills/instructor",
+    "url": "https://github.com/jxnl/instructor.git",
+    "name": "skills/instructor"
+  },
+  {
+    "path": "skills/instructor-ai",
+    "url": "https://github.com/jxnl/instructor.git",
+    "name": "skills/instructor-ai"
+  },
+  {
+    "path": "skills/lobe-chat-agents",
+    "url": "https://github.com/lobehub/lobe-chat-agents.git",
+    "name": "skills/lobe-chat-agents"
+  },
+  {
+    "path": "skills/openai-cookbook",
+    "url": "https://github.com/openai/openai-cookbook.git",
+    "name": "skills/openai-cookbook"
+  },
+  {
+    "path": "skills/prompt-engineering",
+    "url": "https://github.com/NirDiamant/Prompt_Engineering.git",
+    "name": "skills/prompt-engineering"
+  },
+  {
+    "path": "skills/prompt-engineering-guide",
+    "url": "https://github.com/dair-ai/Prompt-Engineering-Guide.git",
+    "name": "skills/prompt-engineering-guide"
+  },
+  {
+    "path": "skills/rags",
+    "url": "https://github.com/run-llama/rags.git",
+    "name": "skills/rags"
+  },
+  {
+    "path": "skills/search-with-lepton",
+    "url": "https://github.com/leptonai/search_with_lepton.git",
+    "name": "skills/search-with-lepton"
+  },
+  {
+    "path": "training/AutoAWQ",
+    "url": "https://github.com/casper-hansen/AutoAWQ.git",
+    "name": "training/AutoAWQ"
+  },
+  {
+    "path": "training/DeepSpeed",
+    "url": "https://github.com/microsoft/DeepSpeed.git",
+    "name": "training/DeepSpeed"
+  },
+  {
+    "path": "training/FBGEMM",
+    "url": "https://github.com/pytorch/FBGEMM.git",
+    "name": "training/FBGEMM"
+  },
+  {
+    "path": "training/LLaMA-Factory",
+    "url": "https://github.com/hiyouga/LLaMA-Factory.git",
+    "name": "training/LLaMA-Factory"
+  },
+  {
+    "path": "training/OpenRLHF",
+    "url": "https://github.com/OpenRLHF/OpenRLHF.git",
+    "name": "training/OpenRLHF"
+  },
+  {
+    "path": "training/TensorRT-LLM",
+    "url": "https://github.com/NVIDIA/TensorRT-LLM.git",
+    "name": "training/TensorRT-LLM"
+  },
+  {
+    "path": "training/accelerate",
+    "url": "https://github.com/huggingface/accelerate.git",
+    "name": "training/accelerate"
+  },
+  {
+    "path": "training/alignment-handbook",
+    "url": "https://github.com/huggingface/alignment-handbook.git",
+    "name": "training/alignment-handbook"
+  },
+  {
+    "path": "training/autogptq",
+    "url": "https://github.com/AutoGPTQ/AutoGPTQ.git",
+    "name": "training/autogptq"
+  },
+  {
+    "path": "training/axolotl",
+    "url": "https://github.com/axolotl-ai-cloud/axolotl.git",
+    "name": "training/axolotl"
+  },
+  {
+    "path": "training/bitsandbytes",
+    "url": "https://github.com/bitsandbytes-foundation/bitsandbytes.git",
+    "name": "training/bitsandbytes"
+  },
+  {
+    "path": "training/composer",
+    "url": "https://github.com/mosaicml/composer.git",
+    "name": "training/composer"
+  },
+  {
+    "path": "training/cutlass",
+    "url": "https://github.com/NVIDIA/cutlass.git",
+    "name": "training/cutlass"
+  },
+  {
+    "path": "training/deepspeed-advanced",
+    "url": "https://github.com/microsoft/DeepSpeed.git",
+    "name": "training/deepspeed-advanced"
+  },
+  {
+    "path": "training/deepspeed-examples",
+    "url": "https://github.com/microsoft/DeepSpeedExamples.git",
+    "name": "training/deepspeed-examples"
+  },
+  {
+    "path": "training/deepspeed-mii",
+    "url": "https://github.com/microsoft/DeepSpeed-MII.git",
+    "name": "training/deepspeed-mii"
+  },
+  {
+    "path": "training/dora",
+    "url": "https://github.com/NVlabs/DoRA.git",
+    "name": "training/dora"
+  },
+  {
+    "path": "training/dpo",
+    "url": "https://github.com/eric-mitchell/direct-preference-optimization.git",
+    "name": "training/dpo"
+  },
+  {
+    "path": "training/exllamav2",
+    "url": "https://github.com/turboderp/exllamav2.git",
+    "name": "training/exllamav2"
+  },
+  {
+    "path": "training/flash-attention",
+    "url": "https://github.com/Dao-AILab/flash-attention.git",
+    "name": "training/flash-attention"
+  },
+  {
+    "path": "training/flashinfer",
+    "url": "https://github.com/flashinfer-ai/flashinfer.git",
+    "name": "training/flashinfer"
+  },
+  {
+    "path": "training/galore",
+    "url": "https://github.com/jiaweizzhao/GaLore.git",
+    "name": "training/galore"
+  },
+  {
+    "path": "training/ggml",
+    "url": "https://github.com/ggerganov/ggml.git",
+    "name": "training/ggml"
+  },
+  {
+    "path": "training/gpt-neox",
+    "url": "https://github.com/EleutherAI/gpt-neox.git",
+    "name": "training/gpt-neox"
+  },
+  {
+    "path": "training/jax",
+    "url": "https://github.com/jax-ml/jax.git",
+    "name": "training/jax"
+  },
+  {
+    "path": "training/keras",
+    "url": "https://github.com/keras-team/keras.git",
+    "name": "training/keras"
+  },
+  {
+    "path": "training/kto",
+    "url": "https://github.com/ContextualAI/HALOs.git",
+    "name": "training/kto"
+  },
+  {
+    "path": "training/liger-kernel",
+    "url": "https://github.com/linkedin/Liger-Kernel.git",
+    "name": "training/liger-kernel"
+  },
+  {
+    "path": "training/litgpt",
+    "url": "https://github.com/Lightning-AI/litgpt.git",
+    "name": "training/litgpt"
+  },
+  {
+    "path": "training/llama-adapter",
+    "url": "https://github.com/ZrrSkywalker/LLaMA-Adapter.git",
+    "name": "training/llama-adapter"
+  },
+  {
+    "path": "training/llama-cpp-python",
+    "url": "https://github.com/abetlen/llama-cpp-python.git",
+    "name": "training/llama-cpp-python"
+  },
+  {
+    "path": "training/llama-pro",
+    "url": "https://github.com/TencentARC/LLaMA-Pro.git",
+    "name": "training/llama-pro"
+  },
+  {
+    "path": "training/long-lora",
+    "url": "https://github.com/dvlab-research/LongLoRA.git",
+    "name": "training/long-lora"
+  },
+  {
+    "path": "training/lora",
+    "url": "https://github.com/microsoft/LoRA.git",
+    "name": "training/lora"
+  },
+  {
+    "path": "training/loraplus",
+    "url": "https://github.com/evanarlian/loraplus.git",
+    "name": "training/loraplus"
+  },
+  {
+    "path": "training/lorax",
+    "url": "https://github.com/predibase/lorax.git",
+    "name": "training/lorax"
+  },
+  {
+    "path": "training/megatron-lm",
+    "url": "https://github.com/NVIDIA/Megatron-LM.git",
+    "name": "training/megatron-lm"
+  },
+  {
+    "path": "training/mistral-finetune",
+    "url": "https://github.com/mistralai/mistral-finetune.git",
+    "name": "training/mistral-finetune"
+  },
+  {
+    "path": "training/mlx",
+    "url": "https://github.com/ml-explore/mlx.git",
+    "name": "training/mlx"
+  },
+  {
+    "path": "training/mlx-examples",
+    "url": "https://github.com/ml-explore/mlx-examples.git",
+    "name": "training/mlx-examples"
+  },
+  {
+    "path": "training/ms-swift",
+    "url": "https://github.com/modelscope/ms-swift.git",
+    "name": "training/ms-swift"
+  },
+  {
+    "path": "training/nanotron",
+    "url": "https://github.com/huggingface/nanotron.git",
+    "name": "training/nanotron"
+  },
+  {
+    "path": "training/nemo",
+    "url": "https://github.com/NVIDIA/NeMo.git",
+    "name": "training/nemo"
+  },
+  {
+    "path": "training/olive",
+    "url": "https://github.com/microsoft/Olive.git",
+    "name": "training/olive"
+  },
+  {
+    "path": "training/onnx",
+    "url": "https://github.com/onnx/onnx.git",
+    "name": "training/onnx"
+  },
+  {
+    "path": "training/open-instruct",
+    "url": "https://github.com/allenai/open-instruct.git",
+    "name": "training/open-instruct"
+  },
+  {
+    "path": "training/openrlhf",
+    "url": "https://github.com/OpenRLHF/OpenRLHF.git",
+    "name": "training/openrlhf"
+  },
+  {
+    "path": "training/openvino",
+    "url": "https://github.com/openvinotoolkit/openvino.git",
+    "name": "training/openvino"
+  },
+  {
+    "path": "training/optimum",
+    "url": "https://github.com/huggingface/optimum.git",
+    "name": "training/optimum"
+  },
+  {
+    "path": "training/orpo",
+    "url": "https://github.com/xfactlab/orpo.git",
+    "name": "training/orpo"
+  },
+  {
+    "path": "training/peft",
+    "url": "https://github.com/huggingface/peft.git",
+    "name": "training/peft"
+  },
+  {
+    "path": "training/petals",
+    "url": "https://github.com/bigscience-workshop/petals.git",
+    "name": "training/petals"
+  },
+  {
+    "path": "training/pytorch-lightning",
+    "url": "https://github.com/Lightning-AI/pytorch-lightning.git",
+    "name": "training/pytorch-lightning"
+  },
+  {
+    "path": "training/qlora",
+    "url": "https://github.com/artidoro/qlora.git",
+    "name": "training/qlora"
+  },
+  {
+    "path": "training/reft",
+    "url": "https://github.com/stanfordnlp/pyreft.git",
+    "name": "training/reft"
+  },
+  {
+    "path": "training/rlhf",
+    "url": "https://github.com/CarperAI/trlx.git",
+    "name": "training/rlhf"
+  },
+  {
+    "path": "training/sglang",
+    "url": "https://github.com/sgl-project/sglang.git",
+    "name": "training/sglang"
+  },
+  {
+    "path": "training/simpo",
+    "url": "https://github.com/princeton-nlp/SimPO.git",
+    "name": "training/simpo"
+  },
+  {
+    "path": "training/text-generation-inference",
+    "url": "https://github.com/huggingface/text-generation-inference.git",
+    "name": "training/text-generation-inference"
+  },
+  {
+    "path": "training/torchao",
+    "url": "https://github.com/pytorch/ao.git",
+    "name": "training/torchao"
+  },
+  {
+    "path": "training/torchtitan",
+    "url": "https://github.com/pytorch/torchtitan.git",
+    "name": "training/torchtitan"
+  },
+  {
+    "path": "training/torchtune",
+    "url": "https://github.com/pytorch/torchtune.git",
+    "name": "training/torchtune"
+  },
+  {
+    "path": "training/transformers",
+    "url": "https://github.com/huggingface/transformers.git",
+    "name": "training/transformers"
+  },
+  {
+    "path": "training/triton",
+    "url": "https://github.com/triton-lang/triton.git",
+    "name": "training/triton"
+  },
+  {
+    "path": "training/trl",
+    "url": "https://github.com/huggingface/trl.git",
+    "name": "training/trl"
+  },
+  {
+    "path": "training/tvm",
+    "url": "https://github.com/apache/tvm.git",
+    "name": "training/tvm"
+  },
+  {
+    "path": "training/unsloth",
+    "url": "https://github.com/unslothai/unsloth.git",
+    "name": "training/unsloth"
+  },
+  {
+    "path": "training/verl",
+    "url": "https://github.com/volcengine/verl.git",
+    "name": "training/verl"
+  },
+  {
+    "path": "training/xformers",
+    "url": "https://github.com/facebookresearch/xformers.git",
+    "name": "training/xformers"
+  },
+  {
+    "path": "video/AnimateDiff",
+    "url": "https://github.com/guoyww/AnimateDiff.git",
+    "name": "video/AnimateDiff"
+  },
+  {
+    "path": "video/CogVideo",
+    "url": "https://github.com/THUDM/CogVideo.git",
+    "name": "video/CogVideo"
+  },
+  {
+    "path": "video/Open-Sora",
+    "url": "https://github.com/hpcaitech/Open-Sora.git",
+    "name": "video/Open-Sora"
+  },
+  {
+    "path": "video/hallo",
+    "url": "https://github.com/fudan-generative-vision/hallo.git",
+    "name": "video/hallo"
+  },
+  {
+    "path": "video/hunyuan-video",
+    "url": "https://github.com/Tencent/HunyuanVideo.git",
+    "name": "video/hunyuan-video"
+  },
+  {
+    "path": "video/live-portrait",
+    "url": "https://github.com/KwaiVGI/LivePortrait.git",
+    "name": "video/live-portrait"
+  },
+  {
+    "path": "video/ltx-video",
+    "url": "https://github.com/Lightricks/LTX-Video.git",
+    "name": "video/ltx-video"
+  },
+  {
+    "path": "video/memo",
+    "url": "https://github.com/memoavatar/memo.git",
+    "name": "video/memo"
+  },
+  {
+    "path": "video/mochi",
+    "url": "https://github.com/genmoai/mochi.git",
+    "name": "video/mochi"
+  },
+  {
+    "path": "video/moneyprinter",
+    "url": "https://github.com/harry0703/MoneyPrinterTurbo.git",
+    "name": "video/moneyprinter"
+  },
+  {
+    "path": "video/open-sora-plan",
+    "url": "https://github.com/PKU-YuanGroup/Open-Sora-Plan.git",
+    "name": "video/open-sora-plan"
+  },
+  {
+    "path": "video/stable-video",
+    "url": "https://github.com/Stability-AI/generative-models.git",
+    "name": "video/stable-video"
+  },
+  {
+    "path": "video/step-video",
+    "url": "https://github.com/stepfun-ai/Step-Video.git",
+    "name": "video/step-video"
+  },
+  {
+    "path": "video/wan-video",
+    "url": "https://github.com/Wan-Video/Wan2.1.git",
+    "name": "video/wan-video"
+  },
+  {
+    "path": "vision/ComfyUI",
+    "url": "https://github.com/comfyanonymous/ComfyUI.git",
+    "name": "vision/ComfyUI"
+  },
+  {
+    "path": "vision/OmniParser",
+    "url": "https://github.com/microsoft/OmniParser.git",
+    "name": "vision/OmniParser"
+  },
+  {
+    "path": "vision/birefnet",
+    "url": "https://github.com/ZhengPeng7/BiRefNet.git",
+    "name": "vision/birefnet"
+  },
+  {
+    "path": "vision/cogview",
+    "url": "https://github.com/THUDM/CogView.git",
+    "name": "vision/cogview"
+  },
+  {
+    "path": "vision/controlnet",
+    "url": "https://github.com/lllyasviel/ControlNet.git",
+    "name": "vision/controlnet"
+  },
+  {
+    "path": "vision/dalle2-pytorch",
+    "url": "https://github.com/lucidrains/DALLE2-pytorch.git",
+    "name": "vision/dalle2-pytorch"
+  },
+  {
+    "path": "vision/deep-live-cam",
+    "url": "https://github.com/hacksider/Deep-Live-Cam.git",
+    "name": "vision/deep-live-cam"
+  },
+  {
+    "path": "vision/depth-anything",
+    "url": "https://github.com/DepthAnything/Depth-Anything-V2.git",
+    "name": "vision/depth-anything"
+  },
+  {
+    "path": "vision/detectron2",
+    "url": "https://github.com/facebookresearch/detectron2.git",
+    "name": "vision/detectron2"
+  },
+  {
+    "path": "vision/diffusers",
+    "url": "https://github.com/huggingface/diffusers.git",
+    "name": "vision/diffusers"
+  },
+  {
+    "path": "vision/facefusion",
+    "url": "https://github.com/facefusion/facefusion.git",
+    "name": "vision/facefusion"
+  },
+  {
+    "path": "vision/flux",
+    "url": "https://github.com/black-forest-labs/flux.git",
+    "name": "vision/flux"
+  },
+  {
+    "path": "vision/fooocus",
+    "url": "https://github.com/lllyasviel/Fooocus.git",
+    "name": "vision/fooocus"
+  },
+  {
+    "path": "vision/grounding-dino",
+    "url": "https://github.com/IDEA-Research/GroundingDINO.git",
+    "name": "vision/grounding-dino"
+  },
+  {
+    "path": "vision/hunyuan-dit",
+    "url": "https://github.com/Tencent/HunyuanDiT.git",
+    "name": "vision/hunyuan-dit"
+  },
+  {
+    "path": "vision/ic-light",
+    "url": "https://github.com/lllyasviel/IC-Light.git",
+    "name": "vision/ic-light"
+  },
+  {
+    "path": "vision/imagen-pytorch",
+    "url": "https://github.com/lucidrains/imagen-pytorch.git",
+    "name": "vision/imagen-pytorch"
+  },
+  {
+    "path": "vision/instantid",
+    "url": "https://github.com/InstantID/InstantID.git",
+    "name": "vision/instantid"
+  },
+  {
+    "path": "vision/instruct-pix2pix",
+    "url": "https://github.com/timothybrooks/instruct-pix2pix.git",
+    "name": "vision/instruct-pix2pix"
+  },
+  {
+    "path": "vision/invokeai",
+    "url": "https://github.com/invoke-ai/InvokeAI.git",
+    "name": "vision/invokeai"
+  },
+  {
+    "path": "vision/ip-adapter",
+    "url": "https://github.com/tencent-ailab/IP-Adapter.git",
+    "name": "vision/ip-adapter"
+  },
+  {
+    "path": "vision/kohya-ss",
+    "url": "https://github.com/kohya-ss/sd-scripts.git",
+    "name": "vision/kohya-ss"
+  },
+  {
+    "path": "vision/kolors",
+    "url": "https://github.com/Kwai-Kolors/Kolors.git",
+    "name": "vision/kolors"
+  },
+  {
+    "path": "vision/ml-stable-diffusion",
+    "url": "https://github.com/apple/ml-stable-diffusion.git",
+    "name": "vision/ml-stable-diffusion"
+  },
+  {
+    "path": "vision/mmdetection",
+    "url": "https://github.com/open-mmlab/mmdetection.git",
+    "name": "vision/mmdetection"
+  },
+  {
+    "path": "vision/omniparser",
+    "url": "https://github.com/microsoft/OmniParser.git",
+    "name": "vision/omniparser"
+  },
+  {
+    "path": "vision/omost",
+    "url": "https://github.com/lllyasviel/Omost.git",
+    "name": "vision/omost"
+  },
+  {
+    "path": "vision/photomaker",
+    "url": "https://github.com/TencentARC/PhotoMaker.git",
+    "name": "vision/photomaker"
+  },
+  {
+    "path": "vision/pixart",
+    "url": "https://github.com/PixArt-alpha/PixArt-alpha.git",
+    "name": "vision/pixart"
+  },
+  {
+    "path": "vision/point-e",
+    "url": "https://github.com/openai/point-e.git",
+    "name": "vision/point-e"
+  },
+  {
+    "path": "vision/realesrgan",
+    "url": "https://github.com/xinntao/Real-ESRGAN.git",
+    "name": "vision/realesrgan"
+  },
+  {
+    "path": "vision/rembg",
+    "url": "https://github.com/danielgatis/rembg.git",
+    "name": "vision/rembg"
+  },
+  {
+    "path": "vision/sam2",
+    "url": "https://github.com/facebookresearch/sam2.git",
+    "name": "vision/sam2"
+  },
+  {
+    "path": "vision/segment-anything",
+    "url": "https://github.com/facebookresearch/segment-anything.git",
+    "name": "vision/segment-anything"
+  },
+  {
+    "path": "vision/shap-e",
+    "url": "https://github.com/openai/shap-e.git",
+    "name": "vision/shap-e"
+  },
+  {
+    "path": "vision/stability-generative",
+    "url": "https://github.com/Stability-AI/generative-models.git",
+    "name": "vision/stability-generative"
+  },
+  {
+    "path": "vision/stable-cascade",
+    "url": "https://github.com/Stability-AI/StableCascade.git",
+    "name": "vision/stable-cascade"
+  },
+  {
+    "path": "vision/stable-diffusion-original",
+    "url": "https://github.com/CompVis/stable-diffusion.git",
+    "name": "vision/stable-diffusion-original"
+  },
+  {
+    "path": "vision/stable-diffusion-webui",
+    "url": "https://github.com/AUTOMATIC1111/stable-diffusion-webui.git",
+    "name": "vision/stable-diffusion-webui"
+  },
+  {
+    "path": "vision/supervision",
+    "url": "https://github.com/roboflow/supervision.git",
+    "name": "vision/supervision"
+  },
+  {
+    "path": "vision/ultralytics",
+    "url": "https://github.com/ultralytics/ultralytics.git",
+    "name": "vision/ultralytics"
+  },
+  {
+    "path": "vision/yolov9",
+    "url": "https://github.com/WongKinYiu/yolov9.git",
+    "name": "vision/yolov9"
+  }
+]

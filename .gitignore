@@ -1,1 +1,37 @@
-﻿add-repos.ps1
+﻿# Manifest system (submodules replaced by repos.json)
+training/
+infrastructure/
+frameworks/
+agents/
+skills/
+platforms/
+memory/
+data-rag/
+evaluation/
+security/
+vision/
+audio/
+video/
+knowledge/
+mcp-servers/
+reasoning/
+models/
+mlops/
+robotics/
+multimodal/
+repos/
+*.gitmodules.bak
+
+# Keep only manifest files
+!repos.json
+!clone_repos.py
+!clone_repos.sh
+!README.md
+!INSTALLATION_SUMMARY.md
+!add-repos.ps1
+
+# Ignore actual cloned content
+**/.git/
+**/__pycache__/
+**/node_modules/
+**/.venv/

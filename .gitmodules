@@ -2567,3 +2567,36 @@
 [submodule "vision/stable-cascade"]
         path = vision/stable-cascade
         url = https://github.com/Stability-AI/StableCascade.git
+[submodule "training/optimum"]
+	path = training/optimum
+	url = https://github.com/huggingface/optimum.git
+[submodule "training/AutoAWQ"]
+	path = training/AutoAWQ
+	url = https://github.com/casper-hansen/AutoAWQ.git
+[submodule "training/xformers"]
+	path = training/xformers
+	url = https://github.com/facebookresearch/xformers.git
+[submodule "training/triton"]
+	path = training/triton
+	url = https://github.com/triton-lang/triton.git
+[submodule "training/sglang"]
+	path = training/sglang
+	url = https://github.com/sgl-project/sglang.git
+[submodule "infrastructure/llama.cpp"]
+	path = infrastructure/llama.cpp
+	url = https://github.com/ggml-org/llama.cpp.git
+[submodule "training/flashinfer"]
+	path = training/flashinfer
+	url = https://github.com/flashinfer-ai/flashinfer.git
+[submodule "training/FBGEMM"]
+	path = training/FBGEMM
+	url = https://github.com/pytorch/FBGEMM.git
+[submodule "training/onnx"]
+	path = training/onnx
+	url = https://github.com/onnx/onnx.git
+[submodule "training/openvino"]
+	path = training/openvino
+	url = https://github.com/openvinotoolkit/openvino.git
+[submodule "training/tvm"]
+	path = training/tvm
+	url = https://github.com/apache/tvm.git

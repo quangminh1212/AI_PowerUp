@@ -198,26 +198,36 @@ Vision-language and multimodal foundation models:
 - **New**: `deepseek-vl` (DeepSeek Vision), `molmo` (AllenAI), `paligemma` (Google), `gemini-cookbook` (Google), `cogagent` (Zhipu), `fuyu` (Adept).
 - **v4 New**: `janus` (DeepSeek unified multimodal), `mantis` (TIGER-AI interleaved multimodal).
 
-## Quick Start
+## Quick Start (Manifest mode - no git submodules)
 
 ```bash
-# 1. Clone (submodules are reference-only, no data downloaded)
-git clone https://github.com/quangminh1212/AI.git
+# 1. Clone this repo (manifest only)
+git clone https://github.com/quangminh1212/AI_PowerUp.git
+cd AI_PowerUp
 
-# 2. Init only the submodules you need
-git submodule update --init --depth 1 frameworks/langchain
-git submodule update --init --depth 1 infrastructure/ollama
+# 2. Clone repos you need (shallow, reference-only)
+python clone_repos.py
+# or
+bash clone_repos.sh
 
-# 3. Copy skills for Auto Skill Discovery
+# 3. Clone specific category only
+jq -r '.[] | select(.path | startswith("training/")) | .path + " " + .url' repos.json | while read p u; do
+  mkdir -p "$(dirname "$p")"; git clone --depth 1 "$u" "$p" || true
+done
+
+# 4. Optional: copy skills
 cp -r skills/ ~/.agent/skills/
-
-# 4. Run local models (optional)
-cd infrastructure/ollama && ollama serve
 ```
 
 ## Project Statistics
-- **Total Submodules**: 568
+- **Total Repos**: 821 (via manifest)
 - **Categories**: 20
-- **Storage Mode**: Reference-only (no data cloned by default)
-- **New in v3**: 103 new repos across all categories — expanded MCP SDKs, security tools, voice/video AI, robotics, MLOps, and multimodal models
-- **New in v4**: 44 new repos — enterprise agent frameworks, RAG evaluation, LLM observability, security testing, training optimization, multimodal reasoning, and workflow automation platforms
+- **Storage Mode**: Manifest + shallow clone (no git submodules)
+- **Size**: repos.json ~114KB (lightweight)
+- **New**: Switched from 532+ submodules to manifest system for speed & smaller repo size
+
+## Update manifest (when adding new repos)
+1. `git submodule add <url> <path>` (temporary)
+2. `python -c "..."` (regenerate repos.json)
+3. `rm -rf .git/modules/...` + remove from .gitmodules
+4. Commit `repos.json` only
