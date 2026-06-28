@@ -35,3 +35,7 @@ repos/
 **/__pycache__/
 **/node_modules/
 **/.venv/
+# Temp install / summary files
+INSTALLATION_SUMMARY.md
+MCP_INSTALLED.md
+install_*.sh
