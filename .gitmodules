@@ -625,6 +625,7 @@
 [submodule "frameworks/superpowers"]
 	path = frameworks/superpowers
 	url = https://github.com/obra/superpowers.git
+	branch = main
 [submodule "frameworks/ccpm"]
 	path = frameworks/ccpm
 	url = https://github.com/automazeio/ccpm.git
