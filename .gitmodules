@@ -79,9 +79,6 @@
 [submodule "agents/sweep"]
 	path = agents/sweep
 	url = https://github.com/sweepai/sweep.git
-[submodule "agents/mentat"]
-	path = agents/mentat
-	url = https://github.com/AbanteAI/mentat.git
 [submodule "agents/plandex"]
 	path = agents/plandex
 	url = https://github.com/plandex-ai/plandex.git
@@ -97,27 +94,9 @@
 [submodule "agents/Skyvern"]
 	path = agents/Skyvern
 	url = https://github.com/Skywork/Skyvern.git
-[submodule "agents/XAgent"]
-	path = agents/XAgent
-	url = https://github.com/OpenBMB/XAgent.git
 [submodule "agents/codegeex"]
 	path = agents/codegeex
 	url = https://github.com/THUDM/CodeGeeX.git
-[submodule "agents/jarvis-ai"]
-	path = agents/jarvis-ai
-	url = https://github.com/microsoft/JARVIS.git
-[submodule "agents/codegeex-agent"]
-	path = agents/codegeex-agent
-	url = https://github.com/THUDM/CodeGeeX.git
-[submodule "agents/marscode"]
-	path = agents/marscode
-	url = https://github.com/MarsCodeAI/marscode.git
-[submodule "agents/windsurf"]
-	path = agents/windsurf
-	url = https://github.com/CodeiumHQ/windsurf.git
-[submodule "agents/devin"]
-	path = agents/devin
-	url = https://github.com/cognition-labs/devin.git
 [submodule "agents/opendevin"]
 	path = agents/opendevin
 	url = https://github.com/OpenDevin/OpenDevin.git
@@ -127,9 +106,6 @@
 [submodule "agents/deepseek-coder-agent"]
 	path = agents/deepseek-coder-agent
 	url = https://github.com/deepseek-ai/DeepSeek-Coder.git
-[submodule "agents/codestral"]
-	path = agents/codestral
-	url = https://github.com/mistralai/codestral.git
 [submodule "agents/superagent"]
 	path = agents/superagent
 	url = https://github.com/homanp/superagent.git
@@ -142,24 +118,15 @@
 [submodule "agents/langgraph-examples"]
 	path = agents/langgraph-examples
 	url = https://github.com/langchain-ai/langgraph.git
-[submodule "agents/gpt-researcher"]
-	path = agents/gpt-researcher
-	url = https://github.com/assafelovic/gpt-researcher.git
 [submodule "agents/llama-agents"]
 	path = agents/llama-agents
 	url = https://github.com/run-llama/llama-agents.git
 [submodule "agents/crewai-examples"]
 	path = agents/crewai-examples
 	url = https://github.com/crewAIInc/crewAI-examples.git
-[submodule "agents/meta-agent"]
-	path = agents/meta-agent
-	url = https://github.com/geekan/MetaGPT.git
 [submodule "agents/taskweaver"]
 	path = agents/taskweaver
 	url = https://github.com/microsoft/TaskWeaver.git
-[submodule "agents/xagent"]
-	path = agents/xagent
-	url = https://github.com/OpenBMB/XAgent.git
 [submodule "agents/agentverse"]
 	path = agents/agentverse
 	url = https://github.com/OpenBMB/AgentVerse.git
@@ -175,9 +142,6 @@
 [submodule "agents/agentscope"]
 	path = agents/agentscope
 	url = https://github.com/modelscope/agentscope.git
-[submodule "agents/autogpt-researcher"]
-	path = agents/autogpt-researcher
-	url = https://github.com/Significant-Gravitas/AutoGPT.git
 [submodule "agents/babyagi"]
 	path = agents/babyagi
 	url = https://github.com/yoheinakajima/babyagi.git
@@ -229,12 +193,6 @@
 [submodule "agents/gptme"]
 	path = agents/gptme
 	url = https://github.com/ErikBjare/gptme.git
-[submodule "agents/openai-codex"]
-	path = agents/openai-codex
-	url = https://github.com/openai/codex.git
-[submodule "agents/devika-v2"]
-	path = agents/devika-v2
-	url = https://github.com/stitionai/devika.git
 [submodule "agents/micro-agent"]
 	path = agents/micro-agent
 	url = https://github.com/BuilderIO/micro-agent.git
@@ -340,9 +298,6 @@
 [submodule "data-rag/kotaemon"]
 	path = data-rag/kotaemon
 	url = https://github.com/cinnamon/kotaemon.git
-[submodule "data-rag/khoj"]
-	path = data-rag/khoj
-	url = https://github.com/khoj-ai/khoj.git
 [submodule "data-rag/marker"]
 	path = data-rag/marker
 	url = https://github.com/VikParuchuri/marker.git
@@ -538,21 +493,9 @@
 [submodule "evaluation/longbench"]
 	path = evaluation/longbench
 	url = https://github.com/THUDM/LongBench.git
-[submodule "evaluation/long-bench"]
-	path = evaluation/long-bench
-	url = https://github.com/THUDM/LongBench.git
 [submodule "evaluation/agent-bench"]
 	path = evaluation/agent-bench
 	url = https://github.com/THUDM/AgentBench.git
-[submodule "evaluation/langsmith"]
-	path = evaluation/langsmith
-	url = https://github.com/langchain-ai/langsmith-sdk.git
-[submodule "evaluation/lm-eval-harness"]
-	path = evaluation/lm-eval-harness
-	url = https://github.com/EleutherAI/lm-evaluation-harness.git
-[submodule "evaluation/opencompass"]
-	path = evaluation/opencompass
-	url = https://github.com/open-compass/OpenCompass.git
 [submodule "evaluation/gpqa"]
 	path = evaluation/gpqa
 	url = https://github.com/idavidrein/gpqa.git
@@ -574,12 +517,6 @@
 [submodule "evaluation/mmmu"]
 	path = evaluation/mmmu
 	url = https://github.com/MMMU-Benchmark/MMMU.git
-[submodule "evaluation/agent-bench"]
-	path = evaluation/agent-bench
-	url = https://github.com/THUDM/AgentBench.git
-[submodule "evaluation/longbench"]
-	path = evaluation/longbench
-	url = https://github.com/THUDM/LongBench.git
 [submodule "evaluation/needle-in-haystack"]
 	path = evaluation/needle-in-haystack
 	url = https://github.com/gkamradt/LLMTest_NeedleInAHaystack.git
@@ -589,21 +526,12 @@
 [submodule "evaluation/humaneval"]
 	path = evaluation/humaneval
 	url = https://github.com/openai/human-eval.git
-[submodule "evaluation/mbpp"]
-	path = evaluation/mbpp
-	url = https://github.com/google-research/google-research.git
-[submodule "evaluation/multilingual"]
-	path = evaluation/multilingual
-	url = https://github.com/facebookresearch/multilingual.git
 [submodule "evaluation/chatbot-arena"]
 	path = evaluation/chatbot-arena
 	url = https://github.com/lm-sys/FastChat.git
 [submodule "evaluation/simple-evals"]
 	path = evaluation/simple-evals
 	url = https://github.com/openai/simple-evals.git
-[submodule "evaluation/human-eval"]
-	path = evaluation/human-eval
-	url = https://github.com/openai/human-eval.git
 [submodule "evaluation/evalplus"]
 	path = evaluation/evalplus
 	url = https://github.com/evalplus/evalplus.git
@@ -629,42 +557,21 @@
 [submodule "frameworks/ccpm"]
 	path = frameworks/ccpm
 	url = https://github.com/automazeio/ccpm.git
-[submodule "frameworks/autogen"]
-	path = frameworks/autogen
-	url = https://github.com/microsoft/autogen.git
 [submodule "frameworks/crewAI"]
 	path = frameworks/crewAI
 	url = https://github.com/crewAIInc/crewAI.git
 [submodule "frameworks/smolagents"]
 	path = frameworks/smolagents
 	url = https://github.com/huggingface/smolagents.git
-[submodule "frameworks/MetaGPT"]
-	path = frameworks/MetaGPT
-	url = https://github.com/geekan/MetaGPT.git
-[submodule "frameworks/babyagi"]
-	path = frameworks/babyagi
-	url = https://github.com/yoheinakajima/babyagi.git
-[submodule "frameworks/open-interpreter"]
-	path = frameworks/open-interpreter
-	url = https://github.com/OpenInterpreter/open-interpreter.git
 [submodule "frameworks/dspy"]
 	path = frameworks/dspy
 	url = https://github.com/stanfordnlp/dspy.git
 [submodule "frameworks/embedchain"]
 	path = frameworks/embedchain
 	url = https://github.com/embedchain/embedchain.git
-[submodule "frameworks/devika"]
-	path = frameworks/devika
-	url = https://github.com/stitionai/devika.git
 [submodule "frameworks/swarms"]
 	path = frameworks/swarms
 	url = https://github.com/kyegomez/swarms.git
-[submodule "frameworks/taskweaver"]
-	path = frameworks/taskweaver
-	url = https://github.com/microsoft/TaskWeaver.git
-[submodule "frameworks/chatdev"]
-	path = frameworks/chatdev
-	url = https://github.com/OpenBMB/ChatDev.git
 [submodule "frameworks/guidance"]
 	path = frameworks/guidance
 	url = https://github.com/guidance-ai/guidance.git
@@ -674,9 +581,6 @@
 [submodule "frameworks/openai-agents-python"]
 	path = frameworks/openai-agents-python
 	url = https://github.com/openai/openai-agents-python.git
-[submodule "frameworks/langgraph"]
-	path = frameworks/langgraph
-	url = https://github.com/langchain-ai/langgraph.git
 [submodule "frameworks/pydantic-ai"]
 	path = frameworks/pydantic-ai
 	url = https://github.com/pydantic/pydantic-ai.git
@@ -722,9 +626,6 @@
 [submodule "frameworks/celery"]
 	path = frameworks/celery
 	url = https://github.com/celery/celery.git
-[submodule "frameworks/crew-ai-tools"]
-	path = frameworks/crew-ai-tools
-	url = https://github.com/crewAIInc/crewAI-tools.git
 [submodule "frameworks/llmware"]
 	path = frameworks/llmware
 	url = https://github.com/llmware-ai/llmware.git
@@ -752,9 +653,6 @@
 [submodule "frameworks/openai-swarm"]
 	path = frameworks/openai-swarm
 	url = https://github.com/openai/swarm.git
-[submodule "frameworks/autogen-core"]
-	path = frameworks/autogen-core
-	url = https://github.com/microsoft/autogen.git
 [submodule "frameworks/transformers-js"]
 	path = frameworks/transformers-js
 	url = https://github.com/xenova/transformers.js.git
@@ -773,9 +671,6 @@
 [submodule "frameworks/cohere-toolkit"]
 	path = frameworks/cohere-toolkit
 	url = https://github.com/cohere-ai/cohere-toolkit.git
-[submodule "frameworks/owl"]
-	path = frameworks/owl
-	url = https://github.com/camel-ai/owl.git
 [submodule "frameworks/ag2"]
 	path = frameworks/ag2
 	url = https://github.com/ag2ai/ag2.git
@@ -839,18 +734,12 @@
 [submodule "frameworks/atomic-agents"]
 	path = frameworks/atomic-agents
 	url = https://github.com/BrainBlend-AI/atomic-agents.git
-[submodule "frameworks/camel-ai"]
-	path = frameworks/camel-ai
-	url = https://github.com/camel-ai/camel.git
 [submodule "frameworks/livekit-agents"]
 	path = frameworks/livekit-agents
 	url = https://github.com/livekit/agents.git
 [submodule "frameworks/agentkit"]
 	path = frameworks/agentkit
 	url = https://github.com/coinbase/agentkit.git
-[submodule "frameworks/llama-agents"]
-	path = frameworks/llama-agents
-	url = https://github.com/run-llama/llama-agents.git
 [submodule "frameworks/agency-swarm"]
 	path = frameworks/agency-swarm
 	url = https://github.com/VRSEN/agency-swarm.git
@@ -866,9 +755,6 @@
 [submodule "frameworks/pocket-flow"]
 	path = frameworks/pocket-flow
 	url = https://github.com/The-Pocket/PocketFlow.git
-[submodule "frameworks/crawl4ai-fw"]
-	path = frameworks/crawl4ai-fw
-	url = https://github.com/unclecode/crawl4ai.git
 [submodule "frameworks/langroid"]
 	path = frameworks/langroid
 	url = https://github.com/langroid/langroid.git
@@ -1136,9 +1022,6 @@
 [submodule "knowledge/deep-learning-book"]
 	path = knowledge/deep-learning-book
 	url = https://github.com/janishar/mit-deep-learning-book-pdf.git
-[submodule "knowledge/cs224n"]
-	path = knowledge/cs224n
-	url = https://github.com/rohanpaul/CS224n.git
 [submodule "knowledge/cs231n"]
 	path = knowledge/cs231n
 	url = https://github.com/cs231n/cs231n.github.io.git
@@ -1148,18 +1031,6 @@
 [submodule "knowledge/huggingface-course"]
 	path = knowledge/huggingface-course
 	url = https://github.com/huggingface/course.git
-[submodule "knowledge/transformers-book"]
-	path = knowledge/transformers-book
-	url = https://github.com/nlp-with-transformers/nlp-transformers-book.git
-[submodule "knowledge/papers-with-code"]
-	path = knowledge/papers-with-code
-	url = https://github.com/paperswithcode/paperswithcode-data.git
-[submodule "knowledge/ml-papers-explained"]
-	path = knowledge/ml-papers-explained
-	url = https://github.com/dair-ai/ML-Papers-Explained.git
-[submodule "knowledge/ai-roadmap"]
-	path = knowledge/ai-roadmap
-	url = https://github.com/AMAI-GmbH/AI-Expert-Roadmap.git
 [submodule "knowledge/awesome-deep-learning"]
 	path = knowledge/awesome-deep-learning
 	url = https://github.com/ChristosChristofidis/awesome-deep-learning.git
@@ -1169,33 +1040,15 @@
 [submodule "knowledge/deeplearning-ai"]
 	path = knowledge/deeplearning-ai
 	url = https://github.com/mbadry1/DeepLearning.ai-Summary.git
-[submodule "knowledge/stanford-cs229"]
-	path = knowledge/stanford-cs229
-	url = https://github.com/cycleuser/Stanford-CS229.git
-[submodule "knowledge/mit-6-034"]
-	path = knowledge/mit-6-034
-	url = https://github.com/llSourcell/MIT_6.034.git
 [submodule "knowledge/mit-6-s191"]
 	path = knowledge/mit-6-s191
 	url = https://github.com/aamini/introtodeeplearning.git
-[submodule "knowledge/alphafold"]
-	path = knowledge/alphafold
-	url = https://github.com/google-deepmind/alphafold.git
 [submodule "knowledge/stable-diffusion-book"]
 	path = knowledge/stable-diffusion-book
 	url = https://github.com/camenduru/stable-diffusion-webui-colab.git
-[submodule "knowledge/ai-agents-2024"]
-	path = knowledge/ai-agents-2024
-	url = https://github.com/NirDiamant/GenAI_Agents.git
 [submodule "knowledge/llama3-cookbook"]
 	path = knowledge/llama3-cookbook
 	url = https://github.com/meta-llama/llama-recipes.git
-[submodule "knowledge/qwen-cookbook"]
-	path = knowledge/qwen-cookbook
-	url = https://github.com/QwenLM/Qwen-Agent.git
-[submodule "knowledge/deepseek-cookbook"]
-	path = knowledge/deepseek-cookbook
-	url = https://github.com/deepseek-ai/DeepSeek-Coder.git
 [submodule "knowledge/llms-from-scratch"]
 	path = knowledge/llms-from-scratch
 	url = https://github.com/rasbt/LLMs-from-scratch.git
@@ -1205,9 +1058,6 @@
 [submodule "knowledge/ml-engineering"]
 	path = knowledge/ml-engineering
 	url = https://github.com/stas00/ml-engineering.git
-[submodule "knowledge/awesome-genai-guide"]
-	path = knowledge/awesome-genai-guide
-	url = https://github.com/aishwaryanr/awesome-generative-ai-guide.git
 [submodule "knowledge/minimind"]
 	path = knowledge/minimind
 	url = https://github.com/jingyaogong/minimind.git
@@ -1223,9 +1073,6 @@
 [submodule "knowledge/anthropic-courses"]
         path = knowledge/anthropic-courses
         url = https://github.com/anthropics/courses.git
-[submodule "knowledge/agentic-patterns"]
-        path = knowledge/agentic-patterns
-        url = https://github.com/neural-maze/agentic-patterns.git
 [submodule "mcp-servers/MCPRules"]
 	path = mcp-servers/MCPRules
 	url = https://github.com/bartwisch/MCPRules.git
@@ -1313,18 +1160,12 @@
 [submodule "mcp-servers/stripe-mcp"]
 	path = mcp-servers/stripe-mcp
 	url = https://github.com/stripe/agent-toolkit.git
-[submodule "mcp-servers/docker-mcp"]
-	path = mcp-servers/docker-mcp
-	url = https://github.com/docker/mcp-server-docker.git
 [submodule "mcp-servers/firecrawl-mcp"]
 	path = mcp-servers/firecrawl-mcp
 	url = https://github.com/firecrawl/firecrawl-mcp-server.git
 [submodule "mcp-servers/perplexity-mcp"]
 	path = mcp-servers/perplexity-mcp
 	url = https://github.com/ppl-ai/modelcontextprotocol.git
-[submodule "mcp-servers/memory-mcp"]
-	path = mcp-servers/memory-mcp
-	url = https://github.com/modelcontextprotocol/servers.git
 [submodule "mcp-servers/aws-mcp"]
 	path = mcp-servers/aws-mcp
 	url = https://github.com/awslabs/mcp.git
@@ -1349,9 +1190,6 @@
 [submodule "mcp-servers/mcp-rust-sdk"]
         path = mcp-servers/mcp-rust-sdk
         url = https://github.com/modelcontextprotocol/rust-sdk.git
-[submodule "memory/mem0"]
-	path = memory/mem0
-	url = https://github.com/mem0ai/mem0.git
 [submodule "memory/cipher"]
 	path = memory/cipher
 	url = https://github.com/campfirein/cipher.git
@@ -1364,9 +1202,6 @@
 [submodule "memory/hindsight"]
 	path = memory/hindsight
 	url = https://github.com/vectorize-io/hindsight.git
-[submodule "memory/openmemory"]
-	path = memory/openmemory
-	url = https://github.com/mem0ai/mem0.git
 [submodule "memory/cognee"]
 	path = memory/cognee
 	url = https://github.com/topoteretes/cognee.git
@@ -1374,9 +1209,6 @@
 	path = memory/memoripy
 	url = https://github.com/caspianmoon/memoripy.git
 [submodule "mlops-kubeflow"]
-	path = mlops/kubeflow
-	url = https://github.com/kubeflow/kubeflow.git
-[submodule "mlops/kubeflow"]
 	path = mlops/kubeflow
 	url = https://github.com/kubeflow/kubeflow.git
 [submodule "mlops/zenml"]
@@ -1430,9 +1262,6 @@
 [submodule "mlops/hamilton"]
 	path = mlops/hamilton
 	url = https://github.com/DAGWorks-Inc/hamilton.git
-[submodule "models/deepseek-coder"]
-	path = models/deepseek-coder
-	url = https://github.com/deepseek-ai/DeepSeek-Coder.git
 [submodule "models/deepseek-v3"]
 	path = models/deepseek-v3
 	url = https://github.com/deepseek-ai/DeepSeek-V3.git
@@ -1544,12 +1373,6 @@
 [submodule "models/moshi"]
 	path = models/moshi
 	url = https://github.com/kyutai-labs/moshi.git
-[submodule "models/jamba"]
-	path = models/jamba
-	url = https://github.com/AI21Labs/Jamba.git
-[submodule "models/dbrx"]
-	path = models/dbrx
-	url = https://github.com/databricks/dbrx.git
 [submodule "models/Marco-o1"]
 	path = models/Marco-o1
 	url = https://github.com/AIDC-AI/Marco-o1.git
@@ -1574,66 +1397,21 @@
 [submodule "models/chatglm3"]
 	path = models/chatglm3
 	url = https://github.com/THUDM/ChatGLM3.git
-[submodule "models/olmoe-model"]
-	path = models/olmoe-model
-	url = https://github.com/allenai/OLMoE.git
-[submodule "models/olmo-model"]
-	path = models/olmo-model
-	url = https://github.com/allenai/OLMo.git
-[submodule "models/purple-llama-guard"]
-	path = models/purple-llama-guard
-	url = https://github.com/meta-llama/PurpleLlama.git
 [submodule "models/visualglm"]
 	path = models/visualglm
 	url = https://github.com/THUDM/VisualGLM-6B.git
 [submodule "models/orca"]
 	path = models/orca
 	url = https://github.com/microsoft/Orca.git
-[submodule "models/orca"]
-	path = models/orca
-	url = https://github.com/microsoft/Orca.git
-[submodule "models/orca2"]
-	path = models/orca2
-	url = https://github.com/microsoft/Orca2.git
-[submodule "models/wizardcoder"]
-	path = models/wizardcoder
-	url = https://github.com/nlpxucan/WizardLM.git
 [submodule "models/deepseek-math"]
 	path = models/deepseek-math
 	url = https://github.com/deepseek-ai/DeepSeek-Math.git
 [submodule "models/deepseek-llm"]
 	path = models/deepseek-llm
 	url = https://github.com/deepseek-ai/DeepSeek-LLM.git
-[submodule "models/phi3"]
-	path = models/phi3
-	url = https://github.com/microsoft/Phi-3CookBook.git
-[submodule "models/phi4"]
-	path = models/phi4
-	url = https://github.com/microsoft/Phi-4.git
-[submodule "models/gemma2"]
-	path = models/gemma2
-	url = https://github.com/google-deepmind/gemma.git
-[submodule "models/gemma3"]
-	path = models/gemma3
-	url = https://github.com/google-deepmind/gemma.git
-[submodule "models/command-r"]
-	path = models/command-r
-	url = https://github.com/cohere-ai/cohere-toolkit.git
-[submodule "models/command-r-plus"]
-	path = models/command-r-plus
-	url = https://github.com/CohereForAI/c4ai-command-r-plus.git
-[submodule "models/mixtral"]
-	path = models/mixtral
-	url = https://github.com/mistralai/mixtral-inference.git
-[submodule "models/solar"]
-	path = models/solar
-	url = https://github.com/upstage/SOLAR.git
 [submodule "models/nemotron"]
 	path = models/nemotron
 	url = https://github.com/NVIDIA/NeMo.git
-[submodule "models/olmo-2"]
-	path = models/olmo-2
-	url = https://github.com/allenai/OLMo.git
 [submodule "models/qwq"]
 	path = models/qwq
 	url = https://github.com/QwenLM/QwQ.git
@@ -1646,39 +1424,12 @@
 [submodule "models/minicpm-o"]
 	path = models/minicpm-o
 	url = https://github.com/OpenBMB/MiniCPM-o.git
-[submodule "models/internlm3"]
-	path = models/internlm3
-	url = https://github.com/InternLM/InternLM.git
 [submodule "models/internlm-math"]
 	path = models/internlm-math
 	url = https://github.com/InternLM/internlm-math.git
-[submodule "models/glm-4v"]
-	path = models/glm-4v
-	url = https://github.com/THUDM/GLM-4V.git
-[submodule "models/cogagent"]
-	path = models/cogagent
-	url = https://github.com/THUDM/CogAgent.git
-[submodule "models/cogvlm"]
-	path = models/cogvlm
-	url = https://github.com/THUDM/CogVLM.git
-[submodule "models/codegeex"]
-	path = models/codegeex
-	url = https://github.com/THUDM/CodeGeeX.git
-[submodule "models/chatglm3"]
-	path = models/chatglm3
-	url = https://github.com/THUDM/ChatGLM3.git
-[submodule "models/visualglm"]
-	path = models/visualglm
-	url = https://github.com/THUDM/VisualGLM-6B.git
-[submodule "models/glm-edge"]
-	path = models/glm-edge
-	url = https://github.com/THUDM/GLM-Edge.git
 [submodule "models/rwkv"]
 	path = models/rwkv
 	url = https://github.com/BlinkDL/RWKV-LM.git
-[submodule "models/marco-o1"]
-	path = models/marco-o1
-	url = https://github.com/AIDC-AI/Marco-o1.git
 [submodule "models/smollm"]
 	path = models/smollm
 	url = https://github.com/huggingface/smollm.git
@@ -1691,19 +1442,9 @@
 [submodule "models/exaone"]
 	path = models/exaone
 	url = https://github.com/LG-AI-EXAONE/EXAONE-3.5.git
-[submodule "models/smollm2"]
-	path = models/smollm2
-	url = https://github.com/huggingface/smollm.git
-[submodule "models/openelm"]
-	path = models/openelm
-	url = https://github.com/apple/corenet.git
-	ignore = dirty
 [submodule "models/megrez"]
 	path = models/megrez
 	url = https://github.com/infinigence/Infini-Megrez.git
-[submodule "models/phi-3"]
-	path = models/phi-3
-	url = https://github.com/microsoft/Phi-3CookBook.git
 [submodule "models/deepseek-prover"]
         path = models/deepseek-prover
         url = https://github.com/deepseek-ai/DeepSeek-Prover-V1.5.git
@@ -1728,12 +1469,6 @@
 [submodule "multimodal/qwen-vl"]
 	path = multimodal/qwen-vl
 	url = https://github.com/QwenLM/Qwen-VL.git
-[submodule "multimodal/florence2"]
-	path = multimodal/florence2
-	url = https://github.com/microsoft/Florence-2-base.git
-[submodule "multimodal/pixtral"]
-	path = multimodal/pixtral
-	url = https://github.com/mistralai/mistral-common.git
 [submodule "multimodal/ovis"]
 	path = multimodal/ovis
 	url = https://github.com/AIDC-AI/Ovis.git
@@ -1749,9 +1484,6 @@
 [submodule "multimodal/gemini-cookbook"]
 	path = multimodal/gemini-cookbook
 	url = https://github.com/google-gemini/cookbook.git
-[submodule "multimodal/cogagent"]
-	path = multimodal/cogagent
-	url = https://github.com/THUDM/CogAgent.git
 [submodule "multimodal/janus"]
         path = multimodal/janus
         url = https://github.com/deepseek-ai/Janus.git
@@ -1797,9 +1529,6 @@
 [submodule "platforms/maxkb"]
 	path = platforms/maxkb
 	url = https://github.com/1Panel-dev/MaxKB.git
-[submodule "platforms/chatgpt-next"]
-	path = platforms/chatgpt-next
-	url = https://github.com/ChatGPTNextWeb/ChatGPT-Next-Web.git
 [submodule "platforms/ragapp"]
 	path = platforms/ragapp
 	url = https://github.com/ragapp/ragapp.git
@@ -1821,9 +1550,6 @@
 [submodule "platforms/automatisch"]
         path = platforms/automatisch
         url = https://github.com/automatisch/automatisch.git
-[submodule "platforms/openwebui-pipelines"]
-        path = platforms/openwebui-pipelines
-        url = https://github.com/open-webui/pipelines.git
 [submodule "reasoning/Awesome-LLM-Reasoning"]
 	path = reasoning/Awesome-LLM-Reasoning
 	url = https://github.com/atfortes/Awesome-LLM-Reasoning.git
@@ -1842,12 +1568,6 @@
 [submodule "reasoning/voyager"]
 	path = reasoning/voyager
 	url = https://github.com/MineDojo/Voyager.git
-[submodule "reasoning/camel"]
-	path = reasoning/camel
-	url = https://github.com/camel-ai/camel.git
-[submodule "reasoning/agentscope"]
-	path = reasoning/agentscope
-	url = https://github.com/modelscope/agentscope.git
 [submodule "reasoning/self-rag"]
 	path = reasoning/self-rag
 	url = https://github.com/AkariAsai/self-rag.git
@@ -1884,12 +1604,6 @@
 [submodule "reasoning/ell"]
 	path = reasoning/ell
 	url = https://github.com/MadcowD/ell.git
-[submodule "reasoning/opendevin"]
-	path = reasoning/opendevin
-	url = https://github.com/OpenDevin/OpenDevin.git
-[submodule "reasoning/phidata"]
-	path = reasoning/phidata
-	url = https://github.com/phidatahq/phidata.git
 [submodule "reasoning/prompttools"]
 	path = reasoning/prompttools
 	url = https://github.com/hegelai/prompttools.git
@@ -1914,150 +1628,24 @@
 [submodule "reasoning/longcite"]
 	path = reasoning/longcite
 	url = https://github.com/THUDM/LongCite.git
-[submodule "reasoning/web-glm"]
-	path = reasoning/web-glm
-	url = https://github.com/THUDM/WebGLM.git
 [submodule "reasoning/long-align"]
 	path = reasoning/long-align
 	url = https://github.com/THUDM/LongAlign.git
-[submodule "reasoning/long-cite"]
-	path = reasoning/long-cite
-	url = https://github.com/THUDM/LongCite.git
-[submodule "reasoning/long-reward"]
-	path = reasoning/long-reward
-	url = https://github.com/THUDM/LongReward.git
 [submodule "reasoning/task-matrix"]
 	path = reasoning/task-matrix
 	url = https://github.com/microsoft/TaskMatrix.git
-[submodule "reasoning/taskmatrix"]
-	path = reasoning/taskmatrix
-	url = https://github.com/microsoft/TaskMatrix.git
-[submodule "reasoning/agenttuning"]
-	path = reasoning/agenttuning
-	url = https://github.com/THUDM/AgentTuning.git
-[submodule "reasoning/deepseek-r1"]
-	path = reasoning/deepseek-r1
-	url = https://github.com/deepseek-ai/DeepSeek-R1.git
-[submodule "reasoning/open-r1"]
-	path = reasoning/open-r1
-	url = https://github.com/huggingface/open-r1.git
 [submodule "reasoning/skywork-o1"]
 	path = reasoning/skywork-o1
 	url = https://github.com/SkyworkAI/Skywork-o1.git
 [submodule "reasoning/kimik1.5"]
 	path = reasoning/kimik1.5
 	url = https://github.com/MoonshotAI/Kimi-k1.5.git
-[submodule "reasoning/minicpm-r"]
-	path = reasoning/minicpm-r
-	url = https://github.com/OpenBMB/MiniCPM.git
-[submodule "reasoning/step-o1"]
-	path = reasoning/step-o1
-	url = https://github.com/stepfun-ai/Step1.git
-[submodule "reasoning/self-oss-instruct"]
-	path = reasoning/self-oss-instruct
-	url = https://github.com/bigcode-project/self-oss-instruct.git
-[submodule "reasoning/ultrainteract"]
-	path = reasoning/ultrainteract
-	url = https://github.com/OpenBMB/UltraInteract.git
-[submodule "reasoning/chain-of-thought-hub"]
-	path = reasoning/chain-of-thought-hub
-	url = https://github.com/FranxYao/chain-of-thought-hub.git
-[submodule "reasoning/tree-of-thoughts"]
-	path = reasoning/tree-of-thoughts
-	url = https://github.com/princeton-nlp/tree-of-thought-llm.git
 [submodule "reasoning/graph-of-thoughts"]
 	path = reasoning/graph-of-thoughts
 	url = https://github.com/spcl/graph-of-thoughts.git
-[submodule "reasoning/cot-collection"]
-	path = reasoning/cot-collection
-	url = https://github.com/yaodongC/awesome-instruction-tuning.git
-[submodule "reasoning/reasoning-with-llms"]
-	path = reasoning/reasoning-with-llms
-	url = https://github.com/atfortes/Awesome-LLM-Reasoning.git
-[submodule "reasoning/self-refine"]
-	path = reasoning/self-refine
-	url = https://github.com/madaan/self-refine.git
-[submodule "reasoning/reflexion"]
-	path = reasoning/reflexion
-	url = https://github.com/noahshinn/reflexion.git
-[submodule "reasoning/self-rag"]
-	path = reasoning/self-rag
-	url = https://github.com/AkariAsai/self-rag.git
-[submodule "reasoning/letta"]
-	path = reasoning/letta
-	url = https://github.com/letta-ai/letta.git
-[submodule "reasoning/adalflow"]
-	path = reasoning/adalflow
-	url = https://github.com/SylphAI-Inc/AdalFlow.git
-[submodule "reasoning/tensorzero"]
-	path = reasoning/tensorzero
-	url = https://github.com/tensorzero/tensorzero.git
-[submodule "reasoning/textgrad"]
-	path = reasoning/textgrad
-	url = https://github.com/zou-group/textgrad.git
-[submodule "reasoning/ell"]
-	path = reasoning/ell
-	url = https://github.com/MadcowD/ell.git
-[submodule "reasoning/llm-reasoners"]
-	path = reasoning/llm-reasoners
-	url = https://github.com/maitrix-org/llm-reasoners.git
-[submodule "reasoning/gorilla"]
-	path = reasoning/gorilla
-	url = https://github.com/ShishirPatil/gorilla.git
-[submodule "reasoning/toolformer"]
-	path = reasoning/toolformer
-	url = https://github.com/lucidrains/toolformer-pytorch.git
-[submodule "reasoning/voyager"]
-	path = reasoning/voyager
-	url = https://github.com/MineDojo/Voyager.git
-[submodule "reasoning/graphiti"]
-	path = reasoning/graphiti
-	url = https://github.com/getzep/graphiti.git
-[submodule "reasoning/minichain"]
-	path = reasoning/minichain
-	url = https://github.com/srush/MiniChain.git
-[submodule "reasoning/agentscope"]
-	path = reasoning/agentscope
-	url = https://github.com/modelscope/agentscope.git
-[submodule "reasoning/camel"]
-	path = reasoning/camel
-	url = https://github.com/camel-ai/camel.git
-[submodule "reasoning/litgpt"]
-	path = reasoning/litgpt
-	url = https://github.com/Lightning-AI/litgpt.git
-[submodule "reasoning/phidata"]
-	path = reasoning/phidata
-	url = https://github.com/phidatahq/phidata.git
-[submodule "reasoning/prompttools"]
-	path = reasoning/prompttools
-	url = https://github.com/hegelai/prompttools.git
-[submodule "reasoning/taskmatrix"]
-	path = reasoning/taskmatrix
-	url = https://github.com/microsoft/TaskMatrix.git
 [submodule "reasoning/visual-chatgpt"]
 	path = reasoning/visual-chatgpt
 	url = https://github.com/microsoft/visual-chatgpt.git
-[submodule "reasoning/hugginggpt"]
-	path = reasoning/hugginggpt
-	url = https://github.com/microsoft/JARVIS.git
-[submodule "reasoning/webglm"]
-	path = reasoning/webglm
-	url = https://github.com/THUDM/WebGLM.git
-[submodule "reasoning/longcite"]
-	path = reasoning/longcite
-	url = https://github.com/THUDM/LongCite.git
-[submodule "reasoning/longreward"]
-	path = reasoning/longreward
-	url = https://github.com/THUDM/LongReward.git
-[submodule "reasoning/long-align"]
-	path = reasoning/long-align
-	url = https://github.com/THUDM/LongAlign.git
-[submodule "reasoning/code-rag"]
-	path = reasoning/code-rag
-	url = https://github.com/THUDM/CodeRAG.git
-[submodule "reasoning/tool-bench"]
-	path = reasoning/tool-bench
-	url = https://github.com/THUDM/ToolBench.git
 [submodule "reasoning/o1-journey"]
 	path = reasoning/o1-journey
 	url = https://github.com/GAIR-NLP/O1-Journey.git
@@ -2106,12 +1694,6 @@
 [submodule "robotics/openx"]
 	path = robotics/openx
 	url = https://github.com/google-deepmind/open_x_embodiment.git
-[submodule "robotics/open-x-embodiment"]
-	path = robotics/open-x-embodiment
-	url = https://github.com/google-deepmind/open_x_embodiment.git
-[submodule "robotics/lerobot-hf"]
-	path = robotics/lerobot-hf
-	url = https://github.com/huggingface/lerobot.git
 [submodule "robotics/openpi"]
 	path = robotics/openpi
 	url = https://github.com/Physical-Intelligence/openpi.git
@@ -2157,12 +1739,6 @@
 [submodule "security/adversarial-robustness-toolbox"]
         path = security/adversarial-robustness-toolbox
         url = https://github.com/Trusted-AI/adversarial-robustness-toolbox.git
-[submodule "security/agentic-security"]
-        path = security/agentic-security
-        url = https://github.com/msoedov/agentic-security.git
-[submodule "skills/browser-use"]
-	path = skills/browser-use
-	url = https://github.com/browser-use/browser-use.git
 [submodule "skills/fabric"]
 	path = skills/fabric
 	url = https://github.com/danielmiessler/fabric.git
@@ -2202,18 +1778,12 @@
 [submodule "skills/google-ai-docs"]
 	path = skills/google-ai-docs
 	url = https://github.com/google/generative-ai-docs.git
-[submodule "skills/gemini-cookbook"]
-	path = skills/gemini-cookbook
-	url = https://github.com/google-gemini/cookbook.git
 [submodule "skills/lobe-chat-agents"]
 	path = skills/lobe-chat-agents
 	url = https://github.com/lobehub/lobe-chat-agents.git
 [submodule "skills/search-with-lepton"]
 	path = skills/search-with-lepton
 	url = https://github.com/leptonai/search_with_lepton.git
-[submodule "skills/instructor-ai"]
-	path = skills/instructor-ai
-	url = https://github.com/jxnl/instructor.git
 [submodule "skills/rags"]
 	path = skills/rags
 	url = https://github.com/run-llama/rags.git
@@ -2247,9 +1817,6 @@
 [submodule "training/text-generation-inference"]
 	path = training/text-generation-inference
 	url = https://github.com/huggingface/text-generation-inference.git
-[submodule "training/nemo"]
-	path = training/nemo
-	url = https://github.com/NVIDIA/NeMo.git
 [submodule "training/megatron-lm"]
 	path = training/megatron-lm
 	url = https://github.com/NVIDIA/Megatron-LM.git
@@ -2325,9 +1892,6 @@
 [submodule "training/alignment-handbook"]
 	path = training/alignment-handbook
 	url = https://github.com/huggingface/alignment-handbook.git
-[submodule "training/deepspeed-advanced"]
-	path = training/deepspeed-advanced
-	url = https://github.com/microsoft/DeepSpeed.git
 [submodule "training/long-lora"]
 	path = training/long-lora
 	url = https://github.com/dvlab-research/LongLoRA.git
@@ -2343,9 +1907,6 @@
 [submodule "training/dora"]
 	path = training/dora
 	url = https://github.com/NVlabs/DoRA.git
-[submodule "training/loraplus"]
-	path = training/loraplus
-	url = https://github.com/evanarlian/loraplus.git
 [submodule "training/reft"]
 	path = training/reft
 	url = https://github.com/stanfordnlp/pyreft.git
@@ -2364,24 +1925,12 @@
 [submodule "training/rlhf"]
 	path = training/rlhf
 	url = https://github.com/CarperAI/trlx.git
-[submodule "training/openrlhf"]
-	path = training/openrlhf
-	url = https://github.com/OpenRLHF/OpenRLHF.git
-[submodule "training/verl"]
-	path = training/verl
-	url = https://github.com/volcengine/verl.git
-[submodule "training/alignment-handbook"]
-	path = training/alignment-handbook
-	url = https://github.com/huggingface/alignment-handbook.git
 [submodule "training/nanotron"]
 	path = training/nanotron
 	url = https://github.com/huggingface/nanotron.git
 [submodule "training/torchtitan"]
 	path = training/torchtitan
 	url = https://github.com/pytorch/torchtitan.git
-[submodule "training/litgpt"]
-	path = training/litgpt
-	url = https://github.com/Lightning-AI/litgpt.git
 [submodule "training/lorax"]
 	path = training/lorax
 	url = https://github.com/predibase/lorax.git
@@ -2439,9 +1988,6 @@
 [submodule "video/memo"]
 	path = video/memo
 	url = https://github.com/memoavatar/memo.git
-[submodule "video/step-video"]
-        path = video/step-video
-        url = https://github.com/stepfun-ai/Step-Video.git
 [submodule "vision/stable-diffusion-webui"]
 	path = vision/stable-diffusion-webui
 	url = https://github.com/AUTOMATIC1111/stable-diffusion-webui.git
@@ -2475,9 +2021,6 @@
 [submodule "vision/controlnet"]
 	path = vision/controlnet
 	url = https://github.com/lllyasviel/ControlNet.git
-[submodule "vision/stability-generative"]
-	path = vision/stability-generative
-	url = https://github.com/Stability-AI/generative-models.git
 [submodule "vision/flux"]
 	path = vision/flux
 	url = https://github.com/black-forest-labs/flux.git
@@ -2538,9 +2081,6 @@
 [submodule "vision/deep-live-cam"]
 	path = vision/deep-live-cam
 	url = https://github.com/hacksider/Deep-Live-Cam.git
-[submodule "vision/omniparser"]
-	path = vision/omniparser
-	url = https://github.com/microsoft/OmniParser.git
 [submodule "vision/kolors"]
 	path = vision/kolors
 	url = https://github.com/Kwai-Kolors/Kolors.git
@@ -2580,9 +2120,6 @@
 [submodule "training/triton"]
 	path = training/triton
 	url = https://github.com/triton-lang/triton.git
-[submodule "training/sglang"]
-	path = training/sglang
-	url = https://github.com/sgl-project/sglang.git
 [submodule "infrastructure/llama.cpp"]
 	path = infrastructure/llama.cpp
 	url = https://github.com/ggml-org/llama.cpp.git
@@ -2601,3 +2138,1404 @@
 [submodule "training/tvm"]
 	path = training/tvm
 	url = https://github.com/apache/tvm.git
+[submodule "agents/aider-1"]
+	path = agents/aider-1
+	url = https://github.com/Aider-AI/aider.git
+[submodule "agents/awesome-ai-agents-2025"]
+	path = agents/awesome-ai-agents-2025
+	url = https://github.com/Supersynergy/awesome-ai-agents-2025.git
+[submodule "agents/500-ai-agents-projects"]
+	path = agents/500-ai-agents-projects
+	url = https://github.com/ashishpatel26/500-AI-Agents-Projects.git
+[submodule "agents/goose-1"]
+	path = agents/goose-1
+	url = https://github.com/block/goose.git
+[submodule "agents/a2a"]
+	path = agents/a2a
+	url = https://github.com/google/A2A.git
+[submodule "models/awesome-llm-agents"]
+	path = models/awesome-llm-agents
+	url = https://github.com/kaushikb11/awesome-llm-agents.git
+[submodule "audio/livekit"]
+	path = audio/livekit
+	url = https://github.com/livekit/livekit.git
+[submodule "audio/pipecat"]
+	path = audio/pipecat
+	url = https://github.com/pipecat-ai/pipecat.git
+[submodule "reasoning/swe-agent"]
+	path = reasoning/swe-agent
+	url = https://github.com/princeton-nlp/SWE-agent.git
+[submodule "mcp-servers/awesome-mcp-servers"]
+	path = mcp-servers/awesome-mcp-servers
+	url = https://github.com/punkpeye/awesome-mcp-servers.git
+[submodule "agents/ai-real-estate-assistant"]
+	path = agents/ai-real-estate-assistant
+	url = https://github.com/AleksNeStu/ai-real-estate-assistant.git
+[submodule "agents/mlbox"]
+	path = agents/mlbox
+	url = https://github.com/AxeldeRomblay/MLBox.git
+[submodule "agents/blazingsql"]
+	path = agents/blazingsql
+	url = https://github.com/BlazingDB/blazingsql.git
+[submodule "agents/solidui"]
+	path = agents/solidui
+	url = https://github.com/CloudOrc/SolidUI.git
+[submodule "agents/yellowbrick"]
+	path = agents/yellowbrick
+	url = https://github.com/DistrictDataLabs/yellowbrick.git
+[submodule "agents/tpot"]
+	path = agents/tpot
+	url = https://github.com/EpistasisLab/tpot.git
+[submodule "models/shoppinggpt"]
+	path = models/shoppinggpt
+	url = https://github.com/Hoanganhvu123/ShoppingGPT.git
+[submodule "agents/hydro-serving"]
+	path = agents/hydro-serving
+	url = https://github.com/Hydrospheredata/hydro-serving.git
+[submodule "agents/sacred"]
+	path = agents/sacred
+	url = https://github.com/IDSIA/sacred.git
+[submodule "agents/frouros"]
+	path = agents/frouros
+	url = https://github.com/IFCA/frouros.git
+[submodule "agents/sagify"]
+	path = agents/sagify
+	url = https://github.com/Kenza-AI/sagify.git
+[submodule "agents/mlreef"]
+	path = agents/mlreef
+	url = https://github.com/MLReef/mlreef.git
+[submodule "agents/marquez"]
+	path = agents/marquez
+	url = https://github.com/MarquezProject/marquez.git
+[submodule "agents/stockagent"]
+	path = agents/stockagent
+	url = https://github.com/MingyuJ666/Stockagent.git
+[submodule "models/cyber-security-llm-agents"]
+	path = models/cyber-security-llm-agents
+	url = https://github.com/NVISOsecurity/cyber-security-llm-agents.git
+[submodule "agents/nannyml"]
+	path = agents/nannyml
+	url = https://github.com/NannyML/nannyml.git
+[submodule "agents/metacat"]
+	path = agents/metacat
+	url = https://github.com/Netflix/metacat.git
+[submodule "agents/openrefine"]
+	path = agents/openrefine
+	url = https://github.com/OpenRefine/OpenRefine.git
+[submodule "agents/cascade"]
+	path = agents/cascade
+	url = https://github.com/Oxid15/cascade.git
+[submodule "agents/facets"]
+	path = agents/facets
+	url = https://github.com/PAIR-code/facets.git
+[submodule "agents/decepticon"]
+	path = agents/decepticon
+	url = https://github.com/PurpleAILAB/Decepticon.git
+[submodule "agents/alibi"]
+	path = agents/alibi
+	url = https://github.com/SeldonIO/alibi.git
+[submodule "agents/alibi-detect"]
+	path = agents/alibi-detect
+	url = https://github.com/SeldonIO/alibi-detect.git
+[submodule "agents/citadel"]
+	path = agents/citadel
+	url = https://github.com/SethGammon/Citadel.git
+[submodule "agents/aif360"]
+	path = agents/aif360
+	url = https://github.com/Trusted-AI/AIF360.git
+[submodule "models/modeldb"]
+	path = models/modeldb
+	url = https://github.com/VertaAI/modeldb.git
+[submodule "agents/hermione"]
+	path = agents/hermione
+	url = https://github.com/a3data/hermione.git
+[submodule "knowledge/awesome-datascience"]
+	path = knowledge/awesome-datascience
+	url = https://github.com/academic/awesome-datascience.git
+[submodule "agents/hub"]
+	path = agents/hub
+	url = https://github.com/activeloopai/Hub.git
+[submodule "agents/deep-learning-in-production"]
+	path = agents/deep-learning-in-production
+	url = https://github.com/ahkarami/Deep-Learning-in-Production.git
+[submodule "agents/ai-agents-for-medical-diagnostics"]
+	path = agents/ai-agents-for-medical-diagnostics
+	url = https://github.com/ahmadvh/AI-Agents-for-Medical-Diagnostics.git
+[submodule "agents/medisuite-ai-agent"]
+	path = agents/medisuite-ai-agent
+	url = https://github.com/ahmedmansour5/MediSuite-Ai-Agent.git
+[submodule "agents/aim"]
+	path = agents/aim
+	url = https://github.com/aimhubio/aim.git
+[submodule "knowledge/knowledge-repo"]
+	path = knowledge/knowledge-repo
+	url = https://github.com/airbnb/knowledge-repo.git
+[submodule "evaluation/evalml"]
+	path = evaluation/evalml
+	url = https://github.com/alteryx/evalml.git
+[submodule "agents/featuretools"]
+	path = agents/featuretools
+	url = https://github.com/alteryx/featuretools.git
+[submodule "agents/predictionio"]
+	path = agents/predictionio
+	url = https://github.com/apache/predictionio.git
+[submodule "agents/mlnotify"]
+	path = agents/mlnotify
+	url = https://github.com/aporia-ai/mlnotify.git
+[submodule "agents/turicreate"]
+	path = agents/turicreate
+	url = https://github.com/apple/turicreate.git
+[submodule "agents/argo"]
+	path = agents/argo
+	url = https://github.com/argoproj/argo.git
+[submodule "training/auto-pytorch"]
+	path = training/auto-pytorch
+	url = https://github.com/automl/Auto-PyTorch.git
+[submodule "agents/auto-sklearn"]
+	path = agents/auto-sklearn
+	url = https://github.com/automl/auto-sklearn.git
+[submodule "agents/talos"]
+	path = agents/talos
+	url = https://github.com/autonomio/talos.git
+[submodule "knowledge/awesome"]
+	path = knowledge/awesome
+	url = https://github.com/awesomelistsio/awesome.git
+[submodule "knowledge/awesome-ai-art"]
+	path = knowledge/awesome-ai-art
+	url = https://github.com/awesomelistsio/awesome-ai-art.git
+[submodule "models/awesome-chatgpt"]
+	path = models/awesome-chatgpt
+	url = https://github.com/awesomelistsio/awesome-chatgpt.git
+[submodule "models/awesome-llmops"]
+	path = models/awesome-llmops
+	url = https://github.com/awesomelistsio/awesome-llmops.git
+[submodule "knowledge/awesome-openai"]
+	path = knowledge/awesome-openai
+	url = https://github.com/awesomelistsio/awesome-openai.git
+[submodule "skills/awesome-prompt-engineering"]
+	path = skills/awesome-prompt-engineering
+	url = https://github.com/awesomelistsio/awesome-prompt-engineering.git
+[submodule "agents/autogluon"]
+	path = agents/autogluon
+	url = https://github.com/awslabs/autogluon.git
+[submodule "agents/azkaban"]
+	path = agents/azkaban
+	url = https://github.com/azkaban/azkaban.git
+[submodule "agents/tsfresh"]
+	path = agents/tsfresh
+	url = https://github.com/blue-yonder/tsfresh.git
+[submodule "agents/bytehub"]
+	path = agents/bytehub
+	url = https://github.com/bytehub-ai/bytehub.git
+[submodule "agents/ckan"]
+	path = agents/ckan
+	url = https://github.com/ckan/ckan.git
+[submodule "agents/cleanlab"]
+	path = agents/cleanlab
+	url = https://github.com/cleanlab/cleanlab.git
+[submodule "agents/comet-examples"]
+	path = agents/comet-examples
+	url = https://github.com/comet-ml/comet-examples.git
+[submodule "memory/chatgpt-memory"]
+	path = memory/chatgpt-memory
+	url = https://github.com/continuum-llms/chatgpt-memory.git
+[submodule "agents/cordum"]
+	path = agents/cordum
+	url = https://github.com/cordum-io/cordum.git
+[submodule "agents/couler"]
+	path = agents/couler
+	url = https://github.com/couler-proj/couler.git
+[submodule "models/mirrorgpt"]
+	path = models/mirrorgpt
+	url = https://github.com/crosleythomas/MirrorGPT.git
+[submodule "agents/hamilton"]
+	path = agents/hamilton
+	url = https://github.com/dagworks-inc/hamilton.git
+[submodule "agents/koalas"]
+	path = agents/koalas
+	url = https://github.com/databricks/koalas.git
+[submodule "agents/potato"]
+	path = agents/potato
+	url = https://github.com/davidjurgens/potato.git
+[submodule "agents/deepchecks"]
+	path = agents/deepchecks
+	url = https://github.com/deepchecks/deepchecks.git
+[submodule "agents/deepnote"]
+	path = agents/deepnote
+	url = https://github.com/deepnote/deepnote.git
+[submodule "agents/delta"]
+	path = agents/delta
+	url = https://github.com/delta-io/delta.git
+[submodule "agents/lina-egyptian-medical-chatbot"]
+	path = agents/lina-egyptian-medical-chatbot
+	url = https://github.com/dina-khalid/Lina-Egyptian-Medical-Chatbot.git
+[submodule "agents/dolt"]
+	path = agents/dolt
+	url = https://github.com/dolthub/dolt.git
+[submodule "agents/dotflow"]
+	path = agents/dotflow
+	url = https://github.com/dotflow-io/dotflow.git
+[submodule "agents/e2b"]
+	path = agents/e2b
+	url = https://github.com/e2b-dev/e2b.git
+[submodule "agents/budgetml"]
+	path = agents/budgetml
+	url = https://github.com/ebhy/budgetml.git
+[submodule "agents/eli5"]
+	path = agents/eli5
+	url = https://github.com/eli5-org/eli5.git
+[submodule "agents/applied-ml"]
+	path = agents/applied-ml
+	url = https://github.com/eugeneyan/applied-ml.git
+[submodule "knowledge/hydra"]
+	path = knowledge/hydra
+	url = https://github.com/facebookresearch/hydra.git
+[submodule "agents/fairlearn"]
+	path = agents/fairlearn
+	url = https://github.com/fairlearn/fairlearn.git
+[submodule "agents/feature_engine"]
+	path = agents/feature_engine
+	url = https://github.com/feature-engine/feature_engine.git
+[submodule "agents/featureform"]
+	path = agents/featureform
+	url = https://github.com/featureform/featureform.git
+[submodule "agents/legalai"]
+	path = agents/legalai
+	url = https://github.com/firica/legalai.git
+[submodule "agents/merlin"]
+	path = agents/merlin
+	url = https://github.com/gojek/merlin.git
+[submodule "models/model_search"]
+	path = models/model_search
+	url = https://github.com/google/model_search.git
+[submodule "agents/hia"]
+	path = agents/hia
+	url = https://github.com/harshhh28/hia.git
+[submodule "knowledge/awesome-automl-papers"]
+	path = knowledge/awesome-automl-papers
+	url = https://github.com/hibayesian/awesome-automl-papers.git
+[submodule "agents/horovod"]
+	path = agents/horovod
+	url = https://github.com/horovod/horovod.git
+[submodule "agents/rune"]
+	path = agents/rune
+	url = https://github.com/hotg-ai/rune.git
+[submodule "models/edugpt"]
+	path = models/edugpt
+	url = https://github.com/hqanhh/EduGPT.git
+[submodule "agents/hyperopt"]
+	path = agents/hyperopt
+	url = https://github.com/hyperopt/hyperopt.git
+[submodule "agents/sage"]
+	path = agents/sage
+	url = https://github.com/iancovert/sage.git
+[submodule "agents/vdp"]
+	path = agents/vdp
+	url = https://github.com/instill-ai/vdp.git
+[submodule "agents/intake"]
+	path = agents/intake
+	url = https://github.com/intake/intake.git
+[submodule "agents/interpret"]
+	path = agents/interpret
+	url = https://github.com/interpretml/interpret.git
+[submodule "agents/cml"]
+	path = agents/cml
+	url = https://github.com/iterative/cml.git
+[submodule "agents/mlem"]
+	path = agents/mlem
+	url = https://github.com/iterative/mlem.git
+[submodule "agents/kitops"]
+	path = agents/kitops
+	url = https://github.com/jozu-ai/kitops.git
+[submodule "training/traingenerator"]
+	path = training/traingenerator
+	url = https://github.com/jrieke/traingenerator.git
+[submodule "agents/neurolink"]
+	path = agents/neurolink
+	url = https://github.com/juspay/neurolink.git
+[submodule "knowledge/awesome-dataops"]
+	path = knowledge/awesome-dataops
+	url = https://github.com/kelvins/awesome-dataops.git
+[submodule "mlops/awesome-mlops"]
+	path = mlops/awesome-mlops
+	url = https://github.com/kelvins/awesome-mlops.git
+[submodule "agents/autokeras"]
+	path = agents/autokeras
+	url = https://github.com/keras-team/autokeras.git
+[submodule "agents/keras-tuner"]
+	path = agents/keras-tuner
+	url = https://github.com/keras-team/keras-tuner.git
+[submodule "agents/dud"]
+	path = agents/dud
+	url = https://github.com/kevin-hanselman/dud.git
+[submodule "infrastructure/kale"]
+	path = infrastructure/kale
+	url = https://github.com/kubeflow-kale/kale.git
+[submodule "infrastructure/katib"]
+	path = infrastructure/katib
+	url = https://github.com/kubeflow/katib.git
+[submodule "infrastructure/kfserving"]
+	path = infrastructure/kfserving
+	url = https://github.com/kubeflow/kfserving.git
+[submodule "agents/awesome-langchain"]
+	path = agents/awesome-langchain
+	url = https://github.com/kyrolabs/awesome-langchain.git
+[submodule "models/llm-guard"]
+	path = models/llm-guard
+	url = https://github.com/laiyer-ai/llm-guard.git
+[submodule "agents/game-datasets"]
+	path = agents/game-datasets
+	url = https://github.com/leomaurodesenv/game-datasets.git
+[submodule "agents/datahub"]
+	path = agents/datahub
+	url = https://github.com/linkedin/datahub.git
+[submodule "agents/feathr"]
+	path = agents/feathr
+	url = https://github.com/linkedin/feathr.git
+[submodule "agents/netron"]
+	path = agents/netron
+	url = https://github.com/lutzroeder/netron.git
+[submodule "agents/lux"]
+	path = agents/lux
+	url = https://github.com/lux-org/lux.git
+[submodule "agents/magda"]
+	path = agents/magda
+	url = https://github.com/magda-io/magda.git
+[submodule "mlops/zenml-1"]
+	path = mlops/zenml-1
+	url = https://github.com/maiot-io/zenml.git
+[submodule "reasoning/lime"]
+	path = reasoning/lime
+	url = https://github.com/marcotcr/lime.git
+[submodule "agents/hyperas"]
+	path = agents/hyperas
+	url = https://github.com/maxpumperla/hyperas.git
+[submodule "agents/flaml"]
+	path = agents/flaml
+	url = https://github.com/microsoft/FLAML.git
+[submodule "skills/optiguide"]
+	path = skills/optiguide
+	url = https://github.com/microsoft/OptiGuide.git
+[submodule "agents/recai"]
+	path = agents/recai
+	url = https://github.com/microsoft/RecAI.git
+[submodule "agents/nni"]
+	path = agents/nni
+	url = https://github.com/microsoft/nni.git
+[submodule "agents/mindsdb"]
+	path = agents/mindsdb
+	url = https://github.com/mindsdb/mindsdb.git
+[submodule "agents/ml-workspace"]
+	path = agents/ml-workspace
+	url = https://github.com/ml-tooling/ml-workspace.git
+[submodule "agents/opyrator"]
+	path = agents/opyrator
+	url = https://github.com/ml-tooling/opyrator.git
+[submodule "agents/mlrun"]
+	path = agents/mlrun
+	url = https://github.com/mlrun/mlrun.git
+[submodule "agents/manifest"]
+	path = agents/manifest
+	url = https://github.com/mnfst/manifest.git
+[submodule "agents/modin"]
+	path = agents/modin
+	url = https://github.com/modin-project/modin.git
+[submodule "models/llm_agri_bot"]
+	path = models/llm_agri_bot
+	url = https://github.com/mohammed97ashraf/LLM_Agri_Bot.git
+[submodule "agents/jupytext"]
+	path = agents/jupytext
+	url = https://github.com/mwouts/jupytext.git
+[submodule "agents/nebullvm"]
+	path = agents/nebullvm
+	url = https://github.com/nebuly-ai/nebullvm.git
+[submodule "agents/nos"]
+	path = agents/nos
+	url = https://github.com/nebuly-ai/nos.git
+[submodule "agents/ai-travel-agent"]
+	path = agents/ai-travel-agent
+	url = https://github.com/nirbar1985/ai-travel-agent.git
+[submodule "models/llm-agent-game"]
+	path = models/llm-agent-game
+	url = https://github.com/onjas-buidl/LLM-agent-game.git
+[submodule "agents/orchest"]
+	path = agents/orchest
+	url = https://github.com/orchest/orchest.git
+[submodule "agents/ploomber"]
+	path = agents/ploomber
+	url = https://github.com/ploomber/ploomber.git
+[submodule "agents/soopervisor"]
+	path = agents/soopervisor
+	url = https://github.com/ploomber/soopervisor.git
+[submodule "agents/soorgeon"]
+	path = agents/soorgeon
+	url = https://github.com/ploomber/soorgeon.git
+[submodule "agents/dash"]
+	path = agents/dash
+	url = https://github.com/plotly/dash.git
+[submodule "agents/cerberus"]
+	path = agents/cerberus
+	url = https://github.com/pyeve/cerberus.git
+[submodule "training/captum"]
+	path = training/captum
+	url = https://github.com/pytorch/captum.git
+[submodule "training/opacus"]
+	path = training/opacus
+	url = https://github.com/pytorch/opacus.git
+[submodule "training/serve"]
+	path = training/serve
+	url = https://github.com/pytorch/serve.git
+[submodule "agents/aeromancy"]
+	path = agents/aeromancy
+	url = https://github.com/quant-aq/aeromancy.git
+[submodule "agents/kedro"]
+	path = agents/kedro
+	url = https://github.com/quantumblacklabs/kedro.git
+[submodule "agents/quilt"]
+	path = agents/quilt
+	url = https://github.com/quiltdata/quilt.git
+[submodule "agents/butterfree"]
+	path = agents/butterfree
+	url = https://github.com/quintoandar/butterfree.git
+[submodule "mlops/radicalbit-ai-monitoring"]
+	path = mlops/radicalbit-ai-monitoring
+	url = https://github.com/radicalbit/radicalbit-ai-monitoring.git
+[submodule "multimodal/cog"]
+	path = multimodal/cog
+	url = https://github.com/replicate/cog.git
+[submodule "agents/keepsake"]
+	path = agents/keepsake
+	url = https://github.com/replicate/keepsake.git
+[submodule "agents/rhesis"]
+	path = agents/rhesis
+	url = https://github.com/rhesis-ai/rhesis.git
+[submodule "agents/blip"]
+	path = agents/blip
+	url = https://github.com/salesforce/BLIP.git
+[submodule "agents/scikit-optimize"]
+	path = agents/scikit-optimize
+	url = https://github.com/scikit-optimize/scikit-optimize.git
+[submodule "agents/jobber"]
+	path = agents/jobber
+	url = https://github.com/sentient-engineering/jobber.git
+[submodule "agents/dataprep"]
+	path = agents/dataprep
+	url = https://github.com/sfu-db/dataprep.git
+[submodule "knowledge/awesome-1"]
+	path = knowledge/awesome-1
+	url = https://github.com/sindresorhus/awesome.git
+[submodule "agents/drivlme"]
+	path = agents/drivlme
+	url = https://github.com/sled-group/driVLMe.git
+[submodule "agents/shap"]
+	path = agents/shap
+	url = https://github.com/slundberg/shap.git
+[submodule "agents/snorkel"]
+	path = agents/snorkel
+	url = https://github.com/snorkel-team/snorkel.git
+[submodule "agents/luigi"]
+	path = agents/luigi
+	url = https://github.com/spotify/luigi.git
+[submodule "agents/starwhale"]
+	path = agents/starwhale
+	url = https://github.com/star-whale/starwhale.git
+[submodule "agents/envd"]
+	path = agents/envd
+	url = https://github.com/tensorchord/envd.git
+[submodule "agents/data-validation"]
+	path = agents/data-validation
+	url = https://github.com/tensorflow/data-validation.git
+[submodule "agents/lucid"]
+	path = agents/lucid
+	url = https://github.com/tensorflow/lucid.git
+[submodule "agents/privacy"]
+	path = agents/privacy
+	url = https://github.com/tensorflow/privacy.git
+[submodule "agents/bamboolib"]
+	path = agents/bamboolib
+	url = https://github.com/tkrabel/bamboolib.git
+[submodule "agents/advisor"]
+	path = agents/advisor
+	url = https://github.com/tobegit3hub/advisor.git
+[submodule "agents/torchdrift"]
+	path = agents/torchdrift
+	url = https://github.com/torchdrift/torchdrift.git
+[submodule "agents/lakefs"]
+	path = agents/lakefs
+	url = https://github.com/treeverse/lakeFS.git
+[submodule "agents/trubrics-sdk"]
+	path = agents/trubrics-sdk
+	url = https://github.com/trubrics/trubrics-sdk.git
+[submodule "agents/ludwig"]
+	path = agents/ludwig
+	url = https://github.com/uber/ludwig.git
+[submodule "agents/manifold"]
+	path = agents/manifold
+	url = https://github.com/uber/manifold.git
+[submodule "agents/petastorm"]
+	path = agents/petastorm
+	url = https://github.com/uber/petastorm.git
+[submodule "agents/agent-wallet-sdk"]
+	path = agents/agent-wallet-sdk
+	url = https://github.com/up2itnow0822/agent-wallet-sdk.git
+[submodule "agents/upgini"]
+	path = agents/upgini
+	url = https://github.com/upgini/upgini.git
+[submodule "agents/vespa"]
+	path = agents/vespa
+	url = https://github.com/vespa-engine/vespa.git
+[submodule "knowledge/awesome-python"]
+	path = knowledge/awesome-python
+	url = https://github.com/vinta/awesome-python.git
+[submodule "mlops/awesome-mlops-1"]
+	path = mlops/awesome-mlops-1
+	url = https://github.com/visenger/awesome-mlops.git
+[submodule "evaluation/client"]
+	path = evaluation/client
+	url = https://github.com/wandb/client.git
+[submodule "agents/whylogs"]
+	path = agents/whylogs
+	url = https://github.com/whylabs/whylogs.git
+[submodule "knowledge/awesome-automl"]
+	path = knowledge/awesome-automl
+	url = https://github.com/windmaple/awesome-AutoML.git
+[submodule "security/rebuff-1"]
+	path = security/rebuff-1
+	url = https://github.com/woop/rebuff.git
+[submodule "agents/pandas-profiling"]
+	path = agents/pandas-profiling
+	url = https://github.com/ydataai/pandas-profiling.git
+[submodule "agents/mirai"]
+	path = agents/mirai
+	url = https://github.com/yecchen/MIRAI.git
+[submodule "models/llm4ias"]
+	path = models/llm4ias
+	url = https://github.com/yuchenxia/llm4ias.git
+[submodule "models/gpteam"]
+	path = models/gpteam
+	url = https://github.com/101dotxyz/GPTeam.git
+[submodule "agents/maxtext"]
+	path = agents/maxtext
+	url = https://github.com/AI-Hypercomputer/maxtext.git
+[submodule "audio/audiogpt"]
+	path = audio/audiogpt
+	url = https://github.com/AIGC-Audio/AudioGPT.git
+[submodule "vision/awesome-llm-3d"]
+	path = vision/awesome-llm-3d
+	url = https://github.com/ActiveVisionLab/Awesome-LLM-3D.git
+[submodule "agents/pixel_character_generator"]
+	path = agents/pixel_character_generator
+	url = https://github.com/AgaMiko/pixel_character_generator.git
+[submodule "knowledge/awesome-generative-ai-companies"]
+	path = knowledge/awesome-generative-ai-companies
+	url = https://github.com/AlexChalakov/awesome-generative-ai-companies.git
+[submodule "models/llmsys-paperlist"]
+	path = models/llmsys-paperlist
+	url = https://github.com/AmberLJC/LLMSys-PaperList.git
+[submodule "models/gpt-engineer"]
+	path = models/gpt-engineer
+	url = https://github.com/AntonOsika/gpt-engineer.git
+[submodule "knowledge/papers-for-molecular-design-using-dl"]
+	path = knowledge/papers-for-molecular-design-using-dl
+	url = https://github.com/AspirinCode/papers-for-molecular-design-using-DL.git
+[submodule "multimodal/awesome-multimodal-large-language-models"]
+	path = multimodal/awesome-multimodal-large-language-models
+	url = https://github.com/BradyFU/Awesome-Multimodal-Large-Language-Models.git
+[submodule "agents/wrenai"]
+	path = agents/wrenai
+	url = https://github.com/Canner/WrenAI.git
+[submodule "agents/text-extract-api"]
+	path = agents/text-extract-api
+	url = https://github.com/CatchTheTornado/text-extract-api.git
+[submodule "agents/dorothy"]
+	path = agents/dorothy
+	url = https://github.com/Charlie85270/Dorothy.git
+[submodule "evaluation/dingo"]
+	path = evaluation/dingo
+	url = https://github.com/DataEval/dingo.git
+[submodule "models/awesome-llm-inference"]
+	path = models/awesome-llm-inference
+	url = https://github.com/DefTruth/Awesome-LLM-Inference.git
+[submodule "models/swiss_army_llama"]
+	path = models/swiss_army_llama
+	url = https://github.com/Dicklesworthstone/swiss_army_llama.git
+[submodule "knowledge/awesome-hallucination-detection"]
+	path = knowledge/awesome-hallucination-detection
+	url = https://github.com/EdinburghNLP/awesome-hallucination-detection.git
+[submodule "agents/pythia"]
+	path = agents/pythia
+	url = https://github.com/EleutherAI/pythia.git
+[submodule "agents/symbolicai"]
+	path = agents/symbolicai
+	url = https://github.com/ExtensityAI/symbolicai.git
+[submodule "models/llm4opt"]
+	path = models/llm4opt
+	url = https://github.com/FeiLiu36/LLM4Opt.git
+[submodule "agents/floom"]
+	path = agents/floom
+	url = https://github.com/FloomAI/Floom.git
+[submodule "models/metagpt"]
+	path = models/metagpt
+	url = https://github.com/FoundationAgents/MetaGPT.git
+[submodule "models/awesome-language-model-analysis"]
+	path = models/awesome-language-model-analysis
+	url = https://github.com/Furyton/awesome-language-model-analysis.git
+[submodule "models/alignllmhumansurvey"]
+	path = models/alignllmhumansurvey
+	url = https://github.com/GaryYufei/AlignLLMHumanSurvey.git
+[submodule "platforms/generative-ai"]
+	path = platforms/generative-ai
+	url = https://github.com/GoogleCloudPlatform/generative-ai.git
+[submodule "agents/rwkv-howto"]
+	path = agents/rwkv-howto
+	url = https://github.com/Hannibal046/RWKV-howto.git
+[submodule "agents/hashlips_art_engine"]
+	path = agents/hashlips_art_engine
+	url = https://github.com/HashLips/hashlips_art_engine.git
+[submodule "models/awesome-chinese-llm"]
+	path = models/awesome-chinese-llm
+	url = https://github.com/HqWu-HITCS/Awesome-Chinese-LLM.git
+[submodule "models/awesome-llm-compression"]
+	path = models/awesome-llm-compression
+	url = https://github.com/HuangOwen/Awesome-LLM-Compression.git
+[submodule "agents/data-prep-kit"]
+	path = agents/data-prep-kit
+	url = https://github.com/IBM/data-prep-kit.git
+[submodule "platforms/lmdeploy"]
+	path = platforms/lmdeploy
+	url = https://github.com/InternLM/lmdeploy.git
+[submodule "models/tinyzero"]
+	path = models/tinyzero
+	url = https://github.com/Jiayi-Pan/TinyZero.git
+[submodule "vision/dreambooth-stable-diffusion"]
+	path = vision/dreambooth-stable-diffusion
+	url = https://github.com/JoePenna/Dreambooth-Stable-Diffusion.git
+[submodule "audio/awesome_audio-driven_talking-face-generation"]
+	path = audio/awesome_audio-driven_talking-face-generation
+	url = https://github.com/KangweiiLiu/Awesome_Audio-driven_Talking-Face-Generation.git
+[submodule "agents/kilocode"]
+	path = agents/kilocode
+	url = https://github.com/Kilo-Org/kilocode.git
+[submodule "agents/examples"]
+	path = agents/examples
+	url = https://github.com/LambdaLabsML/examples.git
+[submodule "models/lazyllm"]
+	path = models/lazyllm
+	url = https://github.com/LazyAGI/LazyLLM.git
+[submodule "agents/local-deep-research"]
+	path = agents/local-deep-research
+	url = https://github.com/LearningCircuit/local-deep-research.git
+[submodule "models/awesome-llm-hallucination"]
+	path = models/awesome-llm-hallucination
+	url = https://github.com/LuckyyySTA/Awesome-LLM-hallucination.git
+[submodule "models/llm-eval-survey"]
+	path = models/llm-eval-survey
+	url = https://github.com/MLGroupJLU/LLM-eval-survey.git
+[submodule "agents/sd-akashic"]
+	path = agents/sd-akashic
+	url = https://github.com/Maks-s/sd-akashic.git
+[submodule "agents/mindsql"]
+	path = agents/mindsql
+	url = https://github.com/Mindinventory/MindSQL.git
+[submodule "models/llmspracticalguide"]
+	path = models/llmspracticalguide
+	url = https://github.com/Mooler0410/LLMsPracticalGuide.git
+[submodule "agents/kimi-k2"]
+	path = agents/kimi-k2
+	url = https://github.com/MoonshotAI/Kimi-K2.git
+[submodule "agents/mubert-text-to-music"]
+	path = agents/mubert-text-to-music
+	url = https://github.com/MubertAI/Mubert-Text-to-Music.git
+[submodule "agents/fastertransformer"]
+	path = agents/fastertransformer
+	url = https://github.com/NVIDIA/FasterTransformer.git
+[submodule "agents/transformerengine"]
+	path = agents/transformerengine
+	url = https://github.com/NVIDIA/TransformerEngine.git
+[submodule "training/bmtrain"]
+	path = training/bmtrain
+	url = https://github.com/OpenBMB/BMTrain.git
+[submodule "agents/openhands-1"]
+	path = agents/openhands-1
+	url = https://github.com/OpenHands/OpenHands.git
+[submodule "models/llm-comparator"]
+	path = models/llm-comparator
+	url = https://github.com/PAIR-code/llm-comparator.git
+[submodule "agents/hands-on-rl"]
+	path = agents/hands-on-rl
+	url = https://github.com/Paulescu/hands-on-rl.git
+[submodule "models/awesome-chatgpt-prompts-zh"]
+	path = models/awesome-chatgpt-prompts-zh
+	url = https://github.com/PlexPt/awesome-chatgpt-prompts-zh.git
+[submodule "models/awesome-llm-human-preference-datasets"]
+	path = models/awesome-llm-human-preference-datasets
+	url = https://github.com/PolisAI/awesome-llm-human-preference-datasets.git
+[submodule "evaluation/mixeval"]
+	path = evaluation/mixeval
+	url = https://github.com/Psycoy/MixEval.git
+[submodule "agents/dataline"]
+	path = agents/dataline
+	url = https://github.com/RamiAwar/dataline.git
+[submodule "agents/roo-code-1"]
+	path = agents/roo-code-1
+	url = https://github.com/RooCodeInc/Roo-Code.git
+[submodule "agents/powerinfer"]
+	path = agents/powerinfer
+	url = https://github.com/SJTU-IPADS/PowerInfer.git
+[submodule "agents/lama-cleaner"]
+	path = agents/lama-cleaner
+	url = https://github.com/Sanster/lama-cleaner.git
+[submodule "agents/realchar"]
+	path = agents/realchar
+	url = https://github.com/Shaunwei/RealChar.git
+[submodule "models/awesome-llm-apps"]
+	path = models/awesome-llm-apps
+	url = https://github.com/Shubhamsaboo/awesome-llm-apps.git
+[submodule "models/auto-gpt"]
+	path = models/auto-gpt
+	url = https://github.com/Significant-Gravitas/Auto-GPT.git
+[submodule "knowledge/instruction-tuning-papers"]
+	path = knowledge/instruction-tuning-papers
+	url = https://github.com/SinclairCoder/Instruction-Tuning-Papers.git
+[submodule "audio/whisper-ctranslate2"]
+	path = audio/whisper-ctranslate2
+	url = https://github.com/Softcatala/whisper-ctranslate2.git
+[submodule "models/gpt_mobile"]
+	path = models/gpt_mobile
+	url = https://github.com/Taewan-P/gpt_mobile.git
+[submodule "agents/gfpgan"]
+	path = agents/gfpgan
+	url = https://github.com/TencentARC/GFPGAN.git
+[submodule "agents/pr-agent-1"]
+	path = agents/pr-agent-1
+	url = https://github.com/The-PR-Agent/pr-agent.git
+[submodule "vision/fast-stable-diffusion"]
+	path = vision/fast-stable-diffusion
+	url = https://github.com/TheLastBen/fast-stable-diffusion.git
+[submodule "agents/txt2mask"]
+	path = agents/txt2mask
+	url = https://github.com/ThereforeGames/txt2mask.git
+[submodule "models/chat-gpt-jupyter-extension"]
+	path = models/chat-gpt-jupyter-extension
+	url = https://github.com/TiesdeKok/chat-gpt-jupyter-extension.git
+[submodule "reasoning/chain-of-thoughtspapers"]
+	path = reasoning/chain-of-thoughtspapers
+	url = https://github.com/Timothyxxx/Chain-of-ThoughtsPapers.git
+[submodule "agents/pulid"]
+	path = agents/pulid
+	url = https://github.com/ToTheBeginning/PuLID.git
+[submodule "models/auto-gpt-1"]
+	path = models/auto-gpt-1
+	url = https://github.com/Torantulino/Auto-GPT.git
+[submodule "data-rag/draggan"]
+	path = data-rag/draggan
+	url = https://github.com/XingangPan/DragGAN.git
+[submodule "data-rag/awesome-rag-production"]
+	path = data-rag/awesome-rag-production
+	url = https://github.com/Yigtwxx/Awesome-RAG-Production.git
+[submodule "models/pacmap"]
+	path = models/pacmap
+	url = https://github.com/YingfanWang/PaCMAP.git
+[submodule "agents/fastdatasets"]
+	path = agents/fastdatasets
+	url = https://github.com/ZhuLinsen/FastDatasets.git
+[submodule "models/llmdatahub"]
+	path = models/llmdatahub
+	url = https://github.com/Zjh-819/LLMDataHub.git
+[submodule "infrastructure/ai-town"]
+	path = infrastructure/ai-town
+	url = https://github.com/a16z-infra/AI-town.git
+[submodule "mcp-servers/todoist-mcp-server"]
+	path = mcp-servers/todoist-mcp-server
+	url = https://github.com/abhiz123/todoist-mcp-server.git
+[submodule "agents/hive"]
+	path = agents/hive
+	url = https://github.com/aden-hive/hive.git
+[submodule "agents/agenta"]
+	path = agents/agenta
+	url = https://github.com/agenta-ai/agenta.git
+[submodule "agents/agentset"]
+	path = agents/agentset
+	url = https://github.com/agentset-ai/agentset.git
+[submodule "agents/agentskills"]
+	path = agents/agentskills
+	url = https://github.com/agentskills/agentskills.git
+[submodule "agents/openagi"]
+	path = agents/openagi
+	url = https://github.com/agiresearch/OpenAGI.git
+[submodule "video/videocrafter"]
+	path = video/videocrafter
+	url = https://github.com/ailab-cvc/videocrafter.git
+[submodule "agents/mnn"]
+	path = agents/mnn
+	url = https://github.com/alibaba/MNN.git
+[submodule "agents/roll"]
+	path = agents/roll
+	url = https://github.com/alibaba/ROLL.git
+[submodule "agents/off-grid-mobile-ai"]
+	path = agents/off-grid-mobile-ai
+	url = https://github.com/alichherawalla/off-grid-mobile-ai.git
+[submodule "evaluation/olmo-eval"]
+	path = evaluation/olmo-eval
+	url = https://github.com/allenai/OLMo-Eval.git
+[submodule "vision/awesome-ai-art-image-synthesis"]
+	path = vision/awesome-ai-art-image-synthesis
+	url = https://github.com/altryne/awesome-ai-art-image-synthesis.git
+[submodule "knowledge/awesome-colab-notebooks"]
+	path = knowledge/awesome-colab-notebooks
+	url = https://github.com/amrzv/awesome-colab-notebooks.git
+[submodule "agents/opencode"]
+	path = agents/opencode
+	url = https://github.com/anomalyco/opencode.git
+[submodule "agents/ml-no-token-left-behind"]
+	path = agents/ml-no-token-left-behind
+	url = https://github.com/apple/ml-no-token-left-behind.git
+[submodule "audio/audio-ai-timeline"]
+	path = audio/audio-ai-timeline
+	url = https://github.com/archinetai/audio-ai-timeline.git
+[submodule "audio/audio-diffusion-pytorch"]
+	path = audio/audio-diffusion-pytorch
+	url = https://github.com/archinetai/audio-diffusion-pytorch.git
+[submodule "agents/stable-dreamfusion"]
+	path = agents/stable-dreamfusion
+	url = https://github.com/ashawkey/stable-dreamfusion.git
+[submodule "agents/asreview"]
+	path = agents/asreview
+	url = https://github.com/asreview/asreview.git
+[submodule "reasoning/lm-reasoning-papers"]
+	path = reasoning/lm-reasoning-papers
+	url = https://github.com/atfortes/LM-Reasoning-Papers.git
+[submodule "agents/harbor"]
+	path = agents/harbor
+	url = https://github.com/av/harbor.git
+[submodule "data-rag/brag-langchain"]
+	path = data-rag/brag-langchain
+	url = https://github.com/bRAGAI/bRAG-langchain.git
+[submodule "agents/dain"]
+	path = agents/dain
+	url = https://github.com/baowenbo/DAIN.git
+[submodule "vision/stable-diffusion"]
+	path = vision/stable-diffusion
+	url = https://github.com/basujindal/stable-diffusion.git
+[submodule "agents/generative_ai_with_langchain"]
+	path = agents/generative_ai_with_langchain
+	url = https://github.com/benman1/generative_ai_with_langchain.git
+[submodule "vision/dalle-mini"]
+	path = vision/dalle-mini
+	url = https://github.com/borisdayma/dalle-mini.git
+[submodule "models/llm-security-and-privacy"]
+	path = models/llm-security-and-privacy
+	url = https://github.com/briland/LLM-security-and-privacy.git
+[submodule "models/dolphin"]
+	path = models/dolphin
+	url = https://github.com/bytedance/Dolphin.git
+[submodule "agents/chainner"]
+	path = agents/chainner
+	url = https://github.com/chaiNNer-org/chaiNNer.git
+[submodule "models/llm-rl-visualized"]
+	path = models/llm-rl-visualized
+	url = https://github.com/changyeyu/LLM-RL-Visualized.git
+[submodule "knowledge/awesome-generative-ai"]
+	path = knowledge/awesome-generative-ai
+	url = https://github.com/chaosreactor/awesome-generative-ai.git
+[submodule "agents/langchain-chatchat"]
+	path = agents/langchain-chatchat
+	url = https://github.com/chatchat-space/Langchain-Chatchat.git
+[submodule "skills/promptplusplus"]
+	path = skills/promptplusplus
+	url = https://github.com/cloneofsimo/promptplusplus.git
+[submodule "models/awesome-code-llm"]
+	path = models/awesome-code-llm
+	url = https://github.com/codefuse-ai/Awesome-Code-LLM.git
+[submodule "models/awesome-llm-security"]
+	path = models/awesome-llm-security
+	url = https://github.com/corca-ai/awesome-llm-security.git
+[submodule "agents/reading_groups"]
+	path = agents/reading_groups
+	url = https://github.com/crazyofapple/Reading_groups.git
+[submodule "agents/gitingest"]
+	path = agents/gitingest
+	url = https://github.com/cyclotruc/gitingest.git
+[submodule "skills/teleprompter"]
+	path = skills/teleprompter
+	url = https://github.com/danielgross/teleprompter.git
+[submodule "skills/prompt-extend"]
+	path = skills/prompt-extend
+	url = https://github.com/daspartho/prompt-extend.git
+[submodule "evaluation/instruct-eval"]
+	path = evaluation/instruct-eval
+	url = https://github.com/declare-lab/instruct-eval.git
+[submodule "agents/if"]
+	path = agents/if
+	url = https://github.com/deep-floyd/IF.git
+[submodule "agents/sd-webui-deforum"]
+	path = agents/sd-webui-deforum
+	url = https://github.com/deforum-art/sd-webui-deforum.git
+[submodule "video/video-killed-the-radio-star"]
+	path = video/video-killed-the-radio-star
+	url = https://github.com/dmarx/video-killed-the-radio-star.git
+[submodule "agents/biblos"]
+	path = agents/biblos
+	url = https://github.com/dssjon/biblos.git
+[submodule "agents/ml-art-colabs"]
+	path = agents/ml-art-colabs
+	url = https://github.com/dvschultz/ml-art-colabs.git
+[submodule "models/awesome-gpt3"]
+	path = models/awesome-gpt3
+	url = https://github.com/elyase/awesome-gpt3.git
+[submodule "agents/aphantasia"]
+	path = agents/aphantasia
+	url = https://github.com/eps696/aphantasia.git
+[submodule "models/open-llms"]
+	path = models/open-llms
+	url = https://github.com/eugeneyan/open-llms.git
+[submodule "vision/imagebind"]
+	path = vision/imagebind
+	url = https://github.com/facebookresearch/ImageBind.git
+[submodule "knowledge/lingua"]
+	path = knowledge/lingua
+	url = https://github.com/facebookresearch/lingua.git
+[submodule "knowledge/seamless_communication"]
+	path = knowledge/seamless_communication
+	url = https://github.com/facebookresearch/seamless_communication.git
+[submodule "knowledge/awesome-generative-ai-1"]
+	path = knowledge/awesome-generative-ai-1
+	url = https://github.com/filipecalegario/awesome-generative-ai.git
+[submodule "knowledge/awesome-vibe-coding"]
+	path = knowledge/awesome-vibe-coding
+	url = https://github.com/filipecalegario/awesome-vibe-coding.git
+[submodule "models/awesome-gpt"]
+	path = models/awesome-gpt
+	url = https://github.com/formulahendry/awesome-gpt.git
+[submodule "models/wechat-chatgpt"]
+	path = models/wechat-chatgpt
+	url = https://github.com/fuergaosi233/wechat-chatgpt.git
+[submodule "agents/dali"]
+	path = agents/dali
+	url = https://github.com/gabolsgabs/DALI.git
+[submodule "models/llama-2"]
+	path = models/llama-2
+	url = https://github.com/ggml-org/llama.git
+[submodule "agents/recurrentgemma"]
+	path = agents/recurrentgemma
+	url = https://github.com/google-deepmind/recurrentgemma.git
+[submodule "agents/big-bench"]
+	path = agents/big-bench
+	url = https://github.com/google/BIG-bench.git
+[submodule "models/chatgpt-shroud"]
+	path = models/chatgpt-shroud
+	url = https://github.com/guyShilo/chatgpt-shroud.git
+[submodule "agents/pandas-ai"]
+	path = agents/pandas-ai
+	url = https://github.com/gventuri/pandas-ai.git
+[submodule "agents/mamba-chat"]
+	path = agents/mamba-chat
+	url = https://github.com/havenhq/mamba-chat.git
+[submodule "agents/hexabot"]
+	path = agents/hexabot
+	url = https://github.com/hexastack/hexabot.git
+[submodule "agents/hyperframes"]
+	path = agents/hyperframes
+	url = https://github.com/heygen-com/hyperframes.git
+[submodule "vision/stable-diffusion-webui-1"]
+	path = vision/stable-diffusion-webui-1
+	url = https://github.com/hlky/stable-diffusion-webui.git
+[submodule "agents/datatrove"]
+	path = agents/datatrove
+	url = https://github.com/huggingface/datatrove.git
+[submodule "vision/diffusion-models-class"]
+	path = vision/diffusion-models-class
+	url = https://github.com/huggingface/diffusion-models-class.git
+[submodule "evaluation/lighteval"]
+	path = evaluation/lighteval
+	url = https://github.com/huggingface/lighteval.git
+[submodule "agents/text-embeddings-inference"]
+	path = agents/text-embeddings-inference
+	url = https://github.com/huggingface/text-embeddings-inference.git
+[submodule "models/awesome-chatgpt-1"]
+	path = models/awesome-chatgpt-1
+	url = https://github.com/humanloop/awesome-chatgpt.git
+[submodule "models/awesome-code-llm-1"]
+	path = models/awesome-code-llm-1
+	url = https://github.com/huybery/Awesome-Code-LLM.git
+[submodule "agents/research-digest"]
+	path = agents/research-digest
+	url = https://github.com/hwaseem04/Research-digest.git
+[submodule "agents/langchain"]
+	path = agents/langchain
+	url = https://github.com/hwchase17/langchain.git
+[submodule "agents/ai-i18n"]
+	path = agents/ai-i18n
+	url = https://github.com/i18n-actions/ai-i18n.git
+[submodule "models/privategpt"]
+	path = models/privategpt
+	url = https://github.com/imartinez/privateGPT.git
+[submodule "infrastructure/intelliserver"]
+	path = infrastructure/intelliserver
+	url = https://github.com/intelligentnode/IntelliServer.git
+[submodule "agents/aclue"]
+	path = agents/aclue
+	url = https://github.com/isen-zhang/ACLUE.git
+[submodule "agents/composum-ai"]
+	path = agents/composum-ai
+	url = https://github.com/ist-dresden/composum-AI.git
+[submodule "agents/detextify"]
+	path = agents/detextify
+	url = https://github.com/iuliaturc/detextify.git
+[submodule "models/hands-on-llms"]
+	path = models/hands-on-llms
+	url = https://github.com/iusztinpaul/hands-on-llms.git
+[submodule "agents/magentic"]
+	path = agents/magentic
+	url = https://github.com/jackmpcollins/magentic.git
+[submodule "models/chinese-llm-benchmark"]
+	path = models/chinese-llm-benchmark
+	url = https://github.com/jeinlee1991/chinese-llm-benchmark.git
+[submodule "models/gpt_index"]
+	path = models/gpt_index
+	url = https://github.com/jerryjliu/gpt_index.git
+[submodule "models/llama_index"]
+	path = models/llama_index
+	url = https://github.com/jerryjliu/llama_index.git
+[submodule "agents/aiaiart"]
+	path = agents/aiaiart
+	url = https://github.com/johnowhitaker/aiaiart.git
+[submodule "knowledge/tglcourse"]
+	path = knowledge/tglcourse
+	url = https://github.com/johnowhitaker/tglcourse.git
+[submodule "knowledge/awesome-ai-art-1"]
+	path = knowledge/awesome-ai-art-1
+	url = https://github.com/jonathandinu/awesome-ai-art.git
+[submodule "agents/genagents"]
+	path = agents/genagents
+	url = https://github.com/joonspk-research/genagents.git
+[submodule "agents/generative_agents"]
+	path = agents/generative_agents
+	url = https://github.com/joonspk-research/generative_agents.git
+[submodule "knowledge/awesome-ai-market-maps"]
+	path = knowledge/awesome-ai-market-maps
+	url = https://github.com/joylarkin/Awesome-AI-Market-Maps.git
+[submodule "agents/jupyter-ai"]
+	path = agents/jupyter-ai
+	url = https://github.com/jupyterlab/jupyter-ai.git
+[submodule "training/awesome-pretrained-stylegan2"]
+	path = training/awesome-pretrained-stylegan2
+	url = https://github.com/justinpinkney/awesome-pretrained-stylegan2.git
+[submodule "models/animated-llm"]
+	path = models/animated-llm
+	url = https://github.com/kasnerz/animated-llm.git
+[submodule "models/femtogpt"]
+	path = models/femtogpt
+	url = https://github.com/keyvank/femtoGPT.git
+[submodule "agents/langwatch"]
+	path = agents/langwatch
+	url = https://github.com/langwatch/langwatch.git
+[submodule "knowledge/open-notebook"]
+	path = knowledge/open-notebook
+	url = https://github.com/lfnovo/open-notebook.git
+[submodule "models/modelfusion"]
+	path = models/modelfusion
+	url = https://github.com/lgrammel/modelfusion.git
+[submodule "vision/stablediffusion-infinity"]
+	path = vision/stablediffusion-infinity
+	url = https://github.com/lkwq007/stablediffusion-infinity.git
+[submodule "models/awesome-japanese-llm"]
+	path = models/awesome-japanese-llm
+	url = https://github.com/llm-jp/awesome-japanese-llm.git
+[submodule "models/llm-ui"]
+	path = models/llm-ui
+	url = https://github.com/llm-ui-kit/llm-ui.git
+[submodule "skills/awesome-deliberative-prompting"]
+	path = skills/awesome-deliberative-prompting
+	url = https://github.com/logikon-ai/awesome-deliberative-prompting.git
+[submodule "agents/langflow"]
+	path = agents/langflow
+	url = https://github.com/logspace-ai/langflow.git
+[submodule "agents/just-chat"]
+	path = agents/just-chat
+	url = https://github.com/longevity-genie/just-chat.git
+[submodule "agents/emcee"]
+	path = agents/emcee
+	url = https://github.com/loopwork-ai/emcee.git
+[submodule "training/musiclm-pytorch"]
+	path = training/musiclm-pytorch
+	url = https://github.com/lucidrains/musiclm-pytorch.git
+[submodule "agents/ludwig-1"]
+	path = agents/ludwig-1
+	url = https://github.com/ludwig-ai/ludwig.git
+[submodule "agents/abso"]
+	path = agents/abso
+	url = https://github.com/lunary-ai/abso.git
+[submodule "agents/magenta"]
+	path = agents/magenta
+	url = https://github.com/magenta/magenta.git
+[submodule "knowledge/awesome-ai-tools"]
+	path = knowledge/awesome-ai-tools
+	url = https://github.com/mahseema/awesome-ai-tools.git
+[submodule "models/llm-inference-solutions"]
+	path = models/llm-inference-solutions
+	url = https://github.com/mani-kantap/llm-inference-solutions.git
+[submodule "knowledge/awesome-ai-art-design"]
+	path = knowledge/awesome-ai-art-design
+	url = https://github.com/margaretmz/awesome-ai-art-design.git
+[submodule "agents/bifrost"]
+	path = agents/bifrost
+	url = https://github.com/maximhq/bifrost.git
+[submodule "models/mobillama"]
+	path = models/mobillama
+	url = https://github.com/mbzuai-oryx/MobiLlama.git
+[submodule "agents/memfree"]
+	path = agents/memfree
+	url = https://github.com/memfreeme/memfree.git
+[submodule "agents/lmops"]
+	path = agents/lmops
+	url = https://github.com/microsoft/LMOps.git
+[submodule "agents/minference"]
+	path = agents/minference
+	url = https://github.com/microsoft/MInference.git
+[submodule "training/megatron-deepspeed"]
+	path = training/megatron-deepspeed
+	url = https://github.com/microsoft/Megatron-DeepSpeed.git
+[submodule "agents/tinytroupe"]
+	path = agents/tinytroupe
+	url = https://github.com/microsoft/TinyTroupe.git
+[submodule "agents/guidance"]
+	path = agents/guidance
+	url = https://github.com/microsoft/guidance.git
+[submodule "agents/lucid-sonic-dreams"]
+	path = agents/lucid-sonic-dreams
+	url = https://github.com/mikaelalafriz/lucid-sonic-dreams.git
+[submodule "models/awesome-llm-healthcare"]
+	path = models/awesome-llm-healthcare
+	url = https://github.com/mingze-yuan/Awesome-LLM-Healthcare.git
+[submodule "models/chatgpt-wrapper"]
+	path = models/chatgpt-wrapper
+	url = https://github.com/mmabrouk/chatgpt-wrapper.git
+[submodule "models/inspector"]
+	path = models/inspector
+	url = https://github.com/modelcontextprotocol/inspector.git
+[submodule "models/modelcontextprotocol"]
+	path = models/modelcontextprotocol
+	url = https://github.com/modelcontextprotocol/modelcontextprotocol.git
+[submodule "agents/kimi-k2-1"]
+	path = agents/kimi-k2-1
+	url = https://github.com/moonshotai/Kimi-K2.git
+[submodule "models/gpt-prompt-engineer"]
+	path = models/gpt-prompt-engineer
+	url = https://github.com/mshumer/gpt-prompt-engineer.git
+[submodule "models/llama3-from-scratch"]
+	path = models/llama3-from-scratch
+	url = https://github.com/naklecha/llama3-from-scratch.git
+[submodule "agents/dr-doc-search"]
+	path = agents/dr-doc-search
+	url = https://github.com/namuan/dr-doc-search.git
+[submodule "vision/stable-diffusion-videos"]
+	path = vision/stable-diffusion-videos
+	url = https://github.com/nateraw/stable-diffusion-videos.git
+[submodule "skills/system-prompt-library"]
+	path = skills/system-prompt-library
+	url = https://github.com/ncwilson78/System-Prompt-Library.git
+[submodule "audio/tortoise-tts"]
+	path = audio/tortoise-tts
+	url = https://github.com/neonbjb/tortoise-tts.git
+[submodule "models/wllama"]
+	path = models/wllama
+	url = https://github.com/ngxson/wllama.git
+[submodule "agents/llocalsearch"]
+	path = agents/llocalsearch
+	url = https://github.com/nilsherzig/LLocalSearch.git
+[submodule "agents/outlines"]
+	path = agents/outlines
+	url = https://github.com/normal-computing/outlines.git
+[submodule "agents/openagents"]
+	path = agents/openagents
+	url = https://github.com/openagents-org/openagents.git
+[submodule "agents/openclaw"]
+	path = agents/openclaw
+	url = https://github.com/openclaw/openclaw.git
+[submodule "agents/mineru"]
+	path = agents/mineru
+	url = https://github.com/opendatalab/MinerU.git
+[submodule "agents/open-interpreter-1"]
+	path = agents/open-interpreter-1
+	url = https://github.com/openinterpreter/open-interpreter.git
+[submodule "agents/openlit"]
+	path = agents/openlit
+	url = https://github.com/openlit/openlit.git
+[submodule "agents/oumi"]
+	path = agents/oumi
+	url = https://github.com/oumi-ai/oumi.git
+[submodule "audio/epub_to_audiobook"]
+	path = audio/epub_to_audiobook
+	url = https://github.com/p0n1/epub_to_audiobook.git
+[submodule "models/llm-app"]
+	path = models/llm-app
+	url = https://github.com/pathwaycom/llm-app.git
+[submodule "agents/chatgdb"]
+	path = agents/chatgdb
+	url = https://github.com/pgosar/ChatGDB.git
+[submodule "data-rag/canopy"]
+	path = data-rag/canopy
+	url = https://github.com/pinecone-io/canopy.git
+[submodule "agents/pixray"]
+	path = agents/pixray
+	url = https://github.com/pixray/pixray.git
+[submodule "knowledge/pixray_notebooks"]
+	path = knowledge/pixray_notebooks
+	url = https://github.com/pixray/pixray_notebooks.git
+[submodule "agents/transformer-explainer"]
+	path = agents/transformer-explainer
+	url = https://github.com/poloclub/transformer-explainer.git
+[submodule "skills/promptify"]
+	path = skills/promptify
+	url = https://github.com/promptslab/Promptify.git
+[submodule "models/llmebench"]
+	path = models/llmebench
+	url = https://github.com/qcri/LLMeBench.git
+[submodule "agents/batchai"]
+	path = agents/batchai
+	url = https://github.com/qiangyt/batchai.git
+[submodule "agents/megaparse"]
+	path = agents/megaparse
+	url = https://github.com/quivrhq/megaparse.git
+[submodule "agents/turbopilot"]
+	path = agents/turbopilot
+	url = https://github.com/ravenscroftj/turbopilot.git
+[submodule "agents/rehydra-sdk"]
+	path = agents/rehydra-sdk
+	url = https://github.com/rehydra-ai/rehydra-sdk.git
+[submodule "agents/qa-pilot"]
+	path = agents/qa-pilot
+	url = https://github.com/reid41/QA-Pilot.git
+[submodule "agents/shell-pilot"]
+	path = agents/shell-pilot
+	url = https://github.com/reid41/shell-pilot.git
+[submodule "models/gpt-code-ui"]
+	path = models/gpt-code-ui
+	url = https://github.com/ricklamers/gpt-code-ui.git
+[submodule "agents/textual_inversion"]
+	path = agents/textual_inversion
+	url = https://github.com/rinongal/textual_inversion.git
+[submodule "agents/robocorp"]
+	path = agents/robocorp
+	url = https://github.com/robocorp/robocorp.git
+[submodule "vision/awesome-openai-vision-api-experiments"]
+	path = vision/awesome-openai-vision-api-experiments
+	url = https://github.com/roboflow/awesome-openai-vision-api-experiments.git
+[submodule "agents/litechain"]
+	path = agents/litechain
+	url = https://github.com/rogeriochaves/litechain.git
+[submodule "vision/clip-retrieval"]
+	path = vision/clip-retrieval
+	url = https://github.com/rom1504/clip-retrieval.git
+[submodule "audio/tts-webui"]
+	path = audio/tts-webui
+	url = https://github.com/rsxdalv/TTS-WebUI.git
+[submodule "vision/ru-dalle"]
+	path = vision/ru-dalle
+	url = https://github.com/sberbank-ai/ru-dalle.git
+[submodule "agents/screenpipe"]
+	path = agents/screenpipe
+	url = https://github.com/screenpipe/screenpipe.git
+[submodule "agents/serge"]
+	path = agents/serge
+	url = https://github.com/serge-chat/serge.git
+[submodule "audio/whispers2t"]
+	path = audio/whispers2t
+	url = https://github.com/shashikg/WhisperS2T.git
+[submodule "models/awesome-chatgpt-2"]
+	path = models/awesome-chatgpt-2
+	url = https://github.com/sindresorhus/awesome-chatgpt.git
+[submodule "models/awesome-llm-webapps"]
+	path = models/awesome-llm-webapps
+	url = https://github.com/snowfort-ai/awesome-llm-webapps.git
+[submodule "agents/stylepile"]
+	path = agents/stylepile
+	url = https://github.com/some9000/StylePile.git
+[submodule "agents/agentic-radar"]
+	path = agents/agentic-radar
+	url = https://github.com/splx-ai/agentic-radar.git
+[submodule "agents/helm"]
+	path = agents/helm
+	url = https://github.com/stanford-crfm/helm.git
+[submodule "agents/s4"]
+	path = agents/s4
+	url = https://github.com/state-spaces/s4.git
+[submodule "agents/steel-browser"]
+	path = agents/steel-browser
+	url = https://github.com/steel-dev/steel-browser.git
+[submodule "knowledge/awesome-generative-ai-2"]
+	path = knowledge/awesome-generative-ai-2
+	url = https://github.com/steven2358/awesome-generative-ai.git
+[submodule "knowledge/awesome-music-ai"]
+	path = knowledge/awesome-music-ai
+	url = https://github.com/steven2358/awesome-music-ai.git
+[submodule "models/codevelopergptengine"]
+	path = models/codevelopergptengine
+	url = https://github.com/stoerr/CoDeveloperGPTengine.git
+[submodule "agents/textcraft"]
+	path = agents/textcraft
+	url = https://github.com/suncloudsmoon/TextCraft.git
+[submodule "agents/dialog"]
+	path = agents/dialog
+	url = https://github.com/talkdai/dialog.git
+[submodule "agents/mesh"]
+	path = agents/mesh
+	url = https://github.com/tensorflow/mesh.git
+[submodule "agents/vibe"]
+	path = agents/vibe
+	url = https://github.com/thewh1teagle/vibe.git
+[submodule "agents/draw-a-ui"]
+	path = agents/draw-a-ui
+	url = https://github.com/tldraw/draw-a-ui.git
+[submodule "agents/openchatkit"]
+	path = agents/openchatkit
+	url = https://github.com/togethercomputer/OpenChatKit.git
+[submodule "knowledge/awesome-machine-learning-jupyter-notebooks-for-colab"]
+	path = knowledge/awesome-machine-learning-jupyter-notebooks-for-colab
+	url = https://github.com/toxtli/awesome-machine-learning-jupyter-notebooks-for-colab.git
+[submodule "models/chatgpt-data-science-prompts"]
+	path = models/chatgpt-data-science-prompts
+	url = https://github.com/travistangvh/ChatGPT-Data-Science-Prompts.git
+[submodule "models/exllama"]
+	path = models/exllama
+	url = https://github.com/turboderp/exllama.git
+[submodule "skills/promptfoo"]
+	path = skills/promptfoo
+	url = https://github.com/typpo/promptfoo.git
+[submodule "skills/prompt-optimizer"]
+	path = skills/prompt-optimizer
+	url = https://github.com/vaibkumr/prompt-optimizer.git
+[submodule "agents/vanna"]
+	path = agents/vanna
+	url = https://github.com/vanna-ai/vanna.git
+[submodule "agents/hallucination-leaderboard"]
+	path = agents/hallucination-leaderboard
+	url = https://github.com/vectara/hallucination-leaderboard.git
+[submodule "data-rag/verba"]
+	path = data-rag/verba
+	url = https://github.com/weaviate/Verba.git
+[submodule "models/gpt-code-search"]
+	path = models/gpt-code-search
+	url = https://github.com/wolfia-app/gpt-code-search.git
+[submodule "models/deploy-llms-with-ansible"]
+	path = models/deploy-llms-with-ansible
+	url = https://github.com/xamey/deploy-llms-with-ansible.git
+[submodule "agents/repomix"]
+	path = agents/repomix
+	url = https://github.com/yamadashy/repomix.git
+[submodule "models/hands-on-langchain-for-llm-applications-development"]
+	path = models/hands-on-langchain-for-llm-applications-development
+	url = https://github.com/youssefHosni/Hands-On-LangChain-for-LLM-Applications-Development.git
+[submodule "agents/hyperstyle"]
+	path = agents/hyperstyle
+	url = https://github.com/yuval-alaluf/hyperstyle.git
+[submodule "models/glm-5"]
+	path = models/glm-5
+	url = https://github.com/zai-org/GLM-5.git
+[submodule "agents/easyedit"]
+	path = agents/easyedit
+	url = https://github.com/zjunlp/EasyEdit.git
+[submodule "models/modeleditingpapers"]
+	path = models/modeleditingpapers
+	url = https://github.com/zjunlp/ModelEditingPapers.git
