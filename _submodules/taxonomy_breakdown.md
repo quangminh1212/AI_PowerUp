@@ -1,10 +1,10 @@
 # Taxonomy Breakdown
-Total submodules: 2674
+Total submodules: 2669
 
-- `agents/general`: 1011
+- `agents/general`: 1010
 - `models/llm`: 243
-- `agents/coding`: 103
-- `frameworks/general`: 77
+- `agents/coding`: 102
+- `frameworks/general`: 76
 - `infrastructure/general`: 66
 - `knowledge/courses`: 64
 - `models/general`: 56
@@ -15,7 +15,7 @@ Total submodules: 2674
 - `reasoning/general`: 45
 - `skills/general`: 44
 - `agents/data`: 44
-- `training/general`: 43
+- `training/general`: 42
 - `vision/general`: 42
 - `data-rag/general`: 41
 - `agents/framework`: 39
@@ -27,10 +27,10 @@ Total submodules: 2674
 - `skills/prompts`: 29
 - `agents/chat`: 28
 - `agents/research`: 26
-- `audio/tts`: 25
+- `mlops/general`: 25
 - `platforms/general`: 25
 - `vision/diffusion`: 25
-- `mlops/general`: 24
+- `audio/tts`: 24
 - `knowledge/papers`: 21
 - `video/general`: 21
 - `knowledge/general`: 20
@@ -71,6 +71,5 @@ Total submodules: 2674
 - `vision/3d`: 2
 - `vision/generation`: 2
 - `data-rag/frameworks`: 1
-- `mlops-kubeflow/general`: 1
 - `skills/career`: 1
 - `models/audio`: 1
