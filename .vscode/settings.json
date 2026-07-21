@@ -1,4 +1,5 @@
 {
     "git.detectSubmodules": false,
-    "git.ignoredRepositories": []
+    "git.ignoredRepositories": [],
+    "explorer.excludeGitIgnore": false
 }
