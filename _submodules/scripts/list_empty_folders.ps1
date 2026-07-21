@@ -1,5 +1,5 @@
 # List subrepo folders with no README file
-$repoRoot = Resolve-Path (Join-Path $PSScriptRoot '..')
+$repoRoot = Resolve-Path (Join-Path (Join-Path $PSScriptRoot '..') '..')
 Set-Location $repoRoot
 
 $entries = New-Object System.Collections.Generic.List[object]
