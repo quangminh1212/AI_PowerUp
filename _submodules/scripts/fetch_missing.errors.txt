@@ -1,0 +1,2 @@
+knowledge/dlaicourse	https://github.com/lmoroney/dlaicourse.git	gh: Not Found (HTTP 404)
+knowledge/moco	https://github.com/facebookresearch/moco.git	gh: Not Found (HTTP 404)

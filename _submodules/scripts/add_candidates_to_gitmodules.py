@@ -2,12 +2,13 @@
 """Add candidate GitHub URLs from JSON to .gitmodules with category heuristics."""
 import json
 import re
+import sys
 from pathlib import Path
 from urllib.parse import urlparse
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 GITMODULES = REPO_ROOT / ".gitmodules"
-CANDIDATES = REPO_ROOT / "_submodules" / "scripts" / "awesome_candidates.json"
+DEFAULT_CANDIDATES = REPO_ROOT / "_submodules" / "scripts" / "awesome_candidates.json"
 
 
 def parse_gitmodules(path: Path):
@@ -71,11 +72,14 @@ def slug(repo: str):
 
 
 def main():
-    if not CANDIDATES.exists():
-        print(f"Candidates file not found: {CANDIDATES}")
+    candidates_path = Path(sys.argv[1]) if len(sys.argv) > 1 else DEFAULT_CANDIDATES
+    if not candidates_path.is_absolute():
+        candidates_path = REPO_ROOT / "_submodules" / "scripts" / candidates_path
+    if not candidates_path.exists():
+        print(f"Candidates file not found: {candidates_path}")
         return
 
-    candidates = json.loads(CANDIDATES.read_text(encoding="utf-8"))
+    candidates = json.loads(candidates_path.read_text(encoding="utf-8"))
     existing_urls, existing_paths = parse_gitmodules(GITMODULES)
 
     added = 0
