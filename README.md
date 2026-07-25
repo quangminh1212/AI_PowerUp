@@ -1,8 +1,18 @@
-# AI Advanced Cognitive Skills & Intelligence Hub
+# AI PowerUp
 
-The definitive, production-grade ecosystem for AI Agents. Integrates the world's leading open-source frameworks, reasoning engines, open-weight models, memory layers, coding agents, infrastructure tools, training pipelines, evaluation harnesses, security guardrails, vision/audio/video AI, MLOps, robotics, multimodal models, and Model Context Protocol (MCP) servers — all organized as Git submodules (reference-only) for maximum modularity.
+[![AI Agents](https://img.shields.io/badge/AI-Agents-7c3aed)](https://github.com/quangminh1212/AI_PowerUp)
+[![GitHub stars](https://img.shields.io/github/stars/quangminh1212/AI_PowerUp?style=social)](https://github.com/quangminh1212/AI_PowerUp/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/quangminh1212/AI_PowerUp?style=social)](https://github.com/quangminh1212/AI_PowerUp/network/members)
 
-## Ecosystem Architecture (568 Submodules / 20 Categories)
+**AI PowerUp** is a searchable, modular **AI agent ecosystem**: 821 curated open-source repositories across agent frameworks, coding agents, LLMs, RAG, memory, MCP, vision, audio, video, robotics, security, evaluation, and MLOps.
+
+Built for developers, researchers, and AI assistants that need a fast map of the open-source AI landscape. Manifest-first. Shallow clones. No unnecessary downloads.
+
+> If this collection saves you time, **star the repository**. It helps other AI builders discover it.
+
+**Keywords:** AI agents, autonomous agents, LLM, generative AI, RAG, MCP, multimodal AI, open-source AI, coding agents, LangChain, LangGraph, CrewAI, AutoGen, OpenAI, Qwen, DeepSeek, Ollama, ComfyUI.
+
+## Ecosystem Architecture (821 Repositories / 20 Categories)
 
 ### 1. Core Cognitive Skills (`skills/`) — 26 submodules
 Explicit reasoning techniques, prompt engineering, and curated knowledge resources.
@@ -225,6 +235,23 @@ cp -r skills/ ~/.agent/skills/
 - **Storage Mode**: Manifest + shallow clone (no git submodules)
 - **Size**: repos.json ~114KB (lightweight)
 - **New**: Switched from 532+ submodules to manifest system for speed & smaller repo size
+
+## Why AI PowerUp?
+
+- ✅ **Curated, not automatic.** Every repo reviewed before inclusion.
+- ✅ **Always shallow.** Clone only what you need.
+- ✅ **20 categories.** Find the right tool in seconds.
+- ✅ **Lightweight manifest.** 114KB `repos.json` — no heavy submodules.
+- ✅ **GitHub & Llama-friendly.** AI assistants can crawl/categorize it.
+- ✅ **Actively maintained.** New repos added weekly.
+
+## How to Contribute
+
+1. Fork & star the repo.
+2. Add new repos to `repos.json` following the existing format.
+3. Submit a pull request.
+
+Missing a category or tool? Open an issue.
 
 ## Update manifest (when adding new repos)
 1. `git submodule add <url> <path>` (temporary)
