@@ -208,91 +208,22 @@ Vision-language and multimodal foundation models:
 - **New**: `deepseek-vl` (DeepSeek Vision), `molmo` (AllenAI), `paligemma` (Google), `gemini-cookbook` (Google), `cogagent` (Zhipu), `fuyu` (Adept).
 - **v4 New**: `janus` (DeepSeek unified multimodal), `mantis` (TIGER-AI interleaved multimodal).
 
-### 21. Hermes AI Power Labs () — 14 submodules
+### 21. Hermes AI Power Labs (`integrations/`) — 14 submodules
 Local-first tools from the Hermes ecosystem:
-- : multi-provider AI router, quota, fallback, tunnel, dashboard.
-- : multi-agent crew orchestration.
-- usage: workerlab [-h] [--version]
-                 {smoke,agents,live,watch,context,sources,upstream,version,init,enqueue,list,run,status}
-                 ...
-
-WorkerLab — live coding-agent activity monitor (thinking / tools / phase) +
-file-backed jobs
-
-positional arguments:
-  {smoke,agents,live,watch,context,sources,upstream,version,init,enqueue,list,run,status}
-    smoke               sanity check + self probe + live probe
-    agents              inventory of coding agents on this machine
-    live                snapshot: who is thinking / doing / calling tools
-    watch               refreshing live view (Ctrl+C to stop)
-    context             MCP / skills / rules / workflows / plugins the CLI
-                        references
-    sources             list reference source catalog
-    upstream            self probe (package + job model)
-    version             print version
-    init                init a worker project
-    enqueue             enqueue a job
-    list                list jobs
-    run                 claim and run queued jobs
-    status              status report
-
-options:
-  -h, --help            show this help message and exit
-  --version             print version: local coding-agent activity monitor and job dashboard.
-- : multi-AI orchestration, councils, harnesses, GitHub loops.
-- : Hermes loop engineering and OPAV workflows.
-- : MCP, TTS/STT, device and voice integration.
-- : unofficial Zalo bridge/platform plugin for Hermes.
-- : clone registry, project rules, seed catalogs.
-- : AI-generated image/video detector.
-- : AI benchmarking utilities.
-- tokenlab v1.0.6
-
-Local-first token API usage & cost tracker for AI agents on this machine.
-
-Usage:
-  tokenlab serve [--host 127.0.0.1] [--port 3737] [--no-ui] [--open] [--no-tray]
-  tokenlab setup [--no-open] [--no-autostart] [--no-desktop] [--no-serve] [--json]
-  tokenlab stats [--since 24h|7d|30d] [--by agent|model|day] [--sort tokens|cost] [--json]
-  tokenlab cost  [--since 7d] [--json]
-  tokenlab scan  [--json]
-  tokenlab doctors [--json]
-  tokenlab autostart [on|off|status] [--json]
-  tokenlab backup upload [--token <token>] [--gist <id>] [--public] [--save-token] [--json]
-  tokenlab backup download [--token <token>] [--gist <id>] [--json]
-  tokenlab backup status
-  tokenlab --version
-  tokenlab --help
-
-Serve options:
-  --open       Open dashboard in browser
-  --no-ui      API only (no HTML UI)
-  --no-tray    Do not show system tray icon (Windows)
-
-Backup options:
-  --token      GitHub personal access token
-  --gist       Gist id to update/download
-  --public     Make the Gist public (default: secret)
-  --save-token Save the token to local config
-
-Setup (also runs after global npm install):
-  Enables Windows login autostart, creates a Desktop shortcut, and starts the dashboard if not already running.
-  --no-open       Do not open the browser
-  --no-autostart  Skip login autostart registration
-  --no-desktop    Skip Desktop shortcut (TokenLab.lnk)
-  --no-serve      Do not start the server
-
-Autostart (Windows):
-  on           Start tokenlab serve at Windows login (supervised, auto-restart)
-  off          Remove login autostart
-  status       Show whether autostart is enabled
-
-Platforms: Windows, macOS, Linux (Node.js 20+)
-
-Inspired by tokscale / codeburn / ccusage feature sets — original implementation.: local token usage and cost tracker for AI agents.
-- : MCP/AI tool benchmarking.
-- : lightweight OpenAI-compatible Go API router.
-- : modular AI-powered open-world platform.
+- `RouterLab`: multi-provider AI router, quota, fallback, tunnel, dashboard.
+- `CrewLab`: multi-agent crew orchestration.
+- `WorkerLab`: local coding-agent activity monitor and job dashboard.
+- `NexusLab`: multi-AI orchestration, councils, harnesses, GitHub loops.
+- `LoopLab`: Hermes loop engineering and OPAV workflows.
+- `JarvisLab`: MCP, TTS/STT, device and voice integration.
+- `Hermes_Zalo`: unofficial Zalo bridge/platform plugin for Hermes.
+- `CloneLab`: clone registry, project rules, seed catalogs.
+- `SourceVerify`: AI-generated image/video detector.
+- `AI_BenchLab`: AI benchmarking utilities.
+- `TokenLab`: local token usage and cost tracker for AI agents.
+- `MCP_IntelliBench`: MCP/AI tool benchmarking.
+- `XRouter`: lightweight OpenAI-compatible Go API router.
+- `XMultiverse`: modular AI-powered open-world platform.
 
 README sources are retained inside each submodule.
 
