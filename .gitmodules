@@ -8005,3 +8005,45 @@
 [submodule "models/llm/semantic-router"]
 	path = models/llm/semantic-router
 	url = https://github.com/vllm-project/semantic-router.git
+[submodule "integrations/routerlab"]
+	path = integrations/routerlab
+	url = https://github.com/quangminh1212/RouterLab.git
+[submodule "integrations/crewlab"]
+	path = integrations/crewlab
+	url = https://github.com/quangminh1212/CrewLab.git
+[submodule "integrations/workerlab"]
+	path = integrations/workerlab
+	url = https://github.com/quangminh1212/WorkerLab.git
+[submodule "integrations/nexuslab"]
+	path = integrations/nexuslab
+	url = https://github.com/quangminh1212/NexusLab.git
+[submodule "integrations/looplab"]
+	path = integrations/looplab
+	url = https://github.com/quangminh1212/LoopLab.git
+[submodule "integrations/jarvislab"]
+	path = integrations/jarvislab
+	url = https://github.com/quangminh1212/JarvisLab.git
+[submodule "integrations/hermes-zalo"]
+	path = integrations/hermes-zalo
+	url = https://github.com/quangminh1212/Hermes_Zalo.git
+[submodule "integrations/clonelab"]
+	path = integrations/clonelab
+	url = https://github.com/quangminh1212/CloneLab.git
+[submodule "integrations/sourceverify"]
+	path = integrations/sourceverify
+	url = https://github.com/quangminh1212/SourceVerify.git
+[submodule "integrations/ai-benchlab"]
+	path = integrations/ai-benchlab
+	url = https://github.com/quangminh1212/AI_BenchLab.git
+[submodule "integrations/tokenlab"]
+	path = integrations/tokenlab
+	url = https://github.com/quangminh1212/TokenLab.git
+[submodule "integrations/mcp-intellibench"]
+	path = integrations/mcp-intellibench
+	url = https://github.com/quangminh1212/MCP_IntelliBench.git
+[submodule "integrations/xrouter"]
+	path = integrations/xrouter
+	url = https://github.com/quangminh1212/XRouter.git
+[submodule "integrations/xmultiverse"]
+	path = integrations/xmultiverse
+	url = https://github.com/quangminh1212/XMultiverse.git
