@@ -1,0 +1,300 @@
+<!-- source: https://github.com/nikolas-sapa/branch-ai.git sha: 34330d1561142cdd9ef9df58dc304b4fce60a8c4 readme: main/README.md -->
+# nikolas-sapa/branch-ai
+
+Reasoning canvas for AI CLIs. Branch captures the extended thinking from Claude Code, OpenAI Codex, Gemini CLI, and Factory Droid as a navigable, forkable tree — rewind any step, fork from any node to explore an alternative path, or inject a fact mid-thought and watch the conclusion change. Local-first, MCP server included.
+
+---
+
+# branch-ai
+
+**The reasoning canvas for any AI CLI.** Works with Claude Code, OpenAI Codex, Google Gemini, or Factory.ai Droid — captures each tool's reasoning as a navigable, forkable tree. Walk backward through the thinking, explore alternative paths from any point, or add a new fact mid-thought and watch how the conclusion changes.
+
+**See it live:** Try the [public demo](https://branchai-fawn.vercel.app) — view real reasoning trees. To create your own and fork them, install locally below.
+
+> **Why this exists.** When an AI works through a hard problem, the reasoning vanishes the moment you see the answer. Branch preserves every reasoning step, lets you rewind to any point, and explore "what if I changed this assumption?" — without starting over.
+
+![Branch viewer screenshot](https://raw.githubusercontent.com/84yk8btb9f-prog/branch-ai/main/assets/viewer.png)
+
+## What is Branch AI?
+
+**Branch is a reasoning canvas for AI CLIs that captures the extended thinking from Claude Code, OpenAI Codex, Gemini CLI, and Factory Droid as a navigable, forkable tree.** Instead of watching reasoning scroll past in your terminal and vanish, Branch turns it into a tree you can rewind, fork from any step, and edit mid-thought.
+
+### Why Branch
+
+Terminal output is a transcript — you read it once and it's gone. Branch keeps the reasoning as structure. From any node you can fork an alternative path, inject a new fact and re-reason from that point, or record *why* you decided what you decided and what would change the answer later. It works with four AI CLIs, runs fully local by default, and ships an MCP server so agents can externalize their own reasoning.
+
+### Branch vs. the alternatives
+
+| | Branch | Scrolling terminal output | LLM tracing (LangSmith, Langfuse) | Chat/session loggers |
+|---|---|---|---|---|
+| Captures reasoning as a navigable tree | Yes | No (linear text) | Spans/timeline, not forkable | Messages only, not reasoning steps |
+| Fork from any step / explore alternatives | Yes | No | No | No |
+| Inject a fact mid-thought and re-reason | Yes | No | No | No |
+| Built for interactive CLI use (no app instrumentation) | Yes | n/a | No — for apps you build | Varies |
+| Local-first, no API key required | Yes | Yes | No (hosted) | Varies |
+
+Honest scope: if you need production tracing across a deployed agent app with dashboards and eval runs, use LangSmith/Langfuse — that's what they're for. Branch is for the interactive loop: one developer, one hard question, at the CLI, wanting to see and steer the reasoning.
+
+### When to use Branch
+
+- You're working a hard decision through Claude Code / Codex / Gemini and want to see *how* it got there, not just the answer.
+- You want to explore "what if I changed this assumption?" without re-running the whole prompt from scratch.
+- You want to record a decision — what you picked, what you rejected, and what would make you revisit it.
+- You want your Claude Code agent to externalize and fork its own reasoning via MCP.
+- You want to compare or merge the reasoning from two different runs or two different models.
+
+### FAQ
+
+**Does Branch need an API key?**
+No. Branch uses your existing CLI auth (Claude Code, Codex, Gemini, or Droid). It never asks for its own API key.
+
+**Which AI CLIs does it support?**
+Claude Code (richest reasoning capture), OpenAI Codex CLI, Google Gemini CLI, and Factory Droid. Run `branch doctor` to see which are on your PATH.
+
+**Is my reasoning uploaded anywhere?**
+No, unless you opt in. Sessions save to `~/.branch/sessions/` on your machine. Sharing is per-session and explicit (`branch share <id>`).
+
+**What's the MCP server for?**
+`branch-mcp` gives Claude Code 13 tools so an agent can externalize its reasoning as a tree, fork it, inject facts, diff/merge runs, and record decisions — from inside a session.
+
+**Does it capture everything the model "thinks"?**
+No. It captures the *surfaced* reasoning steps when extended thinking is on. Token-level cognition is never exposed by any API — Branch captures what the model narrates, not everything it computes.
+
+## Supported CLIs
+
+- **Claude Code** — full thinking-block capture (richest reasoning)
+- **OpenAI Codex CLI** — captures reasoning summaries from o3 / gpt-5
+- **Google Gemini CLI** — captures Flash thinking-mode output
+- **Factory.ai Droid** — routes across underlying models; captures thinking when the routed model supports it
+
+Run `branch doctor` after install to see which are available on your PATH.
+
+## What you get
+
+- **`branch "prompt"`** — CLI that captures reasoning as a navigable tree (auto-detects which AI CLI to use, or pass `--cli claude|codex|gemini`)
+- **`branch-mcp`** — MCP server so Claude Code agents can externalize their own reasoning, fork it, or add facts mid-thought
+- **Web viewer** — React Flow canvas where you click any node to explore an alternative path or add a new fact
+- **`branch decide`** — record what you decided, what you rejected, and what would change the answer later
+- **`branch doctor`** — see which AI CLIs are installed and which one Branch will use by default
+
+## Requirements
+
+- Node 20+
+- At least one AI CLI on PATH:
+  - **Claude Code** signed in (Claude Pro, Max, or Team subscription)
+  - **OpenAI Codex CLI** (`codex` binary)
+  - **Google Gemini CLI** (`gemini` binary)
+  - **Factory.ai Droid** (`droid` binary)
+- Branch uses your existing CLI auth — no API keys required by Branch itself
+
+## Install
+
+```bash
+npm install -g branch-ai
+```
+
+## Quickstart
+
+```bash
+# Terminal 1 — start the viewer
+git clone https://github.com/84yk8btb9f-prog/branch-ai && cd branch-ai
+npm run viewer
+# viewer runs on http://localhost:7432
+
+# Terminal 2 — run the CLI
+branch "Should I deploy on Friday afternoon? Think carefully through the tradeoffs"
+# opens the reasoning tree in your browser automatically
+```
+
+## CLI
+
+```
+branch [--cli claude|codex|gemini|droid] [--model <model>] [--local] "your prompt"
+```
+
+- **`--cli`** — pick an AI CLI. Defaults to auto-detect (first available on PATH).
+- **`--model`** — model name (each adapter has its own defaults; e.g. `sonnet` for Claude, `gpt-5` for Codex, `gemini-2.5-flash` for Gemini, `default` for Droid)
+- **`--local`** — skip auto-sharing for a single run when `BRANCH_AUTO_SHARE=1` is set (auto-share is OFF by default — see Privacy section)
+
+Run `branch doctor` to see which CLIs are available and which Branch will use by default.
+
+Sessions are saved to `~/.branch/sessions/<id>.json`. The viewer reads them from there.
+
+### All commands
+
+| Command | What it does |
+|---|---|
+| `branch "prompt"` | Run a prompt and open the reasoning tree |
+| `branch list` | Recent sessions |
+| `branch search <query>` | Search across all sessions including decision conclusions |
+| `branch share <id>` | Upload a session to Vercel Blob for sharing |
+| `branch decide <id>` | Record a decision anchor for a session |
+| `branch decisions` | List all sessions with recorded decisions |
+| `branch export <id>` | Export as Markdown or Mermaid |
+| `branch diff <a> <b>` | Compare two sessions |
+| `branch tag <id> <tag>` | Tag a session |
+| `branch pin <id>` | Pin a session to the top of the list |
+| `branch replay <id> [--model X]` | Re-run a session's original prompt (optionally with a different model) and link the new run back to the source |
+| `branch merge <a> <b>` | Synthesize two sessions into a third — finds agreement, divergence, and a unified answer |
+| `branch watch on\|off\|status` | Install/remove a Claude Code Stop hook that auto-saves every CC session as a Branch tree |
+| `branch mcp install <client>` | Add the branch-mcp server to a client's config file (claude-code, claude-desktop, cursor, codex, cline) |
+| `branch mcp install --all` | Install branch-mcp into every supported client at once |
+| `branch mcp uninstall <client>` | Remove branch-mcp from a client's config |
+| `branch mcp status` | Show which clients have branch-mcp installed |
+
+### Environment variables
+
+- `BRANCH_VIEWER_URL` — override where the CLI prints the viewer link. Default: `http://localhost:7432`.
+- `BLOB_READ_WRITE_TOKEN` — Vercel Blob token. Required for `branch share <id>` (manual upload). **By itself, this does NOT cause auto-upload — see `BRANCH_AUTO_SHARE`.**
+- `BRANCH_AUTO_SHARE` — set to `1` to opt in to auto-upload of every `branch "prompt"` run. Off by default. Use `--local` to opt out per-run when auto-share is on.
+
+## Decision anchors
+
+After a reasoning session, record what you actually decided:
+
+```bash
+branch decide <sessionId>
+# interactive prompts: conclusion, rejected alternatives, confidence, revisit trigger
+
+# or non-interactive:
+branch decide <id> --conclusion "Build modular monolith" --rejected "Microservices;Mongo migration" --confidence high --revisit-if "Team grows past 15 engineers"
+```
+
+Decisions show up in `branch list` with a `[decided]` marker and the conclusion line. `branch decisions` shows only settled questions. The viewer renders a decision card at the top of the session.
+
+## Gallery
+
+The viewer ships a `/gallery` route with **a hardcoded list of curated reasoning examples** you can explore in the tree canvas:
+
+```
+http://localhost:7432/gallery
+```
+
+Click any card to open the full session — fork from any node, add a new fact, or compare with `branch diff`.
+
+**Privacy note:** The gallery is **NOT auto-populated**. Only the sessions explicitly listed in `viewer/lib/gallery.ts` and bundled into `viewer/public/gallery-sessions/` ship with the viewer. Your own sessions in `~/.branch/sessions/` are private to your machine unless you choose to share them.
+
+## Privacy
+
+By default, Branch is **fully local**:
+- Sessions save to `~/.branch/sessions/<id>.json` — only on your machine
+- The viewer reads from your local disk
+- Nothing leaves your machine unless you explicitly share
+
+Sharing is **opt-in per use**:
+- `branch share <id>` — manual upload of one session to public Vercel Blob
+- `BRANCH_AUTO_SHARE=1` (env var) — opt in to auto-upload every run; remove the var to stop
+- `--local` flag — skip auto-share for a single run when `BRANCH_AUTO_SHARE=1` is set
+
+When you share, the **entire session JSON** (prompt + reasoning tree + final answer + decision) is uploaded to a **publicly readable URL**. Don't share sessions containing secrets, internal company data, or anything you wouldn't post on GitHub.
+
+## MCP server — use Branch from inside Claude Code
+
+Add this to `~/.claude.json` under `mcpServers`:
+
+```json
+"branch": {
+  "type": "stdio",
+  "command": "branch-mcp",
+  "env": { "BRANCH_VIEWER_URL": "http://localhost:7432" }
+}
+```
+
+Restart Claude Code. From inside any CC session you'll have 13 tools:
+
+- `branch_think({ prompt, model? })` — externalize Claude's own reasoning as a tree. Returns viewer URL.
+- `branch_fork({ sessionId, nodeId, modifier })` — fork from any node in an existing session.
+- `branch_inject({ sessionId, nodeId, fact })` — inject a new fact at a node and re-reason from there.
+- `branch_list_sessions({ limit? })` — recent trees.
+- `branch_search({ query, limit? })` — full-text search across all sessions (recall before duplicating effort).
+- `branch_decide({ sessionId, conclusion, rejected?, confidence, revisitIf })` — record a decision anchor (conclusion + rejected + confidence + revisit-if).
+- `branch_diff({ sessionA, sessionB })` — compare two sessions semantically (shared / changed / only-A / only-B).
+- `branch_export({ sessionId, format })` — export as markdown or mermaid flowchart.
+- `branch_replay({ sessionId, model? })` — re-run a session's original prompt with a (possibly different) model.
+- `branch_merge({ sessionA, sessionB })` — synthesize two sessions into a new combined session.
+- `branch_tag({ sessionId, tags })` — add tags to a session for organization.
+- `branch_pin({ sessionId, pinned })` — pin/unpin a session to the top of the list.
+- `branch_share({ sessionId })` — upload to public Vercel Blob and return a shareable URL (requires `BLOB_READ_WRITE_TOKEN`).
+
+## Hosted mode (optional)
+
+By default Branch is local-only. To share sessions with people who don't have your machine, use Vercel Blob storage.
+
+> **Hosted = read-only.** When the viewer is deployed to Vercel (or any non-localhost host), fork, inject, and the prompt form are hidden and replaced with an install CTA. Those actions spawn a `claude` subprocess locally — they don't exist on Vercel. Visitors can browse and navigate trees; to create or fork them they need a local install.
+
+**Setup (one-time, free tier):**
+1. Create a free [Vercel account](https://vercel.com)
+2. Create a Blob store at https://vercel.com/dashboard/stores → Create → Blob
+3. Copy the `BLOB_READ_WRITE_TOKEN` from the store settings
+4. `export BLOB_READ_WRITE_TOKEN=vercel_blob_rw_xxxxxxxx` — enables `branch share <id>`. **Does NOT auto-upload anything.**
+
+**Manual share (recommended — explicit per session):**
+```bash
+branch share <sessionId>
+# Prints a public URL anyone can fetch
+```
+
+**Auto-share every session (opt-in, off by default):**
+```bash
+export BLOB_READ_WRITE_TOKEN=vercel_blob_rw_xxxxxxxx
+export BRANCH_AUTO_SHARE=1
+branch "your prompt"   # now auto-uploads
+branch --local "your prompt"  # opt out for one run
+```
+
+**Self-hosted viewer:**
+Deploy the `viewer/` directory to Vercel. See `viewer/README-DEPLOY.md` for step-by-step instructions.
+
+### Environment variables (hosted mode)
+
+- `BLOB_READ_WRITE_TOKEN` — Vercel Blob token. Required for `branch share <id>` and `branch_share` MCP tool. By itself, it does NOT auto-upload anything.
+- `BRANCH_AUTO_SHARE` — set to `1` to opt in to auto-upload of every `branch "prompt"` run. Off by default.
+- `BRANCH_BLOB_BASE` — base URL of your Blob store. Set on the viewer deployment so it can serve shared sessions.
+
+## How it works
+
+1. CLI spawns `claude --output-format=stream-json --verbose --print "<prompt>"`
+2. Parses the assistant stream for `type: "thinking"` blocks (reasoning steps)
+3. Splits reasoning by headings / paragraphs into a tree
+4. Saves to `~/.branch/sessions/<id>.json`
+5. Next.js viewer reads the file and renders it with React Flow
+6. Click any node → explore an alternative path or add a new fact mid-thought
+
+## What it captures — and what it doesn't
+
+- Captures the *surfaced* reasoning steps when extended reasoning is on
+- Simple factual prompts ("A or B?") often skip reasoning → sparse tree
+- Tool-using sessions lose reasoning between tool calls (only pre-tool reasoning is captured)
+- Implicit model cognition (attention patterns, token-level reasoning) is never exposed by any API — Branch captures what Claude narrates, not everything it "thinks"
+
+## Project structure
+
+```
+branch-ai/
+├── src/           SDK + CLI + MCP server
+├── viewer/        Next.js tree renderer (React Flow)
+├── scripts/       feasibility test
+├── tests/         vitest suite
+└── dist/          published build
+```
+
+## Security
+
+- **Viewer has no authentication.** It is designed to run on `localhost` only. Do not expose the viewer port to a network or the public internet — any host on the same network could call the `/api/fork` and `/api/inject` routes and trigger `claude` subprocesses against your subscription.
+- The `branch-mcp` server binds to stdio, so only the parent Claude Code process can talk to it. Untrusted transports cannot connect.
+- Session IDs are validated with `^[a-zA-Z0-9_-]+$` before being used in file-system paths, preventing path traversal.
+- Prompts are passed as positional argv items to `claude` (not shell-interpolated), so they are not subject to shell injection.
+
+## Real-time presence
+
+Branch supports multi-user presence on the same session URL. Open the same viewer link in two browsers and you'll see each other's cursors and selected nodes live.
+
+The viewer uses Yjs awareness over a tiny WebSocket server (no auth, no persistence). The dev script starts both the Next.js viewer and the WS server with `npm run viewer`. Custom port: `BRANCH_WS_PORT=7434 npm run viewer`. Custom WS URL on the client: `NEXT_PUBLIC_BRANCH_WS_URL=ws://your-host:7433`.
+
+## Contributing
+
+PRs welcome. Please run `npm test` before submitting.
+
+## License
+
+MIT © Nikolas Sapalidis

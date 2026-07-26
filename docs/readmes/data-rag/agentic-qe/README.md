@@ -1,0 +1,527 @@
+<!-- source: https://github.com/proffesor-for-testing/agentic-qe.git sha: 1c7a089eaa6e5fac1b458e9024f1e35e5682b56b readme: main/README.md -->
+# proffesor-for-testing/agentic-qe
+
+Agentic QE Fleet is an open-source AI-powered QA/QE platform designed for use with Coding Agents (works best with Claude Code) featuring specialized agents and skills to support testing activities for a product at any stage of the SDLC. Free to use, fork, build, and contribute. Based on the Agentic QE Framework created by Dragan Spiridonov.
+
+---
+
+# Agentic Quality Engineering Fleet
+
+<div align="center">
+
+[![npm version](https://img.shields.io/npm/v/agentic-qe.svg)](https://www.npmjs.com/package/agentic-qe)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue.svg)](https://www.typescriptlang.org/)
+[![Monthly Downloads](https://img.shields.io/npm/dm/agentic-qe)](https://www.npmjs.com/package/agentic-qe)
+[![Total Downloads](https://img.shields.io/npm/dt/agentic-qe?label=total%20downloads)](https://www.npmjs.com/package/agentic-qe)
+
+[Release Notes](docs/releases/README.md) | [Changelog](CHANGELOG.md) | [Issues](https://github.com/proffesor-for-testing/agentic-qe/issues) | [Discussions](https://github.com/proffesor-for-testing/agentic-qe/discussions)
+
+**AI-powered quality engineering agents that generate tests, find coverage gaps, detect flaky tests, and learn your codebase patterns — across 11 coding agent platforms.**
+
+</div>
+
+---
+
+## What AQE Does For You
+
+- **Generates comprehensive tests automatically** — unit, integration, property-based, and BDD scenarios for your codebase with framework-specific output (Jest, Vitest, Playwright, Cypress, pytest, JUnit, Go, Rust, Swift, Flutter, and more)
+- **Finds coverage gaps and prioritizes what to test** — risk-weighted analysis identifies the most impactful untested code paths
+- **Detects and fixes flaky tests** — ML-powered detection with root cause analysis and stabilization recommendations
+- **Learns your codebase patterns over time** — remembered patterns are reused across sessions and projects, improving with every interaction
+- **Coordinates 60 specialized QE agents** — from test generation to security scanning to chaos engineering, orchestrated by a central coordinator
+- **Reduces AI costs with intelligent routing** — automatically routes tasks to the right model tier (fast/cheap for simple tasks, powerful for complex ones)
+- **Works with your existing tools** — integrates with 11 coding agent platforms and your existing CI/CD pipeline
+
+---
+
+## Quick Start
+
+```bash
+# Install
+npm install -g agentic-qe
+
+# Initialize your project (auto-detects tech stack, configures MCP)
+cd your-project && aqe init --auto
+
+# That's it — MCP tools are available immediately in Claude Code
+# For other clients: aqe-mcp
+```
+
+After init, your coding agent can use AQE tools directly. For example in Claude Code:
+
+```
+"Generate tests for src/services/UserService.ts with 90% coverage target"
+"Find coverage gaps in src/ and prioritize by risk"
+"Run security scan on the authentication module"
+"Analyze why tests in auth/ are flaky and suggest fixes"
+```
+
+### Windows install
+
+`agentic-qe` runs on Windows, but several of its performance-oriented native
+dependencies (`hnswlib-node` for HNSW search, `@ruvector/gnn` for graph
+neural networks, `@ruvector/rvf-node` for the RVF pattern store) ship as
+optional native modules. `hnswlib-node` in particular has no prebuilt
+binaries and compiles from source via `node-gyp`. `npm install` does not
+fail when these modules can't build — they're declared optional and AQE
+falls back to JavaScript paths at runtime.
+
+**Important caveat about the fallback.** The pure-JavaScript HNSW fallback
+(`ProgressiveHnswBackend`) is correct but degrades to O(N) brute-force search
+when neither `hnswlib-node` nor `@ruvector/gnn` is available. That's fine for
+small projects but **unsuitable for large indexes** (tens of thousands of
+vectors and up). If you plan to run AQE against a sizeable codebase on
+Windows, install the native build toolchain so `hnswlib-node` compiles:
+
+- **Python 3** (added to `PATH`), and
+- **Visual Studio 2022 Build Tools** with the *Desktop development with C++*
+  workload — works with any node-gyp version, **or**
+- **Visual Studio 2026** with the same workload **plus** an upgraded npm
+  (`npm install -g npm@latest` — VS 2026 detection requires npm ≥ 11.6.3,
+  shipped via node-gyp ≥ 12.1.0). Node 22 LTS still ships npm 10.x by
+  default, which cannot detect VS 2026; either upgrade npm globally or use
+  VS 2022 Build Tools instead.
+
+If the native dep fails to build you'll see a `node-gyp` warning during
+install (e.g. `gyp ERR! find VS`); the install itself completes. To verify
+which backend is active:
+
+```bash
+aqe health
+# Look for "HNSW backend: native" (hnswlib-node) or "HNSW backend: js"
+# (ProgressiveHnswBackend — see caveat above).
+```
+
+Linux and macOS users: no extra setup required. The native binary compiles
+out of the box.
+
+---
+
+## Claude Code Plugin (Alternative Install)
+
+If you only need a slim, scoped fleet inside Claude Code — without the full `aqe init` setup — install the **`agentic-qe-fleet`** plugin. It bundles 11 specialized QE agents, 9 slash commands, 9 skills, and auto-registers the MCP server.
+
+### Install from a local checkout
+
+```bash
+git clone https://github.com/proffesor-for-testing/agentic-qe.git
+claude --plugin-dir ./agentic-qe/plugins/agentic-qe-fleet
+```
+
+### Install from the marketplace
+
+In any Claude Code session:
+
+```
+/plugin marketplace add proffesor-for-testing/agentic-qe
+/plugin install agentic-qe-fleet
+```
+
+### What you get
+
+| Asset | Count | Notes |
+|---|---|---|
+| **Agents** (Task tool) | 11 | Model-routed: 6 on Opus (heavy reasoning), 5 on Sonnet (focused execution) |
+| **Slash commands** | 9 | `/aqe-analyze`, `/aqe-execute`, `/aqe-generate`, `/aqe-optimize`, `/aqe-chaos`, `/aqe-fleet-status`, `/aqe-report`, `/aqe-benchmark`, `/aqe-costs` |
+| **Skills** | 9 | All trust-tier 2 or 3 (validated/verified). Tier-1 untested skills excluded per policy. |
+| **MCP server** | 1 | Auto-registers via `npx -y agentic-qe@latest mcp` — no separate `claude mcp add` |
+
+**Bundled agents:** `qe-test-architect`, `qe-coverage-specialist`, `qe-flaky-hunter`, `qe-chaos-engineer`, `qe-fleet-commander`, `qe-quality-gate`, `qe-security-scanner`, `qe-performance-tester`, `qe-regression-analyzer`, `qe-tdd-specialist`, `qe-requirements-validator`.
+
+**Bundled skills:** `qe-test-generation`, `qe-coverage-analysis`, `qe-test-execution`, `qe-chaos-resilience`, `qe-quality-assessment`, `chaos-engineering-resilience`, `mutation-testing`, `risk-based-testing`, `tdd-london-chicago`.
+
+### Use it
+
+After loading the plugin, the slash commands and agents are available immediately:
+
+```
+/aqe-fleet-status                 # health and metrics
+/aqe-generate src/services/Auth.ts
+/aqe-analyze src/                 # coverage gap analysis
+```
+
+Or invoke an agent through the Task tool:
+
+```
+"Use qe-test-architect to generate tests for src/services/PaymentService.ts"
+"Use qe-flaky-hunter to find and stabilize flaky tests in tests/integration/"
+"Use qe-chaos-engineer to inject network partitions into the order workflow"
+```
+
+### Plugin vs `aqe init` — which to use?
+
+| | **Plugin** | **`aqe init`** |
+|---|---|---|
+| Setup | One slash command | Full project setup |
+| Scope | 11 agents, 9 skills | 60 agents, 86 skills |
+| Persistent learning DB | No (uses MCP server's) | Yes (`.agentic-qe/memory.db`) |
+| Cross-platform support | Claude Code only | 11 platforms (Cursor, Copilot, Cline, etc.) |
+| Use when | Quick start, single Claude Code project | Production team setup, multi-platform, full fleet |
+
+You can run both — the plugin's MCP server uses the same `agentic-qe` package, so installing both gives you the full fleet via `aqe init` and the slash-command shortcuts via the plugin.
+
+---
+
+## Platform Support
+
+AQE works with **11 coding agent platforms** through a single MCP server:
+
+| Platform | Setup |
+|----------|-------|
+| **Claude Code** | `aqe init --auto` (built-in) |
+| **GitHub Copilot** | `aqe init --auto --with-copilot` |
+| **Cursor** | `aqe init --auto --with-cursor` |
+| **Cline** | `aqe init --auto --with-cline` |
+| **OpenCode** | `aqe init --auto --with-opencode` |
+| **AWS Kiro** | `aqe init --auto --with-kiro` |
+| **Kilo Code** | `aqe init --auto --with-kilocode` |
+| **Roo Code** | `aqe init --auto --with-roocode` |
+| **OpenAI Codex CLI** | `aqe init --auto --with-codex` |
+| **Windsurf** | `aqe init --auto --with-windsurf` |
+| **Continue.dev** | `aqe init --auto --with-continuedev` |
+
+```bash
+# Set up all platforms at once
+aqe init --auto --with-all-platforms
+
+# Or add a platform later
+aqe platform setup cursor
+aqe platform list       # show install status
+aqe platform verify cursor  # validate config
+```
+
+For detailed per-platform instructions, see [Platform Setup Guide](docs/platform-setup-guide.md).
+
+---
+
+## Usage Examples
+
+### Generate Tests
+
+```bash
+claude "Use qe-test-architect to create tests for PaymentService with 95% coverage target"
+```
+
+Output:
+```
+Generated 48 tests across 4 files
+- unit/PaymentService.test.ts (32 unit tests)
+- property/PaymentValidation.property.test.ts (8 property tests)
+- integration/PaymentFlow.integration.test.ts (8 integration tests)
+Coverage: 96.2%
+Pattern reuse: 78% from learned patterns
+```
+
+### Full Quality Pipeline
+
+```bash
+claude "Use qe-queen-coordinator to run full quality assessment:
+1. Generate tests for src/services/*.ts
+2. Analyze coverage gaps with risk scoring
+3. Run security scan
+4. Validate quality gate at 90% threshold
+5. Provide deployment recommendation"
+```
+
+The Queen Coordinator spawns domain-specific agents, runs them in parallel, and synthesizes a final recommendation.
+
+### TDD Workflow
+
+```bash
+claude "Use qe-tdd-specialist to implement UserAuthentication with full RED-GREEN-REFACTOR cycle"
+```
+
+Coordinates 5 subagents: write failing tests → implement minimal code → refactor → code review → security review.
+
+### Security Audit
+
+```bash
+claude "Coordinate security audit:
+- SAST/DAST scanning with qe-security-scanner
+- Dependency vulnerability scanning with qe-dependency-mapper
+- API security with qe-contract-validator
+- Chaos resilience testing with qe-chaos-engineer"
+```
+
+---
+
+## 60 QE Agents
+
+The fleet is organized into **13 domains**, coordinated by the **qe-queen-coordinator**:
+
+| Domain | Agents | What They Do |
+|--------|--------|-------------|
+| **Test Generation** | test-architect, tdd-specialist, mutation-tester, property-tester | Generate tests, TDD workflows, validate test effectiveness |
+| **Test Execution** | parallel-executor, retry-handler, integration-tester | Run tests in parallel, handle retries, integration testing |
+| **Coverage Analysis** | coverage-specialist, gap-detector | Find untested code, prioritize by risk |
+| **Quality Assessment** | quality-gate, risk-assessor, deployment-advisor, devils-advocate | Go/no-go decisions, risk scoring, adversarial review |
+| **Defect Intelligence** | defect-predictor, root-cause-analyzer, flaky-hunter, regression-analyzer | Predict bugs, find root causes, fix flaky tests |
+| **Requirements** | requirements-validator, bdd-generator | Validate testability, generate BDD scenarios |
+| **Code Intelligence** | code-intelligence, kg-builder, dependency-mapper, impact-analyzer | Knowledge graphs, semantic search, change impact |
+| **Security** | security-scanner, security-auditor, pentest-validator | SAST/DAST, compliance audits, exploit validation |
+| **Contracts** | contract-validator, graphql-tester | API contracts, GraphQL schema testing |
+| **Visual & A11y** | visual-tester, accessibility-auditor, responsive-tester | Visual regression, WCAG compliance, viewport testing |
+| **Chaos & Performance** | chaos-engineer, load-tester, performance-tester | Fault injection, load testing, performance validation |
+| **Learning** | learning-coordinator, pattern-learner, transfer-specialist, metrics-optimizer | Cross-project learning, pattern discovery |
+| **Enterprise** | soap-tester, sap-rfc-tester, sap-idoc-tester, sod-analyzer, odata-contract-tester, middleware-validator, message-broker-tester | SAP, SOAP, ESB, OData, JMS/AMQP/Kafka |
+
+Plus **7 TDD subagents** (red, green, refactor, code/integration/performance/security reviewers) and the **fleet-commander** for large-scale orchestration.
+
+---
+
+## 75 QE Skills
+
+Agents automatically apply relevant skills from the skill library. Skills are rated by **trust tier**:
+
+| Tier | Count | Meaning |
+|------|-------|---------|
+| **Tier 3 — Verified** | 49 | Full evaluation test suite, production-ready |
+| **Tier 2 — Validated** | 7 | Has executable validator |
+| **Tier 1 — Structured** | 5 | Has JSON output schema |
+| **Tier 0 — Advisory** | 5 | Guidance only |
+
+<details>
+<summary><b>View all 76 skills</b></summary>
+
+**Core Testing (12):** agentic-quality-engineering, holistic-testing-pact, context-driven-testing, tdd-london-chicago, xp-practices, risk-based-testing, test-automation-strategy, refactoring-patterns, shift-left-testing, shift-right-testing, regression-testing, verification-quality
+
+**Specialized Testing (13):** accessibility-testing, mobile-testing, database-testing, contract-testing, chaos-engineering-resilience, visual-testing-advanced, security-visual-testing, compliance-testing, compatibility-testing, localization-testing, mutation-testing, performance-testing, security-testing
+
+**Browser Automation (1):** qe-browser (Vibium engine — assert, batch, visual-diff, prompt-injection scanning, semantic intents; see [ADR-091](docs/implementation/adrs/ADR-091-qe-browser-skill-vibium-engine.md))
+
+**Domain Skills (11):** qe-test-generation, qe-test-execution, qe-coverage-analysis, qe-quality-assessment, qe-defect-intelligence, qe-requirements-validation, qe-code-intelligence, qe-visual-accessibility, qe-chaos-resilience, qe-learning-optimization, qe-iterative-loop
+
+**Strategic (9):** six-thinking-hats, brutal-honesty-review, sherlock-review, qe-court (adversarial review court — SHIP/REMAND/BLOCK verdict that must survive escalating cross-vendor reviewers; see [ADR-124](docs/implementation/adrs/ADR-124-qe-court-adversarial-verdict-service.md)), cicd-pipeline-qe-orchestrator, bug-reporting-excellence, consultancy-practices, quality-metrics, pair-programming
+
+**Testing Techniques (9):** exploratory-testing-advanced, test-design-techniques, test-data-management, test-environment-management, test-reporting-analytics, testability-scoring, technical-writing, code-review-quality, api-testing-patterns
+
+**On-Demand Hooks (5):** strict-tdd, no-skip, coverage-guard, freeze-tests, security-watch
+
+**Runbooks & Analysis (5):** test-failure-investigator, coverage-drop-investigator, e2e-flow-verifier, test-metrics-dashboard, skill-stats
+
+**n8n Workflow Testing (5):** n8n-workflow-testing-fundamentals, n8n-expression-testing, n8n-security-testing, n8n-trigger-testing-strategies, n8n-integration-testing-patterns
+
+**QCSD Swarms (5):** qcsd-ideation-swarm, qcsd-refinement-swarm, qcsd-development-swarm, qcsd-cicd-swarm, qcsd-production-swarm
+
+**Accessibility (2):** a11y-ally, accessibility-testing
+
+**Enterprise Integration (5):** enterprise-integration-testing, middleware-testing-patterns, observability-testing-patterns, wms-testing-patterns, pentest-validation
+
+**Validation (1):** validation-pipeline
+
+</details>
+
+---
+
+## How It Works
+
+### Agent Coordination
+
+The **Queen Coordinator** orchestrates agents across all 13 domains. When you ask for a quality assessment, the Queen decomposes the task, spawns the right agents, coordinates their work in parallel, and synthesizes results. Agents communicate through shared memory namespaces and use consensus protocols for critical quality decisions.
+
+### Pattern Learning
+
+AQE learns from every interaction. Successful test patterns, coverage strategies, and defect indicators are stored and indexed for fast retrieval. When generating tests for a new service, AQE searches for similar patterns from past sessions — even across different projects. Patterns improve over time through experience replay and dream cycles (background consolidation).
+
+```bash
+aqe learning stats      # view learning statistics
+aqe learning dream      # trigger pattern consolidation
+aqe brain export        # export learned patterns for sharing
+```
+
+### Intelligent Model Routing
+
+**TinyDancer** routes tasks to the right model tier to minimize cost without sacrificing quality:
+
+| Task Complexity | Model | Examples |
+|----------------|-------|---------|
+| Simple (0-20) | Haiku | Type additions, simple refactors |
+| Moderate (20-70) | Sonnet | Bug fixes, test generation |
+| Critical (70+) | Opus | Architecture, security, complex reasoning |
+
+### Quality Gates
+
+Anti-sycophancy scoring catches hollow tests. Tautological assertions (`expect(true).toBe(true)`) are rejected. Edge cases from historical patterns are injected into test generation. See [Loki-mode features](docs/loki-mode-features.md).
+
+---
+
+## CLI Reference
+
+```bash
+aqe init [--auto]              # Initialize project
+aqe agent list                 # List available agents
+aqe fleet status               # Fleet health and coordination
+aqe learning stats             # Learning statistics
+aqe learning dream             # Trigger dream cycle
+aqe brain export/import        # Portable intelligence
+aqe platform list/setup/verify # Manage coding agent platforms
+aqe health                     # System health check
+
+# Code intelligence
+aqe code index src/                  # Index codebase into knowledge graph
+aqe code index src/ --incremental    # Incremental index (changed files only)
+aqe code index . --git-since HEAD~5  # Index files changed in last 5 commits
+aqe code search "authentication"     # Semantic code search
+aqe code impact src/                 # Change impact analysis
+aqe code deps src/                   # Dependency mapping
+aqe code complexity src/             # Complexity metrics and hotspots
+aqe code c4 .                        # C4 architecture diagrams (Mermaid) + confidence
+```
+
+---
+
+## LLM Providers
+
+AQE Fleet's LLM-enhanced analysis (ADR-043, ADR-051) routes through a
+HybridRouter that picks providers based on routing rules and your env
+config. Set one or more API keys and Fleet auto-detects what's available:
+
+| Provider | Env var(s) | Type | Notes |
+|----------|-----------|------|-------|
+| **Claude** | `ANTHROPIC_API_KEY` | Cloud | Default in routing rules |
+| **OpenAI** | `OPENAI_API_KEY` | Cloud | Wide model coverage |
+| **Gemini** | `GOOGLE_AI_API_KEY` / `GEMINI_API_KEY` / `GOOGLE_API_KEY` | Cloud | Cheap; free tier |
+| **OpenRouter** | `OPENROUTER_API_KEY` | Cloud | 300+ models behind one key |
+| **Ollama** | (local) | Local | Privacy, offline |
+| **Azure OpenAI** | `AZURE_OPENAI_API_KEY` | Cloud | Enterprise |
+| **Bedrock** | `AWS_ACCESS_KEY_ID` | Cloud | AWS-native |
+
+```bash
+export GEMINI_API_KEY="..."  # or any supported provider
+aqe init --auto
+```
+
+Persistent config (`aqe llm config --set` writes to `.agentic-qe/llm-config.json`):
+
+```bash
+aqe llm config --set mode=cost-optimized
+aqe llm config --set defaultProvider=gemini
+aqe llm config           # show current effective config
+```
+
+API keys are env-only — `aqe llm config --set apiKey=...` is refused
+to keep secrets out of project-committed config.
+
+### Opting out
+
+To run Fleet without any LLM calls (deterministic-only mode):
+
+```bash
+export AQE_LLM_ROUTER_DISABLED=1   # env-only kill-switch
+```
+
+Or programmatically: `new QEKernelImpl({ llmRouter: { enabled: false } })`.
+
+### Free local models (opt-in) — cheap-first test generation
+
+Run test generation on a **free local model first** (local Ollama, cloud Ollama,
+OpenRouter free models, or any OpenAI-compatible endpoint), with an automatic
+**repair loop**, falling back to your normal LLM path only when needed. Off by
+default — enable with `AQE_FREE_TIER=1`:
+
+```bash
+ollama pull qwen3:8b
+export AQE_FREE_TIER=1            # opt in (default model: qwen3:8b)
+```
+
+Most routine test generation is then handled locally at **$0**. See the
+[Free-Tier Local Models guide](docs/guides/free-tier-local-models.md) for
+provider options and configuration.
+
+---
+
+## Documentation
+
+| Guide | Description |
+|-------|-------------|
+| [Platform Setup](docs/platform-setup-guide.md) | Per-platform configuration instructions |
+| [Free-Tier Local Models](docs/guides/free-tier-local-models.md) | Cheap-first test generation on local/free models (opt-in) |
+| [Skill Validation](docs/guides/skill-validation.md) | Trust tiers and evaluation system |
+| [Learning System](docs/guides/reasoningbank-learning-system.md) | ReasoningBank pattern learning |
+| [Code Intelligence](docs/guides/fleet-code-intelligence-integration.md) | Knowledge graph and semantic search |
+| [Loki-mode Features](docs/loki-mode-features.md) | Anti-sycophancy and quality gates |
+| [Release Notes](docs/releases/README.md) | Version history and changelogs |
+| [Architecture Glossary](docs/v3-technical-architecture-glossary.md) | Technical terms and concepts |
+
+---
+
+## Development
+
+```bash
+git clone https://github.com/proffesor-for-testing/agentic-qe.git
+cd agentic-qe
+npm install
+npm run build
+npm test -- --run
+```
+
+| Script | Description |
+|--------|-------------|
+| `npm run build` | Compile TypeScript + CLI + MCP bundles |
+| `npm test -- --run` | Run all tests |
+| `npm run cli` | Run CLI in dev mode |
+| `npm run mcp` | Start MCP server |
+
+---
+
+## Contributing
+
+We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+
+---
+
+## Support
+
+- **Documentation**: [docs/](docs/)
+- **Issues**: [GitHub Issues](https://github.com/proffesor-for-testing/agentic-qe/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/proffesor-for-testing/agentic-qe/discussions)
+
+---
+
+## License
+
+MIT — see [LICENSE](LICENSE).
+
+---
+
+## Contributors
+
+<!-- ALL-CONTRIBUTORS-LIST:START -->
+| <img src="https://github.com/proffesor-for-testing.png" width="60" style="border-radius:50%"/><br/>**[@proffesor-for-testing](https://github.com/proffesor-for-testing)**<br/>Project Lead | <img src="https://github.com/fndlalit.png" width="60" style="border-radius:50%"/><br/>**[@fndlalit](https://github.com/fndlalit)**<br/>QX Partner, Testability | <img src="https://github.com/shaal.png" width="60" style="border-radius:50%"/><br/>**[@shaal](https://github.com/shaal)**<br/>Core Development | <img src="https://github.com/mondweep.png" width="60" style="border-radius:50%"/><br/>**[@mondweep](https://github.com/mondweep)**<br/>Architecture |
+|:---:|:---:|:---:|:---:|
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+[View all contributors](CONTRIBUTORS.md) | [Become a contributor](CONTRIBUTING.md)
+
+---
+
+## Support the Project
+
+If you find AQE valuable, consider supporting its development:
+
+| | Monthly | Annual (Save $10) |
+|---|:---:|:---:|
+| **Price** | $5/month | $50/year |
+| **Subscribe** | [**Monthly**](https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-88G03706DU8150205NEYZZAY) | [**Annual**](https://www.paypal.com/webapps/billing/plans/subscribe?plan_id=P-39189175UE6623540NEYZ2CI) |
+
+[View sponsorship details](FUNDING.md)
+
+---
+
+## Acknowledgments
+
+- **[Claude Flow](https://github.com/ruvnet/claude-flow)** by [@ruvnet](https://github.com/ruvnet) — Multi-agent orchestration and MCP integration
+- **[Agentic Flow](https://github.com/ruvnet/agentic-flow)** by [@ruvnet](https://github.com/ruvnet) — Agent patterns and learning systems
+- Built with TypeScript, Node.js, and better-sqlite3
+- Compatible with Jest, Cypress, Playwright, Vitest, Mocha, pytest, JUnit, and more
+
+---
+
+<div align="center">
+
+**Made with care by the Agentic QE Team**
+
+[Star us on GitHub](https://github.com/proffesor-for-testing/agentic-qe) | [Sponsor](FUNDING.md) | [Contributors](CONTRIBUTORS.md)
+
+</div>

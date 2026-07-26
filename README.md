@@ -12,7 +12,7 @@ Built for developers, researchers, and AI assistants that need a fast map of the
 
 **Keywords:** AI agents, autonomous agents, LLM, generative AI, RAG, MCP, multimodal AI, open-source AI, coding agents, LangChain, LangGraph, CrewAI, AutoGen, OpenAI, Qwen, DeepSeek, Ollama, ComfyUI.
 
-## Ecosystem Architecture (821 Repositories / 20 Categories)
+## Ecosystem Architecture (4417 Repositories / 21 Categories)
 
 ### 1. Core Cognitive Skills (`skills/`) — 26 submodules
 Explicit reasoning techniques, prompt engineering, and curated knowledge resources.
@@ -249,8 +249,8 @@ cp -r skills/ ~/.agent/skills/
 ```
 
 ## Project Statistics
-- **Total Repos**: 821 (via manifest)
-- **Categories**: 20
+- **Total Repos**: 4417 (via manifest)
+- **Categories**: 21
 - **Storage Mode**: Manifest + shallow clone (no git submodules)
 - **Size**: repos.json ~114KB (lightweight)
 - **New**: Switched from 532+ submodules to manifest system for speed & smaller repo size

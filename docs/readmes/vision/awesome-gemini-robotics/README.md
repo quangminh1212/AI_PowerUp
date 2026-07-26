@@ -1,0 +1,814 @@
+<!-- source: https://github.com/GitHub30/Awesome-Gemini-Robotics.git sha: 3438a9efb70dbf99105bffb29bd593fe5f0e0781 readme: main/README.md -->
+# GitHub30/Awesome-Gemini-Robotics
+
+Curated, community-maintained gallery of Gemini Robotics-ER 1.5 examples and prompts, ready to reuse in your own robotics/embodied AI projects. Each entry includes a representative image (or placeholder) and a JSON-friendly prompt.  Gemini Robotics-ER 1.5 is Google’s state-of-the-art embodied reasoning model, excelling in spatial understanding (poi
+
+---
+
+<div align="center">
+<img width="3334" height="992" alt="image" src="https://github.com/user-attachments/assets/32195746-89c3-4e33-a93d-00a7f0642f79" />
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![English](https://img.shields.io/badge/English-Click_to_View-yellow)](README.md)
+[![Chinese](https://img.shields.io/badge/汉语-撳一下就可以睇到-orange)](README_zh.md)
+[![Japanese](https://img.shields.io/badge/日本語-クリックして表示-green)](README_ja.md)
+[![Korean](https://img.shields.io/badge/한국어-눌러서_보기-blue)](README_kr.md)
+[![Vietnamese](https://img.shields.io/badge/tiếng_Việt-Nhấp_để_xem-blueviolet)](README_vn.md)
+</div>
+
+# Awesome Gemini Robotics
+
+A curated, community-maintained gallery of **Gemini Robotics-ER 1.5** (embodied reasoning, VLM) examples and prompts you can copy-paste into your own projects. Each card includes a **representative image** and a **ready-to-use prompt** (often JSON-friendly), following the style of “Awesome Nano Banana Images.”
+If you build something cool, send a PR!
+
+> **What is Gemini Robotics-ER 1.5?**
+> It’s Google’s state-of-the-art embodied reasoning model for robotics. ER 1.5 excels at **spatial understanding (2D points, boxes, trajectories)**, **long-horizon task planning**, **temporal reasoning on video**, **tool use (e.g., Google Search)**, and **success/progress estimation**. You can call it directly via Google AI Studio / Gemini API and orchestrate your own robot APIs or VLAs. ([Google Developers Blog][1])
+
+---
+
+## Contents
+
+* [Quick start](#quick-start)
+* [Use cases (10+)](#use-cases)
+* [Contributing](#contributing)
+* [License & image attribution](#license--image-attribution)
+
+---
+
+## Quick start
+
+> Minimal Python sketch with the Gemini API (model name may appear as `gemini-robotics-er-1.5-preview` in early access):
+
+```python
+from google import genai
+from google.genai import types
+
+client = genai.Client()
+MODEL_ID = "gemini-robotics-er-1.5-preview"
+
+prompt = """
+Point to no more than 10 items in the image.
+Return [{"point":[y,x],"label":"<name>"}] with y/x normalized to 0-1000.
+"""
+
+img_bytes = open("scene.jpg","rb").read()
+res = client.models.generate_content(
+    model=MODEL_ID,
+    contents=[types.Part.from_bytes(data=img_bytes, mime_type="image/jpeg"), prompt],
+    config=types.GenerateContentConfig(
+        temperature=0.5,
+        thinking_config=types.ThinkingConfig(thinking_budget=0)  # tune if needed
+    )
+)
+print(res.text)
+```
+
+This mirrors Google’s official robotics overview (points, trajectories, orchestration, video, etc.). See docs for more examples (object tracking, packing lunch, calling custom robot APIs). ([Google AI for Developers][2])
+
+---
+
+## Use cases
+
+> ✅ = includes a public demo image from Google’s docs/blog • 🧩 = bring your own image (placeholder path)
+
+### 1) Pointing to Undefined Objects
+
+<img width="801" height="598" alt="image" src="https://github.com/user-attachments/assets/35881c79-922e-43dd-9d1c-b22e4f66715d" />
+
+**Prompt**
+
+```
+Point to no more than 10 items in the image. The label returned should be an identifying name for the object detected.
+The answer should follow the json format: [{"point": <point>, "label": <label1>}, ...]. The points are in [y, x] format normalized to 0-1000.
+```
+
+https://github.com/google-gemini/cookbook/blob/main/quickstarts/gemini-robotics-er.ipynb
+
+### 2) Pointing to Defined Objects
+
+<img width="800" height="601" alt="image" src="https://github.com/user-attachments/assets/8bf517fa-a094-40c9-be65-6c7bedfde295" />
+
+**Prompt**
+
+```
+Get all points matching the following objects: bread, starfruit, banana. The label returned should be an identifying name for the object detected.
+The answer should follow the json format: [{{"point": <point>, "label": <label1>}}, ...]. The points are in [y, x] format normalized to 0-1000.
+```
+
+https://github.com/google-gemini/cookbook/blob/main/quickstarts/gemini-robotics-er.ipynb
+
+### 3) Point to all instances of an object based on more abstract description (e.g. "fruit")
+
+<img width="798" height="597" alt="image" src="https://github.com/user-attachments/assets/974995c1-9a92-4c04-9e89-3bcbefdd22d8" />
+
+**Prompt**
+
+```
+Get all points for fruit. The label returned should be an identifying name for the object detected.
+The answer should follow the json format: [{"point": <point>, "label": <label1>}, ...]. The points are in [y, x] format normalized to 0-1000.
+```
+
+https://github.com/google-gemini/cookbook/blob/main/quickstarts/gemini-robotics-er.ipynb
+
+### 4) Point to all instances of an object
+
+<img width="799" height="450" alt="image" src="https://github.com/user-attachments/assets/93382594-8156-43ff-9864-aa627346b2ae" />
+
+**Prompt**
+
+```
+Get all points matching game board slot. The label returned should be an identifying name for the object detected.
+The answer should follow the json format: [{"point": <point>, "label": <label1>}, ...]. The points are in [y, x] format normalized to 0-1000.
+```
+
+```
+Get all points matching X game piece. The label returned should be an identifying name for the object detected.
+The answer should follow the json format: [{"point": <point>, "label": <label1>}, ...]. The points are in [y, x] format normalized to 0-1000.
+```
+
+https://github.com/google-gemini/cookbook/blob/main/quickstarts/gemini-robotics-er.ipynb
+
+### 5) Pointing to certain parts of an object in serial
+
+<img width="795" height="592" alt="image" src="https://github.com/user-attachments/assets/68c6bd2f-a064-43e4-bee3-a377a33d73c7" />
+
+**Prompt**
+
+```
+queries = [
+    ("paper bag", "handles"),
+    ("banana", "the stem"),
+    ("banana", "center"),
+    ("starfruit", "center"),
+    ("lime", "center"),
+    ("light blue bowl", "rim"),
+    ("dark blue bowl", "rim"),
+    ("measuring cup", "rim"),
+    ("measuring cup", "handle"),
+    ("bowl", "tomato"),
+]
+
+Point to the $part of the $object in the image. Return the answer as a json list of a dictionary with keys "point" and "label". Only return one point for this request
+```
+
+https://github.com/google-gemini/cookbook/blob/main/quickstarts/gemini-robotics-er.ipynb
+
+### 6) Counting by Pointing
+
+<img width="793" height="820" alt="image" src="https://github.com/user-attachments/assets/2592ca4e-c1a9-4510-a251-c63dbbeaa52d" />
+
+**Prompt**
+
+```
+Point to each washer in the box.
+Return the answer in the format: [{"point": <point>, "label": <label1>}, ...]. The points are in [y, x] format normalized to 0-1000.
+```
+
+https://github.com/google-gemini/cookbook/blob/main/quickstarts/gemini-robotics-er.ipynb
+
+### 7) Pointing to Defined Objects in a GIF
+
+![ダウンロード (1)](https://github.com/user-attachments/assets/635a748f-eae9-44c3-88b8-31627eec0ed8)
+
+**Prompt**
+
+```
+queries = [
+    "pen (on desk)",
+    "pen (in robot hand)",
+    "laptop (opened)",
+    "laptop (closed)",
+]
+
+Point to the following objects in the provided image: {', '.join(queries)}.
+The answer should follow the json format: [{{"point": <point>, "label": <label1>}}, ...].
+The points are in [y, x] format normalized to 0-1000.
+If no objects are found, return an empty JSON list [].
+```
+
+https://github.com/google-gemini/cookbook/blob/main/quickstarts/gemini-robotics-er.ipynb
+
+### 8) 2D Bounding boxes
+
+<img width="794" height="597" alt="image" src="https://github.com/user-attachments/assets/afaa8594-e682-4aaa-aa4c-62c468a66e49" />
+
+
+**Prompt**
+
+```
+Return bounding boxes as a JSON array with labels. Never return masks or code fencing. Limit to 25 objects. Include as many objects as you can identify on the table.
+If an object is present multiple times, name them according to their unique characteristic (colors, size, position, unique characteristics, etc..).
+The format should be as follows: [{"box_2d": [ymin, xmin, ymax, xmax], "label": <label for the object>}] normalized to 0-1000. The values in box_2d must only be integers
+```
+
+https://github.com/google-gemini/cookbook/blob/main/quickstarts/gemini-robotics-er.ipynb
+
+### 9) Simple Trajectory Planning
+
+<img width="794" height="444" alt="image" src="https://github.com/user-attachments/assets/5c2f94dc-9b08-4e2b-b1d3-58ca55c6fb51" />
+
+**Prompt**
+
+```
+Place a point on the red pen, then 15 points for the trajectory of moving the red pen to the top of the organizer on the left.
+The points should be labeled by order of the trajectory, from '0' (start point at left hand) to <n> (final point)
+The answer should follow the json format: [{"point": <point>, "label": <label1>}, ...].
+The points are in [y, x] format normalized to 0-1000.
+```
+
+https://github.com/google-gemini/cookbook/blob/main/quickstarts/gemini-robotics-er.ipynb
+
+### 10) Path for Brushing Particles
+
+<img width="792" height="592" alt="image" src="https://github.com/user-attachments/assets/855c0a41-29f7-4d3b-a774-c22e4d726ac4" />
+
+**Prompt**
+
+```
+Point to the the blue brush and a list of 10 points covering the region of particles.
+Ensure that the points are spread evenly over the particles to create a smooth trajectory.
+Label the points from 1 to 10 based on the order that they should be approached in the trajectory of cleaning the plate.
+Movement should start from the brush.
+The answer should follow the json format: [{"point": <point>, "label": <label1>}, ...].
+The points are in [y, x] format normalized to 0-1000.
+```
+
+https://github.com/google-gemini/cookbook/blob/main/quickstarts/gemini-robotics-er.ipynb
+
+### 11) Obstacle-avoidance trajectory planning
+
+<img width="801" height="743" alt="image" src="https://github.com/user-attachments/assets/53cfab6e-db07-4eb7-b325-27d60da55eee" />
+
+**Prompt**
+
+```
+Find the most direct collision-free trajectory of 10 points on the floor between the current view origin and the green ottoman in the back left. The points should avoid all other obstacles on the floor.
+The answer should follow the json format: [{"point": <point>, "label": <label1>}, ...].
+The points are in [y, x] format normalized to 0-1000.
+```
+
+https://github.com/google-gemini/cookbook/blob/main/quickstarts/gemini-robotics-er.ipynb
+
+### 12) Item to remove to make room for laptop
+
+<img width="795" height="598" alt="image" src="https://github.com/user-attachments/assets/70a17400-d409-4ec9-8c23-4a2595f528ec" />
+
+**Prompt**
+
+```
+Point to the object that I need to remove to make room for my laptop
+The answer should follow the json format: [{"point": <point>, "label": <label1>}, ...]. The points are in [y, x] format normalized to 0-1000.
+```
+
+https://github.com/google-gemini/cookbook/blob/main/quickstarts/gemini-robotics-er.ipynb
+
+### 13) Orchestrating: Packing a Lunch
+
+<img width="1207" height="855" alt="image" src="https://github.com/user-attachments/assets/aab2f569-99fe-4d7e-ae34-159655729a59" />
+
+**Prompt**
+
+```
+Explain how to pack the lunch box and lunch bag. Point to each object that you refer to. Each point should be in the format: [{"point": [y, x], "label": }], where the coordinates are normalized between 0-1000.
+```
+
+https://github.com/google-gemini/cookbook/blob/main/quickstarts/gemini-robotics-er.ipynb
+
+### 14) Empty electrical sockets
+
+<img width="792" height="938" alt="image" src="https://github.com/user-attachments/assets/469d73df-3b01-48d6-b1f5-e39b62aa5133" />
+
+**Prompt**
+
+```
+Point to the unobstructed empty sockets
+The answer should follow the json format: [{"point": <point>, "label": <label1>}, ...]. The points are in [y, x] format normalized to 0-1000.
+```
+
+https://github.com/google-gemini/cookbook/blob/main/quickstarts/gemini-robotics-er.ipynb
+
+### 15) Limiting item lift (3LB limit)
+
+<img width="792" height="954" alt="image" src="https://github.com/user-attachments/assets/a45216e1-cac7-4217-b51e-98d0d23e8754" />
+
+**Prompt**
+
+```
+I am a robot with a payload of 3LBs. Point to all the objects in the image I am physically able to pick up.
+The answer should follow the json format: [{"point": <point>, "label": <label1>}, ...]. The points are in [y, x] format normalized to 0-1000.
+```
+
+https://github.com/google-gemini/cookbook/blob/main/quickstarts/gemini-robotics-er.ipynb
+
+### 16) Video Analysis
+
+https://github.com/user-attachments/assets/cc2b3c62-2ce6-4c7b-bcf8-968f000e37f5
+
+**Prompt**
+
+```
+Describe in detail each step of finishing the task. Breaking it down by timestamp, output in json format with keys "start_timestamp", "end_timestamp" and "description".
+```
+
+https://github.com/google-gemini/cookbook/blob/main/quickstarts/gemini-robotics-er.ipynb
+
+### 17) Video Analysis: Time Range
+
+```py
+conversation_history = [
+    {
+        'role': 'user',
+        'parts': [{'text': prompt}]
+    },
+    {
+        'role': 'model',
+        'parts': [{'text': response.text}]
+    }
+]
+
+chat = client.chats.create(
+    model=MODEL_ID,
+    history=conversation_history
+)
+
+prompt = """
+zoom into second 15 to 22 and provide a per-second breakdown of what is happening in the same format.
+"""
+
+start_time = time.time()
+
+response = chat.send_message(
+    [prompt, myfile]
+)
+
+end_time = time.time()
+elapsed_time = end_time - start_time
+print(f"\nTotal processing time: {elapsed_time:.4f} seconds")
+
+print(response.text)
+```
+
+Total processing time: 11.4140 seconds
+```json
+[
+  {
+    "start_timestamp": "00:15",
+    "end_timestamp": "00:16",
+    "description": "The left robotic arm begins moving from its position above the table towards the blue pen."
+  },
+  {
+    "start_timestamp": "00:16",
+    "end_timestamp": "00:18",
+    "description": "The left robotic arm positions its gripper directly over the blue pen on the table."
+  },
+  {
+    "start_timestamp": "00:18",
+    "end_timestamp": "00:19",
+    "description": "The left robotic arm lowers its gripper and grasps the blue pen."
+  },
+  {
+    "start_timestamp": "00:19",
+    "end_timestamp": "00:20",
+    "description": "The left robotic arm lifts the blue pen off the surface of the table."
+  },
+  {
+    "start_timestamp": "00:20",
+    "end_timestamp": "00:21",
+    "description": "The left robotic arm moves the blue pen towards the center of the table, positioning it above the black mesh pen holder."
+  },
+  {
+    "start_timestamp": "00:21",
+    "end_timestamp": "00:22",
+    "description": "The left robotic arm releases the blue pen, dropping it into the black mesh pen holder."
+  }
+]
+```
+
+https://github.com/google-gemini/cookbook/blob/main/quickstarts/gemini-robotics-er.ipynb
+
+### 18) Finding the fourth row of shelves
+
+<img width="794" height="922" alt="image" src="https://github.com/user-attachments/assets/f7d26839-67a8-4215-b23d-e3eeb89ff11e" />
+
+**Prompt**
+
+```
+Return bounding boxes as a JSON array with labels highlighting all cubbies in the fourth row of shelves.
+The format should be as follows: [{"box_2d": [ymin, xmin, ymax, xmax], "label": <label for the object>}] normalized to 0-1000. The values in box_2d must only be integers
+```
+
+https://github.com/google-gemini/cookbook/blob/main/quickstarts/gemini-robotics-er.ipynb
+
+### 19) Finding shelves with specific items
+
+<img width="794" height="942" alt="image" src="https://github.com/user-attachments/assets/95baca11-e7aa-485c-a927-0e392d9f6390" />
+
+**Prompt**
+
+```
+"I need to blow my nose."
+Find the cubby that can help.
+The format should be as follows: [{"box_2d": [ymin, xmin, ymax, xmax], "label": <label for the object>}] normalized to 0-1000. The values in box_2d must only be integers
+```
+
+https://github.com/google-gemini/cookbook/blob/main/quickstarts/gemini-robotics-er.ipynb
+
+### 20) Counting items with thinking
+
+<img width="960" height="600" alt="image" src="https://github.com/user-attachments/assets/d902b60a-006e-406a-8641-611240dd9f87" />
+
+**Output**
+
+```
+Based on a visual inspection of the shopping cart basket in the foreground of the image, there are **8 items** inside.
+
+Here is the reasoning for the count:
+
+1.  **Stacked Boxes:** There is a stack of several boxes on the left side of the basket. We can clearly identify at least five boxes in this stack:
+    *   A blue Barilla pasta box at the bottom left.
+    *   A yellow Wheat Thins box next to the Barilla box.
+    *   At least three more boxes stacked above these two, partially visible.
+2.  **Cans:** There are two silver cans visible at the bottom right of the basket.
+3.  **Packet:** There is one small blue packet located in the center of the basket, between the boxes and the cans.
+```
+
+**Prompt**
+
+```
+How many items are inside of the cart basket. Please share your reasoning.
+```
+
+https://github.com/google-gemini/cookbook/blob/main/quickstarts/gemini-robotics-er.ipynb
+
+### 21) Finding shelves with specific items
+
+| ![initial_state_1](https://storage.googleapis.com/generativeai-downloads/images/robotics/er-1-5-example-colab/initial_state_1.png) | ![initial_state_2](https://storage.googleapis.com/generativeai-downloads/images/robotics/er-1-5-example-colab/initial_state_2.png) | ![initial_state_3](https://storage.googleapis.com/generativeai-downloads/images/robotics/er-1-5-example-colab/initial_state_3.png) | ![initial_state_4](https://storage.googleapis.com/generativeai-downloads/images/robotics/er-1-5-example-colab/initial_state_4.png) |
+|---|---|---|---|
+| ![current_state_1](https://storage.googleapis.com/generativeai-downloads/images/robotics/er-1-5-example-colab/current_state_1.png) | ![current_state_2](https://storage.googleapis.com/generativeai-downloads/images/robotics/er-1-5-example-colab/current_state_2.png) | ![current_state_3](https://storage.googleapis.com/generativeai-downloads/images/robotics/er-1-5-example-colab/current_state_3.png) | ![current_state_4](https://storage.googleapis.com/generativeai-downloads/images/robotics/er-1-5-example-colab/current_state_4.png) |
+
+
+**Output**
+
+Success? No
+
+**Prompt**
+
+```
+For this task, you will see a robot or human trying to perform the task of putting the mango into the brown container.
+You may see multiple camera views of the same scene. Some cameras are static
+and are mounted outside of the scene and some cameras are mounted on the robot arms
+and thus they are moving during the episode. The first 4 images show multiple
+camera views from the start of the episode (some time ago). The last 4 images show
+multiple camera views from the current moment in the episode (as it is now).
+Looking at these images and comparing the start of the episode with current state did
+the robot successfully perform the task "put the mango into the brown container"?
+Answer only with (1) yes or (2) no. Return the number (1) or (2) that best answers the question.
+```
+
+https://github.com/google-gemini/cookbook/blob/main/quickstarts/gemini-robotics-er.ipynb
+
+### 22) Zooming in on sections of an image for better readings
+
+<img width="794" height="959" alt="image" src="https://github.com/user-attachments/assets/338a9381-8f71-4f61-a378-a57a9bc64f75" />
+
+**Prompt**
+
+```
+What is the air quality reading? Using the code execution feature, zoom in on the image to take a closer look.
+```
+
+https://github.com/google-gemini/cookbook/blob/main/quickstarts/gemini-robotics-er.ipynb
+
+### 23) Segmentation with robot gripper and item
+
+<img width="796" height="456" alt="image" src="https://github.com/user-attachments/assets/09403f45-f6e7-4fd1-8390-4614e3481e3a" />
+
+**Prompt**
+
+```
+Provide the segmentation masks for the following objects in this image: mango, left robot gripper finger, right robot gripper finger.
+The answer should follow the JSON format:
+[
+  {
+    "box_2d": [ymin, xmin, ymax, xmax],
+    "label": "<label for the object>",
+    "mask": "data:image/png;base64,<base64 encoded PNG mask>"
+  },
+  ...
+]
+The box_2d coordinates should be normalized to 0-1000 and must be integers.
+The mask should be a base64 encoded PNG image where non-zero pixels indicate the mask.
+```
+
+https://github.com/google-gemini/cookbook/blob/main/quickstarts/gemini-robotics-er.ipynb
+
+### 24) Locate relevant objects
+
+<img width="793" height="504" alt="image" src="https://github.com/user-attachments/assets/69d4df26-a15d-4fcb-8ad7-d0b0cf9889b5" />
+
+**Prompt**
+
+```
+Locate and point to the blue block and the orange bowl. The label
+returned should be an identifying name for the object detected.
+The answer should follow the json format: [{"point": <point>, "label": <label1>}, ...].
+The points are in [y, x] format normalized to 0-1000.
+```
+
+https://github.com/google-gemini/cookbook/blob/main/quickstarts/gemini-robotics-er.ipynb
+
+### 25) Kitchen scene: **Point-and-name objects** (2D points) ✅
+
+![Kitchen pointing](https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/unnamed-2_2.original.png)
+
+**Prompt**
+
+```
+Point to the following items in the image: dish soap, dish rack, faucet, rice cooker, unicorn.
+The points are in [y, x] format normalized to 0-1000.
+Only include objects that are actually present in the image.
+Return: [{"point":[y,x],"label":"<name>"}]
+```
+
+ER 1.5 returns precise, semantically grounded points; combine with your depth/pose stack to motion-plan. ([Google Developers Blog][1])
+
+---
+
+### 26) Temporal reasoning on video: **What happened when?** 🧩
+
+
+
+
+https://github.com/user-attachments/assets/5c55cbea-6946-4d8f-8e33-a17c4f0d6dd7
+
+
+
+
+**Prompt**
+
+```
+You are given a short robot-manipulation video.
+Describe each step with precise timestamps, as JSON:
+[{"start_timestamp":"MM:SS","end_timestamp":"MM:SS","description":"..."}]
+```
+
+ER 1.5 can reason about **order, causality, and intervals** (e.g., “green marker into tray, then blue/red pens into the cup”), and even zoom into sub-intervals. Use it to verify execution and annotate episodes. ([Google Developers Blog][1])
+
+---
+
+### 27) Coffee maker: **Plan a closing trajectory** (multi-point path) ✅
+
+![Coffee-lid trajectory](https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/image1_PCWZQMD.original.png)
+
+**Prompt**
+
+```
+Now I need to close the coffee maker.
+Plot a trajectory of 8 points that indicates how the handle should move to close it.
+Start from the handle. Points are [Y,X], normalized 0-1000.
+Return:
+[{"point":[Y,X],"label":"p0"}, {"point":[Y,X],"label":"p1"}, ...]
+```
+
+Use outputs to seed your motion planner (smoothing, collision checks). ([Google Developers Blog][1])
+
+---
+
+### 28) Coffee cleanup: **Where should I put the mug?** (affordance pointing) ✅
+
+![Put mug away](https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/image12_O0rW8PY.original.png)
+
+**Prompt**
+
+```
+I finished my coffee. Where should I put my mug now to clean up?
+Return [{"point":[y,x],"label":"<best place>"}] with y/x normalized 0-1000.
+```
+
+Great for **affordance-aware placement** after task completion. ([Google Developers Blog][1])
+
+---
+
+### 29) **Trash sorting by local rules** (tool use + spatial grounding) 🧩
+
+https://github.com/user-attachments/assets/503b20d6-1995-4e71-9164-9a79d6bf6a4c
+
+**Prompt**
+
+```
+Use the Google Search tool to fetch my city’s latest recycling/compost rules.
+Then, based on this image, explain how to sort each visible item into the right bin.
+Point to each referenced item using [{"point":[y,x],"label":"<bin>"}], normalized 0-1000.
+Return a step-by-step plan I can hand to my VLA controller.
+```
+
+ER 1.5 can **call tools** (e.g., Google Search) and output **interleaved text + points** for “spatially grounded” plans. ([Google Developers Blog][1])
+
+---
+
+### 30) **Re-organize my desk** from a reference photo (long-horizon plan) 🧩
+
+**Prompt**
+
+```
+Given (A) my current desk photo and (B) a reference photo,
+create a step-by-step reorganization plan.
+For each step include target placements as [{"box_2d":[ymin,xmin,ymax,xmax],"label":"<item>"}],
+normalized 0-1000, and a 1-2 sentence rationale.
+```
+
+Demonstrates **agentic planning** with **spatial grounding** over many steps. ([Google Developers Blog][1])
+
+---
+
+### 31) **Make room for a laptop** (choose what to move) 🧩
+
+![Make room](https://ai.google.dev/gemini-api/docs/images/robotics/spatial-reasoning.png)
+
+**Prompt**
+
+```
+Point to the single object I should remove to make room for my laptop.
+Return [{"point":[y,x],"label":"<object to move>"}], normalized 0-1000.
+```
+
+A canonical **orchestration** example from the docs—reason about constraints and pick the minimal change. ([Google AI for Developers][2])
+
+---
+
+### 32) **Pack a lunch** with spatially grounded instructions ✅
+
+![Packing lunch](https://ai.google.dev/static/gemini-api/docs/images/robotics/packing-lunch.png)
+
+**Prompt**
+
+```
+Explain how to pack the lunch box and lunch bag from this image.
+Point to each object you refer to:
+[{"point":[y,x],"label":"<name>"}], normalized 0-1000.
+Return a numbered step-by-step plan.
+```
+
+Outputs a **multi-step plan** plus points you can render or convert into pick-and-place calls. ([Google AI for Developers][2])
+
+---
+
+### 33) **Pick-and-place via your robot API** (function-calling) 🧩
+
+![Blocks & bowl](https://ai.google.dev/gemini-api/docs/images/robotics/robot-api-example.png)
+
+**Prompt**
+
+```
+First, locate the blue block and the orange bowl with:
+[{"point":[y,x],"label":"<name>"}], 0-1000.
+Then, using ONLY these functions:
+  def move(x, y, high: bool)
+  def setGripperState(opened: bool)
+  def returnToOrigin()
+Generate the precise call sequence to pick the block and place it in the bowl.
+Explain each call briefly.
+```
+
+Docs show this pattern end-to-end (detect → plan → call your API). ([Google AI for Developers][2])
+
+---
+
+### 34) **Move the red pen to the organizer** (trajectory planning) 🧩
+
+![Pen trajectory](https://ai.google.dev/gemini-api/docs/images/robotics/trajectories.png)
+
+**Prompt**
+
+```
+Place a point on the red pen, then 15 points for its trajectory onto the organizer.
+Label points by order "0"..."15". Return [{"point":[y,x],"label":"<step>"}].
+```
+
+Great for **teaching-by-trajectory** and downstream spline fitting / time-parametrization. ([Google AI for Developers][2])
+
+---
+
+### 35) **Laundry sorting by color** (multi-level thinking) 🧩
+
+[![](https://i.imgur.com/2fqyZh6.png)](https://www.youtube.com/watch?v=eDyXEh8XqjM&t=34s)
+
+
+**Prompt**
+
+```
+Sort laundry by color into two baskets: white vs non-white.
+Return a short natural-language plan and for each garment a
+{"point":[y,x],"label":"white|non-white"} with normalized 2D coordinates.
+```
+
+Official blog explains how Robotics 1.5/ER 1.5 think at task/subtask/micro-action levels for chores like **color-sorting laundry**. ([blog.google][3])
+
+---
+
+### 36) **Payload-aware pick** (safety & constraints) 🧩
+
+
+**Prompt**
+
+```
+Plan a pick-and-place for the heaviest visible item
+subject to a 1.0 kg payload limit and a 25 cm reach radius.
+Explain the constraint checks and refuse if unsafe.
+Return [{"point":[y,x],"label":"grasp"}] plus "reason".
+```
+
+ER 1.5 adds improved semantic safety and awareness of physical constraints; you must still implement hardware-level safety. ([Google Developers Blog][1])
+
+---
+
+### 37) **Human-robot natural language**: “Clean up the table” 🧩
+
+![Table cleanup](https://storage.googleapis.com/gweb-developer-goog-blog-assets/images/image12_O0rW8PY.original.png)
+
+**Prompt**
+
+```
+Given a table scene image, produce a numbered cleanup plan.
+For each step, include a target placement point or 2D box and a note on success criteria.
+Format:
+{"step":n,"action":"...","target":{"point":[y,x] | "box_2d":[ymin,xmin,ymax,xmax]},"why":"..."}
+```
+
+ER 1.5 breaks down ambiguous commands into executable sub-goals and can call specialized grasping/VLA skills to act. ([Google Developers Blog][1])
+
+---
+
+### 38) **Cross-embodiment planning** (robot-agnostic steps) 🧩
+
+[![Embodiments](https://github.com/user-attachments/assets/919be470-810b-4974-8fe9-2784623aabd2)](https://www.youtube.com/watch?v=9FV5ZYytkOQ)
+
+**Prompt**
+
+```
+From this workstation scene, generate a robot-agnostic plan
+expressed only in environment/affordance terms (no joint-space).
+Assume it will be executed on ALOHA 2, Apptronik Apollo, or a Franka arm.
+Return a step list with success checks and fallback options.
+```
+
+DeepMind highlights generalization across embodiments (e.g., ALOHA-2 → Apollo/Franka) to speed skill transfer. ([blog.google][3])
+
+---
+
+## Tips & patterns
+
+* Prefer **normalized [y,x] in 0–1000** for points, or `[ymin,xmin,ymax,xmax]` for boxes. This keeps prompts model-friendly and implementation-agnostic. ([Google Developers Blog][1])
+* Tune the **thinking budget** (latency/accuracy trade-off) depending on task complexity. ([Google Developers Blog][1])
+* Interleave **text + points/boxes/trajectories** to produce “spatially grounded” plans your controller can execute. ([Google Developers Blog][1])
+* Use **tool calls** (e.g., Search) to ground plans in local rules (recycling, kitchen policies, etc.). ([Google Developers Blog][1])
+
+---
+
+## Contributing
+
+* Add a new folder under `cases/<short-name>/` with:
+
+  * `README.md` (1–2 sentences + the prompt)
+  * `image.jpg/png` (or link)
+* Keep prompts **copy-runnable** and **JSON-friendly**.
+* Cite your source(s) (prefer primary docs/blogs/videos).
+
+---
+
+## License & image attribution
+
+* Text: MIT (this repo).
+* Images marked ✅ are from Google’s public docs/blog and used here only as **demo references**; please check source licenses before redistributing. Replace 🧩 placeholders with your own images.
+
+**Primary sources**
+
+* Google Developers Blog — *Building the Next Generation of Physical Agents with Gemini Robotics-ER 1.5* (official prompts, images, capabilities). ([Google Developers Blog][1])
+* Google AI for Developers — *Gemini Robotics-ER 1.5 (Robotics overview)* (points, trajectories, orchestration, code). ([Google AI for Developers][2])
+* Google / DeepMind blogs — ER 1.5 launch context, embodied reasoning, cross-embodiment; JP blog includes laundry sorting example and partner robot references. ([Google DeepMind][4])
+
+---
+
+> 💡 Drop this file into
+> `https://github.com/GitHub30/Awesome-Gemini-Robotics/blob/main/README.md`
+> and start adding your own screenshots under `assets/` to replace 🧩 placeholders.
+
+## 🙏 Acknowledge
+
+The various cases in this repository rely on sharing from the AI community. Please allow us to express our sincere gratitude to all case contributors.
+
+Thank you to the following users for sharing their amazing works. You can also visit their profiles to learn more:
+
+- [@GoogleDeepMind](https://x.com/GoogleDeepMind)
+- [@GeminiApp](https://x.com/GeminiApp)
+
+*We cannot guarantee that all cases come from the original authors. If this causes you any inconvenience, please feel free to contact us for modifications.*
+
+The cases we collect cannot cover all possible application scenarios. If you have other interesting discoveries 🔍, we welcome you to contact us to showcase more creativity 📧!
+
+[![Star History Chart](https://api.star-history.com/svg?repos=GitHub30/Awesome-Gemini-Robotics&type=Date)](https://www.star-history.com/#GitHub30/Awesome-Gemini-Robotics&Date)
+
+[1]: https://developers.googleblog.com/en/building-the-next-generation-of-physical-agents-with-gemini-robotics-er-15/ "Building the Next Generation of Physical Agents with Gemini Robotics-ER 1.5 - Google Developers Blog"
+[2]: https://ai.google.dev/gemini-api/docs/robotics-overview "Gemini Robotics-ER 1.5  |  Gemini API  |  Google AI for Developers"
+[3]: https://blog.google/intl/ja-jp/company-news/technology/gemini-robotics-15-ai/ "Gemini Robotics 1.5 を発表、AI エージェントを物理世界に"
+[4]: https://deepmind.google/discover/blog/gemini-robotics-15-brings-ai-agents-into-the-physical-world/ "Gemini Robotics 1.5 brings AI agents into the physical world - Google DeepMind"

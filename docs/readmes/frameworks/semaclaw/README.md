@@ -1,0 +1,171 @@
+<!-- source: https://github.com/midea-ai/SemaClaw.git sha: 288f67ed95183e1c590874ede62e737eaf9fbcfd readme: main/README.md -->
+# midea-ai/SemaClaw
+
+SemaClaw is an open-source framework for general-purpose personal AI agents.
+
+---
+
+<p align="center">
+  <img src="docs/images/semaclaw-logo.png" alt="SemaClaw logo" width="200" />
+</p>
+
+<h1 align="center">SemaClaw</h1>
+
+<p align="center">
+  <em>A general-purpose, open-source framework for personal AI agents.</em>
+</p>
+
+<p align="center">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT" /></a>
+  <a href="https://nodejs.org"><img src="https://img.shields.io/badge/node-%3E%3D20-brightgreen.svg" alt="Node.js Version" /></a>
+  <a href="CONTRIBUTING.md"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs Welcome" /></a>
+</p>
+
+<p align="center">
+  <strong>English</strong> | <a href="./README.zh-CN.md">简体中文</a>
+</p>
+
+[SemaClaw](https://github.com/midea-ai/SemaClaw) is a general-purpose engineering harness for building personal AI agents. It is built on top of a reusable agent runtime ([sema-code-core](https://github.com/midea-ai/sema-code-core)) and provides the surrounding machinery — permissions, memory, scheduling, multi-agent orchestration, channel adapters, and a Web UI — that turns a raw runtime into a usable personal AI system. It is also a reference implementation and starting point for the community to evaluate and improve on the engineering decisions behind it.
+
+---
+
+
+<p align="center">
+  <img src="https://github.com/midea-ai/SemaClaw/releases/download/v0.1.1-preview/SemaClaw-demo.GIF" alt="SemaClaw Demo" width="720" />
+</p>
+
+*SemaClaw analyzed its own source code and generated the intro video above — powered by [frontend-slides](https://github.com/zarazhangrui/frontend-slides) and [remotion](https://github.com/remotion-dev/remotion) skills (DeepSeek-Chat for all preceding steps, Claude Sonnet 4.6 for Remotion animation coding).* [Watch full demo video](https://midea-ai.github.io/SemaClaw/assets/SemaClaw-demo.mp4)
+
+## Highlights
+
+- **Three-layer context management** — Unifies working context, long-term memory retrieval, and per-agent persona partitioning into a single coherent model.
+- **Human-in-the-Loop permissions** — `PermissionBridge` is a native harness primitive supporting both explicit user authorization for high-risk tool actions and agent-initiated clarification requests.
+- **Four-layer plugin architecture** — MCP tools, subagents, skills, and hooks — each anchored to a distinct engineering concern, forming a principled extension surface.
+- **Plugin Marketplace** — Install third-party plugin bundles from any git repo or local directory. Each plugin can package skills, subagents, hooks, and MCP servers together. Plugins are default-off and per-plugin toggled from the Web UI; multiple sources can be added with priority ordering.
+- **DAG Teams** — A two-stage hybrid orchestration framework combining LLM-based dynamic task decomposition with deterministic DAG execution. Supports mixed teams of persistent and virtual agents, with 5 built-in virtual subagents ready to use out of the box.
+- **Reusable Workflows** — Codify repeatable routines as declarative DAG definitions (Markdown + YAML) that mix agent steps (isolated persona sessions) with deterministic script steps. Parameterized inputs, `{{…}}` templating with auto-inferred dependencies, a two-level `guidance` rules layer, and a persistent per-workflow workspace. Author definitions in conversation via the bundled `workflow` skill, then trigger from the CLI (`semaclaw workflow run`) or the Web UI's workflow dock — a live DAG view with run history and inline tuning. Runs only spawn isolated sessions and never touch your live chat agents.
+- **Four-mode scheduled tasks** — Pure notification, pure script, pure agent, and hybrid script-plus-agent execution — matching mode to task complexity so token consumption stays proportional to reasoning work.
+- **Agentic Wiki** — Transforms task outputs into structured, retrievable wiki entries indexed alongside agent memory, creating a compounding personal knowledge base that feeds back into future agent sessions.
+- **Workbench: HTML-as-throwaway-UI** — A built-in rendering surface for agent-emitted deliverables. The `LaunchUI` tool lets agents ship interactive HTML, rich Markdown, embedded web services (iframe), or API-endpoint cards — the Web UI workbench mounts each artifact as a switchable history tab, no separate build step. Lean into "HTML as a disposable UI": ask an agent to *show you* a result instead of just describing it.
+- **Multi-channel & Web UI** — Telegram, Feishu (Lark), and QQ adapters out of the box, plus a WebSocket gateway and a React-based Web UI.
+
+---
+
+## Featured plugin pack — Overture
+
+[**Overture**](https://github.com/NingyanZhu/Overture) is a music-themed companion plugin pack that turns SemaClaw into a self-improving personal agent system. Install via **Plugin Marketplace → Add Source** by pasting the repo URL.
+
+- **`notation`** — Data-flywheel hooks that capture every tool call, user correction, and outcome into structured logs. The signal feed for the two evolution loops below.
+- **`cadence` & `repertoire`** — Two-layer self-evolution. `cadence` evolves the agent's *baseline genome* (prompts, policies, default heuristics) ; `repertoire` evolves the *skill library* — adding, refining, or retiring individual skills.
+- **`timbre`** — Persona plugin packs. Each timbre bundles tone / values / expertise into a reusable character profile that any agent can wear, decoupling *who* the agent is from *what* it knows.
+
+---
+
+## Quick Start
+
+### Option A — Install from npm (recommended)
+
+```bash
+# 1. Install globally
+npm install -g semaclaw
+
+# 2. Run
+semaclaw
+```
+
+That's it. Open the Web UI at **<http://127.0.0.1:18788/>**.
+
+> **Install failed?** See [docs/INSTALL_TROUBLESHOOTING.md](docs/INSTALL_TROUBLESHOOTING.md) — covers the macOS `sharp` postinstall failure and other reported issues.
+
+> **Configure an LLM on first launch.** SemaClaw starts without a built-in model. Open the Web UI → **Settings → LLM**, add a provider profile (OpenAI / Anthropic / DeepSeek / Qwen / …) with `baseURL`, `apiKey`, `modelName`. The profile is persisted to `~/.semaclaw/config.json` and synced to `~/.semaclaw/semaclaw-model.conf` — until at least one active profile exists, agent runs that call an LLM will fail.
+
+To enable messaging channels (Telegram / Feishu / QQ / WeChat), create a `.env` file in your working directory before starting `semaclaw`. See [docs/QUICK_START.md](docs/QUICK_START.md) for the full list of environment variables.
+
+### Option B — Build from source
+
+```bash
+# 1. Clone
+git clone https://github.com/midea-ai/SemaClaw.git
+cd SemaClaw
+
+# 2. Install and build
+npm install
+npm run build
+npm run build:web
+
+# 3. Configure (optional)
+cp .env.example .env
+# Edit .env to enable channels (Telegram / Feishu / QQ / WeChat).
+# If left unset, SemaClaw starts in Web UI–only mode.
+
+# 4. Run
+npm start
+```
+
+Once started, open the Web UI at **<http://127.0.0.1:18788/>**, then go to **Settings → LLM** and add at least one active provider profile (see the note in Option A).
+
+For a complete walkthrough including environment variables, CLI usage, runtime layout, and architecture details, see **[docs/QUICK_START.md](docs/QUICK_START.md)** *(currently in Chinese)*.
+
+---
+
+## Documentation
+
+| Document | Description |
+|---|---|
+| [Quick Start & Usage Guide](docs/QUICK_START.md) | Installation, configuration, CLI commands, runtime layout, MCP tools |
+| [Plugin Marketplace Guide](docs/plugin-marketplace.md) | Add plugin sources, discover and enable bundles of skills/subagents/hooks/MCP servers |
+| [Hooks Guide](docs/hooks_guide.md) | Intercept agent lifecycle events with shell scripts or LLM-based checks |
+| [Workflow Guide](skills/workflow/SKILL.md) | Author reusable agent + script DAG workflows: definition format, templating, observe outputs |
+| [Remote Access Guide](docs/REMOTE_ACCESS.md) | Expose the Web UI securely via reverse proxy (Nginx / Caddy) |
+| [Technical Report](https://arxiv.org/abs/2604.11548) | SemaClaw: A Step Towards General-Purpose Personal AI Agents through Harness Engineering |
+| [Contributing](CONTRIBUTING.md) | *Coming soon* |
+
+---
+
+## Project Structure
+
+```
+semaclaw/
+├── src/
+│   ├── agent/          # Agent lifecycle, bridges, permission routing
+│   ├── channels/       # Telegram / Feishu / QQ adapters
+│   ├── gateway/        # Group manager, message router, WebSocket gateway
+│   ├── mcp/            # MCP servers (admin, schedule, memory, dispatch, ...)
+│   ├── memory/         # FTS5 + vector hybrid search, daily logger
+│   ├── scheduler/      # Cron / interval / once scheduler
+│   ├── workflow/       # Reusable workflow engine (registry, DAG executor, run store)
+│   ├── wiki/           # Git-driven personal knowledge base
+│   ├── marketplace/    # Plugin marketplace (source management, plugin discovery, MCP/skill/subagent injection)
+│   └── clawhub/        # ClaWHub skill marketplace integration
+├── web/                # React + Vite Web UI
+├── skills/             # Bundled skills
+└── docs/               # Detailed documentation
+```
+
+---
+
+## Contributing
+
+Contributions are welcome. SemaClaw exists to advance the shared engineering foundation for personal AI agents — issues, pull requests, and design discussions are all valuable. See [CONTRIBUTING.md](CONTRIBUTING.md) *(coming soon)* for guidelines.
+
+---
+
+## License
+
+[MIT](LICENSE) © AIRC Sema Team
+
+---
+
+## About the Logo
+
+The SemaClaw logo depicts a horse with **claw-shaped wings** rising from its back. The imagery is inspired by the Chinese phrase *以梦为马* — *"to ride one's dreams as a horse"* — capturing the spirit of an AI harness that carries the user wherever their imagination leads. The name itself blends *Sema* (from *semantic*) and *Claw*, while *harness* nods to the literal meaning of the word: the gear used to control and restrain a horse.
+
+---
+
+## Acknowledgments
+
+SemaClaw is built on top of [sema-code-core](https://github.com/midea-ai/sema-code-core), which provides the underlying agent runtime. Its product form is also inspired by [OpenClaw](https://github.com/openclaw/openclaw), and it integrates with the [ClaWHub](https://github.com/openclaw/clawhub) plugin marketplace from the same project. Thanks also to the broader open-source ecosystem this project depends on — including the [Model Context Protocol](https://modelcontextprotocol.io), [grammY](https://grammy.dev), and many others.
+
+---
+
+> SemaClaw's ambition is not to define the final architecture of personal AI agents — it is to advance the shared engineering foundation on which better architectures can be built.

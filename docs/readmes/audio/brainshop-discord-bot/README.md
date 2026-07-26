@@ -1,0 +1,65 @@
+<!-- source: https://github.com/SajagIN/brainshop-discord-bot.git sha: 4a1350ef467ea0127ec10d9174e526ed76fc5bb8 readme: main/README.md -->
+# SajagIN/brainshop-discord-bot
+
+:brain: A simple and highly customizable Discord chatbot powered by the Brainshop.ai conversational API. Lightweight, easy to configure, and ready to bring some life to your server. :speech_balloon:
+
+---
+
+  # Welcome to Discord Chatbot js 👋
+
+>also check out our public chatbot bot :- https://dsc.gg/chatari
+
+
+[![Run on Repl.it](https://repl.it/badge/github/SajagIN/Chatbot-discord-js)](https://repl.it/github/SajagIN/Chatbot-discord-js)
+
+## Install
+
+```sh
+npm i
+```
+
+## Usage
+
+
+add your `bot token` and `channel id` in `.env.example` and rename the file to `.env` from .env.example.
+
+#### Brainshop 
+to get brainshop key, follow the steps below
+* Create an account on [brainshop.ai](https://brainshop.ai/)
+* Once you logged in, Click on Create Brain/ Add Brain
+* Click on "Create a Root Brain", Enter any Name
+ 
+##### do the same settings as shown below:
+![settings](https://i.imgur.com/qnYlTwX.png)
+
+##### copy the details of things highlighted:
+![details](https://i.imgur.com/59jjBC7.png)
+* copy the details
+* Fill them in `.env`
+
+---
+*details shown in image are fake don't waste time copying that, thank you*
+
+---
+
+
+
+Run this command in shell :-
+```sh
+npm start
+```
+
+## Author
+
+👤 **SajagIN**
+
+* Website: https://SajagIN.github.io
+* Github: [@SajagIN](https://github.com/SajagIN)
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
+
+
+***
+Created with ❤️ By Sajag

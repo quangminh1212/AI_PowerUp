@@ -1,0 +1,116 @@
+<!-- source: https://github.com/miao4ai/open_recruiter.git sha: 13e1884af652b3746a5703102058834b95d84174 readme: main/README.md -->
+# miao4ai/open_recruiter
+
+An autonomous AI agent for recruitment workflow automation.
+
+---
+
+# <img src="images/small_logo.png" height="36" /> Open Recruiter
+
+<p align="center">
+  <img src="images/large_logo.png" width="320" />
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/BUILD-PASSING-brightgreen" />
+  <img src="https://img.shields.io/badge/RELEASE-V3.0.1-blue" />
+  <img src="https://img.shields.io/badge/LICENSE-MIT-purple" />
+</p>
+
+<p align="center">
+  <a href="document/USER_MANUAL.md"><img src="https://img.shields.io/badge/USER_MANUAL-green?style=for-the-badge" /></a>
+  <a href="document/release.md"><img src="https://img.shields.io/badge/RELEASE_NOTES-orange?style=for-the-badge" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/LICENSE-MIT-purple?style=for-the-badge" /></a>
+</p>
+
+---
+
+**AI-powered recruitment assistant for independent recruiters and small teams. A lightweight desktop app powered by Claude, with cloud embeddings for semantic matching — bring your own API keys, no subscription.**
+
+---
+
+## The Problem
+
+Small and mid-size recruiting teams often work across industries they don't have deep expertise in. When you're filling a role in, say, compiler engineering or ML infrastructure, it's hard to quickly judge whether a candidate's resume actually fits — and even harder to write a credible outreach email that speaks to their background.
+
+Open Recruiter solves this. Drop in a job description and a stack of resumes. The AI reads them, scores the fit, explains the gaps, and drafts a personalized email for each candidate — ready to send in one click. You don't need to understand the tech stack. The AI does the reading so you can focus on relationships.
+
+**For job seekers**, there's a dedicated mode (Ai Chan) that searches for matching jobs on the web, analyzes your fit, and writes your cover letter.
+
+---
+
+## Demo
+
+> 🎬 *Coming soon*
+
+---
+
+## Key Features
+
+| | Recruiter | Job Seeker |
+|--|-----------|------------|
+| **Parse** | Upload resumes & JDs (PDF/DOCX/TXT) → auto-extract structured data | Upload resume → instant profile |
+| **Match** | Vector + LLM scoring, **multi-agent swarm evaluation** (skills, culture, risk, market) | Job match analysis against any listing |
+| **Outreach** | One-click personalized email per candidate, bulk campaigns | Cover letter generation |
+| **Pipeline** | Kanban board, reply tracking, interview scheduling | Save jobs, track applications |
+| **AI Chat** | Erika Chan — ask anything about your pipeline, get actions | Ai Chan — job search, resume tips |
+| **Automation** | Auto-match, inbox scan, follow-up, pipeline cleanup | — |
+
+**Runs on:** Anthropic Claude · OpenAI GPT · Google Gemini · Ollama (fully local, offline)
+
+**Desktop app** for macOS, Windows, Linux — or run as a local web server.
+
+---
+
+## Install
+
+**Desktop app** (recommended) — download from [Releases](https://github.com/miao4ai/open_recruiter/releases):
+- **macOS** (Apple Silicon): `.dmg` → drag to Applications → open (signed & notarized — no Gatekeeper warning)
+- **Windows**: `.exe` installer
+- **Linux**: `.AppImage`
+
+**One-line installer** (macOS / Linux):
+```bash
+curl -fsSL https://raw.githubusercontent.com/miao4ai/open_recruiter/main/scripts/install.sh | bash
+```
+
+**Manual setup:**
+```bash
+git clone https://github.com/miao4ai/open_recruiter.git && cd open_recruiter
+scripts/setup.sh && scripts/start.sh   # then open http://localhost:5173
+```
+
+### API keys (3.0+)
+
+Starting with **3.0**, Open Recruiter is a lightweight cloud-backed build — no local models are bundled, so you provide your own keys in **Settings**:
+
+- **Chat** — an **Anthropic** API key (Claude, the default) or an **OpenAI** key. Get one at [console.anthropic.com](https://console.anthropic.com).
+- **Semantic search** — a **Voyage AI** key for candidate ↔ job matching. Free to start (200M tokens) at [dashboard.voyageai.com](https://dashboard.voyageai.com); leave it blank to fall back to keyword search.
+
+> Earlier fully-offline releases remain on the [`old-version-2.2`](https://github.com/miao4ai/open_recruiter/tree/old-version-2.2) branch.
+
+---
+
+## Releases
+
+| Version | Date | Highlights |
+|---------|------|------------|
+| [V3.0.1](https://github.com/miao4ai/open_recruiter/releases/tag/v3.0.1) | 2026-07-09 | Fixes: Voyage key now applies without restart (candidate matching / analysis); failed login shows an error instead of silently reloading |
+| [V3.0.0](https://github.com/miao4ai/open_recruiter/releases/tag/v3.0.0) | 2026-07-04 | Slim build (~50% smaller install): Voyage cloud embeddings, Claude/OpenAI chat, current Claude models, signed + notarized macOS DMG; dropped local PyTorch/Whisper |
+| [V2.2.0](https://github.com/miao4ai/open_recruiter/releases/tag/v2.2.0) | 2026-05-29 | Voice input (Whisper), inbox preview in chat, 114-case test harness |
+| [V2.1.0](https://github.com/miao4ai/open_recruiter/releases/tag/v2.1.0) | 2026-03-18 | Multi-agent candidate evaluation swarm, search feedback, CLAUDE.md |
+| [V2.0.0](https://github.com/miao4ai/open_recruiter/releases/tag/v2.0.0) | 2026-03-12 | LangGraph agents, human-in-the-loop approvals, resume improvement, cover letter, Ollama |
+| [V1.5.0](https://github.com/miao4ai/open_recruiter/releases/tag/v1.5.0) | 2026-03-01 | Desktop app: auto-update, system tray, backup/restore |
+| [V1.4.0](https://github.com/miao4ai/open_recruiter/releases/tag/v1.4.0) | 2026-02-23 | macOS DMG, cross-platform CI/CD |
+| [V1.3.0](https://github.com/miao4ai/open_recruiter/releases/tag/v1.3.0) | 2026-02-22 | Encouragement mode, favorite jobs from search |
+| [V1.2.0](https://github.com/miao4ai/open_recruiter/releases/tag/v1.2.0) | 2026-02-21 | Per-job pipeline, Kanban view toggle, emoji picker |
+| [V1.1.0](https://github.com/miao4ai/open_recruiter/releases/tag/v1.1.0) | 2026-02-20 | i18n (6 languages), ONNX migration, calendar |
+| [V1.0.0](https://github.com/miao4ai/open_recruiter/releases/tag/v1.0.0) | 2026-02-20 | Initial release |
+
+Full changelog: [document/release.md](document/release.md)
+
+---
+
+## License
+
+MIT

@@ -1,0 +1,479 @@
+<!-- source: https://github.com/KarmaloopAI/Jiva.git sha: 15ba543c372773b9b8464a431aacc7e79e90298e readme: main/README.md -->
+# KarmaloopAI/Jiva
+
+Jiva is a CLI-first, open source autonomous AI agent and open alternative to Claude. Written in TypeScript with native support for Sarvam-105B and gpt-oss-120b, it autonomously plans and executes tasks from your terminal. Supports MCP servers, a built-in Skills system, and Jiva Personas - a plugin framework fully compatible with Claude Plugins.
+
+---
+
+# Jiva
+
+[![npm version](https://img.shields.io/npm/v/jiva-core.svg)](https://www.npmjs.com/package/jiva-core)
+[![License](https://img.shields.io/github/license/KarmaloopAI/Jiva.svg)](LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/KarmaloopAI/Jiva.svg?style=social&label=Star)](https://github.com/KarmaloopAI/Jiva)
+
+Jiva is an autonomous AI agent for the terminal and cloud. It works with any OpenAI-compatible model provider and supports two execution modes — a general-purpose two-agent system (Manager + Worker) for complex tasks, and a code-optimized single-loop engine with LSP integration for software engineering.
+
+## Demo
+
+![Demo](jiva-new-demo.gif)
+
+---
+
+## Installation
+
+```bash
+npm install -g jiva-core
+jiva setup
+
+# Verify your model + config can do code mode well:
+jiva benchmark
+```
+
+The setup wizard opens with a provider selection menu. Choose your provider and Jiva auto-fills the endpoint, model name, and tool format — you only supply your API key. Supported providers: **Krutrim**, **Groq**, **Sarvam**, **OpenAI**, and any **OpenAI-compatible** endpoint.
+
+After setup, run **`jiva benchmark`** to confirm your chosen model and configuration work optimally in code mode. It runs the **baseline (taskstore) suite** — a deterministic set of coding tasks — against your config; a healthy setup passes all of them. See [Benchmarking](#benchmarking) for tuning and capability comparison.
+
+### Development install
+
+```bash
+git clone https://github.com/KarmaloopAI/Jiva.git
+cd Jiva
+npm install && npm run build && npm link
+jiva setup
+```
+
+---
+
+## Quick Start
+
+```bash
+# General-purpose interactive session
+jiva chat
+
+# Code mode — optimized for software engineering tasks
+jiva chat --code
+
+# Code mode with plan-then-approve flow
+jiva chat --code --plan
+
+# Single prompt
+jiva run "What changed in the last 5 commits?"
+
+# Single prompt in code mode
+jiva run "Add error handling to the database module" --code
+```
+
+### REPL commands
+
+| Command | Description |
+|---------|-------------|
+| `/help` | Show available commands |
+| `/tools` | List active tools |
+| `/servers` | Show MCP server status |
+| `/save` | Save current conversation |
+| `/load` | Resume a saved conversation |
+| `/list` | Browse all saved conversations |
+| `/reset` | Clear conversation history |
+| `/<skill-name>` | Load a skill (e.g. `/graphify`) |
+| `/exit` | Exit Jiva |
+
+---
+
+## Execution Modes
+
+### General mode (default)
+
+A two-agent pipeline designed for complex, multi-step tasks:
+
+```
+User Request
+    ↓
+Manager Agent    — plans, decomposes, and synthesizes
+    ↓
+Worker Agent     — executes subtasks with MCP tools
+    ↓
+Response
+```
+
+The Worker has access to any configured MCP server (filesystem, browser automation, shell commands, etc.). The Manager synthesizes results from all subtasks into a final coherent response. Simple conversational messages are answered directly without executing subtasks.
+
+### Code mode (`--code`)
+
+A single streaming loop optimized for coding tasks:
+
+```
+User Request
+    ↓
+CodeAgent
+    loop until done:
+        LLM call with tool definitions
+        ↓
+        Tool execution (in-process, no subprocess)
+        ↓
+        LSP feedback after file edits
+    ↓
+Response
+```
+
+Code mode reduces latency by eliminating inter-agent overhead and running all file tools directly in the Node.js process. It includes a multi-strategy edit engine that reliably handles indentation drift and whitespace inconsistencies.
+
+**Available tools in code mode:**
+
+| Tool | Description |
+|------|-------------|
+| `read_file` | Read files with line numbers, list directories |
+| `edit_file` | Multi-strategy string replacement (9 strategies) |
+| `write_file` | Create or overwrite files |
+| `glob` | Find files by pattern |
+| `grep` | Regex content search |
+| `bash` | Run shell commands |
+| `spawn_code_agent` | Delegate a sub-task to a child agent |
+
+**MCP servers in code mode:** Code mode does not load all MCP servers by default (too many tools bloat the context). You opt in explicitly:
+
+```bash
+# Per-invocation: pass server names via --mcp (comma-separated)
+jiva chat --code --mcp browser
+jiva chat --code --mcp browser,postgres
+
+# Persistent: set codeMode:true on any server in your config
+jiva config
+# or edit ~/.config/jiva/config.json:
+# "mcpServers": { "browser": { "command": "...", "codeMode": true } }
+```
+
+When MCP servers are active in code mode, their tool names (e.g. `browser__screenshot`) are listed in the startup banner and the agent's system prompt.
+
+**LSP integration:** After each file edit, Jiva notifies the appropriate language server and appends any compiler errors to the tool result. Language servers are auto-detected from your PATH. If none is installed for a given language, the tool continues silently.
+
+```bash
+# Install language servers (optional but recommended for code mode)
+npm install -g typescript-language-server typescript   # TypeScript / JavaScript
+pip install python-lsp-server                          # Python
+go install golang.org/x/tools/gopls@latest             # Go
+rustup component add rust-analyzer                     # Rust
+```
+
+For a complete technical reference see [Code Mode Architecture](docs/architecture/CODE_MODE.md).
+
+---
+
+## Configuration
+
+```bash
+# Run setup wizard
+jiva setup
+
+# View or update settings interactively
+jiva config
+
+# View current configuration and file path
+jiva config --show
+```
+
+Configuration is stored at `~/.config/jiva-nodejs/config.json` (Linux/macOS) or `%APPDATA%\jiva-nodejs\config.json` (Windows).
+
+### Provider examples
+
+**Krutrim (gpt-oss-120b)**
+```json
+{
+  "models": {
+    "reasoning": {
+      "endpoint": "https://cloud.olakrutrim.com/v1/chat/completions",
+      "apiKey": "kr-...",
+      "model": "gpt-oss-120b",
+      "type": "reasoning",
+      "useHarmonyFormat": true,
+      "reasoningEffortStrategy": "system_prompt"
+    }
+  }
+}
+```
+
+**Groq**
+```json
+{
+  "models": {
+    "reasoning": {
+      "endpoint": "https://api.groq.com/openai/v1/chat/completions",
+      "apiKey": "gsk_...",
+      "model": "openai/gpt-oss-120b",
+      "type": "reasoning",
+      "reasoningEffortStrategy": "api_param"
+    }
+  }
+}
+```
+
+**Sarvam (sarvam-105b)** — fully supported reasoning model with internal chain-of-thought. Jiva handles Sarvam's XML-format tool calls transparently and recovers automatically when large file writes hit the token limit.
+```json
+{
+  "models": {
+    "reasoning": {
+      "endpoint": "https://api.sarvam.ai/v1/chat/completions",
+      "apiKey": "your-sarvam-key",
+      "model": "sarvam-105b",
+      "type": "reasoning",
+      "reasoningEffortStrategy": "api_param",
+      "defaultMaxTokens": 4096
+    }
+  }
+}
+```
+> Sarvam's API caps completion output at 4096 tokens. Tasks needing larger single outputs (e.g. writing a big file in one shot) will be limited by this — the [benchmark](#benchmarking) flags such failures as `[output-limited]`.
+
+**Ollama (local)**
+```json
+{
+  "models": {
+    "reasoning": {
+      "endpoint": "http://localhost:11434/v1/chat/completions",
+      "apiKey": "not-needed",
+      "model": "llama3.1",
+      "type": "reasoning"
+    }
+  }
+}
+```
+
+Any other OpenAI-compatible endpoint works the same way — set `endpoint`, `apiKey`, and `model`; Jiva handles the rest.
+
+### Code mode configuration
+
+```json
+{
+  "codeMode": {
+    "enabled": true,
+    "lsp": { "enabled": true },
+    "maxIterations": 50
+  }
+}
+```
+
+Full configuration reference: [Configuration Guide](docs/guides/CONFIGURATION.md)
+
+---
+
+## Benchmarking
+
+Jiva ships a built-in benchmark to measure how well your **model + configuration** performs in code mode. Tasks run in isolated throwaway workspaces and are scored deterministically with Node's built-in test runner — no LLM judge, no network.
+
+```bash
+jiva benchmark                 # baseline (taskstore) suite — verify your setup works
+jiva benchmark --list          # list available suites and tasks
+jiva benchmark --suite microcrm --max-iterations 60   # capability suite (Node 22.5+)
+jiva benchmark --output report.json                   # save a JSON report to compare configs
+```
+
+Two suites, two purposes:
+
+| Suite | Scoring | Use it to… |
+|-------|---------|-----------|
+| **`taskstore`** (baseline) | pass/fail, 8 tiers that build on each other | Confirm a model + config can do code mode at all. A healthy setup passes everything. |
+| **`microcrm`** (capability) | % of spec tests | Differentiate models and tune configuration. The agent builds a Node + SQLite REST API and adds harder features (atomic bulk, advanced queries, analytics, idempotency). |
+
+The report shows per-task iterations, tokens, and wall-time, lists exactly which spec tests were missed, and flags failures caused by a model's **output-token limit** as `[output-limited]` (distinct from logic failures). Run it after `jiva setup`, and re-run it as you tune `defaultMaxTokens`, `maxIterations`, or switch models — the config with the best score-per-token is your optimal setup.
+
+Full guide: [Benchmark Suite](docs/guides/benchmark-suite.md)
+
+---
+
+## Directive Files
+
+Create a `jiva-directive.md` in your project root to orient the agent to your codebase:
+
+```markdown
+# Purpose
+Code review assistant for a Django web application.
+
+# Tasks
+- Scan for security vulnerabilities (SQLi, XSS, CSRF)
+- Identify performance bottlenecks
+- Suggest modern Python best practices
+
+# Constraints
+- Only analyze .py files
+- Do not modify files without explicit approval
+
+# Context
+PostgreSQL backend, GDPR-sensitive user data.
+```
+
+Jiva searches for directive files automatically, in this order:
+1. Path given via `--directive`
+2. `jiva-directive.md` in the workspace root
+3. `CLAUDE.md` in the workspace root
+4. `AGENTS.md` in the workspace root
+5. `.jiva/directive.md` in the workspace root
+
+---
+
+## MCP Servers (general mode)
+
+General mode uses MCP servers to extend the agent's capabilities. Jiva ships with the filesystem server enabled; additional servers can be added via `jiva config`.
+
+### Recommended servers
+
+**Playwright** — browser automation, web scraping, screenshot capture
+
+```bash
+jiva config
+# MCP Servers > Add Server
+# Name: playwright  Command: npx  Args: @playwright/mcp@latest
+```
+
+**Desktop Commander** — shell command execution, process management
+
+```bash
+# Name: desktop-commander  Command: npx  Args: -y desktop-commander
+```
+
+Other popular servers: GitHub, Postgres, Slack, Google Maps — see [modelcontextprotocol/servers](https://github.com/modelcontextprotocol/servers).
+
+---
+
+## Cloud Deployment
+
+Jiva can be deployed as a stateless, auto-scaling HTTP/WebSocket service on Google Cloud Run with GCS-backed session persistence and multi-tenant isolation.
+
+```bash
+git clone https://github.com/KarmaloopAI/Jiva.git
+cd Jiva
+./deploy.sh YOUR_PROJECT_ID us-central1
+```
+
+The deployment script enables required GCP APIs, creates the GCS bucket, configures IAM roles, and deploys the container. After deployment:
+
+```bash
+SERVICE_URL=$(gcloud run services describe jiva --region=us-central1 --format='value(status.url)')
+
+# Health check
+curl $SERVICE_URL/health
+
+# Chat via REST
+curl -X POST $SERVICE_URL/api/chat \
+  -H "Content-Type: application/json" \
+  -H "X-Session-Id: my-session" \
+  -d '{"message": "Hello, Jiva!"}'
+```
+
+**Code mode in the cloud:**
+
+```bash
+gcloud run services update jiva \
+  --set-env-vars JIVA_CODE_MODE=true \
+  --region us-central1
+```
+
+Full guide: [Cloud Run Deployment](docs/deployment/CLOUD_RUN_DEPLOYMENT.md)
+
+---
+
+## Skills
+
+Skills are reusable workflow modules defined by a `SKILL.md` file. They work standalone (no persona needed) and in both chat and code mode.
+
+**Standalone skills** — drop a skill into `~/.claude/skills/<name>/SKILL.md` (Claude-compatible format) and Jiva discovers it automatically at startup. The skill's metadata appears in the agent's system prompt so it can be invoked by description.
+
+**Slash commands** — invoke any skill from the REPL:
+
+```
+/graphify
+> visualise the dependency graph for this repo
+```
+
+Jiva loads the skill's instructions and prepends them to your message before sending it to the agent.
+
+**Persona-based skills** — for teams, skills can be grouped into personas that bundle MCP servers, directives, and model behavior:
+
+```bash
+jiva persona list
+jiva persona activate data-analyst
+jiva persona create-skill my-skill --description "Custom capability" --author "Your Name"
+```
+
+Skills bundle MCP servers, directives, and model behavior overrides into portable `.skill` files. See [Personas Guide](docs/guides/PERSONAS.md).
+
+---
+
+## Programmatic Usage
+
+```typescript
+import { DualAgent, CodeAgent, createModelClient, ModelOrchestrator,
+         MCPServerManager, WorkspaceManager, ConversationManager,
+         createStorageProvider } from 'jiva-core';
+
+const reasoningModel = createModelClient({
+  endpoint: 'https://api.groq.com/openai/v1/chat/completions',
+  apiKey: process.env.API_KEY!,
+  model: 'openai/gpt-oss-120b',
+  type: 'reasoning',
+  reasoningEffortStrategy: 'api_param',
+});
+const orchestrator = new ModelOrchestrator({ reasoningModel });
+const storageProvider = await createStorageProvider();
+const workspace = new WorkspaceManager(storageProvider);
+await workspace.initialize();
+const conversationManager = new ConversationManager(storageProvider);
+
+// General mode
+const mcpManager = new MCPServerManager();
+await mcpManager.initialize({
+  filesystem: { command: 'npx', args: ['-y', '@modelcontextprotocol/server-filesystem', process.cwd()], enabled: true },
+});
+const agent = new DualAgent({ orchestrator, mcpManager, workspace, conversationManager });
+const response = await agent.chat('What files are in this directory?');
+console.log(response.content);
+await agent.cleanup();
+
+// Code mode
+const codeAgent = new CodeAgent({ orchestrator, workspace, conversationManager, maxIterations: 50, lspEnabled: true });
+const codeResponse = await codeAgent.chat('Refactor the auth module to use async/await');
+console.log(codeResponse.content);
+await codeAgent.cleanup();
+```
+
+Both `DualAgent` and `CodeAgent` implement the `IAgent` interface and are interchangeable in application code.
+
+---
+
+## Development
+
+```bash
+npm run build        # compile TypeScript
+npm run dev          # watch mode
+npm run type-check   # type-check without emit
+```
+
+---
+
+## Documentation
+
+| Document | Description |
+|----------|-------------|
+| [Quick Start](docs/guides/QUICKSTART.md) | Get running in 30 seconds |
+| [Configuration Guide](docs/guides/CONFIGURATION.md) | All config options and provider examples |
+| [Code Mode Architecture](docs/architecture/CODE_MODE.md) | How code mode works internally |
+| [Cloud Run Deployment](docs/deployment/CLOUD_RUN_DEPLOYMENT.md) | Production deployment guide |
+| [Personas Guide](docs/guides/PERSONAS.md) | Skills and persona system |
+| [Troubleshooting](docs/guides/TROUBLESHOOTING.md) | Common issues and fixes |
+| [Release Notes](docs/release_notes/) | Version history |
+
+---
+
+## Contributing
+
+Contributions are welcome. Please ensure new features include error handling and that documentation is updated. Open a PR against the `develop` branch.
+
+## License
+
+MIT
+
+## References
+
+- [gpt-oss-120b Model Card](https://huggingface.co/openai/gpt-oss-120b)
+- [Harmony Response Format](https://github.com/openai/harmony)
+- [Model Context Protocol](https://modelcontextprotocol.io/)
+- [Krutrim Cloud API](https://cloud.olakrutrim.com/)
+- [Sarvam AI API](https://www.sarvam.ai/)

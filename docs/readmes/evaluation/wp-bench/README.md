@@ -1,0 +1,205 @@
+<!-- source: https://github.com/WordPress/wp-bench.git sha: d20c0e7b4200393c6ed2ce780c1cdca5e49e8587 readme: master/README.md -->
+# WordPress/wp-bench
+
+The official WordPress AI benchmark. Evaluate how well language models understand WordPress development—from core APIs and coding standards to plugin architecture and security best practices.
+
+---
+
+# WP-Bench
+
+The official WordPress AI benchmark. Evaluate how well language models understand WordPress development—from core APIs and coding standards to plugin architecture and security best practices.
+
+## Overview
+
+WP-Bench measures AI model capabilities across two dimensions:
+
+- **Knowledge** — Multiple-choice and short-answer questions testing WordPress concepts, APIs, and best practices
+- **Execution** — Code generation tasks graded by static checks and runtime assertions in a real WordPress environment
+
+The benchmark uses WordPress itself as the grader, running generated code in a sandboxed environment with static analysis and runtime assertions.
+
+## Requirements
+
+Requires Python version 3.10 or later
+
+## Quick Start
+
+### 1. Install
+
+```bash
+python3 -m venv .venv && source .venv/bin/activate
+pip install -e ./python
+```
+
+### 2. Configure API Keys
+
+Create a `.env` file with your model provider API keys:
+
+```bash
+OPENAI_API_KEY=sk-...
+ANTHROPIC_API_KEY=sk-ant-...
+GOOGLE_API_KEY=...
+```
+
+### 3. Start the WordPress Runtime
+
+```bash
+cd runtime
+npm install
+npm start
+```
+
+### 4. Run the Benchmark
+
+```bash
+cd ..
+wp-bench run --config wp-bench.example.yaml
+```
+
+Results are written to `output/results.json` with per-test logs in `output/results.jsonl`.
+
+## Multi-Model Benchmarking
+
+Compare multiple models in a single run by listing them in your config:
+
+```yaml
+models:
+  - name: gpt-4o
+  - name: gpt-4o-mini
+  - name: claude-sonnet-4-20250514
+  - name: claude-opus-4-5-20251101
+  - name: gemini/gemini-2.5-pro
+  - name: gemini/gemini-2.5-flash
+```
+
+The harness runs each model sequentially and outputs a comparison table. Model names follow [LiteLLM conventions](https://docs.litellm.ai/docs/providers).
+
+## Configuration
+
+Copy `wp-bench.example.yaml` and customize:
+
+```yaml
+dataset:
+  source: local              # 'local' or 'huggingface'
+  name: wp-core-v1           # suite name
+
+models:
+  - name: gpt-4o
+
+grader:
+  kind: docker
+  wp_env_dir: ./runtime      # path to wp-env project
+  timeout_seconds: 90        # hard cap per runtime execution (timeout = 0.0 score)
+  setup_timeout_seconds: 600 # hard cap for environment setup
+
+run:
+  suite: wp-core-v1
+  limit: 10                  # limit tests (null = all); seeded stratified selection
+  seed: 1337                 # selection seed (same seed = same subset)
+  test_ids: []               # optional explicit test IDs to run
+  dry_run: false             # load/filter tests without calling models
+  concurrency: 4             # model-call concurrency (knowledge tests)
+  execution_isolation: reset_per_test  # reset WordPress before each execution test
+  execution_concurrency: 1   # must stay 1 under reset_per_test isolation
+  continue_on_error: false   # record per-test errors and keep going (diagnostic
+                             # only; errored tests are excluded from aggregates)
+
+output:
+  path: output/results.json
+  jsonl_path: output/results.jsonl
+```
+
+### CLI Options
+
+```bash
+# Run from project root
+wp-bench run --config wp-bench.yaml          # run with config file
+wp-bench run --model-name gpt-4o --limit 5   # quick single-model test (stratified subset)
+wp-bench run --limit 5 --seed 42             # different deterministic subset
+wp-bench run --test-type knowledge           # run only knowledge tests (no WordPress env needed)
+wp-bench run --test-type execution           # run only execution tests
+wp-bench run --test-type execution --test-id e-abilities-api-001
+wp-bench run --test-id e-abilities-api-001 --test-id e-rest-api-001
+wp-bench run --config wp-bench.yaml --dry-run # validate config without calling models
+wp-bench run --check-reference-solution --test-type execution  # verify reference solutions pass
+wp-bench run --check-exploits --test-type execution            # adversarial assertion audit (see below)
+```
+
+### Adversarial assertion audit
+
+`--check-reference-solution` proves a correct solution *passes*; `--check-exploits`
+proves that trivial cheats *fail*. For every execution test it runs a battery of
+zero-effort stubs (an empty function, `return 1`, `return true`, `return array()`, …)
+through the real WordPress verifier and flags any test whose assertions a cheat can
+satisfy. Such a test is under-specified — its assertions check a predictable output
+(one fixture's answer) rather than the WordPress behavior the task describes, so a
+model could score on it without doing the work. Exits non-zero if any test is
+exploitable; results (with the passing cheat per test) are written to the output file.
+
+```bash
+wp-bench run --check-exploits --test-type execution
+```
+
+## Repository Structure
+
+```
+.
+├── python/          # Benchmark harness (pip installable)
+├── runtime/         # WordPress grader plugin + wp-env config
+├── datasets/        # Test suites (local JSON + Hugging Face builder)
+├── notebooks/       # Results visualization and reporting
+└── output/          # Benchmark results (gitignored)
+```
+
+## Test Suites
+
+Test suites live in `datasets/suites/<suite-name>/` with two directories per suite:
+
+- `execution/` — Code generation tasks with assertions (one JSON file per category)
+- `knowledge/` — Multiple-choice and short-answer knowledge questions (one JSON file per category)
+
+The default suite `wp-core-v1` covers WordPress core APIs, hooks, database operations, and security patterns.
+
+### Loading from Hugging Face
+
+```yaml
+dataset:
+  source: huggingface
+  name: WordPress/wp-bench-v1
+```
+
+## Results & Reporting
+
+After running benchmarks, visualize results with the included Jupyter notebook:
+
+```bash
+pip install jupyter pandas plotly
+jupyter notebook notebooks/results_report.ipynb
+```
+
+The notebook generates:
+- Overall scores bar chart
+- Knowledge vs Correctness comparison
+- Radar chart for top models
+- Exportable HTML report
+
+## How Grading Works
+
+1. The harness sends a prompt to the model requesting WordPress code
+2. Generated code is sent to the WordPress runtime
+3. The runtime performs static analysis (syntax, coding standards, security)
+4. Code executes in a sandbox with test assertions
+5. Results return as JSON with scores and detailed feedback
+
+## Development
+
+```bash
+pip install -e ./python[dev]    # install with dev dependencies
+ruff check python/              # lint
+mypy python/                    # type check
+pytest python/                  # test
+```
+
+## License
+
+[GPL-2.0-or-later](https://github.com/WordPress/wp-bench/blob/trunk/LICENSE.md)

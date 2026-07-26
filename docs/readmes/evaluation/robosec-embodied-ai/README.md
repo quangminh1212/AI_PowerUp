@@ -1,0 +1,35 @@
+<!-- source: https://github.com/ETHRoboticsClub/robosec-embodied-ai.git sha: 1b5ae744b216376d81b72e05bff75aae6e18cead readme: main/README.md -->
+# ETHRoboticsClub/robosec-embodied-ai
+
+Central hub for robotics security experiments : attacks, evals, ablations, and project pages across the research tracks.
+
+---
+
+# Embodied AI
+
+Central hub for Embodied AI experiments within the Robotics Security Division: foundation model evaluation, adversarial robustness, and generalization research across robot policies and simulation environments.
+
+## Experiments
+
+| ID | Title | Status |
+|----|-------|--------|
+| [Experiment 1](experiment_1/README.md) | Test scene overfitting in robot foundation models | In progress |
+| [Experiment 2](experiment_2/README.md) | Latent representation geometry at the S2→S1 interface of GR00T N1.6 | First result |
+| [Experiment 3](experiment_3/README.md) | Adversarial visual patches on generalist robot policies | In progress |
+| [Experiment 4](experiment_4/README.md) | Boundary task steering on frozen GR00T policies | Current result |
+| [Experiment 5](experiment_5/README.md) | Embedding-space attacks on GR00T-N1.6: visual-patch quirks and the limits of pure-embedding hijacking | Wrapped up |
+
+
+## Structure
+
+Each experiment lives in its own folder (`experiment_N/`) with a README describing the hypothesis, setup, and results. Sub-experiments (e.g., per-model runs) are nested as `experiment_N/N.M/`.
+
+## Contributing
+
+To add a new experiment:
+
+1. Create `experiment_N/` with a `README.md` and an `index.html` (the GitHub Pages entry point).
+2. Add sub-experiments as `experiment_N/N.M/` if needed.
+3. Register the experiment in the table above and on the [landing page](index.html).
+
+A starting point is available in [`_template/`](_template/) — it mirrors the structure of Experiment 1. Feel free to ignore it and build your results page however works best for your data.

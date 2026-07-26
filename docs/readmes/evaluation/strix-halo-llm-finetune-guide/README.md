@@ -1,0 +1,1141 @@
+<!-- source: https://github.com/h34v3nzc0dex/strix-halo-llm-finetune-guide.git sha: 46d062142eae35e36f0c1d0d91b393b59724432a readme: main/README.md -->
+# h34v3nzc0dex/strix-halo-llm-finetune-guide
+
+Home-enthusiast's guide to fine-tuning 27B+ LLMs on AMD Strix Halo (gfx1151, Ryzen AI MAX+ 395) — the patches and tuning to make Linux mainline + ROCm 7.13 nightly + PyTorch 2.11 + bitsandbytes + flash-linear-attention all work together for multi-day LoRA training with out-of-process eval orchestration.
+
+---
+
+# Fine-Tuning 27B+ LLMs on AMD Strix Halo — A Home Enthusiast's Guide
+
+A reproducible recipe for fine-tuning Qwen3.5-27B (or larger) hybrid LLMs on a single AMD Strix Halo APU (Ryzen AI MAX+ 395, Radeon 8060S, gfx1151) with 128 GB of unified memory — including the patches, system tuning, and out-of-process evaluation orchestrator that make multi-day training runs survivable on consumer hardware.
+
+> **Status:** Tested on a Corsair AI Workstation 300 (Sixunited AXB35-02 board) running Ubuntu 24.04 LTS, mainline kernel 6.19.14 (as tested; 6.19 now EOL — use 7.0.x, see [Upgrade-path gotchas](#upgrade-path-gotchas)), ROCm 7.13 nightly. The same recipe should work on Framework Desktop, GMKtec EVO-X2, FEVM FA-EX9, Bosgame M5 — any AXB35-02 / Strix Halo system.
+
+---
+
+## TL;DR
+
+If you tried to fine-tune a ≥27B model on a Strix Halo box and ran into:
+
+- `Configured ROCm binary not found at libbitsandbytes_rocm83.so`
+- Triton kernels asserting on `num_warps > 4`
+- Trainer eval OOMing or dying with `page allocation failure: order:0` mid-eval
+- Memory-watchdog SIGKILL during eval
+- TRL crashing in `create_model_card` with `PackageNotFoundError: trl`
+- Linux mainline `.deb` kernels failing to install with `run-parts: missing operand`
+- `/srv` perms randomly regressing to `0750` after `apt upgrade`
+- **Mid-training eval mysteriously freezes the box** at ~66 % weight load with `/proc/interrupts:TLB:` rate spiking past 1 M/sec — even after every fix above is in place
+- **`convert_lora_to_gguf.py` blowing up** on Qwen3.5 LoRA adapters with `NotImplementedError: can't reshape the row size trivially`, blocking any attempt to use `llama-perplexity --lora` as the eval path
+
+…this guide solves every one of those. It's the writeup of about a week of iteration on a real production fine-tune, plus a follow-up week of root-causing the TLB-IPI storm (Step 7) and shipping the storm-free eval path (Step 7b–c). We don't claim novelty on any individual piece — but the *combination* on this hardware isn't documented anywhere else we could find.
+
+---
+
+## Who this is for
+
+You have a Strix Halo / gfx1151 workstation with 128 GB unified memory. You want to fine-tune a 7B–32B parameter LLM (or larger MoE in the 100B class) locally. You're comfortable with Linux, bash, git, Python, and the HuggingFace stack. You don't have a cloud GPU budget. You're willing to patch a few open-source projects and accept multi-day training times.
+
+---
+
+## Prerequisites — install before you begin
+
+Anything not in a stock Ubuntu Server install you'll need:
+
+```bash
+sudo apt update
+sudo apt install -y \
+    build-essential cmake ninja-build git curl jq \
+    python3-venv python3-dev \
+    linux-headers-generic
+```
+
+### AMD ROCm 7.1 apt repository
+
+The bnb-from-source build (Step 5) needs `hiprand-dev`, `rocrand-dev`, `hipcub-dev`, `rocprim-dev`, `rocthrust-dev`. The llama.cpp build (Step 6) needs `/opt/rocm-7.1.0/bin/hipcc` and the ROCm clang toolchain. Both come from AMD's apt repository:
+
+```bash
+# Add the keyring
+sudo mkdir -p /etc/apt/keyrings
+wget -qO- https://repo.radeon.com/rocm/rocm.gpg.key \
+    | gpg --dearmor | sudo tee /etc/apt/keyrings/rocm.gpg > /dev/null
+
+# Add the 7.1 repo (Ubuntu 24.04 noble)
+echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/rocm/apt/7.1 noble main" \
+    | sudo tee /etc/apt/sources.list.d/rocm.list
+
+sudo apt update
+sudo apt install -y rocm-hip-runtime rocm-cmake hipcc \
+    hiprand-dev rocrand-dev hipcub-dev rocprim-dev rocthrust-dev
+```
+
+This leaves ROCm at `/opt/rocm-7.1.0/`. The Python wheels you'll install in Step 3 are a *separate* ROCm 7.13 nightly that lives entirely inside the venv and doesn't conflict with the apt-installed 7.1.
+
+---
+
+## Hardware
+
+| Component | What we tested with | Substitutes |
+|---|---|---|
+| APU | AMD Ryzen AI MAX+ 395, Radeon 8060S (gfx1151) | Any Ryzen AI MAX 300 series — 385, 390, 395 |
+| Board | Sixunited AXB35-02 (BIOS AXB35-02 v3.07) | Same board ships in Corsair AI Workstation 300, Framework Desktop, GMKtec EVO-X2, Bosgame M5, FEVM FA-EX9 |
+| Memory | 128 GB LPDDR5X-8000 (unified) | The 64 GB or 96 GB SKUs work but cap your model size |
+| Storage | 1 TB+ NVMe | Plan for ≥200 GB free for the venv + models |
+| BIOS UMA | **1 GB** (minimum). Let GTT auto-size to the rest dynamically | Don't pin VRAM higher — it just shrinks the unified pool |
+
+---
+
+## The stack we'll build
+
+| Layer | Version | Source | Why this version |
+|---|---|---|---|
+| Linux kernel | **6.19.14 mainline** (as tested; 6.19 now EOL — use 7.0.x, see [Upgrade-path gotchas](#upgrade-path-gotchas)) | Ubuntu kernel.ubuntu.com | KFD driver fixes for gfx1151; older kernels hit fence/dma_buf sync bugs |
+| ROCm system | **7.1.0** | Radeon repo (`repo.radeon.com/rocm/apt/7.1`) | `rocm-cmake`, `hipcc`, `hipBLAS` etc. for builds |
+| ROCm Python wheels | **7.13 nightly** | `https://rocm.nightlies.amd.com/v2-staging/gfx1151/` | Native gfx1151 — no `HSA_OVERRIDE_GFX_VERSION` needed |
+| PyTorch | **2.11.0+rocm7.13.0a*** | gfx1151 nightly index | bf16 LoRA + AOTriton SDPA work natively |
+| flash-linear-attention | **0.5.1 from source, patched** (vanilla 0.5.0 also works on the 7.13 nightly stack — see [Upgrade-path](#upgrade-path-gotchas)) | github.com/fla-org/flash-linear-attention | GatedDeltaNet (Qwen3.5) needs Triton kernels |
+| bitsandbytes | **0.50.0.dev0 built from source for gfx1151** | github.com/bitsandbytes-foundation/bitsandbytes | PyPI wheels ship zero ROCm binaries |
+| llama.cpp | **b9296** (as built; b867+ fine for plain inference) rebuilt with `--gcc-install-dir` flag | github.com/ggml-org/llama.cpp | Inference of fine-tuned + base models; `--spec-type draft-mtp` needs **b9180+** (see [§6b](#speculative-decoding-with-qwen36-mtp-16-decode-speedup-on-gfx1151)) |
+| transformers / trl / peft | 5.4 / 0.29.1 / 0.18.1 | PyPI | Stable for our patterns |
+
+---
+
+## The big-picture architecture
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                  train_orchestrator.sh   (long-running)                │
+│                                                                     │
+│  read latest checkpoint step  ──►  if history < step, run eval first│
+│         │                                                           │
+│         ▼                                                           │
+│  ┌──────────────┐    target = next save_steps boundary              │
+│  │ run_segment  │    spawns python3 train_qwen3_32b.py --max-steps N│
+│  └──────┬───────┘                                                   │
+│         │ exit 0 at max_steps                                       │
+│         ▼                                                           │
+│  wait_gpu_release  (pgrep + VRAM<5GB + gpu-defrag-mem)           │
+│         │                                                           │
+│         ▼                                                           │
+│  ┌──────────────┐    spawns python3 eval_checkpoint.py              │
+│  │  run_eval    │    --adapter checkpoint-N --history *.jsonl       │
+│  └──────┬───────┘                                                   │
+│         │                                                           │
+│         ▼                                                           │
+│  parse latest 2 history entries  ──►  Δ vs prior  ──►  Telegram ✅  │
+│         │                                                           │
+│         ▼                                                           │
+│  loop until step >= total_steps  ──►  Telegram 🎉                   │
+└─────────────────────────────────────────────────────────────────────┘
+```
+
+The orchestrator is bash. The training and eval scripts are Python. They never coexist in the same process — that's the whole point. Training holds the GPU until it exits cleanly at a `max_steps` boundary, GPU memory fully releases, then a fresh Python process loads from the just-saved checkpoint and runs eval. This sidesteps the in-process eval failure modes that bite on unified memory APUs.
+
+---
+
+## Quick start (for the impatient)
+
+```bash
+# 0. Install prereqs (build tools + ROCm 7.1 apt repo) — see Prerequisites above
+
+# 1. Install latest stable mainline kernel from kernel.ubuntu.com/mainline/ — 6.19.14 was tested,
+#    but 6.19 is EOL (2026-04-22); target 7.0.x (gfx1151 floor 6.18.4). See Step 1 / Upgrade-path gotchas.
+# Apply scripts/fix-kernel-run-parts.py to the .debs before installing
+# (full repack ritual is in Step 1 below)
+
+# 2. Set up sysctl + THP
+sudo cp configs/90-strix-halo-vm-tuning.conf /etc/sysctl.d/
+sudo sysctl --system
+echo always | sudo tee /sys/kernel/mm/transparent_hugepage/enabled
+echo defer  | sudo tee /sys/kernel/mm/transparent_hugepage/defrag
+
+# 3. Add /srv perm watchdog (CRITICAL — prevents random crashes mid-train)
+sudo cp configs/srv-perms-watch.cron /etc/cron.d/srv-perms-watch
+
+# 4. Add defrag helper + sudoers (substitutes your username automatically)
+sudo install -o root -g root -m 0755 scripts/gpu-defrag-mem /usr/local/bin/gpu-defrag-mem
+sed "s/<user>/$(whoami)/" configs/gpu-defrag-mem.sudoers \
+    | sudo tee /etc/sudoers.d/gpu-defrag-mem > /dev/null
+sudo chmod 0440 /etc/sudoers.d/gpu-defrag-mem
+sudo visudo -c -f /etc/sudoers.d/gpu-defrag-mem  # validate
+
+# 5. GRUB — add ttm.* + transparent_hugepage to kernel cmdline
+# (see configs/grub-cmdline.example), then sudo update-grub && reboot
+
+# 6. Set up venv + nightly PyTorch
+python3 -m venv /path/to/venv
+source /path/to/venv/bin/activate
+pip install --pre \
+  "torch==2.11.0+rocm7.13.0a20260506" \
+  "torchvision==0.26.0+rocm7.13.0a20260506" \
+  "torchaudio==2.11.0+rocm7.13.0a20260506" \
+  "triton==3.6.0+rocm7.13.0a20260506" \
+  --index-url https://rocm.nightlies.amd.com/v2-staging/gfx1151/ \
+  --extra-index-url https://pypi.org/simple/
+
+# 7. Build flash-linear-attention from patched source (see Step 4 below)
+# 8. Build bitsandbytes from source for ROCm gfx1151 (see Step 5 below)
+# 9. Set up Telegram alerts (optional — see Step 9 below)
+
+# 10. Supply your own training script (see Training script contract below),
+#     then run the orchestrator
+nohup ./scripts/train_orchestrator.sh \
+    --total-steps 448 \
+    --output-dir /path/to/your/output \
+    --eval-data /path/to/your/eval.jsonl \
+    --history /path/to/your/eval_history.jsonl \
+    --lora-r 128 --lora-alpha 256 \
+    > orchestrator.log 2>&1 &
+```
+
+If any of those steps don't make sense, keep reading.
+
+---
+
+<!-- NOTE: this heading's anchor slug `step-1--kernel-61914-mainline` is linked from the
+     Troubleshooting table and the Upgrade-path gotchas section. Update both if you rename it. -->
+## Step 1 — Kernel 6.19.14 (mainline)
+
+Recent gfx1151 KFD driver fixes are in mainline kernels only. Distros lag. Use Ubuntu's mainline build.
+
+> **6.19.14 is the version we originally tested on, but the 6.19 series reached EOL 2026-04-22.** It still runs fine, but for a fresh install target the latest stable mainline (7.0.x) — the floor for gfx1151 is mainline ≥ 6.18.4 / Ubuntu 24.04 HWE 6.17. The install steps below are identical for any version; just swap the `v6.19.14` in the URLs. See [Upgrade-path gotchas](#upgrade-path-gotchas).
+
+### Install
+
+Download the four `.deb` files from `https://kernel.ubuntu.com/mainline/v6.19.14/amd64/`:
+
+```
+linux-headers-6.19.14-061914_*_all.deb
+linux-headers-6.19.14-061914-generic_*_amd64.deb
+linux-image-unsigned-6.19.14-061914-generic_*_amd64.deb
+linux-modules-6.19.14-061914-generic_*_amd64.deb
+```
+
+### Fix the `run-parts` bug (CRITICAL)
+
+Mainline kernel `.deb`s have a **double-dir `run-parts` bug** that breaks `dpkg -i` on Ubuntu 24.04+. The maintainer scripts call:
+
+```bash
+run-parts --report --exit-on-error --arg=$version \
+    --arg=$image_path /etc/kernel/postinst.d /usr/share/kernel/postinst.d
+```
+
+`run-parts` only accepts ONE directory. Multi-dir form errors out, dpkg leaves the package half-configured. The fix script in this repo (`scripts/fix-kernel-run-parts.py`) rewrites these to:
+
+```bash
+if [ -d /etc/kernel/postinst.d ]; then
+    run-parts ... /etc/kernel/postinst.d
+fi
+if [ -d /usr/share/kernel/postinst.d ]; then
+    run-parts ... /usr/share/kernel/postinst.d
+fi
+```
+
+The `if/fi` form (NOT `&&`) matters — using `[ -d ] && cmd` propagates exit-1 from a missing `/usr/share/kernel/X.d` out of the heredoc-generated trigger script and half-configures the package anyway.
+
+```bash
+# Repack the affected .debs:
+mkdir -p extracted
+for f in linux-image*.deb linux-modules*.deb linux-headers-*-generic_*amd64.deb; do
+    name=$(basename "$f" .deb)
+    mkdir -p "extracted/$name"
+    dpkg-deb -R "$f" "extracted/$name"
+done
+python3 scripts/fix-kernel-run-parts.py \
+    extracted/linux-image*/DEBIAN/{preinst,postinst,prerm,postrm} \
+    extracted/linux-modules*/DEBIAN/postinst \
+    extracted/linux-headers-*-generic_*/DEBIAN/postinst
+for d in extracted/*; do dpkg-deb --build "$d" "$(basename "$d")-fixed.deb"; done
+
+# Install:
+sudo dpkg -i linux-headers-*-all.deb *-fixed.deb
+sudo update-grub && sudo reboot
+```
+
+### Boot params
+
+After reboot, edit `/etc/default/grub`:
+
+```
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash iommu=pt pcie_aspm.policy=performance amdgpu.runpm=0 ttm.pages_limit=33554432 ttm.page_pool_size=33554432 transparent_hugepage=always numa_balancing=disable"
+```
+
+Then `sudo update-grub && sudo reboot`.
+
+**Note:** `transparent_hugepage=always` doesn't always stick on Ubuntu — something in early boot resets it to `madvise`. Persist it via `/etc/rc.local` — the `tee -a` command is in [Step 2 → Transparent huge pages](#step-2--system-tuning). Do it once (don't append the same lines in both steps).
+
+### Verify
+
+```bash
+uname -r                                              # 6.19.14-061914-generic
+cat /proc/cmdline | tr ' ' '\n' | grep -E "ttm|hugepage"
+sudo dmesg | grep "GTT memory ready"                  # should show 131072M
+ls /sys/class/drm/card0/device/mem_info_vram_used     # must exist
+```
+
+---
+
+## Step 2 — System tuning
+
+Per AMD's MI300A optimization guide (the only AMD-blessed unified-memory APU tuning doc), **proactive page compaction is mandatory** for unified-memory APUs. Without it, the GPU's TTM allocator hits page-allocation failures during heavy bursts (mid-training eval, model load) even when 90% of system RAM is free, because the page allocator's free-list is fragmented.
+
+> **About the `configs/` directory:** every file under `configs/` is **provided by this repo** — none of them exist on a fresh Ubuntu install. You're adding them. Read each one before copying it into place; they're short and well-commented. The `<user>` placeholder in the sudoers file must be replaced with your actual username before install (the section below shows how).
+
+### sysctl — `90-strix-halo-vm-tuning.conf`
+
+This file goes into `/etc/sysctl.d/` as a *new drop-in*. Linux's sysctl loader processes everything in `/etc/sysctl.d/` in lexical order at boot and on `sysctl --system`. The `90-` prefix means "load near the end so I override earlier defaults" — your existing `/etc/sysctl.conf` and other drop-ins aren't touched.
+
+```bash
+sudo cp configs/90-strix-halo-vm-tuning.conf /etc/sysctl.d/
+sudo sysctl --system
+sysctl vm.compaction_proactiveness   # should print 20
+```
+
+The two key settings (the file has more — open it and read the comments):
+
+```
+vm.compaction_proactiveness = 20
+vm.compact_unevictable_allowed = 1
+```
+
+### Transparent huge pages
+
+THP=always doesn't always stick from the GRUB cmdline (Ubuntu 24.04+ has something in early boot that resets it to `madvise`). Set live AND add to `/etc/rc.local` for persistence:
+
+```bash
+echo always | sudo tee /sys/kernel/mm/transparent_hugepage/enabled
+echo defer  | sudo tee /sys/kernel/mm/transparent_hugepage/defrag
+
+# Persist across reboots:
+sudo tee -a /etc/rc.local > /dev/null <<'EOF'
+echo always > /sys/kernel/mm/transparent_hugepage/enabled
+echo defer  > /sys/kernel/mm/transparent_hugepage/defrag
+EOF
+sudo chmod +x /etc/rc.local
+```
+
+### Defrag helper — `gpu-defrag-mem` + sudoers
+
+`scripts/gpu-defrag-mem` is a tiny shell script that runs `compact_memory + drop_caches`. The training orchestrator calls it before each eval (and you can invoke it manually any time) to give the GPU's TTM allocator contiguous free pages on a unified-memory pool.
+
+The sudoers drop-in lets your training user run `gpu-defrag-mem` with `sudo -n` (no password). **Replace `<user>` with your actual Linux username** before installing:
+
+```bash
+# Install the script — explicit root:root + 0755 so the NOPASSWD sudoers
+# entry below isn't a privesc vector if the binary were ever writable
+# by anyone but root.
+sudo install -o root -g root -m 0755 scripts/gpu-defrag-mem /usr/local/bin/gpu-defrag-mem
+
+# Edit the sudoers file: replace <user> with your actual username
+# (whatever `whoami` returns)
+sed "s/<user>/$(whoami)/" configs/gpu-defrag-mem.sudoers \
+    | sudo tee /etc/sudoers.d/gpu-defrag-mem > /dev/null
+sudo chmod 0440 /etc/sudoers.d/gpu-defrag-mem
+sudo visudo -c -f /etc/sudoers.d/gpu-defrag-mem  # validate
+
+# Test (should run without prompting for password):
+sudo -n /usr/local/bin/gpu-defrag-mem && echo OK
+```
+
+If `visudo -c` reports a syntax error, the placeholder substitution failed — re-check the username doesn't contain shell-special characters.
+
+> **Why `install -o root -g root -m 0755`?** A NOPASSWD sudoers rule that points at a script which isn't strictly root-owned and 0755 (or stricter) becomes a trivial privilege-escalation path: anyone with write access to that binary can edit it to do anything. `install` sets ownership and mode atomically. `cp` + `chmod` would leave the file world-writable for a fraction of a second.
+
+### `/srv` perm watchdog — `srv-perms-watch.cron` (this one bit us hard)
+
+Some apt postinst scripts (we suspect systemd / dpkg / snapd updates) silently chmod `/srv` to `0750`, which breaks every non-root process needing to traverse to anything under `/srv/*`. We hit this **mid-segment** during a 9-hour training run — the trainer crashed in `create_model_card → importlib.metadata.version("trl")` because the metadata path lookup couldn't traverse `/srv`. We lost the entire segment.
+
+```bash
+sudo install -o root -g root -m 0644 configs/srv-perms-watch.cron /etc/cron.d/srv-perms-watch
+# The cron now restores /srv to 755 every minute. Idempotent.
+```
+
+You won't hit this on every system, and it's not specific to fine-tuning — it's a defensive fix for an apt postinst regression. If you're storing your venv, training output, or any long-running process state under `/srv/`, install this. It's three bytes of cron and saves you from a 9-hour-loss class of bug.
+
+> **Skip this if** you have a separate reason to keep `/srv` mode 0750 (e.g. it holds something you've intentionally hardened). The watchdog will silently weaken that hardening every minute.
+
+---
+
+## Step 3 — PyTorch nightly + ROCm
+
+The wheels live at AMD's gfx1151 nightly index. They're date-stamped — pick a date that has *all four* of `torch`, `torchvision`, `torchaudio`, `triton` available with matching versions. Wheels older than ~30 days are typically GC'd.
+
+Find a current date that works:
+
+```bash
+# Get the most recent torch nightly date that exists for both torch + triton:
+curl -s https://rocm.nightlies.amd.com/v2-staging/gfx1151/torch/ \
+    | grep -oE '2.11.0\+rocm7.13.0a[0-9]{8}' | sort -u | tail -5
+# Pick a date (e.g. the most recent) and substitute below.
+```
+
+Then install pinned to that date (substitute `DATE` everywhere):
+
+```bash
+python3 -m venv /path/to/venv
+source /path/to/venv/bin/activate
+
+DATE=20260506   # ← replace with a date from the previous command
+pip install --pre \
+  "torch==2.11.0+rocm7.13.0a${DATE}" \
+  "torchvision==0.26.0+rocm7.13.0a${DATE}" \
+  "torchaudio==2.11.0+rocm7.13.0a${DATE}" \
+  "triton==3.6.0+rocm7.13.0a${DATE}" \
+  "rocm==7.13.0a${DATE}" \
+  "rocm-sdk-core==7.13.0a${DATE}" \
+  "rocm-sdk-libraries-gfx1151==7.13.0a${DATE}" \
+  --index-url https://rocm.nightlies.amd.com/v2-staging/gfx1151/ \
+  --extra-index-url https://pypi.org/simple/
+# rocm / rocm-sdk-* are pulled in transitively by torch; they're pinned above only
+# for reproducible dates. The quick-start's torch-only install gets them too.
+
+# Verify
+TORCH_ROCM_AOTRITON_ENABLE_EXPERIMENTAL=1 python -c "
+import torch
+print('torch:', torch.__version__)
+print('hip:', torch.version.hip)
+print('arch:', torch.cuda.get_arch_list())
+x = torch.randn(2048, 2048, device='cuda', dtype=torch.bfloat16)
+y = x @ x.T
+torch.cuda.synchronize()
+print('bf16 matmul OK')
+"
+```
+
+Two non-obvious points:
+
+1. **`TORCH_ROCM_AOTRITON_ENABLE_EXPERIMENTAL=1` MUST be set before `import torch`.** AOTriton on gfx1151 is gated behind this flag. Without it the fused SDPA kernel is unavailable and attention falls back to the eager/math decomposition — dramatically slower.
+2. **Don't set `HSA_OVERRIDE_GFX_VERSION`.** It's a habit from earlier ROCm 6 setups and it actively *breaks* native gfx1151 kernels. If your `~/.bashrc` has it, remove it.
+
+---
+
+## Step 4 — flash-linear-attention (patched source)
+
+Hybrid models with linear-attention layers (Qwen3.5, Mamba-3, GatedDeltaNet variants) need FLA's Triton kernels. The PyPI wheel works on H100 but **crashes on gfx1151** for two reasons:
+
+1. **`num_warps > 4` triggers Triton `LinearLayoutConversions` assertion failures on RDNA 3 / 3.5** (observed firsthand on gfx1151). Same assertion class as the upstream H100 report at `num_warps=8` ([triton#5609](https://github.com/triton-lang/triton/issues/5609)) — different hardware, lower warp threshold on RDNA.
+2. **`tl.cumsum + tl.sum` interaction has a codegen bug** that hits gfx1151 (and apparently also H100 in some configs). [triton#3017](https://github.com/triton-lang/triton/issues/3017).
+
+> **On the current nightly stack, vanilla FLA also works.** The `num_warps`-cap and `cumsum.py` patches below were only needed on the older Triton 3.4 / ROCm 7.1 stack — on Triton 3.6 / ROCm 7.13 nightly, vanilla PyPI FLA 0.5.0 runs at production scale without them, so `pip install flash-linear-attention` is enough for a working setup. We keep the patched editable build for continuity (a multi-day run shouldn't be validated against a moving wheel); the patched recipe follows. See [Upgrade-path gotchas](#upgrade-path-gotchas).
+
+The fix:
+
+```bash
+# Clone
+git clone https://github.com/fla-org/flash-linear-attention /path/to/fla-patched
+cd /path/to/fla-patched
+
+# Apply num_warps + cumsum patches via the script in this repo.
+# The --cumsum-backup arg points at scripts/cumsum-pytorch.py which we ship
+# (it's a verbatim copy of the patched cumsum.py from a working install).
+GUIDE=/path/to/strix-halo-llm-finetune-guide
+python3 $GUIDE/scripts/fla_repatch.py \
+    --fla-root /path/to/fla-patched \
+    --cumsum-backup $GUIDE/scripts/cumsum-pytorch.py
+
+# Clear stale autotune cache (Triton caches kernels under ~/.triton/cache;
+# patched FLA produces different kernel shapes so old caches are invalid)
+rm -rf ~/.triton/cache
+find . -name __pycache__ -exec rm -rf {} +
+
+# Install editable
+pip install -e .
+```
+
+Re-run `fla_repatch.py` after every `git pull` of FLA. It's idempotent — running it on already-patched code is a no-op.
+
+---
+
+## Step 5 — bitsandbytes from source for ROCm
+
+**The PyPI bnb wheel ships zero ROCm binaries.** It only has CPU + CUDA `.so` files. If you try `optim="paged_adamw_8bit"` you'll get:
+
+```
+RuntimeError: Configured ROCm binary not found at libbitsandbytes_rocm83.so
+```
+
+Build from source:
+
+```bash
+# Required apt packages
+sudo apt install -y hiprand-dev rocrand-dev hipcub-dev rocprim-dev rocthrust-dev
+
+# Clone
+git clone https://github.com/bitsandbytes-foundation/bitsandbytes /path/to/bnb-rocm
+cd /path/to/bnb-rocm
+
+# Configure with ROCm 7.1.0 toolchain + gcc-13 for clang's libstdc++ lookup
+PATH=/opt/rocm-7.1.0/bin:$PATH \
+cmake -G Ninja \
+  -DCOMPUTE_BACKEND=hip \
+  -DBNB_ROCM_ARCH="gfx1151" \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DROCM_VERSION=83 \
+  -DCMAKE_HIP_FLAGS="--gcc-install-dir=/usr/lib/gcc/x86_64-linux-gnu/13" \
+  -S . -B build
+
+# Build
+PATH=/opt/rocm-7.1.0/bin:$PATH cmake --build build --config Release
+
+# Symlink: bnb's runtime version detection expects libbitsandbytes_rocm713.so
+# on PyTorch 2.10/2.11 + HIP 7.13, but the build produced rocm83.so.
+# Absolute paths so this works regardless of caller's current directory.
+ln -sf /path/to/bnb-rocm/bitsandbytes/libbitsandbytes_rocm83.so \
+       /path/to/bnb-rocm/bitsandbytes/libbitsandbytes_rocm713.so
+
+# Install editable (replaces PyPI bnb)
+pip uninstall -y bitsandbytes
+pip install -e .
+```
+
+### CRITICAL gotcha — the namespace package shadow
+
+If a previous setup left `/path/to/venv/lib/python3.12/site-packages/bitsandbytes/libbitsandbytes_rocm82.so` lying around (a symlink to a non-existent file from an older bnb install), Python treats that directory as a **namespace package** — and silently shadows your editable install. Symptom: `import bitsandbytes; print(bitsandbytes.__file__)` returns `None`, no `.optim` attribute. Cure:
+
+```bash
+rm -rf /path/to/venv/lib/python3.12/site-packages/bitsandbytes
+# Then re-test:
+python -c "import bitsandbytes; print(bitsandbytes.__file__)"
+# Should resolve to /path/to/bnb-rocm/bitsandbytes/__init__.py
+```
+
+### Verify
+
+```python
+import torch
+import bitsandbytes
+assert bitsandbytes.__file__ is not None
+from bitsandbytes.optim import PagedAdamW8bit
+p = torch.nn.Parameter(torch.randn(64, 64, device='cuda', dtype=torch.bfloat16, requires_grad=True))
+opt = PagedAdamW8bit([p], lr=1e-4)
+(p*p).sum().backward()
+opt.step()
+torch.cuda.synchronize()
+print("PagedAdamW8bit step succeeded")
+```
+
+---
+
+## Step 6 — llama.cpp HIP build (for inference)
+
+If you want to run the resulting fine-tune via `llama-server`, build llama.cpp with the `--gcc-install-dir` flag (without it, ROCm 7.1.0's clang-20 can't find `<cmath>`):
+
+```bash
+git clone https://github.com/ggml-org/llama.cpp /path/to/llama.cpp
+cd /path/to/llama.cpp
+PATH=/opt/rocm-7.1.0/bin:$PATH \
+cmake -S . -B build \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DGGML_HIP=ON \
+  -DGGML_HIP_ROCWMMA_FATTN=OFF \
+  -DGGML_HIP_GRAPHS=ON \
+  -DGGML_HIP_MMQ_MFMA=ON \
+  -DGGML_HIP_NO_VMM=ON \
+  -DAMDGPU_TARGETS=gfx1151 \
+  -DCMAKE_HIP_FLAGS="--gcc-install-dir=/usr/lib/gcc/x86_64-linux-gnu/13"
+PATH=/opt/rocm-7.1.0/bin:$PATH cmake --build build --parallel $(nproc)
+```
+
+Then symlink the binaries to where §6b and the eval harness expect them — `RUNPATH` is baked to `build/bin` (see the move warning below), so a symlink is safe; the binary still resolves its `.so`s from the real build dir:
+
+```bash
+sudo ln -sf "$PWD/build/bin/llama-server"     /usr/local/bin/llama-server
+sudo ln -sf "$PWD/build/bin/llama-perplexity" /usr/local/bin/llama-perplexity
+```
+
+`GGML_HIP_GRAPHS=ON` is now upstream default (b867+) but explicitly enabling doesn't hurt.
+
+**`GGML_HIP_ROCWMMA_FATTN=OFF` is intentional** despite being the AMD-recommended setting for RDNA 3.5. On gfx1151 specifically, the rocwmma flash-attention path is dramatically slower than llama.cpp's runtime FA at any non-trivial context depth — about **2.4× slower on prefill at 8k context** on both dense Qwen3.5-27B and MoE Qwen3.6-A3B. TG is unaffected (memory-bandwidth-bound). Hardware-verified A/B with numbers + reproduction scripts in [`rocwmma-fattn-sweep/`](rocwmma-fattn-sweep/). Earlier versions of this guide recommended `ON`; that was wrong and is now corrected.
+
+**Minimum build for `--spec-type draft-mtp` GPU dispatch: b9180+** (community-reported — see the u/kant12 credit in §6b; our own b1270 attempt also used `llama-cli`, so it doesn't independently bisect the floor). Older builds (we tried b1270 via lemonade's prebuilt) will accept the `--spec-type draft-mtp` flag without complaint but never dispatch the draft model to the GPU — the process pegs a CPU core at 0% GPU and never makes progress. Symptom is silent. **And use `llama-server`, not `llama-cli`** for the speculation path; we burned hours on this and the `llama-cli` path doesn't wire the draft dispatcher the same way. Settings shown in §6b below.
+
+**Build in the directory you intend to keep it in.** cmake bakes the absolute `build/bin` path into the binary's `RUNPATH`, so if you build in `/tmp/llama.cpp-test/` and then move the tree to `/srv/aurora-ai/llama.cpp/`, the resulting binary will fail to find its shared libraries (`libllama-server-impl.so` etc.) on launch. Reconfigure + rebuild in the final location, or use `patchelf --set-rpath`. We hit this swapping our own production build from a staging dir.
+
+---
+
+## Step 6b — Inference settings for Qwen3.5 / Qwen3.6
+
+If you're serving the fine-tune (or any Qwen3.5/3.6 base model) via `llama-server` for chat or tool-call use, a few runtime settings beyond the build flags matter on this hardware. These are what we run in production:
+
+```ini
+# /etc/systemd/system/llama-server-qwen35.service (excerpt)
+[Service]
+# Overlay the nightly torch-wheel libhsa over apt ROCm 7.1.0 — stock 7.1.0's
+# libhsa-runtime64.so has a null-ptr bug on gfx1151. Point at your venv's
+# _rocm_sdk_core/lib (same overlay rocwmma-fattn-sweep/bench.sh + the eval
+# harness use). Adjust python3.X to your venv.
+Environment=LD_LIBRARY_PATH=/path/to/venv/lib/python3.12/site-packages/_rocm_sdk_core/lib:/opt/rocm/lib
+ExecStart=/usr/local/bin/llama-server \
+    -m /path/to/your-qwen35.gguf \
+    -ngl 999 \
+    -c 32768 \
+    --fit off \
+    --no-mmap \
+    --reasoning-budget 0 \
+    --temp 1.0 \
+    --top-p 0.95 \
+    --top-k 20 \
+    --min-p 0.00 \
+    --host 0.0.0.0 \
+    --port 8080
+```
+
+Per-flag rationale:
+
+- **`--no-mmap`** is the gfx1151 gotcha — mmap-only loading triggers a ~30 min GPU page-table setup wall on the unified-memory path. Either `--no-mmap` *or* `--mmap --direct-io` together work; mmap alone hangs. Documented across multiple Strix Halo issues; not specific to llama.cpp.
+- **`--fit off`** disables llama-server's auto-fit; we keep it off across the board (with explicit `-ngl`/`-c`, the sizing heuristic is unnecessary).
+- **`LD_LIBRARY_PATH` overlay (the `Environment=` line above)** — stock ROCm 7.1.0's `libhsa-runtime64.so` has a null-pointer bug on gfx1151 that surfaces as crashes/hangs at model load. Prepend the nightly runtime from PyTorch's `_rocm_sdk_core` wheel so it wins resolution. Same overlay the repo's benchmark (`rocwmma-fattn-sweep/bench.sh`) and eval harness (`scripts/eval_via_llama_perplexity.py`) rely on; the §6b numbers below were measured with it.
+- **`--reasoning-budget 0`** disables the thinking block. **Strongly recommended** for tool-call workflows — Qwen3.5/3.6's native chat template emits tool calls inside the `<thinking>` block, and if the reasoning budget runs out mid-call the response stream looks empty to the client. Leave thinking on only for pure-chat-no-tools workloads where reasoning visibly helps.
+- **Sampling: `--temp 1.0 --top-p 0.95 --top-k 20 --min-p 0.00`** is the unsloth-recommended set for Qwen3.5/3.6 with reasoning off. Their per-model sampling guidance is worth following — meaningfully better than llama.cpp's defaults for coherence on this family. See unsloth's [Qwen3.6 docs](https://docs.unsloth.ai/models/qwen3.6) for the per-mode (reasoning vs non-reasoning) recommendations.
+- **KV cache quantization (`--cache-type-k q4_0 --cache-type-v q4_0`)** is reported to give measurable memory-bandwidth gains at long context with minimal quality loss on Qwen3.5/3.6. We haven't benched it ourselves yet on this hardware (production is at the F16 cache default, 8k context where the bandwidth pressure is lower) — adding when we do. If you're running long-context (32k+) chat workloads, it's worth trying.
+
+For tool-call agents specifically (Continue, Codex CLI, Roo, OpenClaw, aichat, etc.), also note:
+
+- **Custom Jinja template required for Qwen3-Coder-Next.** The native template emits XML `<tool_call><function=...>...</function></tool_call>` which trips clients expecting Hermes-style JSON `{"name": ..., "arguments": ...}`. Swap via `--chat-template-file <your-hermes.jinja>`. Templates for Qwen3-Coder-Next + Nemotron-3-Super in Hermes format are floating around HuggingFace and the ggml-org/llama.cpp issue tracker.
+- **Disable thinking for tool workflows specifically.** Even on models where you want thinking for chat, route tool-call/agent workflows to a separate `llama-server` instance (or a separate role binding in your client config) with `--reasoning-budget 0`.
+
+### Speculative decoding with Qwen3.6-MTP (~1.6× decode speedup on gfx1151)
+
+The Qwen3.6-MTP family bakes Multi-Token Prediction draft heads directly into the GGUF, so you don't need a separate draft model file — `--spec-type draft-mtp` will create the draft context against the target model. On gfx1151 with `llama.cpp ≥ b9180`, served via `llama-server` (the wiring on `llama-cli` is broken), the following stack works cleanly:
+
+```
+--spec-type draft-mtp --spec-draft-n-max 3 \
+--spec-type ngram-map-k4v --spec-ngram-map-k4v-size-n 16 --spec-ngram-map-k4v-size-m 24 --spec-ngram-map-k4v-min-hits 2
+```
+
+`--spec-type` is stackable in recent builds — the line above stacks MTP draft prediction with an ngram-map-k4v lookup table. Both run alongside each other.
+
+On startup the server logs will confirm GPU dispatch — look for:
+
+```
+creating MTP draft context against the target model
+common_speculative_impl_draft_mtp: gpu_layers=-1, backend_sampling=1
+```
+
+If `gpu_layers` is 0 or unset, you're back on the CPU-pegging path; check your build is `b9180+` and you're invoking via `llama-server`, not `llama-cli`.
+
+Measured on this box (Radeon 8060S / gfx1151 / ROCm 7.1.0 + nightly HSA overlay, Qwen3.6-27B-MTP-Q4_K_M, default sampling):
+
+| Prompt | n_predict | tok/s |
+|---|---|---|
+| short coding task | 256 | 20.33 |
+| short technical | 256 | 19.06 |
+| haiku | 128 | 19.13 |
+| 500-word essay | 512 | 16.69 |
+
+Mean ~19 tok/s vs ~12 tok/s baseline without spec (the qwen36-bench `tg64` raw number) = **~1.58× speedup**. Credit to [u/kant12](https://reddit.com/user/kant12) for the spec-stack config and the b9180+ build floor.
+
+One harmless warning shows up at model load: `device 'ROCm0' does not have support for op TOP_K needed for sampler 'top-k'`. The top-k sampler falls back to CPU — no measurable throughput hit.
+
+---
+
+## Training script — the contract
+
+This repo intentionally does **not** ship a training script — the one we used is domain-specific (Christmas-light-show effect tool-use) and shipping it would be misleading. Instead, here's the contract `train_orchestrator.sh` expects from whatever script you put at `scripts/train_qwen3_32b.py` (or rename the orchestrator's `TRAIN_SCRIPT_NAME` variable to point at yours).
+
+**Required CLI flags** (orchestrator passes them; your script must accept them):
+
+| Flag | What it does |
+|---|---|
+| `--bf16-lora` | Train with bf16 weights + LoRA adapters (no quantization). For QLoRA NF4, just ignore the flag in your script. |
+| `--no-eval` | Disable in-process Trainer eval (orchestrator does it out-of-process) |
+| `--output-dir DIR` | Where to write `checkpoint-N/` directories. Pass through to `SFTConfig.output_dir`. |
+| `--lora-r N` | LoRA rank — pass to `LoraConfig(r=N, ...)` |
+| `--lora-alpha N` | LoRA alpha — pass to `LoraConfig(lora_alpha=N, ...)` |
+| `--epochs N` | Pass to `SFTConfig.num_train_epochs`. Used only as a fallback when `--max-steps` is 0. |
+| `--grad-accum N` | Pass to `SFTConfig.gradient_accumulation_steps` |
+| `--max-steps N` | **Critical for the orchestrator.** When > 0, must override `num_train_epochs` and pass to `SFTConfig.max_steps`. The orchestrator increments this between segments to align cleanly to `save_steps` boundaries. |
+| `--resume` | When set, call `trainer.train(resume_from_checkpoint=True)` so the latest `checkpoint-N` in `--output-dir` is loaded. |
+
+**Required behaviour:**
+
+- Use `save_steps=50` (or any value, but pass the same number to the orchestrator's `--save-steps`). The orchestrator's segment alignment math depends on this matching.
+- Save checkpoints under `--output-dir/checkpoint-N` where N is the global training step. (HuggingFace `Trainer` does this by default.)
+- On clean exit at `max_steps`, return exit code 0. The orchestrator interprets non-zero as a real failure and fires the failure Telegram alert.
+
+**Patterns from our script worth adopting** (these aren't required by the orchestrator but help with the same hardware):
+
+- `os.environ["TORCH_ROCM_AOTRITON_ENABLE_EXPERIMENTAL"] = "1"` **before** `import torch`
+- `os.environ["PYTORCH_ALLOC_CONF"] = "expandable_segments:True,garbage_collection_threshold:0.6"`
+- `torch.cuda.set_per_process_memory_fraction(0.80)` to cap GPU at 102 GB and leave room for the OS on the unified pool
+- For Qwen3.5 hybrid (GatedDeltaNet): `attn_implementation="eager"` — SDPA crashes on this architecture
+- A "lazy shard loader" patch to `transformers.modeling_utils.safe_open` so the 27B model loads one shard at a time rather than mmap'ing all 17 simultaneously (otherwise you exhaust the unified pool during load)
+- `optim="paged_adamw_8bit"` (requires the bnb-from-source build from Step 5)
+
+A minimal working example (just the contract above, no project-specific glue) is in `examples/training_script_skeleton.py`. Note the orchestrator does **not** pass `--base-model` or `--train-data` — your training script supplies those itself (the skeleton defaults them; set the `TRAIN_DATA` env var or edit the defaults).
+
+---
+
+## Step 7 — The eval problem
+
+In-process Trainer eval **does not work** at 27B + 8192 seq length on Strix Halo. We have **four** documented failure modes from real runs:
+
+1. **`page allocation failure: order:0`** in `ttm_pool_alloc_page`. The unified-memory page allocator's free-list is fragmented — the GPU can't get a single contiguous 4 KB page despite 90%+ system RAM free. Killed by amdgpu kernel module.
+2. **`memory-watchdog SIGKILL`** when eval pushes free RAM under the watchdog threshold (8 GB on our box). The eager attention scores are ~6.4 GB per layer (24 heads × 8192² float32); with the forward, softmax, and backward buffers across the attention layers live at once it runs to ~25 GB on top of the ~60 GB training state — eval's transient allocations spike fast (~23 seconds into the eval batches) and trip the watchdog.
+3. **`importlib.metadata.PackageNotFoundError: trl`** in TRL's `_save_checkpoint → create_model_card`. This one was caused by `/srv` perms regressing mid-segment, breaking the venv's metadata path traversal.
+4. **System hang / near-freeze at ~66 % weight-load**, with `/proc/interrupts:TLB:` rate climbing past 1 M/sec. The box becomes unresponsive long enough that `journald` stops flushing; the only recovery is a hard reset. This is the most subtle failure of the four because the trainer doesn't crash — the *kernel* does.
+
+The system-tuning stack from §2 fixes (1) and (3) — but **(2) is structural**: eval and training simply cannot coexist in the same process at 128 GB unified memory + 27B models. The solution is to **move eval out-of-process** — covered by `eval_checkpoint.py` and the orchestrator in §8.
+
+**(4) is also structural, and turned out to be much deeper than we initially thought.** The HF Transformers weight-load path mmaps each safetensors shard into the page cache. With a 27 B-class bf16 model that's ~54 GB of file-backed pages on top of the eval process's transient anon allocations. The kernel's `mm/vmscan.c` reclaim path walks the LRU, calls `try_to_unmap_one()`, which batches into `try_to_unmap_flush_dirty()` and ultimately fires `arch_tlbbatch_flush()`. On AMD Strix Halo (Zen 5 mobile) the CPUID flag `INVLPGB` is **not exposed**, so the kernel can't use the broadcast-asid fast path — every batched flush fans out as a per-CPU IPI to every CPU in the process's `mm_cpumask`. With Python's 32-thread default, that's 32 IPIs per batched flush. Reclaim does thousands per second under load. ⇒ Storm.
+
+We chased this through three wrong subsystems before pinning it. The full trace methodology (`ftrace` function_graph + `kprobe tlb:tlb_flush` with stacktraces) and the 99.05 %-of-shootdowns-are-`vmscan` finding live in commits/branches of the source project this guide was extracted from — but the actionable parts are below:
+
+- **The kernel patch we *thought* would fix it doesn't.** The original hypothesis was that `amdgpu`'s `svm_range_restore_work` was the source; coalescing it with `AMDGPU_SVM_RANGE_RESTORE_DELAY_MS=100` cut the storm in half but didn't eliminate it. Tracing later showed `amdgpu` accounts for **<0.01 %** of the IPI shootdowns. Don't patch the kernel for this.
+- **Userspace mitigations alone don't work either.** We tried `drop_caches` + `vm.swappiness=0`, `mlockall(MCL_FUTURE)` early in the process, pre-mlocking the safetensors source pages — every test either left the storm intact OR removed the kernel's reclaim safety valve and let global OOM-killer fire. The trade-off cliff is documented in the source project. **There is no userspace knob that simultaneously avoids the storm AND fits in 128 GiB on this hardware.**
+- **The fix is to stop using HF Transformers for eval entirely.** Skip to §7b.
+
+---
+
+---
+
+## Step 7b — Storm-free eval via `llama-perplexity`
+
+The pivot: load weights through `llama.cpp` (mmap + selective `--mlock`) instead of HF Transformers (mmap → pagecache pressure → reclaim storm). `llama-perplexity` supports `--lora <adapter.gguf>` so we can keep LoRA training in HF land and only switch the *eval* path.
+
+Measured deltas on identical workload (eval-on-5 against a 27 B-class checkpoint):
+
+|                          | HF Transformers (Step 7 path) | `llama-perplexity` (Step 7b path) |
+| ---                      | ---                           | ---                               |
+| Peak TLB IPI rate        | ~1.2 M / sec                  | ~110 / sec                        |
+| Avg TLB IPI rate         | ~340 k / sec                  | ~110 / sec (no storm)             |
+| Total IPIs over the run  | ~48 M in 141 s before freeze  | ~48 k in 436 s                    |
+| Reduction                | —                             | **~3 100×**                       |
+| eval_metrics.json produced? | No (stall / freeze)        | Yes                               |
+
+`scripts/eval_via_llama_perplexity.py` is a drop-in replacement for `eval_checkpoint.py` from the orchestrator's perspective — same `--adapter / --eval-data / --history / --max-samples` contract, same history JSONL schema.
+
+**Quickstart:**
+
+```bash
+# Eval a merged-model GGUF (no LoRA)
+python3 scripts/eval_via_llama_perplexity.py \
+    --gguf /path/to/qwen3.5-27b-q8_0.gguf \
+    --eval-data /path/to/eval.jsonl \
+    --metrics-out /tmp/eval_metrics.json
+
+# Eval a base GGUF + LoRA adapter at runtime
+# (auto-converts safetensors→GGUF on first use, cached at <adapter>/gguf/lora-f16.gguf)
+python3 scripts/eval_via_llama_perplexity.py \
+    --gguf /path/to/qwen3.5-27b-q8_0.gguf \
+    --adapter /path/to/output/checkpoint-200 \
+    --eval-data /path/to/eval.jsonl \
+    --history /path/to/eval_history.jsonl
+```
+
+The harness:
+
+1. Loads the HF tokenizer (~50 MB — storm-free).
+2. Templates up to `--max-samples` JSONL records via `apply_chat_template`.
+3. If `--adapter` is given without `--lora`, converts the adapter to GGUF via the patched `convert_lora_to_gguf.py` (see §7c) and caches at `<adapter>/gguf/lora-f16.gguf` (~1.9 GiB f16 for r=128, α=256, ~8 s once).
+4. Runs `llama-perplexity -m <base> --mlock -ngl 999 [--lora <adapter.gguf>] -c 8192 -f <tmp.txt> --no-warmup`.
+5. Parses `Final estimate: PPL = X` from stdout, computes `eval_loss = ln(PPL)`, writes the per-checkpoint `eval_metrics.json` and (optionally) appends to the orchestrator's history JSONL.
+
+**`eval_token_accuracy` is `null`** in the llama path — `llama-perplexity` doesn't compute argmax token-accuracy. For trend tracking that doesn't matter (relative eval_loss across checkpoints is the actual signal); for absolute comparison against historical HF-eval numbers it does — those numbers won't line up exactly because llama-perplexity scores the *entire* conversation including system/user turns where HF masked them. The trajectory shape is preserved, the absolute floor isn't.
+
+---
+
+## Step 7c — Patching `convert_lora_to_gguf.py` for Qwen3.5
+
+`llama.cpp`'s LoRA converter doesn't support Qwen3.5's GQA V-head reorder for LoRA tensors. First attempt crashes with:
+
+```
+File "convert_hf_to_gguf.py", line 5354, in _reorder_v_heads
+    tensor = tensor.reshape(*new_shape)
+File "convert_lora_to_gguf.py", line 154, in reshape
+    raise NotImplementedError  # can't reshape the row size trivially
+```
+
+The full diagnosis: the Qwen3.5 model class calls `_LinearAttentionVReorderBase._reorder_v_heads(dim=1, ...)` on the SSM `out_proj` LoRA tensor. `LazyTensor`'s shape primitive encodes only `(*B.shape[:-1], A.shape[-1])` — one in-dim. The reorder needs to grow that into 4D (`out, num_k_heads, num_v_per_k, head_v_dim`) and the wrapper can't represent it.
+
+**Fix:** apply [`patches/convert_lora_to_gguf-qwen35-vhead-reorder.patch`](patches/convert_lora_to_gguf-qwen35-vhead-reorder.patch). It overrides `_reorder_v_heads` on the dynamic `LoraModel` class and applies the equivalent column-permutation directly via `tensor.index_select(...)` on `lora_A` or `lora_B`. Bypasses the LazyTensor limitation entirely. Numerically equivalent to the parent's reshape→permute→reshape (verification snippet in `patches/README.md`).
+
+**Apply:**
+
+```bash
+cd /path/to/llama.cpp
+patch -p1 < /path/to/this/repo/patches/convert_lora_to_gguf-qwen35-vhead-reorder.patch
+```
+
+**Then convert any checkpoint:**
+
+```bash
+cd /path/to/llama.cpp
+python3 convert_lora_to_gguf.py /path/to/output/checkpoint-N \
+    --outfile /path/to/output/checkpoint-N/gguf/lora-f16.gguf \
+    --outtype f16
+```
+
+`scripts/eval_via_llama_perplexity.py` does this automatically the first time it sees a checkpoint without a cached GGUF — no manual step needed if you use the harness.
+
+This patch is worth upstreaming to `ggml-org/llama.cpp`. If you submit a PR, the verification snippet in `patches/README.md` should travel with the change so reviewers can confirm numerical equivalence.
+
+---
+
+## Step 8 — The orchestrator
+
+`scripts/train_orchestrator.sh` drives training as a sequence of segments aligned to `save_steps=50` boundaries. After each segment:
+
+1. Trainer reaches `max_steps` cleanly, writes checkpoint, exits → process dies → GPU memory fully releases.
+2. `wait_gpu_release()` confirms `pgrep` empty + VRAM-used < 5 GB + runs the defrag helper.
+3. Eval spawns as a **fresh process**, loads base model + adapter from the just-saved checkpoint, runs eval over a 50-sample subset, appends one line to `eval_history.jsonl`. The eval invocation is governed by the **`EVAL_METHOD`** env var:
+   - `EVAL_METHOD=llama` (recommended on Strix Halo) — uses `scripts/eval_via_llama_perplexity.py` (§7b). Storm-free. Auto-converts each checkpoint's LoRA to GGUF on first eval (cached at `<checkpoint>/gguf/lora-f16.gguf`). **Needs the base-model GGUF** — set it via the `BASE_GGUF` env var or `--base-gguf` (the orchestrator passes it to the eval as `--gguf`). It defaults to a placeholder path, so eval fails at every segment boundary until you set it.
+   - `EVAL_METHOD=hf` (legacy) — uses `scripts/eval_checkpoint.py`. Will trigger the §7 storm on Strix Halo. Kept only for rollback / diff testing on different hardware.
+4. Orchestrator parses last 2 history entries, computes Δ, sends Telegram with success/comparison or warning.
+5. Loop until total_steps reached.
+
+**Resume-safe.** Killing the orchestrator and restarting picks up from the latest checkpoint and runs any missed eval first.
+
+**Argument summary** (full list in `scripts/train_orchestrator.sh`):
+
+```
+--total-steps     448            # final step count
+--save-steps      50             # MUST match the training script's save_steps
+--output-dir      /path/to/out   # where checkpoints land
+--eval-data       /path/to/eval.jsonl
+--history         /path/to/eval_history.jsonl
+--lora-r          128
+--lora-alpha      256
+--epochs          2
+--grad-accum      4
+--base-model      Qwen/Qwen3.5-27B
+--base-gguf       /path/to/base.gguf   # or env BASE_GGUF — required for EVAL_METHOD=llama
+```
+
+**Launch under nohup so it survives session close:**
+
+```bash
+cd /path/to/workspace
+BASE_GGUF=/path/to/qwen3.5-27b-q8_0.gguf \
+nohup ./scripts/train_orchestrator.sh \
+    --total-steps 448 \
+    --output-dir /path/to/output \
+    --eval-data /path/to/eval.jsonl \
+    --history /path/to/eval_history.jsonl \
+    --lora-r 128 --lora-alpha 256 \
+    > orchestrator.log 2>&1 &
+```
+
+### How the alignment math works
+
+If you resume from `checkpoint-87` (e.g., a pre-eval-save callback wrote it at a non-aligned step), the orchestrator computes:
+
+```
+target = ((step / save_steps) + 1) * save_steps
+       = ((87 / 50) + 1) * 50
+       = 100
+```
+
+So segment 1 trains 87→100 (13 steps), trainer's auto-save fires at step 100, segment exits. Subsequent segments are full 50-step blocks (100→150, 150→200, …).
+
+---
+
+## Step 9 — Telegram alerts (optional but nice)
+
+`scripts/tg_alert.sh` is a 50-line bash helper that sends HTML messages to a Telegram bot. Set up:
+
+1. Talk to [`@BotFather`](https://t.me/BotFather) on Telegram, create a bot, save the token.
+2. Message [`@userinfobot`](https://t.me/userinfobot) `/start` and it returns your numeric chat ID immediately.
+3. Store the credentials. **Quote the values** — Telegram tokens contain `:` and `_` and other characters that can confuse a `source` if the value isn't quoted:
+
+```bash
+sudo mkdir -p /etc/strix-halo
+sudo tee /etc/strix-halo/telegram.env > /dev/null <<EOF
+TELEGRAM_BOT_TOKEN="<your-token>"
+TELEGRAM_CHAT_ID="<your-chat-id>"
+EOF
+sudo chown "root:$(whoami)" /etc/strix-halo/telegram.env
+sudo chmod 0640 /etc/strix-halo/telegram.env
+```
+
+4. Test:
+
+```bash
+./scripts/tg_alert.sh "<b>Test</b> — Strix Halo guide setup OK"
+# Should appear in your Telegram chat within ~1 second.
+```
+
+The orchestrator sends:
+
+- 🚀 startup notice with current step
+- ✅ per-segment success with eval_loss + Δ + perplexity + segment runtime + ETA
+- ❌ segment failure with exit code + last 30 lines of log (HTML-escaped)
+- ⚠️ eval failure (non-fatal — training continues)
+- 🛑 SIGINT/SIGTERM (Ctrl-C handler with the latest checkpoint step)
+- 🎉 final completion with total runtime
+
+---
+
+## Verified results
+
+This guide was developed on a real production fine-tune. Excerpt from `eval_history.jsonl`:
+
+```jsonl
+{"step":87,"eval_loss":0.1324,"eval_perplexity":1.1416,"eval_token_accuracy":0.9646,"n_samples":48,"timestamp":"2026-05-07T23:42:02Z"}
+{"step":100,"eval_loss":0.1312,"eval_perplexity":1.1402,"eval_token_accuracy":0.9645,"n_samples":48,"timestamp":"2026-05-08T03:46:07Z"}
+```
+
+Each line is a complete eval run; subsequent segments append one line. The orchestrator's Telegram alert reads the bottom two entries and reports the delta.
+
+Target: 448 steps total. Step time: ~11 min. Total wall-clock: ~4 days. GPU temp range during training: 60–72 °C with `power_dpm_force_performance_level=auto`. Peak GPU memory: ~80 GB reserved during training, ~73 GB during eval.
+
+---
+
+## Benchmarks & model selection
+
+Fine-tuning is one workload; running the result (or any model) is another. These are measured numbers on this box — Radeon 8060S / gfx1151 / 128 GiB unified, ROCm 7.13 nightly — not vendor claims. Full logs and repro commands are in [`qwen36-bench/`](qwen36-bench/) and [`cublas-hipblaslt-sweep/`](cublas-hipblaslt-sweep/).
+
+### Inference throughput — what to expect
+
+| Model | Quant | tg (tok/s) | Notes |
+|---|---|---|---|
+| Qwen3.6-35B-A3B | Q4_K_M | **~50** | MoE, 3 B active params/token — fastest interactive option |
+| Qwen3.6-27B-MTP | Q4_K_M | ~12 raw / **~19 with spec** | bare-bench `tg64` is ~12 t/s; with the MTP+ngram-map-k4v spec stack via `llama-server` on `b9180+` (see §6b for the exact config) we measured a mean of ~19 t/s over 4 samples = ~1.58× speedup. Older builds or `llama-cli` will silently never dispatch the draft to the GPU. |
+| Qwen3.5-27B (dense) | Q8_0 | ~7.5 | Full-precision dense — slowest, highest fidelity |
+
+The spread is workload, not silicon. Decomposed:
+
+| Change | Speedup |
+|---|---|
+| Q8 → Q4 (halves per-token memory bandwidth) | ~1.6× |
+| 27 B dense → 35 B-A3B MoE (cuts compute per token to 3 B active) | ~4× |
+| dense → MTP + speculative decoding | ~1.67× |
+
+**Picking a model:** for an interactive assistant, a MoE-A3B model at Q4 wins outright — you pay compute for only the active experts. For maximum fidelity at a fixed memory budget, a dense model at Q8. MTP buys a speculative-decoding multiplier on top, *if* your llama.cpp build has the draft path enabled for gfx1151 (not all prebuilts do).
+
+### `GGML_CUDA_FORCE_CUBLAS` — bench shape decides
+
+A common r/StrixHalo tip is to build llama.cpp with `-DGGML_CUDA_FORCE_CUBLAS=ON` and run with `ROCBLAS_USE_HIPBLASLT=1`. We swept it on Qwen3.5-27B Q8 — it is **not** a free win; the sign of the effect flips with prompt-batch shape:
+
+| Bench shape | CUBLAS=ON effect |
+|---|---|
+| `pp2048` (large prompt, FA on) | **+7%** at depth 0, decaying to flat by ~8 k context |
+| `pp64` (small prompt) | **~3.6× slowdown** — forcing the rocBLAS GEMM path compiles out the MMQ kernels that win at small shapes |
+
+If your real workload is large-prompt / batched (typical for fine-tune eval and RAG), the flag helps modestly. If it's short interactive prompts, it hurts badly. Measure your own shape before adopting it. Raw sweep: [`cublas-hipblaslt-sweep/`](cublas-hipblaslt-sweep/).
+
+### `GGML_HIP_ROCWMMA_FATTN` — turn it OFF on gfx1151
+
+AMD's official guidance for RDNA 3.5 is to enable rocwmma flash-attention. On gfx1151 specifically, **don't.** The rocwmma FA path is dramatically slower than llama.cpp's runtime FA at any non-trivial context depth:
+
+| shape (Qwen3.5-27B Q8 dense) | FATTN=ON | FATTN=OFF | OFF advantage |
+|---|---|---|---|
+| pp2048 depth 0    | 283.90 | 331.86 | +16.9% |
+| pp2048 depth 4196 | 167.61 | 306.83 | **+83%** |
+| pp2048 depth 8392 | 117.08 | 282.52 | **+141%** (≈2.4×) |
+| tg128 any depth   | ~7.5   | ~7.6   | flat (TG is memory-bandwidth bound) |
+
+Same pattern on Qwen3.6-35B-A3B Q4 MoE — +21% at d=0, +89% at d=4196, **+145% at d=8392**. The gap widens with context depth in both architectures.
+
+Step 6 above uses `-DGGML_HIP_ROCWMMA_FATTN=OFF` for this reason. Raw A/B + reproduction script: [`rocwmma-fattn-sweep/`](rocwmma-fattn-sweep/). The strixhalo.wiki [ROCWMMA recommendation](https://strixhalo.wiki/AI/llamacpp-with-ROCm#rocwmma) was correct; this is the hardware evidence.
+
+> **Re-validated on kernel 7.0.9 (2026-05-29).** The numbers above were measured on 6.19.14. After upgrading the rig to mainline 7.0.9 (6.19 is EOL), we re-ran the identical sweep (same binaries/commit, only the kernel differing): pp2048 d8392 came out 120.9/284.1 t/s (2.35×) for the dense model and 334.5/809.0 (2.42×) for the MoE — within noise of the 6.19.14 figures. The 6.19.14→7.0.9 move is throughput-neutral here; the posted numbers stand. Full 7.0.9 logs: [`rocwmma-fattn-sweep/revalidation-7.0.9/`](rocwmma-fattn-sweep/revalidation-7.0.9/).
+
+### ROCm vs Vulkan — backend selection depends on precision
+
+Inference on Strix Halo can run through either of two llama.cpp backends, and **the right choice is not the same for every workload**:
+
+- **ROCm/HIP** — the production backend this guide builds in [Step 6](#step-6--llamacpp-hip-build-for-inference). Used by all the numbers in the table above. Required for training (PyTorch + ROCm 7.13 nightly).
+- **Vulkan (RADV STRIX_HALO)** — Mesa's Vulkan driver, with cooperative-matrix path. Built with `-DGGML_VULKAN=ON` (no HIP). Recipe in [`vulkan-vs-rocm-sweep/build-vulkan.sh`](vulkan-vs-rocm-sweep/build-vulkan.sh).
+
+Tested on Qwen3.6-35B-A3B at the same source commit (b9296), same hardware, same bench shape:
+
+**Q4_K_M (quantized) — Vulkan wins decode by ~22%:**
+
+| shape | ROCm/HIP | Vulkan | Winner |
+|---|---|---|---|
+| pp512 fa=1 | 1014.32 | 942.18 | ROCm (+7.7%) |
+| tg128 d=0 | 49.58 | **60.39** | **Vulkan (+21.8%)** |
+| tg128 d=8392 | 46.73 | **57.13** | **Vulkan (+22.3%)** |
+
+**BF16 (full precision) — ROCm wins decode by ~117%:**
+
+| shape | ROCm/HIP | Vulkan | Winner |
+|---|---|---|---|
+| pp512 fa=1 | **484.01** | 305.21 | **ROCm (+58.6%)** |
+| tg128 d=0 | **23.71** | 10.73 | **ROCm (+121%)** ← over 2× |
+| tg128 d=8392 | **23.09** | 10.64 | **ROCm (+117%)** |
+
+**The reason** is visible right in Vulkan's own capability report on launch:
+
+```
+ggml_vulkan: 0 = AMD Radeon Graphics (RADV GFX1151) (radv) | uma: 1 | fp16: 1 | bf16: 0 | ...
+                                                                    ^^^^^^^
+                                                                no native BF16
+```
+
+`bf16: 0` — RADV STRIX_HALO supports FP16 cooperative matrix natively but not BF16; the Vulkan backend falls back to slower kernels for BF16 ops. ROCm/HIP has BF16 wired through native HIP matmul kernels and dominates anything BF16-bound.
+
+**Practical recommendation:**
+
+| Workload | Backend |
+|---|---|
+| Quantized inference (Q4/Q5/Q6/Q8) | **Vulkan** |
+| Full-precision (BF16) inference | **ROCm/HIP** |
+| Training (always BF16/FP32) | **ROCm/HIP** (only path with the PyTorch nightly stack) |
+| Mixed | Whichever your hot path is |
+
+Full sweep + per-shape numbers + capability extract + the build recipe for the Vulkan binary in [`vulkan-vs-rocm-sweep/`](vulkan-vs-rocm-sweep/). Long-form writeup with the methodology, all depths, and the `bf16: 0` deep-dive: [**ROCm vs Vulkan on AMD Strix Halo: when each wins, and why it inverts at the precision boundary**](articles/2026-05-rocm-vs-vulkan-strix-halo-precision-inversion.md). The Vulkan canonical dashboard for Strix Halo (with deeper per-model Vulkan numbers) is [bench.ciru.ai](https://bench.ciru.ai); this guide is the canonical ROCm + training reference.
+
+---
+
+## Troubleshooting
+
+The failure modes that cost us the most time, indexed. Each links to the step with the full fix.
+
+| Symptom | Cause | Fix | Where |
+|---|---|---|---|
+| Kernel `.deb` install half-configures / `run-parts` errors | Mainline kernel `.deb`s have a double-directory `run-parts` bug across image/modules/headers maintainer scripts | Run `scripts/fix-kernel-run-parts.py` on the `.deb`s before installing — rewrites the trigger scripts to `if [ -d X ]; then … fi` form | [Step 1](#step-1--kernel-61914-mainline) |
+| `'cstdlib' file not found` / `'cmath'` during a HIP build | ROCm 7.1's clang-20 picks the gcc-14 runtime dir, which lacks the C++ headers, on Ubuntu 24.04 | Pass `--gcc-install-dir=/usr/lib/gcc/x86_64-linux-gnu/13` — via `CMAKE_HIP_FLAGS` (cmake) or `HIPCC_COMPILE_FLAGS_APPEND` (pip) | [Step 5](#step-5--bitsandbytes-from-source-for-rocm), [Step 6](#step-6--llamacpp-hip-build-for-inference) |
+| `import bitsandbytes` loads the PyPI build, not your source build | Namespace-package shadow — the editable install doesn't win on `sys.path` | See the namespace-shadow fix; verify `bitsandbytes.__file__` resolves into your source tree | [Step 5](#step-5--bitsandbytes-from-source-for-rocm) |
+| System hard-freezes mid-training, needs a power-off | VRAM/unified-pool exhaustion hangs the HIP driver instead of raising `OutOfMemoryError` | `torch.cuda.set_per_process_memory_fraction(0.80)` — on a 128 GB unified APU, `0.80` (≈102 GB) leaves the host enough; `0.90` starves it | [Training contract](#training-script--the-contract) |
+| `llama.cpp` model load hangs ~30 min at GPU page-table setup | mmap-only load on gfx1151 triggers a slow page-table walk | Use `--no-mmap`, or mmap **and** `direct_io` together — never mmap alone | [Step 6](#step-6--llamacpp-hip-build-for-inference) |
+| Random crashes mid-training, no obvious cause | `/srv` permissions silently regress off `755` | Install the `/srv` perm watchdog cron (defense in depth — the root cause is still unpinned) | [Step 2](#step-2--system-tuning) |
+| FLA kernels error or return wrong results after an FLA version change | Stale Triton autotune cache — patched FLA produces different kernel shapes | `rm -rf ~/.triton/cache` after any FLA change | [Step 4](#step-4--flash-linear-attention-patched-source) |
+| `pip install torch` pulls CUDA wheels on an AMD box | Default PyPI index serves CUDA builds | Always install torch from the gfx1151 ROCm nightly index | [Step 3](#step-3--pytorch-nightly--rocm) |
+| Eval storms the box — every checkpoint pegs all cores for 5–10 min | The HF eval path triggers a TLB-shootdown IPI storm on no-`INVLPGB` Strix Halo | Use the `llama-perplexity` eval path instead of the HF path | [Step 7b](#step-7b--storm-free-eval-via-llama-perplexity) |
+| `--spec-type draft-mtp` pegs a CPU core, never dispatches to GPU | Either build is older than `b9180` (the GPU draft-mtp dispatch isn't wired) OR you're using `llama-cli` instead of `llama-server` | Build llama.cpp at `b9180+`, invoke via `llama-server`. Confirm server logs show `gpu_layers=-1, backend_sampling=1`. | [Step 6b](#speculative-decoding-with-qwen36-mtp-16-decode-speedup-on-gfx1151) |
+| `llama-server` fails to start after you moved the build tree | cmake bakes the build-dir absolute path into the binary's `RUNPATH`; moving the tree leaves the binary pointing at a path that no longer exists | Rebuild in the final location (cleanest), or `patchelf --set-rpath <new path>` on the binaries + shared libs | [Step 6](#step-6--llamacpp-hip-build-for-inference) |
+
+---
+
+## Upgrade-path gotchas
+
+This guide pins specific versions (kernel, ROCm/PyTorch, llama.cpp, FLA, the HF stack). When you move off those pins, here's what actually broke for us and the fix — every entry is a transition we ran on this hardware, not speculation.
+
+### Kernel
+
+- **6.19.14 → 7.0.9 (mainline).** The 6.19 series went **EOL 2026-04-22**, so a fresh install should target the latest stable mainline (7.0.x). The `run-parts` double-directory `.deb` bug is **still present on the 7.0 `.deb`s** (the same six maintainer scripts) — re-run `scripts/fix-kernel-run-parts.py` on them exactly as in [Step 1](#step-1--kernel-61914-mainline). We validated 7.0.9 on gfx1151 (ROCm matmul + 128 GB GTT auto-size, no amdgpu faults, no step-time regression vs 6.19).
+- **Floor.** AMD's stated minimum for gfx1151 is mainline **≥ 6.18.4** (or the Ubuntu 24.04 HWE **6.17** stack). Below that, the symptom is `torch.cuda.synchronize()` hanging with the GPU pinned at 100%, or an HSA page-fault at model load — the KFD/amdgpu queue+fence fixes for this silicon aren't present, so the ring never completes.
+
+### ROCm + PyTorch (nightly)
+
+- **torch 2.10.0 → 2.11.0 (rocm7.13 nightly).** Clean bump — the editable FLA install and the source-built bitsandbytes both survived it. Two things to keep in mind: always install from the per-arch index `https://rocm.nightlies.amd.com/v2-staging/gfx1151/` (default PyPI pulls CUDA wheels), and from 2.10+ `expandable_segments:True` works on HIP (you can drop `max_split_size_mb`). See [Step 3](#step-3--pytorch-nightly--rocm).
+- **gfx1151 is still not in any GA channel.** We checked: ROCm **7.2.3** GA and the stable `torch 2.12+rocm7.2` wheels do **not** carry working gfx1151 kernels (they fail with `HIP error: invalid device function`). Stay on the per-arch nightly index — every install command in this guide uses `…/v2-staging/gfx1151/`. (A `…/v2/gfx1151/` track also exists; we haven't validated it carries the same date-stamped `2.11.0+rocm7.13.0a*` wheels, so we don't use it.)
+
+### llama.cpp
+
+- **b867 → b9296.** Rebuilding **silently reset our local `convert_lora_to_gguf.py` Qwen3.5 V-head patch to upstream** — re-apply it after *every* pull/rebuild (Step 7c). We lost it in a rebuild once and it silently broke the eval path for days before anyone noticed. Unchanged across the bump: `--gcc-install-dir=/usr/lib/gcc/x86_64-linux-gnu/13` is required on Ubuntu 24.04, `GGML_HIP_ROCWMMA_FATTN=OFF` on gfx1151, and moving the build tree breaks the binary's `RUNPATH`.
+
+### flash-linear-attention
+
+- **0.4.2 → 0.5.0/0.5.1.** Re-run `fla_repatch.py` after every FLA pull (it's idempotent). The historical patches (num_warps cap, the `cumsum.py` wrapper) were only needed on Triton 3.4 / ROCm 7.1 — on Triton 3.6 / ROCm 7.13 nightly, **vanilla 0.5.0 works** without them.
+
+### HF training stack
+
+- **trl 0.29.1 (last 0.x) → 1.x is a major, breaking bump** (packing-strategy rename `bfd-requeue`→`bfd_split`, changed `vllm_mode` default). This guide is pinned to 0.29.1 (stack table); validate your `SFTConfig` against 1.x before moving off it.
+- **transformers < 5.2 → 5.2+** requires lazy shard loading for 27B-class models; older versions mmap all shards at once and OOM on unified memory.
+
+### Re-apply after any rebuild/pull
+
+One place to check whenever you bump these:
+
+- **FLA:** `fla_repatch.py`
+- **llama.cpp:** the `convert_lora_to_gguf.py` Qwen3.5 V-head patch (Step 7c)
+- **bitsandbytes:** source build only (no ROCm PyPI wheels). The `libbitsandbytes_rocm83`→`rocm713` symlink (Step 5) is keyed to the HIP runtime version — re-check it after a HIP-major bump, and re-run the Step 5 build after a bnb source bump.
+
+---
+
+## What's still unsolved
+
+We're not done; this guide is a snapshot, not a victory lap.
+
+- **Eval still takes ~5–10 min per checkpoint** in the §7b path (more on eval-on-50 at 27 B). The base model has to mmap-and-mlock each time. A long-running `llama-server`-backed eval daemon that holds the model warm would amortize this; not built yet.
+- **Why `INVLPGB` isn't exposed on Strix Halo.** Zen 5 architecturally supports it, but `/proc/cpuinfo` flags on the AMD Ryzen AI MAX+ 395 don't list it. If it's a microcode-detection gap (kernel `arch/x86/kernel/cpu/amd.c`) or a genuine silicon non-implementation on Zen 5 mobile, we don't know — and we haven't dug. If `INVLPGB` were available the §7 storm class would collapse to one instruction system-wide. Worth a mailing-list inquiry to AMD's kernel team.
+- **`PAGEVEC_SIZE = 31` is structural** in `include/linux/pagevec.h`. The `mm/vmscan.c` reclaim path batches dirty folios into folio_batches (the struct formerly called a pagevec; the `PAGEVEC_SIZE` macro name and value of 31 are retained) and fires `try_to_unmap_flush_dirty` every 31 entries. Tuning this (or wiring a sysctl knob) would proportionally cut the IPI rate on no-`INVLPGB` boxes. Real upstream `mm/` work; out of scope here.
+- **The `convert_lora_to_gguf` Qwen3.5 patch isn't upstream yet.** Patch + verification snippet are in `patches/`. Until someone (you?) submits the PR to `ggml-org/llama.cpp`, anyone on Qwen3.5 LoRA needs to apply the patch manually.
+- **`svm_range_restore_work` thrash** during heavy GPU bursts is an open AMD bug ([ROCm#5952](https://github.com/ROCm/ROCm/issues/5952)). The Oct 2025 patch on amd-gfx covers only the MADV_FREE deadlock, not the CPU-hog-during-attention case. We work around it by exiting the training process between segments. This is a **different** issue from the §7 storm — it's GPU-side, while §7 is CPU-side.
+- **Why `/srv` perms regress** is still unknown. We have a cron watchdog as defense in depth, but the actual postinst script doing the chmod hasn't been pinned down. If you find it, file a bug.
+- **TRL `create_model_card` is fragile.** It calls `importlib.metadata.version("trl")` which traverses sys.path and silently fails if any `.dist-info` dir is unreachable. A more defensive trl would catch this.
+- **PyTorch 2.11 nightly is unstable by definition.** Pin a specific date that worked for you.
+
+---
+
+## Project layout
+
+```
+strix-halo-llm-finetune-guide/
+├── README.md                              # this file
+├── LICENSE                                # MIT
+├── scripts/
+│   ├── train_orchestrator.sh              # segment orchestrator (bash)
+│   ├── eval_checkpoint.py                 # legacy HF eval (storm-prone on Strix Halo, §7)
+│   ├── eval_via_llama_perplexity.py       # storm-free eval via llama-perplexity (§7b)
+│   ├── tg_alert.sh                        # Telegram alert helper
+│   ├── gpu-defrag-mem                     # compact_memory + drop_caches wrapper
+│   ├── fix-kernel-run-parts.py            # mainline kernel .deb fixer
+│   ├── fla_repatch.py                     # FLA num_warps + cumsum patcher
+│   └── cumsum-pytorch.py                  # patched cumsum.py to swap into FLA
+├── configs/
+│   ├── 90-strix-halo-vm-tuning.conf       # → /etc/sysctl.d/
+│   ├── gpu-defrag-mem.sudoers             # → /etc/sudoers.d/gpu-defrag-mem
+│   ├── srv-perms-watch.cron               # → /etc/cron.d/srv-perms-watch
+│   └── grub-cmdline.example               # → edits to /etc/default/grub
+├── patches/
+│   ├── README.md                          # how to apply + numerical verification
+│   └── convert_lora_to_gguf-qwen35-       # Qwen3.5 GQA V-head reorder LoRA fix
+│       vhead-reorder.patch                #   for llama.cpp's convert_lora_to_gguf.py (§7c)
+├── examples/
+│   └── training_script_skeleton.py        # minimal SFTTrainer script that
+│                                          # satisfies the orchestrator contract
+├── articles/                              # long-form ROCm-vs-Vulkan writeup
+├── paper/                                 # LaTeX paper (precision-inversion + FATTN)
+│
+│   # ── Validation work — each dir answers one question, on real gfx1151 ──
+├── cublas-hipblaslt-sweep/                # Does -DGGML_CUDA_FORCE_CUBLAS help?
+│                                          #   (answer: depends on bench shape — §Benchmarks)
+├── rocwmma-fattn-sweep/                   # ROCWMMA_FATTN ON vs OFF — OFF wins ~2.4× (§6)
+├── vulkan-vs-rocm-sweep/                  # the precision-inversion finding (bf16:0 on RADV)
+├── qwen36-bench/                          # Qwen3.6 35B-A3B / 27B-MTP throughput
+│                                          #   on gfx1151 — the §Benchmarks numbers
+├── pr-5301-oom-guard/                     # Validates PR #5301's OOM-guard GPU
+│                                          #   classifier — caught a Strix Halo misdetect
+├── pr-5303-validation/                    # Validates PR #5303 lemonade prebuilts —
+│                                          #   caught a missing-runtime-lib install bug
+├── pr-5434-validation/                    # Validates PR #5434 FLA + tilelang —
+│                                          #   caught the tilelang HIP regression
+├── pr-5517-validation/                    # Test run behind our merged PR #5517
+│                                          #   (--gcc-install-dir HIP build fix)
+└── lemonade-pr-88-validation/             # lemonade PR #88 (GGML_OPENMP=ON) —
+                                           #   ~0% tg128 gain on gfx1151 vs author's +15-20%
+```
+
+See [Upstream contributions](#upstream-contributions) for what each PR fixed.
+
+---
+
+## Upstream contributions
+
+This guide isn't a static writeup — its gotchas get fed back to the projects that caused them. The validation dirs above are the evidence trail for work upstreamed to Unsloth:
+
+| PR | Status | What it fixed | Validation |
+|---|---|---|---|
+| [unsloth#5517](https://github.com/unslothai/unsloth/pull/5517) | **merged** | Injects `--gcc-install-dir` into HIP source builds so Unsloth Studio installs on Ubuntu 24.04 (the `'cstdlib' not found` failure) | [`pr-5517-validation/`](pr-5517-validation/) |
+| [unsloth#5434](https://github.com/unslothai/unsloth/pull/5434) | **merged** | Auto-installs `flash-linear-attention` + `tilelang` for the Qwen3.5 family. Our gfx1151 testing found `tilelang` is a hard regression on AMD; a HIP gate was added in response | [`pr-5434-validation/`](pr-5434-validation/) |
+| [unsloth#5301](https://github.com/unslothai/unsloth/pull/5301) | open | ROCm unified-memory detection for Strix Halo. We hardware-verified the detection fix, and caught its OOM guard misclassifying the Radeon 8060S as a discrete card | [`pr-5301-oom-guard/`](pr-5301-oom-guard/) |
+| [unsloth#5303](https://github.com/unslothai/unsloth/pull/5303) | open | Per-GPU lemonade-sdk llama.cpp prebuilts for ROCm hosts. Our end-to-end install test caught the runtime overlay omitting `librocm_kpack` / `librocm_sysdeps_*` libs | [`pr-5303-validation/`](pr-5303-validation/) |
+
+Every entry here started as a real failure on a real run on the hardware this guide documents.
+
+---
+
+## Credits
+
+Built and tested on a Corsair AI Workstation 300 by [@h34v3nzc0dex](https://github.com/h34v3nzc0dex) ([ORCID 0009-0000-2537-1578](https://orcid.org/0009-0000-2537-1578)) with the assistance of Claude (Anthropic). Every patch in this repo was discovered by hitting a real failure on a real run and digging until we understood the root cause.
+
+The community resources that got us most of the way:
+
+- [AMD Strix Halo system optimization (official)](https://rocm.docs.amd.com/en/latest/how-to/system-optimization/strixhalo.html)
+- [AMD MI300A system optimization (official)](https://instinct.docs.amd.com/projects/amdgpu-docs/en/latest/system-optimization/mi300a.html) — our north-star tuning doc
+- [Strix Halo Wiki](https://strixhalo.wiki) — cross-OEM firmware and kernel-param notes
+- [Framework community fine-tuning thread](https://community.frame.work/t/finetuning-llms-on-strix-halo-full-lora-and-qlora-on-gemma-3-qwen-3-and-gpt-oss-20b/76986)
+- [kyuz0/amd-strix-halo-toolboxes](https://github.com/kyuz0/amd-strix-halo-toolboxes) — llama.cpp-focused (pre-built Vulkan + ROCm containers), but the kernel parameter notes were a useful sanity check
+
+If this guide helps you, [open an issue](https://github.com/h34v3nzc0dex/strix-halo-llm-finetune-guide/issues) with what worked, what didn't, and what hardware you're on. We'll fold it back in.
+
+## Citing the benchmark data
+
+The raw bench logs from `rocwmma-fattn-sweep/`, `vulkan-vs-rocm-sweep/`, `cublas-hipblaslt-sweep/`, and `qwen36-bench/` are also published as a Hugging Face dataset for stable citation: [**NorthstarAurora/strix-halo-bench-data**](https://huggingface.co/datasets/NorthstarAurora/strix-halo-bench-data). Same files, same methodology; the HF version is the recommended citation target for papers and write-ups.
+
+## License
+
+MIT — see `LICENSE`.

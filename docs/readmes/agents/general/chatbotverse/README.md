@@ -1,0 +1,52 @@
+<!-- source: https://github.com/FORTFANOP/ChatbotVerse.git sha: 6b770afe058d0db9cf91eef7e9bc4d7e9cfc34c9 readme: main/README.md -->
+# FORTFANOP/ChatbotVerse
+
+A Python module that lets you whip up your own custom chatbot with just a few lines of code. This AI-based package feeds your custom data into a neural network which is trained and outputs a fully functional chatbot.
+
+---
+
+# ChatbotVerse
+A Python module that lets you whip up your own custom chatbot with just a few lines of code. This AI-based package feeds your custom data into a neural network which is trained and outputs a fully functional chatbot.
+<!--Find the YouTube tutorial here: https://www.youtube.com/watch?v=SY9Cl66mhsc-->
+
+## Installation
+You can install it from Pypi:
+`pip install ChatbotVerse`
+https://pypi.org/project/ChatbotVerse
+
+Here's how easy it is to instantiate a neural network based bot using ChatbotVerse:
+
+### Importing the module
+```python
+from ChatbotVerse import chatbotVerse as cbv
+```
+
+### Initialize trainer
+```python
+trainer = cbv.modelTrain()
+intents = trainer.loadIntents('intents.json')  # The path where the intents.json file is saved
+words, classes = trainer.preprocess_save_Data(intents)  # Prepares and saves preprocessed word data
+train_x, train_y = trainer.prepareTrainingData(words, classes)  # Prepares training data
+```
+
+### Create the model
+```python
+model = trainer.createModel(train_x, train_y, save_path='cbv_model.model')
+```
+
+### Initialize predictor
+```python
+predictor = cbv.modelPredict('intents.json', 'cbv_model.model')
+```
+
+### Get output from the bot
+```python
+running = True
+while running:
+    msg = input('You: ')
+    if msg == 'quit':
+        running = False
+    else:
+        response = predictor.chatbot_response(msg)
+        print('Bot: ', response)
+```

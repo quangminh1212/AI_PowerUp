@@ -1,0 +1,318 @@
+<!-- source: https://github.com/webpro255/agentlock.git sha: b5750a45053b68dd0e39b7928a2feb09f5a14e37 readme: main/README.md -->
+# webpro255/agentlock
+
+An adversarially benchmarked reference implementation for pre-action AI agent authorization. Provenance-based gating for LLM agent tool calls: deny-by-default permissions, parameter lineage, signed receipts, audit logging.
+
+---
+
+<p align="center">
+  <h1 align="center">AgentLock</h1>
+  <p align="center">
+    <strong>An adversarially benchmarked reference implementation for pre-action agent authorization</strong>
+  </p>
+  <p align="center">
+    Your AI agent needs a login screen. AgentLock is that login screen.
+  </p>
+  <p align="center">
+    <a href="https://github.com/webpro255/agentlock/actions"><img src="https://github.com/webpro255/agentlock/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+    <a href="https://pypi.org/project/agentlock/"><img src="https://img.shields.io/pypi/v/agentlock.svg" alt="PyPI"></a>
+    <a href="https://pypi.org/project/agentlock/"><img src="https://img.shields.io/pypi/pyversions/agentlock.svg" alt="Python"></a>
+    <a href="https://github.com/webpro255/agentlock/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-AGPL--3.0-blue.svg" alt="License"></a>
+  </p>
+</p>
+
+---
+
+Pre-action authorization for LLM agent tool calls. The gate decides from
+provenance, not content: there is nothing for an attacker to phrase around.
+
+## The problem
+
+Tool-using agents read attacker-reachable content: inboxes, channels, web
+pages, retrieved documents. Indirect prompt injection turns that content
+into control. Content filters classify strings, but the harmful thing
+about an agent action is usually a relationship the tool-call text never
+expresses: who the recipient is, what sequence of reads preceded a write,
+whether the user ever asked for this action at all. The full argument is
+in the paper (DOI below). AgentLock gates actions on where the session's
+content came from instead of what it says.
+
+## What it does
+
+Every item entering the context window is recorded with a provenance
+authority: authoritative (the user's request), derived (benign system
+data), or untrusted (anything a third party can influence). Three
+mechanisms enforce on that record:
+
+- Session write-gate. Once untrusted content enters the session,
+  consequential writes are blocked. The gate never reads the payload, so
+  there is no wording that gets around it.
+- Parameter lineage. Every tool-call parameter is checked for values that
+  trace to untrusted content but not to the user's own request. An
+  attacker-planted URL or email is denied even when the call looks
+  legitimate.
+- Deferred commit. Consequential actions are queued and re-decided at end
+  of turn against the complete session provenance, so content that
+  arrives after the call can still deny it.
+
+v1.4 adds selective action-class gating: instead of blocking every
+consequential write on taint, you declare which action classes each tool
+belongs to, and the gate blocks exactly the classes where blocking is the
+only sound defense. Deletion and membership changes stay gated, because
+their malice needs no distinctive parameter value for lineage to catch.
+Value-carrying writes can be released to parameter lineage, which covers
+them. Declarations that add gating are free; the declaration that removes
+it (is_value_carrying) can only come from the tool's trusted registration
+block, never from a caller, because a wrong addition over-blocks and a
+wrong removal fails open.
+
+## Measured on AgentDojo
+
+Most security tools show you their wins. Here is the whole table
+(gpt-4o-mini, tool_knowledge attack, single runs at the benchmark's
+default sampling; the attacked cells are 140 episodes on travel and 105
+on slack, and the benign ceilings are 20 and 21 tasks):
+
+| suite  | undefended, attacked | uniform gate (v1.3) | selective gate (v1.4) | benign ceiling |
+|--------|---------------------|---------------------|----------------------|----------------|
+| travel | 36.43%              | 30.00%              | 51.43%               | 65.00%         |
+| slack  | 52.38%              | 4.76%               | 4.76%                | 76.19%         |
+
+Defense-effective attack success is 0.00% in every defended cell above
+except travel under the uniform gate, which sits at 2.14%. That residual
+is persuasion: three episodes whose injection goal is met in the model's
+text output, with no tool call to gate. Selective gating takes it to
+0.00%. Banking and workspace hold 0.00% defense-effective attack success
+across two models in the v1.3 evaluation (paper, Table 3).
+
+Travel is the win. Selective gating restores utility to 79% of the benign
+ceiling, from 46% under the uniform gate, and the defended agent beats the
+undefended one under attack, because blocked injections stop derailing it.
+
+Slack is the cost, stated plainly. The defense floors utility at 4.76%
+whether or not an attack is present, and on slack it costs more utility
+than the attack it prevents. Every benign slack task reads a channel
+before writing, so the write-gate denies the write. Selective gating
+cannot fix this: slack's floor comes from taint-gated outbound and
+membership writes plus lineage blocks on reads, not from value-carrying
+writes.
+
+The sign of the effect is set by workload shape. If your agent's benign
+workflow is read-then-write over attacker-reachable content, this gate is
+expensive, and you should know that before deploying. v1.4 ships
+audit_action_classes() so you can find out which case you are in from
+your own traffic instead of guessing.
+
+The attack-success numbers above use defense-effective ASR, which excludes
+verified benchmark scoring artifacts (episodes where a blocked call is
+scored as a success). We reported the underlying checker issue upstream
+(agentdojo #168) and disclose official ASR alongside it in the paper.
+Single-run rates on this benchmark carry sampling noise; we measured the
+spread across replicates and report it in the benchmark notes.
+
+## Install
+
+```bash
+pip install agentlock
+```
+
+Framework integrations and Ed25519 receipts are optional extras:
+
+```bash
+pip install "agentlock[autogen]"     # also: mcp, fastapi, flask
+pip install "agentlock[crypto]"      # Ed25519 signed receipts
+pip install "agentlock[all]"         # everything
+```
+
+## Quickstart
+
+Register a tool with a lineage policy, then authorize the same call before
+and after untrusted content enters the session. The tool call is identical
+both times. Only the provenance of the session changed.
+
+```python
+from agentlock import (
+    AgentLockPermissions,
+    AuthorizationGate,
+    ContextSource,
+    LineagePolicyConfig,
+)
+
+gate = AuthorizationGate()
+
+gate.register_tool("send_email", AgentLockPermissions(
+    risk_level="high",
+    allowed_roles=["user"],
+    lineage_policy=LineagePolicyConfig(enabled=True, decision="deny"),
+))
+
+session = gate.create_session(user_id="alice", role="user")
+
+# The user's own instruction is authoritative.
+gate.notify_context_write(
+    session.session_id, ContextSource.USER_MESSAGE, "hash-of-user-request",
+)
+
+first = gate.authorize(
+    "send_email", user_id="alice", role="user",
+    parameters={"to": "bob@corp.com"}, is_external=True,
+)
+print(first.decision.value, first.allowed)     # allow True
+
+# A web page enters the session. Nothing about the tool call changes.
+gate.notify_context_write(
+    session.session_id, ContextSource.WEB_CONTENT, "hash-of-web-page",
+    tool_name="fetch_url",
+)
+
+second = gate.authorize(
+    "send_email", user_id="alice", role="user",
+    parameters={"to": "bob@corp.com"}, is_external=True,
+)
+print(second.decision.value, second.allowed)   # deny False
+print(second.denial["reason"])                 # untrusted_lineage
+```
+
+## Declaring action classes (v1.4)
+
+Turn off the blanket consequential gate, declare each tool's class, and
+audit what you did.
+
+```python
+from agentlock import (
+    ActionClassConfig,
+    AgentLockPermissions,
+    AuthorizationGate,
+    LineagePolicyConfig,
+    format_action_class_audit,
+)
+
+# Release value-carrying writes to parameter lineage; keep the taint gate
+# on the value-free classes.
+policy = LineagePolicyConfig(enabled=True, gate_consequential=False, decision="deny")
+
+gate = AuthorizationGate()
+
+gate.register_tool("reserve_hotel", AgentLockPermissions(
+    risk_level="high", allowed_roles=["user"], lineage_policy=policy,
+    action_class=ActionClassConfig(is_value_carrying=True),
+))
+
+gate.register_tool("delete_email", AgentLockPermissions(
+    risk_level="high", allowed_roles=["user"], lineage_policy=policy,
+    action_class=ActionClassConfig(is_deletion=True),
+))
+
+gate.register_tool("append_to_file", AgentLockPermissions(
+    risk_level="high", allowed_roles=["user"], lineage_policy=policy,
+))
+
+print(format_action_class_audit(gate.audit_action_classes()))
+```
+
+```text
+UNDECLARED -- no action_class in the trusted permission block
+
+  append_to_file  [high risk, selective]
+    why:       no action_class, and gate_consequential=False. A call that
+               asserts no class at all matches no disjunct and is never
+               taint-gated. This is the residual hazard.
+    >> REQUIRES HUMAN DECISION (no suggestion available)
+
+NOT COVERED -- the session write-gate cannot block these tools
+
+  reserve_hotel  [high risk, selective]
+    declared:  is_value_carrying
+    why:       declares is_value_carrying with gate_consequential=False,
+               DELIBERATELY un-gated. Parameter/novel lineage is the
+               covering control. This is the intended configuration.
+
+DECLARED -- action class on the trusted side
+
+  delete_email  [high risk, selective]
+    declared:  is_deletion
+    why:       declared and taint-gated via is_deletion
+```
+
+Run the audit before flipping any gate flag. It reports every tool as
+DECLARED, UNDECLARED, or NOT_COVERED, backed by what your own traffic
+actually asserted, and it will never confidently suggest the one
+declaration that weakens gating: that one requires a human.
+
+## What the gate cannot do
+
+- Persuasion. If the injection's goal is achieved in the model's text
+  output, there is no tool call to gate. Travel's entire residual in our
+  evaluation is this mechanism.
+- Read goals. If the goal is achieved by a read, a write-gate cannot
+  block it; parameter lineage covers the subset with distinctive values.
+- Misclassification. The gate is only as correct as the authority labels
+  on your tools. A single mislabeled tool accounted for the entire slack
+  residual before we found it. Classification auditing is a deployment
+  requirement, not an afterthought, which is why v1.4 ships the audit.
+
+We found two defects in our own engine during v1.4 development: a version
+comparison that failed open at schema version 1.10, and a deferred-commit
+path that ignored action-class declarations. Both were caught by our own
+verification gates before release, both are fixed, and both are in the
+changelog. That is how we intend to keep working.
+
+## Versions
+
+| version | highlights | tests |
+|---------|-----------|-------|
+| 1.5.0   | grant basis, execution confirmation, provenance on denials, deferred-resolution logging; LangChain and CrewAI adapters moved out of core | 1141 |
+| 1.4.0   | selective action-class gating, novel lineage, action-class audit, needs_approval surfacing | 1041 |
+| 1.3.0   | provenance-lineage gating, parameter lineage, deferred commit, AgentDojo evaluation | 868 |
+| 1.2.x   | adaptive hardening, decision types (final Apache 2.0 line) | 847 |
+
+Full feature history:
+[v1.1](docs/history.md#v11-memory--context-permissions),
+[v1.2](docs/history.md#v12-adaptive-hardening--new-decision-types),
+[v1.3](docs/history.md#v13-provenance-lineage-gating--deferred-commit).
+Changelog: [CHANGELOG.md](CHANGELOG.md).
+
+## Paper
+
+Provenance-Based Pre-Action Authorization for LLM Agents (Grice, 2026).
+DOI: 10.5281/zenodo.21270300. The v1.4 selective-gating evaluation was
+pre-registered before the benchmark runs; prediction files and the full
+benchmark report ship with the release.
+
+If you use AgentLock in your research, please cite:
+
+> Grice, D. (2026). *Provenance-Based Pre-Action Authorization for LLM Agents:
+> A Structural Defense Evaluated on AgentDojo with AgentLock.* Zenodo.
+> https://doi.org/10.5281/zenodo.21270300
+
+```bibtex
+@misc{grice2026agentlock,
+  author       = {Grice, David},
+  title        = {Provenance-Based Pre-Action Authorization for LLM Agents:
+                  A Structural Defense Evaluated on AgentDojo with AgentLock},
+  year         = {2026},
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.21270300},
+  url          = {https://doi.org/10.5281/zenodo.21270300}
+}
+```
+
+*Research commits authored as `schen-analytics` were made under an alternate
+GitHub identity of the author, configured on the research machine
+(see paper, Appendix B).*
+
+## License
+
+AGPL-3.0-or-later for v1.3.0 and later, with commercial licenses for
+closed-source use: see [COMMERCIAL.md](COMMERCIAL.md) or contact
+licensing@agentlock.dev. Versions 1.2.x and earlier remain Apache 2.0.
+
+## Security
+
+Report vulnerabilities to security@agentlock.dev. Supported versions and
+policy: [SECURITY.md](SECURITY.md).
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md). The test suite must pass under
+`-W error::UserWarning`.

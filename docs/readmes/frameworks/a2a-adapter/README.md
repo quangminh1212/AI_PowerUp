@@ -1,0 +1,101 @@
+<!-- source: https://github.com/hybroai/a2a-adapter.git sha: eb8617a662625761c924b8383307166ec48e8baf readme: main/README.md -->
+# hybroai/a2a-adapter
+
+Open Source A2A Protocol Adapter SDK for Different Agent Frameworks
+
+---
+
+# A2A Adapter
+
+[![PyPI version](https://badge.fury.io/py/a2a-adapter.svg)](https://badge.fury.io/py/a2a-adapter)
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
+
+**Expose your AI agent as an A2A Protocol server in a few lines of Python.**
+
+`a2a-adapter` wraps agent CLIs, local agents, workflow engines, and Python agent
+frameworks behind the [A2A (Agent-to-Agent) Protocol](https://github.com/a2aproject/A2A).
+It handles AgentCard generation, JSON-RPC, task lifecycle, and streaming through
+the official A2A SDK, so your adapter only needs to invoke the underlying agent.
+
+Works with Claude Code, Codex, OpenClaw, n8n, LangGraph, LangChain, CrewAI,
+Ollama, Hermes Agent, and custom Python functions.
+
+## Install
+
+```bash
+pip install a2a-adapter
+```
+
+## Three-line Pattern
+
+```python
+from a2a_adapter import CallableAdapter, serve_agent
+
+adapter = CallableAdapter(func=lambda inputs: f"Echo: {inputs['message']}", name="Echo")
+serve_agent(adapter, port=9000)
+```
+
+Your agent is now available as an A2A server with an auto-generated AgentCard at:
+
+```text
+http://localhost:9000/.well-known/agent-card.json
+```
+
+## Supported Frameworks/Agents
+
+| Framework or agent | Adapter | Streaming | Example |
+|---|---|---:|---|
+| Claude Code | `ClaudeCodeAdapter` | Yes | [claude_code_agent.py](examples/claude_code_agent.py) |
+| Codex | `CodexAdapter` | No | [codex_agent.py](examples/codex_agent.py) |
+| OpenClaw | `OpenClawAdapter` | No | [openclaw_agent.py](examples/openclaw_agent.py) |
+| n8n | `N8nAdapter` | No | [n8n_agent.py](examples/n8n_agent.py) |
+| LangGraph | `LangGraphAdapter` | Yes | [langgraph_server.py](examples/langgraph_server.py) |
+| LangChain | `LangChainAdapter` | Yes | [langchain_agent.py](examples/langchain_agent.py) |
+| CrewAI | `CrewAIAdapter` | No | [crewai_agent.py](examples/crewai_agent.py) |
+| Ollama | `OllamaAdapter` | Yes | [ollama_agent.py](examples/ollama_agent.py) |
+| Hermes Agent | `HermesAdapter` | Yes | [hermes_agent.py](examples/hermes_agent.py) |
+| Python callable | `CallableAdapter` | Optional | [v02_quickstart.py](examples/v02_quickstart.py) |
+| Custom class | `BaseA2AAdapter` | Optional | [custom_adapter.py](examples/custom_adapter.py) |
+
+## Test a Running Agent
+
+```bash
+curl http://localhost:9000/.well-known/agent-card.json
+```
+
+```bash
+curl -X POST http://localhost:9000 \
+  -H "Content-Type: application/json" \
+  -d '{
+    "jsonrpc": "2.0",
+    "id": "1",
+    "method": "message/send",
+    "params": {
+      "message": {
+        "role": "user",
+        "messageId": "msg-1",
+        "parts": [{"kind": "text", "text": "Hello!"}]
+      }
+    }
+  }'
+```
+
+## Documentation
+
+- [Quick Start](QUICKSTART.md) - end-to-end setup and testing guide
+- [Examples](examples/README.md) - runnable examples for each adapter
+- [Architecture](ARCHITECTURE.md) - SDK delegation, request flow, and internals
+- [Changelog](CHANGELOG.md) - release notes and migration history
+- [Contributing](CONTRIBUTING.md) - development setup and contribution guide
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=hybroai/a2a-adapter&type=Date&legend=top-left&v=2)](https://www.star-history.com/?repos=hybroai%2Fa2a-adapter&type=date&legend=top-left)
+
+## License
+
+Apache-2.0 - see [LICENSE](LICENSE).
+
+Built by [HYBRO AI](https://hybro.ai). Powered by the
+[A2A Protocol](https://github.com/a2aproject/A2A).

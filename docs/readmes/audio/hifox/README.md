@@ -1,0 +1,34 @@
+<!-- source: https://github.com/HiFoxAI/HiFox.git sha: 7f101930c2513881382c5ccac1e4959da33ffd90 readme: main/README.md -->
+# HiFoxAI/HiFox
+
+All-in-one AI platform for Content Creation, Copywriting, Q&A, Image/Video/Voice Generation, Intelligent Agents, Automated Workflows, and Custom AI Apps.
+
+---
+
+<h1 align="center">the HiFox.ai Open Source Project</h1>
+
+<p align="center">
+    <a href="https://discord.gg/bu5Qs7xT4D">
+      <img alt="HiFox.ai Discord" src="https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white" align="center" />
+    </a>
+    <a href="https://x.com/AnakinAiHQ">
+        <img alt="Anakin AI Official X Account" src="https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" alt='Anakin AI Official X Account' align="center" />
+    </a>
+    <a href="https://www.linkedin.com/company/anakin-ai">
+        <img alt="HiFox.ai Official X Account" src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" alt='Linkedin' align="center" />
+    </a>
+</p>
+
+Welcome! [HiFox.ai](https://hifox.ai?ref=github) an AI-powered work platform that empowers individuals with thousands of professional AI applications.
+
+- Connect to a variety of AI models, including LLMs, image generation, video and audio generation models.
+- Quickly build AI apps and workflows to automate your mandane work.
+- Batch proecessing and Knowledge base feature.
+- Support external APIs.
+- Team workspace, and much more features!
+
+<p align="center"><b>The HiFox.ai Project will be completely open-sourced in the future. Please Stay tuned!</b></p>
+
+## Stay Connected
+
+* For more information, visit [HiFox.ai Website](https://hifox.ai?ref=github)

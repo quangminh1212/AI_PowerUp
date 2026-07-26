@@ -1,0 +1,176 @@
+<!-- source: https://github.com/backblaze-labs/awesome-physical-ai.git sha: f970233e4e66ad3e445c363cd440a36805163743 readme: main/README.md -->
+# backblaze-labs/awesome-physical-ai
+
+A curated list of physical AI tools: robotics foundation models, world models, simulators, teleoperation, sim-to-real, and embodied AI datasets for robot learning and autonomous systems.
+
+---
+
+# Awesome Physical AI [![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com) [![License: CC0-1.0](https://img.shields.io/badge/License-CC0_1.0-lightgrey.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
+
+![Abstract illustration of physical AI and robotics systems](assets/readme-hero.png)
+
+A curated list of open-source tools for physical AI and robotics — foundation models, world models, simulators, learning frameworks, benchmarks, and runtime.
+
+Maintained by [Backblaze](https://www.backblaze.com).
+
+### Related Lists
+
+- [Awesome ML Data Pipelines](https://github.com/backblaze-labs/awesome-ml-data-pipelines)
+- [Awesome Multimodal Data](https://github.com/backblaze-labs/awesome-multimodal-data)
+- [Awesome Agent Infrastructure](https://github.com/backblaze-labs/awesome-agent-infrastructure)
+- [Awesome Image Generation](https://github.com/backblaze-labs/awesome-image-generation)
+- [Awesome Video Generation](https://github.com/backblaze-labs/awesome-video-generation)
+- [Awesome Audio Generation](https://github.com/backblaze-labs/awesome-audio-generation)
+
+## Contents
+
+- [Robotics Foundation Models](#robotics-foundation-models)
+- [World Models](#world-models)
+- [Simulation and Physics Engines](#simulation-and-physics-engines)
+- [Robot Learning Frameworks](#robot-learning-frameworks)
+- [Datasets and Benchmarks](#datasets-and-benchmarks)
+- [Robot Middleware and Runtime](#robot-middleware-and-runtime)
+- [Teleop and Data Collection](#teleop-and-data-collection)
+- [SDKs and Developer Tooling](#sdks-and-developer-tooling)
+- [Templates and Example Projects](#templates-and-example-projects)
+
+---
+
+## Robotics Foundation Models
+
+> Vision-language-action (VLA) and embodied foundation models you can fine-tune and deploy.
+
+- **[OpenVLA](https://openvla.github.io)** – 7B-parameter open vision-language-action model trained on 970k demonstrations from Open X-Embodiment. Strong generalist manipulation baseline. [Docs](https://github.com/openvla/openvla)
+- **[Octo](https://octo-models.github.io)** – Transformer-based generalist robot policy pretrained on 800k trajectories. Flexible conditioning on goal images or language. [Docs](https://github.com/octo-models/octo)
+- **[Cosmos Policy](https://github.com/NVlabs/cosmos-policy)** – Fine-tunes the Cosmos-Predict2-2B video foundation model for robot visuomotor control. Jointly predicts action chunks, future proprioception, and value estimates; supports best-of-N planning. Evaluated on LIBERO, RoboCasa, and ALOHA. [Docs](https://nvidia-cosmos.github.io/cosmos-cookbook/recipes/post_training/predict2/cosmos_policy/post_training.html)
+- **[CrossFormer](https://crossformer-model.github.io)** – Transformer policy trained on 900k trajectories across 30 embodiments. Single model weights control arms, wheeled robots, quadcopters, and quadrupeds via language or goal-image conditioning. [Docs](https://github.com/rail-berkeley/crossformer)
+- **[HoloMotion](https://github.com/HorizonRobotics/HoloMotion)** – Foundation model for humanoid whole-body control from Horizon Robotics. End-to-end pipeline for motion retargeting, distributed training, and ROS 2 deployment on real hardware (Unitree G1). Pre-trained weights on HuggingFace. [Docs](https://holomotion.readthedocs.io)
+- **[HuggingFace SmolVLA](https://huggingface.co/blog/smolvla)** – Compact VLA model from HuggingFace designed to run on consumer hardware while retaining generalist behaviour. [Docs](https://github.com/huggingface/lerobot)
+- **[MolmoBot](https://allenai.github.io/MolmoBot/)** – Ai2 robot manipulation model suite trained entirely in simulation. Achieves zero-shot real-world transfer on Franka FR3 and RB-Y1 without real-world training data. [Docs](https://github.com/allenai/MolmoBot)
+- **[openpi](https://github.com/Physical-Intelligence/openpi)** – Open-source code and weights for π0, π0-FAST, and π0.5 VLA models from Physical Intelligence. Fine-tuning recipes for ALOHA, DROID, and custom platforms. [Docs](https://www.pi.website/blog/openpi)
+- **[Physical Intelligence π-0](https://www.physicalintelligence.company)** – General-purpose robot foundation model from Physical Intelligence. Weights partially released; commercial access via partners.
+- **[RoboVLMs](https://robovlms.github.io)** – Unified framework for building VLA models from any VLM backbone. Integrates 8 VLM architectures (KosMos, PaLiGemma, Qwen, LLaVA, etc.) into robotic policies within 30 lines of code. Evaluated on CALVIN, SimplerEnv, and real-robot tasks. Nature Machine Intelligence 2026. [Docs](https://github.com/Robot-VLAs/RoboVLMs)
+- **[RT-X / RT-2](https://robotics-transformer-x.github.io)** – Google DeepMind's RT-X family of generalist robotics transformers and the Open X-Embodiment dataset that underpins them.
+- **[UniVLA](https://github.com/OpenDriveLab/UniVLA)** – VLA that learns task-centric latent actions from cross-embodiment videos without action labels. Single generalist policy covers manipulation and navigation; pretrains in ~960 GPU-hours. SOTA on CALVIN, LIBERO, and SimplerEnv. RSS 2025.
+
+## World Models
+
+> Generative world models for physical simulation, planning, and synthetic data.
+
+- **[V-JEPA 2](https://ai.meta.com/research/v-jepa/)** – Meta FAIR's non-generative video predictive model. Learns world representations useful for planning and robot perception. [Docs](https://github.com/facebookresearch/jepa)
+- **[NVIDIA Cosmos](https://www.nvidia.com/en-us/ai/cosmos/)** – World foundation-model platform for physical AI. Cosmos-Predict generates physics-aware video from text, image, video, or sensor inputs. [Docs](https://docs.nvidia.com/cosmos/latest/introduction.html)
+- **[1X World Model](https://www.1x.tech/discover/introducing-our-world-model)** – Humanoid-centric world model from 1X. Generates high-fidelity first-person rollouts for policy evaluation in simulation.
+- **[LingBot-VA](https://github.com/robbyant/lingbot-va)** – Causal video-action world model for generalist robot control from Ant Group. AR diffusion framework with dual-stream MoT architecture unifies visual prediction and action inference; SOTA on RoboTwin 2.0 and LIBERO benchmarks.
+
+## Simulation and Physics Engines
+
+> Physics simulators and training environments for robotics and embodied AI.
+
+- **[Genesis](https://genesis-embodied-ai.github.io)** – Pure-Python physics platform for generalist embodied AI. Unifies rigid, soft, fluid, and differentiable simulation. [Docs](https://genesis-world.readthedocs.io) | SDK: Python (pip install genesis-world)
+- **[PyBullet](https://pybullet.org)** – Python bindings for the Bullet physics engine. Still widely used for manipulation and locomotion baselines. [Docs](https://docs.google.com/document/d/10sXEhzFRSnvFcl3XxNGhnD4N2SedqwdAvK3dsihxVUA) | SDK: Python (pip install pybullet)
+- **[MuJoCo](https://mujoco.org)** – DeepMind's fast multi-joint dynamics engine. Standard for contact-rich manipulation and locomotion research. [Docs](https://mujoco.readthedocs.io) | SDK: Python (pip install mujoco), C
+- **[NVIDIA Isaac Lab](https://isaac-sim.github.io/IsaacLab/)** – Unified robot-learning framework on Isaac Sim. GPU-accelerated training with rich sensor and contact simulation. [Docs](https://isaac-sim.github.io/IsaacLab/source/setup/installation/index.html)
+- **[Drake](https://drake.mit.edu)** – MIT/TRI's model-based design toolbox. Rigid-body dynamics, trajectory optimization, and system modeling for robotics. [Docs](https://drake.mit.edu/doxygen_cxx/index.html)
+- **[Brax](https://github.com/google/brax)** – Google's differentiable physics engine in JAX. Massively parallel RL on a single accelerator. SDK: Python (pip install brax)
+- **[Gazebo](https://gazebosim.org)** – Open-source robotics simulator with tight ROS 2 integration. Modern Gazebo (Harmonic/Ionic) is the successor to Gazebo Classic. [Docs](https://gazebosim.org/docs)
+- **[Genie Sim](https://github.com/AgibotTech/genie_sim)** – Humanoid-focused simulation platform built on Isaac Sim. LLM-driven scene generation, 5,100+ validated assets, 200+ benchmark tasks, and zero-shot sim-to-real transfer toolchain. [Docs](https://agibot-world.com)
+- **[Habitat-Lab](https://aihabitat.org)** – Meta FAIR's modular library for training embodied AI agents in photorealistic 3D indoor environments. Supports navigation, rearrangement, and instruction following via RL or imitation learning. [Docs](https://github.com/facebookresearch/habitat-lab) | SDK: Python (pip install habitat-lab)
+- **[MolmoSpaces](https://github.com/allenai/molmospaces)** – Ai2 open ecosystem for robot learning. Unifies 230k+ indoor scenes, 130k object models, and 42M+ annotated grasps across MuJoCo, Isaac, and ManiSkill backends. [Docs](https://allenai.github.io/MolmoBot/)
+- **[Newton](https://github.com/newton-physics/newton)** – GPU-accelerated physics simulation engine built on NVIDIA Warp, co-developed by NVIDIA, Google DeepMind, and Disney Research. Integrates MuJoCo Warp as its primary backend. [Docs](https://developer.nvidia.com/newton-physics) | SDK: Python (pip install newton)
+- **[NVIDIA Isaac Sim](https://developer.nvidia.com/isaac/sim)** – Open-source robotics simulation platform on NVIDIA Omniverse. GPU-accelerated physics, photorealistic rendering, synthetic data generation, and ROS 2 bridge. Underlying runtime for Isaac Lab. [Docs](https://docs.isaacsim.omniverse.nvidia.com)
+- **[robosuite](https://robosuite.ai)** – MuJoCo-based simulation framework and benchmark suite for robot learning. Supports humanoids, custom robot composition, and photorealistic rendering. [Docs](https://robosuite.ai/docs/overview.html) | SDK: Python (pip install robosuite)
+- **[RoboVerse](https://roboverseorg.github.io)** – Unified simulation platform, synthetic dataset, and benchmark suite for scalable robot learning. MetaSim abstraction wraps 8+ physics engines (Isaac Lab, MuJoCo, SAPIEN, Genesis, PyBullet) under one API. Accepted RSS 2025. [Docs](https://roboverseorg.github.io/docs/)
+- **[SAPIEN](https://sapien.ucsd.edu)** – Physics-rich simulation platform for articulated objects and robot manipulation. PhysX 5 GPU parallelization, ray-traced rendering, and depth-sensor simulation. Underlying engine for ManiSkill. [Docs](https://sapien-sim.github.io/docs/) | SDK: Python (pip install sapien)
+- **[Webots](https://cyberbotics.com)** – Open-source 3D robot simulator by Cyberbotics. Supports ROS 2, Python, C/C++, Java, and MATLAB controllers. Includes 200+ robot models and physics via ODE. [Docs](https://cyberbotics.com/doc/guide/index)
+- **[WheeledLab](https://uwrobotlearning.github.io/WheeledLab/)** – Sim-to-real framework for low-cost wheeled robots integrated with Isaac Lab. Provides environments, domain randomization, and sensor simulation for HOUND, MuSHR, and F1Tenth platforms. RSS 2025 demo paper. [Docs](https://github.com/UWRobotLearning/WheeledLab)
+
+## Robot Learning Frameworks
+
+> Imitation learning, RL, and policy training toolkits targeting robot control.
+
+- **[HuggingFace LeRobot](https://github.com/huggingface/lerobot)** – End-to-end robot-learning library from HuggingFace. Datasets on the Hub, policies, and low-cost reference hardware (SO-100). [Docs](https://huggingface.co/docs/lerobot) | SDK: Python (pip install lerobot)
+- **[Stable-Baselines3](https://stable-baselines3.readthedocs.io)** – Reliable PyTorch implementations of popular RL algorithms. De-facto baseline for reproducible RL research. [Docs](https://stable-baselines3.readthedocs.io/en/master/) | SDK: Python (pip install stable-baselines3)
+- **[Robomimic](https://robomimic.github.io)** – Research framework for imitation learning from human demonstrations. Standardized dataset format and algorithm zoo. [Docs](https://robomimic.github.io/docs/introduction/overview.html)
+- **[Ark](https://github.com/Robotics-Ark/ark_framework)** – Python-first robot-learning framework. Gym-style interface for collecting data, training ACT/Diffusion Policy policies, and switching between simulation and real hardware with minimal code changes. [Docs](https://robotics-ark.github.io/ark_robotics.github.io/)
+- **[ASAP](https://agile.human2humanoid.com)** – Two-stage sim-to-real framework for agile humanoid whole-body skills from CMU LeCAR Lab. Pretrains motion-tracking policies in simulation, then learns a delta-action residual model from real-world data to close the dynamics gap. RSS 2025. [Docs](https://github.com/LeCAR-Lab/ASAP)
+- **[DeFi](https://github.com/LogosRoboticsGroup/DeFi)** – Decoupled forward and inverse dynamics pretraining for VLA models. Separate GFDM and GIDM models exploit action-free video and robot data independently; sets SOTA on CALVIN ABC-D (4.51 avg task length). ICLR 2026.
+- **[Diffusion Policy](https://diffusion-policy.cs.columbia.edu)** – Visuomotor policy learning via conditional denoising diffusion. Handles multimodal action distributions; demonstrated on 12 simulation tasks and real UR5 arms. RSS 2023. [Docs](https://github.com/real-stanford/diffusion_policy)
+- **[Holosoma](https://github.com/amazon-far/holosoma)** – Full-stack humanoid sim-to-real training framework from Amazon FAR. Supports IsaacGym, IsaacSim, MJWarp, and MuJoCo backends with a unified inference stack for real-robot deployment on Unitree G1 and Booster T1.
+- **[HumanoidVerse](https://github.com/LeCAR-Lab/HumanoidVerse)** – Multi-simulator locomotion training framework for humanoid robots supporting IsaacGym, IsaacSim, and Genesis. Enables sim-to-sim and sim-to-real transfer with domain randomization.
+- **[mjlab](https://github.com/mujocolab/mjlab)** – Lightweight GPU-accelerated robot learning framework combining Isaac Lab's manager-based API with MuJoCo Warp. Minimal dependencies, multi-GPU support, and direct access to native MuJoCo data structures. Ships humanoid velocity-tracking and motion-imitation environments. [Docs](https://mujocolab.github.io/mjlab/) | SDK: Python (pip install mjlab)
+- **[MuJoCo Playground](https://playground.mujoco.org)** – GPU-accelerated suite of robot learning environments built on MJX. Supports locomotion, manipulation, and dexterous hands with zero-shot sim-to-real transfer. [Docs](https://github.com/google-deepmind/mujoco_playground) | SDK: Python (pip install playground)
+- **[OpenVLA-OFT](https://openvla-oft.github.io)** – Fine-tuning recipe for VLA models combining parallel decoding, action chunking, and continuous-action regression. Achieves 25-50x inference speedup and 97.1% on LIBERO; tested on bimanual ALOHA hardware. [Docs](https://github.com/moojink/openvla-oft)
+- **[RLinf](https://github.com/RLinf/RLinf)** – Scalable RL infrastructure for training embodied AI and VLA models. Supports PPO, GRPO, and SAC across ManiSkill, LIBERO, Isaac Lab, RoboTwin, and real robot hardware. 2.4x throughput vs prior frameworks via macro-to-micro flow transformation.
+- **[RLlib (Ray)](https://docs.ray.io/en/latest/rllib/index.html)** – Scalable RL library part of Ray. Distributes training across clusters; supports most standard algorithms. SDK: Python (pip install ray[rllib])
+- **[Rofunc](https://github.com/Skylark0924/Rofunc)** – Full-process Python package for robot learning from demonstration and manipulation. Covers demo collection, preprocessing, IL/RL algorithms, and sim deployment on IsaacGym and Genesis. [Docs](https://rofunc.readthedocs.io) | SDK: Python (pip install rofunc)
+- **[RSL-RL](https://github.com/leggedrobotics/rsl_rl)** – Lightweight GPU-accelerated RL library from ETH Zurich RSL. Implements PPO and student-teacher distillation; integrates directly with Isaac Lab and Legged Gym. SDK: Python (pip install rsl-rl-lib)
+- **[TienKung-Lab](https://github.com/Open-X-Humanoid/TienKung-Lab)** – IsaacLab-based locomotion training framework for full-sized humanoid robots. Combines AMP-style and periodic gait rewards for stable walking and running; includes motion retargeting, sim-to-sim MuJoCo transfer, and pre-trained walk/run policies.
+
+## Datasets and Benchmarks
+
+> Public robot datasets, embodied AI benchmarks, and evaluation suites.
+
+- **[ManiSkill](https://www.maniskill.ai)** – GPU-parallel manipulation benchmark built on SAPIEN. Millions of env-steps per second on a single GPU. [Docs](https://maniskill.readthedocs.io)
+- **[Meta-World](https://meta-world.github.io)** – 50-task manipulation benchmark for meta-learning and multitask RL. [Docs](https://github.com/Farama-Foundation/Metaworld)
+- **[RLBench](https://sites.google.com/view/rlbench)** – Large-scale benchmark for robot learning with 100+ tasks built on CoppeliaSim. [Docs](https://github.com/stepjam/RLBench)
+- **[LIBERO](https://libero-project.github.io)** – Benchmark for lifelong robot learning. 130 tasks across four skill categories, with standard splits and evaluation protocols. [Docs](https://github.com/Lifelong-Robot-Learning/LIBERO)
+- **[AgiBot World](https://agibot-world.com)** – Large-scale bimanual manipulation dataset with 1M+ trajectories from 100 robots across 100+ real-world scenarios. Includes the GO-1 foundation model and LeRobot-based toolchain. [Docs](https://github.com/OpenDriveLab/AgiBot-World)
+- **[DROID](https://droid-dataset.github.io)** – 76k in-the-wild Franka manipulation trajectories (350 h) collected across 564 scenes at 13 institutions. Dataset, policy-learning code, and hardware setup guide are open source. [Docs](https://github.com/droid-dataset/droid_policy_learning)
+- **[Gymnasium-Robotics](https://robotics.farama.org)** – Farama Foundation's collection of MuJoCo-based RL environments for robotics. Includes Fetch arm, Shadow Hand, Franka Kitchen, Adroit, and multi-agent variants. Gymnasium API compatible. [Docs](https://robotics.farama.org/index.html) | SDK: Python (pip install gymnasium-robotics)
+- **[HumanoidBench](https://humanoid-bench.github.io)** – Simulated humanoid benchmark with 27 whole-body control tasks (12 locomotion + 15 manipulation) on MuJoCo. Supports H1, Digit, Shadow Hand, and Robotiq grippers. RSS 2024. [Docs](https://github.com/carlosferrazza/humanoid-bench) | SDK: Python (pip install -e .)
+- **[Open X-Embodiment](https://github.com/google-deepmind/open_x_embodiment)** – Collaborative dataset of 22 embodiments, 1M+ episodes, 527 skills. Standard training corpus for generalist policies. [Docs](https://robotics-transformer-x.github.io)
+- **[PHUMA](https://davian-robotics.github.io/PHUMA/)** – Physically-grounded humanoid locomotion dataset from KAIST. Physics-constrained retargeting pipeline (PhySINK) adapts large-scale human motion capture to Unitree G1 and H1-2 while enforcing joint limits and eliminating foot skating. [Docs](https://github.com/DAVIAN-Robotics/PHUMA)
+- **[RoboCasa](https://robocasa.ai)** – Large-scale simulation framework for household robot training. RoboCasa365 ships 365 tasks, 2,500+ kitchen scenes, and 2,200+ hours of demonstration data. [Docs](https://github.com/robocasa/robocasa)
+- **[RoboMIND](https://x-humanoid-robomind.github.io)** – Multi-embodiment manipulation dataset with 107k teleoperation trajectories across 479 tasks and 4 robot platforms (Franka, UR5e, AgileX dual-arm, humanoid). Includes 5k failure demonstrations with cause annotations. RSS 2025. [Docs](https://huggingface.co/datasets/x-humanoid-robomind/RoboMIND)
+- **[RoboTwin 2.0](https://robotwin-platform.github.io)** – Scalable data generator and benchmark for bimanual robotic manipulation. 50-task suite built on a 731-object library with structured domain randomization across clutter, lighting, background, and language. Supports five robot platforms. [Docs](https://github.com/RoboTwin-Platform/RoboTwin)
+
+## Robot Middleware and Runtime
+
+> Messaging, scheduling, and dataflow layers for running robots in the real world.
+
+- **[ROS 2](https://www.ros.org)** – Standard robotics middleware. DDS-based messaging, real-time support, and a massive ecosystem of drivers and tools. [Docs](https://docs.ros.org/en/jazzy/)
+- **[Dora-rs](https://dora-rs.ai)** – Low-latency dataflow robotics runtime written in Rust. Python-friendly; often faster than ROS 2 for perception pipelines. [Docs](https://dora-rs.ai/docs/) | SDK: Python (pip install dora-rs), Rust
+
+## Teleop and Data Collection
+
+> Hardware kits and software for collecting demonstration data on real and simulated robots.
+
+- **[LeRobot SO-100 Arm](https://github.com/TheRobotStudio/SO-ARM100)** – Open-source 6-DOF arm co-developed with HuggingFace LeRobot. ~$120 BOM; standard entry-point for homegrown robot data.
+- **[Mobile ALOHA](https://mobile-aloha.github.io)** – Low-cost bimanual mobile-manipulation platform with open hardware and teleop code. Reference data-collection rig. [Docs](https://github.com/MarkFzp/mobile-aloha)
+- **[GELLO](https://wuphilipp.github.io/gello_site/)** – Low-cost, 3D-printable intuitive teleoperation system for arm manipulators. Popular for collecting demonstration data. [Docs](https://github.com/wuphilipp/gello_software)
+- **[ToddlerBot](https://toddlerbot.github.io)** – Low-cost (~$6k) 30-DOF open-source humanoid platform from Stanford for loco-manipulation research. 3D-printed design, full Python software stack with RL and diffusion-policy training, and built-in teleoperation interface for demo collection. CoRL 2025. [Docs](https://github.com/hshi74/toddlerbot)
+- **[Unitree XR Teleoperate](https://github.com/unitreerobotics/xr_teleoperate)** – Teleoperation of Unitree humanoid robots via Apple Vision Pro and Meta Quest 3. Supports arm, dexterous hand, and whole-body control with simulation mode.
+
+## SDKs and Developer Tooling
+
+> Libraries for 3D, kinematics, manipulation, and general robotics development.
+
+- **[Open3D](https://www.open3d.org)** – 3D data processing library with point-cloud registration, reconstruction, and a modern ML module. [Docs](https://www.open3d.org/docs/release/) | SDK: Python (pip install open3d), C++
+- **[PyTorch3D](https://pytorch3d.org)** – Reusable 3D components in PyTorch from Meta FAIR. Differentiable rendering, mesh ops, and point-cloud primitives. [Docs](https://pytorch3d.readthedocs.io) | SDK: Python (pip install pytorch3d)
+- **[NVIDIA GR00T](https://github.com/NVIDIA/Isaac-GR00T)** – NVIDIA's open humanoid foundation-model toolkit. Training recipes, policies, and data-generation pipelines for humanoids. [Docs](https://developer.nvidia.com/isaac-gr00t)
+- **[GR00T-WholeBodyControl](https://nvlabs.github.io/GR00T-WholeBodyControl/)** – Unified platform for training and deploying humanoid whole-body controllers. Includes SONIC, a behavior foundation model trained on large-scale motion-capture data for walking, manipulation, and VR teleoperation. [Docs](https://github.com/NVlabs/GR00T-WholeBodyControl)
+
+## Templates and Example Projects
+
+> Reference implementations, demos, and starter projects.
+
+- **[Isaac Lab Examples](https://github.com/isaac-sim/IsaacLabExtensionTemplate)** – Official template repo for building Isaac Lab tasks and training environments.
+- **[LeRobot Tutorials](https://huggingface.co/docs/lerobot/en/tutorials)** – Step-by-step tutorials for recording robot data, training policies, and evaluating on real hardware.
+
+---
+
+## Contributing
+
+Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md). One entry per PR — edit `entries.yaml` only and let the maintainers regenerate `README.md`.
+
+## Start building with Genblaze
+
+Save on tokens by using the [Genblaze](https://github.com/backblaze-labs/genblaze) SDK — Backblaze's open-source Python SDK for AI-generated video, audio, and images. It orchestrates multi-provider generation pipelines with built-in, tamper-evident provenance and native Backblaze B2 storage.
+
+## License
+
+Released under [CC0 1.0 Universal](LICENSE). You may copy, modify, and redistribute without attribution.
+
+## About Backblaze B2
+
+[Backblaze B2 Cloud Storage](https://www.backblaze.com/cloud-storage) is S3-compatible object storage designed for AI and media workloads. This list is maintained as part of our work making B2 a convenient storage layer for AI workflows.

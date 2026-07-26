@@ -1,0 +1,36 @@
+<!-- source: https://github.com/DeAdTuBE2004exe/voice-bot.git sha: e9a42b373686b44846ecc533dcebab8e02fef721 readme: main/README.md -->
+# DeAdTuBE2004exe/voice-bot
+
+Intelligent voice-enabled chatbot with Python backend and React frontend, supporting real-time speech, OTP auth, and fast conversational AI.
+
+---
+
+# 🎤 VoiceBot Project
+
+Welcome to **VoiceBot** — your intelligent, full-stack conversational assistant powered by speech and text!  
+This repository houses robust backend services with a modern, interactive frontend, enabling real-time voice communication, secure authentication, and seamless chatbot experiences.
+
+---
+
+## 📁 Project Structure
+
+- **`backend/`** — Fast Python backend: Handles user accounts, authentication (including OTP & password reset), voice data processing, and secure APIs.
+- **`frontend/`** — Blazing-fast Vite + React SPA: Engages users with audio recording/playback, smooth login/signup flows, and a smart chatbot UI.
+
+---
+
+## ✨ Key Features
+
+- 🔐 **Secure Authentication:** Modern login, signup, OTP verification, and password reset flows.
+- 🗝️ **Password & OTP Reset:** User-friendly password recovery via email OTPs, all in a single page interface.
+- 🎙️ **Audio Recording & Playback:** High-quality sound capture/playback for real-time queries.
+- 🤖 **Conversational AI Chatbot:** Built-in chatbot with voice and text support.
+- 🗂️ **Clean Architecture:** Easily extendable, clear separation of concerns, modern file structure.
+- ⚡ **Fast & Responsive:** Vite + React frontend ensures instant loading, real-time UI updates.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Backend**: Python, FastAPI/Flask, speech-processing libraries
+- **Frontend**: React, Vite, Bootstrap
