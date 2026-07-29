@@ -14982,3 +14982,31 @@
 [submodule "reasoning/prompt-playground"]
 	path = reasoning/prompt-playground
 	url = https://github.com/joyvishtech-del/prompt-playground.git
+
+[submodule "agents/general/awf"]
+	path = agents/general/awf
+	url = https://github.com/TUAN130294/awf.git
+
+[submodule "agents/general/stgs_futures_bot"]
+	path = agents/general/stgs_futures_bot
+	url = https://github.com/alonecandies/stgs_futures_bot.git
+
+[submodule "mcp-servers/notebooklm-mcp-antigravity"]
+	path = mcp-servers/notebooklm-mcp-antigravity
+	url = https://github.com/duykhanhbv-bit/notebooklm-mcp-antigravity.git
+
+[submodule "agents/general/shared_fin_bot"]
+	path = agents/general/shared_fin_bot
+	url = https://github.com/hungson175/shared_fin_bot.git
+
+[submodule "agents/coding/claude-code-production-grade-plugin"]
+	path = agents/coding/claude-code-production-grade-plugin
+	url = https://github.com/nagisanzenin/claude-code-production-grade-plugin.git
+
+[submodule "data-rag/katana"]
+	path = data-rag/katana
+	url = https://github.com/projectdiscovery/katana.git
+
+[submodule "vision/ai-clothingtryon"]
+	path = vision/ai-clothingtryon
+	url = https://github.com/speedTD/AI-ClothingTryOn.git
