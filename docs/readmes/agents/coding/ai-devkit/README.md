@@ -1,7 +1,8 @@
-<!-- source: https://github.com/codeaholicguy/ai-devkit.git sha: 15b09d2d3a982e58f8416b712057014b092df563 readme: main/README.md -->
+<!-- source: https://github.com/codeaholicguy/ai-devkit readme: main/README.md -->
 # codeaholicguy/ai-devkit
 
-The control plane for AI coding agents.
+> Submodule path: `agents/coding/ai-devkit`
+> README only (no full clone).
 
 ---
 
