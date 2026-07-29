@@ -15010,3 +15010,19 @@
 [submodule "vision/ai-clothingtryon"]
 	path = vision/ai-clothingtryon
 	url = https://github.com/speedTD/AI-ClothingTryOn.git
+
+[submodule "platforms/n8n-workflows"]
+	path = platforms/n8n-workflows
+	url = https://github.com/Zie619/n8n-workflows.git
+
+[submodule "agents/coding/antigravity-manager"]
+	path = agents/coding/antigravity-manager
+	url = https://github.com/lbjlaq/Antigravity-Manager.git
+
+[submodule "data-rag/scrapy"]
+	path = data-rag/scrapy
+	url = https://github.com/scrapy/scrapy.git
+
+[submodule "agents/coding/antigravity-kit"]
+	path = agents/coding/antigravity-kit
+	url = https://github.com/vudovn/antigravity-kit.git
