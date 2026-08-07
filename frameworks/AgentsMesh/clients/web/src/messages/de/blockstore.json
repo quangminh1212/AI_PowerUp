@@ -1,0 +1,22 @@
+{
+  "title": "Blocks",
+  "description": "Collaborative workspace for Agent and human blocks.",
+  "emptyPage": "Untitled page",
+  "addBlock": "+ Add block",
+  "loadFailed": "Failed to load block workspace.",
+  "slash": {
+    "paragraph": "Paragraph",
+    "paragraphHint": "Plain text",
+    "task": "Task",
+    "taskHint": "To-do item",
+    "list": "List",
+    "listHint": "Bullet container"
+  },
+  "blocks": {
+    "sidebar": {
+      "deletePage": "Seite löschen",
+      "deletePageTitle": "Seite löschen?",
+      "deletePageDesc": "\"{title}\" und ihre Blöcke werden entfernt. Dies kann nicht rückgängig gemacht werden."
+    }
+  }
+}

@@ -1,0 +1,154 @@
+{
+  "channels": {
+    "contextMenu": {
+      "openInNewWindow": "Abrir em nova janela",
+      "mute": "Silenciar",
+      "unmute": "Reativar",
+      "pin": "Fixar",
+      "unpin": "Desafixar",
+      "markUnread": "Marcar como não lido"
+    },
+    "emptyState": "Selecione um Channel para começar a conversar",
+    "emptyStateHint": "Escolha um Channel na barra lateral para ver mensagens e colaborar com sua equipe",
+    "sidebar": {
+      "searchPlaceholder": "Pesquisar canais...",
+      "createChannel": "Novo Channel",
+      "refresh": "Atualizar",
+      "showArchived": "Mostrar arquivados",
+      "hideArchived": "Ocultar arquivados",
+      "noChannels": "Nenhum canal ainda",
+      "noMatch": "Nenhum canal encontrado",
+      "podsCount": "{count} pods",
+      "groupActive": "Ativo",
+      "groupLinked": "Vinculado",
+      "groupQuiet": "Silencioso",
+      "groupPinned": "Fixados",
+      "atMe": "@me",
+      "typeAttachment": "[Anexo]",
+      "typeCode": "[Código]",
+      "typeCommand": "[Comando]",
+      "unreadBadge": "{count} não lidas",
+      "muted": "Silenciado",
+      "markedUnread": "Não lido",
+      "draftTag": "[Rascunho]"
+    },
+    "createDialog": {
+      "title": "Criar Channel",
+      "name": "Nome do Channel",
+      "namePlaceholder": "Ex: feature-auth, bug-fix-login",
+      "nameRequired": "O nome do Channel é obrigatório",
+      "description": "Descrição",
+      "descriptionPlaceholder": "Sobre o que é este Channel?",
+      "descriptionHint": "Opcional",
+      "visibility": "Visibilidade",
+      "failed": "Falha ao criar Channel"
+    },
+    "visibility": {
+      "public": "Público",
+      "private": "Privado"
+    },
+    "actions": {
+      "join": "Entrar",
+      "leave": "Sair",
+      "joinToParticipate": "Entre neste Channel para ver mensagens e participar"
+    },
+    "members": {
+      "title": "Membros do Channel",
+      "current": "Membros",
+      "available": "Adicionar membros",
+      "searchPlaceholder": "Pesquisar membros...",
+      "empty": "Sem membros",
+      "owner": "Proprietário"
+    },
+    "messages": {
+      "today": "Hoje",
+      "yesterday": "Ontem",
+      "loadOlder": "Carregar mensagens anteriores",
+      "loading": "Carregando...",
+      "noMessages": "Nenhuma mensagem ainda",
+      "startConversation": "Inicie a conversa!",
+      "copyMessage": "Copiar",
+      "editMessage": "Editar",
+      "deleteMessage": "Excluir",
+      "metadata": "Metadados",
+      "edited": "editado",
+      "save": "Salvar",
+      "cancel": "Cancelar",
+      "editHint": "Enter para salvar, Esc para cancelar",
+      "deleteConfirmTitle": "Excluir mensagem",
+      "deleteConfirmDescription": "Tem certeza de que deseja excluir esta mensagem? Esta ação não pode ser desfeita.",
+      "delete": "Excluir",
+      "moreActions": "Mais",
+      "newMessagesDivider": "Novas mensagens abaixo",
+      "mentionBelow": "Alguém mencionou você",
+      "readBy": "Lido por",
+      "readByTitle": "Lido por {count}",
+      "readByNone": "Ninguém leu isto ainda"
+    },
+    "archivedBanner": "Este Channel está arquivado — o envio de mensagens está desativado",
+    "header": {
+      "podsCount": "{count} pods",
+      "agentsCount": "{count} agentes",
+      "membersCount": "{count} membros",
+      "linkedTo": "Vinculado a",
+      "search": "Pesquisar mensagens",
+      "members": "Membros",
+      "settings": "Configurações do Channel",
+      "more": "Mais"
+    },
+    "rightRail": {
+      "pods": "PODS",
+      "agents": "AGENTES",
+      "members": "MEMBROS",
+      "linked": "VINCULADO",
+      "document": "DOCUMENTO",
+      "podsEmpty": "Nenhum pod ainda",
+      "agentsEmpty": "Nenhum agente ainda",
+      "documentEmpty": "Nenhum documento ainda",
+      "destroyed": "Destruído"
+    },
+    "composer": {
+      "placeholder": "Mensagem #{channel} — use @ para mencionar um pod ou membro",
+      "mention": "Mencionar",
+      "attach": "Anexar arquivo",
+      "send": "Enviar",
+      "formatBold": "Negrito",
+      "formatItalic": "Itálico",
+      "formatStrike": "Tachado",
+      "formatCode": "Código em linha",
+      "formatLink": "Link"
+    },
+    "search": {
+      "title": "Pesquisar mensagens",
+      "titleFor": "Pesquisar em #{channel}",
+      "placeholder": "Digite palavras-chave...",
+      "empty": "Nenhuma mensagem correspondente",
+      "resultCount": "{count} resultados"
+    },
+    "settings": {
+      "title": "Configurações do Channel",
+      "tabs": {
+        "basic": "Básico",
+        "archive": "Arquivar"
+      },
+      "name": "Nome do Channel",
+      "description": "Descrição",
+      "descriptionPlaceholder": "Sobre o que é este Channel?",
+      "save": "Salvar",
+      "cancel": "Cancelar",
+      "saved": "Salvo",
+      "saveFailed": "Falha ao salvar",
+      "archive": "Arquivar Channel",
+      "unarchive": "Desarquivar Channel",
+      "archiveHint": "Arquivar oculta o Channel dos membros, mas preserva todas as mensagens.",
+      "unarchiveHint": "Este Channel está atualmente arquivado. Desarquivar restaura o acesso dos membros.",
+      "archived": "Arquivado",
+      "unarchived": "Desarquivado",
+      "archiveFailed": "A operação de arquivamento falhou"
+    },
+    "attachment": {
+      "download": "Baixar anexo",
+      "preview": "Visualizar anexo"
+    }
+  }
+}

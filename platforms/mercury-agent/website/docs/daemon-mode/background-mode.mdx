@@ -1,0 +1,95 @@
+---
+id: daemon-mode
+title: Daemon Mode
+---
+
+Mercury runs as a background daemon by default. Telegram and scheduled tasks keep working after you close the terminal.
+
+## Start
+
+```bash
+mercury start
+```
+
+Starts Mercury as a background daemon. Spawns a detached child process, writes a PID file to `~/.mercury/daemon.pid`, and redirects output to `~/.mercury/daemon.log`. Stale PID files are automatically cleaned up.
+
+## Start in foreground
+
+```bash
+mercury start --foreground
+```
+
+Runs Mercury attached to your terminal. Useful for debugging or when you want to see output directly. Shorthand: `mercury start -f`.
+
+## The easy way: mercury up
+
+```bash
+mercury up
+```
+
+This one command does everything: installs the system service if needed, starts the background daemon, and confirms Mercury is running. If it's already running, it just shows you the PID.
+
+## Stop
+
+```bash
+mercury stop
+```
+
+Sends `SIGTERM` (`process.kill` on Windows) to the background process and removes the PID file.
+
+## Restart
+
+```bash
+mercury restart
+```
+
+Stops the running daemon (if any) and starts a fresh one. Useful when something isn't working right and you need a clean restart.
+
+## View logs
+
+```bash
+mercury logs
+```
+
+Shows the last 100 lines of `~/.mercury/daemon.log`.
+
+## Check status
+
+```bash
+mercury status
+```
+
+Shows whether the daemon is running, its PID, and the log file path.
+
+:::info[Crash recovery]
+
+Background mode includes a watchdog. If Mercury crashes, it restarts automatically with exponential backoff (1s, 1.25s, 1.56s...). After 10 crashes within 60 seconds, it exits to prevent crash loops. Stale PID files are auto-cleaned on startup to prevent "already running" false positives.
+
+:::
+
+## Background Tasks and Workers
+
+Daemon mode supports async background execution for both shell commands and delegated sub-agent work.
+
+### Task IDs
+
+Background tasks use human-friendly IDs like `swift-fox`, `calm-owl`, or `bright-heron` instead of opaque timestamps. There are 2,304 unique combinations (48 adjectives × 48 nouns). If a collision occurs, a numeric suffix is appended.
+
+### Shell background tasks
+
+- Start with `/bg <command>`
+- Inspect with `/bg list` and `/bg <id>`
+- Cancel with `/bg cancel <id>` (or `/bg stop <id>`, `/bg kill <id>`)
+- Cancel all running tasks with `/bg killall` (or `/bg stopall`)
+
+### Sub-agent workers
+
+- Delegate coding with `/code agent <task>` or `/bg: <task>`
+- Move active task to worker with `/bg current`
+- Worker progress/completion is surfaced in the shared background task board (`/bg list`)
+
+### Persistence
+
+Background tasks are persisted to disk and survive daemon restarts. Running tasks that were interrupted by a restart are marked as failed.
+
+These workers are designed to keep Mercury responsive while long-running work continues.

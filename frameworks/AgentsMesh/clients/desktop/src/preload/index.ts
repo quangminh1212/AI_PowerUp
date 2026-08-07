@@ -1,0 +1,87 @@
+import { contextBridge, ipcRenderer, IpcRendererEvent } from "electron";
+import { type ServerConfig } from "../shared/server-config-types";
+import { type UpdaterSnapshot } from "../shared/updater-reducer";
+import { windowTraits, type WindowKind } from "../shared/window-kind";
+import { relayPushApi } from "./relay_push_api";
+
+// Sync IPC by design: renderer code (env.ts, OAuth URL builders, WS connect) is synchronous.
+// Reading at preload (before any renderer code runs) blocks no UI thread; mainWindow.reload()
+// re-runs preload to propagate serverConfig:set.
+// No try/catch: sendSync blocks if handler isn't registered, so structural failure must be visible
+// rather than silently falling back to "" (would render OAuth URLs as relative paths).
+// Invariant: main MUST register serverConfig:*Sync handlers before createWindow() (main/index.ts).
+const apiUrl = ipcRenderer.sendSync("serverConfig:getActiveUrlSync") as string;
+const serverConfigSnapshot = ipcRenderer.sendSync("serverConfig:getSync") as ServerConfig;
+// Project the capability table (window-kind.ts) so the renderer reads booleans, not
+// the kind string. windowKind comes from create_window.ts additionalArguments.
+const windowKind = (process.argv.find((a) => a.startsWith("--agentsmesh-window-kind="))?.split("=")[1] ?? "primary") as WindowKind;
+const traits = windowTraits(windowKind);
+
+const api = {
+  apiUrl,
+  platform: process.platform,
+  ephemeralLayout: traits.ephemeralLayout,
+  ownsNotificationsSeed: traits.seedsNotificationOwner,
+  invoke: (channel: string, ...args: unknown[]) => ipcRenderer.invoke(channel, ...args),
+  on: (channel: string, listener: (event: IpcRendererEvent, ...args: unknown[]) => void) => {
+    ipcRenderer.on(channel, listener);
+    return () => ipcRenderer.removeListener(channel, listener);
+  },
+  shellOpen: (url: string) => ipcRenderer.invoke("shellOpen", url),
+  log: (level: string, target: string, message: string) =>
+    ipcRenderer.invoke("core:log", level, target, message),
+  openLogsFolder: () => ipcRenderer.invoke("logs:openFolder"),
+  onOAuthCallback: (handler: (url: string) => void) => {
+    const listener = (_e: IpcRendererEvent, url: string) => handler(url);
+    ipcRenderer.on("oauth:callback", listener);
+    return () => ipcRenderer.removeListener("oauth:callback", listener);
+  },
+  onRealtimeEvent: (handler: (eventJson: string) => void) => {
+    const listener = (_e: IpcRendererEvent, eventJson: string) => handler(eventJson);
+    ipcRenderer.on("realtime:event", listener);
+    return () => ipcRenderer.removeListener("realtime:event", listener);
+  },
+  onUpdaterSnapshot: (handler: (snap: UpdaterSnapshot) => void) => {
+    const listener = (_e: IpcRendererEvent, snap: UpdaterSnapshot) => handler(snap);
+    ipcRenderer.on("updater:snapshot", listener);
+    return () => ipcRenderer.removeListener("updater:snapshot", listener);
+  },
+  onRealtimeState: (handler: (state: string) => void) => {
+    const listener = (_e: IpcRendererEvent, state: string) => handler(state);
+    ipcRenderer.on("realtime:state", listener);
+    return () => ipcRenderer.removeListener("realtime:state", listener);
+  },
+  // Fired when the main-process primary-window designation changes (e.g. the
+  // current primary closes). Renderers re-query window:isPrimary to update
+  // notification ownership.
+  onPrimaryChanged: (handler: () => void) => {
+    const listener = () => handler();
+    ipcRenderer.on("window:primary-changed", listener);
+    return () => ipcRenderer.removeListener("window:primary-changed", listener);
+  },
+  // Rust-computed domain snapshot pushed after each EventBus dispatch. The
+  // renderer mirrors it into the Electron service cache (the renderer has no
+  // in-process Rust; main owns the SSOT runtime.state). See main/realtime.ts.
+  onRealtimeStateSync: (handler: (snapshotJson: string) => void) => {
+    const listener = (_e: IpcRendererEvent, snapshotJson: string) => handler(snapshotJson);
+    ipcRenderer.on("realtime:state-sync", listener);
+    return () => ipcRenderer.removeListener("realtime:state-sync", listener);
+  },
+  // Relay (terminal data plane) push channels: the main-process Rust pool fans
+  // PTY output / status / ACP to the renderer. ElectronRelayManager subscribes.
+  ...relayPushApi,
+  serverConfig: {
+    snapshot: serverConfigSnapshot,
+    get: () => ipcRenderer.invoke("serverConfig:get"),
+    // Resolves BEFORE main's reload — callers cannot depend on work scheduled after this.
+    set: (cfg: ServerConfig) => ipcRenderer.invoke("serverConfig:set", cfg),
+  },
+};
+
+contextBridge.exposeInMainWorld("electronAPI", api);
+
+declare global {
+  interface Window {
+    electronAPI: typeof api;
+  }
+}

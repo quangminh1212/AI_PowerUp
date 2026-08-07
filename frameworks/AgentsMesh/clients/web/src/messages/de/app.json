@@ -1,0 +1,677 @@
+{
+  "agentpod": {
+    "title": "AgentPod",
+    "pods": "Pods",
+    "newPod": "Neuer Pod",
+    "runners": "Runner",
+    "noRunnersOnline": "Keine Runner online",
+    "selectAgent": "Agent auswählen",
+    "selectRepository": "Repository auswählen",
+    "prompt": "Initialer Prompt",
+    "status": {
+      "initializing": "Initialisierung",
+      "running": "Läuft",
+      "paused": "Pausiert",
+      "terminated": "Beendet",
+      "error": "Fehler"
+    }
+  },
+  "pods": {
+    "status": {
+      "initializing": "Initializing",
+      "running": "Running",
+      "paused": "Paused",
+      "disconnected": "Disconnected",
+      "orphaned": "Reconnecting",
+      "completed": "Completed",
+      "terminated": "Terminated",
+      "error": "Error",
+      "failed": "Failed"
+    }
+  },
+  "mesh": {
+    "title": "AgentsMesh",
+    "channels": "Kanäle",
+    "newChannel": "Neuer Channel",
+    "topology": "Topologie",
+    "messages": "Nachrichten",
+    "sendMessage": "Nachricht senden...",
+    "page": {
+      "title": "Mesh",
+      "subtitle": "Multi-Agent-Kollaborationsnetzwerk-Topologie",
+      "activePods": "{count} aktive Pods",
+      "channelsCount": "{count} Kanäle",
+      "bindingsCount": "{count} Bindungen",
+      "refresh": "Aktualisieren",
+      "dismiss": "Schließen",
+      "updating": "Aktualisierung...",
+      "runnersOnline": "{online} von {total} Runnern online",
+      "zoomIn": "Vergrößern",
+      "zoomOut": "Verkleinern",
+      "fit": "Einpassen"
+    },
+    "legend": {
+      "title": "Legende",
+      "running": "Läuft",
+      "initializing": "Initialisierung",
+      "terminated": "Beendet",
+      "failed": "Fehlgeschlagen",
+      "channel": "Channel",
+      "activeBinding": "Aktive Bindung",
+      "pendingBinding": "Ausstehende Bindung"
+    },
+    "channelList": {
+      "title": "Kanäle",
+      "showArchived": "Archivierte Anzeigen",
+      "hideArchived": "Archivierte Ausblenden",
+      "noChannels": "Keine Kanäle gefunden",
+      "archived": "Archiviert",
+      "archive": "Archivieren",
+      "unarchive": "Dearchivieren"
+    },
+    "messageInput": {
+      "placeholder": "Nachricht eingeben...",
+      "hint": "Enter zum Senden, Shift+Enter für neue Zeile"
+    },
+    "mention": {
+      "members": "Mitglieder",
+      "pods": "Pods"
+    },
+    "ticket": "Ticket",
+    "contextMenu": {
+      "openTerminal": "Terminal öffnen",
+      "openInNewWindow": "In neuem Fenster öffnen",
+      "viewTicket": "Ticket {slug} anzeigen",
+      "rename": "Umbenennen",
+      "terminatePod": "Pod beenden",
+      "terminateTitle": "Pod beenden",
+      "terminateDescription": "Möchten Sie diesen Pod wirklich beenden? Diese Aktion kann nicht rückgängig gemacht werden.",
+      "terminateConfirm": "Beenden"
+    },
+    "runnerGroup": {
+      "online": "Online",
+      "offline": "Offline",
+      "podCount": "{count} Pods"
+    },
+    "channelPodManager": {
+      "title": "Channel-Pods",
+      "description": "Pods in diesem Channel verwalten",
+      "joined": "Beigetreten",
+      "available": "Verfügbar",
+      "empty": "Keine aktiven Pods verfügbar"
+    }
+  },
+  "tickets": {
+    "title": "Tickets",
+    "newTicket": "Neues Ticket",
+    "board": "Board",
+    "backlog": "Backlog",
+    "todo": "Zu Erledigen",
+    "inProgress": "In Bearbeitung",
+    "inReview": "In Überprüfung",
+    "done": "Erledigt",
+    "searchPlaceholder": "Tickets suchen...",
+    "ticketCount": "Tickets",
+    "clear": "Löschen",
+    "view": "Ansicht",
+    "filters": {
+      "status": "Status",
+      "priority": "Priorität",
+      "repository": "Repository",
+      "noRepository": "Kein Repository",
+      "showMore": "Mehr anzeigen",
+      "showLess": "Weniger anzeigen"
+    },
+    "emptyState": {
+      "title": "Keine Tickets",
+      "noMatch": "Keine Tickets entsprechen den Filtern",
+      "createFirst": "Erstellen Sie Ihr erstes Ticket um zu beginnen"
+    },
+    "moreTickets": "+{count} weitere",
+    "listView": {
+      "id": "ID",
+      "titleColumn": "Titel",
+      "status": "Status",
+      "priority": "Priorität",
+      "assignee": "Zugewiesen",
+      "created": "Erstellt",
+      "noTickets": "Keine Tickets gefunden. Verwenden Sie die Seitenleistenfilter oder erstellen Sie ein neues Ticket."
+    },
+    "kanban": {
+      "noTickets": "Keine Tickets",
+      "dropHere": "Hier ablegen"
+    },
+    "priority": {
+      "none": "Keine Priorität",
+      "low": "Niedrig",
+      "medium": "Mittel",
+      "high": "Hoch",
+      "urgent": "Dringend",
+      "unknown": "Unbekannt"
+    },
+    "status": {
+      "backlog": "Backlog",
+      "todo": "Zu Erledigen",
+      "in_progress": "In Bearbeitung",
+      "in_review": "In Überprüfung",
+      "done": "Erledigt",
+      "unknown": "Unbekannt"
+    },
+    "createDialog": {
+      "title": "Create Ticket",
+      "createSubTicket": "Create Sub-ticket",
+      "titleLabel": "Title",
+      "titlePlaceholder": "Enter ticket title",
+      "titleRequired": "Title is required",
+      "repositoryRequired": "Repository is required",
+      "createFailed": "Failed to create ticket",
+      "repository": "Repository",
+      "selectRepository": "Select a repository...",
+      "content": "Content",
+      "submit": "Create Ticket",
+      "moreOptions": "Weitere Optionen",
+      "labelsPlaceholder": "Labels hinzufügen..."
+    },
+    "detail": {
+      "retry": "Retry",
+      "notFound": "Ticket not found",
+      "content": "Content",
+      "subTickets": "Sub-tickets",
+      "related": "Related",
+      "commits": "Commits",
+      "actions": "Actions",
+      "details": "Details",
+      "dueDate": "Due Date",
+      "repository": "Repository",
+      "noRepository": "Kein Repository",
+      "assignees": "Assignees",
+      "noAssignees": "No assignees",
+      "timestamps": "Timestamps",
+      "created": "Created",
+      "updated": "Updated",
+      "deleteTicket": "Delete Ticket",
+      "deleteConfirmation": "Are you sure you want to delete ticket {slug}? This action cannot be undone.",
+      "labels": "Labels",
+      "timeline": "Timeline",
+      "started": "Started",
+      "completed": "Completed",
+      "viewFullDetails": "View Full Details",
+      "dangerZone": "Gefahrenzone",
+      "deleteWarning": "Diese Aktion kann nicht rückgängig gemacht werden.",
+      "linked": "Verknüpft",
+      "noLinkedItems": "Noch keine verknüpften Elemente.",
+      "priority": "Priorität",
+      "opened": "Geöffnet",
+      "spawnPod": "Pod starten",
+      "markDone": "Als erledigt markieren",
+      "lastUsedAgent": "claude-code (zuletzt verwendet)",
+      "comments": "Kommentare",
+      "noComments": "Noch keine Kommentare",
+      "addComment": "Kommentar hinzufügen...",
+      "reply": "Antworten",
+      "edit": "Bearbeiten",
+      "delete": "Löschen",
+      "deleteCommentConfirm": "Möchten Sie diesen Kommentar wirklich löschen?",
+      "replyTo": "Antwort an @{username}",
+      "cancelReply": "Abbrechen",
+      "submit": "Kommentieren",
+      "edited": "bearbeitet"
+    },
+    "podPanel": {
+      "activeCount": "{count} active",
+      "newPod": "Ausführen",
+      "createNewPod": "Create New Pod",
+      "runner": "Runner",
+      "selectRunner": "Select a runner...",
+      "selectRunnerRequired": "Please select a runner",
+      "model": "Model",
+      "permissionMode": "Permission Mode",
+      "permissionDefault": "Default",
+      "permissionPlan": "Plan Mode",
+      "permissionAutoApprove": "Auto-approve (Dangerous)",
+      "prompt": "Initial Prompt (optional)",
+      "promptPlaceholder": "Work on ticket: {title}",
+      "creating": "Creating...",
+      "createPod": "Create Pod",
+      "createFailed": "Failed to create pod",
+      "previousPods": "{count} previous pod(s)",
+      "noPods": "No pods for this ticket yet",
+      "noRunners": "No online runners available",
+      "connect": "Connect",
+      "openInNewTab": "Open in new tab",
+      "started": "Started"
+    },
+    "views": {
+      "board": "Board",
+      "list": "Liste"
+    },
+    "actions": {
+      "newTicket": "Neu",
+      "export": "Exportieren"
+    },
+    "rail": {
+      "workingPods": "Arbeitende Pods",
+      "noPods": "Keine aktiven Pods",
+      "subTickets": "Unter-Tickets",
+      "noSubTickets": "Keine Unter-Tickets",
+      "pullRequests": "Pull Requests",
+      "noPRs": "Keine PRs verknüpft",
+      "activity": "Aktivität",
+      "activityCreated": "Ticket erstellt",
+      "activityUpdated": "Ticket aktualisiert"
+    },
+    "list": {
+      "ticket": "Ticket",
+      "assignees": "Zuständige",
+      "dueDate": "Fälligkeitsdatum",
+      "updated": "Aktualisiert",
+      "noTickets": "Keine Tickets gefunden"
+    }
+  },
+  "workspace": {
+    "title": "Workspace",
+    "searchPlaceholder": "Pods suchen...",
+    "newPod": "Neuer Pod",
+    "noTerminalsOpen": "No terminals open",
+    "noTerminalsDescription": "Click on a pod in the sidebar to open its terminal, or create a new pod to get started.",
+    "createNewPod": "Create New Pod",
+    "podCreated": "Pod created! Waiting for it to start...",
+    "podOpened": "Pod opened",
+    "filters": {
+      "mine": "Meine",
+      "org": "Org",
+      "completed": "Abgeschlossen",
+      "error": "Fehler"
+    },
+    "emptyState": {
+      "title": "Noch keine Pods",
+      "description": "Erstellen Sie Ihren ersten Pod um zu beginnen",
+      "createFirst": "Pod erstellen",
+      "noMatch": "Keine Pods entsprechen Ihrer Suche",
+      "noFiltered": "Keine {filter} Pods"
+    },
+    "runners": {
+      "title": "Runner",
+      "online": "online",
+      "noRunners": "Keine Runner registriert"
+    },
+    "terminateDialog": {
+      "title": "Pod beenden",
+      "description": "Möchten Sie diesen Pod wirklich beenden? Diese Aktion kann nicht rückgängig gemacht werden und alle laufenden Prozesse werden gestoppt.",
+      "cancel": "Abbrechen",
+      "confirm": "Beenden"
+    },
+    "contextMenu": {
+      "rename": "Umbenennen",
+      "terminate": "Beenden",
+      "openInNewWindow": "In neuem Fenster öffnen",
+      "enablePerpetual": "Dauerhaft aktivieren",
+      "disablePerpetual": "Dauerhaft deaktivieren",
+      "share": "Teilen"
+    },
+    "renameDialog": {
+      "title": "Pod umbenennen",
+      "placeholder": "Anzeigename eingeben",
+      "hint": "Leer lassen für Standardname.",
+      "cancel": "Abbrechen",
+      "confirm": "Speichern"
+    },
+    "loadMore": "Mehr laden",
+    "pod": {
+      "status": "Status",
+      "agent": "Agent",
+      "repository": "Repository",
+      "branch": "Branch",
+      "created": "Erstellt",
+      "duration": "Dauer",
+      "actions": {
+        "open": "Öffnen",
+        "terminate": "Beenden",
+        "restart": "Neustarten",
+        "logs": "Logs anzeigen"
+      }
+    },
+    "modal": {
+      "title": "Create New Pod",
+      "agent": "Agent",
+      "selectAgent": "Select an agent...",
+      "selectRunner": "Select a runner...",
+      "repositoryOptional": "Repository (optional)",
+      "selectRepository": "Select a repository...",
+      "branch": "Branch",
+      "branchPlaceholder": "Enter branch name (e.g., main)",
+      "promptOptional": "Initial Prompt (optional)",
+      "promptPlaceholder": "Enter an initial prompt for the agent...",
+      "creating": "Creating...",
+      "createPod": "Create Pod"
+    },
+    "emptyHeroTitle": "Starten Sie Ihren ersten Pod",
+    "emptyHeroDescription": "Ein Pod ist ein isoliertes Terminal, in dem ein KI-Agent an Ihrem Code arbeitet. Sie können zusehen, eingreifen oder ihn auf Autopilot laufen lassen.",
+    "recipesHeading": "Oder mit einem Rezept beginnen",
+    "recipes": {
+      "explain": {
+        "title": "Diese Codebasis erklären",
+        "description": "Claude Code geht Ihr Repository durch und fasst die Architektur zusammen.",
+        "duration": "2 Min."
+      },
+      "tests": {
+        "title": "Tests ausführen",
+        "description": "Claude Code führt die Testsuite aus und meldet Fehler.",
+        "duration": "3 Min."
+      },
+      "bug": {
+        "title": "Offenen Bug beheben",
+        "description": "Wählen Sie ein Ticket, starten Sie einen Pod. Der Agent liest den Kontext und schlägt eine Lösung vor.",
+        "duration": "8 Min."
+      }
+    },
+    "banner": {
+      "newUser": "Neu bei AgentsMesh?",
+      "watchIntro": "Sehen Sie sich die 2-minütige Einführung an →"
+    },
+    "hints": {
+      "search": "zum Suchen",
+      "createPod": "um Pod zu erstellen"
+    }
+  },
+  "commandPalette": {
+    "placeholder": "Befehl eingeben oder suchen...",
+    "searching": "Suche...",
+    "noResults": "Keine Ergebnisse gefunden.",
+    "navigation": "Navigation",
+    "actions": "Aktionen",
+    "goToWorkspace": "Zum Workspace gehen",
+    "workspaceDescription": "Terminal-Workspace",
+    "goToTickets": "Zu Tickets gehen",
+    "ticketsDescription": "Tickets anzeigen und verwalten",
+    "goToMesh": "Zu AgentsMesh gehen",
+    "meshDescription": "Netzwerktopologie",
+    "goToChannels": "Go to Channels",
+    "channelsDescription": "Team collaboration channels",
+    "goToRepositories": "Zu Repositories gehen",
+    "repositoriesDescription": "Repositories verwalten",
+    "goToRunners": "Zu Runners gehen",
+    "runnersDescription": "Compute-Ressourcen verwalten",
+    "goToSettings": "Zu Einstellungen gehen",
+    "settingsDescription": "Organisationseinstellungen",
+    "createNewPod": "Neuen Pod erstellen",
+    "createPodDescription": "Einen neuen Agent-Pod starten",
+    "createNewTicket": "Neues Ticket erstellen",
+    "createTicketDescription": "Eine neue Aufgabe oder ein Issue erstellen",
+    "signOut": "Abmelden",
+    "signOutDescription": "Von Ihrem Konto abmelden",
+    "navigate": "Navigieren",
+    "select": "Auswählen",
+    "toOpen": "zum Öffnen"
+  },
+  "reminders": {
+    "dismiss": "Schließen"
+  },
+  "relayStatus": {
+    "web": "Web",
+    "relay": "Relay",
+    "runner": "Runner",
+    "connected": "Verbunden",
+    "connecting": "Verbindung wird hergestellt",
+    "disconnected": "Getrennt",
+    "error": "Fehler",
+    "unknown": "Unbekannt",
+    "eventsReconnecting": "Live-Updates getrennt – Verbindung wird wiederhergestellt …"
+  },
+  "terminalTabs": {
+    "singleView": "Einzelansicht",
+    "twoColumns": "Zwei Spalten",
+    "twoRows": "Zwei Zeilen",
+    "grid2x2": "2x2 Raster",
+    "fullscreen": "Vollbild"
+  },
+  "terminalToolbar": {
+    "clearScreen": "Bildschirm löschen",
+    "font": "Schriftart",
+    "open": "Open keyboard toolbar",
+    "close": "Close",
+    "fontDecrease": "Decrease font size",
+    "fontIncrease": "Increase font size",
+    "scrollToBottom": "Nach unten scrollen"
+  },
+  "mobile": {
+    "more": "Mehr",
+    "drawer": {
+      "navigationMenu": "Navigationsmenü",
+      "organization": "Organisation",
+      "navigation": "Navigation",
+      "signOut": "Abmelden"
+    },
+    "menu": {
+      "gitConnections": "Git-Verbindungen",
+      "profile": "Profil",
+      "theme": "Theme",
+      "theme_light": "Hell",
+      "theme_dark": "Dunkel",
+      "theme_solarized_light": "Solarized Hell",
+      "theme_solarized_dark": "Solarized Dunkel",
+      "theme_system": "System"
+    }
+  },
+  "support": {
+    "title": "Support-Tickets",
+    "description": "Reichen Sie Fragen oder Feedback ein und verfolgen Sie Ihre Anfragen",
+    "create": "Neues Ticket",
+    "createDescription": "Beschreiben Sie Ihr Problem und wir melden uns bei Ihnen",
+    "submit": "Absenden",
+    "submitting": "Wird gesendet...",
+    "cancel": "Abbrechen",
+    "send": "Senden",
+    "sending": "Wird gesendet...",
+    "attach": "Anhängen",
+    "replyPlaceholder": "Geben Sie Ihre Antwort ein...",
+    "empty": "Noch keine Support-Tickets",
+    "createFirst": "Erstellen Sie Ihr erstes Ticket",
+    "notFound": "Ticket nicht gefunden",
+    "backToList": "Zurück zu Tickets",
+    "retry": "Erneut versuchen",
+    "download": "Herunterladen",
+    "downloadFailed": "Anhang konnte nicht heruntergeladen werden",
+    "fileTooLarge": "Datei überschreitet die maximale Größe ({max})",
+    "filter": {
+      "all": "Alle"
+    },
+    "status": {
+      "open": "Offen",
+      "in_progress": "In Bearbeitung",
+      "resolved": "Gelöst",
+      "closed": "Geschlossen"
+    },
+    "category": {
+      "bug": "Fehlerbericht",
+      "feature_request": "Funktionswunsch",
+      "usage_question": "Nutzungsfrage",
+      "account": "Konto",
+      "other": "Sonstiges"
+    },
+    "priority": {
+      "low": "Niedrig",
+      "medium": "Mittel",
+      "high": "Hoch"
+    },
+    "fields": {
+      "title": "Titel",
+      "titlePlaceholder": "Kurze Zusammenfassung Ihres Problems",
+      "category": "Kategorie",
+      "priority": "Priorität",
+      "content": "Beschreibung",
+      "contentPlaceholder": "Beschreiben Sie Ihr Problem im Detail...",
+      "attachments": "Anhänge",
+      "addFiles": "Dateien hinzufügen"
+    },
+    "validation": {
+      "required": "Titel und Beschreibung sind erforderlich"
+    },
+    "error": {
+      "createFailed": "Ticket konnte nicht erstellt werden. Bitte versuchen Sie es erneut.",
+      "loadFailed": "Daten konnten nicht geladen werden. Bitte erneut versuchen.",
+      "sendFailed": "Nachricht konnte nicht gesendet werden. Bitte erneut versuchen."
+    }
+  },
+  "loopal": {
+    "activity": {
+      "heading": "Aktivität"
+    },
+    "status": {
+      "title": "Loopal",
+      "thinking": "Denken: {value}",
+      "topology": "Topologie",
+      "mode": {
+        "act": "Ausführen",
+        "plan": "Planen"
+      },
+      "goal": {
+        "pause": "Pausieren",
+        "resume": "Fortsetzen",
+        "complete": "Abschließen",
+        "reopen": "Erneut öffnen",
+        "clear": "Löschen"
+      }
+    },
+    "thinking": {
+      "auto": "Auto",
+      "off": "Aus",
+      "low": "Niedrig",
+      "med": "Mittel",
+      "high": "Hoch",
+      "max": "Max"
+    },
+    "dock": {
+      "tabs": {
+        "bgShell": "Hintergrund-Shell",
+        "cron": "Cron",
+        "tasks": "Aufgaben",
+        "agents": "Agenten",
+        "mcp": "MCP"
+      },
+      "agents": {
+        "expand": "Topologie erweitern"
+      },
+      "bgShell": {
+        "kill": "Beenden",
+        "killConfirmTitle": "Hintergrundaufgabe beenden?"
+      },
+      "cron": {
+        "due": "fällig",
+        "inMinutes": "in {m} Min.",
+        "inHours": "in {h} Std.",
+        "inDays": "in {d} Tg.",
+        "recurring": "wiederkehrend",
+        "once": "einmalig",
+        "durable": "dauerhaft",
+        "delete": "Löschen",
+        "deleteConfirmTitle": "Cron-Job löschen?"
+      },
+      "tasks": {
+        "blockedBy": "blockiert von {count}"
+      },
+      "mcp": {
+        "refresh": "aktualisieren",
+        "toolCount": "{count} Tools",
+        "reconnect": "Erneut verbinden",
+        "disconnect": "Trennen",
+        "disconnectConfirmTitle": "MCP-Server trennen?"
+      }
+    },
+    "prompt": {
+      "placeholder": "Nachricht an Loopal, oder / für Befehle",
+      "interrupt": "Unterbrechen",
+      "rewindTitle": "Zu Runde zurückspulen",
+      "rewindPlaceholder": "Runde #",
+      "resumeTitle": "Sitzung fortsetzen",
+      "resumePlaceholder": "Sitzungs-ID",
+      "model": "Modell",
+      "thinking": "Denken"
+    },
+    "commands": {
+      "act": "In den Ausführen-Modus wechseln",
+      "plan": "In den Planen-Modus wechseln",
+      "model": "Modell & Denkstufe",
+      "thinking": "Denkaufwand-Stufe",
+      "compact": "Konversationskontext verdichten",
+      "clear": "Gesamten Konversationsverlauf löschen",
+      "rewind": "Zu einer früheren Runde zurückspulen",
+      "resume": "Eine Sitzung per ID fortsetzen",
+      "suspend": "Cron / Aufwecken aussetzen",
+      "unsuspend": "Cron / Aufwecken fortsetzen",
+      "goal": "Thread-Ziel festlegen (/goal [Ziel])",
+      "mcpRefresh": "MCP-Status aktualisieren",
+      "goalPause": "Ziel pausieren",
+      "goalResume": "Ziel fortsetzen",
+      "goalComplete": "Ziel als abgeschlossen markieren",
+      "goalReopen": "Ziel erneut öffnen",
+      "goalClear": "Ziel löschen"
+    },
+    "topology": {
+      "sheetTitle": "Agent-Topologie",
+      "root": "Wurzel"
+    }
+  },
+  "acp": {
+    "modeSelector": {
+      "bypassPermissions": {
+        "label": "Umgehen",
+        "desc": "Alles automatisch genehmigen"
+      },
+      "acceptEdits": {
+        "label": "Änderungen annehmen",
+        "desc": "Dateibearbeitungen automatisch genehmigen"
+      },
+      "default": {
+        "label": "Standard",
+        "desc": "Jedes Tool genehmigen"
+      },
+      "dontAsk": {
+        "label": "Nicht fragen",
+        "desc": "Ablehnen, außer auf Zulassungsliste"
+      },
+      "bypass": {
+        "label": "Umgehen",
+        "desc": "Alles automatisch genehmigen"
+      },
+      "ask_dangerous": {
+        "label": "Bei riskanten fragen",
+        "desc": "Nur gefährliche Vorgänge bestätigen"
+      },
+      "ask_any_write": {
+        "label": "Bei Schreibvorgängen fragen",
+        "desc": "Jeden Schreibvorgang bestätigen"
+      },
+      "unknown": {
+        "label": "—",
+        "desc": "Modus vom Runner noch nicht gemeldet"
+      }
+    },
+    "activityStream": {
+      "waitingSession": "Warte auf ACP-Sitzung...",
+      "agentWorking": "Agent arbeitet...",
+      "thinking": "Denkt nach..."
+    },
+    "promptInput": {
+      "placeholder": "Anweisung senden...",
+      "notConnected": "Nicht verbunden",
+      "cancel": "Abbrechen"
+    },
+    "permissionDialog": {
+      "relayNotConnected": "Relay nicht verbunden. Bitte warten und erneut versuchen."
+    },
+    "permissionCard": {
+      "title": "Berechtigung erforderlich",
+      "approve": "Genehmigen",
+      "alwaysAllow": "Immer zulassen",
+      "deny": "Ablehnen"
+    }
+  },
+  "errors": {
+    "unexpected": "Etwas ist schiefgelaufen",
+    "notFound": "Seite nicht gefunden",
+    "goBack": "Zurück",
+    "reload": "Neu laden",
+    "home": "Startseite"
+  }
+}

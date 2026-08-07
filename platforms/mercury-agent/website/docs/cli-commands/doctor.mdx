@@ -1,0 +1,33 @@
+---
+id: doctor
+title: Doctor (Reconfigure)
+---
+
+`mercury doctor` re-runs the setup wizard with your current values pre-filled. Press **Enter** on any field to keep it unchanged, or type a new value to replace it.
+
+- **API keys** are shown masked: `sk-x••••4f2a`
+- **Providers and models** can be reselected; Mercury fetches models again for changed credentials
+- **Telegram token** — type `none` to disable Telegram, or paste a token to start the pairing-code flow
+- **Daily budget** — change the token budget limit
+
+```bash
+mercury doctor
+```
+
+## Platform Diagnostics
+
+Use `--platform` to run a non-destructive compatibility check for your current environment:
+
+```bash
+mercury doctor --platform
+```
+
+This prints:
+
+- OS + architecture
+- Node.js version
+- Terminal + TTY/raw-mode capability
+- SSH/CI detection
+- Daemon status
+- Spotify inline-art support status
+- Keybinding fallbacks (`/view`, `/ws exit`, etc.)

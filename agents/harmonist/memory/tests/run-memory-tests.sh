@@ -1,0 +1,592 @@
+#!/usr/bin/env bash
+# Integration tests for the memory CLI + validator.
+#
+# Every test runs in an isolated tmp memory directory: the CLI writes
+# there, the validator reads from there. No Cursor or hook state needed.
+
+set -euo pipefail
+
+PACK_MEMORY="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+TMP="$(mktemp -d)"
+cp "$PACK_MEMORY/memory.py" "$PACK_MEMORY/validate.py" "$TMP/"
+cp "$PACK_MEMORY/session-handoff.md" "$PACK_MEMORY/decisions.md" "$PACK_MEMORY/patterns.md" "$TMP/"
+
+# Fake the hooks' state file so memory.py uses a deterministic correlation_id.
+HOOKS_STATE="$TMP/hooks-state.json"
+cat > "$HOOKS_STATE" <<'JSON'
+{
+  "session_id": "9999999999",
+  "task_seq": 0,
+  "active_correlation_id": "9999999999-0"
+}
+JSON
+export AGENT_PACK_HOOKS_STATE="$HOOKS_STATE"
+
+cleanup() { rm -rf "$TMP"; }
+trap cleanup EXIT
+
+pass=0
+fail=0
+fail_list=()
+
+assert() {
+  local label="$1" expected="$2" actual="$3"
+  if [[ "$expected" == "$actual" ]]; then
+    printf "  ok    %s\n" "$label"
+    pass=$((pass + 1))
+  else
+    printf "  FAIL  %s\n    expected: %s\n    actual:   %s\n" "$label" "$expected" "$actual"
+    fail=$((fail + 1))
+    fail_list+=("$label")
+  fi
+}
+
+reset() {
+  cp "$PACK_MEMORY/session-handoff.md" "$TMP/session-handoff.md"
+  cp "$PACK_MEMORY/decisions.md" "$TMP/decisions.md"
+  cp "$PACK_MEMORY/patterns.md" "$TMP/patterns.md"
+}
+
+# ---------------------------------------------------------------------------
+
+printf "\n=== 1: validator accepts the shipped templates ===\n"
+if python3 "$TMP/validate.py" --path "$TMP" >/dev/null 2>&1; then rc=0; else rc=1; fi
+assert "templates pass validate.py" "0" "$rc"
+
+# ---------------------------------------------------------------------------
+
+printf "\n=== 2: CLI appends valid state entry + auto-fills correlation_id ===\n"
+reset
+cd "$TMP"
+id="$(python3 "$TMP/memory.py" append \
+  --file session-handoff --kind state --status done \
+  --summary "Added Stripe webhook handler" \
+  --tags payments,backend \
+  --body "## Changes
+- backend/payments/webhook.ts added
+- migration V42 applied
+
+## Open issues
+- none")"
+assert "append returned expected id" "9999999999-0-state" "$id"
+if python3 "$TMP/validate.py" --path "$TMP" >/dev/null 2>&1; then rc=0; else rc=1; fi
+assert "file still valid after append" "0" "$rc"
+
+# ---------------------------------------------------------------------------
+
+printf "\n=== 3: appending wrong kind is rejected ===\n"
+reset
+cd "$TMP"
+if python3 "$TMP/memory.py" append \
+  --file session-handoff --kind decision --status done \
+  --summary "wrong kind" \
+  --body "this should be rejected because session-handoff requires kind=state" \
+  >/dev/null 2>&1; then
+  rc=0
+else
+  rc=1
+fi
+assert "kind mismatch rejected" "1" "$rc"
+
+# ---------------------------------------------------------------------------
+
+printf "\n=== 4: empty body rejected ===\n"
+reset
+cd "$TMP"
+if python3 "$TMP/memory.py" append \
+  --file session-handoff --kind state --status done \
+  --summary "empty" \
+  --body " " >/dev/null 2>&1; then
+  rc=0
+else
+  rc=1
+fi
+assert "empty body rejected" "1" "$rc"
+
+# ---------------------------------------------------------------------------
+
+printf "\n=== 5: duplicate id rejected and file rolled back ===\n"
+reset
+cd "$TMP"
+# First append (succeeds)
+python3 "$TMP/memory.py" append \
+  --file session-handoff --kind state --status done \
+  --summary "first" --body "twenty characters or more aaaa bbbb" >/dev/null
+size_before=$(stat -f %z "$TMP/session-handoff.md" 2>/dev/null || stat -c %s "$TMP/session-handoff.md")
+# Manipulate state to force same id on second append
+cat > "$HOOKS_STATE" <<'JSON'
+{
+  "session_id": "9999999999",
+  "task_seq": 0,
+  "active_correlation_id": "9999999999-0"
+}
+JSON
+# Second append should either get a distinct id (-2 suffix) OR be rejected.
+id2="$(python3 "$TMP/memory.py" append \
+  --file session-handoff --kind state --status done \
+  --summary "second" --body "another body with more than twenty chars aaaa")"
+assert "second append gets deduped id (-2 suffix)" "9999999999-0-state-2" "$id2"
+if python3 "$TMP/validate.py" --path "$TMP" >/dev/null 2>&1; then rc=0; else rc=1; fi
+assert "file still valid after deduplicated append" "0" "$rc"
+
+# ---------------------------------------------------------------------------
+
+printf "\n=== 6: hand-edited invalid entry caught by validator ===\n"
+reset
+cat >> "$TMP/session-handoff.md" <<'EOF'
+
+<!-- memory-entry:start -->
+---
+id: broken
+correlation_id: not-a-number
+at: never
+kind: state
+status: unknown
+author: ghost
+summary: completely broken
+---
+
+Some body text.
+
+<!-- memory-entry:end -->
+EOF
+if python3 "$TMP/validate.py" --path "$TMP" >/dev/null 2>&1; then rc=0; else rc=1; fi
+assert "broken hand-edit caught" "1" "$rc"
+
+# ---------------------------------------------------------------------------
+
+printf '\n=== 7: non-monotonic "at" is an advisory notice, NOT a failure ===\n'
+# A system clock correction (NTP step, VM resume) can write one entry
+# "before" its predecessor. Memory is append-only, so a hard error here
+# would poison the file forever and block the stop gate on every future
+# task. The validator must surface a NOTE but still pass -- even under
+# --strict.
+reset
+cat >> "$TMP/patterns.md" <<'EOF'
+
+<!-- memory-entry:start -->
+---
+id: 9999999999-0-pattern
+correlation_id: 9999999999-0
+at: 2030-01-01T00:00:00Z
+kind: pattern
+status: done
+author: orchestrator
+summary: future pattern
+---
+
+Long enough body for the schema validator to accept here.
+
+<!-- memory-entry:end -->
+
+<!-- memory-entry:start -->
+---
+id: 9999999999-1-pattern
+correlation_id: 9999999999-1
+at: 2020-01-01T00:00:00Z
+kind: pattern
+status: done
+author: orchestrator
+summary: past pattern
+---
+
+Long enough body for the schema validator to accept here.
+
+<!-- memory-entry:end -->
+EOF
+if python3 "$TMP/validate.py" --path "$TMP" >/dev/null 2>&1; then rc=0; else rc=1; fi
+assert "backwards-in-time entries do not fail validation" "0" "$rc"
+if python3 "$TMP/validate.py" --path "$TMP" --strict >/dev/null 2>&1; then rc=0; else rc=1; fi
+assert "backwards-in-time entries do not fail even under --strict" "0" "$rc"
+note_out="$(python3 "$TMP/validate.py" --path "$TMP" 2>&1 || true)"
+if printf '%s' "$note_out" | /usr/bin/grep -q "earlier than previous entry"; then
+  printf "  ok    validator surfaces the clock-skew notice\n"; pass=$((pass + 1))
+else
+  printf "  FAIL  no clock-skew notice emitted\n"; fail=$((fail + 1)); fail_list+=("monotonic-notice")
+fi
+
+# ---------------------------------------------------------------------------
+
+printf "\n=== 8: list / latest / current-id ===\n"
+reset
+cd "$TMP"
+python3 "$TMP/memory.py" append --file session-handoff --kind state --status done \
+  --summary "first task" --body "twenty characters or more xyz 1" >/dev/null
+python3 "$TMP/memory.py" append --file session-handoff --kind state --status done \
+  --summary "same correlation id second entry" --body "twenty characters or more xyz 2" >/dev/null
+count=$(python3 "$TMP/memory.py" list --file session-handoff | wc -l | tr -d ' ')
+# Template ships with 1 placeholder state entry; plus the two we just appended = 3.
+assert "list returns template + two appended entries" "3" "$count"
+latest_count=$(python3 "$TMP/memory.py" latest --file session-handoff --kind state --n 1 | grep -c 'memory-entry:start')
+assert "latest --n 1 returns one entry" "1" "$latest_count"
+cid=$(python3 "$TMP/memory.py" current-id)
+assert "current-id reads from hooks state" "9999999999-0" "$cid"
+
+# ---------------------------------------------------------------------------
+
+printf "\n=== scenario: search across files ===\n"
+# Seed a few entries with different kinds / tags / summaries.
+python3 "$TMP/memory.py" append --file session-handoff --kind state \
+    --status in_progress --summary "bootstrap initial state" \
+    --tags bootstrap,core --body "Body mentions Laravel and Livewire stack." >/dev/null
+python3 "$TMP/memory.py" append --file decisions --kind decision \
+    --status done --summary "adopt GraphQL for public API" \
+    --tags architecture,graphql --body "Decision: move from REST to GraphQL." >/dev/null
+python3 "$TMP/memory.py" append --file patterns --kind pattern \
+    --status done --summary "retry with exponential backoff" \
+    --tags reliability --body "When a downstream flakes, retry with jitter." >/dev/null
+
+# Text query hits a summary.
+out="$(python3 "$TMP/memory.py" search --query "graphql" 2>&1)"
+if printf "%s" "$out" | /usr/bin/grep -q "adopt GraphQL"; then
+  printf "  ok    search finds a summary hit\n"; pass=$((pass + 1))
+else
+  printf "  FAIL  search did not find GraphQL summary\n"; fail=$((fail + 1))
+fi
+
+# Tag filter narrows results.
+out="$(python3 "$TMP/memory.py" search --tag reliability 2>&1)"
+if printf "%s" "$out" | /usr/bin/grep -q "exponential backoff" && \
+   ! printf "%s" "$out" | /usr/bin/grep -q "graphql"; then
+  printf "  ok    search --tag filters correctly\n"; pass=$((pass + 1))
+else
+  printf "  FAIL  tag filter broken\n"; fail=$((fail + 1))
+fi
+
+# --kind filter.
+out="$(python3 "$TMP/memory.py" search --kind decision 2>&1)"
+if printf "%s" "$out" | /usr/bin/grep -q "decision" && \
+   ! printf "%s" "$out" | /usr/bin/grep -q "state"; then
+  printf "  ok    search --kind filters correctly\n"; pass=$((pass + 1))
+else
+  printf "  FAIL  kind filter broken\n"; fail=$((fail + 1))
+fi
+
+# --json shape.
+json_out="$(python3 "$TMP/memory.py" search --query "bootstrap" --json 2>&1)"
+if printf "%s" "$json_out" | python3 -c "
+import json, sys
+d = json.load(sys.stdin)
+assert 'hits' in d and 'count' in d
+assert d['count'] >= 1
+"; then
+  printf "  ok    search --json payload parses\n"; pass=$((pass + 1))
+else
+  printf "  FAIL  search --json malformed\n"; fail=$((fail + 1))
+fi
+
+# No-match returns non-zero.
+set +e
+python3 "$TMP/memory.py" search --query "xyzzy-no-such-string-ever" >/dev/null 2>&1
+rc=$?
+set -e
+if [[ "$rc" == "1" ]]; then
+  printf "  ok    search exits 1 on zero matches\n"; pass=$((pass + 1))
+else
+  printf "  FAIL  search exit code on no-match: %s\n" "$rc"; fail=$((fail + 1))
+fi
+
+# ---------------------------------------------------------------------------
+
+printf "\n=== scenario: rotate archives older entries ===\n"
+# Seed 5 entries in decisions.md beyond the one already added.
+for i in 1 2 3 4 5; do
+  python3 "$TMP/memory.py" bump-task >/dev/null
+  python3 "$TMP/memory.py" append --file decisions --kind decision \
+    --status done --summary "decision #$i" \
+    --body "Context body long enough to satisfy the validator's 20-char minimum for entry #$i." \
+    >/dev/null
+done
+
+# dry-run should not mutate.
+before_size="$(wc -l < "$TMP/decisions.md")"
+out="$(python3 "$TMP/memory.py" rotate --file decisions --keep-last 2 --dry-run 2>&1)"
+after_size="$(wc -l < "$TMP/decisions.md")"
+if [[ "$before_size" == "$after_size" ]] && printf "%s" "$out" | /usr/bin/grep -q "would rotate"; then
+  printf "  ok    rotate --dry-run leaves file untouched\n"; pass=$((pass + 1))
+else
+  printf "  FAIL  dry-run mutated / no message\n"; fail=$((fail + 1))
+fi
+
+# Real rotate.
+out="$(python3 "$TMP/memory.py" rotate --file decisions --keep-last 2 2>&1)"
+if printf "%s" "$out" | /usr/bin/grep -qE "rotated [0-9]+ entry"; then
+  printf "  ok    rotate moved older entries\n"; pass=$((pass + 1))
+else
+  printf "  FAIL  rotate did not run\n"; fail=$((fail + 1))
+fi
+
+# Archive file created (dotted naming so discovery keeps seeing it) and
+# live file kept at least the requested count.
+archive_count="$(ls "$TMP"/decisions.archive-*.md 2>/dev/null | wc -l | tr -d ' ' || true)"
+[[ "$archive_count" -ge "1" ]] && { printf "  ok    archive file created (decisions.archive-*.md)\n"; pass=$((pass + 1)); } \
+  || { printf "  FAIL  no decisions.archive-*.md file\n"; fail=$((fail + 1)); }
+
+# Validate the archive.
+python3 "$TMP/validate.py" --path "$TMP" --strict >/tmp/va.out 2>&1 && \
+  { printf "  ok    archive + live pass validation\n"; pass=$((pass + 1)); } \
+  || { printf "  FAIL  validation after rotate: "; cat /tmp/va.out; fail=$((fail + 1)); }
+
+# Rotated ids must NOT be re-issuable: archives stay inside the global
+# id-uniqueness scan, so re-appending under an archived correlation id
+# must pick the deduped -2 suffix instead of duplicating the archived id.
+cat > "$HOOKS_STATE" <<'JSON'
+{
+  "session_id": "9999999999",
+  "task_seq": 1,
+  "active_correlation_id": "9999999999-1"
+}
+JSON
+id_re="$(python3 "$TMP/memory.py" append --file decisions --kind decision \
+  --status done --summary "id re-issue check after rotation" \
+  --body "The base id 9999999999-1-decision lives in the archive now; this append must dedupe.")"
+assert "archived id is not re-issued (dedupe suffix)" "9999999999-1-decision-2" "$id_re"
+
+# Legacy archives (decisions-archive-<date>.md from older pack versions)
+# are still discovered and validated -- including the global id check.
+cat > "$TMP/decisions-archive-2020-01-01.md" <<'EOF'
+# Decisions (legacy archive)
+
+<!-- memory-entry:start -->
+---
+id: legacy-archived-decision
+correlation_id: 1111111111-1
+at: 2020-01-01T00:00:00Z
+kind: decision
+status: done
+author: orchestrator
+summary: entry living in a legacy dash-named archive
+---
+
+Body long enough to satisfy the validator minimum for this entry.
+
+<!-- memory-entry:end -->
+EOF
+python3 "$TMP/validate.py" --path "$TMP" --strict >/tmp/va-legacy.out 2>&1 && \
+  { printf "  ok    legacy -archive- file validates (discovered, kind ok)\n"; pass=$((pass + 1)); } \
+  || { printf "  FAIL  legacy archive validation: "; cat /tmp/va-legacy.out; fail=$((fail + 1)); }
+# Duplicate an id across live + legacy archive -> must FAIL validation.
+cat >> "$TMP/decisions-archive-2020-01-01.md" <<'EOF'
+
+<!-- memory-entry:start -->
+---
+id: 9999999999-1-decision-2
+correlation_id: 1111111111-2
+at: 2020-01-02T00:00:00Z
+kind: decision
+status: done
+author: orchestrator
+summary: deliberately reuses a live id to prove archives are scanned
+---
+
+Body long enough to satisfy the validator minimum for this dupe.
+
+<!-- memory-entry:end -->
+EOF
+if python3 "$TMP/validate.py" --path "$TMP" >/dev/null 2>&1; then rc=0; else rc=1; fi
+assert "duplicate id across live file and archive is rejected" "1" "$rc"
+rm -f "$TMP/decisions-archive-2020-01-01.md"
+
+# Rotate refuses to empty the live file.
+set +e
+python3 "$TMP/memory.py" rotate --file decisions --keep-last 0 >/dev/null 2>&1
+rc=$?
+set -e
+if [[ "$rc" == "2" ]]; then
+  printf "  ok    rotate refuses when keep-last <= 0\n"; pass=$((pass + 1))
+else
+  printf "  FAIL  rotate accepted empty-keep (rc=%s)\n" "$rc"; fail=$((fail + 1))
+fi
+
+# ---------------------------------------------------------------------------
+
+printf "\n=== scenario: dedupe warn on identical summary ===\n"
+# Seed one entry, then try to append again with same summary.
+python3 "$TMP/memory.py" append --file patterns --kind pattern \
+    --status done --summary "prefer pytest fixtures over global setUp" \
+    --body "Pytest fixtures scope precisely; unittest setUp scopes the whole class." \
+    >/dev/null
+python3 "$TMP/memory.py" bump-task >/dev/null
+
+set +e
+python3 "$TMP/memory.py" append --file patterns --kind pattern \
+    --status done --summary "prefer pytest fixtures over global setUp" \
+    --body "Different body but same summary triggers the dedupe guard." \
+    >/tmp/dup.out 2>&1
+rc=$?
+set -e
+[[ "$rc" == "2" ]] && { printf "  ok    dup-summary append refused (exit 2)\n"; pass=$((pass + 1)); } \
+  || { printf "  FAIL  dup-summary exit=%s\n" "$rc"; fail=$((fail + 1)); }
+/usr/bin/grep -q "already has the same summary" /tmp/dup.out && \
+  { printf "  ok    dedupe error message mentions the conflict\n"; pass=$((pass + 1)); } \
+  || { printf "  FAIL  no dedupe message\n"; fail=$((fail + 1)); }
+
+# --allow-duplicate overrides.
+set +e
+python3 "$TMP/memory.py" append --file patterns --kind pattern \
+    --status done --summary "prefer pytest fixtures over global setUp" \
+    --body "Intentional re-emission of the same insight -- e.g. after a refactor reconfirmed it." \
+    --allow-duplicate >/dev/null 2>&1
+rc=$?
+set -e
+[[ "$rc" == "0" ]] && { printf "  ok    --allow-duplicate overrides the guard\n"; pass=$((pass + 1)); } \
+  || { printf "  FAIL  --allow-duplicate exit=%s\n" "$rc"; fail=$((fail + 1)); }
+
+# Different summaries are unaffected.
+python3 "$TMP/memory.py" bump-task >/dev/null
+set +e
+python3 "$TMP/memory.py" append --file patterns --kind pattern \
+    --status done --summary "treat retries as observability, not reliability" \
+    --body "A retry that hides an error is just a slower error with worse debuggability." \
+    >/dev/null 2>&1
+rc=$?
+set -e
+[[ "$rc" == "0" ]] && { printf "  ok    distinct summary appends normally\n"; pass=$((pass + 1)); } \
+  || { printf "  FAIL  distinct summary exit=%s\n" "$rc"; fail=$((fail + 1)); }
+
+printf "\n=== scenario: migrations.py skeleton ===\n"
+cp "$PACK_MEMORY/migrations.py" "$TMP/migrations.py"
+# With zero migrations registered and every shipped entry at v1, the
+# script should exit 0 and print the reassuring no-op message.
+reset
+set +e
+python3 "$TMP/migrations.py" --path "$TMP" >/tmp/migrations.out 2>&1
+rc=$?
+set -e
+[[ "$rc" == "0" ]] && { printf "  ok    migrations.py exits 0 on clean v1 corpus\n"; pass=$((pass + 1)); } \
+  || { printf "  FAIL  migrations.py exit=%s (out=%s)\n" "$rc" "$(cat /tmp/migrations.out)"; fail=$((fail + 1)); }
+grep -q "no migrations registered" /tmp/migrations.out \
+  && { printf "  ok    migrations.py prints the skeleton message\n"; pass=$((pass + 1)); } \
+  || { printf "  FAIL  skeleton message missing\n"; fail=$((fail + 1)); }
+
+# Inject an entry with an unknown schema_version and confirm the
+# script flags it with a non-zero exit.
+cat >> "$TMP/patterns.md" <<'EOF'
+
+<!-- memory-entry:start -->
+---
+schema_version: 99
+id: stale-entry-test
+correlation_id: 1-0
+at: 2026-04-23T12:00:00Z
+kind: pattern
+status: done
+author: orchestrator
+summary: synthetic entry with impossible schema_version
+---
+
+Body text long enough to pass the minimum check for validator happiness.
+
+<!-- memory-entry:end -->
+EOF
+set +e
+python3 "$TMP/migrations.py" --path "$TMP" >/tmp/migrations.out 2>&1
+rc=$?
+set -e
+[[ "$rc" == "1" ]] && { printf "  ok    migrations.py exits 1 on unknown schema_version\n"; pass=$((pass + 1)); } \
+  || { printf "  FAIL  migrations.py did not flag v99 (rc=%s)\n" "$rc"; fail=$((fail + 1)); }
+
+# ---------------------------------------------------------------------------
+
+printf "\n=== 10: secret scanner -- real secret after a placeholder is caught ===\n"
+reset
+cd "$TMP"
+# The first AKIA match is a placeholder; a real one follows. The scanner must
+# NOT stop at the first match (that was the first-match-only bug).
+set +e
+python3 "$TMP/memory.py" append \
+  --file session-handoff --kind state --status done \
+  --summary "config example" \
+  --body "## Changes
+- example key <AKIAIOSFODNN7EXAMPLE>
+- but committed AKIA1234567890ABCDEF by mistake
+
+## Open issues
+- none" >/dev/null 2>&1
+rc=$?
+set -e
+assert "real secret after placeholder is refused" "2" "$rc"
+
+printf "\n=== 11: secret scanner -- AWS .env form is caught ===\n"
+reset
+cd "$TMP"
+set +e
+python3 "$TMP/memory.py" append \
+  --file session-handoff --kind state --status done \
+  --summary "env config" \
+  --body "## Changes
+- AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+
+## Open issues
+- none" >/dev/null 2>&1
+rc=$?
+set -e
+assert "AWS .env secret form is refused" "2" "$rc"
+
+printf "\n=== 12: secret scanner -- secret smuggled via --scope is caught ===\n"
+reset
+cd "$TMP"
+set +e
+python3 "$TMP/memory.py" append \
+  --file session-handoff --kind state --status done \
+  --summary "scoped" \
+  --scope "AKIA1234567890ABCDEF" \
+  --body "## Changes
+- nothing sensitive in the body
+
+## Open issues
+- none" >/dev/null 2>&1
+rc=$?
+set -e
+assert "secret in --scope field is refused" "2" "$rc"
+
+# Sanity: a clean entry with placeholders only still appends.
+printf "\n=== 13: secret scanner -- placeholders alone do not block ===\n"
+reset
+cd "$TMP"
+set +e
+python3 "$TMP/memory.py" append \
+  --file session-handoff --kind state --status done \
+  --summary "placeholders only" \
+  --body "## Changes
+- set AWS_SECRET_ACCESS_KEY=\${AWS_SECRET} and token=<YOUR_TOKEN>
+
+## Open issues
+- none" >/dev/null 2>&1
+rc=$?
+set -e
+assert "placeholder-only entry still appends" "0" "$rc"
+
+printf "\n=== 14: non-ASCII (UTF-8) body round-trips through append/validate/latest ===\n"
+# Every read/write in memory.py + validate.py pins encoding=utf-8: on
+# Windows the locale default is cp1252 and a Cyrillic body would crash the
+# append and wedge the stop gate. Append -> validate -> read back.
+reset
+cd "$TMP"
+set +e
+utf8_id="$(python3 "$TMP/memory.py" append \
+  --file session-handoff --kind state --status done \
+  --summary "non-ASCII round-trip: кириллица в summary" \
+  --body "## Изменения
+- Себастьян добавил обработку вебхуков (UTF-8 проверка, ёЁъЪ)
+
+## Open issues
+- нет" 2>/dev/null)"
+rc=$?
+set -e
+assert "append with Cyrillic body succeeds" "0" "$rc"
+if python3 "$TMP/validate.py" --path "$TMP" --strict >/dev/null 2>&1; then rc=0; else rc=1; fi
+assert "file with Cyrillic entry still validates (--strict)" "0" "$rc"
+latest_out="$(python3 "$TMP/memory.py" latest --file session-handoff --kind state --n 1 2>/dev/null || true)"
+if printf '%s' "$latest_out" | /usr/bin/grep -q "вебхуков"; then
+  printf "  ok    latest returns the Cyrillic body intact\n"; pass=$((pass + 1))
+else
+  printf "  FAIL  Cyrillic body lost on read-back\n"; fail=$((fail + 1)); fail_list+=("utf8-roundtrip")
+fi
+
+printf "\n=== summary ===\n  passed: %s\n  failed: %s\n" "$pass" "$fail"
+if (( fail > 0 )); then
+  for f in "${fail_list[@]}"; do printf "    - %s\n" "$f"; done
+  exit 1
+fi
+exit 0

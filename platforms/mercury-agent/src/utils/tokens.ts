@@ -1,0 +1,265 @@
+import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { join } from 'node:path';
+import type { MercuryConfig } from './config.js';
+import { getMercuryHome, saveConfig } from './config.js';
+import { logger } from './logger.js';
+
+export interface TokenTracker {
+  dailyUsed: number;
+  dailyBudget: number;
+  lastResetDate: string;
+  requestLog: TokenLogEntry[];
+}
+
+export interface TokenLogEntry {
+  timestamp: number;
+  provider: string;
+  model: string;
+  inputTokens: number;
+  outputTokens: number;
+  totalTokens: number;
+  channelType: string;
+  agentId?: string;
+}
+
+const TOKEN_FILE = 'token-usage.json';
+
+function safeNumber(value: any): number {
+  if (value === null || value === undefined) return 0;
+  const n = Number(value);
+  return isNaN(n) ? 0 : n;
+}
+
+export class TokenBudget {
+  private dailyUsed = 0;
+  private dailyBudget: number;
+  private lastResetDate: string;
+  private requestLog: TokenLogEntry[] = [];
+  private forceNext = false;
+  private perAgentUsage: Map<string, number> = new Map();
+  /** Estimated tokens saved today by saver mode (resets daily). */
+  private dailySaved = 0;
+  /** Cumulative lifetime estimated tokens saved (persisted). */
+  private lifetimeSaved = 0;
+
+  constructor(private config: MercuryConfig) {
+    this.dailyBudget = config.tokens.dailyBudget;
+    this.lastResetDate = new Date().toISOString().split('T')[0];
+    const lifetime = (config.tokens as any).saverTokensSavedLifetime;
+    if (typeof lifetime === 'number' && Number.isFinite(lifetime) && lifetime > 0) {
+      this.lifetimeSaved = lifetime;
+    }
+    this.restore();
+  }
+
+  canAfford(estimatedTokens: number): boolean {
+    this.resetIfNewDay();
+    return safeNumber(this.dailyUsed) + estimatedTokens <= safeNumber(this.dailyBudget);
+  }
+
+  isOverBudget(): boolean {
+    this.resetIfNewDay();
+    if (this.forceNext) {
+      this.forceNext = false;
+      return false;
+    }
+    return safeNumber(this.dailyUsed) >= safeNumber(this.dailyBudget);
+  }
+
+  forceAllowNext(): void {
+    this.forceNext = true;
+    logger.info('Budget override: next request will proceed regardless of budget');
+  }
+
+  resetUsage(): void {
+    this.dailyUsed = 0;
+    this.requestLog = [];
+    this.perAgentUsage.clear();
+    this.persist();
+    logger.info('Token usage reset to zero');
+  }
+
+  setBudget(newBudget: number): void {
+    this.dailyBudget = newBudget;
+    this.config.tokens.dailyBudget = newBudget;
+    saveConfig(this.config);
+    this.persist();
+    logger.info({ newBudget }, 'Daily token budget updated');
+  }
+
+  getBudget(): number {
+    return this.dailyBudget;
+  }
+
+  getDailyUsed(): number {
+    this.resetIfNewDay();
+    return this.dailyUsed;
+  }
+
+  recordUsage(entry: Omit<TokenLogEntry, 'timestamp'>): void {
+    this.resetIfNewDay();
+    const inputTokens = safeNumber(entry.inputTokens);
+    const outputTokens = safeNumber(entry.outputTokens);
+    const totalTokens = safeNumber(entry.totalTokens) || inputTokens + outputTokens;
+    const safeEntry = { ...entry, inputTokens, outputTokens, totalTokens };
+    const logEntry: TokenLogEntry = { ...safeEntry, timestamp: Date.now() };
+    this.dailyUsed += totalTokens;
+    this.requestLog.push(logEntry);
+
+    if (entry.agentId) {
+      const agentUsed = this.perAgentUsage.get(entry.agentId) ?? 0;
+      this.perAgentUsage.set(entry.agentId, agentUsed + totalTokens);
+    }
+
+    this.persist();
+  }
+
+  getUsageByAgent(agentId: string): { used: number; percentage: number } {
+    this.resetIfNewDay();
+    const used = this.perAgentUsage.get(agentId) ?? 0;
+    const budget = safeNumber(this.dailyBudget);
+    return { used, percentage: budget > 0 ? (used / budget) * 100 : 0 };
+  }
+
+  getRemaining(): number {
+    this.resetIfNewDay();
+    return Math.max(0, safeNumber(this.dailyBudget) - safeNumber(this.dailyUsed));
+  }
+
+  getUsagePercentage(): number {
+    this.resetIfNewDay();
+    const budget = safeNumber(this.dailyBudget);
+    const used = safeNumber(this.dailyUsed);
+    return budget > 0 ? (used / budget) * 100 : 0;
+  }
+
+  getStatusText(): string {
+    const used = this.sanitizeCount(this.dailyUsed);
+    const pct = Math.round(this.getUsagePercentage());
+    const remaining = this.getRemaining();
+    return `Token budget: ${used.toLocaleString()} / ${this.dailyBudget.toLocaleString()} used (${pct}%), ${remaining.toLocaleString()} remaining`;
+  }
+
+  /**
+   * Record an estimated savings from Token Saver Mode. Updates both the
+   * per-day counter (resets at day rollover) and the lifetime counter
+   * (persisted to mercury.yaml). Negative or zero values are ignored.
+   */
+  recordSavings(estimatedTokens: number): void {
+    const n = safeNumber(estimatedTokens);
+    if (n <= 0) return;
+    this.resetIfNewDay();
+    this.dailySaved += n;
+    this.lifetimeSaved += n;
+    try {
+      (this.config.tokens as any).saverTokensSavedLifetime = this.lifetimeSaved;
+      saveConfig(this.config);
+    } catch (err) {
+      logger.warn({ err }, 'Failed to persist saver lifetime counter');
+    }
+  }
+
+  getSavedToday(): number {
+    this.resetIfNewDay();
+    return this.dailySaved;
+  }
+
+  getSavedLifetime(): number {
+    return this.lifetimeSaved;
+  }
+
+  private resetIfNewDay(): void {
+    const today = new Date().toISOString().split('T')[0];
+    if (today !== this.lastResetDate) {
+      this.dailyUsed = 0;
+      this.lastResetDate = today;
+      this.requestLog = [];
+      this.perAgentUsage.clear();
+      this.dailySaved = 0;
+      this.persist();
+      logger.info('Token budget reset for new day');
+    }
+  }
+
+  private persist(): void {
+    const path = join(getMercuryHome(), TOKEN_FILE);
+    try {
+      const data = {
+        dailyUsed: this.sanitizeCount(this.dailyUsed),
+        dailyBudget: this.dailyBudget,
+        lastResetDate: this.lastResetDate,
+        requestLog: this.requestLog.slice(-200),
+      };
+      writeFileSync(path, JSON.stringify(data, null, 2), 'utf-8');
+    } catch (err) {
+      logger.warn({ err }, 'Failed to persist token usage');
+    }
+  }
+
+  private restore(): void {
+    const path = join(getMercuryHome(), TOKEN_FILE);
+    if (!existsSync(path)) return;
+    try {
+      const raw = readFileSync(path, 'utf-8');
+      const data = JSON.parse(raw) as Partial<TokenTracker>;
+      const today = new Date().toISOString().split('T')[0];
+      let repaired = false;
+      const rawLogLength = Array.isArray(data.requestLog) ? data.requestLog.length : 0;
+      const restoredLogs = Array.isArray(data.requestLog)
+        ? data.requestLog
+          .map((entry) => this.sanitizeLogEntry(entry as Omit<TokenLogEntry, 'timestamp'> & { timestamp?: unknown }, this.sanitizeTimestamp((entry as any)?.timestamp)))
+          .filter((entry) => entry.totalTokens > 0)
+        : [];
+      if (restoredLogs.length !== rawLogLength) {
+        repaired = true;
+      }
+      if (data.lastResetDate === today) {
+        const restored = safeNumber(data.dailyUsed);
+        if (data.dailyUsed != null && !isNaN(restored) && restored > 0) {
+          this.dailyUsed = restored;
+        } else {
+          // Recompute from valid log entries when dailyUsed is corrupted/null
+          this.dailyUsed = restoredLogs.reduce((sum, entry) => sum + entry.totalTokens, 0);
+          repaired = true;
+        }
+        this.requestLog = (data.requestLog ?? []).map((entry: any) => ({
+          ...entry,
+          inputTokens: safeNumber(entry.inputTokens),
+          outputTokens: safeNumber(entry.outputTokens),
+          totalTokens: safeNumber(entry.totalTokens),
+        }));
+      }
+      this.lastResetDate = data.lastResetDate ?? today;
+      if (repaired) {
+        this.persist();
+      }
+    } catch (err) {
+      logger.warn({ err }, 'Failed to restore token usage');
+    }
+  }
+
+  private sanitizeCount(value: unknown): number {
+    return typeof value === 'number' && Number.isFinite(value) && value >= 0 ? value : 0;
+  }
+
+  private sanitizeTimestamp(value: unknown): number {
+    return typeof value === 'number' && Number.isFinite(value) && value > 0 ? value : Date.now();
+  }
+
+  private sanitizeLogEntry(entry: Omit<TokenLogEntry, 'timestamp'> & { timestamp?: unknown }, timestamp: number): TokenLogEntry {
+    const inputTokens = this.sanitizeCount(entry.inputTokens);
+    const outputTokens = this.sanitizeCount(entry.outputTokens);
+    const rawTotal = this.sanitizeCount(entry.totalTokens);
+    const totalTokens = rawTotal > 0 ? rawTotal : inputTokens + outputTokens;
+
+    return {
+      timestamp: this.sanitizeTimestamp(timestamp),
+      provider: typeof entry.provider === 'string' && entry.provider ? entry.provider : 'unknown',
+      model: typeof entry.model === 'string' && entry.model ? entry.model : 'unknown',
+      inputTokens,
+      outputTokens,
+      totalTokens,
+      channelType: typeof entry.channelType === 'string' && entry.channelType ? entry.channelType : 'unknown',
+    };
+  }
+}

@@ -1,0 +1,33 @@
+---
+id: configuration
+title: Configuration
+---
+
+All runtime data lives in `~/.mercury/` — not in your project directory.
+
+| Path | Purpose |
+|------|---------|
+| `~/.mercury/mercury.yaml` | Main config (providers, channels, budget) |
+| `~/.mercury/soul/*.md` | Agent personality (soul, persona, taste, heartbeat) |
+| `~/.mercury/permissions.yaml` | Capabilities and approval rules |
+| `~/.mercury/skills/` | Installed skills |
+| `~/.mercury/schedules.yaml` | Scheduled tasks |
+| `~/.mercury/token-usage.json` | Daily token usage tracking |
+| `~/.mercury/memory/` | Short-term, long-term, episodic memory |
+| `~/.mercury/daemon.pid` | Background process PID |
+| `~/.mercury/daemon.log` | Daemon mode logs |
+| `~/.mercury/boards.db` | Kanban boards database (SQLite) |
+
+## Web Dashboard Config
+
+Add to `~/.mercury/mercury.yaml`:
+
+```yaml
+web:
+  enabled: true
+  port: 6174        # default
+  username: mercury
+  password: Mercury@123
+```
+
+Or use environment variables: `MERCURY_PORT`, `MERCURY_WEB_USER`, `MERCURY_WEB_PASS`.
