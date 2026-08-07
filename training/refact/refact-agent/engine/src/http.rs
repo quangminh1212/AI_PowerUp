@@ -1,0 +1,74 @@
+use std::io::Write;
+use std::sync::Arc;
+use std::sync::atomic::AtomicBool;
+
+use axum::{
+    http::{StatusCode, Uri},
+    response::IntoResponse,
+};
+use hyper::Server;
+use tokio::task::JoinHandle;
+use tracing::{error, info};
+
+use crate::global_context::GlobalContext;
+use crate::http::routers::make_refact_http_server;
+
+pub mod routers;
+mod utils;
+
+async fn handler_404(path: Uri) -> impl IntoResponse {
+    info!("404 {}", path);
+    (StatusCode::NOT_FOUND, format!("no handler for {}", path))
+}
+
+pub async fn start_server(
+    gcx: Arc<GlobalContext>,
+    ask_shutdown_receiver: std::sync::mpsc::Receiver<String>,
+) -> Option<JoinHandle<()>> {
+    let (port, is_inside_container) = { (gcx.cmdline.http_port, gcx.cmdline.inside_container) };
+    if port == 0 {
+        return None;
+    }
+    let shutdown_flag: Arc<AtomicBool> = gcx.shutdown_flag.clone();
+    Some(tokio::spawn(async move {
+        let addr = if is_inside_container {
+            ([0, 0, 0, 0], port).into()
+        } else {
+            ([127, 0, 0, 1], port).into()
+        };
+        let builder = Server::try_bind(&addr).map_err(|e| {
+            let _ = write!(std::io::stderr(), "PORT_BUSY {}\n", e);
+            format!("port busy, address {}: {}", addr, e)
+        });
+        match builder {
+            Ok(builder) => {
+                info!("HTTP server listening on {}", addr);
+                let app_state = crate::app_state::AppState::from_gcx(gcx.clone()).await;
+                let router = make_refact_http_server(app_state);
+                let gcx_for_shutdown = gcx.clone();
+                let shutdown = async move {
+                    crate::global_context::block_until_signal(ask_shutdown_receiver, shutdown_flag)
+                        .await;
+                    crate::chat::close_all_chat_sessions(
+                        crate::app_state::AppState::from_gcx(gcx_for_shutdown).await,
+                    )
+                    .await;
+                };
+                let server = builder
+                    .serve(router.into_make_service())
+                    .with_graceful_shutdown(shutdown);
+                let resp = server
+                    .await
+                    .map_err(|e| format!("HTTP server error: {}", e));
+                if let Err(e) = resp {
+                    error!("server error: {}", e);
+                } else {
+                    info!("clean shutdown");
+                }
+            }
+            Err(e) => {
+                error!("server error: {}", e);
+            }
+        }
+    }))
+}

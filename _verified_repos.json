@@ -1,0 +1,90 @@
+[
+  {
+    "category": "agents",
+    "owner": "slavakurilyak",
+    "repo": "awesome-ai-agents",
+    "title": "GitHub - slavakurilyak/awesome-ai-agents: Awesome list of 300+ agentic AI resources \u00b7 GitHub",
+    "stars": 2145,
+    "description": "Awesome list of 300+ agentic AI resources"
+  },
+  {
+    "category": "agents",
+    "owner": "VoltAgent",
+    "repo": "voltagent",
+    "title": "GitHub - VoltAgent/voltagent: AI Agent Engineering Platform built on...",
+    "stars": 10302,
+    "description": "AI Agent Engineering Platform built on an Open Source TypeScript AI Agent Framework"
+  },
+  {
+    "category": "frameworks",
+    "owner": "dynamiq-ai",
+    "repo": "dynamiq",
+    "title": "GitHub - dynamiq-ai/dynamiq: Dynamiq is an orchestration...",
+    "stars": 1061,
+    "description": "Dynamiq is an orchestration framework for agentic AI and LLM applications"
+  },
+  {
+    "category": "frameworks",
+    "owner": "kaushikb11",
+    "repo": "awesome-llm-agents",
+    "title": "GitHub - kaushikb11/awesome-llm-agents: A curated list of awesome...",
+    "stars": 1557,
+    "description": "A curated list of awesome LLM agents frameworks."
+  },
+  {
+    "category": "frameworks",
+    "owner": "crewAIInc",
+    "repo": "crewAI",
+    "title": "GitHub - crewAIInc/crewAI: Framework for orchestrating role-playing...",
+    "stars": 56725,
+    "description": "Framework for orchestrating role-playing, autonomous AI agents. By fostering collaborative intellige"
+  },
+  {
+    "category": "frameworks",
+    "owner": "e2b-dev",
+    "repo": "awesome-ai-agents",
+    "title": "GitHub - e2b-dev/awesome-ai-agents: A list of AI autonomous agents",
+    "stars": 29292,
+    "description": "A list of AI autonomous agents"
+  },
+  {
+    "category": "models",
+    "owner": "nomic-ai",
+    "repo": "gpt4all",
+    "title": "GitHub - nomic-ai/gpt4all: GPT4All: Run Local LLMs on Any Device.",
+    "stars": 77411,
+    "description": "GPT4All: Run Local LLMs on Any Device. Open-source and available for commercial use."
+  },
+  {
+    "category": "models",
+    "owner": "openai",
+    "repo": "gpt-oss",
+    "title": "GitHub - openai/gpt-oss: gpt-oss-120b and gpt-oss-20b are two ...",
+    "stars": 20291,
+    "description": "gpt-oss-120b and gpt-oss-20b are two open-weight language models by OpenAI"
+  },
+  {
+    "category": "models",
+    "owner": "12britz",
+    "repo": "awesome-free-models",
+    "title": "GitHub - 12britz/awesome-free-models: A curated list of free AI...",
+    "stars": 1572,
+    "description": "A curated list of free AI models, APIs, and tools you can use without paying a cent."
+  },
+  {
+    "category": "models",
+    "owner": "MiniMax-AI",
+    "repo": "MiniMax-M1",
+    "title": "MiniMax-AI/MiniMax-M1: MiniMax-M1, the world's first open-weight...",
+    "stars": 3165,
+    "description": "MiniMax-M1, the world's first open-weight, large-scale hybrid-attention reasoning model."
+  },
+  {
+    "category": "training",
+    "owner": "hiyouga",
+    "repo": "LLaMAFactory",
+    "title": "GitHub - hiyouga/LlamaFactory: Unified Efficient Fine-Tuning ...",
+    "stars": 73882,
+    "description": "Unified Efficient Fine-Tuning of 100+ LLMs & VLMs (ACL 2024)"
+  }
+]

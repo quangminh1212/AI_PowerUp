@@ -1,0 +1,218 @@
+.button {
+  color: var(--gray-12);
+}
+
+.chatForm {
+  border: 1px solid var(--gray-a4);
+  border-radius: 6px;
+  flex-shrink: 0;
+  overflow: hidden;
+  background-color: transparent;
+}
+
+/* Main chat input - transparent/subtle appearance */
+.chatFormMain {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+/* Remove the blue focus border - keep border consistent */
+.chatFormMain:focus-within {
+  border-color: var(--gray-a3);
+  box-shadow: none;
+}
+
+/* Remove Radix's internal focus ring/chrome that creates thick border effect */
+.chatFormMain :global(.rt-TextAreaRoot),
+.chatFormMain :global(.rt-TextAreaRoot:focus),
+.chatFormMain :global(.rt-TextAreaRoot:focus-within),
+.chatFormMain :global(.rt-TextAreaRoot:focus-visible) {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.chatFormMain :global(.rt-TextAreaInput),
+.chatFormMain :global(.rt-TextAreaInput:focus),
+.chatFormMain :global(.rt-TextAreaInput:focus-visible) {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* Remove any ScrollArea focus rings */
+.chatFormMain :global(.rt-ScrollAreaViewportFocusRing) {
+  display: none !important;
+}
+
+/* Make TextArea transparent - override Radix variant-surface background */
+.chatForm :global(.rt-TextAreaRoot),
+.chatForm :global(.rt-TextAreaRoot.rt-variant-surface),
+.chatForm__form :global(.rt-TextAreaRoot),
+.chatForm__form :global(.rt-TextAreaRoot.rt-variant-surface),
+.textareaWrapper :global(.rt-TextAreaRoot),
+.textareaWrapper :global(.rt-TextAreaRoot.rt-variant-surface) {
+  background-color: transparent !important;
+  background: transparent !important;
+  --text-area-background-color: transparent !important;
+  --color-surface: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* Thinner border for edit mode (RetryForm) - matches user message bubble style */
+.chatFormCompact {
+  border: 1px solid var(--gray-a3);
+  border-radius: var(--radius-3);
+}
+
+.textareaWrapper {
+  position: relative;
+  --chat-input-padding: var(--space-3);
+}
+
+.inputHeader {
+  padding: var(--space-2) var(--chat-input-padding);
+  padding-bottom: var(--space-2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.inputHeader > *:empty {
+  display: none;
+}
+
+.textareaWrapper :global(.rt-TextAreaInput) {
+  min-height: 100px;
+  padding: var(--chat-input-padding);
+}
+
+.file_name_ellipsis_rtl {
+  display: inline;
+  vertical-align: middle;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  direction: rtl;
+  max-width: 100%;
+  line-height: var(--line-height-2, 20px);
+}
+
+.file_name_ellipsis_ltr {
+  direction: ltr;
+}
+
+.removeFileButton {
+  background-color: transparent;
+  padding: 0;
+  height: unset;
+  font-size: unset;
+  vertical-align: unset;
+  line-height: var(--line-height-1);
+  margin: 0;
+  margin-right: var(--space-1);
+}
+
+.checkbox_container {
+  display: flex;
+  white-space: nowrap;
+  gap: var(--space-2);
+}
+
+.controls {
+  overflow: hidden;
+}
+
+.data_list {
+  gap: var(--space-2);
+}
+
+.data_list__value {
+  justify-content: end;
+}
+
+.topControlsRow,
+.bottomControlsRow {
+  container-type: inline-size;
+}
+
+.topStatusControls,
+.bottomActionControls {
+  min-width: 0;
+}
+
+.bottomActionControls {
+  flex: 0 0 auto;
+  margin-left: auto;
+  max-width: max-content;
+}
+
+.topStatusControls > span,
+.bottomActionControls > span,
+.bottomModelControl,
+.bottomModeControl,
+.bottomWorkspaceControl {
+  display: inline-flex;
+  min-width: 0;
+}
+
+.topStatusControls > span,
+.bottomActionControls > span {
+  flex-shrink: 0;
+}
+
+.bottomControlsRow {
+  overflow: hidden;
+}
+
+.bottomModelControl,
+.bottomModeControl,
+.bottomWorkspaceControl {
+  flex: 0 1 auto;
+}
+
+@container (max-width: 520px) {
+  .hideTopTokensFirst,
+  .hideActionFirst {
+    display: none;
+  }
+}
+
+@container (max-width: 480px) {
+  .hideActionSecond {
+    display: none;
+  }
+}
+
+@container (max-width: 440px) {
+  .hideActionThird {
+    display: none;
+  }
+}
+
+@container (max-width: 400px) {
+  .hideActionFourth {
+    display: none;
+  }
+}
+
+@container (max-width: 360px) {
+  .bottomModelControl,
+  .hideActionFifth {
+    display: none;
+  }
+}
+
+@container (max-width: 320px) {
+  .bottomWorkspaceControl,
+  .hideActionSixth,
+  .hideActionSeventh {
+    display: none;
+  }
+}
+
+@container (max-width: 260px) {
+  .hideTopCompressLast {
+    display: none;
+  }
+}
