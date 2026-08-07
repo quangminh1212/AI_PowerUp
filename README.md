@@ -12,7 +12,7 @@ Built for developers, researchers, and AI assistants that need a fast map of the
 
 **Keywords:** AI agents, autonomous agents, LLM, generative AI, RAG, MCP, multimodal AI, open-source AI, coding agents, LangChain, LangGraph, CrewAI, AutoGen, OpenAI, Qwen, DeepSeek, Ollama, ComfyUI.
 
-## Ecosystem Architecture (4417 Repositories / 21 Categories)
+## Ecosystem Architecture (4434 Repositories / 22 Categories)
 
 ### 1. Core Cognitive Skills (`skills/`) — 26 submodules
 Explicit reasoning techniques, prompt engineering, and curated knowledge resources.
@@ -224,6 +224,14 @@ Local-first tools from the Hermes ecosystem:
 - `MCP_IntelliBench`: MCP/AI tool benchmarking.
 - `XRouter`: lightweight OpenAI-compatible Go API router.
 - `XMultiverse`: modular AI-powered open-world platform.
+
+### 22. Web Crawl & Scraping (`web-crawl/`) — 17 submodules
+Remote tools hỗ trợ AI lấy thông tin từ web — crawl, scrape, fetch, extract:
+- **Crawlers**: `crawl4ai` (77k★ LLM-friendly), `spider` (Rust-based cloud crawler).
+- **Scraping APIs**: `firecrawl` (25k★ scrape/crawl/map), `tavily` (search+extract cho RAG), `apify-client` (55k+ ready scrapers).
+- **AI Scrapers**: `scrapegraph-ai` (22k★ LLM-powered DOM understanding), `browser-use` (15k★ browser automation for agents).
+- **Content Extractors**: `trafilatura` (accurate HTML→text), `jina-reader` (URL→markdown), `optillm` (optimized LLM inference).
+- **MCP Servers**: `firecrawl-mcp-server`, `crawl4ai-mcp-server`, `crawl4ai-mcp-server-bjorn`, `playwright-mcp`, `crawl4ai-mcp`, `mcp-crawl4ai`, `mcp-crawl4ai-rag`.
 
 README sources are retained inside each submodule.
 

@@ -15026,3 +15026,54 @@
 [submodule "agents/coding/antigravity-kit"]
 	path = agents/coding/antigravity-kit
 	url = https://github.com/vudovn/antigravity-kit.git
+[submodule "web-crawl/crawl4ai"]
+	path = web-crawl/crawl4ai
+	url = https://github.com/unclecode/crawl4ai.git
+[submodule "web-crawl/firecrawl"]
+	path = web-crawl/firecrawl
+	url = https://github.com/mendableai/firecrawl.git
+[submodule "web-crawl/scrapegraph-ai"]
+	path = web-crawl/scrapegraph-ai
+	url = https://github.com/ScrapeGraphAI/Scrapegraph-ai.git
+[submodule "web-crawl/jina-reader"]
+	path = web-crawl/jina-reader
+	url = https://github.com/jina-ai/reader.git
+[submodule "web-crawl/browser-use"]
+	path = web-crawl/browser-use
+	url = https://github.com/browser-use/browser-use.git
+[submodule "web-crawl/spider"]
+	path = web-crawl/spider
+	url = https://github.com/spider-rs/spider.git
+[submodule "web-crawl/tavily"]
+	path = web-crawl/tavily
+	url = https://github.com/tavily-ai/tavily-python.git
+[submodule "web-crawl/apify-client"]
+	path = web-crawl/apify-client
+	url = https://github.com/apify/apify-client-python.git
+[submodule "web-crawl/playwright-mcp"]
+	path = web-crawl/playwright-mcp
+	url = https://github.com/microsoft/playwright-mcp.git
+[submodule "web-crawl/firecrawl-mcp-server"]
+	path = web-crawl/firecrawl-mcp-server
+	url = https://github.com/firecrawl/firecrawl-mcp-server.git
+[submodule "web-crawl/trafilatura"]
+	path = web-crawl/trafilatura
+	url = https://github.com/trafilatura/trafilatura.git
+[submodule "web-crawl/optillm"]
+	path = web-crawl/optillm
+	url = https://github.com/codelion/optillm.git
+[submodule "web-crawl/crawl4ai-mcp-server"]
+	path = web-crawl/crawl4ai-mcp-server
+	url = https://github.com/sadiuysal/crawl4ai-mcp-server.git
+[submodule "web-crawl/crawl4ai-mcp-server-bjorn"]
+	path = web-crawl/crawl4ai-mcp-server-bjorn
+	url = https://github.com/BjornMelin/crawl4ai-mcp-server.git
+[submodule "web-crawl/mcp-crawl4ai"]
+	path = web-crawl/mcp-crawl4ai
+	url = https://github.com/vivmagarwal/mcp-crawl4ai.git
+[submodule "web-crawl/mcp-crawl4ai-rag"]
+	path = web-crawl/mcp-crawl4ai-rag
+	url = https://github.com/coleam00/mcp-crawl4ai-rag.git
+[submodule "web-crawl/crawl4ai-mcp"]
+	path = web-crawl/crawl4ai-mcp
+	url = https://github.com/Ichigo3766/crawl4ai-mcp.git
