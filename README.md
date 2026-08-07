@@ -12,7 +12,7 @@ Built for developers, researchers, and AI assistants that need a fast map of the
 
 **Keywords:** AI agents, autonomous agents, LLM, generative AI, RAG, MCP, multimodal AI, open-source AI, coding agents, LangChain, LangGraph, CrewAI, AutoGen, OpenAI, Qwen, DeepSeek, Ollama, ComfyUI.
 
-## Ecosystem Architecture (4434 Repositories / 22 Categories)
+## Ecosystem Architecture (4836 Submodules / 19 Categories)
 
 ### 1. Core Cognitive Skills (`skills/`) — 26 submodules
 Explicit reasoning techniques, prompt engineering, and curated knowledge resources.
