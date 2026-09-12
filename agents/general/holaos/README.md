@@ -1,13 +1,18 @@
 <p align="center">
-  <img src="docs/images/banner.png" alt="Holaboss logo" />
+  <img src="docs/images/banner.png" alt="holaOS" />
 </p>
 
-<p align="center"><strong>Your super agent for work: local- first, learn your working context in mins and never forget it</strong></p>
+<p align="center"><strong>The Computer for You and Your Agent</strong></p>
+
+<p align="center">
+  Run <em>any</em> agent — Claude Code, Codex, or holaOS — in one local-first workspace, over your
+  tools, your files, and one shared memory. Frontier models built in, or
+  bring your own keys.
+</p>
 
 <p align="center">
   <a href="https://github.com/holaboss-ai/holaOS/actions/workflows/ci.yml"><img src="https://github.com/holaboss-ai/holaOS/actions/workflows/ci.yml/badge.svg" alt="CI" /></a>
-  <img src="https://img.shields.io/badge/node-24.14.1-43853d" alt="Node 24.14.1" />
-  <img src="https://img.shields.io/badge/platform-macOS%20supported,%20Windows%20%26%20Linux%20in%20progress-f28c28" alt="macOS supported, Windows and Linux in progress" />
+  <img src="https://img.shields.io/badge/platform-macOS%20%28Apple%20Silicon%20%2B%20Intel%29%2C%20Windows%2C%20Linux-43853d" alt="macOS (Apple Silicon and Intel), Windows, and Linux supported" />
   <img src="https://img.shields.io/badge/desktop-Electron-47848f" alt="Electron desktop" />
   <img src="https://img.shields.io/badge/runtime-TypeScript-3178c6" alt="TypeScript runtime" />
   <img src="https://img.shields.io/badge/license-Modified%20Apache%202.0-0f7ae5" alt="Modified Apache 2.0 license" />
@@ -18,8 +23,6 @@
   <a href="https://discord.com/invite/NSeHUCBj6"><img src="https://img.shields.io/badge/Join%20our%20Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" alt="Join our Discord" /></a>
 </p>
 
-<p align="center"><strong>⭐ Help us reach more developers and grow the holaOS community. Star this repo!</strong></p>
-
 <p align="center">
   <a href="https://www.holaos.ai/?utm_source=github&utm_medium=oss&utm_campaign=hola_boss_oss&utm_content=readme_nav_website">Website</a> ·
   <a href="https://www.holaos.ai/docs/getting-started?utm_source=github&utm_medium=oss&utm_campaign=hola_boss_oss&utm_content=readme_nav_docs">Docs</a> ·
@@ -27,84 +30,92 @@
   <a href="#quick-start">Quick Start</a>
 </p>
 
-# HolaOS (What is HolaOS):
+<p align="center"><strong>⭐ If holaOS is useful, a star helps more builders find it.</strong></p>
 
 <p align="center">
-  <img src="docs/images/desktop-workspace.png" alt="holaOS desktop workspace screenshot" width="1280" />
+  <img src="docs/images/desktop-workspace.png" alt="holaOS desktop workspace" width="1280" />
 </p>
-<!-- <p align="center">
-  <em>Inside the workspace: apps, files, a completely customizable dashboard, and agent chat live side by side while a single user-facing agent manager coordinates sub agents in the background.</em>
-</p> -->
 
-HolaOS is your super agent for work: local-first, learn your working context in mins and never forget it, below are the key features:
+---
 
--  **With 100+ Integration and Auto-fetch**, Agent know your state of work in mins 
-    
-    With one-click OAuth, your Agent connects to the tools, browser profile, local files you already use every day — Linear, GitHub, Slack, Jira, HubSpot, Gmail, and 100+ other workplace integrations.
-    
-    No more copying updates, pasting links, or re-explaining background. Agent automatically fetches (only when you allowed) relevant signals from your tools in mins and turns scattered app data into working memory. Agent brings the right context back when you need it.
-    
-- **Memory Management system** that let your Agent never forget your working memory
-    
-    Your Agent never starts work from zero — it remembers your working context, where the work stands, and brings the right memory back when you need to continue. The agent builds a local-first, compressed knowledge base from workspace files, browser state, integrations, and work activity, turning raw data from tools like Gmail, Slack, Notion, GitHub, and Jira into durable memory. Inspired by Karpathy’s LLM wiki workflow, this memory is stored locally as Markdown, embedded with SQLite vec, and retrieved through RAG, preserving key facts and context while making recall faster, more controlled, and easier for both you and the agent to use. You can open, browse and edit. 
-    
-- **Session Context compression** that keep your working context fresh and token efficiency
-    
-    The Agent remembers the past without sacrificing its ability to think about the current task. By our Safe Session Compaction: long-running agents are only useful if they stay coherent after days of work, not just one oversized prompt. holaOS keeps roughly 70% of the model window reserved for fresh reasoning, preserves the active working set verbatim, and folds older history into structured checkpoints that retain goals, constraints, progress, decisions, next steps, critical context, and file activity. It cuts history at sensible boundaries when possible, repairs split turns with local prefix summaries when necessary, and
-    performs compaction on a snapshot that only merges back if the live session still matches. The result is durable continuity without the usual slow drift into bloated, expensive, fragile sessions. 
-    
-- **Simple UI & User friendly**
-    
-    Use agents through a desktop app, not a terminal. You can manage tasks, inspect files, view outputs, and interact with your Agent in one simple UI — no CLI required. A local file system keeps work artifacts out of long conversations, so plans, drafts, notes, generated files, configs, and outputs stay in a visible workspace that both you and the Agent can access and edit. With one account, you can use leading SOTA models without managing separate providers, API keys, or setup. For complex tasks, hidden subagents can work in parallel while the orchestrate agent brings back progress and deliverables as one easy-to-review result. Integrate your Browser profile with one-click to support Agent handle real web-based work across websites, dashboards, and apps beyond standard APIs or integrations.
-    
-- **Memory never out of you control**
-    
-    Your Agent learns your work, but your working memory stays in your computer. Built local-first, your data is not locked inside someone else’s cloud.
-    
-    You can see what the Agent remembers, edit, remove what should not be kept, and control what gets fetched or recalled. Memory is always visible, adjustable, and owned by you.
+## ✨ What makes it different
 
-# Working Agent Memory mechanism
+### 🔀 Run any agent, one workspace
 
-The agent creates a local-first knowledge base from the files, browser state, integrations, and work activity connected to your workspace. Information from tools like Gmail, Slack, Notion, GitHub, and Jira (one - click OAuth) is summarized and compressed before becoming memory, so the agent does not need to search through every raw email, message, document, or ticket from scratch.
+Claude Code, Codex, and the built-in holaOS agent — side by side, no switching. Whichever you run, it shares the same memory, tools, skills, and apps. Use the best agent for the job without rebuilding your setup every time.
 
-Memory is stored locally as Markdown files and embedded with SQLite vec on your machine. This gives the agent a durable structure it can retrieve from through RAG, while keeping the underlying workspace state under your control. Inspired by Karpathy’s LLM wiki workflow, the system turns connected work data into browsable, compressed memory that both you and the agent can use.
+- **No lock-in** — bring the agent you already trust.
+- **Shared everything** — one context, one set of tools, one workspace.
+- **Consistent results** — the same skills and integrations, whatever's driving.
 
-This compression layer preserves the important working facts, relationships, and context from the original data while making memory faster to retrieve and easier for the agent to select from. Instead of manually bringing every detail back into the conversation, your workspace maintains a living memory of what has happened, what matters, and where the agent should look next.
+### 🧠 One memory, every agent
 
+Context, preferences, and project history live in a single shared memory — stored **locally, as plain files you can read and edit.** Switch agents, close the app, come back next week: it already knows where you left off.
+
+- **Never start from zero** — durable memory across sessions _and_ agents.
+- **Local-first & yours** — on your machine, visible and editable, not locked in someone else's cloud.
+- **Actually recallable** — structured and embedded, so the right context returns when it's needed.
 
 <p align="center">
-  <img src="docs/images/mem-tree.png" alt="holaOS desktop workspace screenshot" width="1280" />
+  <img src="docs/images/memory.png" alt="holaOS memory tree" width="1280" />
 </p>
 
-# HolaOS vs Other Agents
+### 💸 Models your way — built in, or bring your own
 
-A high level overview over core dimensions that impacts agent usage:
+One account, every model — no keys, no setup, no switching between providers. The latest frontier models are **built in**: cost-efficient **Kimi K3** and **GLM 5.2** for everyday volume, plus top-tier **GPT 5.6**, **Claude Opus 5**, and **Fable 5** for the hard problems. Prefer your own provider? **Bring your own keys** for OpenAI, Anthropic, or any OpenAI- or Anthropic-compatible endpoint — those run on _your_ account, not your holaOS plan.
 
-|  | OpenClaw | Hermes Agent | Openhuman | HolaOS |
-| --- | --- | --- | --- | --- |
-| Agent Position | ✅General Agent | ✅General Agent | ✅Personal Agent | 🔥Working Agent |
-| Simple to start | ⚠️ Terminal-first | ⚠️ Terminal-first | ⚠️ Basic UI | ✅Production Grade UI |
-| Memory | ⚠️ Plugin-reliant | ⚠️ Self-learning | ✅Memory Tree + Obsidian vault, optional agentmemory backend | 🔥Business level Memory Mechanism: Memory Tree + Semantic Embedding + RAG |
-| Integrations | 🚫BYOK | 🚫BYOK | ✅118+ via OAuth | 🔥1000 + via OAuth + Stable for Working |
-| Cost | 🚫BYO Model | 🚫BYO Model | ✅Token Juicy | 🔥Per Native Tool token optimizer |
-| API sprawl | 🚫BYOK | ⚠️ Multi-vendor | ✅one-account, single account per integration | ✅one-account + multi account  per integrations |
-| Auto-fetch | 🚫None | 🚫None | ✅20-min sync into memory | ✅30-min sync into memory |
-| Native tools | ✅Code-only | ✅Code-only | ✅Code + search + scraper + voice | 🔥Code + Web Search +  Browser Use + Wide Search |
-| Model selection | 🚫BYOK | 🚫BYOK | ⚠️only one | 🔥one-account all SOTA models |
-| Workspace | 🚫None | 🚫None | 🚫None | 🔥Workspace build for Digital Work |
+- **Zero-setup default** — one account, every SOTA model, no API keys to manage.
+- **BYOK when you want it** — your keys, your providers, your rates.
+- **Right model per task** — pick per job, per agent.
 
+### 🪟 HolaApps — apps and agent, side by side
 
+Install apps from the in-workspace marketplace and they open as **real, interactive surfaces right beside your agent.** Watch it work inside the app, step in whenever you want, and the result lands in place — not a wall of chat text, but the actual app, driven by the agent, next to the agent.
 
+- **Real surfaces, not chat** — every app is a live UI (Notion, a browser, your own app), not a transcript.
+- **Side-by-side by design** — app and agent share the screen, so you always see what's happening and can take over.
+- **One click to install** — browse the in-workspace marketplace and open any app instantly.
+- **Bring your own** — point a HolaApp at any URL and MCP server; it lives on your machine, yours to open and drive.
+
+<p align="center">
+  <img src="docs/images/hola-app-example.png" alt="The Notion HolaApp open side-by-side with the agent navigating it in holaOS" width="1280" />
+</p>
+
+### 🧩 Skills, Integrations & MCP — teach it once, reuse everywhere
+
+- **Integrations** — connect Gmail, Notion, Slack, GitHub, Linear and 50+ more with one-click OAuth. Agents read and act across your tools, no glue code — and every agent inherits the same connections.
+- **MCP** — plug in any Model Context Protocol server to give your agents new tools. Bring your own, or install community MCP servers in one click.
+- **Skills** — package a workflow once; any agent runs it on demand.
+- **Combos** — bundle skills and integrations into a single one-click install.
+
+<p align="center">
+  <img src="docs/images/marketplace.png" alt="The holaOS in-workspace app marketplace" width="1280" />
+</p>
+
+### 🛠️ Your entire workstation, agent-operable
+
+- **🌐 A real browser, driven by agents** — signed-in browsers your agents drive to browse, click, and extract — under your control.
+- **🎨 Frontier generation built in** — the latest image, video, and audio models inside every agent. Storyboard a video, design a poster, voice a script — one prompt.
+- **📄 Real deliverables** — reports, spreadsheets, and slides saved as real `.xlsx`, `.pptx`, and `.docx` files you can send, not text stuck in a chat.
+- **💬 Reach it from anywhere you chat** — Feishu, WeChat, Slack, Telegram. Send a task from any thread; the result comes back to the same thread.
+- **⏰ Automation** — run on a schedule or a trigger. Digests, monitors, and reports finish and file themselves.
+
+---
+
+## 🚀 Run it your way
+
+|                     |                                                                                                                                                                          |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **🖥️ Desktop app**  | Download and go. Nothing to set up — frontier models built in, free to start.                                                                                           |
+| **🔓 Open source**  | Self-host it. Modified Apache 2.0, bring your own keys, run it entirely on your machine.                                                                                |
+| **🏢 Enterprise**   | SSO with per-role permissions for every agent, skill, and app. Connect internal systems without exposing them. Audit logs on every action. On-prem or your own cloud.   |
+
+---
 
 ## Table of Contents
 
 - [Quick Start](#quick-start)
-    - [What you need](#what-you-need)
-    - [One-Line Install](#one-line-install)
-- [Documentation](#documentation)
 - [Manual Install](#manual-install)
-    - [One-Line Agent Setup](#one-line-agent-setup)
-- [Contributing](#contributing)
 - [OSS Release Notes](#oss-release-notes)
 
 ## Quick Start
@@ -126,28 +137,6 @@ You can also follow the manual path if you want to control each setup step.
 </p>
 
 <p align="center"><strong>If holaOS is useful or interesting, a GitHub Star would be greatly appreciated.</strong></p>
-
-## Documentation
-
-All deeper technical and product documentation lives at **[holaos.ai/docs](https://www.holaos.ai/docs)**:
-
-| Section | What's Covered |
-| --- | --- |
-| [Overview](https://www.holaos.ai/docs/getting-started) | The merged entry page for the environment-engineering thesis and system model |
-| [Quick Start](https://www.holaos.ai/docs/getting-started/quick-start) | The fastest path to a working local desktop environment |
-| [Workspaces](https://www.holaos.ai/docs/getting-started/workspaces) | How workspaces are created, switched, managed, and represented on disk |
-| [Environment Engineering](https://www.holaos.ai/docs/concepts/environment-engineering) | The core thesis behind holaOS and why the environment defines the system |
-| [Concepts](https://www.holaos.ai/docs/concepts/concepts) | Core system vocabulary for workspaces, runtime, memory, and outputs |
-| [Workspace Model](https://www.holaos.ai/docs/concepts/workspace-model) | Workspace contract, authored surfaces, and runtime-owned state |
-| [Memory and Continuity](https://www.holaos.ai/docs/concepts/memory-and-continuity) | Durable memory, continuity artifacts, and long-horizon resume behavior |
-| [Agent Harness](https://www.holaos.ai/docs/concepts/agent-harness) | The stable harness boundary inside the runtime and how executors fit into it |
-| [Independent Deploy](https://www.holaos.ai/docs/contribute/runtime/independent-deploy) | Running the portable runtime without the desktop app |
-| [Build on holaOS](https://www.holaos.ai/docs/contribute) | The code-true developer map for desktop, runtime, apps, templates, and validation paths |
-| [Start Developing](https://www.holaos.ai/docs/contribute/start-developing) | The local developer path for desktop and runtime validation |
-| [Runtime APIs](https://www.holaos.ai/docs/contribute/runtime/apis) | The runtime operational surface for workspaces, runs, streaming, and app lifecycle |
-| [Build Your First App](https://www.holaos.ai/docs/build/apps/first-app) | Building workspace apps on top of holaOS |
-| [Reference](https://www.holaos.ai/docs/reference/environment-variables) | Environment variables and supporting reference material |
-
 
 ## Manual Install
 
@@ -224,9 +213,6 @@ Use the local path when you are actively changing runtime code. Use the publishe
 
 Use `One-Line Install` when you want the fastest path to a working local desktop environment. Use `Manual Install` when you need to inspect or control each setup step yourself.
 
-## Contributing
-
-If you want to contribute, start with [Start Developing](https://www.holaos.ai/docs/contribute/start-developing) to get the local desktop and runtime loop working, then use [Contributing](https://www.holaos.ai/docs/contribute/start-developing/contributing) for validation, commit, and review expectations.
 
 ## OSS Release Notes
 

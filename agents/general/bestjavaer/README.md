@@ -1,7 +1,7 @@
 [English](./README.md) | [中文](./README.zh-CN.md)
 
 <div align="center">
-  <img src="./assets/cxuan-ai-labs.gif" alt="cxuan-ai-labs" width="70%">
+  <img src="./assets/cxuan-ai-labs-logo.png" alt="cxuan-ai-labs" width="70%">
 </div>
 
 # cxuan-ai-labs
@@ -17,7 +17,7 @@ This repository documents practical AI-assisted development workflows, Agent exp
 </div>
 
 <div class="home-primary-links">
-  <a href="https://bestjavaer-nine.vercel.app/">Live Preview</a>
+  <a href="https://cxuan-labs.vercel.app/">Live Preview</a>
   <span>·</span>
   <a href="./en/ai-articles/README.md">AI Articles</a>
   <span>·</span>
@@ -34,18 +34,24 @@ This repository documents practical AI-assisted development workflows, Agent exp
 
 ## Start Here
 
-* [GPT-5.6 Is Finally Opening Up: Sol, Terra, and Luna Arrive This Thursday](./en/ai-articles/02-models-and-research/gpt-5-6-sol-terra-and-luna-are-finally-opening-up.md)
+* [Grok Build Was Widely Criticized, Then Elon Open-Sourced It](./en/ai-articles/01-agent-and-coding/grok-build-was-criticized-then-open-sourced.md)
 
-  2026-07-08
-* [Understanding Claude Code Architecture, Part 2: How Does Claude Code Start So Fast?](./en/ai-articles/01-agent-and-coding/understanding-claude-code-architecture-part-2-fast-startup.md)
+  2026-07-22
+* [Qoder + Qwen 3.8: A Hands-On Test](./en/ai-articles/02-models-and-research/qoder-qwen-3-8-hands-on-test.md)
 
-  2026-07-07
-* [Understanding Claude Code Architecture, Part 1: Let's Begin](./en/ai-articles/01-agent-and-coding/understanding-claude-code-architecture-part-1.md)
+  2026-07-22
+* [Claude Design's System Prompt Leaked: The Essential Lessons](./en/ai-articles/02-models-and-research/claude-design-system-prompt-essential-lessons.md)
 
-  2026-06-29
-* [Can Codex Wear Out Your SSD? A Complete Investigation](./en/ai-articles/01-agent-and-coding/can-codex-wear-out-your-ssd-a-complete-investigation.md)
+  2026-07-22
+* [OpenAI Broke Through Hugging Face's Infrastructure](./en/ai-articles/04-industry-and-business/openai-broke-through-hugging-face-infrastructure.md)
 
-  2026-06-24
+  2026-07-22
+* [Still Learning Loops? Graph Engineering Is Already Taking Off](./en/ai-articles/01-agent-and-coding/graph-engineering-is-already-taking-off.md)
+
+  2026-07-21
+* [OpenAI's Official Prompting Guide](./en/ai-articles/02-models-and-research/openai-official-prompting-guide.md)
+
+  2026-07-20
 
 ## Main Sections
 
@@ -67,10 +73,15 @@ This repository documents practical AI-assisted development workflows, Agent exp
 
 ## Recent Updates
 
-* 2026-07-08 · [GPT-5.6 Is Finally Opening Up: Sol, Terra, and Luna Arrive This Thursday](./en/ai-articles/02-models-and-research/gpt-5-6-sol-terra-and-luna-are-finally-opening-up.md)
-* 2026-07-07 · [Understanding Claude Code Architecture, Part 2: How Does Claude Code Start So Fast?](./en/ai-articles/01-agent-and-coding/understanding-claude-code-architecture-part-2-fast-startup.md)
-* 2026-06-29 · [Understanding Claude Code Architecture, Part 1: Let's Begin](./en/ai-articles/01-agent-and-coding/understanding-claude-code-architecture-part-1.md)
-* 2026-06-24 · [Can Codex Wear Out Your SSD? A Complete Investigation](./en/ai-articles/01-agent-and-coding/can-codex-wear-out-your-ssd-a-complete-investigation.md)
+* 2026-07-22 · [Grok Build Was Widely Criticized, Then Elon Open-Sourced It](./en/ai-articles/01-agent-and-coding/grok-build-was-criticized-then-open-sourced.md)
+* 2026-07-22 · [Qoder + Qwen 3.8: A Hands-On Test](./en/ai-articles/02-models-and-research/qoder-qwen-3-8-hands-on-test.md)
+* 2026-07-22 · [Claude Design's System Prompt Leaked: The Essential Lessons](./en/ai-articles/02-models-and-research/claude-design-system-prompt-essential-lessons.md)
+* 2026-07-22 · [OpenAI Broke Through Hugging Face's Infrastructure](./en/ai-articles/04-industry-and-business/openai-broke-through-hugging-face-infrastructure.md)
+* 2026-07-21 · [Still Learning Loops? Graph Engineering Is Already Taking Off](./en/ai-articles/01-agent-and-coding/graph-engineering-is-already-taking-off.md)
+* 2026-07-20 · [OpenAI's Official Prompting Guide](./en/ai-articles/02-models-and-research/openai-official-prompting-guide.md)
+* 2026-07-18 · [Kimi K3 Stole the Show](./en/ai-articles/02-models-and-research/kimi-k3-stole-the-show.md)
+* 2026-07-18 · [LibTV Helped Me Get Past My Creative Anxiety](./en/ai-articles/05-ai-creation-and-media/libtv-helped-me-get-past-creative-anxiety.md)
+* 2026-07-16 · [GPT-5.6 Ran rm -rf in the Background](./en/ai-articles/01-agent-and-coding/gpt-5-6-ran-rm-rf-in-the-background.md)
 
 ## Why Follow
 
@@ -78,6 +89,16 @@ This repository documents practical AI-assisted development workflows, Agent exp
 * Failure paths and debugging notes are kept because, in the AI era, the troubleshooting process is often more valuable than the final answer.
 * The resource pages are intentionally curated instead of trying to be exhaustive.
 * The older bestJavaer materials remain available, while the active project direction moves toward AI tools, Agent workflows, and personal experiments.
+
+## Build & SEO
+
+```bash
+pnpm install
+pnpm build
+pnpm test
+```
+
+The production build keeps the interactive Docsify experience and generates clean, crawlable HTML under `/articles/` and `/en/articles/`. It also rebuilds RSS feeds, `sitemap.xml`, canonical URLs, hreflang alternates, Open Graph metadata, and Article JSON-LD for every indexed article.
 
 ## Legacy Content
 

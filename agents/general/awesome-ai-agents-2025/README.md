@@ -1,376 +1,337 @@
-# Awesome AI Agents 2026
+<div align="center">
 
-[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
-[![Updated](https://img.shields.io/badge/Updated-March%202026-blue.svg)](https://github.com/Supersynergy/awesome-ai-agents-2025)
+<img src="docs/assets/social-preview.svg" alt="Awesome AI Agents — frontier index" width="100%">
 
-> Complete directory of AI agents, frameworks, platforms, and tools — March 2026 Edition. Covers 100+ tools across coding agents, multi-agent patterns, MCP/A2A protocols, memory, observability, and security.
+# Awesome AI Agents
 
-**57% of enterprises** have AI agents in production. **73% of Fortune 500** are deploying multi-agent workflows. This list cuts through the noise.
+### The practical frontier index for agents that can reason, use tools, change software, and operate safely.
 
----
+[![Awesome](https://awesome.re/badge.svg)](https://awesome.re) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md) [![Checked 2 August 2026](https://img.shields.io/badge/checked-2%20Aug%202026-0f766e.svg)](docs/UPDATE-2026-08-02.md)
 
-## Table of Contents
+**Frameworks · coding agents · MCP/A2A · memory · evals · security · deployment**
 
-1. [Agent Frameworks (Production-Ready)](#1-agent-frameworks-production-ready)
-2. [Agent Platforms & Products](#2-agent-platforms--products)
-3. [Coding Agents](#3-coding-agents)
-4. [Protocols & Standards](#4-protocols--standards)
-5. [Multi-Agent Patterns](#5-multi-agent-patterns)
-6. [Agent Memory](#6-agent-memory)
-7. [Agent Observability](#7-agent-observability)
-8. [Agent Security & Guardrails](#8-agent-security--guardrails)
-9. [Voice Agents](#9-voice-agents)
-10. [Agent Deployment](#10-agent-deployment)
-11. [RAG & Knowledge](#11-rag--knowledge)
-12. [Key Stats (March 2026)](#12-key-stats-march-2026)
-13. [Related Awesome Lists](#13-related-awesome-lists)
+</div>
 
----
+> A deliberately short, source-linked map of the agent stack that is useful now. Discovery signals help us find candidates; upstream documentation, active maintenance, and a concrete job decide inclusion.
 
-## 1. Agent Frameworks (Production-Ready)
+## 60-second map
 
-| Framework | Stars | Key Feature | Best For |
-|-----------|-------|-------------|----------|
-| [LangGraph](https://github.com/langchain-ai/langgraph) 1.0.8 | 19K+ | Durable execution, DAG-based state machines | Complex stateful workflows, production pipelines |
-| [CrewAI](https://github.com/crewAIInc/crewAI) 2.x | 38K+ | Role-based multi-agent crews, task delegation | Team simulations, parallel agent collaboration |
-| [OpenAI Agents SDK](https://github.com/openai/openai-agents-python) | 12K+ | Routines + handoffs (replaces Swarm) | OpenAI-native agent workflows, voice integration |
-| [Claude Agent SDK](https://docs.anthropic.com/agents) | — | MCP-native, hooks, memory, skills, worktrees | Anthropic-native, Claude Code extensions |
-| [Google ADK](https://github.com/google/adk-python) | 8K+ | A2A protocol native, Vertex AI integration | Google Cloud agents, A2A interoperability |
-| [Microsoft AutoGen](https://github.com/microsoft/autogen) 0.4+ | 50K+ | Multi-agent conversation, actor model | Research, enterprise multi-agent dialogue |
-| [Pydantic AI](https://github.com/pydantic/pydantic-ai) | 11K+ | Type-safe agents, validated structured outputs | Production APIs, strict output contracts |
-| [SmolAgents](https://github.com/huggingface/smolagents) | 18K+ | Minimalist CodeAgent, ~1K lines core | Learning, lightweight deployments, HuggingFace models |
-| [AG2](https://github.com/ag2ai/ag2) | 7K+ | Community AutoGen fork, faster releases | AutoGen users wanting community-driven roadmap |
-| [LangChain](https://github.com/langchain-ai/langchain) | 116K+ | Massive ecosystem, 1000+ integrations | Prototyping, integration-heavy workflows |
-| [Agno](https://github.com/agno-agi/agno) | 35K+ | Multimodal agents, runtime + control plane | Multimodal tasks, agent observability |
-| [Composio](https://github.com/composio/composio) | 27K+ | 100+ tool integrations, MCP support | Tool-heavy agents, SaaS automation |
+| If you want to… | Start here | Then add |
+|---|---|---|
+| Build an agent | [OpenAI Agents SDK](https://github.com/openai/openai-agents-python), [Google ADK](https://github.com/google/adk-python), [Pydantic AI](https://github.com/pydantic/pydantic-ai) | [MCP](https://modelcontextprotocol.io/specification/latest), tracing, evals |
+| Ship code with an agent | [Codex](https://github.com/openai/codex), [Claude Code](https://github.com/anthropics/claude-code), [OpenCode](https://github.com/anomalyco/opencode), [Gemini CLI](https://github.com/google-gemini/gemini-cli) | sandbox, tests, review gate |
+| Connect tools and data | [MCP](https://modelcontextprotocol.io/specification/latest) | allowlists, auth, audit logs |
+| Delegate between agents | [A2A](https://a2a-protocol.org/latest/) | capability cards, typed artifacts, timeouts |
+| Give agents durable context | [Synapse](https://github.com/Supersynergy/synapse-memory), [Mem0](https://github.com/mem0ai/mem0), [Letta](https://github.com/letta-ai/letta) | retention, deletion, provenance |
+| Prove that it works | [Terminal-Bench](https://github.com/harbor-framework/terminal-bench), [BrowserGym](https://github.com/ServiceNow/BrowserGym), [SWE-bench](https://github.com/SWE-bench/SWE-bench) | traces, cost, human intervention |
 
-### Local / Open-Source Runtimes
+## Frontier radar
 
-| Framework | Stars | Key Feature | Best For |
-|-----------|-------|-------------|----------|
-| [Open Interpreter](https://github.com/OpenInterpreter/open-interpreter) | 56K+ | Natural language → code execution | Local automation, full OS control |
-| [Dify](https://github.com/langgenius/dify) | 60K+ | Visual workflow builder, self-hosted | Teams wanting GUI agent builder |
-| [Flowise](https://github.com/FlowiseAI/Flowise) | 32K+ | Drag-and-drop node editor | Low-code agent building |
-| [Goose](https://github.com/block/goose) | 10K+ | Block's extensible agent, MCP-native | Developer automation on local machines |
+The newest meaningful shift is not “more chat.” It is a tighter execution loop: model → tools → environment → tests → evidence → approval.
 
----
-
-## 2. Agent Platforms & Products
-
-### Autonomous Agents (Cloud)
-
-| Platform | Backing | Key Feature | Notable |
-|----------|---------|-------------|---------|
-| [Devin 2.0](https://cognition.ai) | Cognition | Autonomous SWE, parallel instances, 30-day project memory | Solves 13.86% SWE-bench (Pro) autonomously |
-| [Manus AI](https://manus.ai) | Meta ($2B acq.) | Iterate-loop multi-agent, 100+ tool integrations | Most viral agent demo of early 2026 |
-| [OpenAI Deep Research](https://openai.com/research) | OpenAI | 5–30 min autonomous research sessions, citation-backed | GPT-4o + o3 backbone, best research agent |
-| [Google Deep Research](https://gemini.google.com) | Google | Gemini 2.0 backbone, integrated Workspace | Best for Google Workspace users |
-| [Replit Agent](https://replit.com/ai) | Replit | Full-stack app builder, deploys instantly | Fastest path from idea to live app |
-| [Bolt.new](https://bolt.new) | StackBlitz | Instant web app generation, browser-native | Frontend prototypes in seconds |
-| [Lovable](https://lovable.dev) | Lovable | Product-focused app builder, Supabase integration | Non-technical founders |
-| [v0](https://v0.dev) | Vercel | UI component generation, React/Tailwind | Frontend engineers, design-to-code |
-
-### Enterprise Agent Platforms
-
-| Platform | Key Feature | Best For |
-|----------|-------------|----------|
-| [Microsoft Copilot Studio](https://copilotstudio.microsoft.com) | Teams + M365 integration, AutoGen backend | Enterprise Microsoft shops |
-| [Salesforce Agentforce](https://www.salesforce.com/agentforce) | CRM-native, Einstein AI | Sales and service automation |
-| [ServiceNow AI Agents](https://www.servicenow.com) | ITSM-native, workflow automation | IT operations |
-| [Workday AI Agents](https://www.workday.com) | HR + Finance workflows | Enterprise HR/Finance teams |
-
----
-
-## 3. Coding Agents
-
-| Tool | Stars | Architecture | Strength |
-|------|-------|--------------|----------|
-| [Claude Code](https://claude.ai/code) | — | 1M context, MCP, hooks, skills, memory, worktrees | Deep codebase understanding, agentic loops |
-| [Cursor](https://cursor.sh) | — | IDE-native, agent mode, Composer | Best IDE integration, fastest iteration |
-| [Windsurf](https://codeium.com/windsurf) | — | Cascade flow, multi-file awareness | Flow-based editing, Codeium integration |
-| [Cline](https://github.com/cline/cline) | 28K+ | VS Code extension, any model, MCP | Open source, model-agnostic, community |
-| [Aider](https://github.com/Aider-AI/aider) | 25K+ | Terminal, git-aware, pair programming | CLI users, git-native, repo-wide edits |
-| [Continue.dev](https://github.com/continuedev/continue) | 20K+ | Open source, any model, VS Code + JetBrains | Privacy-first, self-hosted model support |
-| [OpenHands](https://github.com/All-Hands-AI/OpenHands) | 65K+ | Docker-isolated, web UI, MIT license | Sandboxed execution, evaluation benchmarks |
-| [SWE-agent](https://github.com/princeton-nlp/SWE-agent) | 15K+ | Princeton, ACI interface, benchmark-driven | Research, SWE-bench evaluation |
-| [GitHub Copilot Agent](https://github.com/features/copilot) | — | Tight GitHub integration, code review, PR summaries | GitHub-native workflows |
-| [Codex CLI](https://github.com/openai/codex) | 18K+ | Sandboxed execution, terminal, multimodal | OpenAI-native, safe local execution |
-| [Amp](https://ampcode.com) | — | Sourcegraph-backed, repo-wide context | Large monorepo navigation |
-| [Kiro](https://kiro.dev) | — | Spec-driven development, AWS integration | AWS-native teams |
-
-### SWE-bench Leaderboard (March 2026)
-
-| Agent | SWE-bench Verified | SWE-bench Pro |
-|-------|--------------------|---------------|
-| OpenHands + Claude Sonnet | 80.0% | — |
-| SWE-agent + GPT-4o | 55.0% | — |
-| Devin 2.0 | — | 23.7% |
-| Amazon Q Developer | 50.0% | — |
-
----
-
-## 4. Protocols & Standards
-
-### MCP — Model Context Protocol
-
-[github.com/modelcontextprotocol](https://github.com/modelcontextprotocol) | Anthropic | **10,000+ servers** | **97M SDK downloads**
-
-- Universal open standard for connecting AI agents to tools, data, and APIs
-- Transport: stdio (local), HTTP+SSE (remote), Streamable HTTP (2025 spec)
-- Server types: Tools, Resources, Prompts, Sampling
-- Major adopters: VS Code, Claude, Cursor, Windsurf, Zed, JetBrains, Cline
-- [MCP Server Hub](https://mcp.so) — discover and share servers
-
-```
-Client → MCP Server → Tool/DB/API
-         (JSON-RPC 2.0)
+```mermaid
+flowchart LR
+    M[Reasoning model] --> H[Agent harness]
+    H --> T[MCP tools]
+    H <--> A[A2A agents]
+    H --> E[Sandbox / computer]
+    H --> R[Memory]
+    E --> V[Tests + evals]
+    V --> P[Policy + human approval]
+    P --> O[Observable outcome]
 ```
 
-### A2A — Agent-to-Agent Protocol
+| Frontier | What changed | Strong current anchors |
+|---|---|---|
+| **Long-horizon work** | Agents increasingly own a bounded task over minutes or hours, with parallel workers and explicit verification. | [Codex agent loop](https://openai.com/index/unrolling-the-codex-agent-loop/), [Agents SDK sandboxes](https://openai.com/index/the-next-evolution-of-the-agents-sdk/), [Claude Code research](https://www.anthropic.com/research/claude-code-expertise?level=0) |
+| **Open interoperability** | Tool access and agent-to-agent collaboration are separating into complementary protocol layers: MCP and A2A. | [MCP specification](https://modelcontextprotocol.io/specification/latest), [A2A specification](https://a2a-protocol.org/latest/specification/), [Agentic AI Foundation](https://www.linuxfoundation.org/press/linux-foundation-announces-the-formation-of-the-agentic-ai-foundation?hs_amp=true) |
+| **Computer Use** | GUI interaction is becoming a general action surface alongside APIs and terminals; reliability and safety remain first-class engineering problems. | [OpenAI CUA](https://openai.com/index/computer-using-agent/), [OpenCUA](https://github.com/xlang-ai/OpenCUA), [BrowserGym](https://github.com/ServiceNow/BrowserGym) |
+| **Stateful memory** | Memory is moving from “paste more context” to explicit state, retrieval, temporal reasoning, and long-lived agent identity. | [Mem0 memory algorithm](https://github.com/mem0ai/mem0), [Letta](https://github.com/letta-ai/letta), [Letta Code](https://github.com/letta-ai/letta-code) |
+| **Environment-first evals** | Agent quality is being measured by completed tasks in real terminals, browsers, and repositories—not by chat transcripts alone. | [Terminal-Bench](https://github.com/harbor-framework/terminal-bench), [BrowserGym](https://github.com/ServiceNow/BrowserGym), [SWE-bench](https://github.com/SWE-bench/SWE-bench) |
+| **Governed autonomy** | Sandboxes, approval gates, telemetry, and misalignment monitoring are becoming part of the agent runtime itself. | [Running Codex safely](https://openai.com/index/running-codex-safely/), [monitoring coding agents](https://openai.com/index/how-we-monitor-internal-coding-agents-misalignment/), [E2B](https://github.com/e2b-dev/E2B) |
 
-[github.com/google/A2A](https://github.com/google/A2A) | Google | **100+ partners** | Linux Foundation project
+For the detailed research notes, source links, and evidence boundaries, see the [2 August update audit](docs/UPDATE-2026-08-02.md) and the earlier [frontier breakthroughs](docs/FRONTIER-BREAKTHROUGHS-2026-07-14.md).
 
-- Open protocol for agent-to-agent communication, independent of internal architecture
-- Agent Cards: JSON discovery files (/.well-known/agent.json)
-- Complements MCP: A2A for agent↔agent, MCP for agent↔tool
-- Partners: SAP, Salesforce, ServiceNow, MongoDB, Atlassian, Box
+## Contents
 
-### OpenAI Standards
+1. [Agent frameworks](#agent-frameworks)
+2. [Agent runtimes and platforms](#agent-runtimes-and-platforms)
+3. [Coding agents](#coding-agents)
+4. [Protocols and standards](#protocols-and-standards)
+5. [Agent skills and repo context](#agent-skills-and-repo-context)
+6. [Multi-agent patterns](#multi-agent-patterns)
+7. [Agent memory](#agent-memory)
+8. [Observability and evaluation](#observability-and-evaluation)
+9. [Security and guardrails](#security-and-guardrails)
+10. [Voice agents](#voice-agents)
+11. [Deployment and sandboxing](#deployment-and-sandboxing)
+12. [Knowledge and retrieval](#knowledge-and-retrieval)
+13. [Live signals](#live-signals)
+14. [Related awesome lists](#related-awesome-lists)
+15. [Contributing](#contributing)
 
-| Standard | Purpose |
-|----------|---------|
-| [Function Calling](https://platform.openai.com/docs/guides/function-calling) | Tool use, structured outputs |
-| [Realtime API](https://platform.openai.com/docs/guides/realtime) | Voice + vision agents |
-| [Assistants API](https://platform.openai.com/docs/assistants) | Thread-persistent agents |
+## Agent frameworks
 
----
+| Framework | Stars snapshot | Best fit |
+|---|---:|---|
+| [OpenAI Agents SDK](https://github.com/openai/openai-agents-python) | 28.3K | Lightweight agents, tools, handoffs, tracing, and sandboxed work |
+| [Claude Agent SDK for Python](https://github.com/anthropics/claude-agent-sdk-python) | 7.8K | Building around Claude Code primitives and tool use |
+| [Google ADK](https://github.com/google/adk-python) | 21.0K | Code-first agents, evaluation, deployment, and Google model integration |
+| [Pydantic AI](https://github.com/pydantic/pydantic-ai) | 19.0K | Type-safe agents and validated structured output |
+| [Mastra](https://github.com/mastra-ai/mastra) | 26.8K | TypeScript agents, workflows, memory, and observability |
+| [Vercel AI SDK](https://github.com/vercel/ai) | 25.9K | Provider-agnostic TypeScript toolkit for applications and tool-loop agents |
+| [CopilotKit](https://github.com/CopilotKit/CopilotKit) | 36.4K | Agent-native apps, generative UI, shared state, and human approval flows |
+| [Stately Agent](https://github.com/statelyai/agent) | 420 | State-machine-controlled LLM agents; Agent 2 is alpha |
+| [Workflow SDK](https://github.com/vercel/workflow) | 2.3K | Durable, reliable, and observable TypeScript workflows for agents |
+| [smolagents](https://github.com/huggingface/smolagents) | 28.6K | Small code-first agents and `CodeAgent` workflows |
+| [Agno](https://github.com/agno-agi/agno) | 41.5K | Model-agnostic agents with tools, knowledge, and memory |
+| [mcp-agent](https://github.com/lastmile-ai/mcp-agent) | 8.5K | MCP-native agents and compact workflow patterns |
+| [Vercel Eve](https://github.com/vercel/eve) | 4.2K | Filesystem-first durable agents; currently beta |
+| [Omnigent](https://github.com/omnigent-ai/omnigent) | 8.0K | Meta-harness for interoperable coding agents and policy controls |
+| [Open Multi-Agent](https://github.com/open-multi-agent/open-multi-agent) | 6.7K | TypeScript orchestration with runtime-planned task DAGs |
+| [Archestra](https://github.com/archestra-ai/archestra) | 4.1K | MCP/A2A gateway, registry, orchestrator, and guardrails |
 
-## 5. Multi-Agent Patterns
+## Agent runtimes and platforms
 
-| Pattern | Token Cost | Latency | Reliability | Best For |
-|---------|------------|---------|-------------|----------|
-| **Orchestrator-Worker** | Medium | Medium | High (90.2% improvement) | Production default, parallelizable tasks |
-| **Pipeline** | Low | Low | Very High | Sequential, deterministic workflows |
-| **Debate / Critique** | High | High | Very High | High-stakes decisions, accuracy-critical |
-| **Swarm / Handoffs** | Low–Med | Low | Medium | Customer service, routing, triage |
-| **Mixture of Agents** | High | Medium | Highest | Consensus, adversarial robustness |
-| **Hierarchical** | Medium | Medium | High | Complex nested tasks, management layers |
-| **Reflection** | Medium | Medium | High | Code review, self-improvement loops |
+| Runtime | Delivery | Use case |
+|---|---|---|
+| [OpenClaw](https://github.com/openclaw/openclaw) | Self-hosted | Personal assistants, channels, skills, memory, and tool orchestration |
+| [Goose](https://github.com/aaif-goose/goose) | Local / self-hosted | Extensible agent with MCP and any-LLM support |
+| [OpenHands](https://github.com/OpenHands/OpenHands) | Open source | Software-development agents and sandboxed execution |
+| [NVIDIA OpenShell](https://github.com/NVIDIA/OpenShell) | Self-hosted / alpha | Policy-governed private sandboxes for autonomous agents |
+| [Docker Agent](https://github.com/docker/docker-agent) | Docker Desktop / self-hosted | Declarative YAML agents, MCP tools, and multi-agent runs |
+| [Kun](https://github.com/KunAgent/Kun) | Local-first | Desktop/TUI workspace for coding, writing, research, and automation |
+| [Mission Control](https://github.com/builderz-labs/mission-control) | Self-hosted | Dispatch, review, spend tracking, and operations across agent runtimes |
+| [Autonomous OS](https://github.com/autonomous-ai/autonomous-os) | Edge / self-hosted | Physical-AI operating system with swappable agent runtimes and deterministic safety bounds |
+| [AgenticROS](https://github.com/agenticros/agenticros) | ROS 2 / self-hosted | Agent-agnostic robot tools, MCP adapters, and declarative missions |
+| [OpenAI Deep Research](https://openai.com/index/introducing-deep-research/) | Hosted | Long-running, citation-oriented research |
+| [Gemini Deep Research](https://gemini.google.com/) | Hosted | Research tasks in the Google ecosystem |
+| [Manus](https://manus.im/) | Hosted | General-purpose autonomous task execution |
+| [Replit Agent](https://replit.com/ai) | Hosted | Build and deploy applications from natural language |
+| [v0](https://v0.dev/) | Hosted | UI and application generation |
+| [Lovable](https://lovable.dev/) | Hosted | Product-oriented application prototyping |
 
-### Pattern Details
+### Lightweight and always-on runtimes
 
-**Orchestrator-Worker** — One planning agent decomposes tasks, multiple specialist agents execute in parallel. Delivers 90.2% task completion improvement over single-agent baseline. Production default for 2026.
+Current GitHub snapshots checked **2 August 2026**. Stars indicate attention, not reliability.
 
-**Debate / Critique** — Two agents propose + critique solutions. Best accuracy for reasoning-heavy tasks (math, logic, strategy). 30–50% higher accuracy, 2–3x token cost.
+| Runtime | Stars | Language / shape | Best fit |
+|---|---:|---|---|
+| [Hermes Agent](https://github.com/NousResearch/hermes-agent) | 223.8K | Python / local agent | Personal workflows, skills, browser use, and long-lived learning |
+| [nanobot](https://github.com/HKUDS/nanobot) | 46.5K | Python / lightweight | Small open-source agent for tools, chats, and workflows |
+| [ZeroClaw](https://github.com/zeroclaw-labs/zeroclaw) | 32.5K | Rust / single binary | Low-overhead personal assistant with channels, MCP, memory, ACP, and policy gates |
+| [NanoClaw](https://github.com/nanocoai/nanoclaw) | 30.4K | TypeScript / containers | OpenClaw-like channels with container isolation and memory |
+| [PicoClaw](https://github.com/sipeed/picoclaw) | 29.8K | Go / tiny runtime | Small hardware and deploy-anywhere assistant scenarios |
+| [IronClaw](https://github.com/nearai/ironclaw) | 12.6K | Rust / Agent OS | Privacy, security, and extensibility as the runtime boundary |
+| [NullClaw](https://github.com/nullclaw/nullclaw) | 8.0K | Zig / minimal runtime | Small autonomous assistant infrastructure |
 
-**Swarm / Handoffs** — Agents hand off context to specialists based on conversation state. OpenAI's Swarm evolved into the Agents SDK handoff primitive.
+### New runtime, control-plane, and physical-agent candidates
 
----
+These projects were surfaced by ghmax and verified against active official repositories. They are useful additions, but a live repository and star count are not a production-readiness claim.
 
-## 6. Agent Memory
+| Project | Stars | Shape | Best fit |
+|---|---:|---|---|
+| [herdr](https://github.com/herdrdev/herdr) | 23.4K | Rust / terminal runtime | Workspaces and lifecycle management for coding-agent fleets |
+| [holaOS](https://github.com/holaboss-ai/holaOS) | 5.5K | TypeScript / agent workspace | Shared memory and MCP across apps, files, and browsers |
+| [Archestra](https://github.com/archestra-ai/archestra) | 4.1K | TypeScript / gateway | Controlled enterprise access to MCP, A2A, and agent triggers |
+| [Open Multi-Agent](https://github.com/open-multi-agent/open-multi-agent) | 6.7K | TypeScript / orchestrator | Dynamic multi-agent workflows in a Node.js application |
+| [Wippy](https://github.com/wippyai/runtime) | 12 | Go / Lua-WASM runtime | Durable actor runtime with queues, vector search, policy controls, and MCP updates |
+| [AgenticFlowX](https://github.com/AgenticFlowX/agenticflowx) | 19 | VS Code / workflow layer | Chat-first coding with Code, Explore, Spec, skills, and repo-owned traceability |
 
-| Tool | Stars | Architecture | Best For |
-|------|-------|--------------|----------|
-| [Mem0](https://github.com/mem0ai/mem0) | 28K+ | Managed, vector + graph, cross-session | Production apps needing managed memory |
-| [Letta / MemGPT](https://github.com/letta-ai/letta) | 14K+ | Stateful agents, editable memory blocks, self-editing | Long-running agents, persistent personas |
-| [Zep](https://github.com/getzep/zep) | 7K+ | Temporal knowledge graph, entity tracking | CRM-like memory, relationship tracking |
-| [Cognee](https://github.com/topoteretes/cognee) | 5K+ | Knowledge graph + reasoning, GraphRAG | Complex relational knowledge, research |
+## Coding agents
 
-### Memory Taxonomy
+| Agent | Stars snapshot | Interface | Strength |
+|---|---:|---|---|
+| [OpenCode](https://github.com/anomalyco/opencode) | 192.0K | Terminal | Open-source, model-agnostic coding agent |
+| [Claude Code](https://github.com/anthropics/claude-code) | 139.9K | Terminal | Repository-aware coding, hooks, and agent workflows |
+| [Gemini CLI](https://github.com/google-gemini/gemini-cli) | 106.3K | Terminal | Open-source Gemini agent with terminal and MCP workflows |
+| [Codex](https://github.com/openai/codex) | 103.1K | Terminal | Open-source terminal agent with sandboxed execution |
+| [OpenHands](https://github.com/OpenHands/OpenHands) | 82.8K | Web / CLI | Autonomous software-development workflows |
+| [Cline](https://github.com/cline/cline) | 65.4K | VS Code / CLI / SDK | Model-agnostic tool execution and coding |
+| [Open Interpreter](https://github.com/openinterpreter/openinterpreter) | 67.5K | Terminal / CLI | Code-capable agent for open models |
+| [Aider](https://github.com/Aider-AI/aider) | 47.9K | Terminal | Git-aware pair programming and repository edits |
+| [Orca](https://github.com/stablyai/orca) | 35.2K | Desktop / mobile / VPS | Parallel coding-agent fleet management |
+| [Qwen Code](https://github.com/QwenLM/qwen-code) | 26.5K | Terminal | Open-source terminal coding agent |
+| [pi](https://github.com/earendil-works/pi) | 81.9K | TUI / CLI toolkit | Unified LLM API, agent loop, and coding CLI |
+| [Kimi CLI](https://github.com/MoonshotAI/kimi-cli) | 11.1K | Terminal | Planning and coding workflows |
+| [Chorus](https://github.com/chorus-codes/chorus) | 525 | CLI harness | Multi-LLM peer review before shipping code |
 
-```
-Working memory    → Context window (in-prompt)
-Episodic memory   → Session history (databases)
-Semantic memory   → Vector embeddings (knowledge)
-Procedural memory → System prompts, skills, rules
-```
+### Coding-agent ecosystem
 
----
+[Claude Code Router](https://github.com/musistudio/claude-code-router) · [Claude Code Templates](https://github.com/davila7/claude-code-templates) · [AgenticFlowX](https://github.com/AgenticFlowX/agenticflowx) · [SWE-agent](https://github.com/SWE-agent/SWE-agent) · [GitHub Copilot](https://github.com/features/copilot) · [Cursor](https://cursor.com/) · [Windsurf](https://windsurf.com/)
 
-## 7. Agent Observability
+## Protocols and standards
 
-| Tool | Stars | Key Feature | Best For |
-|------|-------|-------------|----------|
-| [Langfuse](https://github.com/langfuse/langfuse) | 10K+ | Open source, prompt versioning, self-hostable | Privacy-first, LangChain/CrewAI teams |
-| [LangSmith](https://smith.langchain.com) | — | Zero-overhead tracing, LangChain ecosystem | LangChain/LangGraph production |
-| [AgentOps](https://github.com/AgentOps-AI/agentops) | 3K+ | Session replay, 400+ framework integrations | Framework-agnostic, debugging agents |
-| [Braintrust](https://braintrustdata.com) | — | 80x faster evals, dataset management | Evaluation-driven development |
-| [Helicone](https://github.com/Helicone/helicone) | 4K+ | Gateway-based, no SDK changes needed | Drop-in observability, any provider |
-| [Arize Phoenix](https://github.com/Arize-ai/phoenix) | 6K+ | Open source, LLM evals, embeddings | ML teams, explainability |
+| Protocol | Purpose |
+|---|---|
+| [Model Context Protocol (MCP)](https://modelcontextprotocol.io/specification/latest) | Connect agents to tools, data, prompts, and resources |
+| [MCP Servers](https://github.com/modelcontextprotocol/servers) | Official reference servers and implementation examples |
+| [Agent2Agent (A2A)](https://a2a-protocol.org/latest/) | Discover, delegate, and exchange artifacts between opaque agents |
+| [AG-UI](https://github.com/ag-ui-protocol/ag-ui) | Stream agent state, events, and human interaction into user-facing applications |
+| [OpenAI function calling](https://platform.openai.com/docs/guides/function-calling) | Structured tool calls and schema-constrained actions |
+| [Anthropic tool use](https://docs.anthropic.com/en/docs/build-with-claude/tool-use) | Model-directed tools and structured results |
+| [Agent Client Protocol (ACP)](https://github.com/agentclientprotocol/agent-client-protocol) | Connect editors and agent runtimes through a common protocol |
+| [AGENTS.md](https://github.com/agentsmd/agents.md) | Portable repository guidance for coding agents |
 
-### What to Observe
+**Mental model:** MCP is the agent-to-tool boundary. A2A is the agent-to-agent boundary. They solve different problems and compose cleanly.
 
-- **Traces**: full agent reasoning chain, tool calls, sub-agent spawns
-- **Spans**: latency per step, token cost breakdown
-- **Evals**: task success rate, hallucination rate, tool accuracy
-- **Replays**: reproduce exact session state for debugging
+## Agent skills and repo context
 
----
+The complete current catalog is in [SKILLS.md](SKILLS.md). The table below keeps the main index scannable while preserving the important domain boundaries.
 
-## 8. Agent Security & Guardrails
+| Project | Role |
+|---|---|
+| [Superpowers](https://github.com/obra/superpowers) | Agentic skills framework and software-development methodology |
+| [Understand-Anything](https://github.com/Egonex-AI/Understand-Anything) | Interactive codebase knowledge graph for Claude Code, Codex, Cursor, Copilot, and Gemini CLI |
+| [AGENTS.md](https://github.com/agentsmd/agents.md) | Keep project-specific constraints, workflows, and safety context close to the repository |
+| [NVIDIA Agent Skills](https://github.com/NVIDIA/skills) | Verified skills for Physical AI, robotics, CUDA, simulation, and RAG workflows |
+| [Trail of Bits Skills](https://github.com/trailofbits/skills) | Security research, vulnerability detection, audit, and verification workflows for coding agents |
+| [AWS Agent Toolkit](https://github.com/aws/agent-toolkit-for-aws) | AWS MCP servers, skills, plugins, and guardrails for coding agents |
+| [AWS MCP servers](https://github.com/awslabs/mcp) | AWS-focused MCP server collection; the upstream README points new work to Agent Toolkit for AWS |
+| [.NET Agent Skills](https://github.com/dotnet/skills) | .NET/C# development, .NET AI, RAG, agent workflows, and MCP |
+| [David Ondrej Skills](https://github.com/davidondrej/skills) | General coding, research, orchestration, skill authoring, and operations |
+| [Interfaces Skills](https://github.com/jakubkrehel/skills) | UI polish, accessibility, typography, layout, and UX writing |
+| [Bankr Skills](https://github.com/BankrBot/skills) | Web3, DeFi, wallets, on-chain data, and agent commerce; high-impact actions require approval |
+| [Chris Banes Skills](https://github.com/chrisbanes/skills) | Kotlin, Jetpack Compose, Android architecture, performance, and testing |
+| [dzhng Skills](https://github.com/dzhng/skills) | Domain-agnostic planning, implementation, review, visual work, and verification |
+| [Pedro Nauck Skills](https://github.com/pedronauck/skills) | Broad engineering, community, marketing, business, and workflow skill catalog |
+| [Social Media Skills](https://github.com/social-media-skills/skills) | Social strategy, writing, video, design, growth, analytics, and publishing; keep send approval explicit |
 
-### Guardrail Frameworks
+Skills are executable context, not decoration: prefer scoped permissions, explicit stop conditions, and a testable outcome.
 
-| Tool | Stars | Approach | Best For |
-|------|-------|----------|----------|
-| [Guardrails AI](https://github.com/guardrails-ai/guardrails) | 5K+ | Validators on input/output, retry logic | Structured output validation |
-| [NeMo Guardrails](https://github.com/NVIDIA/NeMo-Guardrails) | 4K+ | Conversation rails, topic control | NVIDIA stack, conversation safety |
-| [LLM Guard](https://github.com/laiyer-ai/llm-guard) | 3K+ | Prompt sanitization, PII detection | Enterprise compliance |
-| [Rebuff](https://github.com/woop/rebuff) | 2K+ | Prompt injection detection, heuristic + ML | Injection-aware deployments |
+## Multi-agent patterns
 
-### Key Threat Vectors (2026)
+| Pattern | Use when | Control that must exist |
+|---|---|---|
+| **Pipeline** | Steps are known and ordered | Explicit state between stages |
+| **Orchestrator / worker** | Work can be split across specialists | Central planner, bounded workers |
+| **Handoff** | A specialist should own the next turn | Typed transfer and stop conditions |
+| **Debate / critique** | A second opinion reduces costly errors | Independent proposal and review |
+| **Reflection** | Output can be checked and improved | Separate verifier and retry budget |
+| **Human approval** | Actions are costly or irreversible | Approval gate before side effects |
 
-| Threat | Description | Mitigation |
-|--------|-------------|------------|
-| **Prompt Injection** | Malicious content in tool outputs hijacks agent | Input sanitization, sandboxed execution |
-| **Tool Poisoning** | Compromised MCP servers return malicious instructions | Server allowlists, output validation |
-| **Data Exfiltration** | Agent leaks sensitive context to external tools | Output filtering, egress controls |
-| **Agent Impersonation** | Rogue agent spoofs trusted agent identity | A2A auth, signed Agent Cards |
-| **Runaway Loops** | Agent gets stuck in infinite tool-call loops | Max steps, circuit breakers, timeouts |
+Production rule: define a closed task, machine-checkable oracle, maximum step count, and explicit stop path before adding more agents.
 
-### Secure Agent Checklist
+## Agent memory
 
-- Sandbox tool execution (Docker, E2B, Daytona)
-- Validate all tool inputs and outputs
-- Implement max-steps and cost limits
-- Use least-privilege API scopes
-- Log all tool calls for audit trails
-- Human-in-the-loop for irreversible actions
+| Tool | Stars snapshot | Focus |
+|---|---:|---|
+| [Mem0](https://github.com/mem0ai/mem0) | 62.3K | Cross-session memory, temporal retrieval, and agent context |
+| [Letta](https://github.com/letta-ai/letta) | 24.0K | Stateful agents and editable long-term memory |
+| [Cognee](https://github.com/topoteretes/cognee) | 29.7K | Self-hosted knowledge graph and persistent agent memory |
+| [TencentDB-Agent-Memory](https://github.com/TencentCloud/TencentDB-Agent-Memory) | 10.3K | Agent-memory storage and retrieval patterns |
+| [OpenViking](https://github.com/volcengine/OpenViking) | 27.7K | Filesystem-shaped context database for memory, RAG, and skills |
+| [Synapse](https://github.com/Supersynergy/synapse-memory) | 1 | Local-first cited memory, decisions, context packs, and recovery checkpoints in SQLite |
 
----
+Memory is a product decision, not a vector-store checkbox: define retention, deletion, tenant boundaries, provenance, and recovery before shipping.
 
-## 9. Voice Agents
+## Observability and evaluation
 
-| Platform | Type | Key Feature | Best For |
-|----------|------|-------------|----------|
-| [Retell AI](https://retellai.com) | Managed | 500ms latency, interruption handling, CRM integrations | Sales, support call centers |
-| [Vapi](https://vapi.ai) | Managed | 600ms latency, 100+ providers, phone numbers | Developers building voice products |
-| [Bland AI](https://bland.ai) | Managed | Enterprise-grade, call routing, post-call analysis | High-volume outbound calling |
-| [LiveKit Agents](https://github.com/livekit/agents) | Open Source | Real-time audio/video, STT+LLM+TTS pipeline | Self-hosted, custom voice agents |
-| [OpenAI Realtime API](https://platform.openai.com/docs/guides/realtime) | API | Native voice, vision, interruption detection | GPT-4o voice integration |
-| [ElevenLabs Conversational](https://elevenlabs.io/conversational-ai) | Managed | Ultra-realistic voices, 32 languages | High-fidelity voice quality |
+| Tool / benchmark | Focus |
+|---|---|
+| [Langfuse](https://github.com/langfuse/langfuse) | 32.3K; open-source traces, evals, prompts, datasets, and metrics |
+| [Arize Phoenix](https://github.com/Arize-ai/phoenix) | 10.9K; AI observability and evaluation |
+| [OpenTelemetry](https://opentelemetry.io/) | Vendor-neutral traces, metrics, and logs |
+| [Terminal-Bench](https://github.com/harbor-framework/terminal-bench) | 2.5K; real terminal tasks with tests and execution harness |
+| [BrowserGym](https://github.com/ServiceNow/BrowserGym) | 1.3K; web-agent research across browser benchmarks |
+| [SWE-bench](https://github.com/SWE-bench/SWE-bench) | 5.5K; reproducible software-engineering tasks |
+| [Mission Control](https://github.com/builderz-labs/mission-control) | Agent operations, dispatch, review, and spend tracking |
 
----
+Track task success, tool success, latency, token cost, retries, human interventions, and unsafe-action attempts. A transcript alone is not an evaluation.
 
-## 10. Agent Deployment
+## Security and guardrails
 
-### Serverless / Cloud
+[NVIDIA NeMo Guardrails](https://github.com/NVIDIA-NeMo/Guardrails) · [Guardrails AI](https://github.com/guardrails-ai/guardrails) · [Trail of Bits Skills](https://github.com/trailofbits/skills) · [Snyk Agent Scan](https://github.com/snyk/agent-scan) · [garak](https://github.com/NVIDIA/garak) · [Microsoft Presidio](https://github.com/microsoft/presidio)
 
-| Platform | Key Feature | Best For |
-|----------|-------------|----------|
-| [Modal](https://modal.com) | GPU serverless, sub-second cold starts, cron | Python-native, batch agent jobs |
-| [Replicate](https://replicate.com) | Model hosting, prediction API, fine-tuning | ML model deployment, any framework |
-| [Together AI](https://together.ai) | Fast inference, 100+ models, fine-tuning | Open model inference at scale |
-| [Fireworks AI](https://fireworks.ai) | Fastest open model inference, FireFunction | Low-latency tool-calling agents |
-| [E2B](https://github.com/e2b-dev/e2b) | Sandboxed code execution, 150ms boot | Safe code execution inside agents |
-| [Daytona](https://github.com/daytonaio/daytona) | Elastic AI code infra, secure workspaces | Coding agent sandboxes |
+Minimum controls: least-privilege tool scopes, server allowlists, validated tool output, sandboxing, egress limits, max steps, cost limits, audit logs, and human approval for irreversible actions.
 
-### Self-Hosted
+## Voice agents
 
-| Platform | Key Feature | Best For |
-|----------|-------------|----------|
-| [BentoML](https://github.com/bentoml/BentoML) | Model serving, batching, async | ML engineers, custom inference |
-| [Ollama](https://ollama.com) | 100+ models, simple CLI, GPU support | Local development, privacy-first |
-| [LocalAI](https://github.com/mudler/LocalAI) | OpenAI-compatible API, any model | Drop-in local OpenAI replacement |
-| [vLLM](https://github.com/vllm-project/vllm) | High-throughput serving, PagedAttention | Production local inference at scale |
+[LiveKit Agents](https://github.com/livekit/agents) · [OpenAI Realtime API](https://platform.openai.com/docs/guides/realtime) · [Vapi](https://vapi.ai/) · [Retell AI](https://www.retellai.com/) · [ElevenLabs Conversational AI](https://elevenlabs.io/conversational-ai)
 
----
+## Deployment and sandboxing
 
-## 11. RAG & Knowledge
+| Tool | Use case |
+|---|---|
+| [NVIDIA OpenShell](https://github.com/NVIDIA/OpenShell) | Declarative filesystem, process, network, and inference policies for agent sandboxes; alpha |
+| [OpenSandbox](https://github.com/opensandbox-group/OpenSandbox) | Secure, extensible sandbox runtime with coding-agent and Kubernetes examples |
+| [Docker Agent](https://github.com/docker/docker-agent) | YAML-defined agents, multi-agent orchestration, and MCP tools in Docker |
+| [Blaxel Sandbox](https://github.com/blaxel-ai/sandbox) | Isolated micro-VM templates and sandbox API for agent-generated workloads |
+| [E2B](https://github.com/e2b-dev/E2B) | Secure environments for agent-generated code |
+| [Ollama](https://github.com/ollama/ollama) | Local model serving and developer workflows |
+| [llama.cpp](https://github.com/ggml-org/llama.cpp) | Portable local inference |
+| [vLLM](https://github.com/vllm-project/vllm) | High-throughput model serving |
+| [llm-d](https://github.com/llm-d/llm-d) | Kubernetes inference performance and routing for model- and agent-serving workloads |
+| [Modal](https://modal.com/) | Serverless compute for agent and model workloads |
+| [BentoML](https://github.com/bentoml/BentoML) | Packaging and serving model-backed applications |
 
-### Orchestration Frameworks
+Sandbox untrusted code. Treat model output as data until a policy layer validates the action.
 
-| Tool | Stars | Key Feature | Best For |
-|------|-------|-------------|----------|
-| [LlamaIndex](https://github.com/run-llama/llama_index) | 37K+ | Advanced RAG, structured queries, agents | Complex document understanding |
-| [Haystack](https://github.com/deepset-ai/haystack) | 18K+ | Production NLP pipelines, modular | Enterprise search, QA systems |
-| [DSPy](https://github.com/stanfordnlp/dspy) | 21K+ | Programmatic LM optimization, signatures | Prompt optimization, research |
+## Knowledge and retrieval
 
-### Vector Databases
+| Tool | Focus |
+|---|---|
+| [Qdrant](https://github.com/qdrant/qdrant) | Filterable vector search and retrieval |
+| [pgvector](https://github.com/pgvector/pgvector) | Vector search inside PostgreSQL |
+| [Haystack](https://github.com/deepset-ai/haystack) | Modular search, RAG, and agent pipelines |
+| [DSPy](https://github.com/stanfordnlp/dspy) | Programmatic prompt and LM optimisation |
+| [LlamaIndex](https://github.com/run-llama/llama_index) | Data connectors, indexing, and retrieval workflows |
+| [Understand-Anything](https://github.com/Egonex-AI/Understand-Anything) | Codebase graph and interactive repository understanding for agent workflows |
+| [OpenViking](https://github.com/volcengine/OpenViking) | Context database that unifies agent memory, knowledge, and skills |
+| [CodeGraph](https://github.com/colbymchenry/codegraph) | Local code knowledge graph for coding-agent retrieval and change context |
 
-| Database | Stars | Key Feature | Best For |
-|----------|-------|-------------|----------|
-| [Qdrant](https://github.com/qdrant/qdrant) | 22K+ | Rust, payload filtering, sparse+dense | Production, fast filtered search |
-| [Chroma](https://github.com/chroma-core/chroma) | 17K+ | Embedded, developer-friendly | Prototyping, local development |
-| [Weaviate](https://github.com/weaviate/weaviate) | 12K+ | GraphQL, multi-tenancy, hybrid search | Enterprise, multi-tenant SaaS |
-| [Milvus](https://github.com/milvus-io/milvus) | 32K+ | Cloud-native, billion-scale | High-scale production |
-| [pgvector](https://github.com/pgvector/pgvector) | 14K+ | PostgreSQL extension | PostgreSQL shops, no new infra |
-| [Pinecone](https://pinecone.io) | — | Managed, serverless, real-time upserts | Fully managed, no ops burden |
+Choose storage by deletion semantics, tenant isolation, filter support, provenance, and operational cost—not by embedding demos alone.
 
----
+## Live signals
 
-## 12. Key Stats (March 2026)
+This section is deliberately separate from the curated core.
 
-| Metric | Value | Source |
-|--------|-------|--------|
-| Enterprises with agents in production | **57%** | McKinsey State of AI 2026 |
-| Fortune 500 deploying multi-agent workflows | **73%** | Gartner Q1 2026 |
-| SWE-bench Verified SOTA | **80%** (OpenHands + Claude) | SWE-bench.org |
-| SWE-bench Pro SOTA | **23.7%** (Devin 2.0) | Cognition |
-| MCP servers live | **10,000+** | Anthropic |
-| MCP SDK downloads | **97M** | Anthropic |
-| A2A protocol partners | **100+** | Google |
-| Projected agent market by 2028 | **$450B** | Grand View Research |
-| Voice agent market CAGR | **34%** | MarketsandMarkets |
-| Average agent task completion improvement (multi-agent vs single) | **90.2%** | Stanford HAI 2026 |
+- **ghmax / GitStars.io:** the 2 August run returned [OpenCode](https://github.com/anomalyco/opencode) at `+2,259 stars / 7d` and [OpenClaw](https://github.com/openclaw/openclaw) at `+694 / 7d`. The feed also contained unrelated repositories, so star velocity is discovery only.
+- **GitStars.io name-index pass:** `ghmax --gitstars-suggest` surfaced [Vercel AI SDK](https://github.com/vercel/ai), [Workflow SDK](https://github.com/vercel/workflow), [CopilotKit](https://github.com/CopilotKit/CopilotKit), [Stately Agent](https://github.com/statelyai/agent), [AWS MCP](https://github.com/awslabs/mcp), [llm-d](https://github.com/llm-d/llm-d), [NVIDIA skills](https://github.com/NVIDIA/skills), [Trail of Bits skills](https://github.com/trailofbits/skills), and newer physical/coding candidates. These were added only after official metadata and README checks; generic or stale matches remain discovery-only.
+- **GitStars skills pass:** the bounded `skills` name search returned ten active catalogs: Trail of Bits, .NET, NVIDIA, David Ondrej, Interfaces, Bankr, Chris Banes, dzhng, Pedro Nauck, and Social Media Skills. All ten are now listed in [SKILLS.md](SKILLS.md) with focus and installation boundaries.
+- **ghmax repository search:** fresh, active candidates included [NVIDIA OpenShell](https://github.com/NVIDIA/OpenShell), [Archestra](https://github.com/archestra-ai/archestra), [Docker Agent](https://github.com/docker/docker-agent), [Kun](https://github.com/KunAgent/Kun), [herdr](https://github.com/herdrdev/herdr), and [Open Multi-Agent](https://github.com/open-multi-agent/open-multi-agent).
+- **PUM:** the read-only refresh completed with `924` installed package records and `124` update candidates. PUM checks host/tool freshness; it is not a quality score for repositories.
+- **Superweb:** current comparison-list retrieval surfaced [Zijian-Ni](https://github.com/Zijian-Ni/awesome-ai-agents-2026), [caramaschiHG](https://github.com/caramaschiHG/awesome-ai-agents-2026), [ARUNAGIRINATHAN-K](https://github.com/ARUNAGIRINATHAN-K/awesome-ai-agents-2026), and [awesome-agentic-mcp-security](https://github.com/mcp-security-project/awesome-agentic-mcp-security).
+- **Synapse:** local-first memory is now a first-class category through [Supersynergy/synapse-memory](https://github.com/Supersynergy/synapse-memory), alongside hosted/stateful memory systems.
+- **GitHub:** star counts above are dated adoption signals, not quality scores. Verify upstream activity before choosing.
+- **Comparison lists:** [E2B](https://github.com/e2b-dev/awesome-ai-agents), [Zijian-Ni](https://github.com/Zijian-Ni/awesome-ai-agents-2026), [caramaschiHG](https://github.com/caramaschiHG/awesome-ai-agents-2026), [ARUNAGIRINATHAN-K](https://github.com/ARUNAGIRINATHAN-K/awesome-ai-agents-2026), [awesome-claude-code](https://github.com/hesreallyhim/awesome-claude-code), [awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers), and [awesome-agentic-mcp-security](https://github.com/mcp-security-project/awesome-agentic-mcp-security) were cross-checked.
+- **YouTube:** current discovery clusters around agentic engineering, MCP versus APIs/skills, agent teams, and local terminal workflows. Video popularity is discovery only, never inclusion evidence.
 
-### Model Benchmarks (March 2026)
+See the [2 August audit](docs/UPDATE-2026-08-02.md) for exact snapshots, commands, search limits, and inclusion decisions.
 
-| Model | MMLU | HumanEval | MATH | Context |
-|-------|------|-----------|------|---------|
-| Claude Sonnet 4 | 90.2% | 92.4% | 86.1% | 1M |
-| GPT-4o (March 2026) | 89.7% | 90.1% | 83.4% | 128K |
-| Gemini 2.0 Ultra | 91.0% | 88.3% | 88.7% | 1M |
-| DeepSeek R2 | 88.9% | 91.2% | 90.1% | 128K |
-| Llama 4 Maverick | 85.3% | 84.1% | 79.8% | 1M |
+## Related awesome lists
 
----
+| List | Focus |
+|---|---|
+| [e2b-dev/awesome-ai-agents](https://github.com/e2b-dev/awesome-ai-agents) | Broad open- and closed-source agent directory |
+| [caramaschiHG/awesome-ai-agents-2026](https://github.com/caramaschiHG/awesome-ai-agents-2026) | Broad catalog and category recall |
+| [Zijian-Ni/awesome-ai-agents-2026](https://github.com/Zijian-Ni/awesome-ai-agents-2026) | Multilingual catalog with changelog and archive flags |
+| [ARUNAGIRINATHAN-K/awesome-ai-agents-2026](https://github.com/ARUNAGIRINATHAN-K/awesome-ai-agents-2026) | Broad stack with security, observability, and deployment lanes |
+| [Deep-Insight-Labs/awesome-ai-agents](https://github.com/Deep-Insight-Labs/awesome-ai-agents) | Frameworks, observability, and emerging projects |
+| [hesreallyhim/awesome-claude-code](https://github.com/hesreallyhim/awesome-claude-code) | Claude Code skills, plugins, agents, and tooling |
+| [punkpeye/awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers) | MCP server discovery |
+| [mcp-security-project/awesome-agentic-mcp-security](https://github.com/mcp-security-project/awesome-agentic-mcp-security) | MCP and agentic security research, tooling, labs, and advisories |
+| [e2b-dev/awesome-ai-sdks](https://github.com/e2b-dev/awesome-ai-sdks) | SDKs and building blocks |
+| [bradAGI/awesome-cli-coding-agents](https://github.com/bradAGI/awesome-cli-coding-agents) | Terminal-native coding agents, harnesses, parallel runners, and infrastructure |
+| [sammcj/agentic-coding](https://github.com/sammcj/agentic-coding) | Agentic coding rules, templates, and workflow guidance |
+| [mokevnin/agentic-coding-design-patterns](https://github.com/mokevnin/agentic-coding-design-patterns) | Current agentic software-development patterns |
 
-## 13. Related Awesome Lists
-
-| List | Stars | Focus |
-|------|-------|-------|
-| [awesome-ai-agents](https://github.com/e2b-dev/awesome-ai-agents) | 24K+ | Broad AI agents ecosystem |
-| [awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers) | 18K+ | MCP server directory |
-| [500-AI-Agents-Projects](https://github.com/ashishpatel26/500-AI-Agents-Projects) | 16K+ | Real-world agent projects |
-| [awesome-llm-agents](https://github.com/kaushikb11/awesome-llm-agents) | 8K+ | LLM-powered agents research |
-| [awesome-langchain](https://github.com/kyrolabs/awesome-langchain) | 7K+ | LangChain ecosystem |
-| [awesome-local-llm](https://github.com/continuum-llms/chatgpt-memory) | 5K+ | Local model running |
-| [awesome-openai-agents](https://github.com/openai/openai-agents-python) | 12K+ | OpenAI Agents SDK examples |
-| [awesome-agentic-coding](https://github.com/nicholasgasior/awesome-agentic-coding) | 3K+ | Coding agent tools |
-
----
-
-## Community
-
-| Resource | Members / Activity |
-|----------|--------------------|
-| [r/LocalLLaMA](https://reddit.com/r/LocalLLaMA) | 700K+ members |
-| [r/AIAgents](https://reddit.com/r/AIAgents) | 150K+ members |
-| [LangChain Discord](https://discord.gg/langchain) | 80K+ members |
-| [Hugging Face Discord](https://discord.gg/huggingface) | 100K+ members |
-| [AI Engineer World's Fair](https://www.ai.engineer) | Annual conference |
-
----
+Use broad lists for recall. Use this index's dated audit and upstream links for currentness.
 
 ## Contributing
 
-PRs welcome. Please follow these guidelines:
-- Add tools with **GitHub stars, key feature, and best-for use case**
-- Keep descriptions to one line — link to official docs for details
-- Group by the most relevant section
-- Update star counts when significantly outdated (>25% change)
+Before adding an entry:
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for full guidelines.
+1. Link to the official upstream or product documentation.
+2. State one concrete capability and one target user/use case.
+3. Check that the project is active, documented, and not archived.
+4. Avoid unsupported market share, benchmark, pricing, or adoption claims.
+5. Add the date and source when a claim is time-sensitive.
 
----
+PRs are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 
-MIT License — see [LICENSE](LICENSE) for details.
+MIT License — see [LICENSE](LICENSE).
 
----
-
-**Last updated: March 2026** | [Report an issue](https://github.com/Supersynergy/awesome-ai-agents-2025/issues) | [Request addition](https://github.com/Supersynergy/awesome-ai-agents-2025/issues/new)
+**Checked 2 August 2026** · [Contributing guide](CONTRIBUTING.md) · [Audit](docs/UPDATE-2026-08-02.md)

@@ -53,7 +53,7 @@ Since this was built, HackerRank has also shipped [AI Interviewer (Chakra)](http
 
 **On the default model:**
 
-The repo ships with `gemma3:4b` as the default because it runs locally on most laptops without any cloud API key. Actual intern resumes at HackerRank are evaluated using a top-tier Gemini model. The repo ships with a demo config, not the production one.
+The repo ships with `gemma4:latest` as the default because it runs locally on most laptops without any cloud API key. Actual intern resumes at HackerRank are evaluated using a top-tier Gemini model. The repo ships with a demo config, not the production one.
 
 ---
 
@@ -159,7 +159,7 @@ $ pip install -r requirements.txt
 Pull the model you want to use. For example:
 
 ```bash
-$ ollama pull gemma3:4b
+$ ollama pull gemma4:latest
 ```
 
 If you want different results, you can pull other models such as:
@@ -186,12 +186,11 @@ $ cp .env.example .env
 
 | Variable         | Values                                      | Description                                                            |
 | ---------------- | ------------------------------------------- | ---------------------------------------------------------------------- |
-| `LLM_PROVIDER`   | `ollama` or `gemini`                        | Chooses provider. Defaults to Ollama.                                  |
-| `DEFAULT_MODEL`  | for example `gemma3:4b` or `gemini-2.5-pro` | Model name passed to the provider.                                     |
-| `GEMINI_API_KEY` | string                                      | Required when `LLM_PROVIDER=gemini`.                                   |
+| `DEFAULT_MODEL`  | for example `gemma4:latest` or `gemini-2.5-pro` | Model to use; must exist in `providers.json` — the provider is inferred from which provider lists it. Defaults to `default_model` in `providers.json`. |
+| `GEMINI_API_KEY` | string                                      | Required when using a Gemini model.                                   |
 | `GITHUB_TOKEN`   | optional                                    | Inherits from your shell environment, improves GitHub API rate limits. |
 
-Provider mapping lives in `prompt.py` and `models.py`. The `config.py` file has a single flag:
+Provider mapping lives in `providers.json` — each provider declares its `base_url`, an optional API-key env var, and per-model parameters; `config.py` loads it and resolves the provider for a model. `config.py` also has a flag:
 
 ```python
 # config.py
@@ -232,8 +231,9 @@ You can leave it on during iteration. See the next section for details.
 <details>
 <summary><b>4) Evaluation</b></summary>
 
-- `evaluator.py` uses templates that encode fairness and scoring rules.
-- Scores include `open_source`, `self_projects`, `production`, and `technical_skills`, plus bonus and deductions, then an explanation for evidence.
+- `evaluator.py` scores the resume against the **role** selected on the command line.
+- Each role lives in `roles/<role_name>/` and defines its own scoring categories and weights in `role.json`, plus its own `criteria.jinja` and `system_message.jinja` prompts (encoding fairness and scoring rules).
+- The shipped `software_engineering_intern` role scores `open_source`, `self_projects`, `production`, and `technical_skills`, plus bonus and deductions, with evidence for each. Other roles can define entirely different categories.
 
 </details>
 
@@ -241,7 +241,7 @@ You can leave it on during iteration. See the next section for details.
 <summary><b>5) Output and CSV export</b></summary>
 
 - `score.py` prints a readable summary to stdout.
-- When `DEVELOPMENT_MODE=True` it creates or appends a `resume_evaluations.csv` with key fields, and caches intermediate JSON under `cache/`.
+- When `DEVELOPMENT_MODE=True` it creates or appends a per-role `resume_evaluations_<role>.csv` with key fields (columns follow the role's categories), and caches intermediate JSON under `cache/`.
 
 </details>
 
@@ -251,17 +251,44 @@ You can leave it on during iteration. See the next section for details.
 
 ### End to end scoring
 
-Provide a path to a resume PDF.
+Provide a path to a resume PDF and the role to score against. `--role` is the
+name of a directory under `roles/` and is **required**.
 
 ```bash
-$ python score.py ./resume/sample.pdf
+$ python score.py ./resume/sample.pdf --role software_engineering_intern
 ```
 
 What happens:
 
 1. If development mode is on, the PDF extraction result is cached to `cache/resumecache_<basename>.json`.
 2. If a GitHub profile is found in the resume, repositories are fetched and cached to `cache/githubcache_<basename>.json`.
-3. The evaluator prints a report and, in development mode, appends a CSV row to `resume_evaluations.csv`.
+3. The evaluator scores the resume against the selected role, prints a report and, in development mode, appends a CSV row to `resume_evaluations_<role>.csv`.
+
+### Roles
+
+A role bundles its rubric in `roles/<role_name>/`:
+
+```text
+roles/software_engineering_intern/
+├── role.json           # categories, weights (max), bonus_max, score bounds, position_title
+├── criteria.jinja      # evaluation criteria prompt (receives {{ text_content }})
+└── system_message.jinja
+```
+
+`role.json` drives the scoring schema, the printed report, the CSV columns, and
+the score caps — so each role can score against its own categories and weights.
+
+To add a role, scaffold one with basic template files and then edit them:
+
+```bash
+$ python score.py --init-role backend_engineer
+# edit roles/backend_engineer/{role.json,criteria.jinja,system_message.jinja}
+$ python score.py ./resume/sample.pdf --role backend_engineer
+```
+
+`--init-role` creates the role directory with placeholder categories and prompts
+(it only scaffolds; it does not score a resume). You can also copy an existing
+role directory instead.
 
 ---
 
@@ -286,13 +313,18 @@ What happens:
 │       ├── education.jinja
 │       ├── github_project_selection.jinja
 │       ├── projects.jinja
-│       ├── resume_evaluation_criteria.jinja
-│       ├── resume_evaluation_system_message.jinja
 │       ├── skills.jinja
 │       ├── system_message.jinja
 │       └── work.jinja
+├── providers.json
 ├── pymupdf_rag.py
 ├── requirements.txt
+├── roles.py
+├── roles/
+│   └── software_engineering_intern/
+│       ├── role.json
+│       ├── criteria.jinja
+│       └── system_message.jinja
 ├── score.py
 └── transform.py
 ```
@@ -303,16 +335,14 @@ What happens:
 
 ### Ollama
 
-- Set `LLM_PROVIDER=ollama`
-- Set `DEFAULT_MODEL` to any pulled model, for example `gemma3:4b`
-- The provider wrapper in `models.OllamaProvider` calls `ollama.chat`
+- Set `DEFAULT_MODEL` to any pulled model listed in `providers.json`, for example `gemma4:latest`
+- Requests go through `models.OpenAICompatibleProvider` against Ollama's OpenAI-compatible endpoint (`http://localhost:11434/v1`)
 
 ### Gemini
 
-- Set `LLM_PROVIDER=gemini`
-- Set `DEFAULT_MODEL` to a supported Gemini model, for example `gemini-2.0-flash`
+- Set `DEFAULT_MODEL` to a Gemini model listed in `providers.json`, for example `gemini-2.0-flash`
 - Provide `GEMINI_API_KEY`
-- The wrapper in `models.GeminiProvider` adapts responses to a unified format
+- The same `models.OpenAICompatibleProvider` wrapper is used, pointed at Gemini's OpenAI-compatible endpoint
 
 ---
 

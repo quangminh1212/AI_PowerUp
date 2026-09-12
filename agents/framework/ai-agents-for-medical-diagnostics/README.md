@@ -1,8 +1,8 @@
 # Octochains
 
 [![GOSIM Spotlight 2026](https://img.shields.io/badge/GOSIM_2026-Top_10_Featured_Project-blueviolet)](https://paris2026.gosim.org/) 
-[![License: BSL 1.1](https://img.shields.io/badge/License-BSL_1.1-orange.svg)](LICENSE.md)
-[![Version](https://img.shields.io/badge/version-0.5.0-purple)](https://pypi.org/project/octochains/)
+[![License: BUSL 1.1](https://img.shields.io/badge/License-BUSL_1.1-orange.svg)](LICENSE)
+[![Version](https://img.shields.io/badge/version-0.7.0-purple)](https://pypi.org/project/octochains/)
 [![PyPI Downloads](https://static.pepy.tech/personalized-badge/octochains?period=total&units=INTERNATIONAL_SYSTEM&left_color=gray&right_color=GREEN&left_text=downloads)](https://pepy.tech/projects/octochains)
 
 <p align="center">
@@ -45,6 +45,8 @@ Octochains is built on the architectural principles validated in the study **["T
 ## Architecture & Anatomy
 
 https://github.com/user-attachments/assets/ede601fd-0a08-451f-b783-67d854767bb8
+
+For the full technical breakdown, engine internals, aggregator implementations, and the research this design is grounded in, see the [Technical White Paper](docs/white-paper.md).
 
 ---
 
@@ -99,7 +101,7 @@ report = engine.run(
 print(report.consensus.narrative)
 ```
 
-That's a full parallel-isolated reasoning pipeline — no custom classes, no prompt engineering. See the [Official Preset Agents](#official-preset-agents) catalog for all 9 available specialists. Everything below shows how to build your own agents, aggregators, and Skills from scratch.
+That's a full parallel-isolated reasoning pipeline , no custom classes, no prompt engineering. See the [Official Preset Agents](#official-preset-agents) catalog for all 13 available specialists. Everything below shows how to build your own agents, aggregators, and Skills from scratch.
 
 ### 4. Define Specialist Agents from Scratch
 Agents inherit from `Agent` and implement an `execute()` method. The framework builds the strict "Forced Perspective" identity prompt for you, while you retain full control over the execution loop.
@@ -199,7 +201,7 @@ Audit Trail:
 
 ## Official Preset Agents
 
-Beyond custom `Agent` subclasses, Octochains ships pre-built specialists — each a `SkilledAgent` bundled with a curated, versioned Skill. Import them directly from `octochains.agents.presets`.
+Beyond custom `Agent` subclasses, Octochains ships pre-built specialists , each a `SkilledAgent` bundled with a curated, versioned Skill. Import them directly from `octochains.agents.presets`.
 
 ### Startup Due-Diligence Council
 For evaluating a business, product, or investment case from every executive angle in parallel.
@@ -217,10 +219,20 @@ For flagging legal and regulatory exposure before it reaches a human reviewer.
 
 | Preset | Role | Focus |
 | :--- | :--- | :--- |
-| `data_sovereignty_auditor` | Data Sovereignty Auditor | GDPR Art. 5/17 — cross-border transfers, retention limits |
+| `data_sovereignty_auditor` | Data Sovereignty Auditor | GDPR Art. 5/17 , cross-border transfers, retention limits |
 | `ai_risk_assessor` | AI Risk Assessor | EU AI Act regulatory tiering |
 | `phi_sanitizer` | Health Data Compliance Officer | Special Category Data (PHI) handling & anonymization |
 | `licensing_reviewer` | Open-Source Compliance Engineer | Copyleft (GPL/AGPL) contamination risk |
+
+### Security
+For analyzing security logs and access events from complementary, non-overlapping angles, each preset stays scoped to its own layer so findings don't overlap or contradict.
+
+| Preset | Role | Focus |
+| :--- | :--- | :--- |
+| `security_threat_hunter` | Security Threat Hunter | External intrusions, indicators of compromise, MITRE ATT&CK mapping |
+| `insider_threat_analyst` | Insider Threat Analyst | Anomalous behavior from authenticated users, post-login |
+| `identity_access_auditor` | Identity & Access Auditor | Failed-login clustering, privilege-escalation chains, MFA-bypass indicators, how access was obtained |
+| `breach_notification_analyst` | Breach Notification Analyst | GDPR Art. 33/34 breach-notification triage and timelines |
 
 ```python
 from octochains.agents.presets import cfo_agent, cto_agent, licensing_reviewer
@@ -234,7 +246,7 @@ engine = Engine(
 report = engine.run(problem_data="Startup acquisition dossier...")
 ```
 
-Every preset accepts `extra_skills=[...]` to layer your own domain knowledge on top of the official one — no subclassing required:
+Every preset accepts `extra_skills=[...]` to layer your own domain knowledge on top of the official one , no subclassing required:
 
 ```python
 from octochains.skills import Skill
@@ -246,7 +258,7 @@ finance_expert = cfo_agent(llm_callable=my_llm, extra_skills=[house_style])
 
 ## Writing Custom Skills
 
-A Skill is a markdown file with a simple `key: value` frontmatter block — no YAML library, no nested lists or objects, just flat fields:
+A Skill is a markdown file with a simple `key: value` frontmatter block , no YAML library, no nested lists or objects, just flat fields:
 
 ```markdown
 ---
@@ -271,7 +283,7 @@ my_skill = Skill.from_file(Path("skills/churn-risk-heuristics/SKILL.md"))
 agent = SkilledAgent(role="Growth Analyst", goal="...", llm_callable=my_llm, skills=[my_skill])
 ```
 
-Skills attached to an agent are surfaced by name and description in every prompt by default (cheap, always-on). Full skill content is only loaded on demand — see `Agent.get_skill()` and `Agent.load_relevant_skills()` in `base.py` for manual vs. automatic selection.
+Skills attached to an agent are surfaced by name and description in every prompt by default (cheap, always-on). Full skill content is only loaded on demand , see `Agent.get_skill()` and `Agent.load_relevant_skills()` in `base.py` for manual vs. automatic selection.
 
 ## Official Enterprise Aggregators
 
@@ -304,15 +316,35 @@ writer = Synthesizer(
     show_log=True
 )
 ```
+### 3. WeightedSynthesizer
+A `Synthesizer` variant for **proportional emphasis**. When some perspectives should shape the final narrative more than others as a baseline , not just when they conflict , you assign weights per agent role, and the higher-weighted perspectives drive the framing and conclusions while lower-weighted ones are folded in as supporting context. This is distinct from `ConflictChecker`: it is about prominence in the blend, applied even when all experts fully agree.
+
+* **Missing weights:** any responding role absent from `weights` falls back to equal footing (`default_weight=1.0`) , unweighted agents are never silently dropped.
+* **Normalization:** weights are normalized to sum to 1.0; `weights_applied` and `dominant_perspective` are recorded on the result as a deterministic audit trail of how the blend was shaped.
+* **Degenerate case:** equal weights produce output equivalent to the plain `Synthesizer`.
+
+```python
+from octochains.aggregators import WeightedSynthesizer
+
+boss = WeightedSynthesizer(
+    llm_callable=my_llm,
+    weights={
+        "CTO": 0.7,
+        "CRO": 0.2,
+        "GDPR Auditor": 0.1,
+    },
+    show_log=True
+)
+```
 Check out the `/cookbook/` directory for full examples of these aggregators in action.
 
 ## Repository Structure
 
 * `/src/octochains/engine.py`: High-performance parallel orchestrator with thread-level exception trapping.
 * `/src/octochains/base.py`: Superior abstract base classes with automated threshold gates and anti-hallucination prompt injection.
-* `/src/octochains/skills.py`: The `Skill` class — parses SKILL.md frontmatter + content with zero external dependencies.
+* `/src/octochains/skills.py`: The `Skill` class, parses SKILL.md frontmatter + content with zero external dependencies.
 * `/src/octochains/agents/presets.py`: Official ready-to-use domain specialists (CFO, CTO, GDPR auditor, etc.).
-* `/src/octochains/agents/skilled_agent.py`: `SkilledAgent` — the concrete, ready-to-use Agent that powers all official presets.
+* `/src/octochains/agents/skilled_agent.py`: `SkilledAgent`, the concrete, ready-to-use Agent that powers all official presets.
 * `/src/octochains/agents/skills/`: Bundled SKILL.md knowledge packs powering the official presets.
 * `/src/octochains/aggregators/`: Standardized synthesis and deterministic auditing logic.
 

@@ -14,10 +14,10 @@
     <img src="https://img.shields.io/badge/Brave-✓-FB542B?style=flat-square&logo=brave&logoColor=white" alt="Brave">
   </p>
   <p>
-    <img src="docs/public/badges/github-stars.svg" alt="GitHub stars">
-    <img src="docs/public/badges/github-forks.svg" alt="GitHub forks">
-    <img src="docs/public/badges/github-release.svg" alt="Latest version">
-    <img src="docs/public/badges/github-downloads.svg" alt="GitHub downloads">
+    <img src="https://voyager.nagi.fun/badges/github-stars.svg" alt="GitHub stars">
+    <img src="https://voyager.nagi.fun/badges/github-forks.svg" alt="GitHub forks">
+    <img src="https://voyager.nagi.fun/badges/github-release.svg" alt="Latest version">
+    <img src="https://voyager.nagi.fun/badges/github-downloads.svg" alt="GitHub downloads">
     <img src="https://img.shields.io/chrome-web-store/users/iifacdnjakkhjjiengaffnegbndgingi?style=flat-square&logo=google-chrome" alt="Chrome Web Store users">
     <img src="https://img.shields.io/chrome-web-store/rating/iifacdnjakkhjjiengaffnegbndgingi?style=flat-square&logo=google-chrome" alt="Chrome Web Store rating">
     <img src="https://img.shields.io/badge/edge%20users-50k%2B-0078D7?style=flat-square&logo=microsoftedge&logoColor=white" alt="Edge Add-ons users">
@@ -103,7 +103,6 @@ That's why I built **Voyager**. It's a companion that helps you keep your AI con
 - **🔬 [Deep Research](https://voyager.nagi.fun/en/guide/deep-research)**: Extract thinking processes and research links from Deep Research sessions.
 - **🛠️ Power Tools**:
   - **[Quote Reply](https://voyager.nagi.fun/en/guide/quote-reply)**: Reply with context by selecting text.
-  - **[Tab Title Sync](https://voyager.nagi.fun/en/guide/tab-title)**: Auto-sync browser tab titles.
   - **[Prevent Auto Scroll](https://voyager.nagi.fun/en/guide/prevent-auto-scroll)**: Intercepts unwanted jumping behavior when hitting enter to send a new prompt.
   - **[Input Collapse](https://voyager.nagi.fun/en/guide/input-collapse)**: Auto-expandable input area for more reading space.
   - **[Default Model](https://voyager.nagi.fun/en/guide/default-model)**: Set your favorite model as default.
@@ -239,7 +238,7 @@ I highly recommend **[Typeless (typeless.com)](https://www.typeless.com/refer?co
 
 We welcome contributions! Whether you want to report bugs, suggest features, improve documentation, or submit code:
 
-- **Issues**: Use our [bug report](https://github.com/Nagi-ovo/voyager/blob/main/.github/ISSUE_TEMPLATE/bug_report.md) or [feature request](https://github.com/Nagi-ovo/voyager/blob/main/.github/ISSUE_TEMPLATE/feature_request.yml) templates
+- **Issues**: Use our [bug report](https://github.com/Nagi-ovo/voyager/issues/new?template=bug_report.yml) or [feature request](https://github.com/Nagi-ovo/voyager/issues/new?template=feature_request.yml) templates
 - **Pull Requests**: Check out [CONTRIBUTING.md](./.github/CONTRIBUTING.md) for guidelines
 
 <details>
@@ -256,9 +255,10 @@ bun run dev:safari   # Safari (requires macOS)
 
 # Production builds
 bun run build:chrome   # Chrome
+bun run build:edge     # Edge package (separate)
 bun run build:firefox  # Firefox
 bun run build:safari   # Safari
-bun run build:all      # All browsers
+bun run build:all      # Chrome + Firefox + Safari
 ```
 
 **Safari Development**: Run `bun run build:safari`, then open the tracked Xcode project under `Voyager/`.

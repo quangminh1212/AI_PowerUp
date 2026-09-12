@@ -51,7 +51,7 @@
   </a>
   <br>
   <a href="https://gptme.org/docs/projects.html">
-    <img src="https://img.shields.io/badge/powered%20by-gptme%20%F0%9F%A4%96-5151f5?style=flat" alt="Powered by gptme" />
+    <img src="https://gptme.org/badge.svg" alt="Built with gptme" />
   </a>
 </p>
 
@@ -87,13 +87,14 @@ active development.
 - 🚀 [Getting Started](#-getting-started)
 - 🛠 [Usage](#-usage)
 - 🌍 [Ecosystem](#-ecosystem)
+- 🏷️ [Repository Badge](#%EF%B8%8F-repository-badge)
 - 💬 [Community](#-community)
 - 📊 [Stats](#-stats)
 - 🔗 [Links](#-links)
 
 ## 📢 News
 
-- **Coming soon** - [gptme.ai](https://gptme.ai) service for running agents in the cloud; [gptme desktop](https://github.com/gptme/gptme-tauri) app for easy local use.
+- **2026-07** - [v0.32.1](https://github.com/gptme/gptme/releases/tag/v0.32.1): Desktop app for Linux (AppImage), macOS, and Windows with auto-updates — [download here](https://github.com/gptme/gptme/releases/latest); [gptme.ai](https://gptme.ai) cloud service
 - **2026-01** - [gptme-agent-template](https://github.com/gptme/gptme-agent-template) v0.4: [Bob](https://github.com/TimeToBuildBob) has run extensively as an autonomous agent, autonomous run loops, enhanced context generation
 - **2025-12** - [v0.31.0](https://github.com/gptme/gptme/releases/tag/v0.31.0): Background jobs, form tool, cost tracking, content-addressable storage
 - **2025-11** - [v0.30.0](https://github.com/gptme/gptme/releases/tag/v0.30.0): Plugin system, context compression, subagent planner mode
@@ -256,8 +257,7 @@ You can find more [Demos][docs-demos] and [Examples][docs-examples] in the [docu
   - Use OpenRouter for access to 100+ models, or serve locally with `llama.cpp`.
   - [Pick the right model per task][docs-model-routing] — fast/cheap for triage, powerful for coding.
 - 🌐 **Web UI and REST API**
-  - Modern web interface at [chat.gptme.org](https://chat.gptme.org) ([gptme-webui])
-  - Simple built-in web UI included in the Python package.
+  - Modern [gptme-webui] bundled with `gptme-server` and hosted at [chat.gptme.org](https://chat.gptme.org).
   - [Server][docs-server] with REST API.
   - Standalone executable builds available with PyInstaller.
 - 💻 **[Computer use][docs-tools-computer]** (see [#216](https://github.com/gptme/gptme/issues/216))
@@ -398,8 +398,8 @@ This stack is simple and composable: selectors improve work choice, lessons stee
 
 ### 🚧 In Progress
 
-- 🖥 **[gptme-tauri](https://github.com/gptme/gptme-tauri)** — desktop app wrapping gptme for easy local use (WIP)
-- ☁️ **[gptme.ai](https://gptme.ai)** — managed cloud service for running gptme agents (WIP; still self-hostable by running `gptme-server` + `gptme-webui` yourself)
+- 🖥 **[gptme-tauri](https://github.com/gptme/gptme-tauri)** — desktop app for Linux, macOS, and Windows with auto-updates ([download](https://github.com/gptme/gptme/releases/latest))
+- ☁️ **[gptme.ai](https://gptme.ai)** — managed cloud service for running gptme agents (early access; still self-hostable by running `gptme-server` + `gptme-webui` yourself)
 - 🌳 Tree-based conversation structure (see [#17](https://github.com/gptme/gptme/issues/17))
 - 📜 RAG to automatically include context from local files (see [#59](https://github.com/gptme/gptme/issues/59))
 - 🏆 Advanced evals for testing frontier capabilities
@@ -589,12 +589,21 @@ gptme is more than a CLI — it's a platform with a growing ecosystem:
 | [gptme-agent-template][agent-template] | Template for building persistent autonomous agents |
 | [gptme-rag] | RAG integration for semantic search over local files |
 | [gptme.vim] | Vim plugin for in-editor gptme integration |
-| [gptme-tauri] | Desktop app (WIP) |
-| [gptme.ai](https://gptme.ai) | Managed cloud service (WIP) |
+| [gptme-tauri] | Desktop app for Linux, macOS, and Windows ([download](https://github.com/gptme/gptme/releases/latest)) |
+| [gptme.ai](https://gptme.ai) | Managed cloud service (early access) |
 
 **Community agents powered by gptme:**
 - [Bob](https://github.com/TimeToBuildBob) — autonomous AI agent, running continuously since late 2024, contributes to open source and manages his own tasks
 - [Alice](https://github.com/TimeToLearnAlice) — personal assistant & agent orchestrator, forked from the same architecture
+
+## 🏷️ Repository Badge
+
+This repo is maintained with [gptme](https://gptme.org).
+To show your repo is AI-assisted with gptme, add the badge below.
+
+```markdown
+[![Built with gptme](https://gptme.org/badge.svg)](https://gptme.org)
+```
 
 ## 💬 Community
 

@@ -22,14 +22,9 @@ Citadel helps coding agents work reliably across real repositories. It routes re
 Open the repository you want Citadel to manage, then paste this into your coding agent:
 
 ```text
-Install Citadel in this repository.
-
-Use https://github.com/SethGammon/Citadel as the source. If a local clone
-already exists, reuse it or update it. Detect whether this session is running
-in OpenAI Codex or Claude Code. From this project's root, run the matching
-Citadel installer and report any plugin-enable or restart step it prints.
-
-Use the current repository as the target. Do not require placeholder paths.
+Install Citadel from https://github.com/SethGammon/Citadel into this repository.
+Detect whether I am using Codex or Claude Code, show me what will change before
+applying it, use the current repository as the target, and run Citadel doctor.
 ```
 
 Follow any printed enable step, start a fresh session if prompted, then run:
@@ -75,7 +70,7 @@ Dry runs, generated paths, runtime-specific setup, and rollback are documented i
 
 <img src="assets/terminal-demo.svg" width="100%" alt="A Citadel terminal session routing a request, running checks, and writing a handoff" />
 
-You do not need to learn the skill catalog. Start with `/do` and describe the outcome:
+You do not need to learn the skill catalog or operation internals. Start with `/do` and describe the outcome:
 
 ```text
 /do review README.md
@@ -83,12 +78,16 @@ You do not need to learn the skill catalog. Start with `/do` and describe the ou
 /do next
 ```
 
-| Command | What it gives you |
-|---|---|
-| `/do <request>` | Selects and runs the appropriate workflow |
-| `/do next` | Shows active work, risks, and the next useful action |
-| `/dashboard` | Opens Mission Control for campaigns, agents, operations, hooks, and handoffs |
-| `/cost` | Reports token use and session cost from available local telemetry |
+Citadel reveals more machinery only when the work needs it:
+
+| Level | Start here | What it gives you |
+|---|---|---|
+| 1. Do the work | `/do <request>` | Selects a proportional workflow and verifies the result |
+| 2. Keep going | `/do next` or `/do continue` | Preserves and resumes work across sessions |
+| 3. Coordinate | `/dashboard`, campaigns, or Fleet | Makes longer and parallel work visible and recoverable |
+| 4. Control an operation | `citadel operation ...` | Adds explicit quality, privacy, tool, time, model-fallback, and cost constraints |
+
+Most users can stay at Levels 1 and 2. Advanced levels do not replace or complicate `/do`.
 
 For a copyable walkthrough in a real repository, use the [demo workflow](DEMO.md).
 
@@ -108,6 +107,32 @@ For a short, one-off edit, your coding agent may already be enough. Citadel beco
 
 Citadel does not replace `CLAUDE.md` or `AGENTS.md`. Those files describe the project and its rules. Citadel supplies the workflows and state used to carry them out consistently.
 
+## Evidence status
+
+Citadel publishes positive and negative results from the same evidence
+contract. V1 recorded 27/36 verified cells versus 24/36 and a frozen aggregate
+with 9.9% less measured GPU energy, but one same-route 60-second baseline
+timeout drove that appearance. Excluding the matched pair reverses the
+economic direction to 3.5% more GPU energy and 5.4% more modeled GPU cost, so
+Citadel makes no v1 savings claim.
+
+A distinct capability-profile follow-up then preserved the always-7B verified
+rate (24/36 versus 24/36) but used 15.7% more measured GPU energy after 12
+verification escalations. Citadel publishes that regression because detecting
+a plausible policy that is economically worse is part of the product.
+
+The latest representative fixture shakedown moved verification from exact
+answers to repository artifacts. Both policies verified 6/12 cells with zero
+false passes and path violations; Citadel's 7.1% energy reduction missed the
+frozen 20% gate and is published as failed.
+
+- [Evaluator start here](docs/grants/EVALUATOR_START_HERE.md)
+- [Generated evidence manifest](docs/EVIDENCE_MANIFEST.md)
+- [Prospective local comparison](benchmarks/sentient-readiness/published-run/REPORT.md)
+- [Capability-profile follow-up](benchmarks/sentient-readiness-v2/published-run/REPORT.md)
+- [Representative repository-operation shakedown](benchmarks/representative-operation-pilot-v2/published-run/REPORT.md)
+- [Research site](https://sethgammon.github.io/Citadel/research.html)
+
 ## One operating loop
 
 <img src="assets/loop-flow.svg" width="100%" alt="The Citadel lifecycle: route, execute, protect, verify, record, and resume" />
@@ -117,6 +142,13 @@ Citadel does not replace `CLAUDE.md` or `AGENTS.md`. Those files describe the pr
 3. **Record and resume:** Citadel writes the result, handoff, and next action to the repository for the next session.
 
 The repository remains the source of truth. Citadel adds an operating layer around the coding agent rather than replacing its runtime.
+
+If you regularly delete clones, opt into [cross-clone repository memory](docs/REPOSITORY_MEMORY.md)
+on Node.js 22.13+ with `citadel memory enable`. Citadel then keeps completed
+campaigns, postmortems, research, discoveries, backlog, and project context in
+a user-level SQLite database and restores missing files in another clone of the
+same remote. Its default path is outside the checkout, and Citadel never commits,
+pushes, or transmits it.
 
 ## Portable operations
 
@@ -129,8 +161,15 @@ Portable operations are optional. They are for work that needs a stable contract
 | Run the same objective through isolated Claude Code and Codex branches | [Operation Fork](docs/OPERATION_FORK.md) |
 | Package a repeatable result with permissions, checks, and stopping conditions | [Outcome Packs](docs/PACKS.md) |
 | Inspect or control a running operation | [Mission Control](docs/DASHBOARD_SPEC.md) |
+| Choose and escalate a model/tool/topology path under explicit constraints | [Operation Control](docs/OPERATION_CONTROL.md) |
+| Adopt Citadel reversibly, activate only the needed product, or connect an external control plane | [Governed lifecycle](docs/GOVERNED_LIFECYCLE.md) |
 
 The underlying [Operations Protocol](docs/OPERATIONS_PROTOCOL.md) defines the runtime-neutral contracts for operations, attempts, intents, evidence, and receipts. Most users do not need those internals to use Citadel.
+
+For reviewers who want evidence instead of architecture claims, Operation
+Control includes a [frozen 120-cell real-workload import](benchmarks/operation-control-v2/REPORT.md)
+and a [preregistered real-runtime integration result](benchmarks/operation-control-v2/prospective/RESULTS.md).
+Both preserve failed and unknown outcomes and state what they do not prove.
 
 ## Trust and scope
 
@@ -147,7 +186,8 @@ Read [Security](SECURITY.md), the [threat model](THREAT_MODEL.md), and [golden-p
 |---|---|
 | Install or evaluate Citadel | [Installation](INSTALL.md), [Demo](DEMO.md), [Choosing Citadel](docs/CHOOSING_CITADEL.md) |
 | Operate day to day | [Campaigns](docs/CAMPAIGNS.md), [Fleet](docs/FLEET.md), [Hooks](docs/HOOKS.md), [Mission Control](docs/DASHBOARD_SPEC.md) |
-| Use portable operations | [Operation Fork](docs/OPERATION_FORK.md), [Outcome Packs](docs/PACKS.md), [Recovery](docs/OPERATION_RECOVERY.md) |
+| Use portable operations | [Operation Control](docs/OPERATION_CONTROL.md), [Operation Fork](docs/OPERATION_FORK.md), [Outcome Packs](docs/PACKS.md), [Recovery](docs/OPERATION_RECOVERY.md) |
+| Govern adoption, activation, evidence, or external control | [Governed lifecycle](docs/GOVERNED_LIFECYCLE.md), [Real User Proof v2](docs/PRODUCT_PROOF_TRIAL.md) |
 | Integrate or verify | [CLI reference](docs/CLI.md), [Interoperability](docs/INTEROPERABILITY.md), [Reports](docs/REPORT_ARTIFACTS.md) |
 
 The complete reference is in [`docs/`](docs/).
@@ -175,6 +215,19 @@ Runtime adapters may add Claude Code or Codex configuration files. [Installation
 ## Common questions
 
 <details>
+<summary><strong>Can I delete a clone without losing Citadel's lessons?</strong></summary>
+
+<br>
+
+Yes, if you enable cross-clone memory first with `citadel memory enable` on
+Node.js 22.13+. It syncs only durable knowledge to a local user-level SQLite store.
+A new clone with the same `origin` restores missing knowledge automatically
+after Citadel is installed. Existing divergent files are never overwritten
+automatically. See [Cross-clone repository memory](docs/REPOSITORY_MEMORY.md).
+
+</details>
+
+<details>
 <summary><strong>Do I need to learn every skill or operation command?</strong></summary>
 
 <br>
@@ -197,7 +250,10 @@ Yes. The hooks and scripts run on Node.js, and the Codex installer includes Wind
 
 <br>
 
-Use `/unharness` to export useful state and remove Citadel-managed project files. [Installation](INSTALL.md) also documents the exact rollback paths.
+Use `/unharness` to create a receipt-owned leave plan, review the exact
+footprint, and apply it with the plan token. Legacy installs are inventoried
+first and cannot claim exact removal. [Installation](INSTALL.md) documents the
+rollback and compatibility paths.
 
 </details>
 

@@ -33,7 +33,7 @@
 <p align="center">
   <a href="./README.md">English</a> | <a href="./README-zh.md">简体中文</a>
   <br/>
-  <a href="https://open.maic.chat/">Live Demo</a> · <a href="#-quick-start">Quick Start</a> · <a href="#lemonade-local-ai">Lemonade</a> · <a href="#-features">Features</a> · <a href="#-use-cases">Use Cases</a> · <a href="#-openclaw-integration">OpenClaw</a>
+  <a href="https://open.maic.chat/">Live Demo</a> · <a href="#-quick-start">Quick Start</a> · <a href="#lemonade-local-ai">Lemonade</a> · <a href="#funasr-local-asr">FunASR</a> · <a href="#-features">Features</a> · <a href="#-use-cases">Use Cases</a> · <a href="#-openclaw-integration">OpenClaw</a>
 </p>
 
 
@@ -115,6 +115,7 @@ GROK_API_KEY=xai-...
 OPENROUTER_API_KEY=sk-or-...
 TENCENT_API_KEY=sk-...
 XIAOMI_API_KEY=...
+# Or configure Amazon Bedrock with AWS credentials and BEDROCK_REGION.
 ```
 
 You can also configure providers via `server-providers.yml`:
@@ -130,9 +131,23 @@ providers:
       - YOUR-DEPLOYMENT-NAME
   anthropic:
     apiKey: sk-ant-...
+  bedrock:
+    models:
+      - us.anthropic.claude-sonnet-5
+      - us.anthropic.claude-opus-4-8
 ```
 
-Supported providers: **OpenAI**, **Azure OpenAI**, **Anthropic**, **Google Gemini**, **DeepSeek**, **Qwen**, **Kimi**, **MiniMax**, **Grok (xAI)**, **OpenRouter**, **Doubao**, **Tencent Hunyuan/TokenHub**, **Xiaomi MiMo**, **GLM (Zhipu)**, **Ollama** (local), **Lemonade** (local LLM / image / TTS / ASR), and any OpenAI-compatible API.
+Supported providers: **OpenAI**, **Azure OpenAI**, **Anthropic**, **Amazon Bedrock**, **Google Gemini**, **DeepSeek**, **Qwen**, **Kimi**, **MiniMax**, **Grok (xAI)**, **OpenRouter**, **Doubao**, **Tencent Hunyuan/TokenHub**, **Xiaomi MiMo**, **GLM (Zhipu)**, **Ollama** (local), **Lemonade** (local LLM / image / TTS / ASR), **FunASR** (local ASR), and any OpenAI-compatible API.
+
+Amazon Bedrock quick example:
+
+```env
+BEDROCK_REGION=us-east-1
+BEDROCK_MODELS=us.anthropic.claude-sonnet-5,us.anthropic.claude-opus-4-8
+DEFAULT_MODEL=bedrock:us.anthropic.claude-sonnet-5
+```
+
+Bedrock uses AWS environment credentials or the AWS SDK credential provider chain. For temporary credentials, set `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, and `AWS_SESSION_TOKEN`, or use an AWS profile / role available to the runtime.
 
 <a id="lemonade-local-ai"></a>
 
@@ -148,6 +163,28 @@ TTS_LEMONADE_BASE_URL=http://localhost:13305/v1
 ASR_LEMONADE_BASE_URL=http://localhost:13305/v1
 IMAGE_LEMONADE_BASE_URL=http://localhost:13305/v1
 ```
+
+<a id="funasr-local-asr"></a>
+
+### Optional: FunASR (Local Speech Recognition)
+
+OpenMAIC can transcribe locally through FunASR's OpenAI-compatible server. The built-in provider supports SenseVoiceSmall, Paraformer, and Fun-ASR-Nano and requires no API key.
+
+```bash
+python -m pip install torch torchaudio
+python -m pip install "funasr==1.4.0" fastapi uvicorn python-multipart
+# Add vLLM for Fun-ASR-Nano on NVIDIA GPUs
+python -m pip install vllm
+funasr-server --device cuda --model fun-asr-nano
+```
+
+Point OpenMAIC at the server:
+
+```env
+ASR_FUNASR_BASE_URL=http://localhost:8000/v1
+```
+
+Use `funasr-server --device cpu --model sensevoice` for a CPU-only setup. See the [FunASR deployment guide](https://github.com/modelscope/FunASR#deploy) for production options.
 
 OpenAI quick example:
 
@@ -248,6 +285,68 @@ cp .env.example .env.local
 # Edit .env.local with your API keys, then:
 docker compose up --build
 ```
+
+### Server-backed persistence (PostgreSQL)
+
+The `server-persistence` profile runs exactly two containers: the OpenMAIC app
+and PostgreSQL. The persistence HTTP server is embedded in the app at
+`/api/persistence`; there is no standalone persistence service.
+
+```bash
+cp .env.example .env.local
+printf '\nDATABASE_URL=postgres://openmaic:openmaic-dev@postgres:5432/openmaic\nPERSISTENCE_DEV_TOKEN=openmaic-local-dev\n' >> .env.local
+NEXT_PUBLIC_PERSISTENCE=1 NEXT_PUBLIC_PERSISTENCE_TOKEN=openmaic-local-dev docker compose --profile server-persistence up --build
+```
+
+Add your provider API keys to `.env.local` as usual. Runtime sessions and course
+documents become server-backed; device-scoped KV data (including the anonymous
+device learner key and playback position) remains in the browser. Existing
+browser course data is copied into the configured server store lazily, one
+course at a time when it is first accessed, using the same verified migration
+path as browser persistence.
+
+`NEXT_PUBLIC_PERSISTENCE` is a **build-time switch** compiled into the browser
+bundle. A build with it enabled must be deployed with a working runtime
+`DATABASE_URL` and `PERSISTENCE_DEV_TOKEN`, while
+`NEXT_PUBLIC_PERSISTENCE_TOKEN` must match that server token at build time.
+Otherwise the browser selects HTTP persistence but the embedded endpoint
+returns configuration/authentication/initialization errors; the home page shows
+a persistence-unavailable toast and keeps the prior course list instead of
+misleadingly displaying an empty library.
+
+`PERSISTENCE_DEV_TOKEN` and `NEXT_PUBLIC_PERSISTENCE_TOKEN` are **not a
+secret in any meaningful sense**: the `NEXT_PUBLIC_` token is compiled into
+the public JavaScript bundle, fully visible to every visitor, and therefore
+provides **no confidentiality and no user isolation whatsoever** — anyone who
+can load the page can extract it and read or write **every** learner partition
+and **all** documents by choosing an `x-learner-key`. Its only purpose is to
+keep unrelated network scanners out of an endpoint on a trusted network. This
+is suitable only for localhost or trusted-network, single-user deployments. Before production,
+replace
+[`lib/persistence/server-auth.ts`](lib/persistence/server-auth.ts) with real
+session verification that derives the learner partition from server-controlled
+identity, and change the document/merge/admin authorization policies as
+appropriate.
+
+`PERSISTENCE_POSTGRES_PASSWORD` initializes the PostgreSQL role only when the
+data directory is empty; changing it later does not rotate an existing
+`openmaic-postgres` volume. For a disposable local database, run
+`docker compose --profile server-persistence down -v`, set the new password and
+matching `DATABASE_URL`, then start the profile again. To preserve data, connect
+as an administrator and run `ALTER ROLE openmaic WITH PASSWORD 'new-password';`,
+then update `DATABASE_URL`.
+
+Compose cannot attach `depends_on` to `openmaic` only when this optional profile
+is active without also affecting the default deployment. Startup therefore
+relies on the embedded route's retry-on-next-request behavior while PostgreSQL
+becomes healthy.
+
+The embedded endpoint implements the package's
+[RuntimeStore HTTP contract](packages/@openmaic/storage/docs/runtime-http-contract.md)
+and
+[DocumentStore HTTP contract](packages/@openmaic/storage/docs/document-http-contract.md).
+Leave `NEXT_PUBLIC_PERSISTENCE` unset to retain the existing browser-only
+behavior.
 
 ### Optional: MP4 Video Export (Render Service)
 

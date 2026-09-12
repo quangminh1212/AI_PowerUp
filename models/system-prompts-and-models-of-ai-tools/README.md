@@ -1,19 +1,12 @@
-<p align="center">
-  <sub>Thanks to</sub>  
-</p>
+<a href="https://gauss.sh" target="_blank">
+  <img src="https://gauss.sh/banner" alt="Gauss — CI that runs on real GPUs" width="1200" />
+</a>
 
 <p align="center">
-  <a href="https://github.com/latitude-dev/latitude-llm">
-    <img src="assets/latitude-dark.png" alt="Latitude Logo" width="700"/>
-  </a>
+  <b>Gauss</b> — GPU-native CI.
+  <br />
+  <a href="https://gauss.sh"><b>Get early access →</b></a>
 </p>
-
-<div align="center" markdown="1">
-
-### [Make your AI agents self-healing](https://github.com/latitude-dev/latitude-llm)  
-[Open Source.](https://github.com/latitude-dev/latitude-llm)
-
-</div>
 
 ---
 
@@ -76,6 +69,6 @@ Sponsor the most comprehensive repository of AI system prompts and reach thousan
 
 - **X:** [Lucknite](https://x.com/Lucknite)
 - **Discord**: `x1xhlol`
-- **Email**: `lucasvalbuena@pm.me
+- **Email**: `lucasvalbuena@pm.me`
 
 **Drop a star if you find this useful!**

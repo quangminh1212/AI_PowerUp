@@ -1,4 +1,8 @@
-# AutoClip - 视频高光切片自动化工具
+# AutoClip - AI视频智能切片系统
+
+![AutoClip Logo](https://img.shields.io/badge/AutoClip-AI%20Video%20Processing-blue?style=for-the-badge&logo=video)
+
+## 基于AI的智能视频切片处理系统
 
 支持YouTube/B站视频下载、自动切片、智能合集生成
 
@@ -14,12 +18,15 @@
 [![GitHub issues](https://img.shields.io/badge/Issues-0-blue)](https://github.com/zhouxiaoka/autoclip/issues)
 
 **语言**: [English](README-EN.md) | [中文](README.md)  
+**联系邮箱**: [christine_zhouye@163.com](mailto:christine_zhouye@163.com)
 
 </div>
 
 ## 🎯 项目简介
 
 AutoClip是一个基于AI的智能视频切片处理系统，能够自动从YouTube、B站等平台下载视频，通过AI分析提取精彩片段，并智能生成合集。系统采用现代化的前后端分离架构，提供直观的Web界面和强大的后端处理能力。
+
+**联系方式**: [christine_zhouye@163.com](mailto:christine_zhouye@163.com)
 
 ### ✨ 核心特性
 
@@ -810,11 +817,11 @@ A:
 
 ### 💬 QQ
 
-<img src="./qq_qr.jpg" alt="QQ二维码" width="150">
+![QQ二维码](./qq_qr.jpg)
 
 ### 📱 飞书
 
-<img src="./feishu_qr.jpg" alt="飞书二维码" width="150">
+![飞书二维码](./feishu_qr.jpg)
 
 ### 📧 其他联系方式
 

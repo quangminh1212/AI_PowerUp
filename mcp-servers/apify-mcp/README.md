@@ -25,7 +25,7 @@ The Apify Model Context Protocol (MCP) server at [**mcp.apify.com**](https://mcp
 
 > ⚠️ **Legacy SSE transport removed.** The `https://mcp.apify.com/sse` endpoint has been removed in favor of Streamable HTTP. Migrate your client to **[`https://mcp.apify.com`](https://mcp.apify.com)** — drop the `/sse` suffix from your configuration.
 
-💰 The server also supports [agentic payments](#-agentic-payments) via [x402](#-x402) and [Skyfire](#-skyfire), allowing AI agents to pay for Actor runs without an API token.
+💰 The server also supports [agentic payments](#-agentic-payments): buy a token from [AGI](#-agi-recommended) to run any Actor, or pay per-request via [direct x402](#-direct-x402) (Pay Per Event Actors only) or [Skyfire](#-skyfire).
 
 Apify MCP Server is compatible with `Claude Code, Claude.ai, Cursor, VS Code` and any client that adheres to the Model Context Protocol.
 Check out the [MCP clients section](#-mcp-clients) for more details or visit the [MCP configuration page](https://mcp.apify.com).
@@ -39,7 +39,8 @@ Check out the [MCP clients section](#-mcp-clients) for more details or visit the
 - [🪄 Try Apify MCP instantly](#-try-apify-mcp-instantly)
 - [💰 Agentic payments](#-agentic-payments)
   - [How agentic payments work](#how-agentic-payments-work)
-  - [💸 x402](#-x402)
+  - [🪙 AGI (recommended)](#-agi-recommended)
+  - [💸 Direct x402](#-direct-x402)
   - [🔥 Skyfire](#-skyfire)
 - [🛠️ Tools, resources, and prompts](#%EF%B8%8F-tools-resources-and-prompts)
 - [📊 Telemetry](#-telemetry)
@@ -114,10 +115,13 @@ Or use the MCP bundle file (formerly known as Anthropic Desktop extension file, 
 
 # 💰 Agentic payments
 
-You can pay for Actor runs without an Apify API token using either **x402** or **Skyfire**.
+You can pay for Actor runs without an Apify API token using **AGI**, **direct x402**, or **Skyfire**.
 
-- **x402** pays with USDC on [Base](https://base.org) and does not require a separate platform account. It is fully supported by [`mcpc`](https://github.com/apify/mcp-cli) (`npm install -g @apify/mcpc`). We use `mcpc` because it is one of the few MCP clients that supports the latest features and the x402 protocol natively.
+- **AGI** ([agi.apify.com](https://agi.apify.com)) mints a prepaid Apify API token in exchange for an x402 or MPP payment. Use the token like a normal API token against `mcp.apify.com` and `api.apify.com` — works for any Actor, not just Pay Per Event ones. **Recommended** for new integrations; see [AGI (recommended)](#-agi-recommended) below.
+- **Direct x402** pays with USDC on [Base](https://base.org) per request and does not require a separate platform account. It is fully supported by [`mcpc`](https://github.com/apify/mcp-cli) (`npm install -g @apify/mcpc`). We use `mcpc` because it is one of the few MCP clients that supports the latest features and the x402 protocol natively.
 - **Skyfire** pays with PAY tokens and requires a Skyfire account with a funded wallet. It does not require a special MCP client; the entire payment flow is handled directly through the MCP tool call parameters.
+
+> ℹ️ **Scope:** Both direct x402 and Skyfire are limited to Pay Per Event Actors, don't support Standby Actors, and settle per run instead of minting a token.
 
 ## How agentic payments work
 
@@ -125,16 +129,22 @@ Actor run costs vary, so both payment methods use a prepaid balance model. The p
 
 1. **Discovery**: The agent discovers Actors with `search-actors` or `fetch-actor-details`. Those calls are free.
 2. **Prepayment**: Before running a paid Actor tool, the agent funds a prepaid balance.
-   - **x402**: `mcpc` automatically signs a $1.00 USDC transaction.
+   - **Direct x402**: `mcpc` automatically signs a $1.00 USDC transaction.
    - **Skyfire**: The agent creates a PAY token (minimum $5.00) using Skyfire's `create-pay-token` tool.
 3. **Execution**: The agent calls the Actor tool.
-   - **x402**: Handled automatically by `mcpc` using the prepaid balance.
+   - **Direct x402**: Handled automatically by `mcpc` using the prepaid balance.
    - **Skyfire**: The agent explicitly passes the PAY token in the `skyfire-pay-id` input property.
 4. **Resolution**: The tool returns the Actor results. Unused funds stay available for later runs.
-   - **x402**: After 60 minutes of inactivity, the server refunds any unused balance to the wallet on [Base](https://base.org).
+   - **Direct x402**: After 60 minutes of inactivity, the server refunds any unused balance to the wallet on [Base](https://base.org).
    - **Skyfire**: Skyfire returns unused funds when the token expires.
 
-## 💸 x402
+## 🪙 AGI (recommended)
+
+[AGI](https://agi.apify.com) (Apify Agent General Interface) is the recommended way for autonomous agents to pay for Apify usage without an account. Pay once via x402 or MPP, receive a prepaid, spend-capped Apify API token, and use it directly against `mcp.apify.com` and `api.apify.com` (`Authorization: Bearer <token>`) — for any Actor.
+
+Full protocol, supported payment methods, and current terms (minimum amount, token lifetime, refund policy) are documented at **[agi.apify.com/AGENTS.md](https://agi.apify.com/AGENTS.md)** — treat it as the single source of truth.
+
+## 💸 Direct x402
 
 The [x402 protocol](https://www.x402.org/) enables direct, machine-to-machine payments. Your MCP client can use it to pay for Actor runs with USDC on the [Base blockchain](https://base.org/), completely bypassing the need for an Apify API token.
 
@@ -242,7 +252,7 @@ Here is an overview list of all the tools provided by the Apify MCP Server.
 
 Legend for the **Enabled by default** column:
 - ✅ — in the default tool set.
-- ⚡ — auto-injected when `call-actor`, `add-actor`, an Actor tool, or `get-actor-run` is present (which is true in the default configuration).
+- ⚡ — auto-injected when `call-actor`, an Actor tool, or `get-actor-run` is present (which is true in the default configuration).
 - ✅¹ — served by default, but only when telemetry is enabled and the client is not withheld: Anthropic surfaces (Claude.ai / Claude Desktop / Claude Code) or `local-agent-mode-apify`. To disable, pass an explicit `tools=` list that omits it.
 
 | Tool name | Category | Description | Enabled by default |
@@ -266,11 +276,10 @@ Legend for the **Enabled by default** column:
 | `get-key-value-store-keys`| storage | List the keys within a specific key-value store. |  |
 | `get-dataset-list` | storage | List all available datasets for the user. |  |
 | `get-key-value-store-list`| storage | List all available key-value stores for the user. |  |
-| `add-actor` | experimental | Add an Actor as a new tool for the user to call. |  |
 
 > **Note:**
 >
-> When `call-actor`, `add-actor`, an Actor tool, or `get-actor-run` is present, the server auto-injects `get-actor-run`, `get-dataset-items`, `get-key-value-store-record`, and `abort-actor-run`.
+> When `call-actor`, an Actor tool, or `get-actor-run` is present, the server auto-injects `get-actor-run`, `get-dataset-items`, `get-key-value-store-record`, and `abort-actor-run`.
 >
 > When you call an Actor — through `call-actor` or directly via an Actor tool (e.g., `apify--rag-web-browser`) — the response contains run metadata, storage IDs, and a `summary` + `nextStep`, but no dataset items. To fetch items, follow `nextStep` and call `get-dataset-items` (auto-injected), passing the `datasetId` returned from the call.
 
@@ -284,7 +293,7 @@ All tools include metadata annotations to help MCP clients and LLMs understand t
 
 ### Tools configuration
 
-The `tools` configuration parameter is used to specify loaded tools – either categories or specific tools directly, and Apify Actors. For example, `tools=storage,runs` loads two categories; `tools=add-actor` loads just one tool.
+The `tools` configuration parameter is used to specify loaded tools – either categories or specific tools directly, and Apify Actors. For example, `tools=storage,runs` loads two categories; `tools=call-actor` loads just one tool.
 
 When no query parameters are provided, the MCP server loads the following `tools` by default:
 
@@ -379,14 +388,11 @@ The v2 configuration preserves backward compatibility with v1 usage. Notes:
 - `actors` param (URL) and `--actors` flag (CLI) are still supported.
   - Internally they are merged into `tools` selectors.
   - Examples: `?actors=apify/rag-web-browser` ≡ `?tools=apify/rag-web-browser`; `--actors apify/rag-web-browser` ≡ `--tools apify/rag-web-browser`.
-- `enable-adding-actors` (CLI) and `enableAddingActors` (URL) are supported but deprecated.
-  - Prefer `tools=experimental` or including the specific tool `tools=add-actor`.
-  - Behavior remains: when enabled with no `tools` specified, the server exposes only `add-actor`; when categories/tools are selected, `add-actor` is also included.
-- `enableActorAutoLoading` remains as a legacy alias for `enableAddingActors` and is mapped automatically.
+- `enableAddingActors` (URL), `enable-adding-actors` (CLI), and the legacy `enableActorAutoLoading` alias have been removed. To call Actors dynamically, use `tools=call-actor` (included by default via the `actors` category). Any lingering raw value is ignored.
 - Defaults remain compatible: when no `tools` are specified, the server loads `actors`, `docs`, and `apify/rag-web-browser`.
   - If any `tools` are specified, the defaults are not added (same as v1 intent for explicit selection).
 - `call-actor` is now included by default via the `actors` category (additive change). To exclude it, specify an explicit `tools` list without `actors`.
-- `preview` category is deprecated and removed. Use specific tool names instead.
+- `tools=add-actor`, `tools=experimental`, and `tools=preview` are retired: they are ignored and load no tools. Use `tools=call-actor` (or the default `actors` category) instead.
 
 Existing URLs and commands using `?actors=...` or `--actors` continue to work unchanged.
 
@@ -542,14 +548,14 @@ For full details on data collection, usage, sharing, and retention, see [Apify L
 
 # 🤝 Contributing
 
-We welcome contributions to improve the Apify MCP Server! Here's how you can help:
+We welcome bug reports, feature requests, and documentation fixes. **Send us the problem, not the patch** — a precise issue with a reproduction is more useful than a pull request.
 
-- **🐛 Report issues**: Find a bug or have a feature request? [Open an issue](https://github.com/apify/apify-mcp-server/issues).
-- **🔧 Submit pull requests**: Fork the repo and submit pull requests with enhancements or fixes.
-- **📚 Documentation**: Improvements to docs and examples are always welcome.
-- **💡 Share use cases**: Contribute examples to help other users.
+- **🐛 Report a bug**: [Open an issue](https://github.com/apify/apify-mcp-server/issues) with a reproduction. The most useful thing you can send us.
+- **💡 Propose a feature**: [Open an issue](https://github.com/apify/apify-mcp-server/issues) — the problem and who hits it, not the implementation.
+- **🔧 Code**: Work only on a maintainer-invited issue. An open issue is not an invitation to pick it up; unsolicited pull requests are closed.
+- **📚 Documentation**: Typos, broken links, and wrong commands go straight to a PR.
 
-For major changes, please open an issue first to discuss your proposal and ensure it aligns with the project's goals.
+Full rules, including [AI-assisted contributions](./CONTRIBUTING.md#ai-assisted-contributions): [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 # 📚 Learn more
 

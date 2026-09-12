@@ -19,6 +19,8 @@ This is a curated list of tutorials, projects, libraries, videos, papers, books 
   - [Agentic AI](#agentic-ai)
   - [Guardrails and AI Safety](#guardrails-and-ai-safety)
   - [Tabular Data](#tabular-data)
+
+- [TabGAN](https://github.com/Diyago/Tabular-data-generation): Synthetic tabular data generation using CTGAN, ForestDiffusion, and GReaT (LLMs) with adversarial filtering and privacy metrics.
   - [Visualization](#visualization)
   - [Explainability](#explainability)
   - [Object Detection](#object-detection)
@@ -68,6 +70,7 @@ This is a curated list of tutorials, projects, libraries, videos, papers, books 
   - [Anomaly Detection](#anomaly-detection)
   - [Regression Types](#regression-types)
   - [Time Series](#time-series)
+  - [Financial Machine Learning](#financial-machine-learning)
   - [Synthetic Datasets](#synthetic-datasets)
   - [Neural Network General Improvements](#neural-network-general-improvements)
   - [DNN Applications in Chemistry and Physics](#dnn-applications-in-chemistry-and-physics)
@@ -257,6 +260,7 @@ This is a curated list of tutorials, projects, libraries, videos, papers, books 
 - [VIsualizing PyTorch saved .pth deep learning models with netron](https://github.com/lutzroeder/netron)
 - [Distilling a Neural Network Into a Soft Decision Tree](https://github.com/kimhc6028/soft-decision-tree)
 - [Captum, A unified model interpretability library for PyTorch](https://github.com/pytorch/captum)
+- [bnnr, XAI failure reports with OptiCAM saliency overlays and ICD/AICD augmentation search for PyTorch vision models](https://github.com/bnnr-team/bnnr)
 
 ## <a name='ObjectDetection'></a>Object Detection
 - [MMDetection Object Detection Toolbox](https://github.com/open-mmlab/mmdetection)
@@ -327,6 +331,7 @@ This is a curated list of tutorials, projects, libraries, videos, papers, books 
 - [Surrogate Gradient Learning in Spiking Neural Networks](https://github.com/fzenke/spytorch)
 - [TorchOpt: An Efficient Library for Differentiable Optimization](https://github.com/metaopt/torchopt)
 - [ph-training: Automatic Training with Persistent Homology](https://github.com/need-singularity/ph-training) - Uses topological data analysis (H0 persistence) to predict difficulty, find optimal LR, and detect overfitting in real-time (r=0.998).
+- [zij](https://github.com/junaidaliop/zij) - A canon of deep learning optimization algorithms.
 ## <a name='Quantization'></a>Quantization
 - [Additive Power-of-Two Quantization: An Efficient Non-uniform Discretization For Neural Networks](https://github.com/yhhhli/APoT_Quantization)
 
@@ -584,6 +589,7 @@ This is a curated list of tutorials, projects, libraries, videos, papers, books 
 
 ## <a name='GeneralNLP'></a>General NLP
 - [nanoGPT, fastest repository for training/finetuning medium-sized GPTs](https://github.com/karpathy/nanoGPT)
+- [llm.c, LLM training in simple, pure C/CUDA — GPT-2 in ~1000 lines of code with no PyTorch dependency](https://github.com/karpathy/llm.c)
 - [minGPT, Re-implementation of GPT to be small, clean, interpretable and educational](https://github.com/karpathy/minGPT)
 - [Espresso, Module Neural Automatic Speech Recognition Toolkit](https://github.com/freewym/espresso)
 - [Label-aware Document Representation via Hybrid Attention for Extreme Multi-Label Text Classification](https://github.com/HX-idiot/Hybrid_Attention_XML)
@@ -679,6 +685,9 @@ This is a curated list of tutorials, projects, libraries, videos, papers, books 
 - [Variational Recurrent Autoencoder for Timeseries Clustering](https://github.com/tejaslodaya/timeseries-clustering-vae)
 - [Spatio-Temporal Neural Networks for Space-Time Series Modeling and Relations Discovery](https://github.com/edouardelasalles/stnn)
 - [Flow Forecast: A deep learning for time series forecasting framework built in PyTorch](https://github.com/AIStream-Peelout/flow-forecast)
+
+## <a name='FinancialMachineLearning'></a>Financial Machine Learning
+- [ml-quant-trading, PyTorch research stack for multi-factor trading with 213 factors, bias correction, portfolio optimization, and vectorized backtesting](https://github.com/initial-d/ml-quant-trading)
 
 ## <a name='SyntheticDatasets'></a>Synthetic Datasets
 - [Meta-Sim: Learning to Generate Synthetic Datasets](https://github.com/nv-tlabs/meta-sim)

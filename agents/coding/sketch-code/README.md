@@ -6,11 +6,19 @@
 
 ![Preview](https://github.com/ashnkumar/sketch-code/blob/master/header_image.png)
 
-SketchCode is a deep learning model that takes hand-drawn web mockups and converts them into working HTML code. It uses an [image captioning](https://towardsdatascience.com/image-captioning-in-deep-learning-9cd23fb4d8d2) architecture to generate its HTML markup from hand-drawn website wireframes.
+> **Built in 2018, preserved as-is.** SketchCode came out of the Insight AI Fellowship, back when
+> solving this meant training a model specifically for it. The technique of the moment was image
+> captioning — a CNN encoder feeding an LSTM decoder — and the bet was that the same architecture
+> would work if you treated HTML as the caption. It did, on wireframes close to the 1,700-image
+> synthetic dataset it was trained on. The code targets TensorFlow 1.x and Keras of that era and is
+> no longer maintained; it stands as a record of what this problem took before general-purpose
+> vision-language models started doing it zero-shot.
 
-For more information, check out this post: [Automating front-end development with deep learning](https://blog.insightdatascience.com/automated-front-end-development-using-deep-learning-3169dd086e82)
+SketchCode is a deep learning model that takes hand-drawn web mockups and converts them into working HTML code. It uses an image captioning architecture to generate its HTML markup from hand-drawn website wireframes.
 
-This project builds on the synthetically generated dataset and model architecture from [pix2code](https://github.com/tonybeltramelli/pix2code) by [Tony Beltramelli](https://github.com/tonybeltramelli) and the [Design Mockups](https://github.com/emilwallner/Screenshot-to-code-in-Keras) project from [Emil Wallner](https://github.com/emilwallner).
+For more information, check out this post: [Automating front-end development with deep learning](https://medium.com/insight-data/automated-front-end-development-using-deep-learning-3169dd086e82)
+
+This project builds on the synthetically generated dataset and model architecture from [pix2code](https://github.com/tonybeltramelli/pix2code) by [Tony Beltramelli](https://github.com/tonybeltramelli) and the [Design Mockups](https://github.com/emilwallner/Screenshot-to-code) project from [Emil Wallner](https://github.com/emilwallner).
 
 <b>Note:</b> This project is meant as a proof-of-concept; the model isn't (yet) built to generalize to the variability of sketches seen in actual wireframes, and thus its performance relies on wireframes resembling the core dataset.
 
@@ -111,24 +119,8 @@ python evaluate_batch_guis.py --original_guis_filepath  {path/to/folder/with/ori
 
 ## License
 
-### The MIT License (MIT)
+MIT — see [LICENSE](LICENSE).
 
-Copyright (c) 2018 Ashwin Kumar<ash.nkumar@gmail.com@gmail.com>
-
-> Permission is hereby granted, free of charge, to any person obtaining a copy
-> of this software and associated documentation files (the "Software"), to deal
-> in the Software without restriction, including without limitation the rights
-> to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-> copies of the Software, and to permit persons to whom the Software is
-> furnished to do so, subject to the following conditions:
->
-> The above copyright notice and this permission notice shall be included in
-> all copies or substantial portions of the Software.
->
-> THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-> IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-> FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-> AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-> LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-> OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-> THE SOFTWARE.
+Portions of this project derive from [pix2code](https://github.com/tonybeltramelli/pix2code), which
+is licensed under the Apache License, Version 2.0. See [NOTICE](NOTICE) for the required
+attributions and the terms that apply to those portions.

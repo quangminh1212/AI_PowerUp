@@ -8,7 +8,7 @@
 
 #### 1、基于Sing-box + Xray + Cloudflared-Argo 三内核自动分配
 
-#### 2、支持Linux类主流VPS系统（建议最新版系统），SSH脚本支持非root环境运行，无脑一次回车搞定
+#### 2、支持主流VPS系统（推荐Ubuntu系统），SSH脚本支持非root环境运行，无脑一次回车搞定
 
 #### 3、支持各种容器系统，Docker镜像部署，公开镜像库：```ygkkk/argosbx```
 
@@ -17,7 +17,7 @@
 #### 5、客户端支持方面，各类单协议分享、clash/mihomo/singbox聚合订阅分享都可支持
 
 #### 6、所有代理协议都无需域名（除了argo固定隧道、IP端口CDN），支持单个或多个代理协议任意组合并快速重置更换
-【 已支持：Naiveproxy、AnyTLS、Any-reality、Vless-xhttp-reality-vison-enc、Vless-tcp-reality-vision、Vless-xhttp-vison-enc、Vless-ws-vision-enc、Shadowsocks-2022、Vmess-ws、Socks5、Hysteria2、Tuic、Argo临时/固定隧道支持Vless-ws-vision-enc或Vmess-ws 】
+【 已支持：Naiveproxy、Vless-xhttp-tls、AnyTLS、Any-reality、Vless-xhttp-reality-vison-enc、Vless-tcp-reality-vision、Vless-xhttp-vison-enc、Vless-ws-vision-enc、Shadowsocks-2022、Vmess-ws、Socks5、Hysteria2、Tuic、Argo临时/固定隧道支持Vless-ws-vision-enc或Vmess-ws 】
 
 #### 7、建议配合SSH一键脚本命令生成器网页使用：https://yonggekkk.github.io/argosbx/
 
@@ -25,18 +25,20 @@
 
 #### 9、Argosbx客户端推荐：
 
-安卓手机客户端：[Nekobox-starifly版(全协议支持)](https://github.com/starifly/NekoBoxForAndroid/releases)、[V2rayNG官方版](https://github.com/2dust/v2rayNG/releases)
+安卓手机客户端：[Nekobox-starifly版(全协议支持)](https://github.com/starifly/NekoBoxForAndroid/releases)、[V2rayNG官方版](https://github.com/2dust/v2rayNG/releases)、[Singbox官方版](https://github.com/SagerNet/sing-box/releases)、Clash/Mihomo客户端随意
 
-电脑win客户端：[V2rayN官方版(全协议支持)](https://github.com/2dust/v2rayN/releases)
+电脑win客户端：[V2rayN官方版(全协议支持)](https://github.com/2dust/v2rayN/releases)、[Singbox官方版](https://github.com/SagerNet/sing-box/releases)、Clash/Mihomo客户端随意
 
 苹果IOS客户端：小火箭Shadowrocket、Onexray、Clash mi
+
+注：个别协议仅支持某些客户端
 
 
 ------------------------------------------------------------------
 
 * #### 如下图：一键SSH命令生成器：[点击视频教程](https://youtu.be/4u6W4c-t3oU)
 
-<img width="1201" height="800" alt="729cda77f5d7f29dcbab7915ec50b087" src="https://github.com/user-attachments/assets/c2c8d8ea-6526-4628-9a8a-8a5153f04987" />
+<img width="726" height="741" alt="image" src="https://github.com/user-attachments/assets/622fbc56-1058-45c6-8cac-dc00bb6cf6d0" />
 
 ------------------------------------------------------------------
 
@@ -61,11 +63,13 @@
 
 #### 相关教程可参考[甬哥博客](https://ygkkk.blogspot.com/2025/08/argosb.html)，视频教程如下：
 
-[小白一分钟快速自建翻墙VPN代理：一键生成SSH命令；解决IP限制、IP质量太差问题；Argo固定隧道设置要点](https://youtu.be/xHzZFP_ywLs)
+[Argosbx小钢炮脚本重大更新：加入NaiveProxy与XHTTP-TLS一键部署；XHTTP的UDP模式支持CDN优选IP](https://youtu.be/NMJIG_2N2a8)
 
-[🥇搭建代理9大问题排行榜：第4名全网99%的人被误导！第1名每个人都被折腾到爆！](https://youtu.be/pJwJBqBkcfw)
+[Argosbx一键生成SSH命令；解决IP限制、IP质量太差问题；Argo固定隧道设置要点](https://youtu.be/xHzZFP_ywLs)
 
-[🥇2025年度代理协议"拉到夯"综合排名](https://youtu.be/IoFtykGXDao)
+[搭建代理9大问题排行榜：第4名全网99%的人被误导！第1名每个人都被折腾到爆！](https://youtu.be/pJwJBqBkcfw)
+
+[2025年度代理协议"拉到夯"综合排名](https://youtu.be/IoFtykGXDao)
 
 [ArgoSBX小钢炮脚本更新说明：新增VLESS ENC抗量子加密；80端口也能开启TLS加密？无需域名也能CDN优选？](https://youtu.be/X8BFVyeiY9g)
 

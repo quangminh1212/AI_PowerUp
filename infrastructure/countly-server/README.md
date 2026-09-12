@@ -8,49 +8,26 @@
 ## 🔗 Quick links
 
 * [Countly Website](https://countly.com)
-* [Countly Server installation guide](https://support.countly.com/hc/en-us/articles/360036862332-Installing-the-Countly-Server)
-* [Countly SDKs, download and documentation links](https://support.countly.com/hc/en-us/articles/360037236571-Downloading-and-Installing-SDKs)
+* [Countly Server installation guide](https://support.count.ly/hc/en-us/articles/360036862332-Installing-the-Countly-Server)
+* [Countly SDKs, download and documentation links](https://support.count.ly/hc/en-us/articles/360037236571-Downloading-and-Installing-SDKs)
 * [Countly Community on Discord](https://discord.gg/countly)
-* [User Guides for Countly features](https://support.countly.com/hc/en-us/sections/360007405211-User-Guides)
+* [User Guides for Countly features](https://support.count.ly/hc/en-us/sections/7039354168729-User-Guides-Countly-22-x)
 
 ## 🌟 What is Countly?
 
-Countly is a **privacy-first, AI-ready analytics and customer engagement platform** built for organizations that require **full data ownership and deployment flexibility**.
+Countly is a product analytics platform that helps teams track, analyze and act on their user actions and behaviour on mobile, web and desktop applications. 
 
-Unlike traditional SaaS-only analytics tools, Countly can be deployed **on-premises or in a private cloud**, giving you complete control over your data, infrastructure, compliance, and security.
+Countly is used to track 1.5B unique identities on more than 16,000 applications via 2,000+ servers worldwide. It securely processes billions of data points every day in the cloud and on-premises, enabling teams of all sizes to build better applications and engaging experiences while maintaining full control over their product analytics data flow.
 
-Teams use Countly to:
-* Understand user behavior across **mobile, web, desktop, and connected devices**
-* Optimize product and customer experiences in **real time**
-* Automate and personalize customer engagement across channels
+## 🚀 What are the Countly editions?                   
 
-With **flexible data tracking**, **customizable dashboards**, and a **modular plugin-based architecture**, Countly scales with your product while ensuring long-term autonomy and zero vendor lock-in.
-
-**Built for privacy. Designed for flexibility. Ready for AI-driven innovation.**
-
-## 🚀 Countly Plans                  
-
-**Countly Lite**
-* Core analytics and essential features
-* Free to use under an open-source, non-commercial license
-* Self-hosted deployment
-* Ideal for individuals and small teams
-
-**Countly Enterprise**
-* Full analytics and engagement suite
-* Advanced features, granular data access, SLA, and direct support
-* Available as self-hosted or managed/private cloud
-* Ideal for medium and large organizations with advanced compliance needs
-
-**Countly Flex**
-* Fully managed SaaS experience with dedicated Countly servers
-* Region-based hosting selection
-* Enterprise-grade features included, with optional add-ons
-* Ideal for individuals and small-to-medium organizations wanting flexibility without infrastructure management
-
-:pushpin: **Note**: Countly SDKs are identical across all editions.
+* **Countly Lite** — Essential plugins/features and a free-to-use, open source, non-commercial license. Available as self-hosted. Suitable for individuals and small organizations.
+* **Countly Enterprise** — Offers a wider range of plugins/features, granular data, an SLA, and direct support. Available as self-hosted or Countly hosted/managed. Suitable for medium and large organizations.
+* **Countly Flex** — Our SaaS platform that offers some Enterprise features as core features, and some others as add-ons. Everyone gets their dedicated and fully-managed Countly server(s) in the region they choose. Suitable for individuals, small and medium-sized organizations.  
 
 For a detailed comparison of different editions [please check here](https://countly.com/pricing). To try the Countly Flex [please visit this page]([https://countly.com/flex](https://countly.com/flex)).
+
+Also, please note that SDKs of Countly are the same for all editions.
 
 ## 📦 What is included in this repository?
 
@@ -76,8 +53,8 @@ This repository includes server-side part of Countly, with the following feature
 
 Countly can collect and visualize data from mobile, web and desktop applications. Using the write-API you can send data into Countly from any source. For more information please check the below resources: 
 
-* [List of Countly SDKs, documentation and download information](https://support.countly.com/hc/en-us/articles/360037236571-Downloading-and-Installing-SDKs)
-* [SDK development guide to build your own SDK](https://support.countly.com/hc/en-us/articles/360037753291-SDK-development-guide)
+* [List of Countly SDKs, documentation and download information](https://support.count.ly/hc/en-us/articles/360037236571-Downloading-and-Installing-SDKs)
+* [SDK development guide to build your own SDK](https://support.count.ly/hc/en-us/articles/360037753291-SDK-development-guide)
 * [Countly Server Write API to send data into Countly from any source](https://api.count.ly/reference/i)
 
 ## 🛠️ Installing and upgrading Countly server
@@ -92,15 +69,15 @@ There are several ways to install Countly:
 
 2. For bash lovers, we provide a beautiful installation script (`bin/countly.install.sh`) in countly-server package which installs everything required to run Countly Server. For this, you need a stable release of this repository [available here](https://github.com/Countly/countly-server/releases).
 
-3. Countly Lite also has Docker support - [see our official Docker repository](https://registry.hub.docker.com/r/countly/countly-server/) and [installation instructions for Docker](https://support.countly.com/hc/en-us/articles/360036862332-Installing-the-Countly-Server).
+3. Countly Lite also has Docker support - [see our official Docker repository](https://registry.hub.docker.com/r/countly/countly-server/) and [installation instructions for Docker](https://support.count.ly/hc/en-us/articles/360036862332-Installing-the-Countly-Server).
 
-If you want to upgrade Countly from a previous version, please take a look at [upgrading documentation](https://support.countly.com/hc/en-us/articles/360037443652-Upgrading-the-Countly-Server).
+If you want to upgrade Countly from a previous version, please take a look at [upgrading documentation](https://support.count.ly/hc/en-us/articles/360037443652-Upgrading-the-Countly-Server).
 
 ## 🧩 API, extensibility and plugins
 
 Countly has a [well-defined API](https://api.count.ly), that reads and writes data from/to the Countly backend. Countly dashboard is built using the read API, so it's possible to fetch any information you see on the dashboard using the API.
 
-Countly is extensible using the plugin architecture. If you would like to modify any exiting feature by extending it or changing it, or if you would like to add completely new capabilities to Countly you can modify existing plugins or create new ones. We suggest [you read this document](https://support.countly.com/hc/en-us/articles/360036862392-Introduction) if you would like to start with plugin development.
+Countly is extensible using the plugin architecture. If you would like to modify any exiting feature by extending it or changing it, or if you would like to add completely new capabilities to Countly you can modify existing plugins or create new ones. We suggest [you read this document](https://support.count.ly/hc/en-us/articles/360036862392-Introduction) if you would like to start with plugin development.
 
 ## 💚 Community
 
@@ -116,16 +93,7 @@ Security is very important to us. If you discover any issue regarding security, 
 * **NodeJS** — An open-source, cross-platform JavaScript runtime environment
 * **Linux** — What we all love using ;-)
 
-Plus lots of [open source libraries](https://support.countly.com/hc/en-us/articles/360037092232-Open-source-components)!         
-
-## 📚 Developer Documentation
-
-* [Coding Guidelines](CODING_GUIDELINES.md) — Development standards and best practices
-* [Security Guidelines](docs/SECURITY.md) — Security requirements for contributions
-* [Vue.js Guidelines](docs/VUEJS_GUIDELINES.md) — Frontend development patterns
-* [CSS Style Guide](docs/CSS_STYLE_GUIDE.md) — SASS, BEM, and Bulma conventions
-* [UI Testing Guide](docs/UI_TESTING.md) — Cypress testing and data-test-id usage
-* [Test Suite Documentation](test/README.md) — Running and writing tests
+Plus lots of [open source libraries](https://support.count.ly/hc/en-us/articles/360037092232-Open-source-components)!         
 
 ## 🤝 How can I help you with your efforts?
 
@@ -148,11 +116,3 @@ If you like Countly, why not use one of our badges and give a link back to us?
 <a href="https://countly.com/?utm_source=badge" rel="nofollow"><img style="width:145px;height:60px" src="https://count.ly/badges/light.svg?v2" alt="Countly - Product Analytics" /></a>
 
     <a href="https://countly.com/?utm_source=badge" rel="nofollow"><img style="width:145px;height:60px" src="https://count.ly/badges/light.svg" alt="Countly - Product Analytics" /></a>
-
-
-## License
-This project is licensed under **AGPL-3.0** with modified Section 7., see the [LICENSE](LICENSE) file for more details.
-
-## 💚 Thanks
-
-This project is tested with BrowserStack.

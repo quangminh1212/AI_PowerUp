@@ -17,11 +17,11 @@
 </p>
 
 <p align="center">
+<a href="https://trendshift.io/repositories/43969?utm_source=repository-badge&amp;utm_medium=badge&amp;utm_campaign=badge-repository-43969" target="_blank" rel="noopener noreferrer"><img src="https://trendshift.io/api/badge/repositories/43969" alt="zhaoxuya520%2Freverse-skill | Trendshift" width="250" height="55"/></a>
   <a href="https://trendshift.io/repositories/43969?utm_source=trendshift-badge&amp;utm_medium=badge&amp;utm_campaign=badge-trendshift-43969" target="_blank" rel="noopener noreferrer"><img src="https://trendshift.io/api/badge/trendshift/repositories/43969/daily" alt="zhaoxuya520%2Freverse-skill | Trendshift" width="250" height="55"/></a>
 </p>
 
 <br/>
-
 <p align="center">
   <a href="#about">About</a> ·
   <a href="#getting-started">Getting Started</a> ·
@@ -68,9 +68,7 @@ PRIMARY ladder: [skills/MASTER-ROUTING.md](skills/MASTER-ROUTING.md) · Full mat
 <br/>
 
 <div align="center">
-  <a href="https://star-history.com/#zhaoxuya520/reverse-skill&Date">
-    <img src="docs/assets/star-history.svg" alt="Star History" width="650" />
-  </a>
+  <a href="https://afterglow.watch"><img src="https://afterglow.watch/badge/zhaoxuya520/reverse-skill" alt="star velocity"></a>
 </div>
 
 <br/>
@@ -134,7 +132,7 @@ Platform-specific docs:
 | .NET / C# | `skills/dotnet-reverse/` |
 | Frontend JS / encrypted params | `skills/js-reverse/` |
 | DSL VM / custom JS opcode VM | `skills/reverse-engineering/dsl-vm-reverse/` |
-| HTTP capture / request replay | anything-analyzer + `js-reverse/` |
+| HTTP capture / request replay | anything-analyzer, Reqable MCP + `js-reverse/` |
 | Malware / YARA | `skills/malware-analysis/` |
 | Penetration testing / scanning | `skills/pentest-tools/` |
 | Attack chain / red-team orchestration | `skills/attack-chain/` |
@@ -190,6 +188,7 @@ Platform-specific docs:
 <a id="sponsors"></a>
 
 ## Sponsors
+<a href="https://www.atlascloud.ai/?ref=W3Q77C"><img src="https://www.atlascloud.ai/oss-program/powered-by-atlas-cloud.svg" alt="Powered by Atlas Cloud" height="28" /></a>
 
 For sponsorship or business inquiries:
 
@@ -246,6 +245,7 @@ Special thanks to the OLLVM deobfuscation ecosystem contributors and everyone wh
 
 ## Contact
 
-- **Email:** [24781737@qq.com](mailto:24781737@qq.com)
-- **Telegram:** [t.me/AI_And_Security](https://t.me/AI_And_Security)
-- **X (Twitter):** [@apivixtls](https://x.com/apivixtls)
+- **Email:** [ww7517437@gmail.com](mailto:ww7517437@gmail.com)
+- **QQ Group:** 942400892
+- **Discord:**
+[reverse-skill](https://discord.gg/TECd3bMRR)

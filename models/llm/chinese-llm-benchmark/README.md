@@ -1,7 +1,7 @@
 
 # 非线智能 NoneLinear - ReLE评测：中文AI大模型能力评测（持续更新）
 - ReLE （**R**eally R**e**liable **L**ive **E**valuation for LLM），原名CLiB
-- 目前已囊括394个大模型，覆盖chatgpt、gpt-5.6、谷歌gemini-3.1-pro、Claude-5、grok-4.5、文心ERNIE-X1.1、ERNIE-5.1、qwen3.7-max、qwen3.7-plus、百川、讯飞星火、商汤senseChat等商用模型，
+- 目前已囊括395个大模型，覆盖chatgpt、gpt-5.6、谷歌gemini-3.1-pro、Claude-5、grok-4.5、文心ERNIE-X1.1、ERNIE-5.1、qwen3.7-max、qwen3.7-plus、百川、讯飞星火、商汤senseChat等商用模型，
 以及hy3、step3.7-flash、kimi-k3、ernie4.5、MiniMax-M3、deepseek-v4、Qwen3.6、llama4、智谱GLM-5.2、MiMo-V2、LongCat、gemma4、mistral等开源大模型。
 - 支持多维度能力评测，包括教育、医疗与心理健康、金融、法律与行政公务、推理与数学计算、语言与指令遵从、agent与工具调用等7个领域，以及细分的~300个维度（比如牙科、高中语文…）。详见我们的技术报告[ReLE: A Scalable System and Structured Benchmark for Diagnosing Capability Anisotropy in Chinese LLMs](https://www.arxiv.org/abs/2601.17399) 媒体报道(机器之心):[全球304个中文大模型实测：没有“全能王者”，ReLE凭70%降本方案破解评估困局](https://www.jiqizhixin.com/articles/2026-02-03)
 - 不仅提供排行榜，也提供规模**超200万的大模型缺陷库**！方便广大社区研究分析、改进大模型。
@@ -59,6 +59,17 @@
 - [Cite Us](#如何引用-ReLE-评测Cite-Us)
 
 # 最近评测更新
+- [2026/8/4] v5.10.17版本
+  - 新增大模型：qwen3.8-max
+  - 删除陈旧的模型：Baichuan4-Turbo、Llama-4-Scout-17B-16E-Instruct、GLM-4-9B-0414、
+  Qwen3-32B、Qwen3-14B、Qwen3-8B、Qwen3-4B、o4-mini、DeepSeek-R1-0528、ERNIE-4.5-Turbo-32K、
+  ERNIE-X1-Turbo-32K、claude-4-sonnet、claude-4-sonnet-thinking、gemini-2.5-flash、
+gemini-2.5-pro、hunyuan-t1-20250711、qwen-turbo-2025-07-15、qwen3-235b-a22b-instruct-2507、qwen3-235b-a22b-thinking-2507、
+Qwen3-4B-nothink、Qwen3-8B-nothink、Qwen3-14B-nothink、Qwen3-32B-nothink、GLM-4.5-Flash、
+GLM-4.5-Air、Qwen3-30B-A3B-Instruct-2507、Qwen3-30B-A3B-Thinking-2507、
+GLM-4.5-Air-nothink、GLM-4.5-Flash-nothink
+- [2026/7/28] v5.10.16版本
+  - 新增大模型：claude-opus-5
 - [2026/7/20] v5.10.15版本
   - 新增大模型：kimi-k3
 - [2026/7/12] v5.10.14版本
@@ -167,8 +178,8 @@ client.chat.completions.create(
 
 |类别|机构|大模型|【总分】准确率|平均耗时|平均消耗token|花费/千次（元）|排名（准确率）|
 |---|---|-----|-------------------|-------|-----------|-----------|-----------|
-|商用|阿里巴巴|qwen3.7-max(new)|76.9%|51s|2920|99.0|1|
-|开源|月之暗面|kimi-k3(new)|75.6%|80s|1962|172.4|2|
+|商用|阿里巴巴|qwen3.7-max|76.9%|51s|2920|99.0|1|
+|商用|anthropic|claude-opus-5(new)|76.8%|15s|1216|168.8|2|
 
    
 详细数据见：[综合能力排行榜](leaderboard/总分.md) | [通用能力排行榜](leaderboard/通用能力.md) | [专业能力排行榜](leaderboard/专业能力.md)

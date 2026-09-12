@@ -28,15 +28,17 @@
 
 ![](docs/api.jpg)
 
+---
+
 ## 特别感谢 ❤️
 
 <div align="center">
-  <a href="https://platform.kimi.com?aff=MoneyPrinterTurbo" target="_blank"><img src="https://gcdn.moonshot.cn/growth-cdn/sponsor/kimi-zh.png" alt="Kimi 赞助 MoneyPrinterTurbo" width="100%"></a>
+  <a href="https://platform.kimi.com/?aff=MoneyPrinterTurbo" target="_blank"><img src="https://gcdn.moonshot.cn/growth-cdn/sponsor/kimi-zh.png" alt="Kimi 赞助 MoneyPrinterTurbo" width="100%"></a>
 </div>
 
-感谢 [Kimi](https://platform.kimi.com?aff=MoneyPrinterTurbo) 赞助本项目！[Kimi K2.7 Code](https://platform.kimi.com/docs/guide/kimi-k2-7-code-quickstart) 是 Moonshot AI 推出的编程专用开源智能体模型，在真实长程编程与复杂软件工程工作流中显著提升端到端任务成功率，同时优化推理效率，相比 K2.6 平均减少约 30% 的推理 token 消耗。而在本项目中，Kimi 大模型能直接驱动视频创作，不仅撰写视频文案，还会提炼素材搜索关键词、决定成片画面，文案理解越精准，匹配到的素材就越贴题。
+感谢 [Kimi](https://platform.kimi.com/?aff=MoneyPrinterTurbo) 赞助本项目！[Kimi K3](https://www.kimi.com/blog/kimi-k3?aff=MoneyPrinterTurbo) 是 Moonshot AI 迄今能力最强的模型，也是全球首个开源 3T 级模型，拥有原生视觉能力与 100 万 Token 上下文，在知识工作、推理和长周期任务中展现前沿性能。在 MoneyPrinterTurbo 中，K3 能直接驱动视频创作，不仅撰写视频文案，还会提炼素材搜索关键词、决定成片画面；对内容理解越准确，匹配到的素材就越贴题。
 
-**本项目已接入 Kimi 大模型。前往 [Kimi 开放平台](https://platform.kimi.com?aff=MoneyPrinterTurbo)（[中文站](https://platform.kimi.com?aff=MoneyPrinterTurbo)｜[Global](https://platform.kimi.ai?aff=MoneyPrinterTurbo)）体验 API，或了解高性价比 [Coding Plan 套餐](https://www.kimi.com/code?aff=MoneyPrinterTurbo)。**
+**MoneyPrinterTurbo 已接入 Kimi。前往 Kimi 开放平台（[中文站](https://platform.kimi.com/?aff=MoneyPrinterTurbo)｜[Global](https://platform.kimi.ai/?aff=MoneyPrinterTurbo)）体验 API，或了解 [Kimi Code 订阅](https://www.kimi.com/code?aff=MoneyPrinterTurbo)。**
 <br>
 
 <table align="center">
@@ -60,15 +62,6 @@
   </tr>
   <tr>
     <td align="center" width="120">
-      <a href="https://www.compshare.cn/coding-plan?ytag=GPU_YY-git_MoneyPrinterTu"><img src="docs/sponsors/compshare-logo.png" alt="优云智算" height="34"></a><br>
-      <a href="https://www.compshare.cn/coding-plan?ytag=GPU_YY-git_MoneyPrinterTu"><strong>优云智算</strong></a>
-    </td>
-    <td align="left">
-      感谢 <a href="https://www.compshare.cn/coding-plan?ytag=GPU_YY-git_MoneyPrinterTu">优云智算</a> 赞助本项目！优云智算是 UCloud 旗下 AI 云平台，一站式提供国内外主流模型的 API 服务，一个 Key 即可调用所有模型。主打高性价比国产模型 CodingPlan 套餐（GLM5.2、Deepseek-v4等），同时提供官方转发的稳定海外模型通道，满足多场景开发需求。已兼容 Claude Code、Codex 等主流 AI 编程工具及通用 API 调用，支持企业级高并发、7×24 技术支持和自助开票。<a href="https://www.compshare.cn/coding-plan?ytag=GPU_YY-git_MoneyPrinterTu">点击注册</a>，最高可获得 ¥10 免费体验金。
-    </td>
-  </tr>
-  <tr>
-    <td align="center" width="120">
       <a href="https://cubence.com/signup?code=SCE1CJPE&source=mpt"><img src="docs/sponsors/cubence-logo.png" alt="Cubence" height="40"></a><br>
       <a href="https://cubence.com/signup?code=SCE1CJPE&source=mpt"><strong>Cubence</strong></a>
     </td>
@@ -78,11 +71,11 @@
   </tr>
   <tr>
     <td align="center" width="120">
-      <a href="https://www.0029.org/?promo=AFF1"><img src="docs/sponsors/0029-logo.jpg" alt="0029 云桥" height="56"></a><br>
-      <a href="https://www.0029.org/?promo=AFF1"><strong>0029 云桥</strong></a>
+      <a href="https://www.quya.org/?promo=AFF1"><img src="docs/sponsors/0029-logo.jpg" alt="0029 云桥" height="56"></a><br>
+      <a href="https://www.quya.org/?promo=AFF1"><strong>0029 云桥</strong></a>
     </td>
     <td align="left">
-      感谢 <a href="https://www.0029.org/?promo=AFF1">0029.org 云桥</a> 赞助本项目！0029.org 云桥是一个集成了 Claude Code、Codex 以及 Gemini 最新模型的一站式中转平台，为你提供稳定、高效且高性价比的 AI 中转服务。本站提供灵活的包月套餐/按量计费计划，国内直连，无需魔法，极速响应。支持个人和企业接入，价格最低为官方 0.12 折。<a href="https://www.0029.org/?promo=AFF1">立即访问</a>。
+      感谢 <a href="https://www.quya.org/?promo=AFF1">0029.org 云桥</a> 赞助本项目！0029.org 云桥是一个集成了 Claude Code、Codex 以及 Gemini 最新模型的一站式中转平台，为你提供稳定、高效且高性价比的 AI 中转服务。本站提供灵活的包月套餐/按量计费计划，国内直连，无需魔法，极速响应。支持个人和企业接入，价格最低为官方 0.12 折。<a href="https://www.quya.org/?promo=AFF1">立即访问</a>。
     </td>
   </tr>
   <tr>
@@ -113,6 +106,29 @@
     </td>
   </tr>
 </table>
+
+## 作者的另一个开源项目：MangoDisk ⭐
+
+<p align="center">
+  <a href="https://github.com/harry0703/MangoDisk">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://assets.mangodisk.app/images/readme/zh-dark.jpg">
+      <source media="(prefers-color-scheme: light)" srcset="https://assets.mangodisk.app/images/readme/zh-light.jpg">
+      <img src="https://assets.mangodisk.app/images/readme/zh-light.jpg" width="900" alt="MangoDisk 开源磁盘清理与空间分析工具">
+    </picture>
+  </a>
+</p>
+
+<p align="center">
+  <strong>适用于 macOS 和 Windows 的安全优先开源磁盘清理与空间分析工具</strong><br>
+  查找大文件和重复文件，清理缓存与应用残留，安全释放磁盘空间。
+</p>
+
+<p align="center">
+  <a href="https://github.com/harry0703/MangoDisk">查看 GitHub 开源项目</a>
+</p>
+
+---
 
 ## 功能特性 🎯
 

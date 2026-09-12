@@ -25,10 +25,12 @@ of integrated gradients, saliency maps, smoothgrad, vargrad and others for
 PyTorch models. It has quick integration for models built with domain-specific
 libraries such as torchvision, torchtext, and others.
 
+*Captum is currently in beta and under active development!*
+
 
 #### About Captum
 
-With the increase in model complexity and the resulting lack of transparency, model interpretability methods have become increasingly important. Model understanding is both an active area of research as well as an area of focus for practical applications across industries using machine learning. Captum provides state-of-the-art algorithms such as Integrated Gradients, Testing with Concept Activation Vectors (TCAV), TracIn influence functions, just to name a few, that provide researchers and developers with an easy way to understand which features, training examples or concepts contribute to a models' predictions and in general what and how the model learns. In addition to that, Captum also provides adversarial attacks and minimal input perturbation capabilities that can be used both for generating counterfactual explanations and adversarial perturbations.
+With the increase in model complexity and the resulting lack of transparency, model interpretability methods have become increasingly important. Model understanding is both an active area of research as well as an area of focus for practical applications across industries using machine learning. Captum provides state-of-the-art algorithms such as Integrated Gradients, Testing with Concept Activaton Vectors (TCAV), TracIn influence functions, just to name a few, that provide researchers and developers with an easy way to understand which features, training examples or concepts contribute to a models' predictions and in general what and how the model learns. In addition to that, Captum also provides adversarial attacks and minimal input perturbation capabilities that can be used both for generating counterfactual explanations and adversarial perturbations.
 
 <!--For model developers, Captum can be used to improve and troubleshoot models by facilitating the identification of different features that contribute to a model’s output in order to design better models and troubleshoot unexpected model outputs. -->
 
@@ -45,13 +47,30 @@ Captum can also be used by application engineers who are using trained models in
 ## Installation
 
 **Installation Requirements**
-- Python >= 3.10
-- PyTorch >= 2.3
+- Python >= 3.8
+- PyTorch >= 1.10
 
 
 ##### Installing the latest release
 
-Install released Captum via `pip`.
+The latest release of Captum is easily installed either via
+[Anaconda](https://www.anaconda.com/distribution/#download-section) (recommended) or via `pip`.
+
+**with `conda`**
+
+You can install captum from any of the following supported conda channels:
+
+- channel: `pytorch`
+
+  ```sh
+  conda install captum -c pytorch
+  ```
+
+- channel: `conda-forge`
+
+  ```sh
+  conda install captum -c conda-forge
+  ```
 
 **With `pip`**
 
@@ -72,6 +91,7 @@ pip install -e .
 
 To customize the installation, you can also run the following variants of the
 above:
+* `pip install -e .[insights]`: Also installs all packages necessary for running Captum Insights.
 * `pip install -e .[dev]`: Also installs all tools necessary for development
   (testing, linting, docs building; see [Contributing](#contributing) below).
 * `pip install -e .[tutorials]`: Also installs all packages necessary for running the tutorial notebooks.
@@ -365,10 +385,48 @@ approximation for given inputs and baselines is.
 More details on the list of supported algorithms and how to apply
 Captum on different types of models can be found in our tutorials.
 
-## Captum Insights (Retired)
 
-Captum Insights was retired after v0.8.0 and is no longer supported. You can check out
-the repository at the v0.8.0 tag to view the defunct code.
+## Captum Insights
+
+Captum provides a web interface called Insights for easy visualization and
+access to a number of our interpretability algorithms.
+
+To analyze a sample model on CIFAR10 via Captum Insights run
+
+```
+python -m captum.insights.example
+```
+
+and navigate to the URL specified in the output.
+
+![Captum Insights Screenshot](./website/static/img/captum_insights_screenshot.png)
+
+To build Insights you will need [Node](https://nodejs.org/en/) >= 8.x
+and [Yarn](https://yarnpkg.com/en/) >= 1.5.
+
+To build and launch from a checkout in a conda environment run
+
+```
+conda install -c conda-forge yarn
+BUILD_INSIGHTS=1 python setup.py develop
+python captum/insights/example.py
+```
+
+### Captum Insights Jupyter Widget
+Captum Insights also has a Jupyter widget providing the same user interface as the web app.
+To install and enable the widget, run
+
+```
+jupyter nbextension install --py --symlink --sys-prefix captum.insights.attr_vis.widget
+jupyter nbextension enable captum.insights.attr_vis.widget --py --sys-prefix
+```
+
+To build the widget from a checkout in a conda environment run
+
+```
+conda install -c conda-forge yarn
+BUILD_INSIGHTS=1 python setup.py develop
+```
 
 ## FAQ
 If you have questions about using Captum methods, please check this [FAQ](docs/faq.md), which addresses many common issues.
@@ -403,10 +461,11 @@ You can watch the recorded talk [here](https://www.youtube.com/watch?v=ayhBHZYje
 
 **ICLR 2021 workshop on Responsible AI**:
 - [Paper](https://arxiv.org/abs/2009.07896) on the Captum Library
-- [Paper](https://arxiv.org/abs/2106.07475) on Investigating Sanity Checks for Saliency Maps
+- [Paper](https://arxiv.org/abs/2106.07475) on Invesitgating Sanity Checks for Saliency Maps
 
 
-Summer school on medical imaging at University of Lyon has a class on model explainability you can watch [here](https://www.youtube.com/watch?v=vn-jLzY67V0)
+Summer school on medical imaging at University of Lyon. A class on model explainability (link to the video)
+https://www.youtube.com/watch?v=vn-jLzY67V0
 
 ## References of Algorithms
 
@@ -418,7 +477,7 @@ Summer school on medical imaging at University of Lyon has a class on model expl
 * `LayerConductance`: [Computationally Efficient Measures of Internal Neuron Importance, Avanti Shrikumar et al. 2018](https://arxiv.org/abs/1807.09946)
 * `DeepLift`, `NeuronDeepLift`, `LayerDeepLift`: [Learning Important Features Through Propagating Activation Differences, Avanti Shrikumar et al. 2017](https://arxiv.org/abs/1704.02685) and [Towards better understanding of gradient-based attribution methods for deep neural networks, Marco Ancona et al. 2018](https://openreview.net/pdf?id=Sy21R9JAW)
 * `NeuronIntegratedGradients`: [Computationally Efficient Measures of Internal Neuron Importance, Avanti Shrikumar et al. 2018](https://arxiv.org/abs/1807.09946)
-* `GradientShap`, `NeuronGradientShap`, `LayerGradientShap`, `DeepLiftShap`, `NeuronDeepLiftShap`, `LayerDeepLiftShap`: [A Unified Approach to Interpreting Model Predictions, Scott M. Lundberg et al. 2017](https://proceedings.neurips.cc/paper/2017/hash/8a20a8621978632d76c43dfd28b67767-Abstract.html)
+* `GradientShap`, `NeuronGradientShap`, `LayerGradientShap`, `DeepLiftShap`, `NeuronDeepLiftShap`, `LayerDeepLiftShap`: [A Unified Approach to Interpreting Model Predictions, Scott M. Lundberg et al. 2017](http://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions)
 * `InternalInfluence`: [Influence-Directed Explanations for Deep Convolutional Networks, Klas Leino et al. 2018](https://arxiv.org/abs/1802.03788)
 * `Saliency`, `NeuronGradient`: [Deep Inside Convolutional Networks: Visualising
 Image Classification Models and Saliency Maps, K. Simonyan, et. al. 2014](https://arxiv.org/abs/1312.6034)
@@ -435,7 +494,7 @@ Image Classification Models and Saliency Maps, K. Simonyan, et. al. 2014](https:
 * `BinaryConcreteStochasticGates`: [Stochastic Gates with Binary Concrete Distribution](https://arxiv.org/abs/1712.01312)
 * `GaussianStochasticGates`: [Stochastic Gates with Gaussian Distribution](https://arxiv.org/abs/1810.04247)
 
-More details about the above mentioned [attribution algorithms](https://captum.ai/docs/attribution_algorithms) and their pros and cons can be found on our [website](https://captum.ai/docs/algorithms_comparison_matrix).
+More details about the above mentioned [attribution algorithms](https://captum.ai/docs/attribution_algorithms) and their pros and cons can be found on our [web-site](https://captum.ai/docs/algorithms_comparison_matrix).
 
 ## License
 Captum is BSD licensed, as found in the [LICENSE](LICENSE) file.

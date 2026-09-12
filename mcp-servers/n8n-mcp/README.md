@@ -5,21 +5,21 @@
 [![npm version](https://img.shields.io/npm/v/n8n-mcp.svg)](https://www.npmjs.com/package/n8n-mcp)
 [![codecov](https://codecov.io/gh/czlonkowski/n8n-mcp/graph/badge.svg?token=YOUR_TOKEN)](https://codecov.io/gh/czlonkowski/n8n-mcp)
 [![Tests](https://img.shields.io/badge/tests-5418%20passing-brightgreen.svg)](https://github.com/czlonkowski/n8n-mcp/actions)
-[![n8n version](https://img.shields.io/badge/n8n-2.30.4-orange.svg)](https://github.com/n8n-io/n8n)
+[![n8n version](https://img.shields.io/badge/n8n-2.32.7-orange.svg)](https://github.com/n8n-io/n8n)
 [![Docker](https://img.shields.io/badge/docker-ghcr.io%2Fczlonkowski%2Fn8n--mcp-green.svg)](https://github.com/czlonkowski/n8n-mcp/pkgs/container/n8n-mcp)
 [![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/n8n-mcp?referralCode=n8n-mcp)
 
-A Model Context Protocol (MCP) server that provides AI assistants with comprehensive access to n8n node documentation, properties, and operations. Deploy in minutes to give Claude and other AI assistants deep knowledge about n8n's 2,175 workflow automation nodes (827 core + 1,348 community).
+A Model Context Protocol (MCP) server that provides AI assistants with comprehensive access to n8n node documentation, properties, and operations. Deploy in minutes to give Claude and other AI assistants deep knowledge about n8n's 2,412 workflow automation nodes (829 core + 1,583 community).
 
 ## Overview
 
 n8n-MCP serves as a bridge between n8n's workflow automation platform and AI models, enabling them to understand and work with n8n nodes effectively. It provides structured access to:
 
-- **2,175 n8n nodes** - 827 core nodes + 1,348 community nodes (1,195 verified)
+- **2,412 n8n nodes** - 829 core nodes + 1,583 community nodes (1,340 verified)
 - **Node properties** - 99% coverage with detailed schemas
-- **Node operations** - 63.6% coverage of available actions
-- **Documentation** - 87% coverage from official n8n docs (including AI nodes)
-- **AI tools** - 265 AI-capable tool variants detected with full documentation
+- **Node operations** - 66.5% coverage of available actions
+- **Documentation** - 86% coverage from official n8n docs (including AI nodes)
+- **AI tools** - 267 AI-capable tool variants detected with full documentation
 - **Real-world examples** - 156 ranked configurations extracted from popular templates
 - **Template library** - 2,352 workflow templates with 99.96% AI metadata coverage
 - **Community nodes** - Search verified community integrations with `source` filter
@@ -388,7 +388,10 @@ These tools require `N8N_API_URL` and `N8N_API_KEY` in your configuration.
 #### Execution Management
 - **`n8n_test_workflow`** - Test/trigger workflow execution (webhook, form, chat)
 - **`n8n_executions`** - Unified execution management (list, get, delete)
-- **`n8n_evaluations`** - Read evaluation test runs (list runs, aggregated metrics, per-case results; n8n 2.30+)
+- **`n8n_evaluations`** - Run and read evaluation test runs (list runs, aggregated metrics, per-case results on n8n 2.30+; trigger and cancel on 2.32+)
+
+#### Folder Management
+- **`n8n_manage_folders`** - Manage workflow folders (create, list, get, rename, move, delete; n8n 2.19+). Place workflows into folders via `n8n_create_workflow`'s `parentFolderId` or `n8n_update_partial_workflow`'s `moveToFolder` operation (n8n 2.32+)
 
 #### Data Table Management
 - **`n8n_manage_datatable`** - Manage n8n data tables and rows (list, get, create, update, delete)
@@ -413,7 +416,7 @@ DISABLED_TOOLS=n8n_create_workflow,n8n_update_full_workflow,n8n_update_partial_w
 For tools that bundle read and write operations under one name, block only the destructive operations while keeping `list` and `get`:
 
 ```bash
-DISABLED_TOOL_OPERATIONS=n8n_workflow_versions:delete,rollback,prune;n8n_executions:delete
+DISABLED_TOOL_OPERATIONS=n8n_workflow_versions:delete,rollback,prune;n8n_executions:delete;n8n_evaluations:run,cancel;n8n_manage_folders:create,rename,move,delete
 ```
 
 Combine with a read-only n8n API key (Settings → API in your n8n instance) for defence in depth. See [Read-Only Deployment Recipe](./docs/HTTP_DEPLOYMENT.md#read-only-deployment-recipe) for the full setup guide.

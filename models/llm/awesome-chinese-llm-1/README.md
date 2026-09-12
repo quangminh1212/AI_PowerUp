@@ -1280,44 +1280,4 @@
   
   * 地址：https://github.com/DAMO-NLP-SG/LLM-Zoo
     ![](https://img.shields.io/github/stars/DAMO-NLP-SG/LLM-Zoo.svg)
-  * 简介：该项目收集了包括开源和闭源的LLM模型，具体包括了发布时间，模型大小，支持的语种，领域，训练数据及相应论文/仓库等。
-
-* LLMs-In-China：
-  
-  * 地址：https://github.com/wgwang/LLMs-In-China
-    ![](https://img.shields.io/github/stars/wgwang/LLMs-In-China.svg)
-  * 简介：该项目旨在记录中国大模型发展情况，同时持续深度分析开源开放的大模型以及数据集的情况。
-
-* BMList：
-  
-  * 地址：https://github.com/OpenBMB/BMList
-    ![](https://img.shields.io/github/stars/OpenBMB/BMList.svg)
-  * 简介：该项目收集了参数量超过10亿的大模型，并梳理了各个大模型的适用模态、发布的机构、适合的语种，参数量和开源地址、API等信息。
-
-* awesome-free-chatgpt：
-  
-  * 地址：https://github.com/LiLittleCat/awesome-free-chatgpt
-    ![](https://img.shields.io/github/stars/LiLittleCat/awesome-free-chatgpt.svg)
-  * 简介：该项目收集了免费的 ChatGPT 镜像网站列表，ChatGPT的替代方案，以及构建自己的ChatGPT的教程工具等。
-
-* Awesome-Domain-LLM：
-  
-  * 地址：https://github.com/luban-agi/Awesome-Domain-LLM
-    ![](https://img.shields.io/github/stars/luban-agi/Awesome-Domain-LLM.svg)
-  * 简介：该项目收集和梳理垂直领域的开源模型、数据集及评测基准。
-
-* Awesome AI Startups：
-  
-  * 地址：https://github.com/nowork-studio/awesome-ai-startups
-    ![](https://img.shields.io/github/stars/nowork-studio/awesome-ai-startups.svg)
-  * 简介：独立开发者创建的 AI 创业产品精选列表，涵盖自筹资金、种子轮前和天使轮融资的产品。
-
-## Star History
-
-<a href="https://star-history.com/#AiHubCN/Awesome-Chinese-LLM&Date">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=AiHubCN/Awesome-Chinese-LLM&type=Date&theme=dark" />
-    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=AiHubCN/Awesome-Chinese-LLM&type=Date" />
-    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=AiHubCN/Awesome-Chinese-LLM&type=Date" />
-  </picture>
-</a>
+  * 简介：�

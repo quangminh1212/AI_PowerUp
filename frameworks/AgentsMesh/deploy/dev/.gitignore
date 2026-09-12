@@ -1,6 +1,0 @@
-
-# Development only files
-ssl/
-ai-cli-configs/
-.env
-web.log

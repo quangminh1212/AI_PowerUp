@@ -5,21 +5,9 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) [![Code style: black](https://img.shields.io/badge/code%20style-black-000.svg)](https://github.com/psf/black) [![GitHub stars](https://img.shields.io/github/stars/alirezadir/Machine-Learning-Interviews?style=social)](https://github.com/alirezadir/Machine-Learning-Interviews/stargazers) [![GitHub forks](https://img.shields.io/github/forks/alirezadir/Machine-Learning-Interviews?style=social)](https://github.com/alirezadir/Machine-Learning-Interviews/network) [![Last Commit](https://img.shields.io/github/last-commit/alirezadir/Machine-Learning-Interviews)](https://github.com/alirezadir/Machine-Learning-Interviews/commits/main) [![GitHub issues](https://img.shields.io/github/issues/alirezadir/Machine-Learning-Interviews)](https://github.com/alirezadir/Machine-Learning-Interviews/issues) [![Contributors](https://img.shields.io/github/contributors/alirezadir/Machine-Learning-Interviews)](https://github.com/alirezadir/Machine-Learning-Interviews/graphs/contributors) [![Tweet](https://img.shields.io/twitter/url?label=Share%20on%20X&url=https%3A%2F%2Fgithub.com%2Falirezadir%2FMachine-Learning-Interviews&style=social)](https://twitter.com/intent/tweet?text=Check%20out%20Machine%20Learning%20Interviews%20by%20%40alirezadira%20%E2%80%94%20A%20guide%20to%20prepare%20for%20ML%20interviews!&url=https%3A%2F%2Fgithub.com%2Falirezadir%2FMachine-Learning-Interviews&hashtags=MachineLearning,MLinterviews,AI)
 # AI / Machine Learning Interviews :robot: 
 
-## News
+This repo aims to serve as a guide to prepare for **AI and ML Technical interviews** for relevant roles at big tech companies (in particular FAANG). It has compiled based on the author's personal experience and notes from his own interview preparation, when he received 5 simultaneous offers from Meta (ML Specialist), Google (ML Engineer), Amazon (Applied Scientist), Apple (Applied Scientist), and Roku (ML Engineer) in 2020, and repeated offers from Amazon and Apple in 2025 (AI Tech Lead).
 
-:newspaper: I now offer 1:1 AI/ML interview coaching for AI/ML Engineers, Applied AI Engineers & Scientists, Research Engineers, Research Scientists, AI Strategists, Engineering Managers, and senior AI leaders.
-
-Topics include ML/AI system design, LLMs & Agentic AI, technical interviews, behavioral interviews, and leadership interviews.
-
-Learn more: https://aimlinterviews.io
-
----
-
-:newspaper: **News: Updated for 2026**: Chapters 3 and 4 now cover the latest **GenAI / LLM** interview topics — foundation models & LLM internals (KV cache, GQA, RoPE, MoE), **post-training algorithms** (SFT, DPO, GRPO, RLVR, …), **PEFT & inference optimization**, **multimodal AI** (VLMs, **VLAs**, diffusion vs autoregressive), and **GenAI system design** (RAG, agents, guardrails, eval). For deeper agentic content, see the dedicated [Agentic AI Systems](https://github.com/alirezadir/Agentic-AI-Systems.git) repo, with resources, system design summaries, and hands-on coding examples and projects. 
-
----
-
-This repo aims to serve as a guide to prepare for **Machine Learning (AI) Engineering** interviews for relevant roles at big tech companies (in particular FAANG). It has compiled based on the author's personal experience and notes from his own interview preparation, when he received offers from Meta (ML Specialist), Google (ML Engineer), Amazon (Applied Scientist), Apple (Applied Scientist), and Roku (ML Engineer).
+> **Remember:** Interviewing is a skill and the more skillful you are, the better the results will be.
 
 The following components are the most commonly used interview modules for technical ML roles at different companies. We will go through them one by one and share how one can prepare:
 
@@ -27,24 +15,33 @@ The following components are the most commonly used interview modules for techni
 
  |Chapter | Content|
  |---| --- |
- | Chapter 1 	|  [General Coding (Algos and Data Structures)](src/lc-coding.md)	   | 
+ | Chapter 1 	|  [General Coding - DSA (Data Structures and Algorithms)](src/lc-coding.md)	   | 
 | Chapter 2 	| [ML Coding](src/MLC/ml-coding.md) 	|  	
-| Chapter 3	| [ML Fundamentals/Breadth (Updated for 2026: LLMs, multimodal AI)](src/ml-fundamental.md)| 
-| Chapter 4 	| [ML System Design (Updated for 2026: GenAI/LLM system design)](src/MLSD/ml-system-design.md)|
-| Chapter 5 	| [*Agentic AI Systems (2026)*](https://github.com/alirezadir/Agentic-AI-Systems.git)|
-| Chapter 6 	| [Behavioral](src/behavior.md)| 
+| Chapter 3	| [ML Fundamentals/Breadth (classic ML, LLMs, multimodal AI, and more)](src/ml-fundamental.md)| 
+| Chapter 4 	| [ML/GenAI/LLM System Design](src/MLSD/ml-system-design.md)|
+| Chapter 5 	| [Agentic AI Systems](https://github.com/alirezadir/Agentic-AI-Systems.git)|
+| Chapter 6 	| [Behavioral Interviews](src/behavior.md)| 
+| Resources 	| [GenAI Learning Resources](src/genai-resources.md)|
 |  	|  	|  
 
 </center>
 
+## News
+
+I now offer **1:1 AI/ML interview coaching & mock interviews** for AI/ML Engineers, Applied AI Scientists, Research Engineers, Research Scientists, AI Strategists, Engineering Managers, and senior AI leaders.
+
+Topics include technical interviews (AI/ML system design, GenAI & Agentic AI fundamentals, ML fundamentals, AI coding, and more), behavioral interviews, and leadership interviews.
+
+Learn more: [https://aimlinterviews.io](https://aimlinterviews.io)
+
+---
+
+:newspaper: This repository is now **AIMLInterviews**, updated for 2026 with expanded LLM, multimodal AI, post-training, and GenAI system-design content.
+
 **Notes:**
-* At the time I'm putting these notes together, machine learning interviews at different companies do not follow a unique structure unlike software engineering interviews. However, I found some of the components very similar to each other, although under different naming.
+* AI and ML interviews at different companies do not follow a unique structure. However, I found the components very similar across FAANG companies. Startup interviews are often tailored to their own use cases and problems at hand, while larger companies tend to follow a more consistent structure.
 
-* The guide here is mostly focused on *Machine Learning Engineer* (and Applied Scientist) roles at big companies. Although relevant roles such as "Data Science" or "ML research scientist" have different structures in interviews, some of the modules reviewed here can be still useful. 
-<!-- For more understanding about different technical roles within ML umbrella you can refer to [Link](https://www.linkedin.com/pulse/machine-learning-engineer-vs-applied-scientist-whats-difference-suresh/) -->
-
-* As a supplementary resource, you can also refer to my [Production Level Deep Learning](https://github.com/alirezadir/Production-Level-Deep-Learning) repo for further insights on how to design deep learning systems for production. 
-
+* The guide here is mostly focused on *AI / ML Engineering, Applied Science, Tech Lead* roles at big companies. Although relevant roles such as "Data Science" or "Research scientist" have different structures in interviews, some of the modules reviewed here can be still useful. 
 
 
 # Contribution

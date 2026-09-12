@@ -4,13 +4,13 @@
 
 # memU
 
-### Personal memory, stored as files
+### Personal memory, stored as Wiki
 
 **Across Sessions. Across Agents. Across Devices.**
 
 [![PyPI version](https://badge.fury.io/py/memu-cli.svg)](https://badge.fury.io/py/memu-cli)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Python 3.13+](https://img.shields.io/badge/python-3.13+-blue.svg)](https://www.python.org/downloads/)
+[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![Discord](https://img.shields.io/badge/Discord-Join%20Chat-5865F2?logo=discord&logoColor=white)](https://discord.com/invite/hQZntfGsbJ)
 [![Twitter](https://img.shields.io/badge/Twitter-Follow-1DA1F2?logo=x&logoColor=white)](https://x.com/memU_ai)
 
@@ -20,94 +20,100 @@
 
 ---
 
-memU is a 500-line memory system for AI agents. Agents write what's worth keeping as Markdown; memU stores it, embeds it, and retrieves ranked context in a single call — embeddings are the only model calls it makes. The entire memory logic lives in [`agentic.py`](src/memu/app/agentic.py) + [`service.py`](src/memu/app/service.py); everything else is pluggable storage and embedding transport.
-
-**Installation is agent-driven.** The guides are written for the agent, not for you. One message is the whole setup — tell your agent:
-
-> Read https://raw.githubusercontent.com/NevaMind-AI/MemU/main/SKILL.md and follow it to install memU.
-
-It works for Codex, Claude Code, Cursor, OpenClaw, Hermes, WorkBuddy — and any other agent, via detection. Details in [Host adapters](#host-adapters-memory-for-desktop-coding-agents).
-
-Want to follow the latest development instead? Install from the newest source (git `main`) — tell your agent:
-
-> Read https://raw.githubusercontent.com/NevaMind-AI/MemU/main/INSTALL-LATEST.md and follow it to install the latest memU.
+memU is a lightweight, agent-driven memory system that gives users a shared LLM wiki across sessions, agents, and devices. It automatically distills your own reusable skills from your agent history. Its core memory logic is only 500 lines — compact enough to inspect, understand, and adapt.
 
 ## Quick start
 
-```python
-from memu.app import MemoryService
+memU works with Codex, Claude Code, Cursor, OpenClaw, Hermes, WorkBuddy, Cola, and more. See [Host adapters](#host-adapters-memory-for-desktop-coding-agents).
 
-service = MemoryService(
-    database_config={"metadata_store": {"provider": "sqlite", "dsn": "sqlite:///memu.sqlite3"}},
-)
+**Cross-device · Free · Unlimited · [View online](https://memu.so)**
 
-# 1. Persist agent-prepared memory: recall files (memory/skill tracks) + resources
-await service.commit_results(
-    recall_files=[
-        {
-            "name": "Profile",
-            "track": "memory",
-            "description": "who the user is",
-            "content": "# Profile\n- prefers dark roast coffee\n- ships on Fridays",
-        },
-        {
-            "name": "deploy-checklist",
-            "track": "skill",
-            "description": "how to deploy this repo",
-            "content": "1. run tests\n2. tag\n3. push",
-        },
-    ],
-    resource=[{"path": "/abs/path/notes.md", "description": "meeting notes from the launch review"}],
-)
+Get your API key from [memu.so](https://memu.so), then send this message to your agent:
 
-# 2. See what is stored, across every track
-files = await service.list_all_recall_files()
+> Read [https://memu.pro/SKILL.md](https://memu.pro/SKILL.md), follow its instructions to install and configure memU, API Key is memu_•••••••••(get Api Key from memu.so).
 
-# 3. Single-shot embedding retrieval over segments / files / resources
-context = await service.progressive_retrieve("What should I know about this user's launch preferences?")
-```
+## Agent support
 
-Or straight from the terminal — no code:
+This matrix lists the currently tested memU integrations by operating system.
 
-```bash
-export OPENAI_API_KEY=sk-...    # embedding API key — the only model calls memU makes
+- **Memorize** — capture useful session knowledge through a scheduled background task and turn it into reusable memory.
+- **Retrieve** — bring relevant memory into a future task.
+- **⚠️** — supported with an important limitation; see the user note.
 
-npx memu-cli commit results.json     # {"recall_files": [...], "resource": [...]}
-npx memu-cli list-files
-npx memu-cli retrieve "What should I know about this user's launch preferences?"
-```
+### macOS
 
-State persists in a local SQLite database (`./data/memu.sqlite3` by default), so commit in one invocation and retrieve in the next.
+| Agent | Mode | Memorize | Retrieve | User note |
+| --- | --- | :---: | :---: | --- |
+| ChatGPT | ChatGPT(Work mode), codex and VS Code extension | ✅ | ✅ | |
+| ChatGPT | Chat | ❌ | ❌ | Chat mode is not currently supported. Please use Work mode. |
+| Claude Code | Desktop and CLI | ✅ | ✅ | If the selected model declines the setup steps, retry with **Opus** or another model. Sonnet 5 can occasionally do this. |
+| Claude | Chat and Cowork | ❌ | ❌ | |
+| Cursor | — | ✅ | ✅ | |
+| OpenClaw | — | ✅ | ✅ | Retrieve support has not yet been verified. |
+| Hermes Agent | — | ✅ | ✅ | |
+| WorkBuddy | — | ✅ | ✅ | |
+
+### Windows
+
+| Agent | Mode | Memorize | Retrieve | User note |
+| --- | --- | :---: | :---: | --- |
+| ChatGPT | ChatGPT(Work mode), codex and VS Code extension | ✅ | ✅ | |
+| ChatGPT | Chat | ❌ | ❌ | Chat mode is not currently supported. Please use Work mode. |
+| Claude Code | Desktop and CLI | ✅ | ✅ | If the selected model declines the setup steps, retry with **Opus** or another model. Sonnet 5 can occasionally do this. |
+| Claude | Chat and Cowork | ❌ | ❌ | |
+| Cursor | — | ✅ | ✅ | |
+| OpenClaw | — | ✅ | ✅ | |
+| Hermes Agent | — | ✅ | ⚠️ | Use a memU version with Windows `HERMES_HOME` support; older versions may retrieve from the wrong files. |
+| WorkBuddy | — | ✅ | ✅ | With Hy3, retrieval may fail. Retry with another model if this happens. |
+
+### Linux
+
+| Agent | Mode | Memorize | Retrieve | User note |
+| --- | --- | :---: | :---: | --- |
+| Codex | VS Code extension | ❌ | ✅ | |
+| Claude Code | CLI | ✅ | ✅ | |
+| OpenClaw | 4.23 / 7.1 | ✅ | ✅ | |
+
+Support status reflects the current release and may change as host integrations evolve.
 
 ## How it works
 
 ![memU memory system architecture](assets/structure-v2.png)
 
-### The data model
+## Automatic skill extraction
 
-Memory is a set of **recall files** — one Markdown document per topic (`track="memory"`) or per learned skill (`track="skill"`). Committing a file also writes its search index:
+Once the scheduled bridging task is installed, memU can turn useful agent history into reusable Markdown skills automatically.
 
-| Record | What it is | How it's embedded |
-|---|---|---|
-| **RecallFile** | The Markdown document itself (`name`, `track`, `description`, `content`) | `name: description`, once at creation |
-| **RecallFileSegment** | Searchable slices of a file | memory track: one per content line (headings skipped); skill track: one `name: description` segment per skill |
-| **Resource** | A raw source on disk (`url`, `caption`) | its one-line caption |
+![How memU turns agent history into reusable skills](assets/skill-extraction.png)
 
-Segments are reconciled on every commit: lines that disappeared are deleted, only genuinely new lines are embedded, unchanged lines keep their vectors — so re-committing a lightly edited file is nearly free.
+1. **Capture new sessions.** The host adapter reads new session history, including messages and tool calls.
+2. **Prepare self-evolve jobs.** `prepare` slices each session into a self-contained job with the paths and context the agent needs.
+3. **Let the agent decide.** The agent reads related existing skills, then chooses to do nothing, patch an existing skill, or create a new one.
+4. **Write readable skill Markdown.** Each skill has a name, description, and reusable workflow, including useful branches, edge cases, and pitfalls.
+5. **Commit and index.** `commit` submits changed skill files through `commit_results`; memU embeds the skill name and description and stores it under the `skill` track.
+6. **Retrieve it later.** On a similar future task, memU returns the relevant skill so any connected agent can use the learned workflow.
 
-### Retrieval
+The judgment and synthesis stay inside the agent. `MemoryService` makes no LLM or chat calls; it stores, embeds, and retrieves the skill Markdown the agent prepared.
 
-`progressive_retrieve(query)` embeds the query **once** and returns three ranked layers:
+## Self-hosted
 
-- `segments` — the matched slices, narrowest and usually most on-point, each with a `score`
-- `files` — the documents those segments belong to (usually what you want), each scored by its best segment and carrying its linked `resource_urls`
-- `resources` — matching raw sources, for when summaries are not enough
+**Private · Single-device · Embedding key required**
 
-There is no intention routing, sufficiency checking, or summarization — one embedding call in, ranked context out.
+To run memU locally with your own storage and embedding provider, send this message to your agent:
+
+> Read [https://raw.githubusercontent.com/NevaMind-AI/MemU/main/SKILL.md](https://raw.githubusercontent.com/NevaMind-AI/MemU/main/SKILL.md) and follow it to install memU.
+
+## Uninstall
+
+To uninstall memU, send this message to your agent:
+
+> Read [https://memu.pro/SKILL.md](https://memu.pro/SKILL.md) and follow its instructions to uninstall memU.
+
+By default, uninstalling removes the host integration and tooling while keeping your memory store and `~/.memu/config.env`, so a later reinstall can resume where you left off. Memory is erased only when you explicitly ask for it.
 
 ## Host adapters: memory for desktop coding agents
 
-memU runs as a sidecar to a desktop agent (ADR 0008/0009/0010), one binary per host. Each binds two seams:
+memU runs as a sidecar to a desktop agent, one binary per host. Each binds two seams:
 
 - **record** — a scheduled bridging task slices new session logs into self-contained job files; the agent itself distills them into memory/skill Markdown; `commit` submits whatever the agent left on disk back through `commit_results`.
 - **inject** — a standing instruction in the host's instruction file tells the agent to run `<binary> retrieve` (→ `progressive_retrieve`) before answering.
@@ -117,22 +123,36 @@ memU runs as a sidecar to a desktop agent (ADR 0008/0009/0010), one binary per h
 | Codex | `memu-codex` | `~/.codex/sessions/**/*.jsonl` | `~/.codex/AGENTS.md` |
 | Claude Code | `memu-claude-code` | `~/.claude/projects/<project>/<session>.jsonl` | `~/.claude/CLAUDE.md` |
 | Cursor (Agent/CLI) | `memu-cursor` | `~/.cursor/projects/<project>/agent-transcripts/**.jsonl` | `./AGENTS.md` (per project) |
-| OpenClaw | `memu-openclaw` | `~/.openclaw/agents/<agentId>/sessions/*.jsonl` | `~/.openclaw/workspace/AGENTS.md` |
+| OpenClaw | `memu-openclaw` | `~/.openclaw/agents/<agentId>/agent/openclaw-agent.sqlite` (SQLite, read-only) + legacy `<agentId>/sessions/*.jsonl` | `~/.openclaw/workspace/AGENTS.md` |
 | Hermes Agent | `memu-hermes` | `~/.hermes/state.db` (SQLite, read-only) | `~/.hermes/SOUL.md` |
-| WorkBuddy | `memu-workbuddy` | `~/.workbuddy/projects/<project>/<session>.jsonl` | `~/.workbuddy/MEMORY.md` |
+| WorkBuddy | `memu-workbuddy` | `~/.workbuddy/projects/<project>/<session>.jsonl` | `~/.workbuddy/SOUL.md` |
+| Cola | `memu-cola` | `~/.cola/sessions/<scope>/<session>.jsonl` | `~/.cola/memory-bank/MEMORY.md` |
 | **any other agent** | `memu-agent` | found by `memu-agent detect` (JSONL dialect sniffed) | found by `detect` (AGENTS.md / CLAUDE.md / SOUL.md / …) |
 
 For agents without a dedicated binary, `memu-agent detect` probes the machine and reports per agent whether **memorization** works (a recognizable session log exists) and whether **retrieval** works (an instruction file exists to patch) — then the same verbs run against what it found.
 
-All hosts share one store and one embedding space via `~/.memu/config.env` — what one host's sessions taught memU, another host retrieves.
+All hosts share one configured memory backend via `~/.memu/config.env` — local
+or MemU Cloud. What one host's sessions taught memU, another host retrieves.
 
-Installation is the one-message setup at the top of this README. [SKILL.md](SKILL.md) is the routing skill it hands your agent: install the package, identify which host you are (falling back to `memu-agent detect` for anything without a dedicated adapter), print that host's packaged install guide (`<binary> docs install`), and follow it — configure the store, register the scheduled bridging task, patch the instruction file, each step behind a verify gate — then report which seams (memorization / retrieval) are now active.
+Installation is the one-message setup in [Quick start](#quick-start) or [Self-hosted](#self-hosted). [SKILL.md](SKILL.md) is the routing skill it hands your agent: install the package, identify which host you are (falling back to `memu-agent detect` for anything without a dedicated adapter), print that host's packaged install guide (`<binary> docs install`), and follow it — configure the memory backend, register the scheduled bridging task, patch the instruction file, each step behind a verify gate — then report which seams (memorization / retrieval) are now active.
 
-Afterwards `<binary> doctor` proves the whole loop resolves: config, store, and a live retrieval.
+Afterwards `<binary> doctor` proves the whole loop resolves: config, selected
+mode, and a live retrieval.
 
-Adding another host means implementing one `TranscriptSource` (where its session logs live, how its records are shaped) plus a `HostSpec`-sized CLI — the pipeline, verbs, and instruction text are shared (ADR 0010).
+Adding another host means implementing one `TranscriptSource` (where its session logs live, how its records are shaped) plus a `HostSpec`-sized CLI — the pipeline, verbs, and instruction text are shared.
 
-## Installation
+## CLI
+
+With memU Cloud, sign in at [memu.so](https://memu.so) to view your memory files. With a local installation, memory lives in the shared store configured by `MEMU_DB` in `~/.memu/config.env` — typically `~/.memu/memu.sqlite3` for local SQLite, or a Postgres DSN.
+
+Once installed, your agent retrieves relevant memory automatically before answering. To retrieve manually, run the adapter for your host:
+
+```bash
+memu-codex retrieve "What should I remember about this project?"
+# or: memu-claude-code / memu-cursor / memu-openclaw / memu-hermes / memu-workbuddy / memu-agent
+```
+
+Install or invoke the CLI directly:
 
 ```bash
 pip install memu-cli         # library + memu + memu-codex CLIs
@@ -142,7 +162,11 @@ uvx --from memu-cli memu     # CLI via uv, no install
 
 ## Configuration
 
-Values resolve in order: process env → `~/.memu/config.env` → default. Every CLI flag has a matching variable:
+Values resolve in order: process env → `~/.memu/config.env` → default. memU
+supports Local and Cloud memory backends, selected by `MEMU_MEMORY_MODE`; an
+unset mode remains Local for backward compatibility.
+
+For Local / self-hosted installations, every CLI flag has a matching variable:
 
 | Setting | Env var | Default |
 |---|---|---|
@@ -151,6 +175,9 @@ Values resolve in order: process env → `~/.memu/config.env` → default. Every
 | API key | `MEMU_API_KEY` | the provider's env var, e.g. `OPENAI_API_KEY` |
 | Embedding model | `MEMU_EMBED_MODEL` | the provider's default |
 | Base URL | `MEMU_BASE_URL` | the provider's default |
+
+Run `<binary> doctor` to display the resolved mode and verify the same retrieval
+path the host uses.
 
 ### Storage backends
 
@@ -166,38 +193,9 @@ service = MemoryService(
     embedding_profiles={"default": {"provider": "jina"}},
 )
 ```
-
-### Multi-tenancy
-
-Every record carries optional scope fields (`user_id`, `agent_id` by default). Pass `user=` on writes and `where=` on reads to partition one store:
-
-```python
-await service.commit_results(recall_files=[...], user={"user_id": "alice"})
-await service.progressive_retrieve("launch preferences", where={"user_id": "alice"})
-```
-
-Need different scope fields? Supply your own model — filters are validated against it, unknown fields raise:
-
-```python
-from pydantic import BaseModel
-
-class TeamScope(BaseModel):
-    team_id: str | None = None
-    user_id: str | None = None
-
-service = MemoryService(user_config={"model": TeamScope})
-```
-
-## Development
-
-```bash
-make install     # uv sync + pre-commit hooks
-make test        # pytest with coverage
-make check       # lock check, pre-commit, mypy, deptry
-```
-
-Architecture decisions live in [`docs/adr/`](docs/adr/) — notably tracked workspace memorization (ADR 0006), the segment/file/resource retrieval lines (ADR 0007), and the host-adapter seams (ADR 0008/0009).
-
 ## License
 
 Apache-2.0
+
+
+<sub>Partnership Community: <a href="https://linux.do">LINUX DO</a></sub>

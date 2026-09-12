@@ -79,9 +79,8 @@ You can find our full documentation at [docs.blazingdb.com](https://docs.blazing
   * Pascal or Better
   * Compute Capability >= 6.0
 * CUDA Support
-  * 11.0
-  * 11.2
-  * 11.4
+  * 10.1.2
+  * 10.2
 * Python Support
   * 3.7
   * 3.8
@@ -92,10 +91,10 @@ BlazingSQL can be installed with conda ([miniconda](https://conda.io/miniconda.h
 ```bash
 conda install -c blazingsql -c rapidsai -c nvidia -c conda-forge -c defaults blazingsql python=$PYTHON_VERSION cudatoolkit=$CUDA_VERSION
 ```
-Where $CUDA_VERSION is 11.0, 11.2 or 11.4  and $PYTHON_VERSION is 3.7 or 3.8
-*For example for CUDA 11.2 and Python 3.8:*
+Where $CUDA_VERSION is 10.1, 10.2 or 11.0  and $PYTHON_VERSION is 3.7 or 3.8
+*For example for CUDA 10.1 and Python 3.7:*
 ```bash
-conda install -c blazingsql -c rapidsai -c nvidia -c conda-forge -c defaults blazingsql python=3.8 cudatoolkit=11.2
+conda install -c blazingsql -c rapidsai -c nvidia -c conda-forge -c defaults blazingsql python=3.7 cudatoolkit=10.1
 ```
 
 ## Nightly Version
@@ -103,7 +102,7 @@ For nightly version cuda 11+ are only supported, see https://github.com/rapidsai
 ```bash
 conda install -c blazingsql-nightly -c rapidsai-nightly -c nvidia -c conda-forge -c defaults blazingsql python=$PYTHON_VERSION  cudatoolkit=$CUDA_VERSION
 ```
-Where $CUDA_VERSION is 11.0, 11.2 or 11.4 and $PYTHON_VERSION is 3.7 or 3.8
+Where $CUDA_VERSION is 11.0 or 11.2 and $PYTHON_VERSION is 3.7 or 3.8
 *For example for CUDA 11.2 and Python 3.8:*
 ```bash
 conda install -c blazingsql-nightly -c rapidsai-nightly -c nvidia -c conda-forge -c defaults blazingsql python=3.8  cudatoolkit=11.2

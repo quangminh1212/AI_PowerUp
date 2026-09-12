@@ -6,26 +6,19 @@ Spug是面向中小型企业设计的轻量级无Agent的自动化运维平台�
 
 </div>
 
-- 公司官网：https://www.spug.cc
-- 项目官网：https://ops.spug.cc
-- 使用文档：https://ops.spug.cc/docs/about-spug/
+- 官网地址：https://spug.cc
+- 使用文档：https://spug.cc/docs/about-spug/
+- 更新日志：https://spug.cc/docs/change-log/
+- 常见问题：https://spug.cc/docs/faq/
+- 推送助手：https://push.spug.cc
 
 ## 演示环境
 
 演示地址：https://demo.spug.cc
 
-## 🔐免费通配符SSL证书
-免费通配符，付费证书价格亲民，性价比超高，低于市场其他平台价格，免费专家一对一配置服务，购买流程简单快速，且支持7天无理由退款和开具发票。提供一键下载和SSL过期通知配置，免费申请：[https://ssl.spug.cc](https://ssl.spug.cc)
+## 推送助手
 
-
-## 🔥短信/电话/邮件推送
-
-推送助手是一个集成了电话、短信、邮件、飞书、钉钉、微信、企业微信等多通道的消息推送平台，可以3分钟实现电话/短信/邮件消息的推送，点击体验：[https://sms.spug.cc](https://sms.spug.cc/guide/send-sms)
-
-
-## 演示环境
-
-演示地址：https://demo.spug.cc
+[推送助手是一个集成了电话、短信、邮件、飞书、钉钉、微信、企业微信等多通道的消息推送平台，用户只需要调用一个简单的URL，就可以完成多通道的消息推送，点击体验：https://push.spug.cc](https://push.spug.cc)
 
 
 ## 特性
@@ -44,17 +37,16 @@ Spug是面向中小型企业设计的轻量级无Agent的自动化运维平台�
 
 ## 环境
 
-* Python 3.8+
+* Python 3.6+
 * Django 2.2
 * Node 12.14
 * React 16.11
 
 ## 安装
 
-[官方文档](https://ops.spug.cc/docs/install-docker)
+[官方文档](https://spug.dev/docs/install/)
 
-更多使用帮助请参考： [使用文档](https://ops.spug.cc/docs/host-manage/)
-
+更多使用帮助请参考 [使用文档](https://www.spug.dev/docs/host-manage/)。
 
 ## 推荐项目
 [Yearning — MYSQL 开源SQL语句审核平台](https://github.com/cookieY/Yearning)
@@ -62,27 +54,33 @@ Spug是面向中小型企业设计的轻量级无Agent的自动化运维平台�
 
 ## 预览
 
-### 主机管理
-![image](https://cdn.spug.cc/img/3.0/host.jpg)
+#### 主机批量执行
+![image](https://cdn.spug.cc/img/host-exec-2.0.png)
 
 #### 主机在线终端
-![image](https://cdn.spug.cc/img/3.0/web-terminal.jpg)
+![image](https://cdn.spug.cc/img/host-console-2.0.png)
 
 #### 文件在线上传下载
-![image](https://cdn.spug.cc/img/3.0/file-manager.jpg)
+![文件管理](https://cdn.spug.cc/img/spug-host-file.png)
 
-#### 主机批量执行
-![image](https://cdn.spug.cc/img/3.0/host-exec.jpg)
-![image](https://cdn.spug.cc/img/3.0/host-exec2.jpg)
+#### 应用管理
+![image](https://cdn.spug.cc/img/app-2.0.png)
+![image](https://cdn.spug.cc/img/app-apply-2.0.png)
 
-#### 应用发布
-![image](https://cdn.spug.cc/img/3.0/deploy.jpg)
+#### 任务管理
+![image](https://cdn.spug.cc/img/task-2.0.png)
+![image](https://cdn.spug.cc/img/task-detail-2.0.png)
+#### 配置管理(支持KV,txt,json等格式)
+![image](https://cdn.spug.cc/img/service-conf-2.0.png)
+![image](https://cdn.spug.cc/img/service-conf-json-2.0.png)
+![image](https://cdn.spug.cc/img/conf-history-2.0.png)
 
 #### 监控报警
-![image](https://cdn.spug.cc/img/3.0/monitor.jpg)
+![image](https://cdn.spug.cc/img/monitor-alarm-2.0.png)
+![image](https://cdn.spug.cc/img/monitor-add-2.0.png)
 
 #### 角色权限
-![image](https://cdn.spug.cc/img/3.0/user-role.jpg)
+![image](https://cdn.spug.cc/img/role-2.0.png)
 
 
 ## 赞助
@@ -97,10 +95,10 @@ Spug是面向中小型企业设计的轻量级无Agent的自动化运维平台�
         </a>
       </th>
         <th align="center" style="width: 115px;">
-        <a href="https://www.aliyun.com/minisite/goods?userCode=bkj6b9tn">
-          <img src="https://cdn.spug.cc/img/aliyun-logo.png" width="115px"><br>
-          <sub>阿里云</sub><br>
-          <sub>2核心2G低至99元/年</sub>
+        <a href="https://www.aliyun.com/minisite/goods?userCode=8vdj3myc">
+          <img src="https://cdn.spug.cc/img/aliyun_quan.png" width="115px"><br>
+          <sub>阿里云通用券</sub><br>
+          <sub>300元限量免费领</sub>
         </a>
       </th>
       <th align="center" style="width: 125px;">
@@ -115,9 +113,14 @@ Spug是面向中小型企业设计的轻量级无Agent的自动化运维平台�
 </table>
 
 ## 开发者群
-#### 关注Spug运维公众号加微信群、QQ群、获取最新产品动态
+#### QQ群号: 122194636
 <div >
-   <img src="https://cdn.spug.cc/img/spug-club.jpg" width = "300" height = "300" alt="spug-qq" align=center />
+   <img src="https://cdn.spug.cc/img/spug-qq-2.png" width = "300" height = "300" alt="spug-qq" align=center />
+<div>
+
+#### 微信：关注Spug运维公众号加微信群、获取最新产品动态
+<div >
+   <img src="https://cdn.spug.cc/img/spug-weixin.jpeg" width = "300" height = "300" alt="spug-qq" align=center />
 <div>
   
 ## License & Copyright

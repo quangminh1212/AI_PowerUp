@@ -1,5 +1,5 @@
 
-# FinRobot: An Open-Source AI Agent Platform for Financial Analysis using Large Language Models
+# FinRobot: An Open-Source AI Agent Platform for Financial Applications using Large Language Models
 [![Downloads](https://static.pepy.tech/badge/finrobot)]([https://pepy.tech/project/finrobot](https://pepy.tech/project/finrobot))
 [![Downloads](https://static.pepy.tech/badge/finrobot/week)](https://pepy.tech/project/finrobot)
 [![Join Discord](https://img.shields.io/badge/Discord-Join-blue)](https://discord.gg/trsr8SXpW5)

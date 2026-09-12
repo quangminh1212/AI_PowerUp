@@ -1,8 +1,12 @@
 ![opencvsharp](https://socialify.git.ci/shimat/opencvsharp/image?description=1&forks=1&language=1&owner=1&pattern=Plus&stargazers=1&theme=Light)
 
+[![NuGet](https://img.shields.io/nuget/v/OpenCvSharp5.svg?label=NuGet%3A%20OpenCvSharp5)](https://www.nuget.org/packages/OpenCvSharp5/)
+
 [![GitHub Actions Windows Status](https://github.com/shimat/opencvsharp/actions/workflows/windows.yml/badge.svg)](https://github.com/shimat/opencvsharp/actions/workflows/windows.yml)  [![GitHub Actions Docker Test Status](https://github.com/shimat/opencvsharp/actions/workflows/docker-test-ubuntu.yml/badge.svg)](https://github.com/shimat/opencvsharp/actions/workflows/docker-test-ubuntu.yml)  [![GitHub Actions manylinux Status](https://github.com/shimat/opencvsharp/actions/workflows/manylinux.yml/badge.svg)](https://github.com/shimat/opencvsharp/actions/workflows/manylinux.yml)  [![GitHub Actions Wasm Status](https://github.com/shimat/opencvsharp/actions/workflows/wasm.yml/badge.svg)](https://github.com/shimat/opencvsharp/actions/workflows/wasm.yml) [![GitHub Actions macOS Status](https://github.com/shimat/opencvsharp/actions/workflows/macos.yml/badge.svg)](https://github.com/shimat/opencvsharp/actions/workflows/macos.yml) [![GitHub license](https://img.shields.io/github/license/shimat/opencvsharp.svg)](https://github.com/shimat/opencvsharp/blob/master/LICENSE) 
 
-OpenCvSharp is a cross-platform .NET wrapper for OpenCV, providing a rich set of image processing and computer vision functionality.
+OpenCvSharp is a cross-platform .NET wrapper for OpenCV, providing a rich set of image processing and computer vision functionality. Its API is intentionally designed to stay as close as practical to the native OpenCV C++ API so that OpenCV concepts, documentation, and code can be transferred to .NET with minimal friction, while still using C# conventions such as typed enums, exceptions, and deterministic disposal.
+
+See [OpenCV C++, Python (cv2), and OpenCvSharp](https://shimat.github.io/opencvsharp/articles/getting-started/opencv-api-comparison.html) for the main API and data-model differences.
 
 ## 🚀 [Try the Live Demo](https://shimat.github.io/opencvsharp_blazor_sample/)
 
@@ -53,10 +57,10 @@ dotnet add package OpenCvSharp5.runtime.osx.x64
 dotnet add package OpenCvSharp5.runtime.osx.arm64
 ```
 
-For more installation options, see the [Installation](#installation) section below.
+For more installation options, see the [Installation](#installation) section below, or the full [NuGet package list](#nuget).
 
 ## Features
-* OpenCvSharp is modeled on the native OpenCV C/C++ API style as much as possible.
+* OpenCvSharp is modeled on the native OpenCV C++ API as closely as practical.
 * Many classes of OpenCvSharp implement IDisposable. Unsafe resources are managed automatically. 
 * OpenCvSharp does not force object-oriented programming style on you. You can also call native-style OpenCV functions.
 * OpenCvSharp provides functions for converting from `Mat` to `Bitmap` (GDI+) or `WriteableBitmap` (WPF).
@@ -144,7 +148,7 @@ This profile is used by:
 - `OpenCvSharp5.official.runtime.linux-x64.slim`
 
 ## Usage
-For more details, refer to the **[samples](https://github.com/shimat/opencvsharp_samples/)** and **[Wiki](https://github.com/shimat/opencvsharp/wiki)** pages.
+For step-by-step guides, package selection, and troubleshooting, see the **[OpenCvSharp documentation](https://shimat.github.io/opencvsharp/)**. More complete programs are available in the **[samples repository](https://github.com/shimat/opencvsharp_samples/)**.
 
 **Always remember to release Mat and other IDisposable resources using the `using` syntax:**
 ```C#
@@ -191,8 +195,8 @@ https://github.com/shimat/opencvsharp_samples/
 
 Interactive browser-based samples (Blazor WebAssembly) are maintained separately at https://github.com/shimat/opencvsharp_blazor_sample/, with a [live demo](https://shimat.github.io/opencvsharp_blazor_sample/).
 
-## API Documents
-http://shimat.github.io/opencvsharp/api/OpenCvSharp.html
+## Documentation
+https://shimat.github.io/opencvsharp/
 
 ## NuGet
 

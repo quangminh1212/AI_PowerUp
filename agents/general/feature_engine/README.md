@@ -11,7 +11,7 @@
 | **Meta** | [![GitHub contributors](https://img.shields.io/github/contributors/feature-engine/feature_engine?logo=GitHub)](https://github.com/feature-engine/feature_engine/graphs/contributors) [![first-timers-only](https://img.shields.io/badge/first--timers--only-friendly-blue.svg?style=flat)](https://www.firsttimersonly.com/) |
 | **Documentation** | [![Read the Docs](https://img.shields.io/readthedocs/feature_engine?logo=readthedocs)](https://feature-engine.readthedocs.io/en/latest/index.html) |
 | **Citation** | [![DOI](https://zenodo.org/badge/163630824.svg)](https://zenodo.org/badge/latestdoi/163630824) [![JOSS](https://joss.theoj.org/papers/10.21105/joss.03642/status.svg)](https://doi.org/10.21105/joss.03642) |
-| **Testing** | [![CircleCI](https://img.shields.io/circleci/build/github/feature-engine/feature_engine/main?logo=CircleCI)](https://app.circleci.com/pipelines/github/feature-engine/feature_engine) [![Codecov](https://img.shields.io/codecov/c/github/feature-engine/feature_engine?logo=CodeCov&token=ZBKKSN6ERL)](https://codecov.io/github/feature-engine/feature_engine) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black) |
+| **Testing** | [![CircleCI](https://img.shields.io/circleci/build/github/feature-engine/feature_engine/main?logo=CircleCI)](https://app.circleci.com/pipelines/github/feature-engine/feature_engine) [![Codecov](https://img.shields.io/codecov/c/github/feature-engine/feature_engine?logo=CodeCov&token=ZBKKSN6ERL)](https://codecov.io/github/feature-engine/feature_engine) [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black) [![CodSpeed](https://img.shields.io/endpoint?url=https://codspeed.io/badge.json)](https://app.codspeed.io/feature-engine/feature_engine?utm_source=badge) |
 <div align="center">
 
 
@@ -88,17 +88,17 @@ Please share your story by answering 1 quick question
 
 ### Imputation Methods
 * MeanMedianImputer
-* ArbitraryNumberImputer
+* ArbitraryImputer
 * RandomSampleImputer
 * EndTailImputer
 * CategoricalImputer
-* AddMissingIndicator
+* MissingIndicator
 * DropMissingData
 
 ### Encoding Methods
 * OneHotEncoder
 * OrdinalEncoder
-* CountFrequencyEncoder
+* CountEncoder
 * MeanEncoder
 * WoEEncoder
 * RareLabelEncoder
@@ -113,13 +113,12 @@ Please share your story by answering 1 quick question
 * ArbitraryDiscreriser
 
 ### Outlier Handling methods
-* Winsorizer
+* Winsoriser
 * ArbitraryOutlierCapper
 * OutlierTrimmer
 
 ### Variable Transformation methods
 * LogTransformer
-* LogCpTransformer
 * ReciprocalTransformer
 * ArcsinTransformer
 * PowerTransformer
@@ -128,7 +127,7 @@ Please share your story by answering 1 quick question
 * ArcSinhTransformer
 
 ### Variable Scaling methods
-* MeanNormalizationScaler
+* MeanNormalisationScaler
 
 ### Variable Creation:
  * MathFeatures
@@ -145,7 +144,7 @@ Please share your story by answering 1 quick question
  * SmartCorrelationSelection
  * ShuffleFeaturesSelector
  * SelectBySingleFeaturePerformance
- * SelectByTargetMeanPerformance
+ * SelectByTargetEncoding
  * RecursiveFeatureElimination
  * RecursiveFeatureAddition
  * DropHighPSIFeatures
@@ -175,7 +174,7 @@ Please share your story by answering 1 quick question
  * MatchVariables
  
 ### Wrappers:
- * SklearnTransformerWrapper
+ * SklearnWrapper
 
 ## Installation
 

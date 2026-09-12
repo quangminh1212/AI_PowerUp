@@ -1,5 +1,5 @@
 # **SymbolicAI: A neuro-symbolic perspective on LLMs**
-<img src="https://raw.githubusercontent.com/ExtensityAI/symbolicai/refs/heads/main/assets/images/banner.png">
+<img src="https://raw.githubusercontent.com/ExtensityAI/symbolicai/refs/heads/dev/artifacts/images/banner.png">
 
 <div align="center">
 
@@ -7,14 +7,11 @@
 [![Arxiv](https://img.shields.io/badge/Paper-32758e?style=for-the-badge)](https://arxiv.org/abs/2402.00854)
 [![DeepWiki](https://img.shields.io/badge/DeepWiki-yellow?style=for-the-badge)](https://deepwiki.com/ExtensityAI/symbolicai)
 
-[![Twitter](https://img.shields.io/twitter/url/https/twitter.com/dinumariusc.svg?style=social&label=@DinuMariusC)](https://twitter.com/DinuMariusC) [![Twitter](https://img.shields.io/twitter/url/https/twitter.com/symbolicapi.svg?style=social&label=@ExtensityAI)](https://twitter.com/ExtensityAI)
-[![Twitter](https://img.shields.io/twitter/url/https/twitter.com/futurisold.svg?style=social&label=@futurisold)](https://x.com/futurisold)
-
 </div>
 
 ---
 
-<img src="https://raw.githubusercontent.com/ExtensityAI/symbolicai/main/assets/images/preview.gif">
+<img src="https://raw.githubusercontent.com/ExtensityAI/symbolicai/refs/heads/dev/artifacts/images/preview.gif">
 
 ## What is SymbolicAI?
 
@@ -79,7 +76,7 @@ Because the projections return the *same underlying object* with just a differen
 | `.startswith(prefix)`    | String Helper    | ✓         | ✓        | Check if a string starts with given prefix (in both modes). |
 | `.choice(cases, default)` | Pattern Matching|           | ✓        | Select best match from provided cases. |
 | `.foreach(condition, apply)`| Execution Control |         | ✓        | Apply action to each element. |
-| `.cluster(**clustering_kwargs?)`              | Data Clustering  |         | ✓        | Cluster data into groups semantically. (uses sklearn's DBSCAN)|
+| `.cluster(**clustering_kwargs?)`              | Data Clustering  |         | ✓        | Cluster data into groups semantically. Uses scikit-learn's HDBSCAN via `symbolicai[cluster]`. |
 | `.similarity(other, metric?, normalize?)` | Embedding    |         | ✓        | Compute similarity between embeddings. |
 | ... | ...    |   ...|  ...        | ... |
 
@@ -160,19 +157,15 @@ Running `symconfig` will now use this Python environment.
 SymbolicAI uses multiple engines to process text, speech and images. We also include search engine access to retrieve information from the web. To use all of them, you will need to also install the following dependencies and assign the API keys to the respective engines. E.g.:
 
 ```bash
-pip install "symbolicai[bitsandbytes]"
+pip install "symbolicai[cluster]"
 pip install "symbolicai[hf]"
 pip install "symbolicai[lean]"
-pip install "symbolicai[llama_cpp]"
-pip install "symbolicai[ocr]"
 pip install "symbolicai[qdrant]"
 pip install "symbolicai[scrape]"
 pip install "symbolicai[search]"
-pip install "symbolicai[serpapi]"
 pip install "symbolicai[services]"
-pip install "symbolicai[solver]"
+pip install "symbolicai[video]"
 pip install "symbolicai[whisper]"
-pip install "symbolicai[wolframalpha]"
 ```
 
 Or, install all optional dependencies at once:
@@ -215,9 +208,8 @@ SymbolicAI now features a configuration management system with priority-based lo
 
 ### Configuration Files
 
-The system manages three main configuration files:
+The system manages two main configuration files:
 - `symai.config.json`: Main SymbolicAI configuration
-- `symsh.config.json`: Shell configuration
 - `symserver.config.json`: Server configuration
 
 ### Viewing Your Configuration
@@ -245,12 +237,10 @@ my_project/              # Debug mode (highest priority)
 
 {python_env}/.symai/     # Environment config (second priority)
 ├── symai.config.json
-├── symsh.config.json
 └── symserver.config.json
 
 ~/.symai/                # Global config (lowest priority)
 ├── symai.config.json
-├── symsh.config.json
 └── symserver.config.json
 ```
 
@@ -270,7 +260,7 @@ Example of a configuration file with all engines enabled:
 ```json
 {
     "NEUROSYMBOLIC_ENGINE_API_KEY": "<ANTHROPIC_API_KEY>",
-    "NEUROSYMBOLIC_ENGINE_MODEL": "claude-sonnet-4-6",
+    "NEUROSYMBOLIC_ENGINE_MODEL": "anthropic:claude-sonnet-4-6",
     "SYMBOLIC_ENGINE_API_KEY": "<WOLFRAMALPHA_API_KEY>",
     "SYMBOLIC_ENGINE": "wolframalpha",
     "FORMAL_ENGINE_API_KEY": "<AXIOM_API_KEY>",
@@ -286,7 +276,6 @@ Example of a configuration file with all engines enabled:
     "INDEXING_ENGINE_URL": "http://localhost:6333",
     "DRAWING_ENGINE_API_KEY": "<BFL_API_KEY>",
     "DRAWING_ENGINE_MODEL": "flux-pro-1.1",
-    "VISION_ENGINE_MODEL": "openai/clip-vit-base-patch32",
     "OCR_ENGINE_API_KEY": "<OCR_API_KEY>",
     "OCR_ENGINE_MODEL": "mistral-ocr-latest",
     "SPEECH_TO_TEXT_ENGINE_MODEL": "turbo",
@@ -295,24 +284,28 @@ Example of a configuration file with all engines enabled:
 
 With these steps completed, you should be ready to start using SymbolicAI in your projects.
 
-> ❗️**NOTE**❗️By default, the user warnings are enabled. To disable them, export `SYMAI_WARNINGS=0` in your environment variables.
+> ❗️**NOTE**❗️Model names are provider-prefixed (`openai:gpt-5.4`, `anthropic:claude-sonnet-4-6`, `gemini:gemini-3.5-flash`)—the prefix selects the provider. All engines talk raw REST through a shared `httpx` transport—no provider SDKs required.
+
+> ❗️**NOTE**❗️SymbolicAI logs through the standard `logging` module under the `symai` logger and is silent by default. To see its logs, configure logging in your application, e.g. `logging.basicConfig(level=logging.INFO)` or, scoped, `logging.getLogger("symai").setLevel(logging.INFO)`.
 
 ### Running tests
-Some examples of running tests locally:
+Engine tests run against a mock transport by default—no API keys needed:
 ```bash
-# Run all tests
-pytest tests
+# Run all tests against the mock transport
+pytest tests --engine-api=mock
 # Run mandatory tests
 pytest -m mandatory
 ```
-Be sure to have your configuration set up correctly before running the tests. You can also run the tests with coverage to see how much of the code is covered by tests:
+To exercise the real provider APIs (requires configured API keys), pass `--engine-api=live`.
+Be sure to have your configuration set up correctly before running live tests. You can also run the tests with coverage to see how much of the code is covered by tests:
 ```bash
-pytest --cov=symbolicai tests
+pytest --cov=symai tests
 ```
 
 ## 🪜 Next Steps
 
-Now, there are tools like DeepWiki that provide better documentation than we could ever write, and we don’t want to compete with that; we'll correct it where it's plain wrong. Please go read SymbolicAI's DeepWiki [page](https://deepwiki.com/ExtensityAI/symbolicai/). There's a lot of interesting stuff in there. Last but not least, check out our [paper](https://arxiv.org/abs/2402.00854) that describes the framework in detail. If you like watching videos, we have a series of tutorials that you can find [here](https://extensityai.gitbook.io/symbolicai/tutorials/video_tutorials).
+Read SymbolicAI's DeepWiki [page](https://deepwiki.com/ExtensityAI/symbolicai/) for a generated
+code tour, and check out our [paper](https://arxiv.org/abs/2402.00854) for the framework design.
 
 ## 📜 Citation
 

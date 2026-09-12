@@ -1,13 +1,17 @@
 <p>
-  <a href="https://newsletter.systemdesign.one/join"><img src="https://i.imgur.com/7pV1SWj.png" /> </a>
+  <a href="https://getunblocked.link/o8ACA6X"><img src="https://i.imgur.com/ofqRazl.png" /> </a>
 </p>
 
 <p align="center">
-   👋
-   <a href="https://newsletter.systemdesign.one/join">
-     <b> Join Newsletter </b>
-   </a>
+     AI is in your development workflow. While the token spend shows it, the throughput doesn't. The human is very much still in the loop, and that's a context problem. <a href="https://getunblocked.link/o8ACA6X"> Join live (FREE) on Aug 19 </a> to see why teams get stuck and how leading teams use a context engine to fix it. (Thanks to Unblocked for sponsoring this page.)
  </p>
+
+<p align="center">
+   👋
+   <a href="https://getunblocked.link/o8ACA6X">
+     <b> Register to Join Live Aug 19 </b>
+   </a>
+</p>
 
 ---
 
@@ -59,7 +63,7 @@
 
 ---
 
-# System Design
+# System Design Academy
 
 ## System Design Case Study
 
@@ -228,6 +232,7 @@
 - [Best Practices for API Design](https://newsletter.systemdesign.one/p/best-practices-for-api-design)
 - [Best Practices for API Security](https://newsletter.systemdesign.one/p/api-security-best-practices)
 - [API Versioning](https://newsletter.systemdesign.one/p/api-versioning)
+- [High Performance APIs](https://newsletter.systemdesign.one/p/api-performance)
 
 #### B technologies
 
@@ -295,6 +300,7 @@
 - [How Shopify Handled 30TB per Minute With a Modular Monolith Architecture](https://newsletter.systemdesign.one/p/modular-monolith)
 - [1 Simple Technique to Scale Microservices Architecture](https://newsletter.systemdesign.one/p/how-to-scale-microservices)
 - [How Message Queues Work](https://newsletter.systemdesign.one/p/what-is-a-message-queue)
+- [22 Microservices Design Patterns](https://newsletter.systemdesign.one/p/microservices-design-patterns)
 
 #### N technologies
 
@@ -303,6 +309,7 @@
 #### P technologies
 
 - [Forward proxy vs Reverse proxy](https://newsletter.systemdesign.one/p/forward-proxy-vs-reverse-proxy)
+- [10 System Design Patterns](https://newsletter.systemdesign.one/p/system-design-patterns)
 
 #### Q technologies
 
@@ -427,6 +434,7 @@
 #### V ai
 
 - [Vector Database - A Deep Dive](https://newsletter.systemdesign.one/p/what-is-a-vector-database)
+- [Vertical Small LLM](https://newsletter.systemdesign.one/p/fine-tuning-small-language-models)
 
 
 ---

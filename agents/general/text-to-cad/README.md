@@ -17,6 +17,7 @@ A skills library for CAD, robotics, and hardware design agents
 
 [Docs](https://www.cadskills.xyz) | [Demo](https://demo.cadskills.xyz)
 
+[![Tests](https://img.shields.io/github/actions/workflow/status/earthtojake/text-to-cad/test.yml?branch=develop&style=for-the-badge&logo=githubactions&logoColor=white&label=Tests)](https://github.com/earthtojake/text-to-cad/actions/workflows/test.yml?query=branch%3Adevelop)
 [![Join Discord](https://img.shields.io/badge/Discord-Join-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/5FGB9DwJYU)
 [![GitHub stars](https://img.shields.io/github/stars/earthtojake/text-to-cad?style=for-the-badge&logo=github&label=Stars)](https://github.com/earthtojake/text-to-cad/stargazers)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
@@ -59,7 +60,7 @@ robot description files, simulation, and local review.
 ## 💻 Installation
 
 For production use, install or clone from `main`; that branch contains the
-generated skill/plugin outputs needed by provider installers.
+generated skill outputs needed by provider installers.
 
 ### Skills
 
@@ -77,10 +78,14 @@ directly for supported agents.
 Provider-native plugin installs are also available for Codex and Claude Code:
 
 ```bash
-# Codex
+# Codex (requires Codex 0.142.0 or newer)
 codex plugin marketplace add earthtojake/text-to-cad
 codex plugin add cad@text-to-cad
 ```
+
+Codex resolves this repository-root plugin only from 0.142.0 onward. On older
+versions the plugin is skipped silently and never appears in `codex plugin list`;
+upgrade with `npm install -g @openai/codex@latest`.
 
 ```bash
 # Claude Code

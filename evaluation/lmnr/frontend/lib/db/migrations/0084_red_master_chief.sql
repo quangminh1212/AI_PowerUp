@@ -1,1 +1,0 @@
-DROP TABLE "span_rendering_keys" CASCADE;

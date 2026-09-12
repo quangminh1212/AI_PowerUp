@@ -1,5 +1,5 @@
 > [!NOTE]
-> **[Shannon 2.0 now runs on the Pi harness](https://github.com/KeygraphHQ/shannon/discussions/393)**
+> **[Shannon 2.0 is officially here](https://github.com/KeygraphHQ/shannon/discussions/405)**
 
 <div align="center">
 
@@ -9,7 +9,7 @@
 
 <a href="https://trendshift.io/repositories/15604" target="_blank"><img src="https://trendshift.io/api/badge/repositories/15604" alt="KeygraphHQ%2Fshannon | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
 
-Shannon is an autonomous, white-box AI pentester for web applications and APIs. <br />
+Shannon is an autonomous, AI pentester for web applications and APIs. <br />
 It analyzes your source code, identifies attack paths, and executes real exploits to prove vulnerabilities before they reach production.
 
 **This repository is Shannon Open Source: the full agent, run locally from your command line.**
@@ -35,13 +35,13 @@ It analyzes your source code, identifies attack paths, and executes real exploit
 - [Architecture](#architecture)
 - [Documentation](#documentation)
 - [Safety, Scope, and Limitations](#safety-scope-and-limitations)
-- [License and Enterprise Licensing](#license-and-enterprise-licensing)
+- [License](#license)
 - [About Keygraph](#about-keygraph)
 - [Community and Support](#community-and-support)
 
 ## What is Shannon?
 
-Shannon is an autonomous AI pentester developed by [Keygraph](https://keygraph.io). It performs white-box security testing of web applications and their underlying APIs by combining source-code analysis with live exploitation.
+Shannon is an autonomous AI pentester developed by [Keygraph](https://keygraph.io). It performs security testing of web applications and their underlying APIs by combining source-code analysis with live exploitation.
 
 Shannon analyzes your web application's source code to identify potential attack vectors, then uses browser automation and command-line tools to execute real exploits against the running application and its APIs. Only vulnerabilities with a working proof-of-concept are included in the final report.
 
@@ -73,7 +73,8 @@ Sample penetration test reports from intentionally vulnerable applications, prod
 
 - **Docker**: required for the worker container.
 - **Node.js 18+**: required for the recommended `npx` workflow.
-- **AI provider credentials**: Anthropic is recommended. AWS Bedrock and compatible proxy setups are documented separately.
+- **AI provider credentials**: Anthropic, OpenAI, xAI, or AWS Bedrock - or [any other provider](docs/ai-providers.md#any-other-provider). Claude models are recommended. For suggested model IDs per provider, plus gateways and custom base URLs, see [AI providers](docs/ai-providers.md#suggested-models).
+- **Cyber safeguards cleared with your provider**: Anthropic and OpenAI apply real-time safeguards to cyber-security workloads, which can interrupt a scan mid-run. Complete their guidance for legitimate security testers before your first run - see [AI providers](docs/ai-providers.md#cyber-safeguards-do-this-before-your-first-scan).
 
 ### Run Shannon
 
@@ -91,6 +92,9 @@ npx @keygraph/shannon start -u https://your-app.com -r /path/to/your-repo
 Shannon pulls the worker image from Docker Hub, starts the required local infrastructure, mounts the target repository read-only inside an ephemeral worker container, and writes results to a local workspace.
 
 For source builds, authenticated scans, provider-specific setup, and platform notes, see [Documentation](#documentation).
+
+> [!TIP]
+> **Prefer to run on your Claude Code subscription instead of API credits?** The [`shannon-v1`](https://github.com/KeygraphHQ/shannon/tree/shannon-v1) branch is the last release built on the Claude Agent SDK, so it accepts a Claude Code OAuth token. Generate one with `claude setup-token`, then run `npx @keygraph/shannon@1.9.0 setup` and pick **OAuth Token**. Pentests then cost nothing beyond your existing subscription.
 
 ## Key Capabilities
 
@@ -185,8 +189,8 @@ Use these guides for operational detail:
 | Guide | Use it for |
 | --- | --- |
 | [Source build and CLI commands](docs/development.md) | Cloning, building, common commands, output paths, and local development. |
-| [Configuration](docs/configuration.md) | Authenticated testing, login flows, rules of engagement, report filters, and rate-limit settings. |
-| [AI providers](docs/ai-providers.md) | Anthropic, AWS Bedrock, and custom Anthropic-compatible endpoints. |
+| [Configuration](docs/configuration.md) | Authenticated testing, login flows, rules of engagement, and report filters. |
+| [AI providers](docs/ai-providers.md) | Selecting the model, the supported providers (Anthropic, OpenAI, xAI, AWS Bedrock, and any other Pi-supported provider), and custom gateways. |
 | [Platforms and networking](docs/platforms.md) | Windows/WSL2, Linux, macOS, Docker networking, local apps, and custom hostnames. |
 | [Workspaces and resuming](docs/workspaces.md) | Naming workspaces, resuming interrupted scans, and workspace storage. |
 | [Safety and limitations](docs/safety.md) | Authorized-use requirements, non-production guidance, mutative effects, cost, and model caveats. |
@@ -209,7 +213,7 @@ Important limitations:
 
 Read the full [Safety and limitations](docs/safety.md) guide before running Shannon in a new environment.
 
-## License and Enterprise Licensing
+## License
 
 Shannon Open Source is licensed under the [GNU Affero General Public License v3.0](LICENSE).
 

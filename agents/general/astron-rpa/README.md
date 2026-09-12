@@ -6,6 +6,8 @@
 
 **🤖 Pioneering Open-Source Enterprise RPA Desktop Application**
 
+<a href="https://trendshift.io/repositories/17279?utm_source=repository-badge&amp;utm_medium=badge&amp;utm_campaign=badge-repository-17279" target="_blank" rel="noopener noreferrer"><img src="https://trendshift.io/api/badge/repositories/17279" alt="iflytek%2Fastron-rpa | Trendshift" width="250" height="55"/></a>
+
 <p align="center">
   <a href="https://www.iflyrpa.com">Astron RPA Official Site</a> ·
   <a href="./BUILD_GUIDE.md">Deployment Guide</a> ·
@@ -195,6 +197,8 @@ We welcome any form of contribution! Please check [Contributing Guide](CONTRIBUT
 5. 📝 Open a Pull Request
 
 ## 🌟 Star History
+
+If AstronRPA saves you time, consider giving it a ⭐ — it is the simplest way to support the project and helps other automation builders discover it.
 
 <div align="center">
   <img src="https://api.star-history.com/svg?repos=iflytek/astron-rpa&type=Date" alt="Star History Chart" width="600">

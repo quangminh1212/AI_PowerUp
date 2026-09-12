@@ -94,7 +94,7 @@ A good generic prompt is:
 Load the Hunk skill and use it for this review. Run `hunk skill path` to get the skill path.
 ```
 
-For the full live-session and `--agent-context` workflow guide, see [docs/agent-workflows.md](docs/agent-workflows.md).
+For the full live-session and `--agent-context` workflow guide, see [docs/agent-workflows.md](docs/agent-workflows.md). Experimental rich STML note bodies require starting the review with `--experimental`; plain agent notes remain the default.
 
 ## Feature comparison
 
@@ -130,6 +130,7 @@ vcs = "git"          # git, jj, sl
 watch = false
 exclude_untracked = false
 line_numbers = true
+tab_width = 4       # tab stops, 1-16
 wrap_lines = false
 menu_bar = true
 agent_notes = false
@@ -137,36 +138,22 @@ prompt_save_view_preferences = true
 transparent_background = false
 ```
 
-`theme = "auto"` and `--theme auto` query the terminal background at startup, choose `github-light-default` for light backgrounds and `github-dark-default` for dark backgrounds, and fall back to `github-dark-default` if the terminal does not answer.
-Older theme ids such as `graphite` and `paper` remain accepted as compatibility aliases.
+Choose a built-in theme, `auto`, or a custom theme with `theme`. See
+[docs/themes.md](docs/themes.md) for automatic selection, custom theme tables,
+syntax scopes, and legacy syntax-table migration.
+
 `exclude_untracked` affects Git/Sapling working-tree `hunk diff` sessions only.
+`tab_width` controls source-code tab stops and can be overridden with `-x4` or `--tab-width 4`.
 `prompt_save_view_preferences = false` disables the quit prompt for saving changed view preferences.
 `transparent_background` can also be written as `transparentBackground`.
 
-Custom themes can inherit from any built-in theme and override only the colors you care about:
+### Keybindings
 
-```toml
-theme = "custom"
-
-[custom_theme]
-base = "catppuccin-mocha"
-label = "My Theme"
-accent = "#7fd1ff"
-panel = "#10161d"
-noteBorder = "#c49bff"
-
-[custom_theme.syntax_scopes]
-"comment" = "#6e85a7"
-"punctuation.definition.comment" = "#6e85a7"
-"keyword.operator" = "#7fd1ff"
-"entity.name.function" = "#8ed4ff"
-```
-
-`syntax_scopes` uses [Shiki/TextMate scope selectors](https://shiki.style/guide/themes#token-colors) directly, so matching and precedence follow Shiki's theme rules without a Hunk-specific translation layer. Quote selectors containing dots. Declaration order is preserved; later rules win when matching selectors have equal specificity, while a more-specific base-theme selector beats a broader override. Add the grammar-specific selector when that happens. All custom theme colors must use `#rrggbb` hex values.
-
-The former `[custom_theme.syntax]` role table is deprecated but temporarily translated into approximate scopes for compatibility. Both tables can coexist while migrating, and an exact `syntax_scopes` entry overrides a translated entry with the same selector. Because semantic roles have no one-to-one TextMate mapping, migrate when practical: for example, replace `comment = "#ffffff"` with both `"comment" = "#ffffff"` and `"punctuation.definition.comment" = "#ffffff"` under `[custom_theme.syntax_scopes]`, adding language-specific selectors when a grammar uses more specific scopes. The compatibility table will be removed in the next major release.
-
-Press `t` in the app, or choose `View -> Themes…`, to open the theme selector.
+Every keyboard shortcut is a named command, and a `[keybindings]` table in your
+user config remaps command ids to the keys you want them on — several keys per
+command, exclusive claims over defaults, and `false` to unbind. See
+[docs/keybindings.md](docs/keybindings.md) for the rules, the chord grammar,
+and the full table of built-in commands and their default keys.
 
 ### Git integration
 
@@ -211,6 +198,41 @@ To use Hunk as Sapling's pager, run `sl config -u` and update:
 [pager]
 pager = hunk pager
 ```
+
+### Extensions (experimental)
+
+The extension API is experimental and may change in breaking ways between
+minor releases while it stabilizes; breaking changes are called out in
+release notes.
+
+Hunk loads plain TypeScript extensions from `~/.config/hunk/extensions/`, from a
+repository's `.hunk/extensions/` (after you explicitly trust that repository),
+and from `--extension <path>` for development. `--no-extensions` turns those off
+for one run; Hunk's own bundled backends (Git, Jujutsu, and Sapling) stay loaded.
+
+A Phase 1 extension can contribute themes and file-extension → language
+mappings, add a VCS backend, rewrite the changeset before review (collapse
+lockfiles, reorder files by review priority), replace the file-navigation
+sidebar with its own React component, react to lifecycle events, and show
+transient messages:
+
+```ts
+// ~/.config/hunk/extensions/collapse-lockfiles.ts
+import type { HunkExtensionAPI } from "hunkdiff/extension";
+
+export default function (hunk: HunkExtensionAPI) {
+  hunk.transformChangeset((changeset, ctx) => {
+    const files = changeset.files.filter((file) => !file.path.endsWith(".lock"));
+    ctx.notify(`Collapsed ${changeset.files.length - files.length} lockfiles`);
+    return { ...changeset, files };
+  });
+}
+```
+
+See [docs/extensions.md](docs/extensions.md) for the full API, the trust model,
+and the `[extensions]` / `[extension.<id>]` config reference. Installable examples
+include [review triage](examples/extensions/review-triage/) and an optional
+[rendered Markdown file view](examples/extensions/rendered-markdown/).
 
 ### OpenTUI component
 

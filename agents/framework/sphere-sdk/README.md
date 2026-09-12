@@ -12,7 +12,6 @@ A modular TypeScript SDK for Unicity wallet operations (Unicity state transition
 - **Market (Intents)** - Signed intent bulletin board with semantic search and live feed
 - **Group Chat** - NIP-29 relay-based group messaging with moderation
 - **Messaging (Nostr)** - NIP-17 DMs + NIP-29 group chat and nametag publishing — **messaging only; not the v2 payment rail**
-- **IPFS Sync** *(optional)* - Decentralized token **backup/recovery** — not used for delivery
 - **Multi-Address** - HD address derivation (BIP32/BIP44)
 - **Token Validation** - Engine-based token verification (trust base + spent check via the v2 gateway)
 - **Connect Protocol** - dApp ↔ wallet communication via `ConnectClient` / `ConnectHost` (browser extension + popup)
@@ -30,8 +29,8 @@ Choose your platform:
 
 | Platform | Guide | Required | Optional |
 |----------|-------|----------|----------|
-| **Browser** | [QUICKSTART-BROWSER.md](docs/QUICKSTART-BROWSER.md) | SDK only | IPFS sync (built-in) |
-| **Node.js** | [QUICKSTART-NODEJS.md](docs/QUICKSTART-NODEJS.md) | SDK + `ws` | IPFS sync (built-in) |
+| **Browser** | [QUICKSTART-BROWSER.md](docs/QUICKSTART-BROWSER.md) | SDK only | IndexedDB storage |
+| **Node.js** | [QUICKSTART-NODEJS.md](docs/QUICKSTART-NODEJS.md) | SDK + `ws` | File storage |
 | **CLI** | [@unicity-sphere/cli](https://github.com/unicity-sphere/sphere-cli) | Separate package | - |
 | **dApp integration** | [CONNECT.md](docs/CONNECT.md) | SDK only | Sphere extension |
 
@@ -113,7 +112,7 @@ A v2 wallet is composed from **swappable ports**, layered in two steps:
 | **Base** | `createBrowserProviders` / `createNodeProviders` | `storage` (wallet state), `transport` (Nostr — **messaging/nametags only**), `oracle` (gateway/trust base) |
 | **wallet-api rails** | `createWalletApiProviders(base, …)` | `delivery` (mailbox), `walletApi` (REST client), `tokenStorage` (server inventory) |
 
-- **Delivery is a port, not Nostr.** In v2, transfers are certified on-chain by the token engine and the finished token is delivered through the **wallet-api mailbox** (`WalletApiMailboxProvider`). Nostr carries messaging/nametags; IPFS (optional) is token-sync backup only — **neither moves payments.**
+- **Delivery is a port, not Nostr.** In v2, transfers are certified on-chain by the token engine and the finished token is delivered through the **wallet-api mailbox** (`WalletApiMailboxProvider`). Nostr carries messaging/nametags — **it does not move payments.**
 - **Custody.** `createWalletApiProviders` uses server custody (`'inventory'`): the wallet-api holds your token inventory. For **own-custody** (your app keeps token storage, wallet-api is delivery-only), swap in `createOwnStorageWalletApiProviders` (custody `'external'`).
 - **`network` placement.** Required on `createBrowserProviders`/`createNodeProviders` (throws `INVALID_CONFIG` if absent); optional/informational on `Sphere.init`.
 
@@ -205,7 +204,6 @@ The `testnet` preset wires most of these automatically — you only pass `networ
 | **wallet-api** (delivery + token storage) | `https://wallet-api.unicity.network` |
 | **Nostr relay** (messaging / nametags) | `wss://nostr-relay.testnet.unicity.network` |
 | **Group-chat relay** (NIP-29) | `wss://sphere-relay.unicity.network` |
-| **IPFS gateway** (optional token backup) | `https://unicity-ipfs1.dyndns.org` |
 | **Token registry** | `https://raw.githubusercontent.com/unicitynetwork/unicity-ids/refs/heads/main/unicity-ids.testnet2.json` |
 
 The aggregator key above is the **testnet2** key only and is safe in client code; a **mainnet** key is a real secret. `mainnet`/`dev` still point at v1-era aggregators and cannot serve the v2 engine yet (`AGGREGATOR_ERROR`).
@@ -635,14 +633,14 @@ if (await Sphere.exists(storage)) {
 
 ## Import from Master Key (Legacy Wallets)
 
-For compatibility with legacy wallet files (.dat, .txt):
+For wallets whose master key was extracted elsewhere (e.g. an older backup):
 
 ```typescript
 // Import from master key + chain code (BIP32 mode)
 const sphere = await Sphere.import({
   masterKey: '64-hex-chars-master-private-key',
   chainCode: '64-hex-chars-chain-code',
-  basePath: "m/84'/1'/0'",  // from wallet.dat descriptor
+  basePath: "m/84'/1'/0'",  // BIP84 account path
   derivationMode: 'bip32',
   storage, transport, oracle,
 });
@@ -697,43 +695,6 @@ if (mnemonic) {
 }
 ```
 
-## Import from Legacy Files (.dat, .txt)
-
-```typescript
-// Import from wallet.dat file
-const fileBuffer = await file.arrayBuffer();
-const result = await Sphere.importFromLegacyFile({
-  fileContent: new Uint8Array(fileBuffer),
-  fileName: 'wallet.dat',
-  password: 'wallet-password',  // if encrypted
-  onDecryptProgress: (i, total) => console.log(`Decrypting: ${i}/${total}`),
-  storage, transport, oracle,
-});
-
-if (result.needsPassword) {
-  // Re-prompt user for password
-}
-
-if (result.success) {
-  const sphere = result.sphere;
-  console.log('Imported wallet:', sphere.identity?.directAddress);
-}
-
-// Import from text backup file
-const textContent = await file.text();
-const result = await Sphere.importFromLegacyFile({
-  fileContent: textContent,
-  fileName: 'backup.txt',
-  storage, transport, oracle,
-});
-
-// Detect file type and encryption status
-const fileType = Sphere.detectLegacyFileType(fileName, content);
-// Returns: 'dat' | 'txt' | 'json' | 'mnemonic' | 'unknown'
-
-const isEncrypted = Sphere.isLegacyFileEncrypted(fileName, content);
-```
-
 ## Core Utilities
 
 The SDK exports commonly needed utility functions:
@@ -752,10 +713,6 @@ import {
   toHumanReadable,      // 1500000000000000000n → "1.5"
   formatAmount,         // Format with decimals and symbol
 
-  // Address encoding
-  encodeBech32, decodeBech32,
-  createAddress, isValidBech32,
-
   // Base58 (Bitcoin-style)
   base58Encode, base58Decode,
   isValidPrivateKey,
@@ -766,30 +723,14 @@ import {
 } from '@unicitylabs/sphere-sdk';
 ```
 
-## TXF Serialization
+## Token storage format
 
-Token eXchange Format for storage. **Note:** TXF is the legacy v1 token format — post v2-cutover, stored v1 TXF tokens remain visible in the wallet (display only) but are unspendable; v2 tokens travel and persist as CBOR blob hex strings. These helpers remain for storage-data handling and legacy display:
+Tokens persist as opaque **v2 CBOR blob hex** in `Token.sdkData`. The storage
+document around them (the `_meta` / `_nametags` / `_tombstones` / `_history`
+envelope) is built and parsed by:
 
 ```typescript
-import {
-  tokenToTxf,           // Token → TXF format
-  txfToToken,           // TXF → Token
-  buildTxfStorageData,  // Build IPFS storage data
-  parseTxfStorageData,  // Parse storage data
-  getCurrentStateHash,  // Get token's current state hash
-  hasUncommittedTransactions,
-} from '@unicitylabs/sphere-sdk';
-
-// Convert token to TXF
-const txf = tokenToTxf(token);
-console.log(txf.genesis.data.tokenId);
-
-// Build storage data for IPFS
-const storageData = await buildTxfStorageData(tokens, {
-  version: 1,
-  address: '02abc123...',  // chain pubkey
-  ipnsName: 'k51...',
-});
+import { buildTxfStorageData, parseTxfStorageData } from '@unicitylabs/sphere-sdk';
 ```
 
 ## Token Validation
@@ -859,7 +800,6 @@ Implementation (platform-specific)
 Core Utilities
 ├── crypto     - Key derivation, hashing, signatures
 ├── currency   - Amount formatting and conversion
-├── bech32     - Address encoding (BIP-173)
 └── utils      - Base58, patterns, sleep, random
 ```
 
@@ -927,8 +867,7 @@ The SDK includes browser-ready provider implementations:
 |----------|-------------|
 | `LocalStorageProvider` | Browser localStorage with SSR fallback |
 | `NostrTransportProvider` | Nostr relay messaging with NIP-04 |
-| `UnicityAggregatorProvider` | Network config for the v2 token engine (trust base + gateway URL + API key); also exposes a legacy `validateToken` RPC for v1-era tokens |
-| `IpfsStorageProvider` | HTTP-based IPFS/IPNS storage (cross-platform) |
+| `UnicityAggregatorProvider` | Network config for the v2 token engine (trust base + gateway URL + API key) |
 
 ## Node.js Providers
 
@@ -1001,8 +940,6 @@ The SDK uses an **extend/override pattern** for flexible configuration:
 |--------|----------|
 | `relays` | **Replaces** default relays entirely |
 | `additionalRelays` | **Adds** to default relays |
-| `gateways` | **Replaces** default IPFS gateways |
-| `additionalGateways` | **Adds** to default gateways |
 | `url` | **Replaces** default URL (uses network default if not set) |
 
 ```typescript
@@ -1053,51 +990,10 @@ const providers = createBrowserProviders({
     apiKey: 'secret',
     timeout: 60000,
   },
-  tokenSync: {
-    ipfs: {
-      enabled: true,
-      additionalGateways: ['https://my-ipfs-gateway.com'],
-    },
-  },
 });
 
 ```
 
-## Token Sync Backends
-
-The SDK supports multiple token sync backends that can be enabled independently:
-
-| Backend | Status | Description |
-|---------|--------|-------------|
-| `ipfs` | ✅ Ready | HTTP-based IPFS/IPNS storage (browser + Node.js) |
-| `mongodb` | 🚧 Planned | MongoDB for centralized token storage |
-| `file` | 🚧 Planned | Local file system (Node.js) |
-| `cloud` | 🚧 Planned | Cloud storage (AWS S3, GCP, Azure) |
-
-```typescript
-// Browser: enable IPFS sync
-const providers = createBrowserProviders({
-  network: 'testnet',
-  tokenSync: {
-    ipfs: {
-      enabled: true,
-      additionalGateways: ['https://my-gateway.com'],
-    },
-  },
-});
-
-// Node.js: enable IPFS sync
-const providers = createNodeProviders({
-  network: 'testnet',
-  dataDir: './wallet-data',
-  tokensDir: './tokens-data',
-  tokenSync: {
-    ipfs: {
-      enabled: true,
-    },
-  },
-});
-```
 
 ## Custom Token Storage Provider
 
@@ -1182,41 +1078,25 @@ const { sphere } = await Sphere.init({
 After `Sphere.init()` is called, you can add/remove token storage providers dynamically:
 
 ```typescript
-import { createBrowserIpfsStorageProvider } from '@unicitylabs/sphere-sdk/impl/browser/ipfs';
-// For Node.js: import { createNodeIpfsStorageProvider } from '@unicitylabs/sphere-sdk/impl/nodejs/ipfs';
-
-// Add a new provider at runtime (e.g., user enables IPFS sync in settings)
-const ipfsProvider = createBrowserIpfsStorageProvider({
-  gateways: ['https://my-ipfs-node.com'],
-});
-
-await sphere.addTokenStorageProvider(ipfsProvider);
+// Add a token storage provider at runtime — any TokenStorageProvider
+// implementation (the interface is documented in docs/API.md).
+await sphere.addTokenStorageProvider(myTokenStorageProvider);
 
 // Provider is now active and will be used in sync operations
 
 // Check if provider exists
-if (sphere.hasTokenStorageProvider('ipfs-token-storage')) {
-  console.log('IPFS sync is enabled');
+if (sphere.hasTokenStorageProvider(myTokenStorageProvider.id)) {
+  console.log('provider is active');
 }
 
 // Get all active providers
 const providers = sphere.getTokenStorageProviders();
 console.log('Active providers:', Array.from(providers.keys()));
 
-// Remove a provider (e.g., user disables IPFS sync)
-await sphere.removeTokenStorageProvider('ipfs-token-storage');
+// Remove a provider
+await sphere.removeTokenStorageProvider(myTokenStorageProvider.id);
 
-// Listen for per-provider sync events
-sphere.on('sync:provider', (event) => {
-  console.log(`Provider ${event.providerId}: ${event.success ? 'synced' : 'failed'}`);
-  if (event.success) {
-    console.log(`  Added: ${event.added}, Removed: ${event.removed}`);
-  } else {
-    console.log(`  Error: ${event.error}`);
-  }
-});
-
-// Trigger sync (syncs with all active providers)
+// Flush token state to all active providers
 await sphere.payments.sync();
 ```
 

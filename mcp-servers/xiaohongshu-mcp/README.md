@@ -334,16 +334,16 @@ https://github.com/user-attachments/assets/cc385b6c-422c-489b-a5fc-63e92c695b80
 **主程序（MCP 服务）：**
 
 - **macOS Apple Silicon**: `xiaohongshu-mcp-darwin-arm64`
-- **macOS Intel**: `xiaohongshu-mcp-darwin-amd64`
 - **Windows x64**: `xiaohongshu-mcp-windows-amd64.exe`
 - **Linux x64**: `xiaohongshu-mcp-linux-amd64`
 
 **登录工具：**
 
 - **macOS Apple Silicon**: `xiaohongshu-login-darwin-arm64`
-- **macOS Intel**: `xiaohongshu-login-darwin-amd64`
 - **Windows x64**: `xiaohongshu-login-windows-amd64.exe`
 - **Linux x64**: `xiaohongshu-login-linux-amd64`
+
+> 目前支持以上三个平台。macOS Intel 与 Linux ARM64 暂不支持。
 
 使用步骤：
 
@@ -1003,9 +1003,9 @@ npx mcporter list xiaohongshu-mcp
 **重要：在群里问问题之前，请一定要先仔细看完 README 文档以及查看 Issues。**
 
 ### 微信群
-|                                                 微信群 24 群                                        |                                                 微信群 25 群                                         |
+|                                                 微信群 25 群                                        |                                                 微信群 26 群                                         |
 | :------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------: |
-| <img src="https://github.com/user-attachments/assets/918a48d5-1d3c-40ce-b225-4af0d77078db" alt="WechatIMG119" width="300"> | <img src="https://github.com/user-attachments/assets/c49ad483-0f27-46f3-a6a7-31b3ba31540f" alt="WechatIMG119" width="300">|
+| <img src="https://github.com/user-attachments/assets/49ef7f34-d1f0-4161-8e3e-fead4ca404df" alt="WechatIMG119" width="300"> | <img src="https://github.com/user-attachments/assets/0204d097-b446-4845-8322-d72dc1d2eac8" alt="WechatIMG119" width="300">|
 
 ### 飞书群
 
@@ -1083,3 +1083,11 @@ npx mcporter list xiaohongshu-mcp
 </table>
 
 本项目遵循 [all-contributors](https://github.com/all-contributors/all-contributors) 规范。欢迎任何形式的贡献！
+
+## 📄 许可证
+
+本项目采用 [Apache License 2.0](LICENSE) 开源。
+
+你可以自由地使用、修改和分发本项目，包括用于商业用途，只需保留原始的版权声明和许可证文件。详细条款以 [LICENSE](LICENSE) 文件为准。
+
+向本项目提交的贡献，默认按同一许可证授权。

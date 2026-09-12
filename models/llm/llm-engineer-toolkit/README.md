@@ -19,6 +19,15 @@ This repository contains a curated list of 120+ LLM libraries category wise.
 - 🩸[LLM, RAG and Agents Survey Papers Collection](https://github.com/KalyanKS-NLP/LLM-Survey-Papers-Collection) - Category wise collection of 200+ survey papers.
 
 
+## 🚀 LLM Interview Questions and Answers Book 
+Crack modern LLM and Generative AI interviews with this comprehensive, interview-focused guide designed specifically for ML Engineers, AI Engineers, Data Scientists and Software Engineers.
+
+This book features **100+ carefully curated LLM interview questions**, each paired with **clear answers and in-depth explanations** so you truly understand the concepts interviewers care about. [Get the book here](https://kalyanksnlp.gumroad.com/l/llm-interview-questions-answers-book-kalyan-ks). 
+
+Use the **Coupon Code: LLMQA25** for an exclusive discount (50%) on the book. (Available only for a short period of time). 
+
+![LLM Interview Questions and Answers Book by Kalyan KS](https://github.com/KalyanKS-NLP/llm-engineer-toolkit/blob/main/Images/LLM_Interview_QA_Book_Image_Compress.png)
+
 ## Stay Updated with Generative AI, LLMs, Agents and RAG.
 
 Join 🚀 [**AIxFunda** free newsletter](https://aixfunda.substack.com/) to get *latest updates* and *interesting tutorials* related to Generative AI, LLMs, Agents and RAG. 
@@ -57,6 +66,7 @@ Join 🚀 [**AIxFunda** free newsletter](https://aixfunda.substack.com/) to get 
 | DeepSpeed         | DeepSpeed is a deep learning optimization library that makes distributed training and inference easy, efficient, and effective. | [Link](https://github.com/deepspeedai/DeepSpeed) |
 | torchtune         | A PyTorch-native library specifically designed for fine-tuning LLMs.                             | [Link](https://github.com/pytorch/torchtune) |
 | PyTorch Lightning | A library that offers a high-level interface for pretraining and fine-tuning LLMs.               | [Link](https://github.com/Lightning-AI/pytorch-lightning) |
+| RapidFire AI      | Rapid AI experimentation framework for fine-tuning and post-training LLMs (SFT, DPO, GRPO) with hyperparallelized execution and real-time interactive control. | [Link](https://github.com/RapidFireAI/rapidfireai) |
 
 
 ## LLM Application Development
@@ -99,6 +109,7 @@ Join 🚀 [**AIxFunda** free newsletter](https://aixfunda.substack.com/) to get 
 |--------------|------------------------------------------------------------------------------------------------------|-------|
 | mem0         | The Memory layer for your AI apps.                                                                     | [Link](https://github.com/mem0ai/mem0) |
 | Memoripy     | An AI memory layer with short- and long-term storage, semantic clustering, and optional memory decay for context-aware applications. | [Link](https://github.com/caspianmoon/memoripy) |
+| Tree Ring Memory | Local-first memory lifecycle for AI agents with Rust CLI/TUI, SQLite/FTS recall, audit, consolidation, and forgetting. | [Link](https://github.com/TerminallyLazy/Tree-Ring-Memory) |
 | Letta (MemGPT)     | An open-source framework for building stateful LLM applications with advanced reasoning capabilities and transparent long-term memory | [Link](https://github.com/letta-ai/letta) |
 | Memobase     | A user profile-based memory system designed to bring long-term user memory to your Generative AI applications. | [Link](https://github.com/memodb-io/memobase) |
 
@@ -132,7 +143,7 @@ Join 🚀 [**AIxFunda** free newsletter](https://aixfunda.substack.com/) to get 
 | Library         | Description                                                                                                      | Link  |
 |---------------|----------------------------------------------------------------------------------------------------------------|-------|
 | FastGraph RAG | Streamlined and promptable Fast GraphRAG framework designed for interpretable, high-precision, agent-driven retrieval workflows. | [Link](https://github.com/circlemind-ai/fast-graphrag) |
-| Chonkie       | RAG chunking library that is lightweight, lightning-fast, and easy to use.                                      | [Link](https://github.com/chonkie-ai/chonkie) |
+| Chonkie       | RAG chunking library that is lightweight, lightning-fast, and easy to use.                                      | [Link](https://github.com/chonkie-inc/chonkie) |
 | RAGChecker    | A Fine-grained Framework For Diagnosing RAG.                                                                   | [Link](https://github.com/amazon-science/RAGChecker) |
 | RAG to Riches | Build, scale, and deploy state-of-the-art Retrieval-Augmented Generation applications.                         | [Link](https://github.com/SciPhi-AI/R2R) |
 | BeyondLLM     | Beyond LLM offers an all-in-one toolkit for experimentation, evaluation, and deployment of Retrieval-Augmented Generation (RAG) systems. | [Link](https://github.com/aiplanethub/beyondllm) |
@@ -142,6 +153,7 @@ Join 🚀 [**AIxFunda** free newsletter](https://aixfunda.substack.com/) to get 
 | Llmware       | Unified framework for building enterprise RAG pipelines with small, specialized models.                        | [Link](https://github.com/llmware-ai/llmware) |
 | Rerankers     | A lightweight unified API for various reranking models.                                                        | [Link](https://github.com/AnswerDotAI/rerankers) |
 | Vectara       | Build Agentic RAG applications.                                                                                | [Link](https://vectara.github.io/py-vectara-agentic/latest/) |
+| RapidFire AI  | Rapid AI experimentation framework for RAG and context engineering with hyperparallelized, shard-based execution and real-time interactive control. | [Link](https://github.com/RapidFireAI/rapidfireai) |
 
 
 ## LLM Inference
@@ -244,6 +256,7 @@ Join 🚀 [**AIxFunda** free newsletter](https://aixfunda.substack.com/) to get 
 | PydanticAI Evals | A powerful evaluation framework designed to help you systematically evaluate the performance of LLM applications. | [Link](https://ai.pydantic.dev/evals/) |
 | UQLM | A Python package for generation-time, zero-resource LLM hallucination using state-of-the-art uncertainty quantification techniques. | [Link](https://github.com/cvs-health/uqlm) |
 | ai-evaluation | Open-source LLM evaluation framework with 50+ metrics, LLM-as-Judge, guardrail scanners (jailbreak, PII, injection), and AutoEval pipelines with CI/CD support. | [Link](https://github.com/future-agi/ai-evaluation) |
+| StructEval | Benchmark and evaluation framework for LLM-generated structured outputs across 18 formats, with structural and visual evaluation. | [Link](https://github.com/TIGER-AI-Lab/StructEval) |
 
 
 
@@ -256,6 +269,7 @@ Join 🚀 [**AIxFunda** free newsletter](https://aixfunda.substack.com/) to get 
 | LangSmith           | Provides tools for logging, monitoring, and improving your LLM applications.                     | [Link](https://github.com/langchain-ai/langsmith-sdk) |
 | Weights & Biases (W&B) | W&B provides features for tracking LLM performance.                                          | [Link](https://github.com/wandb) |
 | Helicone            | Open source LLM-Observability Platform for Developers. One-line integration for monitoring, metrics, evals, agent tracing, prompt management, playground, etc. | [Link](https://github.com/Helicone/helicone) |
+| agenttrace          | Local-first TUI and CLI for monitoring AI coding-agent traces, costs, tokens, latency, and health regressions. | [Link](https://github.com/luoyuctl/agenttrace) |
 | Evidently          | An open-source ML and LLM observability framework.                                                | [Link](https://github.com/evidentlyai/evidently) |
 | Phoenix            | An open-source AI observability platform designed for experimentation, evaluation, and troubleshooting. | [Link](https://github.com/Arize-ai/phoenix) |
 | Observers          | A Lightweight Library for AI Observability.                                                       | [Link](https://github.com/cfahlgren1/observers) |
@@ -299,6 +313,7 @@ Join 🚀 [**AIxFunda** free newsletter](https://aixfunda.substack.com/) to get 
 | NeMo Guardrails | NeMo Guardrails is an open-source toolkit for easily adding programmable guardrails to LLM-based conversational systems. | [Link](https://github.com/NVIDIA/NeMo-Guardrails) |
 | Garak        | LLM vulnerability scanner | [Link](https://github.com/NVIDIA/garak) |
 | DeepTeam | The LLM Red Teaming Framework | [Link](https://github.com/confident-ai/deepteam)|
+| LangFair | Use-case-specific LLM bias/fairness assessments | [Link](https://github.com/cvs-health/langfair)|
 
 
 ## LLM Embedding Models
@@ -332,4 +347,3 @@ Join 🚀 [**AIxFunda** free newsletter](https://aixfunda.substack.com/) to get 
 [![Star History Chart](https://api.star-history.com/svg?repos=KalyanKS-NLP/llm-engineer-toolkit&type=Date)](https://star-history.com/#)
 
 Please consider giving a star, if you find this repository useful. 
-

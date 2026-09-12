@@ -71,7 +71,7 @@ Either path needs a capable AI coding harness — we build and run on [Claude Co
 
 **The unique features** — the parts you won't find anywhere else, plus the subsystems underneath. See them live and click through on **[ourlifeos.ai](https://ourlifeos.ai)**.
 
-<a href="https://ourlifeos.ai"><img src="images/lifeos-core-components.png" width="100%" alt="LifeOS core components — Current→Ideal State, Intent Engineering, General Hill Climbing, Euphoric Surprise, TELOS, the Algorithm, the ISA System, the Skill System, the Hook System, Pulse, Custom Spinner Verbs, and Custom Tooltips. Click to explore them live on ourlifeos.ai." /></a>
+<a href="https://ourlifeos.ai"><img src="images/lifeos-core-components.png" width="100%" alt="LifeOS core components — Current→Ideal State, Intent Engineering, General Hill Climbing, Euphoric Surprise, TELOS, the Algorithm, Arbol, Bunker, the ISA System, Cortex, Synapse, Atlas, Ledger, the Skill System, the Hook System, Pulse, Custom Spinner Verbs, and Custom Tooltips. Click to explore them live on ourlifeos.ai." /></a>
 
 ---
 
@@ -211,6 +211,10 @@ LifeOS is built in the open, and the community's pull requests, forensic bug rep
 <a href="https://github.com/jnpkr"><img src="https://avatars.githubusercontent.com/u/1964102?v=4&s=64" width="48" height="48" alt="jnpkr" title="jnpkr"></a>
 <a href="https://github.com/IJASolutions"><img src="https://avatars.githubusercontent.com/u/246399781?v=4&s=64" width="48" height="48" alt="IJASolutions" title="IJASolutions"></a>
 <a href="https://github.com/emory"><img src="https://avatars.githubusercontent.com/u/660055?v=4&s=64" width="48" height="48" alt="emory" title="emory"></a>
+<a href="https://github.com/elhoim"><img src="https://avatars.githubusercontent.com/u/178521?v=4&s=64" width="48" height="48" alt="elhoim" title="elhoim"></a>
+<a href="https://github.com/vibecrypto"><img src="https://avatars.githubusercontent.com/u/291395314?v=4&s=64" width="48" height="48" alt="vibecrypto" title="vibecrypto"></a>
+<a href="https://github.com/dactylmedia"><img src="https://avatars.githubusercontent.com/u/148711391?v=4&s=64" width="48" height="48" alt="dactylmedia" title="dactylmedia"></a>
+<a href="https://github.com/xmasyx"><img src="https://avatars.githubusercontent.com/u/16624475?v=4&s=64" width="48" height="48" alt="xmasyx" title="xmasyx"></a>
 <a href="https://github.com/maxolasersquad"><img src="https://avatars.githubusercontent.com/u/177150?v=4&s=64" width="48" height="48" alt="maxolasersquad" title="maxolasersquad"></a>
 </p>
 
@@ -221,10 +225,10 @@ LifeOS is built in the open, and the community's pull requests, forensic bug rep
 **Matt Espinoza** — Extensive testing, ideas, and feedback, plus roadmap contributions.
 
 **Code contributions (merged or ported PRs):**
-adamlevoy · anikinsasha · asdf8675309 · atabisz · chrisglick · christauff · erf1nd0r · HotSauceHacker · imrathion · jbmml · jnpkr · justinkatz94-glitch · ksylvan · m4nt0de4 · MarvinDontPanic · maxolasersquad · Mutdogus · neilinger · neilsoult · pybe · qozle · rpriven · salmanmkc · sauldataman · Seadubb · Spirotot · StarksLabs · thatsjet
+adamlevoy · anikinsasha · asdf8675309 · atabisz · chrisglick · christauff · erf1nd0r · HotSauceHacker · imrathion · jbmml · jnpkr · justinkatz94-glitch · ksylvan · m4nt0de4 · m8ryx · MarvinDontPanic · maxolasersquad · Mutdogus · neilinger · neilsoult · pybe · qozle · rathko · rpriven · runnerr0 · salmanmkc · sauldataman · Seadubb · Spirotot · StarksLabs · thatsjet · tzioup
 
 **Bug reports, fresh-install forensics, and design feedback:**
-badosanjos · bnkath2o · brycemagera · catchingknives · DAESA24 · deleyva · DennisTraub · docxology · DolphusCY · donovan-sec · DonovanJonesUK · eccentricnode · fjp-veo · harryf · hjbrandt · HyggeHacker · ichoosetoaccept · infinitelyloopy-bt · JElliottMiller · jdrolls · jlacour-git · jmmarkiewicz · karlwaldman · klausagnoletti · lexilexikon · lgangitano · luccomo · MatiasBarboza · MHoroszowski · michaelaye · mygirleatsmayo · nbost130 · NodarDavituri · NorthwoodsSentinel · packetsherpa · ricklesgibson · rikitikitavi2012-debug · Riskjuggler · simeonzickert · Steffen025 · stratofax · tzioup · vanvonlj · vichong · virtualian · vpzed · waveman2020-sudo · wojteksbt · xmasyx
+badosanjos · benoitdepaire · bnkath2o · brycemagera · catchingknives · DAESA24 · deleyva · DennisTraub · docxology · DolphusCY · donovan-sec · DonovanJonesUK · eccentricnode · fjp-veo · harryf · hjbrandt · HyggeHacker · ichoosetoaccept · infinitelyloopy-bt · jacobo-ortiz · JElliottMiller · jdrolls · jlacour-git · jmmarkiewicz · karlwaldman · klausagnoletti · lexilexikon · lgangitano · loudoguno · luccomo · MatiasBarboza · MHoroszowski · michaelaye · mygirleatsmayo · nbost130 · NodarDavituri · NorthwoodsSentinel · packetsherpa · ricklesgibson · rikitikitavi2012-debug · Riskjuggler · sbusc · simeonzickert · Steffen025 · stratofax · tzioup · vanvonlj · vichong · virtualian · vpzed · waveman2020-sudo · wojteksbt · xmasyx
 
 <sup>Refreshed with each release. If your contribution is missing, open an issue — that's a bug too.</sup>
 
@@ -254,6 +258,13 @@ badosanjos · bnkath2o · brycemagera · catchingknives · DAESA24 · deleyva ·
 <summary><strong>📜 Update History</strong></summary>
 
 <br/>
+
+**v7.28.3 — Cortex, Hermes, and hardened releases**
+- **Cortex** — the memory system, named: hot-layer memory, a typed Knowledge Archive (People, Companies, Ideas, Research), learnings, and work history, consolidated across sessions so each one starts smarter than the last.
+- **Hermes sidecar** — an optional second front door: talk to your LifeOS as an agent from a terminal, with the same constitution, identity, and skills. One brain, another way in.
+- **Named subsystems** — Synapse (the input router), Conduit and Feed (the internal and external senses), Atlas (the live asset graph), and Ledger (change tracking), each a product within the product.
+- **Release-security hardening** — three new deterministic gates (sanitizer-residue, licensed-font, dead-legacy-doc-pointer); previously-shipped commercially licensed fonts removed.
+- [Full release notes](https://github.com/danielmiessler/LifeOS/releases)
 
 **v7.1.1 — Install Awareness**
 - **Doctor** — `bun LIFEOS/TOOLS/Doctor.ts` reports the real state of every optional capability (live, broken, declined, stale) and reconciles hooks on disk against what's registered.

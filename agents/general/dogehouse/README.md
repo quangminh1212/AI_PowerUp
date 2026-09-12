@@ -24,24 +24,17 @@
 
 ---
 
-## Important DogeHouse Notice
-
-[I'm done with DogeHouse](https://www.youtube.com/watch?v=I8PkQgPiSq8)
-
 ## Structure
 
-| Codebase              |      Description          |
-| :-------------------- | :-----------------------: |
-| [kousa](kousa)        |      Elixir API           |
-| [shawarma](shawarma)  |     Voice Server          |
-| [dinner](dinner)      | Puppeteer shenanigans     |
-| [baklava](baklava)    |   Electron Wrapper        |
-| [pilaf](pilaf)        |   React Native App        |
-| [kibbeh](kibbeh)      |   Next.js frontend        |
-| [kebab](kebab)        |      API Client           |
-| [dolma](dolma)        | Chat Token Transcoder     |
-| [globalkey](globalkey)| [Baklava](baklava)'s Global Keystroke Listener |
-
+| Codebase             |      Description      |
+| :------------------- | :-------------------: |
+| [kousa](kousa)       |      Elixir API       |
+| [shawarma](shawarma) |     Voice Server      |
+| [dinner](dinner)     | Puppeteer shenanigans |
+| [baklava](baklava)   |   Electron Wrapper    |
+| [pilaf](pilaf)       |   React Native App    |
+| [kibbeh](kibbeh)     |   Next.js frontend    |
+| [kebab](kebab)       |      API Client       |
 
 ## Branches
 

@@ -25,7 +25,6 @@
 - [Quick Start](#quick-start)
 - [Use Cases](#use-cases)
 - [Documentation](#documentation)
-- [Star Us](#star-us)
 - [EverMind Ecosystems](#evermind-ecosystems)
 - [Contributing](#contributing)
 
@@ -196,18 +195,24 @@ everos demo --live
 ```
 
 Live demo mode connects to the running server and performs the real
-`/health` -> `/api/v1/memory/add` -> `/api/v1/memory/flush` ->
-`/api/v1/memory/search` flow before opening the same memory sphere UI. Use
+`/health` -> `/api/v2/memory/add` -> `/api/v2/memory/flush` ->
+`/api/v2/memory/search` flow before opening the same memory sphere UI. Use
 `--server-url <url>` if your server is not on `http://127.0.0.1:8000`.
 
 ### 5. Try Your First Memory
+
+> [!NOTE]
+> Business endpoints live under `/api/v2`. The older `/api/v1` prefix still
+> resolves to the same handlers so existing integrations keep working, but it
+> is a legacy alias that may be removed in a future major release — write new
+> code against `/api/v2`.
 
 Add a tiny conversation:
 
 ```bash
 TS=$(($(date +%s)*1000))
 
-curl -X POST http://127.0.0.1:8000/api/v1/memory/add \
+curl -X POST http://127.0.0.1:8000/api/v2/memory/add \
   -H 'Content-Type: application/json' \
   -d "{
     \"session_id\": \"demo-001\",
@@ -223,7 +228,7 @@ curl -X POST http://127.0.0.1:8000/api/v1/memory/add \
 Force extraction for the local demo:
 
 ```bash
-curl -X POST http://127.0.0.1:8000/api/v1/memory/flush \
+curl -X POST http://127.0.0.1:8000/api/v2/memory/flush \
   -H 'Content-Type: application/json' \
   -d '{"session_id":"demo-001","app_id":"default","project_id":"default"}'
 ```
@@ -231,7 +236,7 @@ curl -X POST http://127.0.0.1:8000/api/v1/memory/flush \
 Search it back:
 
 ```bash
-curl -X POST http://127.0.0.1:8000/api/v1/memory/search \
+curl -X POST http://127.0.0.1:8000/api/v2/memory/search \
   -H 'Content-Type: application/json' \
   -d '{
     "user_id": "alice",
@@ -259,7 +264,7 @@ For annotated responses and the Markdown files EverOS creates, see
 ### Optional: Ingest Multimodal Files
 
 To ingest non-text content (image / pdf / audio / office documents)
-through `/api/v1/memory/add` `content` items, install the optional
+through `/api/v2/memory/add` `content` items, install the optional
 extra:
 
 ```bash
@@ -648,23 +653,6 @@ Explore stored entities and relationships in a graph interface. Frontend demo; b
 - [docs/migration-to-1.0.0.md](docs/migration-to-1.0.0.md) — Legacy API migration notes
 - [CHANGELOG.md](CHANGELOG.md) — Release notes
 - [CONTRIBUTING.md](CONTRIBUTING.md) — How to contribute
-
-<br>
-<div align="right">
-
-[![](https://img.shields.io/badge/-Back_to_top-gray?style=flat-square)](#readme-top)
-
-</div>
-
-## Star Us
-
-If EverOS is useful to your agent stack, please star the repo. It helps more
-builders discover the project and gives the memory ecosystem a stronger signal
-to keep improving.
-
-### Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=EverMind-AI/EverOS&type=Date)](https://www.star-history.com/#EverMind-AI/EverOS&Date)
 
 <br>
 <div align="right">

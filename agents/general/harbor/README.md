@@ -17,7 +17,7 @@ https://github.com/user-attachments/assets/e4897391-c5a8-4391-93c3-9f8b76155f11
 Setup your local LLM stack effortlessly.
 
 ```bash
-# Starts fully configured Open WebUI and Ollama
+# Starts fully configured Open WebUI and llama.cpp
 harbor up
 
 # Now, Open WebUI can do Web RAG and TTS/STT
@@ -30,13 +30,13 @@ Harbor is a CLI and companion app that lets you spin up a complete local LLM sta
 
 ## News
 
+- **v0.5.5** - New Speech-to-Speech (s2s) backend service, Dify upgraded to 1.x, and a large service repair sweep restoring Open WebUI web search, OpenHands, Perplexica, mistral.rs, TGI, Nexa, and a dozen more
 - **v0.5.4** - Repairs first-boot and integration failures across 20+ services found by the new runnable integration suite, plus Boost error responses that propagate real backend status codes
 - **v0.5.3** - Boost agentic modules (`quickhop`, `deephop`, `autocheck`, `diffscope`) with `harbor launch --workflow` routing, grok CLI launch support, and faster HF downloads via `hf_transfer`
 - **v0.5.2** - Fixes `.env` corruption when several Harbor commands run at once and stops `harbor doctor` from hanging on non-interactive stdin
 - **v0.5.1** - Faster `harbor doctor` with timeout-guarded compose checks and early exit for `--check` mode
 - **v0.5.0** - DMR, MLX, oMLX, and Daytona services, llamacpp replaces Ollama as default backend, in-app guided install, agent skills CLI, tab completion, and port conflict detection
 - **v0.4.19** - Boost Anthropic and Responses API compat layers, `harbor launch` command, ik_llama.cpp service, Boost workflows and tools module
-- **v0.4.18** - Open Design and Voicebox services, with local design workflows, voice generation, Harbor backend integrations, and `harbor how` backed by mi
 
 ## Documentation
 
@@ -306,7 +306,7 @@ See [services documentation](https://github.com/av/harbor/wiki/2.-Services) for 
 
 ```bash
 # Run Harbor with default services:
-# Open WebUI and Ollama
+# Open WebUI and llama.cpp
 harbor up
 
 # Run Harbor with additional services

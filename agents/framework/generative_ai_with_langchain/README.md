@@ -1,142 +1,187 @@
-<h1 align="center">
-Generative AI with LangChain, Second Edition</h1>
-<p align="center">This is the code repository for <a href ="https://www.packtpub.com/en-us/product/generative-ai-with-langchain-second-edition-9781837022014"> Generative AI with LangChain, Second Edition</a>, published by Packt.
-</p>
+# Generative AI with LangChain, First Edition
+Build large language model (LLM) apps with Python, ChatGPT, and other LLMs!
 
-<h2 align="center">
-Build production ready LLM applications and advanced agents using Python and LangGraph 
-</h2>
-<p align="center">
-Ben Auffarth, Leonid Kuligin</p>
+This is the code repository for [Generative AI with LangChain, First Edition](https://www.packtpub.com/product/generative-ai-with-langchain/9781835083468), written by [Ben Auffarth](https://www.linkedin.com/in/ben-auffarth/?originalSubdomain=uk) and published by Packt. 
 
-<p align="center">
-   <a href="https://discord.gg/YQbX5rsc74" alt="Discord" title="Learn more on the Discord server"><img width="32px" src="https://cliply.co/wp-content/uploads/2021/08/372108630_DISCORD_LOGO_400.gif"/></a>
-  &#8287;&#8287;&#8287;&#8287;&#8287;
-  <a href="https://packt.link/free-ebook/9781837022014"><img width="32px" alt="Free PDF" title="Free PDF" src="https://cdn-icons-png.flaticon.com/512/4726/4726010.png"/></a>
- &#8287;&#8287;&#8287;&#8287;&#8287;
-  <a href="https://packt.link/gbp/9781837022014"><img width="32px" alt="Graphic Bundle" title="Graphic Bundle" src="https://cdn-icons-png.flaticon.com/512/2659/2659360.png"/></a>
-  &#8287;&#8287;&#8287;&#8287;&#8287;
-   <a href="https://amzn.to/4dErkya"><img width="32px" alt="Amazon" title="Get your copy" src="https://cdn-icons-png.flaticon.com/512/15466/15466027.png"/></a>
-  &#8287;&#8287;&#8287;&#8287;&#8287;
-</p>
-<details open> 
-  <summary><h2>About the book</summary>
-<a href="https://www.packtpub.com/en-us/product/generative-ai-with-langchain-9781837022014">
-<img src="https://content.packt.com/B32363/cover_image_small.jpg" alt="Generative AI with LangChain, 2nd Edition (2025)" height="256px" align="right">
+<a href="https://www.packtpub.com/product/generative-ai-with-langchain/9781835083468">
+<img src="https://content.packt.com/B21269/cover_image_small.png" alt="Generative AI with LangChain - first edition" height="256px" align="right">
 </a>
 
-This second edition tackles the biggest challenge facing companies in AI today: moving from prototypes to production. Fully updated to reflect the latest developments in the LangChain ecosystem, it captures how modern AI systems are developed, deployed, and scaled in enterprise environments. This edition places a strong focus on multi-agent architectures, robust LangGraph workflows, and advanced retrieval-augmented generation (RAG) pipelines.
-You'll explore design patterns for building agentic systems, with practical implementations of multi-agent setups for complex tasks. The book guides you through reasoning techniques such as Tree-of -Thoughts, structured generation, and agent handoffs—complete with error handling examples. Expanded chapters on testing, evaluation, and deployment address the demands of modern LLM applications, showing you how to design secure, compliant AI systems with built-in safeguards and responsible development principles. This edition also expands RAG coverage with guidance on hybrid search, re-ranking, and fact-checking pipelines to enhance output accuracy.
-Whether you're extending existing workflows or architecting multi-agent systems from scratch, this book provides the technical depth and practical instruction needed to design LLM applications ready for success in production environments.
-</details>
-<details open> 
-  <summary><h2>Key Learnings</summary>
-
-<ul>
-<li>Design and implement refined multi-agent systems using LangGraph</li>
-<li>Enterprise-grade testing and evaluation frameworks for LLM applications</li>
-<li>Deploy production-ready observability and monitoring solutions</li>
-<li>Build RAG systems with hybrid search and re-ranking capabilities</li>
-<li>Implement agents for software development and data analysis</li>
-<li>Work with latest LLMs and providers Google Gemini, Anthropic and Mistral, DeepSeek, and OpenAI o3-mini</li>
-<li>Optimize cost and performance across different deployment types</li>
-<li>Design secure, compliant AI systems with current best practices</li>
-</ul>
-
-  </details>
-  <details open>
-<summary><h2>Note to Readers</summary>
-
+## Note to Readers
 Thank you for choosing "Generative AI with LangChain"! We appreciate your enthusiasm and feedback.
 
-Please note that we've released several updated versions of the code to keep pace with the ecosystem. Consequently, there are four different branches for this repository: 
-* [v1](https://github.com/benman1/generative_ai_with_langchain/tree/v1) - **Latest Migration**: Updates for LangChain v1.0 and 2026 model standards (Python 3.12+).
-* [2nd edition](https://github.com/benman1/generative_ai_with_langchain/tree/second_edition) - Corresponds to the 2nd edition print, utilizing LangChain v0.3.
-* [softupdate](https://github.com/benman1/generative_ai_with_langchain/tree/softupdate) - this is for the soft update of the book (2024), corresponding to ver 0.1.13 of LangChain.
-* [main](https://github.com/benman1/generative_ai_with_langchain/tree/main) - this is the original version of the book (December 2023).
+**Please note that we've released an update of the book that includes significant updates.** These is be available for anyone who has bought the book before the new release as an electronic copy. Consequently, there are two different branches for this repository: 
+* [main](https://github.com/benman1/generative_ai_with_langchain/tree/main) - this is the original version of the book.
+* [softupdate](https://github.com/benman1/generative_ai_with_langchain/tree/softupdate) - this is for the latest update of the book, corresponding to version 0.1.13 of LangChain.
 
 Please refer to the version that you are interested in or that corresponds to your version of the book.
-</details>
 
-<details open>
-<summary><h3>Download a free PDF <img alt="Coding" height="25" width="40" src="https://emergency.com.au/wp-content/uploads/2021/03/free.gif"></summary>
-Download a free PDF <img alt="Coding" height="25" width="40" src="https://emergency.com.au/wp-content/uploads/2021/03/free.gif">
+### Download a free PDF <img alt="Coding" height="25" width="40" src="https://emergency.com.au/wp-content/uploads/2021/03/free.gif">
 
 _If you have already purchased an up-to-date print or Kindle version of this book, you can get a DRM-free PDF version at no cost. Simply click on the link to claim your free PDF._
-[Free-Ebook](https://packt.link/free-ebook/9781837022014) <img alt="Coding" height="15" width="35"  src="https://media.tenor.com/ex_HDD_k5P8AAAAi/habbo-habbohotel.gif">
+[Free-Ebook](https://packt.link/free-ebook/9781835083468) <img alt="Coding" height="15" width="35"  src="https://media.tenor.com/ex_HDD_k5P8AAAAi/habbo-habbohotel.gif">
 
-We  provide a PDF file that has color images of the screenshots/diagrams used in this book at [GraphicBundle](https://packt.link/gbp/9781837022014) <img alt="Coding" height="15" width="35"  src="https://media.tenor.com/ex_HDD_k5P8AAAAi/habbo-habbohotel.gif">
-</details>
+We also provide a PDF file that has color images of the screenshots/diagrams used in this book at [GraphicBundle](https://packt.link/gbp/9781835083468) <img alt="Coding" height="15" width="35"  src="https://media.tenor.com/ex_HDD_k5P8AAAAi/habbo-habbohotel.gif">
 
-<details open>
-<summary><h3>Commitment</summary>
+### Commitment
+<b>Code Updates: </b> 
+Our commitment is to provide you with stable and valuable code examples. While LangChain is known for frequent updates, we understand the importance of aligning our code with the latest changes. The companion repository is regularly updated to harmonize with LangChain developments. </b>
 
-<b>Code Updates:</b> Our commitment is to provide you with stable and valuable code examples. While LangChain is known for frequent updates, we understand the importance of aligning our code with the latest changes. The companion repository is regularly updated to harmonize with LangChain developments.
+<b>Expect Stability:</b>
+For stability and usability, the repository might not match every minor LangChain update. We aim for consistency and reliability to ensure a seamless experience for our readers. 
 
-<b>Expect Stability:</b> For stability and usability, the repository might not match every minor LangChain update. We aim for consistency and reliability to ensure a seamless experience for our readers. 
-
-<b>How to Reach Us:</b> Encountering issues or have suggestions? Please don't hesitate to open an issue, and we'll promptly address it. Your feedback is invaluable, and we're here to support you in your journey with LangChain.
+<b>How to Reach Us:</b>
+Encountering issues or have suggestions? Please don't hesitate to open an issue, and we'll promptly address it. Your feedback is invaluable, and we're here to support you in your journey with LangChain.
 Thank you for your understanding and happy coding!
-</details>
 
-<details open> 
-   <summary><h3>Know more on the Discord server <img alt="Coding" height="25" width="32"  src="https://cliply.co/wp-content/uploads/2021/08/372108630_DISCORD_LOGO_400.gif"></summary>
+#### Know more on the Discord server <img alt="Coding" height="25" width="32"  src="https://cliply.co/wp-content/uploads/2021/08/372108630_DISCORD_LOGO_400.gif">
+You can get more engaged on the discord server for more latest updates and discussions in the community at [Discord](https://packt.link/lang)
 
-You can engage with the author and other readers on the discord server and find latest updates and discussions in the community at [Discord](https://discord.gg/YQbX5rsc74)
-</details>
+## Software and hardware list
+This is the companion repository for the book. Here are a few instructions that help getting set up. Please also see chapter 3. 
 
-<details open> 
-  <summary><h2>Chapters</summary>
+All chapters rely on Python. 
 
-In the following table, you can find links to the directories in this repository. Each directory contains further links to python scripts and to notebooks. You can also see links to computing platforms, where you can execute the notebooks in the repository. Please note that there are other Python scripts and projects that are not notebooks, which you'll find in the chapter directories.
+| Chapter | Software required    | Link to the software    | Hardware specifications    | OS required    |
+|:---:  |:---:  |:---:  |:---:  |:---:  |
+| All chapters  | Python 3.11  | [https://www.python.org/downloads/](https://www.python.org/downloads/) | Should work on any recent computer | Windows, MacOS, Linux (any), macOS, Windows |
 
-| Chapter | Title | Directory Link |
-|---------|-------|----------------|
-| Chapter 1 | The Rise of Generative AI: From Language Models to Agents | [chapter1/](./chapter1) |
-| Chapter 2 | First Steps with LangChain | [chapter2/](./chapter2) |
-| Chapter 3 | Building Workflows with LangGraph | [chapter3/](./chapter3) |
-| Chapter 4 | Building Intelligent RAG Systems with LangChain | [chapter4/](./chapter4) |
-| Chapter 5 | Building Intelligent Agents | [chapter5/](./chapter5) |
-| Chapter 6 | Advanced Applications and Multi-Agent Systems | [chapter6/](./chapter6) |
-| Chapter 7 | Software Development and Data Analysis Agents | [chapter7/](./chapter7) |
-| Chapter 8 | Evaluation and Testing of LLM Applications | [chapter8/](./chapter8) |
-| Chapter 9 | Production Deployment and Observability | [chapter9/](./chapter9) |
+Please note that Python 3.12 might not work (see [#11](/../../issues/11)).
 
-</details>
+## Environment
+You can install your local environment with conda (recommended) or pip. The environment configurations for conda and pip are provided. Please note that if you choose pip as you installation tool, you might need additional tweaking.
+
+If you have any problems with the environment, please raise an issue, where you show the error you got. If you feel confident, please go ahead and create a pull request.
+
+For pip and poetry, make sure you install pandoc in your system. On MacOS use brew:
+```bash
+brew install pandoc
+```
+
+On Ubuntu or Debian linux, use apt:
+```bash
+sudo apt-get install pandoc
+```
+
+On Windows, you can use an [installer](https://github.com/jgm/pandoc/releases/latest).
+
+### Conda
+This is the recommended method for installing dependencies. Please make sure you have [anaconda](https://www.anaconda.com/download) installed.
+
+First create the environment for the book that contains all the dependencies:
+```bash
+conda env create --file langchain_ai.yaml --force
+```
+
+The conda environment is called `langchain_ai`. You can activate it as follows:
+```bash
+conda activate langchain_ai 
+```
+
+### Pip
+[Pip](https://pypi.org/project/pip/) is the default dependency management tool in Python. With pip, you should be able to install all the libraries from the requirements file:
+
+```bash
+pip install -r requirements.txt
+```
+
+If you are working with a slow internet connection, you might see a timeout with pip (this can also happen with conda and pip). As a workaround, you can increase the timeout setting like this:
+```bash
+export PIP_DEFAULT_TIMEOUT=100
+```
+
+### Docker
+There's a [docker](https://www.docker.com/) file for the environment as well. It uses the docker environment and starts an ipython notebook. To use it, first build it, and then run it:
+
+```bash
+docker build -t langchain_ai .
+docker run -d -p 8888:8888 langchain_ai
+```
+
+You should be able to find the notebook in your browser at [http://localhost:8888](http://localhost:8888).
+
+### Poetry
+
+Make sure you have [poetry](https://python-poetry.org/) installed. On Linux and MacOS, you should be able to use the requirements file:
+```bash
+poetry install --no-root
+```
+This should take the `pyproject.toml` file and install all dependencies.
+
+## Setting API keys
+Following best practices regarding safety, I am not committing my credentials to GitHub. You might see `import` statements  mentioning a `config.py` file, which is not included in the repository. This module has a method `set_environment()` that sets all the keys as environment variables like this:
+
+Example config.py:
+
+```python
+import os
+
+def set_environment():
+     os.environ['OPENAI_API_KEY']='your-api-key-here'
+```
+
+Obviously, you'd put your API credentials here. Depending on the integration (Openai, Azure, etc) you need to add the corresponding API keys. The OpenAI API keys are the most often used across all the code. 
+
+You can find more details about API credentials and setup in chapter 3 of the book [Generative AI with LangChain](https://www.amazon.com/Generative-AI-LangChain-language-ChatGPT-ebook/dp/B0CBBL55PQ).
 
 
-<details open> 
-  <summary><h2>Requirements for this book</summary>
-  
-### Software and hardware list
-This is the companion repository for the book. Here are a few instructions that help getting set up. Please also see chapter 2. 
+## Contributing
 
-All chapters rely on Python (3.12 or higher is recommended for the `v1` branch).
+If you find anything amiss with the notebooks or dependencies, please feel free to create a pull request.
 
-Please check the instructions for setting up the environment either in the book or [here](./SETUP.md). They include instructions for dependencies and API keys. **Following the instructions should make sure that you don't have any issues running the code in the book or this repository. If you encounter any issues, please make sure you've followed these instructions.**
+If you want to change the conda dependency specification (the yaml file), you can test it like this:
+```bash
+conda env create --file langchain_ai.yaml --force
+```
+
+You can update the pip requirements like this:
+```bash
+pip freeze > requirements.txt
+```
+
+Please make sure that you keep these two ways of maintaining dependencies in sync.
+
+Then make sure, you test the notebooks in the new environment to see that they run.
+
+### Code validation
+I've included a `Makefile` that includes instructions for validation with flake8, mypy, and other tools. I have run mypy like this:
+```bash
+make typecheck
+```
+
+To run the code validation in ruff, please run
+```bash
+ruff check .
+```
+
+# Generative AI with LangChain 
+Create generative AI apps with LangChain.
+
+## About the book
+
+ChatGPT and the GPT models by OpenAI have brought about a revolution not only in how we write and research but also in how we can process information. This book discusses the functioning, capabilities, and limitations of LLMs underlying chat systems, including ChatGPT and Bard. It also demonstrates, in a series of practical examples, how to use the LangChain framework to build production-ready and responsive LLM applications for tasks ranging from customer support to software development assistance and data analysis – illustrating the expansive utility of LLMs in real-world applications.
+
+Unlock the full potential of LLMs within your projects as you navigate through guidance on fine-tuning, prompt engineering, and best practices for deployment and monitoring in production environments. Whether you're building creative writing tools, developing sophisticated chatbots, or crafting cutting-edge software development aids, this book will be your roadmap to mastering the transformative power of generative AI with confidence and creativity.
 
 
-## 👋 Contribute
+## Key Takeaways
+- Understand LLMs, their strengths and limitations
+- Grasp generative AI fundamentals and industry trends
+- Create LLM apps with LangChain like question-answering systems and chatbots
+- Understand transformer models and attention mechanisms
+- Automate data analysis and visualization using pandas and Python
+- Grasp prompt engineering to improve performance
+- Fine-tune LLMs and get to know the tools to unleash their power
+- Deploy LLMs as a service with LangChain and apply evaluation strategies
+- Privately interact with documents using open-source LLMs to prevent data leaks
 
-We welcome contributions from developers of all levels. If you'd like to contribute, please check our [contributing guidelines](./CONTRIBUTING.md) and help make this repository and the book more accessible.
+## Outline and Chapter Summary
 
----
-[![Star History Chart](https://api.star-history.com/svg?repos=benman1/generative_ai_with_langchain&type=Timeline)](https://star-history.com/#benman1/generative_ai_with_langchain&Date)
+This book is a comprehensive introduction to LLMs and LangChain, demystifying the basic mechanics of LangChain, its functionalities, and the myriad of applications it can be integrated into.
 
+> If you feel this book is for you, get your [copy](https://amzn.to/3IZevQC) today! <img alt="Coding" height="15" width="35"  src="https://media.tenor.com/ex_HDD_k5P8AAAAi/habbo-habbohotel.gif">
 
-## ❤️ Contributors
+## Get to know the Author
+_Ben Auffarth_ A seasoned data science leader with a background and Ph.D. in computational neuroscience. Ben has analyzed terabytes of data, simulated brain activity on supercomputers with up to 64k cores, designed and conducted wet lab experiments, built production systems processing underwriting applications, and trained neural networks on millions of documents. He’s the author of the books Machine Learning for Time Series and Artificial Intelligence with Python
+Cookbook. He now works in insurance at Hastings Direct.
 
-[![repo contributors](https://contrib.rocks/image?repo=benman1/generative_ai_with_langchain)](https://github.com/benman1/generative_ai_with_langchain/graphs/contributors)
-
-A special thank you to [Leslie Pan](https://github.com/leslie-zi-pan) for leading the migration to LangChain v1.0 and updating the repository.
-
-<details> 
-  <summary><h2>Get to know Authors</h2></summary>
-
-_Ben Auffarth_ Ben Auffarth is a full-stack data scientist with more than 15 years of work experience. With a background and Ph.D. in computational and cognitive neuroscience, he has designed and conducted wet lab experiments on cell cultures, analyzed experiments with terabytes of data, run brain models on IBM supercomputers with up to 64k cores, built production systems processing hundreds and thousands of transactions per day, and trained language models on a large corpus of text documents. He co-founded and is the former president of Data Science Speakers, London.
-
-_Leonid Kuligin_ Leonid Kuligin is a staff AI engineer at Google Cloud, working on generative AI and classical machine learning solutions (such as demand forecasting or optimization problems). Leonid is one of the key maintainers of Google Cloud integrations on LangChain, and a visiting lecturer at CDTM (TUM and LMU). Prior to Google, Leonid gained more than 20 years of experience in building B2C and B2B applications based on complex machine learning and data processing solutions such as search, maps, and investment management in German, Russian, and US technological, financial, and retail companies.
-
-
-
-</details>

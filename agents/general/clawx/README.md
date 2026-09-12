@@ -93,8 +93,6 @@ ClawX is built directly upon the official **OpenClaw** core. Instead of requirin
 
 We are committed to maintaining strict alignment with the upstream OpenClaw project, ensuring that you always have access to the latest capabilities, stability improvements, and ecosystem compatibility provided by the official releases.
 
-When Developer Mode is enabled, the sidebar also provides a native Dreams page for OpenClaw memory review, dream diary inspection, and basic maintenance actions. The full upstream OpenClaw Dreams UI remains available from that page when deeper diagnostics are needed.
-
 ---
 
 ## Features
@@ -103,11 +101,18 @@ When Developer Mode is enabled, the sidebar also provides a native Dreams page f
 Complete the entire setup—from installation to your first AI interaction—through an intuitive graphical interface. No terminal commands, no YAML files, no environment variable hunting.
 
 ### 💬 Intelligent Chat Interface
-Communicate with AI agents through a modern chat experience. Support for multiple conversation contexts, message history, rich content rendering with Markdown (including GitHub-flavored tables and KaTeX-powered LaTeX math: `$inline$`, `$$block$$`, `\(inline\)`, and `\[block\]`), and direct `@agent` routing in the main composer for multi-agent setups.
+Communicate with AI agents through a modern chat experience. Support for multiple conversation contexts, message history, assistant replies rendered as streaming Markdown with syntax-highlighted fenced code, CJK-aware parsing, GitHub-flavored tables, and KaTeX-powered LaTeX math (`$inline$`, `$$block$$`, `\(inline\)`, and `\[block\]`) while user input remains literal text, and direct `@agent` routing in the main composer for multi-agent setups. Fenced code preserves source line breaks, soft-wraps long lines, and provides a localized copy action after streaming completes.
 Skills you insert from the composer appear as `/skill-name` chips; click a chip to open the preview sidebar and read that skill's `SKILL.md`.
 When you target another agent with `@agent`, ClawX switches into that agent's own conversation context directly instead of relaying through the default agent. Agent workspaces stay separate by default, and stronger isolation depends on OpenClaw sandbox settings.
-The session sidebar is workspace-first: the default workspace stays at the top, other workspaces sort naturally, each workspace can collapse or load more sessions, and rows show relative activity until hover reveals actions. Imported workspaces can be renamed from their sidebar header; the custom name is reflected in the chat composer while hovering the header still reveals the filesystem path. Editable chats expose the composer workspace chip as a small menu for returning to the default workspace or choosing another folder. If a saved workspace folder was moved or deleted, Chat pauses session creation and prompts you to choose an existing folder instead of repeatedly retrying the missing path. Unavailable non-default groups are marked in the sidebar and can be removed after confirmation; this permanently deletes every session in that group.
+The session sidebar is workspace-first: the default workspace stays at the top, other workspaces sort naturally, and each workspace can collapse or load more sessions. A row shows a spinner while the AI is replying, a blue dot when an unseen reply finishes, and its relative activity time after the conversation is opened; hovering still reveals row actions. Imported workspaces can be renamed from their sidebar header; the custom name is reflected in the chat composer while hovering the header still reveals the filesystem path. When available, a new chat inherits the selected conversation's workspace while remaining editable until first send. Editable new or unbound chats expose the composer workspace chip as a small menu that lists recent and known-session workspaces, returns to the default workspace, or chooses another folder. If a saved workspace folder was moved or deleted, Chat pauses session creation and prompts you to choose an existing folder instead of repeatedly retrying the missing path. Unavailable non-default groups are marked in the sidebar and can be removed after confirmation; this permanently deletes every session in that group. A session row is removed and navigation changes only after permanent deletion succeeds; failed deletions leave the conversation and confirmation open for retry. Synthetic OpenClaw UUID-date fallback titles are treated as missing only when they match the session ID, then replaced with the conversation's first user prompt instead of being persisted as the session name.
 Each agent can also override its own `provider/model` runtime setting; agents without overrides continue inheriting the global default model.
+
+The Workspace and Preview tabs in Chat's right panel provide read-only previews for Markdown, `.docx`, and `.pptx` files. Markdown file previews use the same syntax-highlighted, soft-wrapped, copyable fenced code, CJK-aware parsing, and KaTeX math support in static rendering mode. The Preview header can expand the selected file to the full ClawX viewport; use the same control or Escape to return to the panel. Legacy `.doc` and `.ppt` files continue to open through the operating system instead of inline. DOCX pagination may differ from Microsoft Word, and PPTX previews do not support animations, transitions, or media playback. Office files larger than 20 MB are not previewed inline.
+
+### Local HTML Preview
+The Chat right panel has Workspace, Preview, and Changes tabs; it no longer includes a general Web Browser, Home page, or address bar. Authorized local `.html` and `.htm` attachments, file activities, and Workspace files open in Preview by default. Their file actions let you choose the built-in Preview or a system application, and the Preview header can open the current HTML file in the system browser.
+
+All links are non-clickable. Links rendered by ClawX appear as ordinary text, and links inside HTML Preview have their styling and pointer interaction removed. HTML Preview also blocks forms, script navigation, redirects, hash navigation, popups, downloads, network requests, and device permissions. It can render self-contained local HTML but cannot leave the selected document.
 
 ### 📡 Multi-Channel Management
 Configure and monitor multiple AI channels simultaneously. Each channel operates independently, allowing you to run specialized agents for different tasks.
@@ -132,7 +137,7 @@ For **Custom** providers used with OpenAI-compatible gateways, you can set a cus
 When you edit or switch providers, ClawX preserves existing per-model capability metadata such as `input: ["text", "image"]`. Newly selected Custom-provider models use OpenClaw onboarding-compatible image-input inference, with unknown models defaulting to text-only.
 Custom-provider model rows also receive an explicit `contextWindow` (inferred from the model family, e.g. `gpt-5.x` → 272k), and rows saved by older versions are backfilled on startup, so OpenClaw can compact long sessions before they fail with "Context overflow" errors. When you have no compaction config, ClawX seeds `agents.defaults.compaction.mode = "safeguard"` and `reserveTokensFloor = 50000`; rows or configs you authored yourself are never modified (except a missing `reserveTokensFloor` may be backfilled).
 Z.AI (CN / Global) maps to OpenClaw's built-in `zai` provider (`ZAI_API_KEY`). Default model is `glm-5.2`. Use the Code Plan preset for Coding Plan endpoints (`…/api/coding/paas/v4`) or the normal API endpoints (`…/api/paas/v4`); CN and Global are mutually exclusive because they share one OpenClaw runtime key.
-When a compatible gateway rejects `/models` for non-auth reasons, ClawX automatically falls back to a lightweight `/chat/completions` or `/responses` probe during API key validation.
+When a compatible gateway rejects `/models` for non-auth reasons, ClawX automatically falls back to a lightweight `/chat/completions` or `/responses` probe using the configured model during API key validation.
 
 ### 🌙 Adaptive Theming
 Light mode, dark mode, or system-synchronized themes. ClawX adapts to your preferences automatically.
@@ -183,8 +188,8 @@ When you launch ClawX for the first time, the **Setup Wizard** will guide you th
 
 The wizard preselects your system language when it is supported, and falls back to English otherwise.
 
-> Note for Moonshot (Kimi): ClawX keeps Kimi web search enabled by default.  
-> When Moonshot is configured, ClawX also syncs Kimi web search to the China endpoint (`https://api.moonshot.cn/v1`) in OpenClaw config.
+> Web search note: ClawX disables OpenClaw's general-purpose `web_search` tool at both the agent and Gateway policy layers.
+> This includes Moonshot (Kimi) search; managed browser automation and `web_fetch` remain available.
 
 ### Proxy Settings
 
@@ -221,17 +226,22 @@ Notes:
 
 ClawX employs a **dual-process architecture** with a unified host API layer. The renderer talks to a single client abstraction, while Electron Main owns protocol selection and process lifecycle:
 
+Electron Main also owns OpenClaw configuration delivery. While the Gateway is running, ClawX reads the authoritative `config.get` snapshot and commits changes with `config.set`; while it is stopped or starting, the same coordinator updates the resolved JSON5 config file without starting the Gateway. Ordinary provider, agent, channel, binding, skill, and model changes therefore do not replace the Gateway process. Full restarts remain for process-launch environment changes such as proxy settings and explicit user actions. Confirmed process exits and WebSocket closes retain their existing automatic reconnect paths. The first nine consecutive WebSocket heartbeat misses remain diagnostic-only so brief pong delays do not interrupt long-running work; a pong or any incoming message resets the count, while a tenth consecutive miss requests guarded automatic Gateway recovery. Auth-profile SQLite updates use OpenClaw's `secrets.reload` RPC so running agents see new credentials without a process restart.
+
 Chat uses an ACP stdio bridge owned by Electron Main. Renderer receives typed host events and renders an in-memory ACP timeline. Gateway remains responsible for non-Chat capabilities such as providers, models, skills, workspace, settings, diagnostics, and media configuration.
 
 An unfinished ACP response keeps streaming when you open another conversation or page. Returning before it finishes restores the latest in-memory timeline and continues the live response; once it finishes, normal ACP history replay remains the source of truth.
 
-ACP Chat renders standard ACP resources as attachments. User-selected images appear as thumbnails with a filename hover overlay, while other available attachment cards show the filename and a muted, truncating source path. When the current OpenClaw ACP adapter omits assistant media, explicit assistant `MEDIA:` directives can also be recovered as attachment cards without displaying the raw directive. Existing local file references, including paths outside the active workspace, are revalidated in Electron Main for the exact session and generation before every preview or open. Supported local files preview in-app; other local files open in the system application after a user click; remote HTTP and HTTPS attachments open externally after a user click. Bare or inline prose paths are not treated as attachments.
+ACP assistant turns show whole-turn duration. Live timing follows the client-observed prompt lifecycle and survives in-app navigation; historical timing is derived in Electron Main from bounded OpenClaw transcript timestamps and only annotates a turn already restored by ACP replay.
+
+ACP Chat renders standard ACP resources as attachments. User-selected images appear as thumbnails with a filename hover overlay, while other available attachment cards show the filename and a muted, truncating source path. When the current OpenClaw ACP adapter omits assistant media, canonical persisted OpenClaw media facts and explicit assistant `MEDIA:` directives can also be recovered as attachment cards without displaying transcript-only metadata. Existing local file references, including paths outside the active workspace, are revalidated in Electron Main for the exact session and generation before every preview or open. Previewable local attachments produced by the AI, including `.docx` and `.pptx` files within the 20 MB inline-preview limit, keep their primary read-only in-app preview action and provide a secondary menu for opening with compatible applications or revealing the file in Finder, File Explorer, or the system file manager. For local HTML attachments, that menu starts with an action that opens the file in the right-side Preview tab. The same Office limitations apply here: `.doc` and `.ppt` remain system-open formats, DOCX pagination may differ from Microsoft Word, and PPTX animations, transitions, and media playback are unsupported. Compatible-application discovery is available only on macOS and Windows and silently degrades to reveal-only behavior on Linux or when discovery fails. Other local files, including Office files larger than 20 MB, open in the system application after a user click. User-selected folder attachments also remain available after send and open in the system file manager; ClawX does not read or preview their contents. Remote HTTP and HTTPS attachments open externally after a user click. Bare or inline prose paths without canonical media facts are not treated as attachments.
 
 ACP Chat can also display generated image previews when image-generation media is delivered by the runtime as trusted structured media. Trusted OpenClaw internal-UI deliveries and task-correlated final replies preserve the original user-facing completion text, including text-only failure explanations, rather than replacing it with a generic image caption. During historical OpenClaw replay, assistant image `MEDIA:` markers are promoted to the inline image experience only when they follow a recorded image-generation task start for that session. ClawX loads previews through host media handling in Electron Main, not arbitrary Renderer filesystem access. Standard ACP image and resource content remains the preferred path and renders directly.
 
 ### ACP File Activity Semantics
 
 - File activity is projected from successful, completed OpenClaw `write`, `edit`, and `apply_patch` calls. Tool recognition follows the official OpenClaw Chat UI; filtering to completed calls is specific to ClawX.
+- Created and modified activity rows use the same file-card shell and **Open with** menu as previewable assistant attachments while retaining their status and optional `+/-` summary. For HTML files, the first menu item opens the file in the right-side Preview tab. Deleted rows keep only the **Changes** action. Every application-list, selected-application, and reveal request is independently revalidated in Electron Main from the workspace root and relative path; tool-derived paths never become attachments or expose canonical native paths to Renderer.
 - A `write` is shown as the tool declares it: a creation with an all-added diff, even if the path may already exist.
 - **Changes** is a chronological, session-level record of tool-declared activity. It is not Git output or a verified diff against a source baseline.
 - For each file, Changes renders at most one diff editor per assistant turn. Sequential fragments are composed when safe; independent fragments share one concatenated editor without claiming a complete-file baseline.
@@ -257,7 +267,7 @@ ACP Chat can also display generated image previews when image-generation media i
 │  │  • Modern component-based UI (React 19)                    │  │
 │  │  • State management with Zustand                           │  │
 │  │  • Unified host-api/api-client calls                       │  │
-│  │  • Rich Markdown rendering                                 │  │
+│  │  • Markdown assistant replies, literal user input           │  │
 │  └────────────────────────────────────────────────────────────┘  │
 └──────────────────────────────┬───────────────────────────────────┘
                                │
@@ -298,7 +308,7 @@ ACP Chat can also display generated image previews when image-generation media i
 - Single-instance protection uses Electron's lock plus a local process-file lock fallback, preventing duplicate app launch in environments where desktop IPC/session bus is unstable.
 - During rolling upgrades, mixed old/new app versions can still have asymmetric protection behavior. For best reliability, upgrade all desktop clients to the same version.
 - The OpenClaw Gateway listener should still be **single-owner**: only one process should listen on `127.0.0.1:18789`.
-- Gateway readiness is based on OpenClaw core signals such as `system-presence`, `health`, and `status`; memory, Dreams, or channel failures are shown as capability degradation instead of global Gateway failure.
+- Gateway readiness is based on OpenClaw core signals such as `system-presence`, `health`, and `status`; memory or channel failures are shown as capability degradation instead of global Gateway failure.
 - To verify the active listener:
   - macOS/Linux: `lsof -nP -iTCP:18789 -sTCP:LISTEN`
   - Windows (PowerShell): `Get-NetTCPConnection -LocalPort 18789 -State Listen`
@@ -326,7 +336,7 @@ Chain multiple skills together to create sophisticated automation pipelines. Pro
 
 ### Prerequisites
 
-- **Node.js**: 22.19+ (LTS recommended)
+- **Node.js**: 22.22.3+, 24.15.0+, or 25.9.0+ within the corresponding supported major line (Node 24 LTS recommended)
 - **Package Manager**: pnpm 9+ (recommended) or npm
 - **Linux (Ubuntu/Debian)**: Install required system libraries before running Electron:
   ```bash
@@ -375,6 +385,8 @@ pnpm typecheck            # TypeScript validation
 pnpm test                 # Run unit tests
 pnpm run test:e2e         # Run Electron E2E smoke tests with Playwright
 pnpm run test:e2e:headed  # Run Electron E2E tests with a visible window
+pnpm run perf:chat        # Capture synthetic Chat Renderer/Main CPU profiles
+pnpm run profile:main     # Launch the built app with Main inspector on port 9229
 pnpm run comms:replay     # Compute communication replay metrics
 pnpm run comms:baseline   # Refresh communication baseline snapshot
 pnpm run comms:compare    # Compare replay metrics against baseline thresholds
@@ -389,6 +401,14 @@ pnpm package:linux        # Package for Linux
 ```
 
 On headless Linux, run Electron tests under a display server such as `xvfb-run -a pnpm run test:e2e`.
+
+### Electron Performance Diagnostics
+
+`pnpm run perf:chat` runs isolated synthetic ACP workloads for streaming and for rich static Markdown sidebar/scroll interaction. It writes versioned metrics plus Renderer and Main CPU profiles under the Playwright `test-results/` directory. The Renderer profiles cover the production store/render path and frame pacing. The streaming Main profile measures Main-to-Renderer IPC fanout; the interaction Main profile shows whether Main remains idle while Renderer interactions run. Neither includes the upstream OpenClaw/ACP subprocess or GPU-process paths. Open a CPU profile in Chrome DevTools; the artifacts contain generated fixture text only and are not product telemetry. Results are hardware-dependent, so compare repeated runs on the same machine instead of applying one cross-platform absolute threshold.
+
+For a live Renderer recording, start development with `CLAWX_REMOTE_DEBUGGING_PORT=9223 pnpm dev` and attach Playwright or Chrome DevTools to `localhost:9223`. For a live Electron Main recording, run `pnpm run profile:main`, open `chrome://inspect`, configure `localhost:9229`, and select the Electron Main target. Leave `CLAWX_GATEWAY_WS_TRACE` unset unless WebSocket tracing itself is being measured.
+
+ClawX leaves Chromium hardware acceleration enabled by default so long documents, scrolling, and layout animations can use GPU compositing and rasterization. Chromium still honors the native `--disable-gpu` command-line switch as a troubleshooting fallback for a machine with a broken graphics driver.
 
 ### Communication Regression Checks
 

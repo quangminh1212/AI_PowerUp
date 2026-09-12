@@ -13,7 +13,7 @@ This list is for developers who want to:
 
 This is not a comprehensive directory of AI products. Every entry must clear an absolute quality bar for technical depth, practical value, evidence, and distinctiveness. Categories are not quotas, and a short category is better than one padded with weak choices.
 
-The list is reviewed weekly by an evidence-backed automation that proposes small changes for human review. See [how resources are evaluated](CURATION.md).
+The list is reviewed weekly by an evidence-backed automation that independently reviews, validates, and merges small changes. See [how resources are evaluated](CURATION.md).
 
 ## Learn
 
@@ -21,6 +21,7 @@ The list is reviewed weekly by an evidence-backed automation that proposes small
 
 - [Artificial Intelligence: A Modern Approach](https://aima.cs.berkeley.edu/): The broad reference for classical AI, including search, reasoning, planning, learning, and robotics.
 - [Reinforcement Learning: An Introduction](https://web.stanford.edu/class/psych209/Readings/SuttonBartoIPRLBook2ndEd.pdf): Sutton and Barto's foundational treatment of reinforcement learning concepts and algorithms.
+- [Machine Learning Bookcamp](https://www.manning.com/books/machine-learning-bookcamp): A project-based introduction to building and deploying machine learning systems by Alexey Grigorev.
 - [Designing Machine Learning Systems](https://www.oreilly.com/library/view/designing-machine-learning/9781098107956/): Scalable, maintainable machine learning systems by Chip Huyen.
 - [AI Engineering](https://www.oreilly.com/library/view/ai-engineering/9781098166298/): Building applications with foundation models by Chip Huyen.
 - [Build a Large Language Model from Scratch](https://www.manning.com/books/build-a-large-language-model-from-scratch): Implement transformers in PyTorch with Sebastian Raschka.
@@ -72,6 +73,11 @@ The list is reviewed weekly by an evidence-backed automation that proposes small
 - [12-Factor Agents](https://github.com/humanlayer/12-factor-agents): Practical principles for building controllable LLM applications around deterministic software.
 - [OWASP Top 10 for LLM Applications](https://genai.owasp.org/llm-top-10/): Risks and mitigations for developing and deploying generative AI applications.
 
+### Protocols and interoperability
+
+- [Model Context Protocol](https://modelcontextprotocol.io/specification/2026-07-28): The open specification for connecting AI applications to external tools, data sources, prompts, and interactive apps.
+- [Agent2Agent Protocol](https://a2a-protocol.org/latest/specification/): A vendor-neutral specification for agent discovery, task delegation, streaming, asynchronous updates, and cross-platform communication.
+
 ### Agent frameworks
 
 - [Pydantic AI](https://ai.pydantic.dev/): Typed agent development built around Pydantic.
@@ -105,6 +111,10 @@ The list is reviewed weekly by an evidence-backed automation that proposes small
 - [Langfuse](https://langfuse.com/docs): Tracing, evaluation, prompt management, and metrics for LLM applications.
 - [vLLM](https://docs.vllm.ai/): An inference and serving engine for language models.
 - [LiteLLM](https://docs.litellm.ai/): A model gateway and unified interface for multiple model providers.
+
+### Speech and audio
+
+- [FunASR](https://github.com/modelscope/FunASR): Speech recognition toolkit with streaming ASR, VAD, punctuation, speaker diarization, and OpenAI-compatible serving for voice AI applications.
 
 ## Agentic software engineering
 

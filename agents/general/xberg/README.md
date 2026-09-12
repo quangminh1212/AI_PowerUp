@@ -23,8 +23,8 @@
   <a href="https://github.com/xberg-io/xberg/tree/main/packages/go">
     <img src="https://img.shields.io/github/v/tag/xberg-io/xberg?label=Go&color=007ec6&filter=v1*" alt="Go">
   </a>
-  <a href="https://www.nuget.org/packages/Xberg/">
-    <img src="https://img.shields.io/nuget/v/Xberg?label=C%23&color=007ec6" alt="C#">
+  <a href="https://www.nuget.org/packages/XbergIo.Xberg/">
+    <img src="https://img.shields.io/nuget/v/XbergIo.Xberg?label=C%23&color=007ec6" alt="C#">
   </a>
   <a href="https://packagist.org/packages/xberg-io/xberg">
     <img src="https://img.shields.io/packagist/v/xberg-io/xberg?label=PHP&color=007ec6" alt="PHP">
@@ -80,49 +80,44 @@
   </a>
 </div>
 
-Extract clean text, tables, and structured data from documents and code — no format detection, no OCR setup, no stitched-together libraries. **One engine, 15 language bindings, runs anywhere.**
-
-> **Xberg is the next iteration of [Kreuzberg](https://github.com/kreuzberg-dev/kreuzberg-v4-lts).** Same document-intelligence engine, rebuilt and rebranded under a fresh v1 line.
-
 <div align="center">
 
-**Feed documents → get clean text, tables, metadata, transcripts, code intelligence · Run it library, CLI, REST API, or MCP server · No GPU needed · Stream multi-GB files · Cache results.**
+**The fast, precise document-intelligence engine — for every language.**
 
-Documents · Images · Spreadsheets · Email · Archives · Code · Audio · Video
+Point Xberg at anything — a PDF, a scanned image, a spreadsheet, an audio file, a URL, a whole archive, or a source tree — and get back clean text, tables, metadata, and structured data. One engine handles format detection, reading, OCR, and extraction, so you never stitch a pipeline together from a dozen libraries.
 
-[![crates.io](https://img.shields.io/crates/v/xberg?style=flat-square)](https://crates.io/crates/xberg)
-[![npm](https://img.shields.io/npm/v/@xberg-io/xberg?style=flat-square)](https://www.npmjs.com/package/@xberg-io/xberg)
-[![PyPI](https://img.shields.io/pypi/v/xberg?style=flat-square)](https://pypi.org/project/xberg/)
-[![License: MIT](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
+**101 formats · 115 file extensions** · **371 code languages** · **15 language bindings** · **6 output formats** · OCR · transcription · embeddings
 
-[Quick start](#installation) · [What you get](#what-you-get) · [Capabilities](#capabilities) · [CLI](#cli-reference) · [Docs](https://docs.xberg.io)
+The fastest, most precise open-source document and PDF-to-Markdown engine — [see the benchmarks](https://xberg.io/benchmarks).
+
+[Install](#installation) · [What you get](#what-you-get) · [Capabilities](#capabilities) · [CLI](#cli-reference) · [Docs](https://docs.xberg.io)
 
 </div>
 
----
-
-<p align="center"><em>Feed any document—get structured text. Extract, batch, stream, or crawl.</em></p>
+> **Xberg is the next iteration of [Kreuzberg](https://github.com/kreuzberg-dev/kreuzberg-v4-lts).** Same document-intelligence engine, rebuilt and rebranded under a fresh v1 line.
 
 ---
 
 ## What you get
 
-Point Xberg at anything — a PDF, a spreadsheet, a scanned image, an audio file, a source tree — and get back clean, structured content you can use right away. One core does the format detection, reading, and extraction, so you don't assemble a pipeline yourself. Call it from Rust, Python, Node.js, Go, Java, C#, Ruby, PHP, Elixir, Dart, Swift, Zig, WASM, Kotlin, or C FFI, and run it as a library, CLI tool, REST API, or MCP server.
+Point Xberg at anything — a PDF, a spreadsheet, a scanned image, an audio file, a URL, an archive, a source tree — and get back clean, structured content you can use right away. One core does the format detection, reading, and extraction, so you don't assemble a pipeline yourself. Call it from Rust, Python, Node.js, Go, Java, C#, Ruby, PHP, Elixir, Dart, Swift, Zig, WASM, Kotlin, or C FFI, and run it as a library, CLI tool, REST API, or MCP server.
 
-| What it does | How |
+| Capability | What you get |
 |---|---|
-| **Extract from 97 formats** | PDFs, Office, images, HTML, email, archives, scientific publications, and code — intelligent MIME detection, streaming for large files. |
-| **6 output formats** | Plain text, Markdown, Djot, HTML, JSON tree structure, or Structured (JSON with OCR metadata and bounding boxes). |
-| **Code intelligence** | Functions, classes, imports, symbols, docstrings from 306 programming languages. Syntax-aware chunking for RAG pipelines. |
-| **Crawl & recurse** | Follow URLs, extract documents from within documents (nested archives, embedded PDFs). Auto/Document/Crawl modes. |
-| **OCR on demand** | Tesseract, PaddleOCR, Candle, or VLM backends — fallback chains, extensible via plugins. Confidence scores. Language auto-detection. |
-| **Transcription** | Whisper ONNX for audio/video tracks (MP3, M4A, WAV, WebM, MP4). |
-| **Embeddings & search** | Local (ONNX models) or provider-hosted (OpenAI, Anthropic, Google, 143 providers via liter-llm). Reranking. |
-| **Structured outputs** | LLM-powered extraction — local (Ollama, LM Studio, vLLM) or remote (OpenAI, Anthropic, Google). |
-| **Enrichment** | NER, redaction, summarization, translation, QR code detection, page classification, keyword extraction (YAKE/RAKE), language detection, layout detection, table extraction, token reduction (TOON). |
-| **Batch & parallel** | Process 100s of documents in parallel. Per-file timeouts. Configurable batch concurrency (`max_concurrent_extractions`). |
-| **Caching** | Content-hash cache keys — skip re-extraction when the file and config are unchanged. |
-| **Deployment** | Library, CLI (12 commands), REST API (`xberg serve`), MCP server (9 tools, 3 prompts, 4 resources), Docker. |
+| **101 document formats** | PDFs, Office, images, HTML, email, e-books, scientific publications, structured data across 115 file extensions — intelligent MIME detection, streaming for multi-GB files. |
+| **URLs & the web** | Point Xberg at an `http(s)` URL — it fetches and extracts a single document, or crawls and follows links (Auto / Document / Crawl modes via the [crawlberg](https://github.com/xberg-io/crawlberg) engine). *Requires the `url-ingestion` feature.* |
+| **Audio & video transcription** | Speech-to-text from MP3, M4A, WAV, WebM, and MP4 tracks via Whisper ONNX (tiny → large-v3). *Requires the `transcription` feature.* |
+| **Archives, traversed** | List and **recursively** extract nested `.zip`, `.tar`, `.gz`, `.7z` — documents inside documents — guarded by zip-bomb, compression-ratio, and nesting-depth limits. |
+| **OCR on demand** | Tesseract, PaddleOCR, Sceptre, Candle, or VLM backends — fallback chains, confidence scores, language auto-detection, extensible via plugins. |
+| **Layout & tables** | ML layout models (PP-DocLayout-V3, RT-DETR) and table structure (TATR, SLANet) reconstruct reading order and cell grids for clean Markdown. |
+| **Code intelligence** | Functions, classes, imports, symbols, docstrings from 371 programming languages. Syntax-aware chunking for RAG pipelines. |
+| **Embeddings & search** | Local (ONNX) or provider-hosted embeddings (165 providers via liter-llm), sparse and late-interaction, cross-encoder reranking. |
+| **Enrichment** | NER, keyword extraction (YAKE/RAKE), summarization, translation, redaction, page classification, QR detection, language detection, token reduction (TOON). |
+| **Structured extraction** | Schema-driven JSON straight from any document via local (Ollama, LM Studio, vLLM) or hosted LLMs — no prompt engineering. |
+| **6 output formats** | Plain text, Markdown, Djot, HTML, JSON tree, or Structured (JSON with OCR metadata and bounding boxes). |
+| **Runs anywhere** | Library, CLI (13 commands), REST API (`xberg serve`), MCP server, Docker, Helm — no GPU needed. Content-hash caching, parallel batch, per-file timeouts. |
+
+> Capabilities marked *requires a feature* are Cargo feature flags on the core crate (`url-ingestion`, `transcription`, `reranker`, layout/ORT). Prebuilt language packages and the Docker image bundle the common set; a from-source build enables only what you select.
 
 ---
 
@@ -283,7 +278,7 @@ Build from source as part of this workspace. See [C (FFI) README](https://github
 brew install xberg-io/tap/xberg
 ```
 
-12 commands: `extract`, `batch`, `detect`, `formats`, `version`, `cache` (stats/clear/manifest/warm), `serve`, `mcp`, `api`, `embed`, `chunk`, `completions`.
+13 commands: `extract`, `batch`, `detect`, `formats`, `version`, `cache` (stats/clear/manifest/warm), `doctor`, `serve`, `mcp`, `api`, `embed`, `chunk`, `completions`.
 
 See [CLI usage guide](https://docs.xberg.io/cli/usage/) for detailed documentation.
 
@@ -336,13 +331,13 @@ See [MCP integration guide](https://docs.xberg.io/guides/mcp-integration/).
 
 ### AI Coding Assistants
 
-Install the Xberg plugin from [`xberg-io/plugins`](https://github.com/xberg-io/plugins). Ships extraction APIs, OCR backends, configuration, and language conventions.
+Install the Xberg plugin from [`xberg-io/xberg`](https://github.com/xberg-io/xberg). Ships extraction APIs, OCR backends, configuration, and language conventions.
 
 <details open>
 <summary><strong>Claude Code</strong></summary>
 
 ```text
-/plugin marketplace add xberg-io/plugins
+/plugin marketplace add xberg-io/xberg
 /plugin install xberg@xberg
 ```
 
@@ -352,7 +347,7 @@ Install the Xberg plugin from [`xberg-io/plugins`](https://github.com/xberg-io/p
 <summary><strong>Codex CLI</strong></summary>
 
 ```text
-/plugins add https://github.com/xberg-io/plugins
+/plugins add https://github.com/xberg-io/xberg
 ```
 
 Search for `xberg` and select **Install Plugin**.
@@ -362,7 +357,7 @@ Search for `xberg` and select **Install Plugin**.
 <details>
 <summary><strong>Cursor</strong></summary>
 
-Settings → Plugins → Add from URL → `https://github.com/xberg-io/plugins`, then select **xberg**.
+Settings → Plugins → Add from URL → `https://github.com/xberg-io/xberg`, then select **xberg**.
 
 </details>
 
@@ -370,7 +365,7 @@ Settings → Plugins → Add from URL → `https://github.com/xberg-io/plugins`,
 <summary><strong>Gemini CLI</strong></summary>
 
 ```text
-gemini extensions install https://github.com/xberg-io/plugins
+gemini extensions install https://github.com/xberg-io/xberg
 ```
 
 </details>
@@ -379,7 +374,7 @@ gemini extensions install https://github.com/xberg-io/plugins
 <summary><strong>Factory Droid</strong></summary>
 
 ```text
-droid plugin marketplace add https://github.com/xberg-io/plugins
+droid plugin marketplace add https://github.com/xberg-io/xberg
 droid plugin install xberg@xberg
 ```
 
@@ -389,7 +384,7 @@ droid plugin install xberg@xberg
 <summary><strong>GitHub Copilot CLI</strong></summary>
 
 ```text
-copilot plugin marketplace add https://github.com/xberg-io/plugins
+copilot plugin marketplace add https://github.com/xberg-io/xberg
 copilot plugin install xberg@xberg
 ```
 
@@ -440,15 +435,15 @@ Common use cases — see [Quick start guide](https://docs.xberg.io/getting-start
 <details>
 <summary><strong>Full feature list</strong></summary>
 
-### Supported File Formats (96)
+### Supported File Formats (101 formats · 115 file extensions)
 
-97 file formats across 8 major categories with intelligent format detection and comprehensive metadata extraction.
+101 formats across 115 file extensions in 8 major categories with intelligent format detection and comprehensive metadata extraction.
 
 #### Office Documents
 
 | Category | Formats | Capabilities |
 |----------|---------|--------------|
-| **Word Processing** | `.docx`, `.docm`, `.doc`, `.dotx`, `.dotm`, `.dot`, `.odt`, `.pages` | Full text, tables, images, metadata, styles |
+| **Word Processing** | `.docx`, `.docm`, `.doc`, `.dotx`, `.dotm`, `.dot`, `.odt`, `.pages`, `.wpd`, `.wp`, `.wp5`, `.wp6` | Full text, tables, images, metadata, styles |
 | **Spreadsheets** | `.xlsx`, `.xlsm`, `.xlsb`, `.xls`, `.xla`, `.xlam`, `.xltm`, `.xltx`, `.xlt`, `.ods`, `.numbers` | Sheet data, formulas, cell metadata, charts |
 | **Presentations** | `.pptx`, `.pptm`, `.ppt`, `.ppsx`, `.potx`, `.potm`, `.pot`, `.odp`, `.key` | Slides, speaker notes, images, metadata |
 | **PDF** | `.pdf` | Text, tables, images, metadata, OCR support |
@@ -495,9 +490,9 @@ Common use cases — see [Quick start guide](https://docs.xberg.io/getting-start
 | **Scientific** | `.tex`, `.latex`, `.typ`, `.typst`, `.jats`, `.ipynb` | LaTeX, Typst, Jupyter notebooks, PubMed JATS |
 | **Publishing** | `.fb2`, `.docbook`, `.dbk`, `.docbook4`, `.docbook5`, `.opml` | FictionBook, DocBook XML, OPML outlines |
 
-### Code Intelligence (306 Languages)
+### Code Intelligence (371 Languages)
 
-Extract structure from 306 programming languages via tree-sitter:
+Extract structure from 371 programming languages via tree-sitter:
 
 | Feature | Description |
 |---------|-------------|
@@ -535,8 +530,9 @@ Powered by [tree-sitter-language-pack](https://github.com/xberg-io/tree-sitter-l
 
 - **Tesseract** — Native C FFI (Linux/macOS/Windows) and WASM (browser)
 - **PaddleOCR** — ONNX Runtime, mobile-optimized models
+- **Sceptre** — EasyOCR Gen2 CRAFT + CRNN: ONNX Runtime on desktop/server, tract on Android/iOS, and an opt-in WebAssembly worker API
 - **Candle** — Pure Rust, CPU-only, lightweight
-- **VLM** — GPT-4 Vision, Claude Vision, Gemini Vision, or 143 providers via liter-llm
+- **VLM** — GPT-4 Vision, Claude Vision, Gemini Vision, or 165 providers via liter-llm
 
 Fallback chains. Extensible via plugin system.
 
@@ -549,7 +545,7 @@ Fallback chains. Extensible via plugin system.
 
 **Provider-hosted:**
 
-- OpenAI, Anthropic, Google, Hugging Face, Mistral, Cohere, and 143 providers total
+- OpenAI, Anthropic, Google, Hugging Face, Mistral, Cohere, and 165 providers total
 - Via [liter-llm](https://github.com/xberg-io/liter-llm) integration
 
 **Reranking:**
@@ -561,7 +557,7 @@ Fallback chains. Extensible via plugin system.
 
 Local engines: Ollama, LM Studio, vLLM
 
-Remote: OpenAI, Anthropic, Google, Mistral, Cohere, and 143 providers via liter-llm
+Remote: OpenAI, Anthropic, Google, Mistral, Cohere, and 165 providers via liter-llm
 
 Schema validation. Temperature, top-p, frequency penalty tuning.
 
@@ -586,16 +582,17 @@ Schema validation. Temperature, top-p, frequency penalty tuning.
 ## CLI Reference
 
 <details>
-<summary><strong>All 12 commands</strong></summary>
+<summary><strong>All 13 commands</strong></summary>
 
 | Command | Subcommands | Purpose |
 |---------|-------------|---------|
 | `extract` | — | Extract text from a single document (path, URL, or stdin) |
 | `batch` | — | Extract from multiple documents in parallel |
 | `detect` | — | Identify MIME type of a file |
-| `formats` | — | List all 97 supported formats and MIME types |
+| `formats` | — | List all supported formats and MIME types |
 | `version` | — | Show Xberg version |
 | `cache` | `stats`, `clear`, `manifest`, `warm` | Manage extraction cache and models |
+| `doctor` | — | Probe configured backends and report what will actually execute |
 | `serve` | — | Start REST API server (default: <http://127.0.0.1:8000>) |
 | `mcp` | — | Start MCP server (stdio or HTTP transport) |
 | `api` | `schema` | Output OpenAPI 3.1 specification |
@@ -634,11 +631,11 @@ Join our [Discord community](https://discord.gg/xt9WY3GnKR) for questions and di
 
 Xberg is one of six open-source projects from Kreuzberg, Inc.:
 
-- [Xberg](https://github.com/xberg-io/xberg) — document intelligence: text, tables, metadata from 91+ formats with optional OCR.
+- [Xberg](https://github.com/xberg-io/xberg) — document intelligence: text, tables, metadata from 101 formats with optional OCR.
 - [Xberg Enterprise](https://github.com/xberg-io/xberg-enterprise) — managed extraction API with SDKs, dashboards, and observability.
 - [crawlberg](https://github.com/xberg-io/crawlberg) — web crawling and scraping with HTML→Markdown and headless-Chrome fallback.
 - [html-to-markdown](https://github.com/xberg-io/html-to-markdown) — fast, lossless HTML→Markdown engine.
-- [liter-llm](https://github.com/xberg-io/liter-llm) — universal LLM API client with native bindings for 14 languages and 143 providers.
+- [liter-llm](https://github.com/xberg-io/liter-llm) — universal LLM API client with native bindings for 14 languages and 165 providers.
 - [tree-sitter-language-pack](https://github.com/xberg-io/tree-sitter-language-pack) — tree-sitter grammars and code-intelligence primitives.
 - [alef](https://github.com/xberg-io/alef) — the polyglot binding generator that produces every per-language binding across the 5 polyglot repos.
 

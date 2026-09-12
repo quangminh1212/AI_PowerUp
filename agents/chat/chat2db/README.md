@@ -1,5 +1,9 @@
 <div align="center">
   <img src="./icon.png" alt="Chat2DB" width="100">
+  <div align="center">
+  Powered by  <a href="https://ottermind.ai">OtterMind</a>
+</div>
+  <br/>
   <p><strong>An AI-powered database client and SQL workspace for developers, DBAs, analysts, and data teams.</strong></p>
 </div>
 
@@ -15,11 +19,11 @@
 
 Chat2DB Community is a free, cross-platform database client for Windows, macOS, and Linux. It runs entirely on your machine and combines a full-featured SQL workspace with an AI assistant that you connect to your own model.
 
-- **30+ databases** — MySQL, PostgreSQL, Oracle, SQL Server, ClickHouse, MongoDB, Redis, SQLite, MariaDB, TiDB, Hive, DB2, Snowflake, BigQuery, Elasticsearch, and more via plugins.
+- **40+ databases** — MySQL, PostgreSQL, Oracle, SQL Server, ClickHouse, MongoDB, Redis, SQLite, MariaDB, TiDB, Hive, DB2, Snowflake, BigQuery, Elasticsearch, Trino, TimescaleDB, Greenplum, YugabyteDB, CrateDB, QuestDB, Apache IoTDB, Firebird, HSQLDB, Apache Derby, and more via plugins — new JDBC databases can be added through configuration only, without code changes.
 - **SQL workspace** — editing, completion, formatting, execution, saved SQL, and execution history.
 - **AI assistant** — bring your own AI model to generate, explain, and optimize SQL in natural language.
 - **Database management** — browse metadata, manage tables and objects (DDL/DML), and edit data in place.
-- **Data import and export**, **dashboards and charts**, and a **CLI with MCP support**.
+- **Data import and export**, **dashboards and charts**, and an **[open-source CLI with MCP support](https://github.com/OtterMind/Chat2DB-CLI)**.
 
 <div align="center">
 
@@ -91,6 +95,12 @@ sources you trust. Imported configuration files, archives, SQL files,
 database contents, and AI responses remain untrusted data. See the
 [Security Policy](SECURITY.md) for the complete trust boundary and
 vulnerability reporting process.
+
+If you find this project useful, please give us a Star ⭐️ — it really helps!
+
+<div align="center">
+  <a href="https://github.com/OtterMind/Chat2DB"><img src="https://cdn.chat2db.ai/g/Area.gif" alt="Star Chat2DB on GitHub" width="600"></a>
+</div>
 
 ## Encryption Key
 
@@ -188,6 +198,12 @@ java -Dloader.path=chat2db-community-server/chat2db-community-start/target/lib \
 ```bash
 ./docker/docker-build.sh 5.3.0 chat2db/chat2db:5.3.0
 ```
+
+## Database guides
+
+Step-by-step guides for connecting Chat2DB Community to specific databases:
+
+- [BigQuery](./docs/guides/bigquery.md) — Google BigQuery via a Google Cloud service account.
 
 ## Community vs Commercial Editions
 

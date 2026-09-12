@@ -59,6 +59,42 @@ One `npm install` adds the module's AI assistant to your Claude Code, and it gui
 
 [![DiamantAI's newsletter](images/substack_image.png)](https://newsletter.diamant-ai.com/?r=336pe4&utm_campaign=pub-share-checklist)
 
+<h2 align="center">🎬 Prefer video?</h2>
+
+<div align="center">
+
+*I break these ideas down into short, one-idea-per-episode explainers on YouTube.*
+
+<table>
+<tr>
+<td width="33%" align="center" valign="top">
+  <a href="https://europe-west1-rag-techniques-views-tracker.cloudfunctions.net/rag-techniques-tracker?notebook=genai-agents--readme&amp;click=youtube-readme-llm&amp;target=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DtKXvKKVQ1Dc&amp;retarget=0&amp;text=youtube-readme-llm">
+    <img src="https://img.youtube.com/vi/tKXvKKVQ1Dc/mqdefault.jpg" width="100%" alt="">
+    <br><b>How LLMs Actually Work (and Why AI Makes Things Up)</b>
+  </a><br>
+  <sub>recalling a fact and inventing one are literally the same move</sub>
+</td>
+<td width="33%" align="center" valign="top">
+  <a href="https://europe-west1-rag-techniques-views-tracker.cloudfunctions.net/rag-techniques-tracker?notebook=genai-agents--readme&amp;click=youtube-readme-ctx&amp;target=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Da7bteK6c3Ng&amp;retarget=0&amp;text=youtube-readme-ctx">
+    <img src="https://img.youtube.com/vi/a7bteK6c3Ng/mqdefault.jpg" width="100%" alt="">
+    <br><b>Context Is the New Code</b>
+  </a><br>
+  <sub>the shift from writing the code to shaping what the model sees</sub>
+</td>
+<td width="33%" align="center" valign="top">
+  <a href="https://europe-west1-rag-techniques-views-tracker.cloudfunctions.net/rag-techniques-tracker?notebook=genai-agents--readme&amp;click=youtube-readme-cc&amp;target=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D0fU8GdipOjc&amp;retarget=0&amp;text=youtube-readme-cc">
+    <img src="https://img.youtube.com/vi/0fU8GdipOjc/mqdefault.jpg" width="100%" alt="">
+    <br><b>Stop Thinking Claude Code Is Magic. Here's How It Works</b>
+  </a><br>
+  <sub>what the agent loop is actually doing on every turn</sub>
+</td>
+</tr>
+</table>
+
+[![Subscribe on YouTube](https://img.shields.io/youtube/channel/subscribers/UCatj5F2gohksvfNmnEpRnNA?style=social)](https://europe-west1-rag-techniques-views-tracker.cloudfunctions.net/rag-techniques-tracker?notebook=genai-agents--readme&click=youtube-subscribe-channel&target=https%3A%2F%2Fwww.youtube.com%2F%40DiamantAI%3Fsub_confirmation%3D1&retarget=0&text=youtube-subscribe-channel) &nbsp; [**Browse every episode →**](https://europe-west1-rag-techniques-views-tracker.cloudfunctions.net/rag-techniques-tracker?notebook=genai-agents--readme&click=youtube-all-episodes&target=https%3A%2F%2Fwww.youtube.com%2F%40DiamantAI&retarget=0&text=youtube-all-episodes)
+
+</div>
+
 ## Introduction
 
 Generative AI agents are at the forefront of artificial intelligence, revolutionizing the way we interact with and leverage AI technologies. This repository is designed to guide you through the development journey, from basic agent implementations to advanced, cutting-edge systems.
@@ -172,6 +208,7 @@ Below is a comprehensive overview of our GenAI agent implementations, organized 
 | 49 | 🎓 **Educational** | [Gutenberg Sage](all_agents_tutorials/Gutenbergs_Sage.ipynb)               | LangGraph + Ollama | Local LLM RAG, NER-enhanced retrieval                                       |
 | 50 | 💼 **Business**   | [Contextual Quoting System](all_agents_tutorials/contextual_quoting_agentic_system.ipynb) | LangGraph  | Multi-agent quoting, RAG + structured data                                   |
 | 51 | 📊 **Analysis**   | [Document Intake Agent](all_agents_tutorials/document_intake_agent_langgraph.ipynb) | LangGraph  | Office docs to LLM-ready markdown, conversion as a tool call                 |
+| 52 | 🎨 **Creative**   | [Social Media Publishing Agent](all_agents_tutorials/social_media_publishing_agent_publora_langgraph.ipynb) | LangGraph  | Per-platform generation, self-review loop, publishing via Publora API        |
 
 Explore our extensive list of GenAI agent implementations, sorted by categories:
 
@@ -686,6 +723,14 @@ Explore our extensive list of GenAI agent implementations, sorted by categories:
 
     #### Implementation 🛠️
     Uses a deterministic conditional edge for format routing (a lookup, not an LLM call), a submit-upload-poll-download client as the conversion tool, and gpt-4o-mini as a grounded analyst. Includes a naive-extraction comparison showing why tables and reading order survive conversion but not scraping, plus a one-block MCP config that gives Claude Code and Cursor the same capability.
+
+52. **[Social Media Publishing Agent (Publora + LangGraph)](https://github.com/NirDiamant/GenAI_Agents/blob/main/all_agents_tutorials/social_media_publishing_agent_publora_langgraph.ipynb)**
+
+    #### Overview 🔎
+    An agent that turns one idea into publish-ready posts for several social platforms and can publish them. It tailors a variant to each platform's length and voice, runs a self-review loop to enforce platform rules, then schedules the approved drafts through the Publora API. Live publishing is opt-in: the notebook defaults to a dry-run and needs a Publora API key with dry-run disabled to actually go live.
+
+    #### Implementation 🛠️
+    A LangGraph workflow (fetch_connections → generate → review → publish) with a bounded revise loop: a deterministic length check plus an LLM critic send failing drafts back to the generator with targeted feedback. Publishing goes through Publora's REST API (one create-post call per platform, each with an idempotency key so a call's network retry is safe), with a dry-run mode that creates drafts so nothing goes live while experimenting.
 
 ### 🌟 Special Advanced Technique 🌟
 

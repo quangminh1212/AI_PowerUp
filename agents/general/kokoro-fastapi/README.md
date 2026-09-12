@@ -1,16 +1,15 @@
-<p align="center">
-  <img src="githubbanner.png" alt="Kokoro TTS Banner">
-</p>
+![FastKoko: Dockerized Kokoro-82M TTS, OpenAI-compatible API](assets/banner.png)
 
-# <sub><sub>_`FastKoko`_ </sub></sub> 
-[![Changelog](https://img.shields.io/badge/changelog-white)](./CHANGELOG.md) [![Tests](https://img.shields.io/badge/tests-100-darkgreen)]()
+<a href="https://trendshift.io/repositories/13745?utm_source=repository-badge&amp;utm_medium=badge&amp;utm_campaign=badge-repository-13745"><img src="https://trendshift.io/api/badge/repositories/13745" alt="remsky%2FKokoro-FastAPI | Trendshift" width="164" height="36"/></a>
+
+[![Changelog](https://img.shields.io/badge/changelog-white)](./CHANGELOG.md) [![Tests](https://img.shields.io/badge/tests-137-darkgreen)]()
 [![Coverage](https://img.shields.io/badge/coverage-58%25-tan)]()
 
 [![Kokoro](https://img.shields.io/badge/kokoro-0.9.4-BB5420)](https://github.com/hexgrad/kokoro)
 [![Misaki](https://img.shields.io/badge/misaki-0.9.4-B8860B)](https://github.com/hexgrad/misaki)
 [![Tested at Model Commit](https://img.shields.io/badge/model-1.0::9901c2b-blue)](https://huggingface.co/hexgrad/Kokoro-82M/commit/9901c2b79161b6e898b7ea857ae5298f47b8b0d6) 
 
-[![Try on Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Try%20on-Spaces-blue)](https://huggingface.co/spaces/Remsky/FastKoko) [![Downloads](https://img.shields.io/badge/downloads-1.8M%2B-2496ED?logo=docker&logoColor=white)](https://github.com/remsky?tab=packages&repo_name=Kokoro-FastAPI)
+[![Try on Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Try%20on-Spaces-blue)](https://huggingface.co/spaces/Remsky/FastKoko) [![Downloads](https://img.shields.io/badge/downloads-1.9M%2B-2496ED?logo=docker&logoColor=white)](https://github.com/remsky?tab=packages&repo_name=Kokoro-FastAPI)
 
 
 
@@ -39,23 +38,37 @@ Pre-built multi-arch images with models baked in.
 
 `:latest` is available, but please pin to a release tag for stable usage.
 
-| Your hardware | Image |
-|---|---|
-| No GPU (any laptop, VPS, CPU-only server) | `kokoro-fastapi-cpu:latest` |
-| Apple Silicon (M1/M2/M3) | `kokoro-fastapi-cpu:latest` in Docker, or `./start-gpu_mac.sh` natively for MPS |
-| NVIDIA GTX 9xx, 10xx, 20xx, 30xx, 40xx (x86_64) | `kokoro-fastapi-gpu:latest-cu126` or `kokoro-fastapi-gpu:latest` |
-| NVIDIA RTX 50-series / Blackwell (x86_64) | `kokoro-fastapi-gpu:latest-cu128` |
-| NVIDIA on arm64 (Jetson, GH200) | `kokoro-fastapi-gpu:latest` (ships cu129, no cu126 arm64 wheels upstream) |
-| AMD GPU | `kokoro-fastapi-rocm:latest` (experimental, x86_64 only) |
-
+**No GPU** (laptop, CPU-only server)
 ```bash
-docker run -p 8880:8880 ghcr.io/remsky/kokoro-fastapi-cpu:latest                                       # CPU
-docker run --gpus all -p 8880:8880 ghcr.io/remsky/kokoro-fastapi-gpu:latest                            # NVIDIA (x86_64 or arm64)
-docker run --gpus all -p 8880:8880 ghcr.io/remsky/kokoro-fastapi-gpu:latest-cu128                      # NVIDIA Blackwell / RTX 50-series
-docker run --device=/dev/kfd --device=/dev/dri -p 8880:8880 ghcr.io/remsky/kokoro-fastapi-rocm:latest  # AMD
+docker run -p 8880:8880 ghcr.io/remsky/kokoro-fastapi-cpu:latest
 ```
 
-Configuration via environment variables, see `core/config.py`. The `:latest` and `:latest-cu126` tags resolve to the same multi-arch image.
+**NVIDIA** (GTX 900-series through RTX 40; ships cu126)
+```bash
+docker run --gpus all -p 8880:8880 ghcr.io/remsky/kokoro-fastapi-gpu:latest
+```
+
+**NVIDIA RTX 50-series / Blackwell** (ships cu128)
+```bash
+docker run --gpus all -p 8880:8880 ghcr.io/remsky/kokoro-fastapi-gpu:latest-cu128
+```
+
+**NVIDIA arm64** (Jetson, GH200; same tag, ships cu129)
+```bash
+docker run --gpus all -p 8880:8880 ghcr.io/remsky/kokoro-fastapi-gpu:latest
+```
+
+**AMD GPU** (ROCm, experimental, x86_64 only)
+```bash
+docker run --device=/dev/kfd --device=/dev/dri -p 8880:8880 ghcr.io/remsky/kokoro-fastapi-rocm:latest
+```
+
+**Apple Silicon** (native MPS, from a clone; the CPU image also works in Docker)
+```bash
+./start-gpu_mac.sh
+```
+
+`gpu:latest` is the same image as `gpu:latest-cu126`. Configuration via environment variables, see `core/config.py`.
 
 </details>
 
@@ -145,9 +158,9 @@ with client.audio.speech.with_streaming_response.create(
 
 - Web Interface: http://localhost:8880/web
 
-<div align="center" style="display: flex; justify-content: center; gap: 10px;">
-  <img src="assets/docs-screenshot.png" width="42%" alt="API Documentation" style="border: 2px solid #333; padding: 10px;">
-  <img src="assets/webui-screenshot.png" width="42%" alt="Web UI Screenshot" style="border: 2px solid #333; padding: 10px;">
+<div align="center">
+  <img src="assets/webui-screenshot.png" width="47.3%" alt="Web UI Screenshot">
+  <img src="assets/docs-screenshot.png" width="50.7%" alt="API Documentation">
 </div>
 
 </details>
@@ -700,6 +713,65 @@ Visit [NVIDIA Container Toolkit installation](https://docs.nvidia.com/datacenter
 </details>
 
 <details>
+<summary>AMD GPU (ROCm) troubleshooting</summary>
+
+The ROCm image is experimental, x86_64 only. Findings below are largely from [discussion #151](https://github.com/remsky/Kokoro-FastAPI/discussions/151).
+
+### Native Linux host required
+
+`/dev/kfd` and `/dev/dri` passthrough does not work through Docker Desktop on Windows, or through WSL2. Reports of it working are all on a native Linux host.
+
+### "HIP error: invalid device function" / card not detected
+
+Set `HSA_OVERRIDE_GFX_VERSION` to the LLVM target of the closest officially supported architecture. Common values:
+
+| Card | Value |
+| --- | --- |
+| RX 7900 XTX / XT | `11.0.0` |
+| RDNA 3 iGPU (780M, 7840HS) | `11.0.2` or `11.0.3` |
+| RX 6700 XT / 6600 (gfx1031, gfx1032) | `10.3.0` |
+| RX 5700 XT (unofficial, mixed reports) | `10.3.0` |
+
+The RX 6800/6900 (gfx1030) are supported directly and need no override.
+
+```yaml
+services:
+  kokoro-tts:
+    environment:
+      - HSA_OVERRIDE_GFX_VERSION=11.0.0
+```
+
+Check what your card reports with `rocminfo | grep gfx`.
+
+### Slow or unstable matmuls
+
+hipBLASLt does not cover every architecture. Falling back to hipBLAS is slower on paper but more reliable on consumer cards:
+
+```yaml
+      - TORCH_BLAS_PREFER_HIPBLASLT=0
+      - PYTORCH_TUNABLEOP_HIPBLASLT_ENABLED=0
+```
+
+### First request is slow
+
+MIOpen searches for a kernel per unique tensor shape, which costs 5-60s a shape. The image ships `MIOPEN_FIND_MODE=2` and prebaked kernel databases, but only for the architectures listed in `docker/rocm/kdb_install.sh` (CDNA plus gfx1030). RDNA 3 has no prebaked database, so the search runs on first use.
+
+To pre-populate the on-disk cache, which `docker/rocm/docker-compose.yml` persists in named volumes:
+
+```bash
+cd docker/rocm
+docker compose run --rm \
+  -e MIOPEN_FIND_MODE=3 -e MIOPEN_FIND_ENFORCE=3 \
+  kokoro-tts python docker/rocm/warmup_miopen.py
+```
+
+This sweeps every phoneme length up to 340 and takes hours (~2 on Strix Halo). Run it once per ROCm or PyTorch upgrade. Then start normally: the default `MIOPEN_FIND_MODE=2` reuses the cache. `docker compose down -v` clears it.
+
+Generating audio for a few paragraphs of varied length under the same overrides is the cheaper, partial version.
+
+</details>
+
+<details>
 <summary>WAV duration reported as nonsense in some readers</summary>
 
 WAV responses ship with streaming-sentinel (`0xFFFFFFFF`) size fields in the header. Most readers (`soundfile`, `pydub`/ffmpeg, browsers, OS players) handle this fine. Python's stdlib `wave` does not, and reports a bogus duration. Use `soundfile.info(path).duration` or `ffprobe` for exact length.
@@ -720,6 +792,8 @@ Note: This is a *development* focused project at its core.
 If you run into trouble, you may have to roll back a version on the release tags if something comes up, or build up from source and/or troubleshoot + submit a PR.
 
 Free and open source is a community effort, and there's only really so many hours in a day. If you'd like to support the work, feel free to open a PR, buy me a coffee, or report any bugs/features/etc you find during use.
+
+Working on the code, or pointing an AI agent at it? [AGENTS.md](AGENTS.md) covers the repo layout, commands, and conventions.
 
   <a href="https://www.buymeacoffee.com/remsky" target="_blank">
     <img
@@ -752,9 +826,7 @@ The full Apache 2.0 license text can be found at: https://www.apache.org/license
 
 </details open>
 
-## Contributor Stats
-![Alt](https://repobeats.axiom.co/api/embed/f9694366bf96febc749d592316ff0a275fe77219.svg "Repobeats analytics image")
-</details>
+## Contributors
 
 <a href="https://github.com/remsky/Kokoro-FastAPI/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=remsky/Kokoro-FastAPI" />

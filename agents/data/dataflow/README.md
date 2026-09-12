@@ -65,7 +65,7 @@ Turn raw data into high-quality LLM training datasets.🔧
 
 
 ## 📰 0. News
-* **[2026-07-13] 🚀 DataFlow-WebUI receives major upgrades!** [DataFlow-WebUI](https://github.com/OpenDCAI/DataFlow-webui) supports AI-agent-assisted pipeline construction, management, and execution.
+* **[2026-07-18] DataFlow-Harness Released!** 🔥[DataFlow-Harness](https://huggingface.co/papers/2607.16617) lets coding agents build DataFlow pipelines for you. Download and installation entry points are available in [DataFlow-WebUI](https://github.com/OpenDCAI/DataFlow-WebUI), where you can use DataFlow through either the visual interface or MCP.
 * **[2026-05-22] DataFlow-Skills is now available!**
   A collection of skills and tutorials for working with DataFlow. 👉 [DataFlow-Skills](https://github.com/OpenDCAI/DataFlow-Skills)
 * **[2026-02-02] 🖥️ DataFlow WebUI is now available!**
@@ -142,7 +142,7 @@ Together, these components form a unified, extensible environment that transform
 
 ## ✅ 4. Why use DataFlow?
 Data generation and cleaning are crucial for high-quality models, but for both enterprises and individuals, these tasks are often time-consuming, labor-intensive, and costly. **DataFlow provides a one-stop solution to tackle these challenges efficiently.**
-Compared with systems like Nemo-Curator and Data-Juicer, DataFlow offers:
+DataFlow offers the following advantages:
 - **Enhanced Support for Data Synthesis Modules** – Seamlessly integrates text, code, and math data generation pipeline for high-quality training datasets.
 - **PyTorch-like Programming Management** – Clear **Pipeline → Operator → Prompt** hierarchical structure for workflow control.
 - **Principled and Multi-Category Operator Classification** – Operators are systematically organized into multiple functional categories such as **generation, evaluation, filtering, and refinement**, forming a scientifically grounded, multi-dimensional taxonomy that reflects different stages of data preparation and enables precise operator selection and composition.
@@ -581,7 +581,7 @@ Join the DataFlow open-source community to ask questions, share ideas, and colla
 •	💬 Join our community groups to connect with us and other contributors!
 
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/52febf13-5288-4bcd-95e8-9126dffbc409" width="60%">
+  <img src="https://github.com/user-attachments/assets/75c9ad12-d322-47dc-b494-c125a672a3e4" width="70%">
 </div>
 
 ## 📜 14. Citation

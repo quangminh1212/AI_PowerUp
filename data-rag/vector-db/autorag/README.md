@@ -128,7 +128,45 @@ Security defaults are intentionally strict:
 - model/tool arguments never grant datasource tags or scopes;
 - `search_datasource_documents` accepts only `{ query, topK?, scope? }`, and `scope` can only narrow trusted access.
 
-KakaoTalk is the first datasource skill. It uses the external [`katok`](https://github.com/NomaDamas/katok) CLI only — AutoRAG never reads KakaoTalk databases directly. `katok` failures return diagnostics instead of throwing, and remote embedding egress configuration is rejected before the CLI is spawned.
+#### Supported datasources
+
+| Datasource | Skill | Connects via | Notes |
+|---|---|---|---|
+| KakaoTalk | `katok` | external [`katok`](https://github.com/NomaDamas/katok) CLI | first datasource skill; AutoRAG never reads KakaoTalk databases directly |
+| Slack | `slack` | Slack Web API (bot token) | workspace/channel history; per-channel scope failures degrade to warnings |
+| Discord | `discord` | Discord REST v10 (bot token) | guild/channel messages; Hangul channel names work as scopes |
+| Notion | `notion` | Notion API (integration token) | pages/databases shared with the integration; block-tree text |
+| GitHub Issues/PRs | `github` | GitHub REST (token optional) | issues + PR bodies per `owner/repo`; public repos work unauthenticated |
+| Google Drive | `gdrive` | Drive REST v3, or **[`rclone`](https://rclone.org) CLI** (`backend: "rclone"`) | Docs/Sheets exported as text; the rclone backend also opens any of rclone's 70+ remotes |
+| Gmail / IMAP | `gmail` | Gmail REST v1, or **[`himalaya`](https://pimalaya.org) CLI** (`backend: "himalaya"`) | the himalaya backend indexes any IMAP/Maildir account it has configured — no OAuth plumbing |
+| Local mail exports | `mail-export` | filesystem (`.mbox` / `.eml`) | classic `From_` splitting, mailparser-based; count-only warnings |
+| Obsidian vault | `obsidian` | filesystem (markdown) | frontmatter/inline tags, wiki links `[[...]]`, embeds `![[...]]` |
+| RSS / news | `rss` | HTTP feed polling | RSS 2.0 + Atom, feed/category hierarchy, 24h dedupe window |
+
+All of them share one framework: a trusted connector fetches documents at refresh time, chunks persist under `<workspace>/.autorag/datasources/<skill>/<instance>/`, and queries run against a local BM25 lexical index (Korean-aware prefix matching) through `search_datasource_documents`. Tokens are referenced by environment variable name only (e.g. `SLACK_BOT_TOKEN`), never stored in config. Auth/permission/rate-limit failures surface as path/PII-opaque diagnostics. See [docs/manual-qa-datasources.md](docs/manual-qa-datasources.md) for the QA harnesses.
+
+Configure them in `config.json` (CLI) or pass `datasourceSkills` programmatically:
+
+```jsonc
+{
+  "datasources": {
+    "slack":    { "connector": { "tokenEnv": "SLACK_BOT_TOKEN" } },
+    "github":   { "connector": { "repos": ["owner/repo"] } },
+    "gmail":    { "connector": { "backend": "himalaya", "account": "gmail", "folder": "INBOX" } },
+    "gdrive":   { "connector": { "backend": "rclone", "remote": "gdrive:" } },
+    "obsidian": { "connector": { "vaultPath": "/path/to/vault" } },
+    "rss":      { "connector": { "feeds": [{ "url": "https://example.com/feed.xml" }] } }
+  },
+  "datasourceAccess": {
+    "allowedTags": ["slack", "github", "gmail", "gdrive", "obsidian", "rss"],
+    "allowedScopes": ["/slack/**", "/github/**", "/gmail/**", "/gdrive/**", "/obsidian/**", "/rss/**"]
+  }
+}
+```
+
+#### KakaoTalk (katok)
+
+KakaoTalk was the first datasource skill. It uses the external [`katok`](https://github.com/NomaDamas/katok) CLI only — AutoRAG never reads KakaoTalk databases directly. `katok` failures return diagnostics instead of throwing, and remote embedding egress configuration is rejected before the CLI is spawned.
 
 ```typescript
 import { AutoRAGAgent, KatokSkill } from "@autorag/librarian";
@@ -159,6 +197,12 @@ A datasource skill should provide polling/cron metadata for routine indexing, so
 AutoRAG is built for **non-code document retrieval**: manuals, legal docs, internal wikis, meeting notes, research literature, knowledge bases, PDFs.
 
 Code repositories work too (the explorer's `grep` is useful), but AutoRAG's real value shows on unstructured text where simple pattern matching isn't enough.
+
+#### Legacy HWP5 parsing
+
+AutoRAG supports searchable Markdown extraction from legacy binary `.hwp` (HWP5) files for body paragraphs and top-level table cells. Extraction is powered by the MIT-licensed [`rhwp`](https://github.com/edwardkim/rhwp) WebAssembly parser.
+
+This is scoped text extraction, not full-fidelity document conversion. Headers, footers, notes, text boxes, nested tables, images, equations, and OCR are explicitly deferred and are not currently extracted from HWP5 files.
 
 ## Configuration and state
 

@@ -17,7 +17,8 @@
 </table>
 
 <div align="center">
-<a href="https://trendshift.io/repositories/14665" target="_blank"><img src="https://trendshift.io/api/badge/repositories/14665" alt="HKUDS%2FDeepCode | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
+<a href="https://trendshift.io/repositories/14665?utm_source=repository-badge&amp;utm_medium=badge&amp;utm_campaign=badge-repository-14665" target="_blank" rel="noopener noreferrer"><img src="https://trendshift.io/api/badge/repositories/14665" alt="HKUDS%2FDeepCode | Trendshift" width="250" height="55"/></a>
+<a href="https://trendshift.io/repositories/14665?utm_source=trendshift-badge&amp;utm_medium=badge&amp;utm_campaign=badge-trendshift-14665" target="_blank" rel="noopener noreferrer"><img src="https://trendshift.io/api/badge/trendshift/repositories/14665/daily?language=Python" alt="HKUDS%2FDeepCode | Trendshift" width="250" height="55"/></a>
 </div>
 
 <!-- <img src="https://readme-typing-svg.herokuapp.com?font=Russo+One&size=28&duration=2000&pause=800&color=06B6D4&background=00000000&center=true&vCenter=true&width=800&height=50&lines=%E2%9A%A1+OPEN+AGENTIC+CODING+%E2%9A%A1" alt="DeepCode Tech Subtitle" style="margin-top: 5px; filter: drop-shadow(0 0 12px #06B6D4) drop-shadow(0 0 24px rgba(6,182,212,0.4));"/> -->
@@ -36,7 +37,7 @@
 <p>
   <a href="https://github.com/HKUDS/DeepCode/stargazers"><img src='https://img.shields.io/github/stars/HKUDS/DeepCode?color=00d9ff&style=for-the-badge&logo=star&logoColor=white&labelColor=1a1a2e' /></a>
   <a href='https://arxiv.org/abs/2512.07921'><img src="https://img.shields.io/badge/Paper-arXiv-orange?style=for-the-badge&logo=arxiv&logoColor=white&labelColor=1a1a2e"></a>
-  <img src="https://img.shields.io/badge/🐍Python-3.13-4ecdc4?style=for-the-badge&logo=python&logoColor=white&labelColor=1a1a2e">
+  <img src="https://img.shields.io/badge/🐍Python-3.12%2B-4ecdc4?style=for-the-badge&logo=python&logoColor=white&labelColor=1a1a2e">
   <!-- <a href="https://pypi.org/project/deepcode-hku/"><img src="https://img.shields.io/pypi/v/deepcode-hku.svg?style=for-the-badge&logo=pypi&logoColor=white&labelColor=1a1a2e&color=ff6b6b"></a> -->
 </p>
 <p>
@@ -48,7 +49,7 @@
 </div>
 
 <div align="center">
-  <a href="#-quick-start" style="text-decoration: none;">
+  <a href="#quick-start" style="text-decoration: none;">
     <img src="https://img.shields.io/badge/Quick%20Start-Get%20Started%20Now-00d9ff?style=for-the-badge&logo=rocket&logoColor=white&labelColor=1a1a2e">
   </a>
 </div>
@@ -64,46 +65,20 @@
 
 ### 🖥️ **Interface Showcase**
 
-<table align="center" width="100%" style="border: none; border-collapse: collapse; margin: 30px 0;">
-<tr>
-<td width="50%" align="center" style="vertical-align: top; padding: 20px;">
-
-#### 🖥️ **CLI Interface**
-**Terminal-Based Development**
+#### 🖥️ **DeepCode Desktop**
 
 <div align="center">
 
-  <img src="https://github.com/Zongwei9888/Experiment_Images/blob/8882a7313c504ca97ead6e7b36c51aa761b6a4f3/DeepCode_images/CLI.gif" alt="CLI Interface Demo" width="100%" style="border-radius: 10px; box-shadow: 0 8px 20px rgba(45,55,72,0.3); margin: 15px 0;"/>
+  <img src="https://github.com/Zongwei9888/Experiment_Images/raw/e389750e733ec2c1b94986cb990036899dcaec52/DeepCode_images/Area.gif" alt="DeepCode Desktop coding agent demo" width="100%" style="border-radius: 10px; box-shadow: 0 8px 20px rgba(45,55,72,0.3); margin: 15px 0;"/>
 
-  <div style="background: linear-gradient(135deg, #2D3748 0%, #4A5568 100%); border-radius: 12px; padding: 15px; margin: 15px 0; color: white;">
-    <strong>🚀 Advanced Terminal Experience</strong><br/>
-    <small>⚡ Fast command-line workflow<br/>🔧 Developer-friendly interface<br/>📊 Real-time progress tracking</small>
-  </div>
-
-  *Professional terminal interface for advanced users and CI/CD integration*
+*Work with DeepCode in a visual workspace for Sessions, goals, tool activity, code changes, and verification.*
 </div>
 
-</td>
-<td width="50%" align="center" style="vertical-align: top; padding: 20px;">
-
-#### 🌐 **Web Interface**
-**Visual Interactive Experience**
-
-<div align="center">
-
-  <img src="https://github.com/Zongwei9888/Experiment_Images/raw/8882a7313c504ca97ead6e7b36c51aa761b6a4f3/DeepCode_images/UI.gif" alt="Web Interface Demo" width="100%" style="border-radius: 10px; box-shadow: 0 8px 20px rgba(14,165,233,0.3); margin: 15px 0;"/>
-
-  <div style="background: linear-gradient(135deg, #0EA5E9 0%, #00D4FF 100%); border-radius: 12px; padding: 15px; margin: 15px 0; color: white;">
-    <strong>🎨 Modern Web Dashboard</strong><br/>
-    <small>🖱️ Intuitive drag-and-drop<br/>📱 Responsive design<br/>🎯 Visual progress tracking</small>
-  </div>
-
-  *Beautiful web interface with streamlined workflow for all skill levels*
-</div>
-
-</td>
-</tr>
-</table>
+DeepCode has one Agent runtime and two interfaces: an interactive CLI for
+terminal workflows and a Tauri Desktop workbench for visual Sessions, review,
+and settings. Both open the same local Projects, Session history, models,
+Skills, permissions, Goals, and Automations. See the
+[`Desktop source guide`](desktop/README.md) to run the application locally.
 
 ---
 
@@ -132,9 +107,6 @@
 
 ---
 
-
-
-
 > *"Where AI Agents Transform Ideas into Production-Ready Code"*
 
 </div>
@@ -143,987 +115,903 @@
 
 ## 📑 Table of Contents
 
-- [📰 News](#-news)
-- [🚀 Key Features](#-key-features)
-- [🏗️ Architecture](#️-architecture)
-- [📊 Experimental Results](#-experimental-results)
-- [🚀 Quick Start](#-quick-start)
-- [💡 Examples](#-examples)
-  - [🎬 Live Demonstrations](#-live-demonstrations)
-- [⭐ Star History](#-star-history)
-- [📄 License](#-license)
+- [📰 News](#news)
+- [🧠 What Deep means in DeepCode](#what-deep-means-in-deepcode)
+- [🚀 Core capabilities](#core-capabilities)
+  - [Agent Harness](#agent-harness)
+  - [Loop Engineering](#loop-engineering)
+  - [Context Engineering](#context-engineering)
+  - [Evidence-driven completion](#evidence-driven-completion)
+  - [Durable local work](#durable-local-work)
+  - [Models and Skills under your control](#models-and-skills-under-your-control)
+  - [Parallel and repeatable work](#parallel-and-repeatable-work)
+- [⚡ Quick start](#quick-start)
+- [🧭 Using DeepCode](#using-deepcode)
+- [⚙️ Headless and automation](docs/HEADLESS_AND_AUTOMATION.md)
+- [🔬 Paper2Code](#paper2code)
+  - [The original architecture](#the-original-architecture)
+  - [Research results](#research-results)
+- [🎬 Live demonstrations](#live-demonstrations)
+- [🛠️ Development](#development)
+- [⭐ Star History](#star-history)
+- [🙏 Appreciation](#contributors)
+- [📖 Citation](#citation)
+- [📄 License](#license)
 
+<p align="center">
+  <img src="assets/readme/deepcode-overview.png" alt="A verified task completed with DeepCode" width="1080" />
+</p>
 
----
+## News
 
-## 📰 News
+**2026-08-07 · Thinking controls, more providers, and a Desktop you can tune**
 
-**[2026-07-17] Extensible agents: reusable Skills, lifecycle Hooks & model-driven delegation**
+- **Reasoning controls work again across the board.** Thinking levels are now
+  resolved from the model catalog, so Claude, GPT-5, Kimi, Qwen and Grok all
+  offer their real effort levels, and DeepSeek, GLM and MiniMax get a working
+  thinking toggle. A newly released model inherits its family's controls
+  instead of silently losing them.
+- **Three more providers.** Requesty and Forge join as gateways, and MiniMax
+  arrives with its own catalog entry — including the 1M-context M3 tier.
+- **Make the Desktop yours.** Settings → Appearance adds conversation width,
+  a light/dark override that no longer follows the OS blindly, font size, and
+  font selection filtered to what is actually installed on your machine.
+- **Safer command execution on Windows.** A Job Object backend gives the
+  sandbox real process-tree isolation where previously there was none.
 
-- **The agent chooses how to work.** DeepCode can maintain a plan, ask a focused question when genuinely blocked, and load reusable `SKILL.md` playbooks only when needed. Project and user skills under `.deepcode/skills/` — plus existing `.claude/skills/` packages — work across the CLI, web chat, and headless runs.
-- **Complex tasks delegate themselves.** The model can spawn bounded subagents with focused context, track their progress, and bring the results back into the parent task — without a special team command or a fixed workflow.
-- **Plug in your own guardrails and automation.** External command hooks cover session start, prompt submission, tool use, permission decisions, stopping, and subagent lifecycle events. DeepCode reads native hook files as well as compatible `.claude/settings.json` configurations, with timeouts and validated outputs so a broken hook cannot hang the agent.
-- **Run DeepCode from any folder.** `deepcode init` creates a user-level base under `~/.deepcode`; user configuration, instructions, and memory are layered with project overrides, so credentials stay global while repository-specific behavior follows the workspace. Configuration failures now show a clear setup hint instead of a traceback.
+**2026-08-04 · Skills that work wherever you do**
 
----
+- **Keep reusable expertise close to your work.** DeepCode discovers Skills
+  from the current project as well as your personal collection, while keeping
+  existing DeepCode and Claude-compatible Skill locations working.
+- **Use the same Skill from CLI or Desktop.** Select it for a task and DeepCode
+  carries its identity and version with the Turn, so the Session shows which
+  guidance shaped the result.
+- **Create Skills without leaving DeepCode.** The built-in Skill Creator helps
+  you scaffold and validate focused, reusable workflows from either interface.
+- **Stay focused as your library grows.** Context-aware discovery keeps the
+  Agent prompt concise while the complete Skill catalog remains available to
+  browse and manage.
 
-**[2026-07-10] Team mode: split a big feature across parallel workers**
+**2026-08-03 · 🎉 DeepCode v2.0 is here**
 
-- **A team, not just one agent.** Hand DeepCode a larger feature and it breaks the work into pieces, builds them at the same time, and combines the results — each piece checked against your tests as it goes.
-- **Parallel work that never collides.** Every worker builds on its own isolated copy of your project, so simultaneous changes can't corrupt each other; when two pieces touch the same code, the overlap is flagged instead of silently overwritten.
-- **Only ships when the tests pass.** Once everything is combined, the whole feature runs against your test command — the team reports success only when the tests are actually green.
+DeepCode v2.0 introduces a new general-purpose Coding Agent framework for
+building, fixing, understanding, and improving real software projects.
 
----
+- **Take on real repository work.** DeepCode can explore a codebase, edit
+  files, run commands and tests, review changes, and carry a task through to a
+  working result.
+- **Keep complex goals moving with Loop Engineering.** Give DeepCode a goal and
+  it can continue through understanding, implementation, verification, and
+  repair instead of stopping after one plausible answer.
+- **Stay in control while the Agent works.** Add requirements, correct its
+  direction, switch models, stop, resume, or revise the goal without throwing
+  away the work already completed.
+- **See what you are getting.** Plans, tool activity, code changes, test results,
+  and verification evidence stay visible so the result is easier to review and
+  trust.
+- **Build Automations around the way you work.** Turn any natural-language
+  instruction into a project-specific task: run it on demand or on a recurring
+  interval, then edit, pause, resume, and review every result. Use it for the
+  work you want DeepCode to keep taking care of, from regression checks and
+  test repair to documentation upkeep and repository maintenance.
+- **Work your way.** Use Desktop or CLI, bring your own models and Skills, and
+  delegate focused work without changing the underlying Agent workflow.
 
-**[2026-07-10] Loop engineering: give it a goal, it works until the tests pass**
+DeepCode v2.0 is built to help you spend less time supervising every step and
+more time shipping software you are proud of. We cannot wait to see what you
+build! 🚀
 
-- **Autonomous coding loops.** Hand DeepCode a goal and a test command — it works, runs your tests, and keeps fixing until they pass, on its own.
-- **Self-tidying memory.** The agent periodically cleans up its own notes, so its memory stays sharp across sessions.
-- **Run it on a schedule.** Kick off a loop or a memory tidy-up on an interval, with sensible stop conditions so it never runs away.
+**2026-07-31 · One execution model across CLI and Desktop**
 
----
+- Interactive, headless, Goal, Automation, and Desktop work all use the same
+  durable Project, Session, Thread, and Turn lifecycle.
+- Workspace trust is explicit and independent from the Session access preset:
+  **Ask**, **Read only**, or **Full access**.
+- Model-aware Thinking controls and typed reasoning presentation remain
+  separate, so changing display detail never changes the model request.
 
-**[2026-07-08] Agent Chat, polished: memory, folder picker, session management**
+**2026-07-21 · Durable Goals and safe Session lifecycle**
 
-- **The agent remembers across sessions.** Drop an `AGENTS.md` (or `DEEPCODE.md`) at your project root for standing instructions, and the agent keeps its own persistent notes under `.deepcode/memory/` — so a fact it learned yesterday is there today. Works the same in the CLI, the web chat, and headless runs.
-- **Point it at a real project folder.** New chats get a workspace picker — browse and choose the directory the agent works in (fenced to your home), instead of typing a path blind.
-- **Manage your conversations.** Rename or delete any chat from the sidebar; a new chat stays a draft until you send the first message, so the list no longer fills with empty sessions. Each chat's folder is shown and remembered across restarts.
-- **Replies you can actually read.** Assistant messages render as markdown (code blocks, lists, tables); every tool call is an expandable card showing what it did (e.g. "Wrote 163 bytes to plan.md"); errors read as errors, not as a fake answer.
+- Run long tasks as resumable, evidence-driven Goals shared by CLI and Desktop.
+- Archive history for later or permanently delete it through one guarded
+  Session lifecycle, without touching repository files.
+- Interrupted deletions recover from a durable tombstone instead of reviving
+  stale Session records.
 
----
+**2026-07-20 · Session-level model control and shared Skills**
 
-**[2026-07-08] General coding agent: interactive CLI, web Agent Chat & native tools**
+- Configure named LLM connections once and use them throughout DeepCode.
+- Switch the connection or model for future Turns without losing the
+  conversation that came before it.
+- Discover, import, enable, and select the same project or user Skills
+  regardless of how the task was started.
 
-- **Talk to DeepCode in your terminal.** `python -m cli.tui` (or just `deepcode`) opens a free-form, multi-turn coding conversation — describe any task in natural language and watch the agent stream its reply, edit files, and run commands with live progress cards. Steer with `/new`, `/resume`, `/model`, `/clear`, `/help`, and attach files with `@path`. (Replaces the previous menu-driven CLI.)
-- **Chat with the agent in your browser.** The new "Agent Chat" page keeps continuous conversations: a sidebar of past chats, one-click New chat, streamed replies with tool progress, and mid-run interrupt. Every chat persists, reopens any time, and works in its own workspace under `deepcode_lab/chats/`.
-- **Edits that land on the first try.** First-class `read` / `write` / `edit` / `apply_patch` / `bash` / `grep` / `glob` tools: whitespace-tolerant fuzzy edits, multi-file atomic patches, and automatic post-edit diagnostics the agent fixes on the spot.
-- **Script any task.** `python -m cli.exec_cli "task" --json` runs one task end-to-end and emits a machine-readable event stream — drop it straight into CI or your own pipelines.
-- **Long conversations stay fast and stable.** Context windows resolve per model with automatic history compaction, and sessions are SQLite-indexed so listing and resume are instant.
+**2026-07-17 · Durable Session navigation and replay**
 
----
+- Projects organize their own collapsible Session history while older Sessions
+  remain discoverable across directories.
+- Long conversations replay incrementally instead of being rejected as one
+  oversized message.
+- Approvals, change review, tests, and Artifacts remain attached to the task
+  that produced them.
 
-**[2026-07-04] V2 foundation: unified agent kernel, security sandbox & event protocol**
+**2026-07-10 · Loop Engineering and parallel agents**
 
-- **Every coding phase behaves the same.** All phases now run on one shared agent runtime, with tool definitions sourced straight from the MCP servers as the single source of truth — Paper2Code results unchanged.
-- **Your credentials stay yours.** Every tool call passes a three-valued permission engine (allow / ask / deny) with a non-overridable credential denylist (`.ssh`, `.aws/credentials`, `.env`, `*.pem`, ...), and shell/Python execution runs inside a platform sandbox (macOS seatbelt / Linux bubblewrap) fenced to the workspace. Tune it via `DEEPCODE_SANDBOX` / `DEEPCODE_PERMISSION_MODE` or the `security` block in `deepcode_config.json`.
-- **Build any frontend on one contract.** Declarative per-model provider settings, a normalized model-event stream, a structured message model, and an `AgentSession` event protocol back the CLI, the web UI, and headless runs alike.
-- **Web chat planning just runs.** It now proceeds autonomously by default (requirements -> plan -> implementation) instead of stalling on a clarifying-questions step.
-
----
+- Give DeepCode a mutable Goal; it can inspect, implement, verify where
+  appropriate, and repair across ordinary Turns while remaining steerable.
+- Delegate focused work to agents in isolated worktrees, then surface conflicts
+  explicitly before integration.
 
 <details>
-<summary><strong>Earlier news</strong></summary>
+<summary><strong>Earlier milestones</strong></summary>
 
-🧭 **[2026-05-01] OpenRouter model selector, session cleanup & workflow UX hardening**
-
-- 🧠 **OpenRouter model catalog in Settings.** The new UI can now fetch OpenRouter model metadata from `https://openrouter.ai/api/v1/models`, cache it locally, and expose searchable model selectors for the Default, Planning, and Implementation phases. Use exact OpenRouter model ids such as `z-ai/glm-5.1` without editing JSON by hand.
-- 🔄 **Runtime model switching.** Saving model choices from Settings updates `deepcode_config.json` and reloads the in-process LLM runtime so newly started workflows pick up the selected provider/model combination immediately.
-- 🗑️ **Session deletion now performs safe cascade cleanup.** Deleting a session from the UI removes its persistent session store and associated `deepcode_lab/tasks/<task_id>/` workspaces, while preserving shared `uploads/` source files. Sessions with `pending`, `running`, or `waiting_for_input` tasks are blocked with a clear `409 Conflict`.
-- 📊 **More accurate Paper2Code progress.** The frontend now shows backend stage messages and avoids marking intermediate phases as fully "Done" while long LLM work is still running.
-- 🛡️ **Workflow robustness fixes.** Uploads now reject Git LFS pointer files, cancelled tasks stop backend work promptly, stale browser session ids recover cleanly, planner retries fall back to a minimal valid plan when a model defers/tool-calls incorrectly, and document segmentation skips an extra validation LLM call that could stall progress.
-
----
-
-🗂️ **[2026-04-28] Persistent sessions & dual-layer logging**
-
-- 🆕 **Sessions are now persistent.** Every CLI / UI run is automatically attached to a session under `~/.deepcode/sessions/<id>/` (override with `DEEPCODE_SESSIONS_DIR`). Sessions are JSONL — `tail -f session.jsonl` works out of the box. List / inspect / branch them with `python cli/main_cli.py session list|show <id>|new|resume <id>|delete <id>`, or via `GET /api/v1/sessions` from the backend.
-- 🔄 **Resume a previous run** by passing `--session <id>` to the CLI or `session_id` to `POST /api/v1/workflows/paper-to-code` (or `chat-planning`). Backend restarts no longer drop task history; running tasks left over from a crash are surfaced as `interrupted`.
-- 💻 **CLI session UX.** The interactive CLI now supports Cursor-style slash commands: `/resume` opens a numbered session picker, `/new [title]` creates and switches sessions, `/session` shows the active session, and `/help` lists commands. You can also paste inline inputs directly at the menu prompt with `@/path/to/paper.pdf`, `@"C:\path with spaces\paper.pdf"`, or `@https://...`.
-- 📜 **Two-layer structured logging.** A global rotating JSONL lives at `logs/server-YYYYMMDD.jsonl`; per-task logs at `deepcode_lab/tasks/<task_id>/logs/{system,llm,mcp}.jsonl`. Every `loguru.logger` call automatically picks up the active `task_id` via a contextvar — business code did not have to change. Configure via the new `logger.{globalFile,taskFile,llm}` block in `deepcode_config.json`.
-- 📡 **WebSocket log streaming.** Tail one task with `/ws/tasks/{task_id}/logs?channel=llm`, or merge every task in a session via `/ws/sessions/{session_id}/logs`. The legacy `/ws/logs/{session_id}` endpoint that silently ignored its parameter has been removed.
-- 🧹 **Dead code removed.** `utils/simple_llm_logger.py`, `utils/dialogue_logger.py`, and the in-memory `services/session_service.py` implementation are gone (the latter is now a thin re-export of `core.sessions.SessionStore`).
-
----
-
-🛠️ **[2026-04-17] Stability, Windows compatibility & secrets hygiene update**
-
-- 🐛 **Code Implementation no longer crashes** with `name 'LoopDetector' is not defined` — added the missing `LoopDetector`/`ProgressTracker` imports in both `workflows/code_implementation_workflow.py` and `workflows/code_implementation_workflow_index.py`.
-- 🪟 **Windows: `mkdir -p` / `touch` / `rm -rf` / `cp -r` / `mv` now work natively.** `tools/command_executor.py` translates these common Unix file-tree commands via `pathlib`/`shutil` on every platform, eliminating the bug where `cmd.exe` would create a literal `-p` directory and stall the workflow.
-- 🚀 **Removed Brave Search end-to-end.** All Python code, MCP server config, and docs are scrubbed of `brave`/`BRAVE_API_KEY`/`WebSearchTool`. Web fetching now relies entirely on the built-in `fetch` MCP server.
-- 🔌 **OpenAI-compatible providers documented.** New `Quick Start → Configuration` snippet shows how to point the `openai`/`openrouter` blocks at Poe (`https://api.poe.com/v1`), OpenRouter, or Alibaba DashScope, plus how to set `agents.defaults.model` / `agents.planning.model` / `agents.implementation.model` (e.g. `openai/gpt-5.4`).
-- 🔐 **Secrets hygiene.** All YAML config has been collapsed into a single `deepcode_config.json`, and `.gitignore` now ignores it alongside `secrets.json`, `*credentials*.json`, `.env`, `.env.*` (with `*.env.example` whitelisted).
-- 📝 **Launch table fixed.** The README now documents `deepcode --local` for the web UI path and adds explicit Troubleshooting rows for Windows GBK encoding and the issues fixed above.
-- 🧹 **Misc:** auto-create `logs/` directory so JSONL logging never fails on a fresh checkout, replace bare `except:` with `except Exception:` in `agent_orchestration_engine.py` (Ruff E722), `command_executor` MCP tool descriptions now embed the host OS so the LLM picks compatible commands.
-
----
-
-🎉 **[2026-02] New Web UI Experience Upgrade!**
-
-- 🔄 **User-in-Loop Interaction**: Support real-time user interaction during workflows - AI asks clarifying questions directly in the chat
-- 💬 **Inline Interaction Design**: Interaction prompts appear naturally within the chat flow for a seamless experience
-- 🚀 **One-Click Launch**: Simply run `deepcode` to start the new UI (cross-platform: Windows/macOS/Linux)
-- 🔧 **Improved Process Management**: Enhanced service start/stop mechanism with automatic port cleanup
-- 📡 **WebSocket Real-time Communication**: Fixed message loss issues, ensuring proper interaction state synchronization
-
-<div align="center">
-  <img src="./assets/NewUI.png" alt="DeepCode New UI" width="85%" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.15);" />
-  <br/>
-  <sub><em>DeepCode New Web UI - Modern React-based Interface</em></sub>
-</div>
-
----
-
-🎉 **[2025-10-28] DeepCode Achieves SOTA on PaperBench!**
-
-DeepCode sets new benchmarks on OpenAI's PaperBench Code-Dev across all categories:
-
-- 🏆 **Surpasses Human Experts**: **75.9%** (DeepCode) vs Top Machine Learning PhDs 72.4% (+3.5%).
-- 🥇 **Outperforms SOTA Commercial Code Agents**: **84.8%** (DeepCode) vs Leading Commercial Code Agents (+26.1%) (Cursor, Claude Code, and Codex).
-- 🔬 **Advances Scientific Coding**: **73.5%** (DeepCode) vs PaperCoder 51.1% (+22.4%).
-- 🚀 **Beats LLM Agents**: **73.5%** (DeepCode) vs best LLM frameworks 43.3% (+30.2%).
+- **2026-07-08 · Durable Sessions and memory.** Session history survives
+  restarts, project instructions can live in `AGENTS.md` or `DEEPCODE.md`, and
+  persistent notes remain with the workspace.
+- **2026-07-08 · General coding agent.** The free-form TUI, native file and shell
+  tools, headless execution, context compaction, and cross-directory resume
+  established the current product foundation.
+- **2026-07-04 · Agent Harness foundation.** A shared execution contract,
+  three-valued permissions, sensitive-path protection, platform sandboxing, and
+  normalized events made supervised local execution possible.
+- The complete pre-restructure history is preserved in the
+  [legacy README](docs/archive/README_LEGACY_2026-07-20.md).
 
 </details>
 
----
+## What Deep means in DeepCode
 
-## 🚀 Key Features
+Most Coding Agents can generate code. The hard part is understanding a real
+project, making changes within the right boundaries, continuously correcting
+course from runtime results, and making it clear why the outcome can be
+trusted.
 
-<br/>
+DeepCode is an open-source Coding Agent for real software engineering. Give it
+a simple change or a goal that takes dozens of steps. It can understand the
+project, work on the code, run tools, verify results, and continue after an
+interruption, restart, or model switch.
 
-<table align="center" width="100%" style="border: none; table-layout: fixed;">
-<tr>
-<td width="30%" align="center" style="vertical-align: top; padding: 20px;">
+“Deep” represents four kinds of depth that remain with the task from start to
+finish:
 
-<div style="height: 80px; display: flex; align-items: center; justify-content: center;">
-<h3 style="margin: 0; padding: 0;">🚀 <strong>Paper2Code</strong></h3>
-</div>
+| Depth                 | What it means for you                                                                                                  |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| **Deep Context**      | Understand the task through project structure, engineering rules, Skills, Session history, and long-term memory.       |
+| **Deep Execution**    | Search, edit, run commands, and execute tests instead of stopping at suggestions—and show the work as it happens.       |
+| **Deep Verification** | Check results with tests, builds, diagnostics, Diffs, and task Artifacts rather than treating a plausible answer as done. |
+| **Deep Continuity**   | Preserve conversations, decisions, tool records, and evidence across time, directories, clients, and model changes.    |
 
-<div align="center" style="margin: 15px 0;">
-  <img src="https://img.shields.io/badge/ALGORITHM-IMPLEMENTATION-ff6b6b?style=for-the-badge&logo=algorithm&logoColor=white" alt="Algorithm Badge" />
-</div>
+DeepCode stands out in three ways:
 
-<div style="height: 80px; display: flex; align-items: center; justify-content: center;">
-<p align="center"><strong>Automated Implementation of Complex Algorithms</strong></p>
-</div>
+- **Turn complex knowledge into a working system.** DeepCode is not limited to
+  Issues and code snippets. Paper2Code can start from papers, documents,
+  reference repositories, and experiment goals, then carry the work through
+  understanding, implementation, and verification.
+- **Keep long tasks moving while staying in control.** A Goal is not a one-shot
+  prompt. Add requirements, revise the Goal, pause, stop, or continue while the
+  task is running without losing completed work.
+- **Take code changes through verification and review.** DeepCode goes beyond
+  generating a patch. It runs the commands and tests the task requires,
+  inspects build results and file changes, and links the Goal outcome to
+  relevant execution records for review.
 
-<div style="height: 60px; display: flex; align-items: center; justify-content: center;">
-<p align="center">Effortlessly converts complex algorithms from research papers into <strong>high-quality</strong>, <strong>production-ready</strong> code, accelerating algorithm reproduction.</p>
-</div>
+DeepCode is not designed to make an Agent look busier. It is designed to help
+you finish real software engineering work more reliably.
 
+## Core capabilities
 
+DeepCode provides a complete local Coding Agent workflow. CLI and Desktop are
+two ways to use the same Agent, Sessions, models, Skills, permissions, and task
+state.
 
-</td>
-<td width="30%" align="center" style="vertical-align: top; padding: 20px;">
+<p align="center">
+  <img src="assets/readme/verification-loop.png" alt="DeepCode Agent Harness and verification loop" width="1080" />
+</p>
 
-<div style="height: 80px; display: flex; align-items: center; justify-content: center;">
-<h3 style="margin: 0; padding: 0;">🎨 <strong>Text2Web</strong></h3>
-</div>
+### Work directly in your repository
 
-<div align="center" style="margin: 15px 0;">
-  <img src="https://img.shields.io/badge/FRONTEND-DEVELOPMENT-4ecdc4?style=for-the-badge&logo=react&logoColor=white" alt="Frontend Badge" />
-</div>
+DeepCode can read and search code, edit files, apply patches, run commands and
+tests, and continue working from the results. Tool calls, execution progress,
+and file changes stay visible, so you can see what the Agent did and what
+changed in the project.
 
-<div style="height: 80px; display: flex; align-items: center; justify-content: center;">
-<p align="center"><strong>Automated Front-End Web Development</strong></p>
-</div>
+Use it to explain code, fix bugs, and add tests—or for cross-file refactors,
+feature development, and longer repository-level tasks.
 
-<div style="height: 60px; display: flex; align-items: center; justify-content: center;">
-<p align="center">Translates plain textual descriptions into <strong>fully functional</strong>, <strong>visually appealing</strong> front-end web code for rapid interface creation.</p>
-</div>
+When you provide a public HTTP or HTTPS URL, the shared `web_fetch` tool can
+read the page without a search provider or an additional API key.
 
+### Goal-driven Loop Engineering
 
+For work that cannot be completed in one response, give DeepCode a natural-
+language Goal. The Agent keeps analyzing, implementing, verifying, and fixing
+around that Goal without requiring you to push every step manually.
 
-</td>
-<td width="30%" align="center" style="vertical-align: top; padding: 20px;">
+While it runs, you can still:
 
-<div style="height: 80px; display: flex; align-items: center; justify-content: center;">
-<h3 style="margin: 0; padding: 0;">⚙️ <strong>Text2Backend</strong></h3>
-</div>
+- add information to the current task;
+- revise the Goal or its acceptance criteria;
+- queue the next instruction;
+- pause, stop, or continue the task;
+- resume the same Goal after leaving the application.
 
-<div align="center" style="margin: 15px 0;">
-  <img src="https://img.shields.io/badge/BACKEND-DEVELOPMENT-9b59b6?style=for-the-badge&logo=server&logoColor=white" alt="Backend Badge" />
-</div>
+Automatic execution does not take away your control. You can always change
+what should happen next.
 
-<div style="height: 80px; display: flex; align-items: center; justify-content: center;">
-<p align="center"><strong>Automated Back-End Development</strong></p>
-</div>
+### Evidence-driven completion
 
-<div style="height: 60px; display: flex; align-items: center; justify-content: center;">
-<p align="center">Generates <strong>efficient</strong>, <strong>scalable</strong>, and <strong>feature-rich</strong> back-end code from simple text inputs, streamlining server-side development.</p>
-</div>
+DeepCode does not use one hard-coded rule to judge every Coding task. It
+selects evidence that fits the task, such as test results, build output, static
+checks, diagnostics, file changes, Diffs, or generated Artifacts.
 
+A failed verification is not presented as success. It becomes input to the
+next repair. When a task is complete—or genuinely blocked—the result, reason,
+and related evidence remain in the Session for review and reproduction.
 
+### Durable Sessions and project context
 
-</td>
-</tr>
-</table>
+Every Session is stored locally and linked to its original project. Start
+DeepCode from any directory, find earlier projects and Sessions, and continue
+the same work in CLI or Desktop.
 
-<br/>
+A Session stores more than chat text: it keeps tool calls, permission
+decisions, Goals, model configuration, and verification records. Project rules,
+persistent memory, Skills, and long-conversation compaction help the Agent keep
+context throughout complex work.
 
----
+### Your models, your reasoning settings
 
-## 📊 Experimental Results
+DeepCode is not tied to one model provider. Connect OpenRouter, OpenAI,
+Anthropic, DeepSeek, Gemini, an OpenAI-compatible gateway, Ollama, vLLM, or
+another compatible endpoint with your own API Key.
 
-<div align="center">
-    <img src='./assets/result_main02.jpg' /><br>
-</div>
-<br/>
+Before use, a connection can check credentials, the model catalog, and a real
+inference request. Each Session can choose a model and Thinking Level. Changing
+models mid-Session affects future Turns only; it does not delete history or
+confuse where earlier work came from. When supported, DeepCode can also show a
+reasoning summary returned by the Provider.
 
-We evaluate **DeepCode** on the [*PaperBench*](https://openai.com/index/paperbench/) benchmark (released by OpenAI), a rigorous testbed requiring AI agents to independently reproduce 20 ICML 2024 papers from scratch. The benchmark comprises 8,316 gradable components assessed using SimpleJudge with hierarchical weighting.
+### Reusable Skills
 
-Our experiments compare DeepCode against four baseline categories: **(1) Human Experts**, **(2) State-of-the-Art Commercial Code Agents**, **(3) Scientific Code Agents**, and **(4) LLM-Based Agents**.
+Skills turn team conventions, domain knowledge, review methods, and repeated
+workflows into reusable Agent capabilities. Keep project Skills in
+`.agents/skills`, keep personal Skills in `~/.agents/skills`, or use the bundled
+Skill Creator to build one conversationally.
 
-### ① 🧠 Human Expert Performance (Top Machine Learning PhD)
+DeepCode also reads existing `.deepcode/skills` and Claude-style directories
+without migrating them. A Skill can guide how the Agent works, but it cannot
+bypass project trust, tool permissions, or safety boundaries.
 
-**DeepCode: 75.9% vs. Top Machine Learning PhD: 72.4% (+3.5%)**
+### Permissions you can understand
 
-DeepCode achieves **75.9%** on the 3-paper human evaluation subset, **surpassing the best-of-3 human expert baseline (72.4%) by +3.5 percentage points**. This demonstrates that our framework not only matches but exceeds expert-level code reproduction capabilities, representing a significant milestone in autonomous scientific software engineering.
+Every project must be explicitly trusted before execution. Each Session can
+use one of three modes:
 
-### ② 💼 State-of-the-Art Commercial Code Agents
+- **Ask**: confirm sensitive operations before they run;
+- **Read only**: allow analysis and reading only;
+- **Full access**: allow complete work in a trusted project.
 
-**DeepCode: 84.8% vs. Best Commercial Agent: 58.7% (+26.1%)**
+Individual tools also support `allow`, `ask`, and `deny`. CLI and Desktop share
+the same permission state, and DeepCode does not silently replay operations
+with side effects after a task is stopped or interrupted.
 
-On the 5-paper subset, DeepCode substantially outperforms leading commercial coding tools:
-- Cursor: 58.4%
-- Claude Code: 58.7%
-- Codex: 40.0%
-- **DeepCode: 84.8%**
+### Parallel agents without file collisions
 
-This represents a **+26.1% improvement** over the leading commercial code agent. All commercial agents utilize Claude Sonnet 4.5 or GPT-5 Codex-high, highlighting that **DeepCode's superior architecture**—rather than base model capability—drives this performance gap.
+Complex work can be split across focused Agents—for example, separate Agents
+for code investigation, test analysis, and implementation review.
 
-### ③ 🔬 Scientific Code Agents
+Parallel changes can run in isolated Git worktrees so Agents do not edit the
+same working directory at once. Results return to the main task for review and
+integration. Conflicts are shown explicitly instead of being silently
+overwritten, and the main Agent remains responsible for the final Goal.
 
-**DeepCode: 73.5% vs. PaperCoder: 51.1% (+22.4%)**
+### Automate repeatable engineering work
 
-Compared to PaperCoder (**51.1%**), the state-of-the-art scientific code reproduction framework, DeepCode achieves **73.5%**, demonstrating a **+22.4% relative improvement**. This substantial margin validates our multi-module architecture combining planning, hierarchical task decomposition, code generation, and iterative debugging over simpler pipeline-based approaches.
+Once a workflow is stable, save it as an Automation and run it manually or on
+a schedule. For example:
 
-### ④ 🤖 LLM-Based Agents
+- check tests and builds regularly;
+- scan for regressions;
+- organize pending work;
+- run repository maintenance or periodic reviews.
 
-**DeepCode: 73.5% vs. Best LLM Agent: 43.3% (+30.2%)**
+Automation does not launch a separate, reduced Agent. It uses the same
+Sessions, models, Skills, permissions, approvals, and recovery behavior, and
+keeps the history of every run.
 
-DeepCode significantly outperforms all tested LLM agents:
-- Claude 3.5 Sonnet + IterativeAgent: 27.5%
-- o1 + IterativeAgent (36 hours): 42.4%
-- o1 BasicAgent: 43.3%
-- **DeepCode: 73.5%**
+### Paper2Code
 
-The **+30.2% improvement** over the best-performing LLM agent demonstrates that sophisticated agent scaffolding, rather than extended inference time or larger models, is critical for complex code reproduction tasks.
+Paper2Code was DeepCode's original research direction and remains its dedicated
+workflow for research reproduction.
 
----
+It can start from a paper, technical document, URL, or reference repository;
+understand the research goal; find related implementations; organize a
+development plan; generate code; and verify the result through experiments and
+Artifacts. It reflects DeepCode's core idea: the goal is not to generate code
+that merely looks correct, but to turn complex knowledge into a system that can
+run, be inspected, and keep improving.
 
-### 🎯 **Autonomous Self-Orchestrating Multi-Agent Architecture**
+## Quick start
 
-**The Challenges**:
+DeepCode has two interfaces with separate installation paths. Choose one to get
+started; both use the same Agent runtime and canonical Session history.
 
-- 📄 **Implementation Complexity**: Converting academic papers and complex algorithms into working code requires significant technical effort and domain expertise
+> `uv tool install deepcode-hku` installs the CLI and shared Python runtime. It
+> does **not** install the Tauri Desktop application.
 
-- 🔬 **Research Bottleneck**: Researchers spend valuable time implementing algorithms instead of focusing on their core research and discovery work
+### Option A — Install the CLI
 
-- ⏱️ **Development Delays**: Product teams experience long wait times between concept and testable prototypes, slowing down innovation cycles
+Install `uv` first if it is not already available. On Windows PowerShell:
 
-- 🔄 **Repetitive Coding**: Developers repeatedly implement similar patterns and functionality instead of building on existing solutions
-
-**DeepCode** addresses these workflow inefficiencies by providing reliable automation for common development tasks, streamlining your development workflow from concept to code.
-
-<div align="center">
-
-```mermaid
-flowchart LR
-    A["📄 Research Papers<br/>💬 Text Prompts<br/>🌐 URLs & Document<br/>📎 Files: PDF, DOC, PPTX, TXT, HTML"] --> B["🧠 DeepCode<br/>Multi-Agent Engine"]
-    B --> C["🚀 Algorithm Implementation <br/>🎨 Frontend Development <br/>⚙️ Backend Development"]
-
-    style A fill:#ff6b6b,stroke:#c0392b,stroke-width:2px,color:#000
-    style B fill:#00d4ff,stroke:#0984e3,stroke-width:3px,color:#000
-    style C fill:#00b894,stroke:#00a085,stroke-width:2px,color:#000
+```powershell
+winget install --id astral-sh.uv --exact
 ```
 
-</div>
+Open a new terminal after the first `uv` installation, then run:
 
----
-
-## 🏗️ Architecture
-
-### 📊 **System Overview**
-
-**DeepCode** is an AI-powered development platform that automates code generation and implementation tasks. Our multi-agent system handles the complexity of translating requirements into functional, well-structured code, allowing you to focus on innovation rather than implementation details.
-
-🎯 **Technical Capabilities**:
-
-🧬 **Research-to-Production Pipeline**<br>
-Multi-modal document analysis engine that extracts algorithmic logic and mathematical models from academic papers. Generates optimized implementations with proper data structures while preserving computational complexity characteristics.
-
-🪄 **Natural Language Code Synthesis**<br>
-Context-aware code generation using fine-tuned language models trained on curated code repositories. Maintains architectural consistency across modules while supporting multiple programming languages and frameworks.
-
-⚡ **Automated Prototyping Engine**<br>
-Intelligent scaffolding system generating complete application structures including database schemas, API endpoints, and frontend components. Uses dependency analysis to ensure scalable architecture from initial generation.
-
-💎 **Quality Assurance Automation**<br>
-Integrated static analysis with automated unit test generation and documentation synthesis. Employs AST analysis for code correctness and property-based testing for comprehensive coverage.
-
-🔮 **CodeRAG Integration System**<br>
-Advanced retrieval-augmented generation combining semantic vector embeddings with graph-based dependency analysis. Automatically discovers optimal libraries and implementation patterns from large-scale code corpus.
-
----
-
-### 🔧 **Core Techniques**
-
-- 🧠 **Intelligent Orchestration Agent**: Central decision-making system that coordinates workflow phases and analyzes requirements. Employs dynamic planning algorithms to adapt execution strategies in real-time based on evolving project complexity. Dynamically selects optimal processing strategies for each implementation step. <br>
-
-- 💾 **Efficient Memory Mechanism**: Advanced context engineering system that manages large-scale code contexts efficiently. Implements hierarchical memory structures with intelligent compression for handling complex codebases. This component enables instant retrieval of implementation patterns and maintains semantic coherence across extended development sessions. <br>
-
-- 🔍 **Advanced CodeRAG System**: Global code comprehension engine that analyzes complex inter-dependencies across repositories. Performs cross-codebase relationship mapping to understand architectural patterns from a holistic perspective. This module leverages dependency graphs and semantic analysis to provide globally-aware code recommendations during implementation.
-
----
-
-### 🤖 **Multi-Agent Architecture of DeepCode**:
-
-- **🎯 Central Orchestrating Agent**: Orchestrates entire workflow execution and makes strategic decisions. Coordinates specialized agents based on input complexity analysis. Implements dynamic task planning and resource allocation algorithms. <br>
-
-- **📝 Intent Understanding Agent**: Performs deep semantic analysis of user requirements to decode complex intentions. Extracts functional specifications and technical constraints through advanced NLP processing. Transforms ambiguous human descriptions into precise, actionable development specifications with structured task decomposition. <br>
-
-- **📄 Document Parsing Agent**: Processes complex technical documents and research papers with advanced parsing capabilities. Extracts algorithms and methodologies using document understanding models. Converts academic concepts into practical implementation specifications through intelligent content analysis. <br>
-
-- **🏗️ Code Planning Agent**: Performs architectural design and technology stack optimization. Dynamic planning for adaptive development roadmaps. Enforces coding standards and generates modular structures through automated design pattern selection.<br>
-
-- **🔍 Code Reference Mining Agent**: Discovers relevant repositories and frameworks through intelligent search algorithms. Analyzes codebases for compatibility and integration potential. Provides recommendations based on similarity metrics and automated dependency analysis. <br>
-
-- **📚 Code Indexing Agent**: Builds comprehensive knowledge graphs of discovered codebases. Maintains semantic relationships between code components. Enables intelligent retrieval and cross-reference capabilities. <br>
-
-- **🧬 Code Generation Agent**: Synthesizes gathered information into executable code implementations. Creates functional interfaces and integrates discovered components. Generates comprehensive test suites and documentation for reproducibility.
-
----
-
-#### 🛠️ **Implementation Tools Matrix**
-
-**🔧 Powered by MCP (Model Context Protocol)**
-
-DeepCode leverages the **Model Context Protocol (MCP)** standard to seamlessly integrate with various tools and services. This standardized approach ensures reliable communication between AI agents and external systems, enabling powerful automation capabilities.
-
-##### 📡 **MCP Servers & Tools**
-
-| 🛠️ **MCP Server** | 🔧 **Primary Function** | 💡 **Purpose & Capabilities** |
-|-------------------|-------------------------|-------------------------------|
-| **📂 filesystem** | File System Operations | Local file and directory management, read/write operations |
-| **🌐 fetch** | Web Content Retrieval | Fetch and extract content from URLs and web resources |
-| **📥 github-downloader** | Repository Management | Clone and download GitHub repositories for analysis |
-| **📋 file-downloader** | Document Processing | Download and convert files (PDF, DOCX, etc.) to Markdown |
-| **⚡ command-executor** | System Commands | Execute bash/shell commands for environment management |
-| **🧬 code-implementation** | Code Generation Hub | Comprehensive code reproduction with execution and testing |
-| **📚 code-reference-indexer** | Smart Code Search | Intelligent indexing and search of code repositories |
-| **📄 document-segmentation** | Smart Document Analysis | Intelligent document segmentation for large papers and technical documents |
-
-##### 🔧 **Legacy Tool Functions** *(for reference)*
-
-| 🛠️ **Function** | 🎯 **Usage Context** |
-|-----------------|---------------------|
-| **📄 read_code_mem** | Efficient code context retrieval from memory |
-| **✍️ write_file** | Direct file content generation and modification |
-| **🐍 execute_python** | Python code testing and validation |
-| **📁 get_file_structure** | Project structure analysis and organization |
-| **⚙️ set_workspace** | Dynamic workspace and environment configuration |
-| **📊 get_operation_history** | Process monitoring and operation tracking |
-
-
----
-
-🎛️ **Multi-Interface Framework**<br>
-RESTful API with CLI and web frontends featuring real-time code streaming, interactive debugging, and extensible plugin architecture for CI/CD integration.
-
-**🚀 Multi-Agent Intelligent Pipeline:**
-
-<div align="center">
-
-### 🌟 **Intelligence Processing Flow**
-
-<table align="center" width="100%" style="border: none; border-collapse: collapse;">
-<tr>
-<td colspan="3" align="center" style="padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 15px; color: white; font-weight: bold;">
-💡 <strong>INPUT LAYER</strong><br/>
-📄 Research Papers • 💬 Natural Language • 🌐 URLs • 📋 Requirements
-</td>
-</tr>
-<tr><td colspan="3" height="20"></td></tr>
-<tr>
-<td colspan="3" align="center" style="padding: 15px; background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%); border-radius: 12px; color: white; font-weight: bold;">
-🎯 <strong>CENTRAL ORCHESTRATION</strong><br/>
-Strategic Decision Making • Workflow Coordination • Agent Management
-</td>
-</tr>
-<tr><td colspan="3" height="15"></td></tr>
-<tr>
-<td align="center" style="padding: 12px; background: linear-gradient(135deg, #3742fa 0%, #2f3542 100%); border-radius: 10px; color: white; width: 50%;">
-📝 <strong>TEXT ANALYSIS</strong><br/>
-<small>Requirement Processing</small>
-</td>
-<td width="10"></td>
-<td align="center" style="padding: 12px; background: linear-gradient(135deg, #8c7ae6 0%, #9c88ff 100%); border-radius: 10px; color: white; width: 50%;">
-📄 <strong>DOCUMENT ANALYSIS</strong><br/>
-<small>Paper & Spec Processing</small>
-</td>
-</tr>
-<tr><td colspan="3" height="15"></td></tr>
-<tr>
-<td colspan="3" align="center" style="padding: 15px; background: linear-gradient(135deg, #00d2d3 0%, #54a0ff 100%); border-radius: 12px; color: white; font-weight: bold;">
-📋 <strong>REPRODUCTION PLANNING</strong><br/>
-Deep Paper Analysis • Code Requirements Parsing • Reproduction Strategy Development
-</td>
-</tr>
-<tr><td colspan="3" height="15"></td></tr>
-<tr>
-<td align="center" style="padding: 12px; background: linear-gradient(135deg, #ffa726 0%, #ff7043 100%); border-radius: 10px; color: white; width: 50%;">
-🔍 <strong>REFERENCE ANALYSIS</strong><br/>
-<small>Repository Discovery</small>
-</td>
-<td width="10"></td>
-<td align="center" style="padding: 12px; background: linear-gradient(135deg, #e056fd 0%, #f368e0 100%); border-radius: 10px; color: white; width: 50%;">
-📚 <strong>CODE INDEXING</strong><br/>
-<small>Knowledge Graph Building</small>
-</td>
-</tr>
-<tr><td colspan="3" height="15"></td></tr>
-<tr>
-<td colspan="3" align="center" style="padding: 15px; background: linear-gradient(135deg, #26de81 0%, #20bf6b 100%); border-radius: 12px; color: white; font-weight: bold;">
-🧬 <strong>CODE IMPLEMENTATION</strong><br/>
-Implementation Generation • Testing • Documentation
-</td>
-</tr>
-<tr><td colspan="3" height="15"></td></tr>
-<tr>
-<td colspan="3" align="center" style="padding: 20px; background: linear-gradient(135deg, #045de9 0%, #09c6f9 100%); border-radius: 15px; color: white; font-weight: bold;">
-⚡ <strong>OUTPUT DELIVERY</strong><br/>
-📦 Complete Codebase • 🧪 Test Suite • 📚 Documentation • 🚀 Deployment Ready
-</td>
-</tr>
-</table>
-
-</div>
-
-<div align="center">
-<br/>
-
-### 🔄 **Process Intelligence Features**
-
-<table align="center" style="border: none;">
-<tr>
-<td align="center" width="25%" style="padding: 15px;">
-<div style="background: #f8f9fa; border-radius: 10px; padding: 15px; border-left: 4px solid #ff6b6b;">
-<h4>🎯 Adaptive Flow</h4>
-<p><small>Dynamic agent selection based on input complexity</small></p>
-</div>
-</td>
-<td align="center" width="25%" style="padding: 15px;">
-<div style="background: #f8f9fa; border-radius: 10px; padding: 15px; border-left: 4px solid #4ecdc4;">
-<h4>🧠 Smart Coordination</h4>
-<p><small>Intelligent task distribution and parallel processing</small></p>
-</div>
-</td>
-<td align="center" width="25%" style="padding: 15px;">
-<div style="background: #f8f9fa; border-radius: 10px; padding: 15px; border-left: 4px solid #45b7d1;">
-<h4>🔍 Context Awareness</h4>
-<p><small>Deep understanding through CodeRAG integration</small></p>
-</div>
-</td>
-<td align="center" width="25%" style="padding: 15px;">
-<div style="background: #f8f9fa; border-radius: 10px; padding: 15px; border-left: 4px solid #96ceb4;">
-<h4>⚡ Quality Assurance</h4>
-<p><small>Automated testing and validation throughout</small></p>
-</div>
-</td>
-</tr>
-</table>
-
-</div>
-
----
-
-
-## 🚀 Quick Start
-
-### 📋 **Prerequisites**
-
-Before installing DeepCode, ensure you have the following:
-
-| Requirement | Version | Purpose |
-|-------------|---------|---------|
-| **Python** | 3.9+ | Core runtime |
-| **Node.js** | 18+ | New UI frontend |
-| **npm** | 8+ | Package management |
-
-```bash
-# Check your versions
-python --version   # Should be 3.9+
-node --version     # Should be 18+
-npm --version      # Should be 8+
-```
-
-<details>
-<summary><strong>📥 Install Node.js (if not installed)</strong></summary>
-
-```bash
-# macOS (using Homebrew)
-brew install node
-
-# Ubuntu/Debian
-curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
-sudo apt-get install -y nodejs
-
-# Windows
-# Download from https://nodejs.org/
-```
-
-</details>
-
-### 📦 **Step 1: Installation**
-
-Choose one of the following installation methods:
-
-#### ⚡ **Direct Installation (Recommended)**
-
-```bash
-# 🚀 Install DeepCode package directly
-pip install deepcode-hku
-
-# 🔑 One-time setup: create ~/.deepcode/deepcode_config.json (then add a key)
+```console
+uv tool install deepcode-hku
 deepcode init
 ```
 
-#### 🔧 **Development Installation (From Source)**
+Create a model connection once. `--api-key` opens a non-echoing prompt:
 
-<details>
-<summary><strong>📂 Click to expand development installation options</strong></summary>
+```console
+deepcode provider set personal-openrouter --template openrouter --label "OpenRouter · Personal" --api-key
+deepcode provider models personal-openrouter --refresh
+deepcode provider test personal-openrouter --model <model-id>
+```
 
-##### 🔥 **Using UV (Recommended for Development)**
+Enter the repository you want DeepCode to work in and start the interactive
+Agent:
+
+```console
+cd <your-project>
+deepcode
+```
+
+`deepcode init` creates minimal user configuration under `~/.deepcode/`.
+Credentials are stored separately in user-private storage and are never written
+to Session history. `pipx install deepcode-hku` and `pip install deepcode-hku`
+are also supported in an appropriate Python 3.12+ environment.
+
+### Option B — Install Desktop
+
+Desktop release bundles are distributed separately from the Python package.
+Check [GitHub Releases](https://github.com/HKUDS/DeepCode/releases) for a signed
+installer for your platform. If no installer is attached, use the source setup
+below.
+
+#### macOS and Linux from source
+
+Install the platform dependencies from the
+[Tauri 2 prerequisite guide](https://v2.tauri.app/start/prerequisites/), plus
+Git, Python 3.12+, `uv`, Node.js 22+, and stable Rust. Then run:
 
 ```bash
 git clone https://github.com/HKUDS/DeepCode.git
-cd DeepCode/
-
-curl -LsSf https://astral.sh/uv/install.sh | sh
-uv venv --python=3.13
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
-uv pip install -r requirements.txt
-
-# Install frontend dependencies
-npm install --prefix new_ui/frontend
+cd DeepCode
+uv venv --python 3.12
+uv pip install --python .venv/bin/python -e .
+.venv/bin/deepcode init
+cd desktop
+npm ci
+npm run setup:sidecar
+npm run build:sidecar
+cd ..
+mkdir -p ~/.local/bin
+ln -sf "$(pwd)/scripts/deepcode-desktop" ~/.local/bin/deepcode-desktop
+export PATH="$HOME/.local/bin:$PATH"
+deepcode-desktop
 ```
 
-##### 🐍 **Using Traditional pip**
+The final link is a one-time source launcher installation. Afterwards,
+`deepcode-desktop` starts this checkout from any directory, provided
+`~/.local/bin` is on `PATH`. Add the export to your shell profile if it is not
+already configured. The command launches Desktop; add or select the repository
+you want to work on from the Project sidebar.
 
-```bash
+#### Windows from source
+
+Windows requires Microsoft Edge WebView2 and the Visual Studio 2022 Build Tools
+workload **Desktop development with C++**. Accept the UAC prompt raised by Build
+Tools:
+
+```powershell
+winget install --id Git.Git --exact
+winget install --id astral-sh.uv --exact
+winget install --id OpenJS.NodeJS.LTS --exact
+winget install --id Rustlang.Rustup --exact
+winget install --id Microsoft.VisualStudio.2022.BuildTools --exact `
+  --override "--wait --passive --norestart --add Microsoft.VisualStudio.Workload.VCTools --includeRecommended"
+```
+
+Close PowerShell, open a new window, and verify the toolchains:
+
+```powershell
+git --version
+uv --version
+node --version
+rustup default stable-msvc
+rustc --version
+cargo --version
+```
+
+Clone, prepare, and start Desktop:
+
+```powershell
 git clone https://github.com/HKUDS/DeepCode.git
-cd DeepCode/
-
-pip install -r requirements.txt
-
-# Install frontend dependencies
-npm install --prefix new_ui/frontend
+Set-Location DeepCode
+uv venv --python 3.12
+uv pip install --python .venv\Scripts\python.exe -e .
+.venv\Scripts\deepcode.exe init
+Set-Location desktop
+npm ci
+$env:DEEPCODE_PYTHON = (Resolve-Path ..\.venv\Scripts\python.exe)
+npm run setup:sidecar
+npm run build:sidecar
+npm run tauri -- dev
 ```
 
-##### 🧪 **Editable install (lets `deepcode` always run THIS checkout)**
+Keep that PowerShell window open while Desktop is running. See the
+[Desktop source guide](desktop/README.md#windows-powershell) for subsequent
+launches and troubleshooting.
 
-If you want the global `deepcode` command to launch the source tree you are
-hacking on, install the project in editable mode after the steps above:
+#### Configure the Desktop model
 
-```bash
-pip install -e .
-```
+Open **Settings → AI providers** after Desktop starts.
 
-This registers a `deepcode-hku` package (current version 1.2.0) and exposes
-the `deepcode` CLI entry point. Any local code change is picked up
-immediately on next launch — no reinstall needed.
+<div align="center">
+  <img src="assets/setting_model.png" alt="Configure an AI provider and model in DeepCode Desktop" width="100%" style="border-radius: 10px; box-shadow: 0 8px 20px rgba(45,55,72,0.2); margin: 15px 0;"/>
 
-> If you maintain multiple DeepCode checkouts, only one of them can own the
-> `deepcode` command at a time (the most recent `pip install -e .` wins).
-> Reinstall in the checkout you currently want to be active.
+  <sub>Provider credentials, model discovery, and inference verification stay in one Desktop workflow.</sub>
+</div>
 
-</details>
+1. Select **Add provider**, choose the service, and enter an API key or its
+   environment-variable name.
+2. Select **Save and check** to verify the credential and load the provider's
+   model catalog without sending repository content.
+3. Under **Agent model**, choose an exact model ID and select **Save and verify
+   model**. This final check sends only a minimal inference request.
+4. Add or open a Project, create a Session, choose the model, Thinking effort,
+   and access level, then describe the task in natural language.
 
-### 🔧 **Step 2: Configuration**
+> The interface changes how the work is presented, not the Agent, policy,
+> configuration, or Session history behind it.
 
-> The following configuration applies to **all installation methods** (pip, UV, source). Everything lives in a single `deepcode_config.json` file.
+## Using DeepCode
 
-#### 🌍 Run `deepcode` from any directory
+### Sessions
 
-DeepCode resolves its config in two layers, the same way Codex and Claude Code do:
+Every task lives in a durable Session attached to its original Project. Open a
+Project in Desktop or start `deepcode` from its directory, then create a new
+Session or resume an existing one. The same history can move between Desktop
+and CLI without export or conversion.
 
-| Layer | Location | Role |
-|-------|----------|------|
-| **User base** | `~/.deepcode/deepcode_config.json` (or `$DEEPCODE_HOME`) | Read from **any** working directory. Keep your provider keys here. |
-| **Project override** | `deepcode_config.json` in the current directory (or any parent) | Optional. Deep-merged on top of the base, overriding it key by key. |
-
-Run the one-time setup and you can launch `deepcode` anywhere:
-
-```bash
-deepcode init      # creates ~/.deepcode/deepcode_config.json
-```
-
-`deepcode init` is a single cross-platform command (Windows, macOS, Linux). Run
-from a checkout that already has a `deepcode_config.json`, it lifts that config —
-keys and all — into the user base; run elsewhere, it drops the template there for
-you to fill in. It never overwrites an existing base (use `--force` to reseed,
-which keeps a `.bak`), and on Unix it locks the file to `600`. To relocate the
-base, set `DEEPCODE_HOME` (`export DEEPCODE_HOME=...` on macOS/Linux,
-`setx DEEPCODE_HOME ...` on Windows).
-
-> If you prefer to keep the config only next to a specific project, skip
-> `deepcode init` and just create `deepcode_config.json` in that directory — it
-> is picked up whenever you launch from there.
-
-#### 🔑 API Keys *(required)*
-
-Edit `deepcode_config.json` and fill in at least one provider key. Inline strings work, and `${ENV_VAR}` references are resolved at load time.
-
-```json
-{
-  "providers": {
-    "openai":    { "apiKey": "your_openai_api_key" },
-    "anthropic": { "apiKey": "${ANTHROPIC_API_KEY}" },
-    "gemini":    { "apiKey": "" }
-  }
-}
-```
-
-<details>
-<summary><strong>🔌 Using OpenAI-compatible providers (OpenRouter / Poe / DashScope / etc.)</strong></summary>
-
-Any OpenAI-compatible endpoint is supported by overriding `apiBase` on the matching provider entry. Then set the model name on the `agents` block (using `provider/model` slugs):
-
-```json
-{
-  "agents": {
-    "defaults": {
-      "provider": "openrouter",
-      "model": "z-ai/glm-5.1"
-    },
-    "planning":       { "provider": "openrouter", "model": "z-ai/glm-5.1" },
-    "implementation": { "provider": "openrouter", "model": "z-ai/glm-5.1" }
-  },
-  "providers": {
-    "openai":     { "apiKey": "your_openai_api_key" },
-    "openrouter": { "apiKey": "your_openrouter_key", "apiBase": "https://openrouter.ai/api/v1" }
-  }
-}
-```
-
-OpenRouter model ids must use the exact `id` returned by OpenRouter, for example
-`z-ai/glm-5.1`, `anthropic/claude-sonnet-4.5`, or
-`google/gemini-2.5-pro`. In the new UI, open **Settings → OpenRouter Models**
-to search the live OpenRouter catalog and update the Default, Planning, and
-Implementation models without editing this file manually. Saving from the UI
-reloads the runtime for newly started workflows.
-
-> **🔐 Never commit `deepcode_config.json`.** It is already in `.gitignore`.
-
-</details>
-
-#### 🤖 LLM Provider *(optional)*
-
-The provider is inferred from the `model` slug (`openai/...`, `anthropic/...`, `gemini/...`, etc.). To force a specific backend, set `agents.defaults.provider`:
-
-```json
-{
-  "agents": {
-    "defaults": { "provider": "openai" }
-  }
-}
-```
-
-#### 📄 Document Segmentation *(optional)*
-
-```json
-{
-  "documentSegmentation": {
-    "enabled": true,
-    "sizeThresholdChars": 50000
-  }
-}
-```
-
-<details>
-<summary><strong>🪟 Windows Users: Additional MCP Server Configuration</strong></summary>
-
-On Windows you may need to configure MCP servers manually in `deepcode_config.json` (`tools.mcpServers`):
-
-```bash
-# 1. Install MCP servers globally
-npm i -g @modelcontextprotocol/server-filesystem
-
-# 2. Find your global node_modules path
-npm -g root
-```
-
-```json
-{
-  "tools": {
-    "mcpServers": {
-      "filesystem": {
-        "type": "stdio",
-        "command": "node",
-        "args": ["C:/Program Files/nodejs/node_modules/@modelcontextprotocol/server-filesystem/dist/index.js", "."]
-      }
-    }
-  }
-}
-```
-
-> Replace the path with the actual global `node_modules` path from step 2.
-
-</details>
-
-<details>
-<summary><strong>🔍 Web Search Configuration</strong></summary>
-
-DeepCode performs web content retrieval through the built-in `fetch` MCP server (no API key required) and reads local files via `filesystem`. The auxiliary search server defaults to `filesystem`:
-
-```json
-{
-  "tools": { "defaultSearchServer": "filesystem" }
-}
-```
-
-> **💡 Tip**: To plug in another search backend, add it under `tools.mcpServers` in `deepcode_config.json` and set `tools.defaultSearchServer` to its name.
-
-</details>
-
-### ⚡ **Step 3: Launch Application**
-
-DeepCode runs three ways, all on the same agent core:
-
-**🖥️ Interactive agent (default).** A multi-turn coding conversation in your terminal:
-
-```bash
-deepcode                 # equivalent to: python -m cli.tui
-```
-
-**🌐 Local web UI.** React frontend + FastAPI backend on your host:
-
-```bash
-deepcode --local
-# Frontend → http://localhost:5173    Backend → http://localhost:8000
-```
-
-**🤖 Headless (scripting / CI).** One task, machine-readable output:
-
-```bash
-python -m cli.exec_cli "fix the failing test in mathlib.py" --json
-```
-
-#### 💻 **Interactive CLI (multi-turn coding agent)**
-
-`python -m cli.tui` opens a Claude Code-style conversation in your terminal:
-describe any coding task in natural language, watch the agent stream its
-reply and tool progress live, and keep the conversation going across turns.
-
-```bash
-python -m cli.tui                          # converse in the current directory
-python -m cli.tui -w ./my-project          # explicit workspace
-python -m cli.tui -m gpt-5.4               # explicit model
-python -m cli.tui --resume <session_id>    # pick up a stored conversation
-```
-
-Inside the conversation:
-
-```text
-/help                   # list all commands
-/new [title]            # start a fresh conversation
-/resume                 # list THIS directory's sessions; /resume <id> restores one
-/resume all             # list sessions from every directory (origins shown)
-/model [id]             # show or switch the model (history preserved)
-/clear                  # clear the conversation context
-@src/main.py            # attach a file's content to your message
-```
-
-Conversations persist under `~/.deepcode/sessions/<id>/` (JSONL, with a SQLite
-index for instant listing) and are titled automatically from your first
-message.
-
-For scripting and CI there is a headless one-shot entry:
-
-```bash
-python -m cli.exec_cli "fix the failing test in mathlib.py" --json
-```
-
-which streams machine-readable events (NDJSON) and exits 0 on completion.
-
-In the web UI, use the **Sessions** menu in the header to resume or delete a
-session. Deleting a session removes its JSONL session record and associated task
-workspace under `deepcode_lab/tasks/`, but keeps original files in `uploads/`.
-If the session still has `pending`, `running`, or `waiting_for_input` tasks, the
-backend rejects the deletion until the task is cancelled or completed.
-
-### 🎯 **Step 4: Generate Code**
-
-1. **📄 Input** — Upload a research paper, type requirements, or paste a URL
-2. **🤖 Processing** — The multi-agent system analyzes, plans, and generates
-3. **⚡ Output** — Receive production-ready code with tests and documentation
-
----
-
-### 🔧 **Troubleshooting**
-
-<details>
-<summary><strong>❓ Common Issues & Solutions</strong></summary>
-
-| Problem | Cause | Fix |
+| What you want to do | Desktop | Interactive CLI |
 |---|---|---|
-| Frontend blank page | Corrupted `node_modules` | `cd new_ui/frontend && rm -rf node_modules && npm install` |
-| `ERR_CONNECTION_REFUSED` | Wrong port / backend not running | With `--local`: frontend `http://localhost:5173`, backend `http://localhost:8000` |
-| `npm install` → `Could not read package.json` | Wrong directory | Use `npm install --prefix new_ui/frontend` |
-| Windows: MCP servers not working | Need absolute paths | See [Windows MCP Configuration](#-step-2-configuration) above |
-| Windows: `UnicodeEncodeError: 'gbk' codec can't encode...` on launch | Default GBK console can't render emoji in startup banner | Set UTF-8 first: `set PYTHONIOENCODING=utf-8 && set PYTHONUTF8=1` (cmd) or `$env:PYTHONIOENCODING="utf-8"; $env:PYTHONUTF8="1"` (PowerShell) |
-| Windows: code-implementation stage hangs / produces a `-p` directory | LLM emitted `mkdir -p ...` and `cmd.exe` treated `-p` as a folder name | Already fixed in `tools/command_executor.py` — common Unix commands (`mkdir -p`, `touch`, `rm -rf`, `cp -r`, `mv`) are now executed natively via `pathlib`/`shutil`, no shell needed |
-| `name 'LoopDetector' is not defined` during code implementation | Missing import in workflow modules | Already fixed — `LoopDetector` and `ProgressTracker` are now imported from `utils.loop_detector` in both `workflows/code_implementation_workflow.py` and `workflows/code_implementation_workflow_index.py` |
+| Start a Session | **New thread** | `/new [title]` |
+| Resume local history | Select it under the Project | `/resume` |
+| Find history from every Project | Browse the project list | `/resume all` |
+| Attach a file | Use the composer attachment | `@path/to/file` |
+| Change the next Turn's model | Composer model picker | `/model` |
+| Adjust Thinking effort | Composer effort picker | `/effort` |
+| Choose tool access | Composer access picker | `/permissions` |
+| Load Skills for the next Turn | Composer Skills control | `/skill <name>` |
+| Create a reusable Skill | **Skills → Create Skill** | `$skill-creator` |
+| Set or revise a durable Goal | Goal panel | `/goal` |
+| Stop the active Turn | Use the stop control | `/stop` |
 
-</details>
+Session history, tool activity, approvals, Goal state, and verification evidence
+remain together. Archiving hides a Session without deleting its history;
+permanent deletion removes the Session records but never repository files.
 
-  ---
+### Connections and models
 
-## 💡 Examples
+Desktop provides connection setup and verification under **Settings → AI
+providers**. In the CLI, `/model` changes the connection and model for future
+Turns, while `/effort` selects a Thinking level supported by that model.
 
+Model changes never rewrite earlier history or alter an active Turn. Thinking
+effort controls the request sent to the provider; transcript detail controls
+only presentation. DeepCode shows provider-designated reasoning summaries when
+available and never merges raw chain-of-thought into the assistant answer.
 
+Provider administration, environment-variable credentials, custom gateways,
+model discovery, and machine-readable checks are documented in the
+[Headless and Automation guide](docs/HEADLESS_AND_AUTOMATION.md#connection-and-model-management).
 
-### 🎬 **Live Demonstrations**
+### Skills
 
+Skills turn reusable engineering knowledge into instructions the Agent can load
+for a task. Desktop provides a Skills workspace; the interactive CLI uses
+`/skills` to discover them and `/skill <name>` to select one for the next Turn.
+Choose **Skills → Create Skill** in Desktop or invoke `$skill-creator` in CLI to
+create and validate one through a normal Agent Turn.
 
+Project Skills in `.agents/skills` travel with a repository; user Skills in
+`~/.agents/skills` remain available across Projects. Existing DeepCode and
+Claude-compatible directories remain readable. A Skill can guide the Agent,
+but it cannot grant permissions or bypass Project trust, approvals, or tool
+policy. Import, enable, disable, and catalog commands live in the
+[advanced guide](docs/HEADLESS_AND_AUTOMATION.md#skill-management).
 
-<table align="center">
+### Safety and execution
+
+DeepCode treats execution as a product boundary rather than a client-side
+confirmation:
+
+- Projects require explicit trust before Agent execution on every interface.
+- Permission decisions are `allow`, `ask`, or `deny`.
+- An approval resumes the exact suspended tool call.
+- **Ask** keeps the workspace command sandbox and protected-path checks;
+  **Read only** denies mutating tools; **Full access** is an explicit,
+  confirmed Session grant that removes approval and filesystem sandbox
+  boundaries. Explicit deny rules still win.
+- CLI and Desktop edit the same Session override. Each admitted Turn freezes
+  the complete resolved security profile: changes apply to new submissions,
+  while active and already queued Turns keep their recorded access after
+  resume or worker handoff.
+- Shell and code processes are terminated as owned process trees on timeout,
+  interruption, or shutdown.
+- Crash recovery settles incomplete Turns without automatically replaying side
+  effects.
+
+### Long-running work
+
+Ordinary prompts can run a full multi-tool coding Turn. When work must continue
+across several Turns or process restarts, attach a durable Goal to the Session.
+Use the Goal panel in Desktop or `/goal <objective>` in the CLI.
+
+While DeepCode works, new input can steer the active Turn. You can edit the
+Goal, stop the current Turn, queue a follow-up, pause the Goal, or resume it
+later. These actions preserve the same Session, history, permissions, Skills,
+and evidence instead of starting an isolated execution.
+
+The working Agent requests `complete` or `blocked` from its full context.
+DeepCode enforces ownership, lifecycle, permission, and budget boundaries, but
+does not pretend a generic host-side rule can validate every coding task. A
+normal semantic result is labelled **Completed**; tests, builds, diagnostics,
+diffs, or independent review remain visible evidence. No provider, model, task
+type, or test command is fixed by the Goal engine.
+
+### Automations and headless workflows
+
+The Desktop Automation workspace turns a trusted Project instruction into a
+manual or interval run while keeping the normal Agent, Session, Goal,
+permissions, recovery, and Run history. Use it for repeatable work such as
+repository health checks, regression review, or scheduled maintenance.
+
+Shell scripts and CI systems can use the same runtime without opening an
+interface. The separate
+[Headless and Automation guide](docs/HEADLESS_AND_AUTOMATION.md) contains the
+`exec`, `loop`, Automation, Provider, Skill, and Session administration
+commands. They are advanced integration surfaces—not a second way ordinary
+Desktop or CLI users must learn to talk to DeepCode.
+
+## Paper2Code
+
+Paper2Code is the research origin of DeepCode and remains its specialized
+workflow for scientific code reproduction. The general coding Agent extends
+the product; it does not replace or flatten the original Paper2Code design.
+
+Its central idea is unchanged: reproducing a paper is not a one-shot generation
+task. A central orchestrator coordinates distinct responsibilities for
+understanding the source, planning the reproduction, finding and indexing
+useful references, implementing the system, and verifying the result.
+
+### The original architecture
+
+<p align="center">
+  <img src="assets/readme/framework2.png" alt="Paper2Code framework from source documents through code generation, verification, and refinement" width="1080" />
+</p>
+
+The specialist roles preserve the separation of concerns that made the
+original system effective:
+
+| Role                            | Responsibility                                                                                                                      |
+| ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| **Central Orchestrating Agent** | Interprets progress, selects the next phase, coordinates specialists, and adapts the plan when evidence changes.                    |
+| **Intent Understanding Agent**  | Turns the user's objective into explicit functional requirements, technical constraints, and an actionable task decomposition.      |
+| **Document Parsing Agent**      | Processes papers and technical documents, extracting algorithms, equations, methods, assumptions, and implementation requirements.  |
+| **Code Planning Agent**         | Converts the understood method into an implementation roadmap, module boundaries, dependencies, interfaces, and verification goals. |
+| **Code Reference Mining Agent** | Discovers relevant repositories, libraries, and implementation patterns, then evaluates their relevance and integration potential.  |
+| **Code Indexing Agent**         | Builds a searchable semantic index and knowledge graph so useful components and relationships can be recovered during generation.   |
+| **Code Generation Agent**       | Synthesizes the plan and evidence into executable code, tests, documentation, and the interfaces needed for a reproducible result.  |
+
+Four ideas connect those roles into one system:
+
+- **Intelligent orchestration.** The central Agent chooses and revisits phases
+  according to task state instead of treating reproduction as a fixed prompt
+  chain.
+- **Document and intent grounding.** Papers, specifications, URLs, and attached
+  files are converted into explicit implementation requirements before code is
+  written.
+- **Memory and CodeRAG.** Large documents and reference repositories are
+  segmented, indexed, and retrieved as bounded context rather than repeatedly
+  placed into the model window.
+- **Iterative verification.** Execution, tests, and observed failures feed back
+  into planning and implementation until the deliverable has supporting
+  evidence.
+
+The supporting tool layer follows the same division:
+
+| Layer                     | Purpose                                                                                           |
+| ------------------------- | ------------------------------------------------------------------------------------------------- |
+| Document ingestion        | Fetch and normalize papers, URLs, PDFs, DOCX, presentations, text, and HTML.                      |
+| Document segmentation     | Divide long technical material into coherent, recoverable sections for analysis.                  |
+| Reference discovery       | Find candidate repositories and supporting implementations.                                       |
+| Code reference indexing   | Build searchable context over external and local code, including cross-file relationships.        |
+| Implementation execution  | Read and write files, run shell or Python commands, inspect the project structure, and keep logs. |
+| Verification and delivery | Run tests, record results, and deliver the codebase together with documentation and Artifacts.    |
+
+The modern product adds durable plans, explicit plan review, checkpoints,
+bounded retries, and interactive inspection around this workflow. Those
+additions make recovery and supervision stronger while preserving the
+Paper2Code architecture and its order of reasoning.
+
+<!--
+README VISUAL SLOT — PAPER2CODE WORKFLOW
+
+Add a current Paper2Code workflow capture at:
+  assets/readme/paper2code-workflow.png
+
+Capture:
+- the workflow plan or checkpoint state;
+- one verification result;
+- the Artifact/Inspector surface.
+
+Do not reuse the legacy browser UI screenshot.
+-->
+
+### Research results
+
+The original DeepCode study evaluates scientific code reproduction on
+[PaperBench](https://openai.com/index/paperbench/), which asks agents to
+reproduce 20 ICML 2024 papers across 8,316 gradable components.
+
+<table align="center" width="100%">
+<tr>
+<td width="25%" align="center">
+  <strong>75.9%</strong><br/>
+  <sub>Human expert subset<br/>+3.5 points</sub>
+</td>
+<td width="25%" align="center">
+  <strong>84.8%</strong><br/>
+  <sub>Commercial-agent subset<br/>+26.1 points</sub>
+</td>
+<td width="25%" align="center">
+  <strong>73.5%</strong><br/>
+  <sub>Scientific coding<br/>+22.4 points</sub>
+</td>
+<td width="25%" align="center">
+  <strong>73.5%</strong><br/>
+  <sub>LLM-agent baseline<br/>+30.2 points</sub>
+</td>
+</tr>
+</table>
+
+<p align="center">
+  <img src="assets/result_main02.jpg" alt="DeepCode PaperBench results" width="920" />
+</p>
+
+| Evaluation subset       | DeepCode | Reported comparison                   | Difference   |
+| ----------------------- | -------- | ------------------------------------- | ------------ |
+| Human expert subset     | 75.9%    | Best reported human baseline: 72.4%   | +3.5 points  |
+| Commercial-agent subset | 84.8%    | Best reported commercial agent: 58.7% | +26.1 points |
+| Scientific coding       | 73.5%    | PaperCoder: 51.1%                     | +22.4 points |
+| LLM-agent baseline      | 73.5%    | Best reported LLM agent: 43.3%        | +30.2 points |
+
+These are PaperBench-specific results reported by the original study. They are
+not a general-purpose coding benchmark or a comparison against continuously
+updated products.
+
+Read the [paper](https://arxiv.org/abs/2512.07921) for methodology, evaluation
+scope, models, and baseline details.
+
+<a id="live-demonstrations"></a>
+
+## 🎬 Live Demonstrations
+
+These recordings show projects produced by earlier DeepCode workflows. They
+are output demonstrations rather than screenshots of the current Desktop UI.
+
+<table align="center" width="100%">
 <tr>
 <td width="33%" align="center">
 
-#### 📄 **Paper2Code Demo**
-**Research to Implementation**
+#### 📄 Paper2Code
 
-<div align="center">
-  <a href="https://www.youtube.com/watch?v=MQZYpLkzsbw">
-    <img src="https://img.youtube.com/vi/MQZYpLkzsbw/maxresdefault.jpg" alt="Paper2Code Demo" width="100%" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
-  </a>
+**Research to implementation**
 
-  **[▶️ Watch Demo](https://www.youtube.com/watch?v=MQZYpLkzsbw)**
+<a href="https://www.youtube.com/watch?v=MQZYpLkzsbw">
+  <img src="https://img.youtube.com/vi/MQZYpLkzsbw/maxresdefault.jpg" alt="Paper2Code demonstration" width="100%" />
+</a>
 
-  *Transform academic papers into production-ready code automatically*
-</div>
+**[▶ Watch demonstration](https://www.youtube.com/watch?v=MQZYpLkzsbw)**
 
-</td>
-<td width="33%" align="center">
-
-#### 🖼️ **Image Processing Demo**
-**AI-Powered Image Tools**
-
-<div align="center">
-  <a href="https://www.youtube.com/watch?v=nFt5mLaMEac">
-    <img src="https://img.youtube.com/vi/nFt5mLaMEac/maxresdefault.jpg" alt="Image Processing Demo" width="100%" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
-  </a>
-
-  **[▶️ Watch Demo](https://www.youtube.com/watch?v=nFt5mLaMEac)**
-
-  *Intelligent image processing with background removal and enhancement*
-</div>
+<sub>Reproduce a research paper as an executable project.</sub>
 
 </td>
 <td width="33%" align="center">
 
-#### 🌐 **Frontend Implementation**
-**Complete Web Application**
+#### 🖼️ Generated vision project
 
-<div align="center">
-  <a href="https://www.youtube.com/watch?v=78wx3dkTaAU">
-    <img src="https://img.youtube.com/vi/78wx3dkTaAU/maxresdefault.jpg" alt="Frontend Demo" width="100%" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"/>
-  </a>
+**Image workflow example**
 
-  **[▶️ Watch Demo](https://www.youtube.com/watch?v=78wx3dkTaAU)**
+<a href="https://www.youtube.com/watch?v=nFt5mLaMEac">
+  <img src="https://img.youtube.com/vi/nFt5mLaMEac/maxresdefault.jpg" alt="Generated image-processing project" width="100%" />
+</a>
 
-  *Full-stack web development from concept to deployment*
-</div>
+**[▶ Watch demonstration](https://www.youtube.com/watch?v=nFt5mLaMEac)**
+
+<sub>See an earlier generated image-processing workflow in use.</sub>
+
+</td>
+<td width="33%" align="center">
+
+#### 🌐 Generated web project
+
+**Frontend implementation example**
+
+<a href="https://www.youtube.com/watch?v=78wx3dkTaAU">
+  <img src="https://img.youtube.com/vi/78wx3dkTaAU/maxresdefault.jpg" alt="Generated frontend project" width="100%" />
+</a>
+
+**[▶ Watch demonstration](https://www.youtube.com/watch?v=78wx3dkTaAU)**
+
+<sub>Follow a complete frontend implementation from idea to result.</sub>
 
 </td>
 </tr>
 </table>
 
+The [project introduction](https://youtu.be/PRgmP8pOI08) remains available for
+a broader walkthrough.
 
+## Development
 
-### 🆕 **Recent Updates**
+### Source installation
 
-#### 📄 **Smart Document Segmentation (v1.2.0)**
-- **Intelligent Processing**: Automatically handles large research papers and technical documents that exceed LLM token limits
-- **Configurable Control**: Toggle segmentation via configuration with size-based thresholds
-- **Semantic Analysis**: Advanced content understanding with algorithm, concept, and formula preservation
-- **Backward Compatibility**: Seamlessly falls back to traditional processing for smaller documents
+```bash
+git clone https://github.com/HKUDS/DeepCode.git
+cd DeepCode
 
-### 🚀 **Coming Soon**
+curl -LsSf https://astral.sh/uv/install.sh | sh
+uv venv --python=3.13
+source .venv/bin/activate
+uv pip install -e .
+```
 
-We're continuously enhancing DeepCode with exciting new features:
+On Windows PowerShell, activate with `.\.venv\Scripts\Activate.ps1`.
 
-#### 🔧 **Enhanced Code Reliability & Validation**
-- **Automated Testing**: Comprehensive functionality testing with execution verification and error detection.
-- **Code Quality Assurance**: Multi-level validation through static analysis, dynamic testing, and performance benchmarking.
-- **Smart Debugging**: AI-powered error detection with automatic correction suggestions
+### Verification
 
-#### 📊 **PaperBench Performance Showcase**
-- **Benchmark Dashboard**: Comprehensive performance metrics on the PaperBench evaluation suite.
-- **Accuracy Metrics**: Detailed comparison with state-of-the-art paper reproduction systems.
-- **Success Analytics**: Statistical analysis across paper categories and complexity levels.
+```bash
+uvx pre-commit run --all-files
+python -m compileall -q app_server cli core tools workflows
+deepcode --version
+deepcode-app-server --verify-runtime
 
-#### ⚡ **System-wide Optimizations**
-- **Performance Boost**: Multi-threaded processing and optimized agent coordination for faster generation.
-- **Enhanced Reasoning**: Advanced reasoning capabilities with improved context understanding.
-- **Expanded Support**: Extended compatibility with additional programming languages and frameworks.
+cd desktop
+npm run lint
+npm test -- --run
+npm run build
+```
+
+Desktop packaging, Rust checks, signing, and release procedures are documented
+in [`desktop/README.md`](desktop/README.md) and the
+[Desktop release runbook](docs/DESKTOP_RELEASE_RUNBOOK.md).
+
+<details>
+<summary><strong>Contributor architecture notes</strong></summary>
+
+| Topic                                         | Document                                                      |
+| --------------------------------------------- | ------------------------------------------------------------- |
+| Agent execution and approvals                 | [P2 Agent execution](docs/P2_AGENT_EXECUTION_ARCHITECTURE.md) |
+| Desktop sidecar and lifecycle                 | [P3 Desktop runtime](docs/P3_DESKTOP_RUNTIME_ARCHITECTURE.md) |
+| Git review, files, terminal, and tests        | [P4 Code workbench](docs/P4_CODE_WORKBENCH_ARCHITECTURE.md)   |
+| Durable Paper2Code workflow                   | [P5 Paper2Code](docs/P5_PAPER2CODE_ARCHITECTURE.md)           |
+| Canonical Sessions and cross-directory resume | [P6 Session alignment](docs/P6_SESSION_ALIGNMENT_REVIEW.md)   |
+| Skills identity, security, and persistence    | [Skills architecture](docs/SKILLS_PRODUCT_ARCHITECTURE.md)    |
+| Automation scheduling and execution           | [Automation architecture](docs/AUTOMATION_ARCHITECTURE.md)    |
+| Desktop product and interaction model         | [Desktop UI specification](docs/DESKTOP_PRODUCT_UI_SPEC.md)   |
+| Privacy and diagnostics                       | [Privacy contract](docs/PRIVACY_AND_DIAGNOSTICS.md)           |
+
+</details>
+
+The pre-restructure README is preserved in
+[`docs/archive/README_LEGACY_2026-07-20.md`](docs/archive/README_LEGACY_2026-07-20.md).
+The empty product-image slots have a shared
+[capture brief](assets/readme/README.md).
 
 ---
+
+<a id="star-history"></a>
 
 ## ⭐ Star History
 
 <div align="center">
 
-*Community Growth Trajectory*
+*Community growth trajectory*
 
-<a href="https://star-history.com/#HKUDS/DeepCode&Date">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=HKUDS/DeepCode&type=Date&theme=dark" />
-    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=HKUDS/DeepCode&type=Date" />
-    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=HKUDS/DeepCode&type=Date" style="border-radius: 15px; box-shadow: 0 0 30px rgba(0, 217, 255, 0.3);" />
-  </picture>
-</a>
+  <a href="https://star-history.com/#HKUDS/DeepCode&Date">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=HKUDS/DeepCode&type=Date&theme=dark" />
+      <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=HKUDS/DeepCode&type=Date" />
+      <img src="https://api.star-history.com/svg?repos=HKUDS/DeepCode&type=Date" alt="DeepCode Star History chart" width="900" />
+    </picture>
+  </a>
 
 </div>
 
 ---
 
-### 🚀 **Ready to Transform Development?**
+### 🚀 Ready to build with DeepCode?
 
 <div align="center">
 
 <p>
-  <a href="#-quick-start"><img src="https://img.shields.io/badge/🚀_Get_Started-00d4ff?style=for-the-badge&logo=rocket&logoColor=white" alt="Get Started"></a>
-  <a href="https://github.com/HKUDS"><img src="https://img.shields.io/badge/🏛️_View_on_GitHub-00d4ff?style=for-the-badge&logo=github&logoColor=white" alt="View on GitHub"></a>
-  <a href="https://github.com/HKUDS/deepcode-agent"><img src="https://img.shields.io/badge/⭐_Star_Project-00d4ff?style=for-the-badge&logo=star&logoColor=white" alt="Star Project"></a>
+  <a href="#quick-start"><img src="https://img.shields.io/badge/🚀_Get_Started-00d4ff?style=for-the-badge&logo=rocket&logoColor=white" alt="Get started" /></a>
+  <a href="https://github.com/HKUDS/DeepCode"><img src="https://img.shields.io/badge/🏛️_View_on_GitHub-00d4ff?style=for-the-badge&logo=github&logoColor=white" alt="View DeepCode on GitHub" /></a>
+  <a href="https://github.com/HKUDS/DeepCode/stargazers"><img src="https://img.shields.io/badge/⭐_Star_Project-00d4ff?style=for-the-badge&logo=star&logoColor=white" alt="Star DeepCode" /></a>
 </p>
+
+</div>
 
 ---
 
-<div align="left">
+<a id="contributors"></a>
 
-### 📖 **Citation**
+## 🙏 Appreciation
 
+Thanks to everyone in the open-source community — your stars, issues, pull
+requests and discussions shape where DeepCode goes next.
 
-If you find DeepCode useful in your research or applications, please kindly cite:
+<div align="center">
 
-```
+<a href="https://github.com/HKUDS/DeepCode/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=HKUDS/DeepCode&max=999" alt="DeepCode contributors" />
+</a>
+
+</div>
+
+Everyone who has opened a pull request is listed in
+[CONTRIBUTORS.md](CONTRIBUTORS.md), including contributions that predate the
+v2.0 rebuild and so are not reflected in the graph above.
+
+---
+
+<a id="citation"></a>
+
+## 📖 Citation
+
+If DeepCode contributes to your research, cite:
+
+```bibtex
 @misc{li2025deepcodeopenagenticcoding,
-      title={DeepCode: Open Agentic Coding},
-      author={Zongwei Li and Zhonghang Li and Zirui Guo and Xubin Ren and Chao Huang},
-      year={2025},
-      eprint={2512.07921},
-      archivePrefix={arXiv},
-      primaryClass={cs.SE},
-      url={https://arxiv.org/abs/2512.07921},
+  title         = {DeepCode: Open Agentic Coding},
+  author        = {Zongwei Li and Zhonghang Li and Zirui Guo and Xubin Ren and Chao Huang},
+  year          = {2025},
+  eprint        = {2512.07921},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.SE},
+  url           = {https://arxiv.org/abs/2512.07921}
 }
 ```
 
 ---
 
+<a id="license"></a>
 
-### 📄 **License**
+## 📄 License
 
 <div align="center">
 
-<img src="https://img.shields.io/badge/License-MIT-4ecdc4?style=for-the-badge&logo=opensourceinitiative&logoColor=white" alt="MIT License">
+<a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-4ecdc4?style=for-the-badge&logo=opensourceinitiative&logoColor=white" alt="MIT License" /></a>
 
-**MIT License** - Copyright (c) 2025 Data Intelligence Lab, The University of Hong Kong
-
----
-
-
-<img src="https://visitor-badge.laobi.icu/badge?page_id=deepcode.readme&style=for-the-badge&color=00d4ff" alt="Visitors">
+DeepCode is available under the [MIT License](LICENSE).<br/>
+Copyright © 2025 Data Intelligence Lab at The University of Hong Kong.
 
 </div>

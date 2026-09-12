@@ -1,4 +1,0 @@
-.scrollArea :global(.rt-ScrollAreaViewport > *) {
-  min-height: 100%;
-  height: auto;
-}

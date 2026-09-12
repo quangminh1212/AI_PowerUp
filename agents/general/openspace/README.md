@@ -4,9 +4,9 @@
     <img src="assets/logo_v2.png" width="280px" style="border: none; box-shadow: none;" alt="OpenSpace Logo">
 </picture>
 
-## OpenSpace: The Quality-First Skill Hub for AI Agents
+## OpenSpace: The Skill Management Layer for AI Agents
 
-| 📊 **Real-Task Validated** | 🌐 **Hierarchical Skill Hub** | 🧬 **Evidence-Driven Evolution** | 🛠️ **End2End Quality Records** |
+**Your Skills Keep Growing. OpenSpace Helps You Retrieve, Evaluate, and Evolve with Every Run**
 
 [![Agents](https://img.shields.io/badge/Agents-Claude_Code%20%7C%20Codex%20%7C%20OpenClaw%20%7C%20...-99C9BF.svg)](https://modelcontextprotocol.io/)
 [![Python](https://img.shields.io/badge/Python-3.12+-FCE7D6.svg)](https://www.python.org/)
@@ -16,7 +16,7 @@
 [![中文文档](https://img.shields.io/badge/文档-中文版-F5C6C6?style=flat)](./README_zh.md)
 [![v1 README](https://img.shields.io/badge/v1-README-EDEDED?style=flat)](https://github.com/HKUDS/OpenSpace/blob/v1/README.md)
 
-**Your Universal Skill Hub for All AI Agents** — Claude Code, Codex, OpenClaw, Hermès, nanobot.
+**One Skill Management Layer to Power Them All** — Claude Code, Codex, OpenClaw, Hermès, nanobot.
 
 <img src="assets/cli-typing.gif" width="500px" alt="openspace --query your task">
 
@@ -25,7 +25,20 @@
 ---
 
 ## Why OpenSpace?
-Your agent can already run tasks. But can it remember which skills worked? Can it stop repeating the same mistakes? Can your team share what it learned?
+As your agent’s skill grows, can your agents:
+- 🔍 Find the right skill at the right time?
+- ✅ Know which skills actually work in real-world tasks?
+- 🧠 Learn from failures instead of repeating the same mistakes?
+- 🤝 Share successful workflows across agents and team members?
+- 📚 Turn every completed task into reusable knowledge for the future?
+
+**OpenSpace** manages the full lifecycle of your agent skills:
+- 🔍 **Retrieve** — Find the right skill for every task.
+- ✅ **Evaluate** — Know what works through real outcomes.
+- 🤝 **Share** — Turn successful workflows into team knowledge.
+- 🔄 **Evolve** — Improve skills with every run.
+
+The right skill for every task. Proven by real outcomes. Improved with every run.
 
 <table>
   <tr>
@@ -35,25 +48,27 @@ Your agent can already run tasks. But can it remember which skills worked? Can i
   </tr>
   <tr>
     <td width="33.33%" valign="top">
-      <p align="center"><strong>🌐 One Skill Hub for every agent</strong></p>
-      <p>Whether you run OpenClaw, nanobot, Claude Code, Codex, or Cursor, OpenSpace gives all of them a shared place to browse, import, and reuse skills. Stop rebuilding the same experience from scratch in every tool.</p>
+      <p align="center"><strong>🌐 One Skill Library Across All Your Agents</strong></p>
+      <p>Your agents can retrieve, import, and reuse skills from one shared library—without rebuilding the same capabilities for every tool.</p>
     </td>
     <td width="33.33%" valign="top">
-      <p align="center"><strong>🔒 A private skill platform your org actually owns</strong></p>
-      <p>Deploy OpenSpace inside your own infrastructure. Your workflows stay internal, your data never leaves, and every skill your agents learn becomes a compounding asset — not a black box on someone else's server.</p>
+      <p align="center"><strong>🔒 Your Skills, Your Data, Your Infrastructure</strong></p>
+      <p>Deploy OpenSpace privately and keep your workflows, data, and reusable skill assets fully under your own control.</p>
     </td>
     <td width="33.33%" valign="top">
-      <p align="center"><strong>📈 Agents that get better with every run</strong></p>
-      <p>OpenSpace tracks real task outcomes to evolve skills that work, retire ones that do not, and distill experience into leaner, sharper prompts — so your agent improves over time and spends fewer tokens getting there.</p>
+      <p align="center"><strong>📈 Self-Evolving Skills, Proven by Real Outcomes</strong></p>
+      <p>Use real task outcomes to keep what works, improve what falls short, and confidently retire what no longer delivers value.</p>
     </td>
   </tr>
 </table>
+
+**One place to retrieve, evaluate, share, and evolve skills across all your agents.**
 
 ---
 
 ## 📢 News
 
-- **2026-07-17** 🚀 **OpenSpace v2 is released**: v2 turns OpenSpace into a quality-first Skill Hub with package-based skill browsing, skill quality summaries, task-trace uploads, and a refreshed dashboard / TUI experience.
+- **2026-07-17** 🚀 **OpenSpace v2 is released**: Introducing the Skill Management Layer for AI Agents, with package-based browsing, quality summaries, task-trace uploads, and a refreshed dashboard and TUI.
 
 <details>
 <summary>Earlier news</summary>
@@ -120,31 +135,35 @@ Your agent can already run tasks. But can it remember which skills worked? Can i
 
 ---
 
-## The Problem with Today's AI Agents
+## The Skill Management Problem
 
-Today's AI agents — OpenClaw, nanobot, Claude Code, Codex, Cursor, and more — are remarkably capable. But beneath the surface, they share a critical blind spot: none of them know which skills actually hold up in the real world.
+When an AI agent performs poorly, the problem is not always the model. Sometimes, it simply fails to:
+- 🔍 Retrieve the right skill
+- 🧩 Apply it to the right task
+- ✅ Choose the version that actually works
 
-Think of it like a recipe book that keeps growing — but nobody has ever cooked from it, so no one knows which recipes actually taste good.
+This problem becomes more serious as your skill library grows. With **hundreds or thousands of skills**, more choices can make the right skill harder to find.
 
-- **❌ Skills accumulate without quality signals** — The more you use an agent, the more skills pile up. But there is no way to tell a skill that reliably delivers from one that quietly fails. They all sit in the same folder, looking equally trustworthy.
+Today’s agents can use skills—but they still struggle to manage them:
+- ❌ Poor retrieval — The right skill exists, but the agent fails to find it.
+- ❌ Unclear quality — Reliable and ineffective skills look equally trustworthy.
+- ❌ Repeated mistakes — Failed skills keep being selected without a feedback loop.
+- ❌ Outdated knowledge — Skills fall behind as tools and workflows change.
+- ❌ Blind sharing — Skills are shared without evidence, history, or proven results.
 
-- **❌ Agents keep repeating the same mistakes** — Once a skill gets picked, the agent keeps reaching for it — even after it starts failing. Without a feedback loop, the agent has no way to learn from bad outcomes. It just tries again.
-
-- **❌ Updating skills is a guessing game** — Change too much and you break things that were working. Change too little and the agent falls behind. There is no principled way to know what to improve, when, or why.
-
-- **❌ Sharing a skill means asking for blind trust** — A skill shared online may look polished. But where did it come from? Has it changed? Has anyone actually finished a real task with it? Today, there is no easy way to know.
+Agents don’t just need more skills. They need to retrieve, evaluate, manage, and evolve them.
 
 ## 🎯 What is OpenSpace?
 
-**🚀 OpenSpace is a quality-first Skill Hub where real tasks teach agents which skills to trust, reuse, improve, and share.**
+OpenSpace is the **Skill Management Layer** for AI Agents—helping them find the right skills, verify what works, and evolve your agents through real-world tasks.
 
 https://github.com/user-attachments/assets/1c6b1b44-b207-491b-ad23-0f0591c17e0a
 
 OpenSpace plugs into your agent as skills.
 
-- **v1** helped agents learn, evolve, and share experience.
+- **v1** enabled agents to learn from tasks, evolve skills, and share experience.
 
-- **v2** adds the missing quality layer: every skill is judged by real task results, improved through controlled evolution, and shared with clear context — not just uploaded and forgotten.
+- **v2** introduced the missing management and quality layer—so skills are continuously evaluated, improved, and shared with evidence instead of simply being uploaded and forgotten.
 
 <div align="center">
 <img src="assets/skillwiki.png" width="760" alt="OpenSpace Skill Wiki package tree and skill search visualization">
@@ -152,29 +171,28 @@ OpenSpace plugs into your agent as skills.
 <sub>Skill Wiki turns shared skills into a searchable package tree with lineage and quality context.</sub>
 </div>
 
-OpenSpace v2 gives agents four practical abilities:
+## Four Capabilities for Managing Agent Skills
 
-### 📊 Skill Quality from Real Tasks
+OpenSpace gives agents four practical capabilities to manage the full skill lifecycle—from execution and evaluation to improvement and reuse.
 
-Stop guessing. Know which skills actually work.
+### 📊 Evaluate Skills with Real-Task Evidence
+Stop guessing which skills work. Measure them through actual outcomes.
+- ✅ Track every run — See whether a skill was selected, applied, completed, or replaced by a fallback.
+- ✅ Monitor dependencies — Flag skills when their tools become unreliable, slow, or risky.
+- ✅ Reuse with confidence — Prefer skills that consistently complete real tasks.
+- ✅ Inspect the evidence — Review actual execution records instead of trusting descriptions alone.
 
-- **✅ Task-result quality** — Every skill run is tracked: was it selected, applied, completed, or did it fall back? Over time, the pattern tells the truth.
-- **✅ Tool reliability** — When a tool fails, slows down, or becomes risky, every skill that depends on it gets flagged — automatically.
-- **✅ Quality-aware reuse** — A skill that consistently finishes real work is treated differently from one that keeps falling short. Your agent stops guessing.
-- **✅ Clear evidence** — Instead of trusting a skill's description, users can inspect what actually happened across real runs.
+**Skills earn trust by delivering results—not by looking good in a file.**
 
-**A skill earns its place by working in the real world — not by looking good in a file.**
+### 🧬 Evolve Agents with Skills
+Skills should improve through experience, without creating uncontrolled changes.
+- ✅ Evidence-driven updates — Use real task outcomes to decide what should be fixed, derived, or captured.
+- ✅ Provisional by default — Let new skills prove themselves across tasks before becoming trusted.
+- ✅ Validated releases — Check improvements before replacing a working version.
+- ✅ Independent control — Manage a skill’s trust status and availability separately.
+- ✅ Complete history — Track how and why each skill changes over time.
 
-### 🧬 Controlled Skill Evolution
-
-Agents need to improve. But improvement without control is just chaos.
-- ✅ **Evidence-driven updates** — Real task evidence decides when a skill should be fixed, derived, or captured.
-- ✅ **Provisional first** — New evolved skills remain reusable but provisional until real cross-task success promotes them to trusted.
-- ✅ **Independent trust** — Trust and availability are separate; a skill can be provisional or trusted while operators independently enable or disable it.
-- ✅ **Validated skills** — A skill is checked before a new version replaces the old one.
-- ✅ **Version history** — Users can see how a skill changed over time.
-
-**Agents should adapt to the real world, but every change needs control.**
+**Let skills adapt to the real world—while keeping every change reviewable and controlled.**
 
 ### 🌐 Local-First Skill Hub
 
