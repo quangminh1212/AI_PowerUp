@@ -1,0 +1,1370 @@
+![](./assets/logo6.png)
+
+<p align="center">全世界最好的大语言模型资源汇总 持续更新</p>
+
+<p align="center">挖掘那些真正有价值的项目，而不仅仅是噱头</p>
+
+<p align="center">
+  <a href="https://WangRongsheng/awesome-LLM-resourses"><img src=https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg ></a>
+  <a href="https://WangRongsheng/awesome-LLM-resourses"><img src=https://img.shields.io/github/forks/WangRongsheng/awesome-LLM-resourses.svg?style=social ></a>
+  <a href="https://WangRongsheng/awesome-LLM-resourses"><img src=https://img.shields.io/github/stars/WangRongsheng/awesome-LLM-resourses.svg?style=social ></a>
+  <a href="https://WangRongsheng/awesome-LLM-resourses"><img src=https://img.shields.io/github/watchers/WangRongsheng/awesome-LLM-resourses.svg?style=social ></a>
+  <!-- <a href="https://gitcode.com/wangrongsheng/awesome-LLM-resources"><img src="https://raw.githubusercontent.com/WangRongsheng/awesome-LLM-resources/main/assets/gitcode.png" height="25" alt="gitcode"> -->
+</a>
+</p>
+
+> [!TIP]
+> 如果您对**医疗数据集/大模型/多模态/评估相关资源感兴趣**！请访问我们的 🤗 [Awesome-AI4Med](https://FreedomIntelligence/Awesome-AI4Med) !
+
+---
+
+#### Contents
+
+- [推荐 Suggestion](#推荐-Suggestion) 🌟
+- [数据 Data](#数据-Data)
+- [微调 Fine-Tuning](#微调-Fine-Tuning) 
+- [Agentic RL](#Agentic-RL) 🌟
+- [推理 Inference](#推理-Inference)
+- [评估 Evaluation](#评估-Evaluation)
+- [体验 Usage](#体验-Usage)
+- [知识库 RAG](#知识库-RAG)
+- [智能体 Agents](#智能体-Agents)
+- [研究 Research](#研究-Research) 🔥
+- [代码 Coding](#代码-Coding)
+- [视频 Video](#视频-Video) 
+- [图片 Image](#图片-Image) 🔥
+- [搜索 Search](#搜索-Search)
+- [语音 Speech](#语音-Speech) 🔥
+- [世界模型 World Models](#世界模型-World-Models) 🔥
+- [龙虾 OpenClaw](#龙虾-OpenClaw)
+- [统一模型 Unified Model](#统一模型-Unified-Model) 🌟
+- [书籍 Book](#书籍-Book)
+- [课程 Course](#课程-Course)
+- [教程 Tutorial](#教程-Tutorial)
+- [论文 Paper](#论文-Paper)
+- [社区 Community](#社区-Community)
+- [模型上下文协议 MCP](#模型上下文协议-MCP)
+- [技能 Skills](#技能-Skills) 
+- [推理 Open o1](#推理-Open-o1)
+- [推理 Open o3](#推理-Open-o3)
+- [小语言模型 Small Language Model](#小语言模型-Small-Language-Model) 🌟
+- [小多模态模型 Small Vision Language Model](#小多模态模型-Small-Vision-Language-Model) 🌟
+- [技巧 Tips](#技巧-tips)
+
+![](https://camo.githubusercontent.com/2722992d519a722218f896d5f5231d49f337aaff4514e78bd59ac935334e916a/68747470733a2f2f692e696d6775722e636f6d2f77617856496d762e706e67)
+
+## 推荐 Suggestion
+
+#### Podcast
+
+- [谷歌AI的14年、Gemini翻身之战，与视觉理解模型：专访DeepMind前核心科学家Andrew Dai｜Neolabs特辑](https://www.youtube.com/watch?v=cqW_VWYbIcU)
+- [140. 对姚顺宇的4小时访谈：请允许我小疯一下！在Anthropic和Gemini训模型、技术预测、英雄主义已过去](https://www.youtube.com/watch?v=Gk_KUg3qED0)
+- [张驰: A Year Inside ByteDance's AI Lab](https://changche.substack.com/p/a-year-inside-bytedances-ai-lab)
+- [Luo Fuli: OpenClaw, Agent Frameworks — The AI Paradigm Has Already Changed Dramatically!](https://www.youtube.com/watch?v=V9eI-t3TApE)
+- [A 7-hour marathon interview with Saining Xie: World Models, AMI Labs, Yann LeCun, Fei-Fei Li, and 42](https://www.youtube.com/watch?v=rIwgZWzUKm8)
+- [翁家翌：OpenAI，GPT，强化学习，Infra，后训练，天授，tuixue，开源，CMU，清华｜WhynotTV Podcast](https://www.bilibili.com/video/BV1darmBcE4A?vd_source=c739db1ebdd361d47af5a0b8497417db)
+- [Lovart 创始人陈冕×罗永浩！且让我大闹一场，然后悄然离去](https://www.bilibili.com/video/BV14eiQBmEbN/?spm_id_from=333.1387.upload.video_card.click)
+- [MiniMax 创始人闫俊杰×罗永浩！大山并非无法翻越](https://www.bilibili.com/video/BV11NmtBzE36/?spm_id_from=333.1387.upload.video_card.click&vd_source=c739db1ebdd361d47af5a0b8497417db)
+- [影视飓风TIM×罗永浩！用影像打开世界的梦想家](https://www.bilibili.com/video/BV1B5xkzPEhx/?spm_id_from=333.1387.upload.video_card.click&vd_source=c739db1ebdd361d47af5a0b8497417db)
+- [129. 全球大模型第一股的上市访谈，和智谱CEO张鹏聊：敢问路在何方？](https://www.youtube.com/watch?v=9zSMTUUEfmU&list=PLwAchVoh-4zNSI5UlKEkKCL5r_jJyrFeO&index=2)
+- [128. Manus决定出售前最后的访谈：啊，这奇幻的2025年漂流啊…](https://www.youtube.com/watch?v=MW-ezf2RhVg&list=PLwAchVoh-4zNSI5UlKEkKCL5r_jJyrFeO&index=3)
+- [122. 朱啸虎现实主义故事的第三次连载：人工智能的盛筵与泡泡](https://www.youtube.com/watch?v=wK0-m3rKgZ0&list=PLwAchVoh-4zNSI5UlKEkKCL5r_jJyrFeO&index=9)
+- [119. Kimi Linear、Minimax M2？和杨松琳考古算法变种史，并预演未来架构改进方案](https://www.youtube.com/watch?v=858HR43pegk&list=PLwAchVoh-4zNSI5UlKEkKCL5r_jJyrFeO&index=12&t=1070s)
+- [118. 对李想的第二次3小时访谈：CEO大模型、MoE、梁文锋、VLA、能量、记忆、对抗人性、亲密关系、人类的智慧](https://www.youtube.com/watch?v=RxXVq7-sJzM&list=PLwAchVoh-4zNSI5UlKEkKCL5r_jJyrFeO&index=13)
+- [115. 对OpenAI姚顺雨3小时访谈：6年Agent研究、人与系统、吞噬的边界、既单极又多元的世界](https://www.youtube.com/watch?v=gQgKkUsx5q0&list=PLwAchVoh-4zNSI5UlKEkKCL5r_jJyrFeO&index=16)
+- [113. 和杨植麟时隔1年的对话：K2、Agentic LLM、缸中之脑和“站在无限的开端”](https://www.youtube.com/watch?v=ouG6jrkECrc&list=PLwAchVoh-4zNSI5UlKEkKCL5r_jJyrFeO&index=18)
+
+## 数据 Data
+
+> [!NOTE]
+> 
+> 此处命名为`数据`，但这里并没有提供具体数据集，而是提供了处理获取大规模数据的方法
+
+
+1. [AotoLabel](https://refuel-ai/autolabel): Label, clean and enrich text datasets with LLMs.
+2. [LabelLLM](https://opendatalab/LabelLLM): The Open-Source Data Annotation Platform.
+3. [data-juicer](https://modelscope/data-juicer): A one-stop data processing system to make data higher-quality, juicier, and more digestible for LLMs!
+4. [OmniParser](https://jf-tech/omniparser): a native Golang ETL streaming parser and transform library for CSV, JSON, XML, EDI, text, etc.
+5. [MinerU (`🔥`)](https://opendatalab/MinerU): MinerU is a one-stop, open-source, high-quality data extraction tool, supports PDF/webpage/e-book extraction.
+6. [PDF-Extract-Kit](https://opendatalab/PDF-Extract-Kit): A Comprehensive Toolkit for High-Quality PDF Content Extraction.
+7. [Parsera](https://raznem/parsera): Lightweight library for scraping web-sites with LLMs.
+8. [Sparrow](https://katanaml/sparrow): Sparrow is an innovative open-source solution for efficient data extraction and processing from various documents and images.
+9. [Docling](https://DS4SD/docling): Get your documents ready for gen AI.
+10. [GOT-OCR2.0](https://Ucas-HaoranWei/GOT-OCR2.0): OCR Model.
+11. [LLM Decontaminator](https://lm-sys/llm-decontaminator): Rethinking Benchmark and Contamination for Language Models with Rephrased Samples.
+12. [DataTrove](https://huggingface/datatrove): DataTrove is a library to process, filter and deduplicate text data at a very large scale.
+13. [llm-swarm](https://huggingface/llm-swarm/tree/main/examples/textbooks): Generate large synthetic datasets like [Cosmopedia](https://huggingface.co/datasets/HuggingFaceTB/cosmopedia).
+14. [Distilabel](https://argilla-io/distilabel): Distilabel is a framework for synthetic data and AI feedback for engineers who need fast, reliable and scalable pipelines based on verified research papers.
+15. [Common-Crawl-Pipeline-Creator](https://huggingface.co/spaces/lhoestq/Common-Crawl-Pipeline-Creator): The Common Crawl Pipeline Creator.
+16. [Tabled](https://VikParuchuri/tabled): Detect and extract tables to markdown and csv.
+17. [Zerox](https://getomni-ai/zerox): Zero shot pdf OCR with gpt-4o-mini.
+18. [DocLayout-YOLO](https://opendatalab/DocLayout-YOLO): Enhancing Document Layout Analysis through Diverse Synthetic Data and Global-to-Local Adaptive Perception.
+19. [TensorZero](https://tensorzero/tensorzero): make LLMs improve through experience.
+20. [Promptwright](https://StacklokLabs/promptwright): Generate large synthetic data using a local LLM.
+21. [pdf-extract-api](https://CatchTheTornado/pdf-extract-api): Document (PDF) extraction and parse API using state of the art modern OCRs + Ollama supported models.
+22. [pdf2htmlEX](https://pdf2htmlEX/pdf2htmlEX): Convert PDF to HTML without losing text or format.
+23. [Extractous](https://yobix-ai/extractous): Fast and efficient unstructured data extraction. Written in Rust with bindings for many languages.
+24. [MegaParse](https://QuivrHQ/MegaParse): File Parser optimised for LLM Ingestion with no loss.
+25. [MarkItDown](https://microsoft/markitdown): Python tool for converting files and office documents to Markdown.
+26. [datasketch](https://ekzhu/datasketch): datasketch gives you probabilistic data structures that can process and search very large amount of data super fast, with little loss of accuracy.
+27. [semhash](https://MinishLab/semhash): lightweight and flexible tool for deduplicating datasets using semantic similarity.
+28. [ReaderLM-v2](https://huggingface.co/jinaai/ReaderLM-v2): a 1.5B parameter language model that converts raw HTML into beautifully formatted markdown or JSON.
+29. [Bespoke Curator](https://bespokelabsai/curator): Data Curation for Post-Training & Structured Data Extraction.
+30. [LangKit](https://whylabs/langkit): An open-source toolkit for monitoring Large Language Models (LLMs). Extracts signals from prompts & responses, ensuring safety & security.
+31. [Curator](https://bespokelabsai/curator): Synthetic Data curation for post-training and structured data extraction.
+32. [olmOCR](https://allenai/olmocr): A toolkit for training language models to work with PDF documents in the wild.
+33. [Easy Dataset (`🔥`)](https://ConardLi/easy-dataset): A powerful tool for creating fine-tuning datasets for LLM.
+34. [BabelDOC](https://funstory-ai/BabelDOC): PDF scientific paper translation and bilingual comparison library.
+35. [Dolphin](https://bytedance/Dolphin): Document Image Parsing via Heterogeneous Anchor Prompting.
+36. [EasyDistill](https://modelscope/easydistill): Easy Knowledge Distillation for Large Language Models.
+37. [ContextGem](https://shcherbak-ai/contextgem): a free, open-source LLM framework that makes it radically easier to extract structured data and insights from documents.
+38. [OCRFlux](https://chatdoc-com/OCRFlux): a lightweight yet powerful multimodal toolkit that significantly advances PDF-to-Markdown conversion, excelling in complex layout handling, complicated table parsing and cross-page content merging.
+39. [DataFlow](https://OpenDCAI/DataFlow): Easy Data Preparation with latest LLMs-based Operators and Pipelines.
+40. [DatasetLoom (`multimodal`)](https://599yongyang/DatasetLoom): 一个面向多模态大模型训练的智能数据集构建与评估平台.
+41. [Logics-Parsing](https://alibaba/Logics-Parsing)
+42. [DeepSeek-OCR](https://huggingface.co/deepseek-ai/DeepSeek-OCR)
+43. [PaddleOCR-VL](https://huggingface.co/PaddlePaddle/PaddleOCR-VL)
+44. [Chandra](https://datalab-to/chandra): a highly accurate OCR model that converts images and PDFs into structured HTML/Markdown/JSON while preserving layout information.
+45. [HunyuanOCR](https://Tencent-Hunyuan/HunyuanOCR): a leading end-to-end OCR expert VLM powered by Hunyuan's native multimodal architecture.
+46. [DeepSeek-OCR-2](https://huggingface.co/deepseek-ai/DeepSeek-OCR-2): Visual Causal Flow.
+47. [PaddleOCR-VL-1.5 (`🔥`)](https://huggingface.co/PaddlePaddle/PaddleOCR-VL-1.5): Towards a Multi-Task 0.9B VLM for Robust In-the-Wild Document Parsing.
+48. [GLM-OCR](https://huggingface.co/zai-org/GLM-OCR): a multimodal OCR model for complex document understanding, built on the GLM-V encoder–decoder architecture.
+
+<div align="right">
+    <b><a href="#Contents">↥ back to top</a></b>
+</div>
+
+## 微调 Fine-Tuning
+
+1. [LLaMA-Factory (`🔥`)](https://hiyouga/LLaMA-Factory): Unify Efficient Fine-Tuning of 100+ LLMs.
+2. [360-LLaMA-Factory](https://Qihoo360/360-LLaMA-Factory): Unify Efficient Fine-Tuning of 100+ LLMs. (add Sequence Parallelism for supporting long context training)
+4. [unsloth (`🔥`)](https://unslothai/unsloth): 2-5X faster 80% less memory LLM finetuning.
+5. [TRL](https://huggingface.co/docs/trl/index): Transformer Reinforcement Learning.
+6. [Firefly](https://yangjianxin1/Firefly): Firefly: 大模型训练工具，支持训练数十种大模型
+7. [Xtuner](https://InternLM/xtuner): An efficient, flexible and full-featured toolkit for fine-tuning large models.
+8. [torchtune](https://pytorch/torchtune): A Native-PyTorch Library for LLM Fine-tuning.
+9. [Swift](https://modelscope/swift): Use PEFT or Full-parameter to finetune 200+ LLMs or 15+ MLLMs.
+10. [AutoTrain](https://huggingface.co/autotrain): A new way to automatically train, evaluate and deploy state-of-the-art Machine Learning models.
+11. [OpenRLHF](https://OpenLLMAI/OpenRLHF): An Easy-to-use, Scalable and High-performance RLHF Framework (Support 70B+ full tuning & LoRA & Mixtral & KTO).
+12. [Ludwig](https://ludwig-ai/ludwig): Low-code framework for building custom LLMs, neural networks, and other AI models.
+13. [mistral-finetune](https://mistralai/mistral-finetune): A light-weight codebase that enables memory-efficient and performant finetuning of Mistral's models.
+14. [aikit](https://sozercan/aikit): Fine-tune, build, and deploy open-source LLMs easily!
+15. [H2O-LLMStudio](https://h2oai/h2o-llmstudio): H2O LLM Studio - a framework and no-code GUI for fine-tuning LLMs.
+16. [LitGPT](https://Lightning-AI/litgpt): Pretrain, finetune, deploy 20+ LLMs on your own data. Uses state-of-the-art techniques: flash attention, FSDP, 4-bit, LoRA, and more.
+17. [LLMBox](https://RUCAIBox/LLMBox): A comprehensive library for implementing LLMs, including a unified training pipeline and comprehensive model evaluation.
+18. [PaddleNLP](https://PaddlePaddle/PaddleNLP): Easy-to-use and powerful NLP and LLM library.
+19. [workbench-llamafactory](https://NVIDIA/workbench-llamafactory): This is an NVIDIA AI Workbench example project that demonstrates an end-to-end model development workflow using Llamafactory.
+20. [OpenRLHF](https://OpenLLMAI/OpenRLHF): An Easy-to-use, Scalable and High-performance RLHF Framework (70B+ PPO Full Tuning & Iterative DPO & LoRA & Mixtral).
+21. [TinyLLaVA Factory](https://TinyLLaVA/TinyLLaVA_Factory): A Framework of Small-scale Large Multimodal Models.
+22. [LLM-Foundry](https://mosaicml/llm-foundry): LLM training code for Databricks foundation models.
+23. [lmms-finetune](https://zjysteven/lmms-finetune): A unified codebase for finetuning (full, lora) large multimodal models, supporting llava-1.5, qwen-vl, llava-interleave, llava-next-video, phi3-v etc.
+24. [Simplifine](https://simplifine-llm/Simplifine): Simplifine lets you invoke LLM finetuning with just one line of code using any Hugging Face dataset or model.
+25. [Transformer Lab](https://transformerlab/transformerlab-app): Open Source Application for Advanced LLM Engineering: interact, train, fine-tune, and evaluate large language models on your own computer.
+26. [Liger-Kernel](https://linkedin/Liger-Kernel): Efficient Triton Kernels for LLM Training.
+27. [ChatLearn](https://alibaba/ChatLearn): A flexible and efficient training framework for large-scale alignment.
+28. [nanotron](https://huggingface/nanotron): Minimalistic large language model 3D-parallelism training.
+29. [Proxy Tuning](https://alisawuffles/proxy-tuning): Tuning Language Models by Proxy.
+30. [Effective LLM Alignment](https://VikhrModels/effective_llm_alignment/): Effective LLM Alignment Toolkit.
+31. [Autotrain-advanced](https://huggingface/autotrain-advanced)
+32. [Meta Lingua](https://facebookresearch/lingua): a lean, efficient, and easy-to-hack codebase to research LLMs.
+33. [Vision-LLM Alignemnt](https://NiuTrans/Vision-LLM-Alignment): This repository contains the code for SFT, RLHF, and DPO, designed for vision-based LLMs, including the LLaVA models and the LLaMA-3.2-vision models.
+34. [finetune-Qwen2-VL](https://zhangfaen/finetune-Qwen2-VL): Quick Start for Fine-tuning or continue pre-train Qwen2-VL Model.
+35. [Online-RLHF](https://RLHFlow/Online-RLHF): A recipe for online RLHF and online iterative DPO.
+36. [InternEvo](https://InternLM/InternEvo): an open-sourced lightweight training framework aims to support model pre-training without the need for extensive dependencies.
+37. [veRL (`🔥`)](https://volcengine/verl): Volcano Engine Reinforcement Learning for LLM.
+38. [Axolotl](https://axolotl-ai-cloud.github.io/axolotl/): Axolotl is designed to work with YAML config files that contain everything you need to preprocess a dataset, train or fine-tune a model, run model inference or evaluation, and much more.
+39. [Oumi](https://oumi-ai/oumi): Everything you need to build state-of-the-art foundation models, end-to-end.
+40. [Kiln](https://Kiln-AI/Kiln): The easiest tool for fine-tuning LLM models, synthetic data generation, and collaborating on datasets.
+41. [DeepSeek-671B-SFT-Guide](https://ScienceOne-AI/DeepSeek-671B-SFT-Guide): An open-source solution for full parameter fine-tuning of DeepSeek-V3/R1 671B, including complete code and scripts from training to inference, as well as some practical experiences and conclusions.
+42. [MLX-VLM](https://Blaizzy/mlx-vlm): MLX-VLM is a package for inference and fine-tuning of Vision Language Models (VLMs) on your Mac using MLX.
+43. [RL-Factory](https://Simple-Efficient/RL-Factory): Train your Agent model via our easy and efficient framework.
+44. [RM-Gallery](https://modelscope/RM-Gallery): A One-Stop Reward Model Platform.
+45. [ART](https://OpenPipe/ART): rain multi-step agents for real-world tasks using GRPO. Give your agents on-the-job training.
+46. [LMMs-Engine](https://EvolvingLMMs-Lab/lmms-engine): A simple, any-to-any modality framework for pretraining and finetuning. Lean, flexible, and built for research.
+47. [dLLM](https://ZHZisZZ/dllm): a library that unifies the training and evaluation of diffusion language models, bringing transparency and reproducibility to the entire development pipeline. `diffusion`
+48. [Miles](https://radixark/miles): an enterprise-facing reinforcement learning framework for large-scale MoE post-training and production workloads.
+49. [Skills](https://NVIDIA-NeMo/Skills): a collection of pipelines to improve "skills" of large language models (LLMs).
+50. [Twinkle](https://modelscope/twinkle): a lightweight, client-server training framework engineered with modular, high-cohesion interfaces.
+51. [NeMo AutoModel](https://NVIDIA-NeMo/Automodel): Pytorch Distributed native training library for LLMs/VLMs with OOTB Hugging Face support.
+52. [VeOmni](https://ByteDance-Seed/VeOmni): Scaling Any Modality Model Training with Model-Centric Distributed Recipe Zoo.
+53. [Soup](https://MakazhanAlpamys/Soup): One-config CLI for LLM post-training (SFT/DPO/GRPO/KTO/ORPO). Layer streaming trains an 8B model on a 4 GB laptop GPU by streaming the frozen base from host RAM one decoder layer at a time.
+
+<div align="right">
+    <b><a href="#Contents">↥ back to top</a></b>
+</div>
+
+## Agentic RL
+
+- veRL (`🔥`): https://volcengine/verl
+- AReaL: https://inclusionAI/AReaL
+- slime (`🔥`): https://THUDM/slime
+- Agent Lightning: https://microsoft/agent-lightning
+- Molt: https://NVIDIA-NeMo/labs-molt
+- prime-rl: https://PrimeIntellect-ai/prime-rl
+
+<div align="right">
+    <b><a href="#Contents">↥ back to top</a></b>
+</div>
+
+## 推理 Inference
+
+1. [ollama (`🔥`)](https://ollama/ollama): Get up and running with Llama 3, Mistral, Gemma, and other large language models.
+2. [Open WebUI](https://open-webui/open-webui): User-friendly WebUI for LLMs (Formerly Ollama WebUI).
+3. [Text Generation WebUI](https://oobabooga/text-generation-webui): A Gradio web UI for Large Language Models. Supports transformers, GPTQ, AWQ, EXL2, llama.cpp (GGUF), Llama models.
+4. [Xinference](https://xorbitsai/inference): A powerful and versatile library designed to serve language, speech recognition, and multimodal models.
+5. [LangChain](https://langchain-ai/langchain): Build context-aware reasoning applications.
+6. [LlamaIndex](https://run-llama/llama_index): A data framework for your LLM applications.
+7. [lobe-chat](https://lobehub/lobe-chat): an open-source, modern-design LLMs/AI chat framework. Supports Multi AI Providers, Multi-Modals (Vision/TTS) and plugin system.
+8. [TensorRT-LLM](https://NVIDIA/TensorRT-LLM): TensorRT-LLM provides users with an easy-to-use Python API to define Large Language Models (LLMs) and build TensorRT engines that contain state-of-the-art optimizations to perform inference efficiently on NVIDIA GPUs.
+9. [vllm (`🔥`)](https://vllm-project/vllm): A high-throughput and memory-efficient inference and serving engine for LLMs.
+10. [LlamaChat](https://alexrozanski/LlamaChat): Chat with your favourite LLaMA models in a native macOS app.
+11. [NVIDIA ChatRTX](https://www.nvidia.com/en-us/ai-on-rtx/chatrtx/): ChatRTX is a demo app that lets you personalize a GPT large language model (LLM) connected to your own content—docs, notes, or other data.
+12. [LM Studio (`🔥`)](https://lmstudio.ai/): Discover, download, and run local LLMs.
+13. [chat-with-mlx](https://qnguyen3/chat-with-mlx): Chat with your data natively on Apple Silicon using MLX Framework.
+14. [LLM Pricing](https://llmpricecheck.com/): Quickly Find the Perfect Large Language Models (LLM) API for Your Budget! Use Our Free Tool for Instant Access to the Latest Prices from Top Providers.
+15. [Open Interpreter](https://OpenInterpreter/open-interpreter): A natural language interface for computers.
+16. [Chat-ollama](https://sugarforever/chat-ollama): An open source chatbot based on LLMs. It supports a wide range of language models, and knowledge base management.
+17. [chat-ui](https://huggingface/chat-ui): Open source codebase powering the HuggingChat app.
+18. [MemGPT](https://cpacker/MemGPT): Create LLM agents with long-term memory and custom tools.
+19. [koboldcpp](https://LostRuins/koboldcpp): A simple one-file way to run various GGML and GGUF models with KoboldAI's UI.
+20. [LLMFarm](https://guinmoon/LLMFarm): llama and other large language models on iOS and MacOS offline using GGML library.
+21. [enchanted](https://AugustDev/enchanted): Enchanted is iOS and macOS app for chatting with private self hosted language models such as Llama2, Mistral or Vicuna using Ollama.
+22. [Flowise](https://FlowiseAI/Flowise): Drag & drop UI to build your customized LLM flow.
+23. [Jan](https://janhq/jan): Jan is an open source alternative to ChatGPT that runs 100% offline on your computer. Multiple engine support (llama.cpp, TensorRT-LLM).
+24. [LMDeploy](https://InternLM/lmdeploy): LMDeploy is a toolkit for compressing, deploying, and serving LLMs.
+25. [RouteLLM](https://lm-sys/RouteLLM): A framework for serving and evaluating LLM routers - save LLM costs without compromising quality!
+26. [MInference](https://microsoft/MInference): About
+To speed up Long-context LLMs' inference, approximate and dynamic sparse calculate the attention, which reduces inference latency by up to 10x for pre-filling on an A100 while maintaining accuracy.
+27. [Mem0](https://mem0ai/mem0): The memory layer for Personalized AI.
+28. [SGLang (`🔥`)](https://sgl-project/sglang): SGLang is yet another fast serving framework for large language models and vision language models.
+29. [AirLLM](https://lyogavin/airllm): AirLLM optimizes inference memory usage, allowing 70B large language models to run inference on a single 4GB GPU card without quantization, distillation and pruning. And you can run 405B Llama3.1 on 8GB vram now.
+30. [LLMHub](https://jmather/llmhub): LLMHub is a lightweight management platform designed to streamline the operation and interaction with various language models (LLMs).
+31. [YuanChat](https://IEIT-Yuan/YuanChat)
+32. [LiteLLM (`🔥`)](https://BerriAI/litellm): Call all LLM APIs using the OpenAI format [Bedrock, Huggingface, VertexAI, TogetherAI, Azure, OpenAI, Groq etc.]
+33. [GuideLLM](https://neuralmagic/guidellm): GuideLLM is a powerful tool for evaluating and optimizing the deployment of large language models (LLMs).
+34. [LLM-Engines](https://jdf-prog/LLM-Engines): A unified inference engine for large language models (LLMs) including open-source models (VLLM, SGLang, Together) and commercial models (OpenAI, Mistral, Claude).
+35. [OARC](https://Leoleojames1/ollama_agent_roll_cage): ollama_agent_roll_cage (OARC) is a local python agent fusing ollama llm's with Coqui-TTS speech models, Keras classifiers, Llava vision, Whisper recognition, and more to create a unified chatbot agent for local, custom automation.
+36. [g1](https://bklieger-groq/g1): Using Llama-3.1 70b on Groq to create o1-like reasoning chains.
+37. [MemoryScope](https://modelscope/MemoryScope): MemoryScope provides LLM chatbots with powerful and flexible long-term memory capabilities, offering a framework for building such abilities.
+38. [OpenLLM](https://bentoml/OpenLLM): Run any open-source LLMs, such as Llama 3.1, Gemma, as OpenAI compatible API endpoint in the cloud.
+39. [Infinity](https://infiniflow/infinity): The AI-native database built for LLM applications, providing incredibly fast hybrid search of dense embedding, sparse embedding, tensor and full-text.
+40. [optillm](https://codelion/optillm): an OpenAI API compatible optimizing inference proxy which implements several state-of-the-art techniques that can improve the accuracy and performance of LLMs.
+41. [LLaMA Box](https://gpustack/llama-box): LLM inference server implementation based on llama.cpp.
+42. [ZhiLight](https://zhihu/ZhiLight): A highly optimized inference acceleration engine for Llama and its variants.
+43. [DashInfer](https://modelscope/dash-infer): DashInfer is a native LLM inference engine aiming to deliver industry-leading performance atop various hardware architectures.
+44. [LocalAI](https://mudler/LocalAI): The free, Open Source alternative to OpenAI, Claude and others. Self-hosted and local-first. Drop-in replacement for OpenAI, running on consumer-grade hardware. No GPU required.
+45. [ktransformers](https://kvcache-ai/ktransformers): A Flexible Framework for Experiencing Cutting-edge LLM Inference Optimizations.
+46. [SkyPilot](https://skypilot-org/skypilot): Run AI and batch jobs on any infra (Kubernetes or 14+ clouds). Get unified execution, cost savings, and high GPU availability via a simple interface.
+47. [Chitu](https://thu-pacman/chitu): High-performance inference framework for large language models, focusing on efficiency, flexibility, and availability.
+48. [TokenSwift](https://bigai-nlco/TokenSwift): From Hours to Minutes: Lossless Acceleration of Ultra Long Sequence Generation.
+49. [Cherry Studio (`🔥`)](https://CherryHQ/cherry-studio): a desktop client that supports for multiple LLM providers, available on Windows, Mac and Linux.
+50. [Shimmy](https://Michael-A-Kuykendall/shimmy): Python-free Rust inference server — OpenAI-API compatible. GGUF + SafeTensors, hot model swap, auto-discovery, single binary.
+51. [LlamaBarn](https://ggml-org/LlamaBarn): Run local LLMs on your Mac with a simple menu bar app.
+52. [Parallax](https://GradientHQ/parallax): a distributed model serving framework that lets you build your own AI cluster anywhere.
+53. [xLLM](https://jd-opensource/xllm): A high-performance inference engine for LLMs, optimized for diverse AI accelerators.
+54. [Rapid-MLX](https://raullenchai/Rapid-MLX): OpenAI-compatible local LLM inference server for Apple Silicon, 2-4x faster than Ollama.
+55. [TokenSpeed](https://lightseekorg/tokenspeed): a speed-of-light LLM inference engine designed for agentic workloads, with TensorRT-LLM-level performance and vLLM-level usability. Our goal is to be the most performant inference engine for production agentic workloads.
+
+
+<div align="right">
+    <b><a href="#Contents">↥ back to top</a></b>
+</div>
+
+## 评估 Evaluation
+
+1. [lm-evaluation-harness](https://EleutherAI/lm-evaluation-harness): A framework for few-shot evaluation of language models.
+2. [opencompass (`🔥`)](https://open-compass/opencompass): OpenCompass is an LLM evaluation platform, supporting a wide range of models (Llama3, Mistral, InternLM2,GPT-4,LLaMa2, Qwen,GLM, Claude, etc) over 100+ datasets.
+3. [llm-comparator](https://PAIR-code/llm-comparator): LLM Comparator is an interactive data visualization tool for evaluating and analyzing LLM responses side-by-side, developed.
+4. [EvalScope (`🔥`)](https://modelscope/evalscope)
+5. [Weave](https://weave-docs.wandb.ai/guides/core-types/evaluations): A lightweight toolkit for tracking and evaluating LLM applications.
+6. [MixEval](https://Psycoy/MixEval/): Deriving Wisdom of the Crowd from LLM Benchmark Mixtures.
+7. [Evaluation guidebook](https://huggingface/evaluation-guidebook): If you've ever wondered how to make sure an LLM performs well on your specific task, this guide is for you!
+8. [Ollama Benchmark](https://aidatatools/ollama-benchmark): LLM Benchmark for Throughput via Ollama (Local LLMs).
+9. [VLMEvalKit](https://open-compass/VLMEvalKit): Open-source evaluation toolkit of large vision-language models (LVLMs), support ~100 VLMs, 40+ benchmarks.
+10. [AGI-Eval](https://agi-eval.cn/mvp/home)
+11. [EvalScope](https://modelscope/evalscope): A streamlined and customizable framework for efficient large model evaluation and performance benchmarking.
+12. [DeepEval](https://confident-ai/deepeval): a simple-to-use, open-source LLM evaluation framework, for evaluating and testing large-language model systems.
+13. [Lighteval](https://huggingface/lighteval): Lighteval is your all-in-one toolkit for evaluating LLMs across multiple backends.
+14. [QwQ/eval](https://QwenLM/QwQ/tree/main/eval): QwQ is the reasoning model series developed by Qwen team, Alibaba Cloud.
+15. [Evalchemy](https://mlfoundations/evalchemy): A unified and easy-to-use toolkit for evaluating post-trained language models.
+16. [MathArena](https://eth-sri/matharena): Evaluation of LLMs on latest math competitions.
+17. [YourBench](https://huggingface/yourbench): A Dynamic Benchmark Generation Framework.
+18. [MedEvalKit](https://alibaba-damo-academy/MedEvalKit): A Unified Medical Evaluation Framework.
+19. [OpenJudge](https://modelscope/OpenJudge): A Unified Framework for Holistic Evaluation and Quality Rewards.
+
+<div align="right">
+    <b><a href="#Contents">↥ back to top</a></b>
+</div>
+
+## 体验 Usage
+
+1. [LM Arena](https://lmarena.ai/zh)
+2. [Design Arena](https://www.designarena.ai/)
+3. [Vals AI](https://www.vals.ai/home) `evaluation`
+
+<div align="right">
+    <b><a href="#Contents">↥ back to top</a></b>
+</div>
+
+## 知识库 RAG
+
+1. [AnythingLLM](https://Mintplex-Labs/anything-llm): The all-in-one AI app for any LLM with full RAG and AI Agent capabilites.
+2. [MaxKB](https://1Panel-dev/MaxKB): 基于 LLM 大语言模型的知识库问答系统。开箱即用，支持快速嵌入到第三方业务系统
+3. [RAGFlow](https://infiniflow/ragflow): An open-source RAG (Retrieval-Augmented Generation) engine based on deep document understanding.
+4. [Dify](https://langgenius/dify): An open-source LLM app development platform. Dify's intuitive interface combines AI workflow, RAG pipeline, agent capabilities, model management, observability features and more, letting you quickly go from prototype to production.
+5. [FastGPT](https://labring/FastGPT): A knowledge-based platform built on the LLM, offers out-of-the-box data processing and model invocation capabilities, allows for workflow orchestration through Flow visualization.
+6. [Langchain-Chatchat](https://chatchat-space/Langchain-Chatchat): 基于 Langchain 与 ChatGLM 等不同大语言模型的本地知识库问答
+7. [QAnything](https://netease-youdao/QAnything): Question and Answer based on Anything.
+8. [Quivr](https://QuivrHQ/quivr): A personal productivity assistant (RAG) ⚡️🤖 Chat with your docs (PDF, CSV, ...) & apps using Langchain, GPT 3.5 / 4 turbo, Private, Anthropic, VertexAI, Ollama, LLMs, Groq that you can share with users ! Local & Private alternative to OpenAI GPTs & ChatGPT powered by retrieval-augmented generation.
+9. [RAG-GPT](https://open-kf/rag-gpt): RAG-GPT, leveraging LLM and RAG technology, learns from user-customized knowledge bases to provide contextually relevant answers for a wide range of queries, ensuring rapid and accurate information retrieval.
+10. [Verba](https://weaviate/Verba): Retrieval Augmented Generation (RAG) chatbot powered by Weaviate.
+11. [FlashRAG](https://RUC-NLPIR/FlashRAG): A Python Toolkit for Efficient RAG Research.
+12. [GraphRAG](https://microsoft/graphrag): A modular graph-based Retrieval-Augmented Generation (RAG) system.
+13. [LightRAG](https://SylphAI-Inc/LightRAG): LightRAG helps developers with both building and optimizing Retriever-Agent-Generator pipelines.
+14. [GraphRAG-Ollama-UI](https://severian42/GraphRAG-Ollama-UI): GraphRAG using Ollama with Gradio UI and Extra Features.
+15. [nano-GraphRAG](https://gusye1234/nano-graphrag): A simple, easy-to-hack GraphRAG implementation.
+16. [RAG Techniques](https://NirDiamant/RAG_Techniques): This repository showcases various advanced techniques for Retrieval-Augmented Generation (RAG) systems. RAG systems combine information retrieval with generative models to provide accurate and contextually rich responses.
+17. [ragas](https://explodinggradients/ragas): Evaluation framework for your Retrieval Augmented Generation (RAG) pipelines.
+18. [kotaemon](https://Cinnamon/kotaemon): An open-source clean & customizable RAG UI for chatting with your documents. Built with both end users and developers in mind.
+19. [RAGapp](https://ragapp/ragapp): The easiest way to use Agentic RAG in any enterprise.
+20. [TurboRAG](https://MooreThreads/TurboRAG): Accelerating Retrieval-Augmented Generation with Precomputed KV Caches for Chunked Text.
+21. [LightRAG](https://HKUDS/LightRAG): Simple and Fast Retrieval-Augmented Generation.
+22. [TEN](https://TEN-framework/ten_framework): the Next-Gen AI-Agent Framework, the world's first truly real-time multimodal AI agent framework.
+23. [AutoRAG](https://Marker-Inc-Korea/AutoRAG): RAG AutoML tool for automatically finding an optimal RAG pipeline for your data.
+24. [KAG](https://OpenSPG/KAG): KAG is a knowledge-enhanced generation framework based on OpenSPG engine, which is used to build knowledge-enhanced rigorous decision-making and information retrieval knowledge services.
+25. [Fast-GraphRAG](https://circlemind-ai/fast-graphrag): RAG that intelligently adapts to your use case, data, and queries.
+26. [Tiny-GraphRAG](https://limafang/tiny-graphrag)
+27. [DB-GPT GraphRAG](https://eosphoros-ai/DB-GPT/tree/main/dbgpt/storage/knowledge_graph): DB-GPT GraphRAG integrates both triplet-based knowledge graphs and document structure graphs while leveraging community and document retrieval mechanisms to enhance RAG capabilities, achieving comparable performance while consuming only 50% of the tokens required by Microsoft's GraphRAG. Refer to the DB-GPT [Graph RAG User Manual](http://docs.dbgpt.cn/docs/cookbook/rag/graph_rag_app_develop/) for details.
+28. [Chonkie](https://bhavnicksm/chonkie): The no-nonsense RAG chunking library that's lightweight, lightning-fast, and ready to CHONK your texts.
+29. [RAGLite](https://superlinear-ai/raglite): RAGLite is a Python toolkit for Retrieval-Augmented Generation (RAG) with PostgreSQL or SQLite.
+30. [KAG](https://OpenSPG/KAG): KAG is a logical form-guided reasoning and retrieval framework based on OpenSPG engine and LLMs.
+31. [CAG](https://hhhuang/CAG): CAG leverages the extended context windows of modern large language models (LLMs) by preloading all relevant resources into the model’s context and caching its runtime parameters.
+32. [MiniRAG](https://HKUDS/MiniRAG): an extremely simple retrieval-augmented generation framework that enables small models to achieve good RAG performance through heterogeneous graph indexing and lightweight topology-enhanced retrieval.
+33. [XRAG](https://DocAILab/XRAG): a benchmarking framework designed to evaluate the foundational components of advanced Retrieval-Augmented Generation (RAG) systems.
+34. [Rankify](https://DataScienceUIBK/rankify): A Comprehensive Python Toolkit for Retrieval, Re-Ranking, and Retrieval-Augmented Generation.
+35. [RAG-Anything](https://HKUDS/RAG-Anything): All-in-One RAG System.
+
+<div align="right">
+    <b><a href="#Contents">↥ back to top</a></b>
+</div>
+
+## 智能体 Agents
+
+1. [AutoGen](https://microsoft/autogen): AutoGen is a framework that enables the development of LLM applications using multiple agents that can converse with each other to solve tasks. [AutoGen AIStudio](https://autogen-studio.com/)
+2. [CrewAI](https://joaomdmoura/crewAI): Framework for orchestrating role-playing, autonomous AI agents. By fostering collaborative intelligence, CrewAI empowers agents to work together seamlessly, tackling complex tasks.
+3. [Coze](https://www.coze.com/)
+4. [AgentGPT](https://reworkd/AgentGPT): Assemble, configure, and deploy autonomous AI Agents in your browser.
+5. [XAgent](https://OpenBMB/XAgent): An Autonomous LLM Agent for Complex Task Solving.
+6. [MobileAgent](https://X-PLUG/MobileAgent): The Powerful Mobile Device Operation Assistant Family.
+7. [Lagent](https://InternLM/lagent): A lightweight framework for building LLM-based agents.
+8. [Qwen-Agent](https://QwenLM/Qwen-Agent): Agent framework and applications built upon Qwen2, featuring Function Calling, Code Interpreter, RAG, and Chrome extension.
+9. [LinkAI](https://link-ai.tech/portal): 一站式 AI 智能体搭建平台
+10. [Baidu APPBuilder](https://appbuilder.cloud.baidu.com/)
+11. [agentUniverse](https://alipay/agentUniverse): agentUniverse is a LLM multi-agent framework that allows developers to easily build multi-agent applications. Furthermore, through the community, they can exchange and share practices of patterns across different domains.
+12. [LazyLLM](https://LazyAGI/LazyLLM): 低代码构建多Agent大模型应用的开发工具
+13. [AgentScope](https://modelscope/agentscope): Start building LLM-empowered multi-agent applications in an easier way.
+14. [AgentField](https://Agent-Field/agentfield): Open-source control plane for building and operating AI agents like APIs at scale, with routing, memory, observability, identity, auth, and policy controls.
+15. [MoA](https://togethercomputer/MoA): Mixture of Agents (MoA) is a novel approach that leverages the collective strengths of multiple LLMs to enhance performance, achieving state-of-the-art results.
+15. [Agently](https://Maplemx/Agently): AI Agent Application Development Framework.
+16. [OmAgent](https://om-ai-lab/OmAgent): A multimodal agent framework for solving complex tasks.
+17. [Tribe](https://StreetLamb/tribe): No code tool to rapidly build and coordinate multi-agent teams.
+18. [CAMEL](https://camel-ai/camel): First LLM multi-agent framework and an open-source community dedicated to finding the scaling law of agents.
+19. [PraisonAI](https://MervinPraison/PraisonAI/): PraisonAI application combines AutoGen and CrewAI or similar frameworks into a low-code solution for building and managing multi-agent LLM systems, focusing on simplicity, customisation, and efficient human-agent collaboration.
+20. [IoA](https://openbmb/ioa): An open-source framework for collaborative AI agents, enabling diverse, distributed agents to team up and tackle complex tasks through internet-like connectivity.
+21. [llama-agentic-system ](https://meta-llama/llama-agentic-system): Agentic components of the Llama Stack APIs.
+22. [Agent Zero](https://frdel/agent-zero): Agent Zero is not a predefined agentic framework. It is designed to be dynamic, organically growing, and learning as you use it.
+23. [Agents](https://aiwaves-cn/agents): An Open-source Framework for Data-centric, Self-evolving Autonomous Language Agents.
+24. [AgentScope](https://modelscope/agentscope): Start building LLM-empowered multi-agent applications in an easier way.
+25. [FastAgency](https://airtai/fastagency): The fastest way to bring multi-agent workflows to production.
+26. [Swarm](https://openai/swarm): Framework for building, orchestrating and deploying multi-agent systems. Managed by OpenAI Solutions team. Experimental framework.
+27. [Agent-S](https://simular-ai/Agent-S): an open agentic framework that uses computers like a human.
+28. [PydanticAI](https://pydantic/pydantic-ai): Agent Framework / shim to use Pydantic with LLMs.
+29. [Agentarium](https://Thytu/Agentarium): open-source framework for creating and managing simulations populated with AI-powered agents.
+30. [smolagents](https://huggingface/smolagents): a barebones library for agents. Agents write python code to call tools and orchestrate other agents.
+31. [Cooragent](https://LeapLabTHU/cooragent): Cooragent is an AI agent collaboration community.
+32. [Agno](https://agno-agi/agno): Agno is a lightweight library for building Agents with memory, knowledge, tools and reasoning.
+33. [Suna](https://kortix-ai/suna): Open Source Generalist AI Agent.
+34. [rowboat](https://rowboatlabs/rowboat): Let AI build multi-agent workflows for you in minutes.
+35. [EvoAgentX](https://EvoAgentX/EvoAgentX): Building a Self-Evolving Ecosystem of AI Agents.
+36. [ii-agent](https://Intelligent-Internet/ii-agent): a new open-source framework to build and deploy intelligent agents.
+37. [OWL](https://camel-ai/owl): Optimized Workforce Learning for General Multi-Agent Assistance in Real-World Task Automation.
+38. [OpenManus](https://FoundationAgents/OpenManus): No fortress, purely open ground. OpenManus is Coming.
+39. [JoyAgent-JDGenie](https://jd-opensource/joyagent-jdgenie): 业界首个开源高完成度轻量化通用多智能体产品.
+40. [coze-studio](https://coze-dev/coze-studio): An AI agent development platform with all-in-one visual tools, simplifying agent creation, debugging, and deployment like never before.
+41. [OxyGent](https://jd-opensource/OxyGent): An advanced Python framework that empowers developers to quickly build production-ready intelligent systems.
+42. [LazyCraft](https://LazyAGI/LazyCraft): LazyCraft 是一个基于 LazyLLM 构建的 AI Agent 应用开发与管理平台，旨在协助开发者以 低门槛、低成本 快速构建和发布大模型应用。
+43. [OpenAgents](https://openagents-org/openagents): AI Agent Networks for Open Collaboration.
+44. [SandBox](https://agent-infra/sandbox): All-in-One Sandbox for AI Agents that combines Browser, Shell, File, MCP and VSCode Server in a single Docker container.
+45. [DeepAnalyze](https://ruc-datalab/DeepAnalyze): First agentic LLM for autonomous data science, supporting specific data tasks (data preparation, analysis, modeling, visualization, and insight) and data-oriented deep research (produce analyst-grade research reports).
+46. [Astron Agent](https://iflytek/astron-agent): Enterprise-grade, commercial-friendly agentic workflow platform for building next-generation SuperAgents.
+47. [Youtu-Agent](https://TencentCloudADP/youtu-agent): A simple yet powerful agent framework that delivers with open-source models.
+48. [MiroThinker](https://MiroMindAI/MiroThinker): an open-source search agent model, built for tool-augmented reasoning and real-world information seeking, aiming to match the deep research experience of OpenAI Deep Research and Gemini Deep Research.
+49. [Nexent](https://ModelEngine-Group/nexent): A zero-code platform for auto-generating agents — no orchestration, no complex drag-and-drop required, using pure language to develop any agent you want.
+50. [Yunjue-Agent](https://YunjueTech/Yunjue-Agent): A Fully Reproducible, Zero-Start In-Situ Self-Evolving Agent System for Open-Ended Tasks.
+51. [Hindsight](https://vectorize-io/hindsight): State-of-the-art long-term memory for AI agents by Vectorize. Open-source, self-hostable, with integrations for LangChain, CrewAI, LlamaIndex, MCP, and more.
+52. [AgentsMesh](https://AgentsMesh/AgentsMesh): The AI Agent Workforce Platform. Self-hostable multi-agent orchestration with remote AI workstations (AgentPods), PTY sandbox + git worktree isolation, channels-based agent collaboration, built-in Kanban, and per-pod MCP server. Supports Claude Code, Codex CLI, Gemini CLI, Aider, OpenCode.
+
+<div align="right">
+    <b><a href="#Contents">↥ back to top</a></b>
+</div>
+
+## 研究 Research
+
+#### 写作
+
+- PaperDebugger: https://PaperDebugger/PaperDebugger
+  - XtraGPT served as refiner: https://Xtra-Computing/XtraGPT
+- Chat Overleaf: https://anuin-cat/chat-overleaf
+- 文智云助手: https://overleaf.top/
+- LiteWrite: https://litewrite.ai/
+- Prism: https://openai.com/zh-Hans-CN/prism/
+- claude-prism: https://delibae/claude-prism
+
+#### 审稿
+
+- PaperReview: https://paperreview.ai/
+- aiXiv: https://aixiv.science/
+- OpenJudge Review: https://openjudge.me/paper_review
+
+#### PPT
+
+- PPTAgent: https://icip-cas/PPTAgent
+- Paper PPT Agent: https://CRui5in/paper-ppt-agent
+- PPT Master: https://hugohe3/ppt-master
+- LandPPT: https://sligter/LandPPT
+- Kami: https://tw93/kami
+- beautiful-html-templates: https://zarazhangrui/beautiful-html-templates
+- guizang-ppt-skill: https://op7418/guizang-ppt-skill
+- GordenSuperPPTSkills: https://GordenSun/GordenSuperPPTSkills
+- dashiAI-ppt-skill: https://chuspeeism/dashiAI-ppt-skill
+
+#### 其他
+
+- Paper2Video: https://showlab/Paper2Video
+- Paper2Poster: https://Paper2Poster/Paper2Poster
+- AutoPR: https://irgolic/AutoPR
+- Auto-Slides: https://Westlake-AGI-Lab/Auto-Slides
+- EvoPresent: https://eric-ai-lab/EvoPresent
+- Paper2All: https://YuhangChen1/Paper2All
+- AutoPage: https://AutoLab-SAI-SJTU/AutoPage
+- pdf2video: https://DangJin/pdf2video
+- Idea2Paper: https://AgentAlphaAGI/Idea2Paper
+- PaperX: https://yutao1024/PaperX
+- figures4papers: https://ChenLiu-1996/figures4papers
+- PaperBanana: https://dwzhu-pku/PaperBanana
+- PaperBanana-Pro: https://elpsykongloo/PaperBanana-Pro
+- AutoFigure: https://ResearAI/AutoFigure
+  - FigureWeave: https://Krisocer/FigureWeave
+  - EditDeck: https://Morgensonne/EditDeck
+- AutoFigure-Edit: https://ResearAI/AutoFigure-Edit
+- Kahneman4Review: https://huggingface.co/spaces/nuojohnchen/Kahneman4Review
+- Academic Figure Generator: https://LigphiDonk/academic-figure-generator
+- PaperFit: https://OpenRaiser/PaperFit
+
+#### 全自动科研
+
+- EvoScientist: https://EvoScientist/EvoScientist
+- Auto-claude-code-research-in-sleep: https://wanshuiyin/Auto-claude-code-research-in-sleep
+- ArgusBot: https://waltstephen/ArgusBot
+- Station: https://dualverse-ai/station
+- Dr.Claw: https://OpenLAIR/dr-claw
+- Redigg: https://redigg/redigg
+- AutoResearchClaw: https://aiming-lab/AutoResearchClaw
+- NanoResearch: https://OpenRaiser/NanoResearch
+- ScienceClaw: https://AgentTeam-TaichuAI/ScienceClaw
+- EurekaClaw: https://EurekaClaw/EurekaClaw
+- Claude-scholar: https://Galaxy-Dawn/claude-scholar/
+- claude-scientific-skills: https://K-Dense-AI/claude-scientific-skills
+- K-Dense BYOK: https://K-Dense-AI/k-dense-byok
+- latex-paper-skills: https://yunshenwuchuxun/latex-paper-skills
+- NeuriCo: https://ChicagoHAI/NeuriCo
+- AutoResearch : https://karpathy/autoresearch
+- RD-Agent : https://microsoft/RD-Agent
+- DeepScientist : https://ResearAI/DeepScientist
+- Deep Researcher Agent: https://Xiangyue-Zhang/auto-deep-researcher-24x7
+- academic-research-skills: https://Imbad0202/academic-research-skills
+- Supervisor-Skills: https://HKUSTDial/Supervisor-Skills
+
+<div align="right">
+    <b><a href="#Contents">↥ back to top</a></b>
+</div>
+
+## 代码 Coding
+
+1. [Cloi CLI](https://cloi-ai/cloi): Local debugging agent that runs in your terminal.
+2. [Devin](https://devin.ai/)
+3. [v0](https://v0.dev/)
+4. [Blot.new](https://bolt.new/)
+5. [cursor](https://www.cursor.com/)
+6. [Windsurf](https://codeium.com/windsurf)
+7. [cline](https://cline/cline)
+8. [Trae](https://www.trae.ai/)
+9. [MGX](https://mgx.dev/)
+10. [Roo Code](https://RooCodeInc/Roo-Code)
+11. [Kilo Code](https://Kilo-Org/kilocode)
+12. [AugmentCode](https://www.augmentcode.com/)
+13. [Claude Code (`🔥`)](https://anthropics/claude-code)
+14. [Claude Code (`🔥`)](https://anthropics/claude-code) + [Happy Coder](https://slopus/happy) / [CodePilot](https://op7418/CodePilot) / [cc-connect](https://chenhg5/cc-connect)
+15. [Gemini CLI](https://google-gemini/gemini-cli)
+16. [Serena](https://oraios/serena)
+17. [Claudia](https://getAsterisk/claudia)
+18. [OpenCode](https://opencode-ai/opencode)
+19. [Kiro](https://kiro.dev/)
+20. [CodeBuddy](https://copilot.tencent.com/)
+21. [Kiro](https://kiro.dev/)
+22. [CodeX (`🔥`)](https://openai/codex)
+23. [Kimi-CLI](https://MoonshotAI/kimi-cli)
+24. [opencode](https://anomalyco/opencode)
+25. [Multica](https://multica-ai/multica)
+
+
+<div align="right">
+    <b><a href="#Contents">↥ back to top</a></b>
+</div>
+
+## 视频 Video
+
+#### 模型
+
+> [!NOTE]
+> 🤝[Awesome-Video-Diffusion](https://showlab/Awesome-Video-Diffusion)
+
+1. [HunyuanVideo](https://Tencent/HunyuanVideo)
+2. [CogVideo](https://THUDM/CogVideo)
+3. [Wan2.1](https://Wan-Video/Wan2.1)
+4. [Open-Sora](https://hpcaitech/Open-Sora)
+5. [Open-Sora-Plan](https://PKU-YuanGroup/Open-Sora-Plan)
+6. [LTX-Video](https://Lightricks/LTX-Video)
+7. [Step-Video-T2V](https://stepfun-ai/Step-Video-T2V)
+8. [Step1X-Edit](https://stepfun-ai/Step1X-Edit) `Editing`
+9. [Wan2.1-VACE](https://huggingface.co/Wan-AI/Wan2.1-VACE-14B) `Editing`
+10. [ICEdit](https://River-Zhang/ICEdit) `Editing`
+11. [mochi-1-preview](https://huggingface.co/genmo/mochi-1-preview)
+12. [Wan2.1-Fun](https://huggingface.co/collections/alibaba-pai/wan21-fun-v11-680f514c89fe7b4df9d44f17)
+13. [Wan2.1-FLF2V](https://huggingface.co/Wan-AI/Wan2.1-FLF2V-14B-720P) `首尾帧`
+14. [MAGI-1](https://SandAI-org/MAGI-1) `自回归模型`
+15. [SkyReels-V2](https://SkyworkAI/SkyReels-V2)
+16. [FramePack](https://lllyasviel/FramePack)
+17. [Pusa-VidGen](https://Yaofang-Liu/Pusa-VidGen)
+18. [Wan2.2](https://Wan-Video/Wan2.2)
+19. [MoGA](https://arxiv.org/pdf/2510.18692) `长视频`
+20. [LongCat-Video](https://huggingface.co/meituan-longcat/LongCat-Video)
+21. [HunyuanVideo-1.5](https://Tencent-Hunyuan/HunyuanVideo-1.5)
+22. [LTX-2](https://huggingface.co/Lightricks/LTX-2)
+    - [Training](https://Lightricks/LTX-2/blob/main/packages/ltx-trainer/README.md)
+23. [daVinci-MagiHuman](https://huggingface.co/GAIR/daVinci-MagiHuman)
+24. [LongLive](https://NVlabs/LongLive)
+25. [JoyAI-Echo](https://jd-opensource/JoyAI-Echo)
+26. [NAVA](https://huggingface.co/baidu/NAVA)
+27. [LingBot-Video](https://huggingface.co/collections/robbyant/lingbot-video)
+28. [MiniMax-H3](https://huggingface.co/MiniMaxAI/MiniMax-H3)
+29. [MAGI-2-preview](https://huggingface.co/sand-ai/MAGI-2-preview)
+
+#### 编辑
+
+1. Wan2.1-VACE-14B: https://huggingface.co/Wan-AI/Wan2.1-VACE-14B
+2. Ditto: https://EzioBy/Ditto
+3. Bernini: https://bytedance/Bernini
+4. JoyAI-Video-Edit: https://huggingface.co/jdopensource/JoyAI-Video-Edit
+
+#### 训练
+
+- https://hao-ai-lab/FastVideo
+- https://tdrussell/diffusion-pipe
+- https://VideoVerses/VideoTuna
+- (`🔥`) https://modelscope/DiffSynth-Studio
+- https://huggingface/diffusers
+- https://kohya-ss/musubi-tuner
+- https://spacepxl/HunyuanVideo-Training
+- https://Tele-AI/TeleTron
+- https://Yaofang-Liu/Mochi-Full-Finetuner
+- https://bghira/SimpleTuner
+- https://X-GenGroup/Flow-Factory
+- https://shengshu-ai/minWM `world model`
+
+#### 推理
+
+- https://ModelTC/LightX2V
+- https://thu-ml/TurboDiffusion
+
+#### 实用工具
+
+- [PySceneDetect](https://Breakthrough/PySceneDetect): Python and OpenCV-based scene cut/transition detection program & library.
+- [DOVER](https://VQAssessment/DOVER): Video Quality Assessment on User Generated Contents from Aesthetic and Technical Perspectives.
+- [ArtiMuse](https://thunderbolt215/ArtiMuse): Fine-Grained Image Aesthetics Assessment with Joint Scoring and Expert-Level Understanding.
+
+<div align="right">
+    <b><a href="#Contents">↥ back to top</a></b>
+</div>
+
+## 图片 Image
+
+#### 生成
+
+- [awesome-nano-banana](https://JimmyLv/awesome-nano-banana)
+- [Awesome-Nano-Banana-images](https://PicoTrex/Awesome-Nano-Banana-images)
+- HunyuanImage-3.0：https://Tencent-Hunyuan/HunyuanImage-3.0
+- Seedream 4.0：https://arxiv.org/abs/2509.20427
+- LongCat-Image：https://huggingface.co/meituan-longcat/LongCat-Image
+- Z-Image-Turbo：https://huggingface.co/Tongyi-MAI/Z-Image-Turbo
+  - https://huggingface.co/inclusionAI/TwinFlow
+- Qwen-Image：https://huggingface.co/Qwen/Qwen-Image
+- Qwen-Image-2512：https://huggingface.co/Qwen/Qwen-Image-2512
+- Z-Image：https://huggingface.co/Tongyi-MAI/Z-Image
+- ERNIE-Image: https://huggingface.co/baidu/ERNIE-Image
+  - ERNIE-Image-Turbo: https://huggingface.co/Baidu/ERNIE-Image-Turbo
+- Nucleus-Image: https://huggingface.co/NucleusAI/Nucleus-Image
+- HiDream-O1-Image: https://huggingface.co/HiDream-ai/HiDream-O1-Image
+- Ideogram 4: https://ideogram-oss/ideogram4
+- Boogu-Image: https://boogu-project/Boogu-Image
+- Krea-2-Raw: https://huggingface.co/krea/Krea-2-Raw
+- SenseNova-U1: https://OpenSenseNova/SenseNova-U1
+- Mage-Flow: https://huggingface.co/collections/microsoft/mage
+
+#### 编辑
+
+- ChronoEdit-14B: https://huggingface.co/nvidia/ChronoEdit-14B-Diffusers
+- Eigen-Banana-Qwen-Image-Edit: https://huggingface.co/eigen-ai-labs/eigen-banana-qwen-image-edit
+- Qwen-Image-Edit-2509: https://huggingface.co/Qwen/Qwen-Image-Edit-2509
+  - Upscale: https://huggingface.co/vafipas663/Qwen-Edit-2509-Upscale-LoRA
+  - Multiple-angles: https://huggingface.co/dx8152/Qwen-Edit-2509-Multiple-angles
+  - Multi-Angle-Lighting: https://huggingface.co/dx8152/Qwen-Edit-2509-Multi-Angle-Lighting
+- LongCat-Image-Edit: https://huggingface.co/meituan-longcat/LongCat-Image-Edit
+- Qwen-Image-Edit-2511: https://huggingface.co/Qwen/Qwen-Image-Edit-2511
+  - Qwen-Image-Edit-2511-Upscale2K: https://huggingface.co/valiantcat/Qwen-Image-Edit-2511-Upscale2K
+  - Qwen-Image-Edit-2511-Multiple-Angles-LoRA: https://huggingface.co/fal/Qwen-Image-Edit-2511-Multiple-Angles-LoRA
+- FireRed-Image-Edit: https://huggingface.co/FireRedTeam/FireRed-Image-Edit-1.0
+- JoyAI-Image-Edit: https://huggingface.co/jdopensource/JoyAI-Image-Edit
+
+#### 统一
+
+- GLM-Image: https://huggingface.co/zai-org/GLM-Image
+- https://huggingface.co/black-forest-labs/FLUX.2-klein-4B
+  - https://huggingface.co/black-forest-labs/FLUX.2-klein-9B
+- DreamLite: https://ByteVisionLab/DreamLite
+- SenseNova-U1: https://huggingface.co/sensenova/SenseNova-U1-8B-MoT-SFT
+
+#### 训练
+
+- Ostris：https://ostris/ai-toolkit
+- FlymyAI：https://FlyMyAI/flymyai-lora-trainer
+- Nitro-T：https://AMD-AGI/Nitro-T
+- (`🔥`) DiffSynth-Studio：https://modelscope/DiffSynth-Studio
+- Musubi Tuner: https://kohya-ss/musubi-tuner
+- SimpleTuner: https://bghira/SimpleTuner
+- MS Training: https://www.modelscope.cn/aigc/modelTraining
+- Finetune HunyuanImage-3.0: https://PhotonAISG/hunyuan-image3-finetune
+- OneTrainer: https://Nerogar/OneTrainer
+- Finetune LongCat-Image and Edit: https://meituan-longcat/LongCat-Image/tree/main/train_examples
+- Flow-Factory: https://X-GenGroup/Flow-Factory
+- UniRL: https://Tencent-Hunyuan/UniRL
+
+#### 评估
+
+- ULMEvalKit：https://ULMEvalKit/ULMEvalKit
+
+#### 推理
+
+- TypemovieInfer: https://typemovie/TypemovieInfer
+
+<div align="right">
+    <b><a href="#Contents">↥ back to top</a></b>
+</div>
+
+## 搜索 Search
+
+1. [OpenSearch GPT](https://supermemoryai/opensearch-ai): SearchGPT / Perplexity clone, but personalised for you.
+2. [MindSearch](https://InternLM/MindSearch): An LLM-based Multi-agent Framework of Web Search Engine (like Perplexity.ai Pro and SearchGPT).
+3. [nanoPerplexityAI](https://Yusuke710/nanoPerplexityAI): The simplest open-source implementation of perplexity.ai.
+4. [curiosity](https://jank/curiosity): Try to build a Perplexity-like user experience.
+5. [MiniPerplx](https://zaidmukaddam/miniperplx): A minimalistic AI-powered search engine that helps you find information on the internet.
+
+<div align="right">
+    <b><a href="#Contents">↥ back to top</a></b>
+</div>
+
+## 语音 Speech
+
+#### TTS
+
+1. SpeechGPT-2.0-preview: https://OpenMOSS/SpeechGPT-2.0-preview
+2. Moss-TTSD：https://OpenMOSS/MOSS-TTSD
+3. Index-TTS：https://index-tts/index-tts
+4. MegaTTS3：https://bytedance/MegaTTS3
+5. F5-TTS：https://SWivid/F5-TTS
+6. GPT-SoVITS：https://RVC-Boss/GPT-SoVITS
+7. CosyVoice：https://FunAudioLLM/CosyVoice
+8. Spark-TTS：https://SparkAudio/Spark-TTS
+9. OpenVoice：https://myshell-ai/OpenVoice
+10. Dia：https://nari-labs/dia
+11. ChatTTS：https://2noise/ChatTTS
+12. Fish Speech：https://fishaudio/fish-speech
+13. Edge-TTS：https://rany2/edge-tts
+14. Bark：https://suno-ai/bark
+15. kokoro: https://hexgrad/kokoro
+16. Higgs Audio V2: https://boson-ai/higgs-audio 【[Training](https://JimmyMa99/train-higgs-audio)】
+17. KittenTTS: https://KittenML/KittenTTS
+18. ZipVoice: https://k2-fsa/ZipVoice
+19. VyvoTTS: https://Vyvo-Labs/VyvoTTS
+20. VibeVoice: https://microsoft/VibeVoice
+21. Index-TTS-2: https://huggingface.co/IndexTeam/IndexTTS-2
+22. FireRedTTS2: https://FireRedTeam/FireRedTTS2
+23. VoxCPM: https://OpenBMB/VoxCPM/
+24. Neutts-Air: https://neuphonic/neutts-air
+25. Maya1: https://huggingface.co/maya-research/maya1
+26. VibeVoice: https://huggingface.co/collections/microsoft/vibevoice
+27. GLM-TTS: https://zai-org/GLM-TTS
+28. Fun-CosyVoice3: https://huggingface.co/FunAudioLLM/Fun-CosyVoice3-0.5B-2512
+29. Qwen3-TTS:https://huggingface.co/collections/Qwen/qwen3-tts
+30. Ming-Omni-TTS: https://inclusionAI/Ming-omni-tts
+31. VoxCPM2: https://huggingface.co/openbmb/VoxCPM2
+32. OmniVoice: https://k2-fsa/OmniVoice
+33. MOSS-TTS-v1.5: https://huggingface.co/OpenMOSS-Team/MOSS-TTS-v1.5
+34. Higgs Audio v3 TTS: https://huggingface.co/bosonai/higgs-audio-v3-tts-4b
+35. Confucius4-TTS: https://netease-youdao/Confucius4-TTS
+36. Dia-1.6B: https://huggingface.co/nari-labs/Dia-1.6B-0626
+
+#### STT/ASR
+
+1. Kyutai: https://kyutai-labs/delayed-streams-modeling
+2. Whisper: https://openai/whisper
+3. Audio Flamingo 3: https://huggingface.co/nvidia/audio-flamingo-3
+4. Voxtral: https://huggingface.co/mistralai/Voxtral-Mini-3B-2507
+5. Step-Audio2: https://stepfun-ai/Step-Audio2
+6. SoulX-Podcast: https://huggingface.co/collections/Soul-AILab/soulx-podcast
+7. Omnilingual ASR: https://facebookresearch/omnilingual-asr
+8. Fun-ASR: https://huggingface.co/FunAudioLLM/Fun-ASR-Nano-2512
+9. FunASR: https://modelscope/FunASR
+10. SenseVoice: https://FunAudioLLM/SenseVoice
+11. VibeVoice-ASR: https://huggingface.co/microsoft/VibeVoice-ASR
+12. Qwen3-ASR: https://QwenLM/Qwen3-ASR
+13. Mega-ASR: https://xzf-thu/Mega-ASR
+14. MOSS-Transcribe-Diarize: https://huggingface.co/OpenMOSS-Team/MOSS-Transcribe-Diarize
+
+#### Voice Interaction
+
+1. Fun-Audio-Chat: https://huggingface.co/FunAudioLLM/Fun-Audio-Chat-8B
+2. Chroma 1.0: https://huggingface.co/FlashLabs/Chroma-4B
+3. AudioInteraction: https://huggingface.co/zhifeixie/AudioInteraction
+
+<div align="right">
+    <b><a href="#Contents">↥ back to top</a></b>
+</div>
+
+## 世界模型 World Models
+
+#### 模型
+
+- ShadowDancer: https://AlayaLab/ShadowDancer
+- PhiZero: https://yaoyao-jpg/PhiZero
+- Wonder: https://arxiv.org/pdf/2607.26037
+- open-dreamer: https://next-state/open-dreamer
+- Cosmos3-Edge: https://huggingface.co/nvidia/Cosmos3-Edge
+- WorldWander: https://showlab/WorldWander
+- Matrix-Game-3.5: https://Riemann-Dynamics/Matrix-Game-3.5
+- ABot-World: https://amap-cvlab/ABot-World
+- LingBot-World-V2: https://huggingface.co/collections/robbyant/lingbot-world-v2
+- AlayaWorld: https://AlayaLab/AlayaWorld
+- MoWorld: https://moxin-tech.github.io/moworld/
+- Warp-as-History: https://yyfz/Warp-as-History
+- MIRA: https://mira-wm/mira `Multiplayer`
+- ActWorld: https://interactwm.github.io/ActWorld/
+- Sana-WM: https://nvlabs.github.io/Sana/WM/
+- Cosmos-3: https://nvidia/cosmos
+- DreamX-World-5B: https://huggingface.co/GD-ML/DreamX-World-5B
+- DreamX-World-5B-Cam: https://modelscope.cn/models/GD-ML/DreamX-World-5B-Cam
+- Astra: https://eternalevan.github.io/Astra-project/
+- Yume-5B: https://huggingface.co/stdstu123/Yume-5B-720P
+- LingBot-World: https://robbyant/lingbot-world
+- HY-WorldPlay: https://huggingface.co/tencent/HY-WorldPlay
+- Matrix-Game-3.0: https://huggingface.co/Skywork/Matrix-Game-3.0
+- Matrix-Game-2.0: https://huggingface.co/Skywork/Matrix-Game-2.0
+- Waypoint-1.5-1B: https://huggingface.co/Overworld/Waypoint-1.5-1B
+- Hunyuan-GameCraft: https://hunyuan-gamecraft.github.io/
+- AlayaWorld: https://AlayaLab/AlayaWorld
+- WorldWander: https://showlab/WorldWander
+
+
+#### 框架
+
+- nano-world-model: https://simchowitzlabpublic/nano-world-model
+- minWM: https://shengshu-ai/minWM
+- stable-worldmodel: https://galilai-group/stable-worldmodel
+- OpenWorldLib: https://OpenDCAI/OpenWorldLib
+- BiWM: https://LynnReal-AI/BiWM
+
+<div align="right">
+    <b><a href="#Contents">↥ back to top</a></b>
+</div>
+
+## 龙虾 OpenClaw
+
+1. MultiUserClaw: https://johnson7788/MultiUserClaw
+2. ClawManager: https://Yuan-lab-LLM/ClawManager
+3. Qclaw: https://qiuzhi2046/Qclaw
+4. NEXU: https://nexu-io/nexu
+5. OpenHanako: https://liliMozi/openhanako
+
+<div align="right">
+    <b><a href="#Contents">↥ back to top</a></b>
+</div>
+
+## 统一模型 Unified Model
+
+> 现在统一模型已经从`理解+生成`变成`理解+生成+编辑`
+
+- Emu-2：https://arxiv.org/abs/2312.13286
+- Emu-3：https://arxiv.org/abs/2409.18869
+- Emu-1：https://arxiv.org/abs/2307.05222
+- Janus：https://deepseek-ai/Janus
+- Janus-Pro：http://arxiv.org/abs/2508.05954
+- show-o：https://arxiv.org/abs/2408.12528
+- Any-GPT：https://arxiv.org/abs/2402.12226
+- Next-GPT：https://arxiv.org/pdf/2309.05519.pdf
+- CoDi：https://arxiv.org/abs/2305.11846
+- Seed-X：https://arxiv.org/abs/2404.14396
+- Dream-LLM：https://arxiv.org/abs/2309.11499
+- Chameleon：https://arxiv.org/abs/2405.09818
+- Spider：https://arxiv.org/abs/2411.09439
+- MedViLaM：https://arxiv.org/abs/2409.19684
+- VITRON：https://SkyworkAI/Vitron
+- TokenFlow：https://ByteFlow-AI/TokenFlow
+- OneDiffusion：https://lehduong/OneDiffusion
+- MetaMorph: https://arxiv.org/abs/2412.14164
+- LlamaFusion：https://arxiv.org/abs/2412.15188
+- InstructSeg：https://arxiv.org/abs/2412.14006
+- VILA-U：https://arxiv.org/abs/2409.04429
+- Ullava: https://OPPOMKLab/u-LLaVA
+- ILLUME: https://arxiv.org/abs/2412.06673
+- Vitron:https://arxiv.org/abs/2412.19806
+- SynerGen-VL：https://arxiv.org/abs/2412.09604
+- Align Anything：https://arxiv.org/abs/2412.15838
+- Mico：https://arxiv.org/abs/2406.09412
+- OneLLM:https://arxiv.org/abs/2312.03700
+- X-VILA:https://arxiv.org/abs/2405.19335
+- OLA：https://arxiv.org/abs/2502.04328
+- Transfusion: https://arxiv.org/abs/2408.11039
+- JanusFlow: https://arxiv.org/abs/2411.07975
+- HealthGPT：https://arxiv.org/abs/2502.09838 `Medical`
+- BAGEL：https://arxiv.org/abs/2505.14683
+- Qwen2.5-Omni：https://arxiv.org/abs/2503.20215
+- X2I：https://arxiv.org/abs/2503.06134
+- Bifrost-1：https://arxiv.org/abs/2508.05954
+- OmniGen2：https://arxiv.org/abs/2506.18871
+- UniPic：https://SkyworkAI/UniPic
+- VeOmni：https://ByteDance-Seed/VeOmni `Training`
+- NextStep-1：https://arxiv.org/abs/2508.10711
+- UniUGG: https://arxiv.org/abs/2508.11952 `3D`
+- Omni-Video：https://arxiv.org/abs/2507.06119
+- OneCAT：https://arxiv.org/abs/2509.03498
+- Lumina-DiMOO：https://Alpha-VLLM/Lumina-DiMOO
+- UAE：https://PKU-YuanGroup/UAE
+- RecA：https://arxiv.org/abs/2509.07295
+- UniLM：https://arxiv.org/abs/1905.03197
+- Hyper-Bagel：https://arxiv.org/abs/2509.18824
+- Ming-UniVision：https://arxiv.org/abs/2510.06590
+- EditVerse：https://arxiv.org/abs/2509.20360
+- LightBagel: https://arxiv.org/abs/2510.22946
+- DreamLLM: https://arxiv.org/abs/2309.11499
+- X-Omni: https://arxiv.org/abs/2507.22058
+- Ming-flash-omni-Preview: https://huggingface.co/inclusionAI/Ming-flash-omni-Preview
+- Omni-View: https://arxiv.org/abs/2511.07222
+- NExT-OMNI: https://arxiv.org/abs/2510.13721
+- Uni-MoE-2.0-Omni: https://arxiv.org/abs/2511.12609
+- LongCat-Flash-Omni: https://huggingface.co/meituan-longcat/LongCat-Flash-Omni
+- ShapeLLM-Omni: https://arxiv.org/abs/2506.01853
+- UniGen-1.5: https://arxiv.org/abs/2511.14760
+- Jodi: https://arxiv.org/abs/2505.19084
+- UniModel: https://arxiv.org/abs/2511.16917
+- TUNA: https://arxiv.org/abs/2512.02014
+- HBridge: https://arxiv.org/abs/2511.20520
+- EMMA: https://arxiv.org/abs/2512.04810
+- OpenOmni: https://RainBowLuoCS/OpenOmni
+- Ming-Flash-Omni: https://arxiv.org/abs/2510.24821
+- STAR: https://mm-mvr/star
+- InternVL-U: https://OpenGVLab/InternVL-U
+- LongCat-Next: https://meituan-longcat/LongCat-Next
+- SenseNova-U1: https://huggingface.co/sensenova/SenseNova-U1-8B-MoT-SFT
+- TUNA-2: https://facebookresearch/tuna-2
+- Lance: https://bytedance/Lance
+- JoyAI-VL-Interaction: https://arxiv.org/abs/2606.14777 `Interaction`
+- MOSS-VL-Realtime: https://huggingface.co/OpenMOSS-Team/MOSS-VL-Realtime `Interaction`
+- SenseNova-Vision: https://huggingface.co/collections/sensenova/sensenova-vision
+- Mage-VL: https://huggingface.co/microsoft/Mage-VL `Interaction`
+
+<div align="right">
+    <b><a href="#Contents">↥ back to top</a></b>
+</div>
+
+## 书籍 Book
+
+1. [《大规模语言模型：从理论到实践》](https://intro-llm.github.io/)
+2. [《大语言模型》](https://llmbook-zh.github.io/)
+3. [《动手学大模型Dive into LLMs》](https://Lordog/dive-into-llms)
+4. [《动手做AI Agent》](https://book.douban.com/subject/36884058/)
+5. [《Build a Large Language Model (From Scratch)》](https://rasbt/LLMs-from-scratch)
+6. [《多模态大模型》](https://HCPLab-SYSU/Book-of-MLM)
+7. [《Generative AI Handbook: A Roadmap for Learning Resources》](https://genai-handbook.github.io/)
+8. [《Understanding Deep Learning》](https://udlbook.github.io/udlbook/)
+9. [《Illustrated book to learn about Transformers & LLMs》](https://www.reddit.com/r/MachineLearning/comments/1ew1hws/p_illustrated_book_to_learn_about_transformers/)
+10. [《Building LLMs for Production: Enhancing LLM Abilities and Reliability with Prompting, Fine-Tuning, and RAG》](https://www.amazon.com/Building-LLMs-Production-Reliability-Fine-Tuning/dp/B0D4FFPFW8?crid=7OAXELUKGJE4&dib=eyJ2IjoiMSJ9.Qr3e3VSH8LSo_j1M7sV7GfS01q_W1LDYd2uGlvGJ8CW-t4DTlng6bSeOlZBryhp6HJN5K1HqWMVVgabU2wz2i9yLpy_AuaZN-raAEbenKx2NHtzZA3A4k-N7GpnldF1baCarA_V1CRF-aCdc9_3WSX7SaEzmpyDv22TTyltcKT74HAb2KiQqBGLhQS3cEAnzChcqGa1Xp-XhbMnplVwT7xZLApE3tGLhDOgi5GmSi9w.8SY_4NBEkm68YF4GwhDnz0r81ZB1d8jr-gK9IMJE5AE&dib_tag=se&keywords=building+llms+for+production&qid=1716376414&sprefix=building+llms+for+production,aps,101&sr=8-1&linkCode=sl1&tag=whatsai06-20&linkId=ee102fda07a0eb51710fcdd8b8d20c28&language=en_US&ref_=as_li_ss_tl)
+11. [《大型语言模型实战指南：应用实践与场景落地》](https://liucongg/LLMsBook)
+12. [《Hands-On Large Language Models》](https://handsOnLLM/Hands-On-Large-Language-Models)
+13. [《自然语言处理：大模型理论与实践》](https://nlp-book.swufenlp.group/)
+14. [《动手学强化学习》](https://hrl.boyuai.com/)
+15. [《面向开发者的LLM入门教程》](https://datawhalechina.github.io/llm-cookbook/#/)
+16. [《大模型基础》](https://ZJU-LLMs/Foundations-of-LLMs)
+17. [Taming LLMs: A Practical Guide to LLM Pitfalls with Open Source Software ](https://www.tamingllms.com/)
+18. [Foundations of Large Language Models](https://arxiv.org/abs/2501.09223)
+19. [Textbook on reinforcement learning from human feedback](https://natolambert/rlhf-book)
+20. [《大模型算法：强化学习、微调与对齐》](https://book.douban.com/subject/37331056/)
+21. [《The Smol Training Playbook: The Secrets to Building World-Class LLMs》](https://WangRongsheng/awesome-LLM-resources/blob/main/books/the-smol-training-playbook-the-secrets-to-building-world-class-llms.pdf)
+22. [《从零开始构建智能体》——从零开始的智能体原理与实践教程](https://datawhalechina/hello-agents)
+23. [《Hands-On Modern RL》](https://walkinglabs/hands-on-modern-rl)
+
+<div align="right">
+    <b><a href="#Contents">↥ back to top</a></b>
+</div>
+
+## 课程 Course
+
+> [LLM Resources Hub](https://llmresourceshub.vercel.app/)
+
+1. [斯坦福 CS224N: Natural Language Processing with Deep Learning](https://web.stanford.edu/class/cs224n/)
+2. [吴恩达: Generative AI for Everyone](https://www.deeplearning.ai/courses/generative-ai-for-everyone/)
+3. [吴恩达: LLM series of courses](https://learn.deeplearning.ai/)
+4. [ACL 2023 Tutorial: Retrieval-based Language Models and Applications](https://acl2023-retrieval-lm.github.io/)
+5. [llm-course: Course to get into Large Language Models (LLMs) with roadmaps and Colab notebooks.](https://mlabonne/llm-course)
+6. [微软: Generative AI for Beginners](https://microsoft/generative-ai-for-beginners)
+7. [微软: State of GPT](https://www.youtube.com/watch?v=bZQun8Y4L2A)
+8. [HuggingFace NLP Course](https://huggingface.co/learn/nlp-course/chapter1/1)
+9. [清华 NLP 刘知远团队大模型公开课](https://www.bilibili.com/video/BV1UG411p7zv/?vd_source=c739db1ebdd361d47af5a0b8497417db)
+10. [斯坦福 CS25: Transformers United V4](https://web.stanford.edu/class/cs25/)
+11. [斯坦福 CS324: Large Language Models](https://stanford-cs324.github.io/winter2022/)
+12. [普林斯顿 COS 597G (Fall 2022): Understanding Large Language Models](https://www.cs.princeton.edu/courses/archive/fall22/cos597G/)
+13. [约翰霍普金斯 CS 601.471/671 NLP: Self-supervised Models](https://self-supervised.cs.jhu.edu/sp2023/index.html)
+14. [李宏毅 GenAI课程](https://www.youtube.com/watch?v=yiY4nPOzJEg&list=PLJV_el3uVTsOePyfmkfivYZ7Rqr2nMk3W)
+15. [openai-cookbook](https://openai/openai-cookbook): Examples and guides for using the OpenAI API.
+16. [Hands on llms](https://iusztinpaul/hands-on-llms): Learn about LLM, LLMOps, and vector DBS for free by designing, training, and deploying a real-time financial advisor LLM system.
+17. [滑铁卢大学 CS 886: Recent Advances on Foundation Models](https://cs.uwaterloo.ca/~wenhuche/teaching/cs886/)
+18. [Mistral: Getting Started with Mistral](https://www.deeplearning.ai/short-courses/getting-started-with-mistral/)
+19. [斯坦福 CS25: Transformers United V4](https://web.stanford.edu/class/cs25/)
+20. [Coursera: Chatgpt 应用提示工程](https://www.coursera.org/learn/prompt-engineering)
+21. [LangGPT](https://langgptai/LangGPT): Empowering everyone to become a prompt expert!
+22. [mistralai-cookbook](https://mistralai/cookbook)
+23. [Introduction to Generative AI 2024 Spring](https://speech.ee.ntu.edu.tw/~hylee/genai/2024-spring.php)
+24. [build nanoGPT](https://karpathy/build-nanogpt): Video+code lecture on building nanoGPT from scratch.
+25. [LLM101n](https://karpathy/LLM101n): Let's build a Storyteller.
+26. [Knowledge Graphs for RAG](https://www.deeplearning.ai/short-courses/knowledge-graphs-rag/)
+27. [LLMs From Scratch (Datawhale Version)](https://datawhalechina/llms-from-scratch-cn)
+28. [OpenRAG](https://openrag.notion.site/Open-RAG-c41b2a4dcdea4527a7c1cd998e763595)
+29. [通往AGI之路](https://waytoagi.feishu.cn/wiki/QPe5w5g7UisbEkkow8XcDmOpn8e)
+30. [Andrej Karpathy - Neural Networks: Zero to Hero](https://www.youtube.com/playlist?list=PLAqhIrjkxbuWI23v9cThsA9GvCAUhRvKZ)
+31. [Interactive visualization of Transformer](https://poloclub.github.io/transformer-explainer/)
+32. [andysingal/llm-course](https://andysingal/llm-course)
+33. [LM-class](https://lm-class.org/lectures)
+34. [Google Advanced: Generative AI for Developers Learning Path](https://www.cloudskillsboost.google/paths/183)
+35. [Anthropics：Prompt Engineering Interactive Tutorial](https://anthropics/courses/tree/master/prompt_engineering_interactive_tutorial/Anthropic%201P)
+36. [LLMsBook](https://liucongg/LLMsBook)
+37. [Large Language Model Agents](https://llmagents-learning.org/f24)
+38. [Cohere LLM University](https://cohere.com/llmu)
+39. [LLMs and Transformers](https://www.ambujtewari.com/LLM-fall2024/)
+40. [Smol Vision](https://merveenoyan/smol-vision): Recipes for shrinking, optimizing, customizing cutting edge vision models.
+41. [Multimodal RAG: Chat with Videos](https://www.deeplearning.ai/short-courses/multimodal-rag-chat-with-videos/)
+42. [LLMs Interview Note](https://wdndev/llm_interview_note)
+43. [RAG++ : From POC to production](https://www.wandb.courses/courses/rag-in-production): Advanced RAG course.
+44. [Weights & Biases AI Academy](https://www.wandb.courses/pages/w-b-courses): Finetuning, building with LLMs, Structured outputs and more LLM courses.
+45. [Prompt Engineering & AI tutorials & Resources](https://promptengineering.org/)
+46. [Learn RAG From Scratch – Python AI Tutorial from a LangChain Engineer](https://www.youtube.com/watch?v=sVcwVQRHIc8)
+47. [LLM Evaluation: A Complete Course](https://www.comet.com/site/llm-course/)
+48. [HuggingFace Learn](https://huggingface.co/learn)
+49. [Andrej Karpathy: Deep Dive into LLMs like ChatGPT](https://www.youtube.com/watch?v=7xTGNNLPyMI)
+50. [LLM技术科普](https://karminski/one-small-step)
+51. [CS25: Transformers United V5](https://web.stanford.edu/class/cs25/)
+52. [RAG_Techniques](https://NirDiamant/RAG_Techniques): This repository showcases various advanced techniques for Retrieval-Augmented Generation (RAG) systems. RAG systems combine information retrieval with generative models to provide accurate and contextually rich responses.
+53. [100+ LLM & RL Algorithm Maps | 原创 LLM / RL 100+原理图](https://changyeyu/LLM-RL-Visualized)
+54. [Reinforcement Learning of Large Language Models](https://ernestryu.com/courses/RL-LLM.html)
+55. [NanoChat](https://karpathy/nanochat): The best ChatGPT that $100 can buy.
+56. [斯坦福CS146S: The Modern Software Developer](https://themodernsoftware.dev/)
+57. [Reinforcement Learning of Large Language Models](https://ernestryu.com/courses/RL-LLM.html)
+
+<div align="right">
+    <b><a href="#Contents">↥ back to top</a></b>
+</div>
+
+## 教程 Tutorial
+
+1. [动手学大模型应用开发](https://datawhalechina.github.io/llm-universe/#/)
+2. [AI开发者频道](https://techdiylife.github.io/blog/blog_list.html)
+3. [B站：五里墩茶社](https://space.bilibili.com/615957867/?spm_id_from=333.999.0.0)
+4. [B站：木羽Cheney](https://space.bilibili.com/3537113897241540/?spm_id_from=333.999.0.0)
+5. [YTB：AI Anytime](https://www.youtube.com/channel/UC-zVytOQB62OwMhKRi0TDvg)
+6. [B站：漆妮妮](https://space.bilibili.com/1262370256/?spm_id_from=333.999.0.0)
+7. [Prompt Engineering Guide](https://www.promptingguide.ai/)
+8. [YTB: AI超元域](https://www.youtube.com/@AIsuperdomain)
+9. [B站：TechBeat人工智能社区](https://space.bilibili.com/209732435)
+10. [B站：黄益贺](https://space.bilibili.com/322961825)
+11. [B站：深度学习自然语言处理](https://space.bilibili.com/507524288)
+12. [LLM Visualization](https://bbycroft.net/llm)
+13. [知乎: 原石人类](https://www.zhihu.com/people/zhang-shi-tou-88-98/posts)
+14. [B站：小黑黑讲AI](https://space.bilibili.com/1963375439/?spm_id_from=333.999.0.0)
+15. [B站：面壁的车辆工程师](https://space.bilibili.com/669720247/?spm_id_from=333.999.0.0)
+16. [B站：AI老兵文哲](https://space.bilibili.com/472543316/?spm_id_from=333.999.0.0)
+17. [Large Language Models (LLMs) with Colab notebooks](https://mlabonne.github.io/blog/)
+18. [YTB：IBM Technology](https://www.youtube.com/@IBMTechnology)
+19. [YTB: Unify Reading Paper Group](https://www.youtube.com/playlist?list=PLwNuX3xB_tv91QvDXlW2TjrLGHW51uMul)
+20. [Chip Huyen](https://huyenchip.com/blog/)
+21. [How Much VRAM](https://AlexBodner/How_Much_VRAM)
+22. [Blog: 科学空间（苏剑林）](https://kexue.fm/)
+23. [YTB: Hyung Won Chung](https://www.youtube.com/watch?v=dbo3kNKPaUA)
+24. [Blog: Tejaswi kashyap](https://medium.com/@tejaswi_kashyap)
+25. [Blog: 小昇的博客](https://xiaosheng.blog/)
+26. [知乎: ybq](https://www.zhihu.com/people/ybq-29-32/posts)
+27. [W&B articles](https://wandb.ai/fully-connected)
+28. [Huggingface Blog](https://huggingface.co/blog/zh)
+29. [Blog: GbyAI](https://gby.ai/)
+30. [Blog: mlabonne](https://mlabonne.github.io/blog/)
+31. [LLM-Action](https://liguodongiot/llm-action)
+32. [Blog: Lil’Log (OponAI)](https://lilianweng.github.io/)
+33. [B站: 毛玉仁](https://space.bilibili.com/3546823125895398)
+34. [AI-Guide-and-Demos](https://Hoper-J/AI-Guide-and-Demos-zh_CN)
+35. [cnblog: 第七子](https://www.cnblogs.com/theseventhson)
+36. [Implementation of all RAG techniques in a simpler way.](https://FareedKhan-dev/all-rag-techniques)
+37. [Theoretical Machine Learning: A Handbook for Everyone](https://www.tengjiaye.com/mlbook.html)
+
+<div align="right">
+    <b><a href="#Contents">↥ back to top</a></b>
+</div>
+
+## 论文 Paper
+
+> [!NOTE]
+> 🤝[Huggingface Daily Papers](https://huggingface.co/papers)、[Cool Papers](https://papers.cool/)、[ML Papers Explained](https://dair-ai/ML-Papers-Explained)
+
+1. [Hermes-3-Technical-Report](https://nousresearch.com/wp-content/uploads/2024/08/Hermes-3-Technical-Report.pdf)
+2. [The Llama 3 Herd of Models](https://arxiv.org/abs/2407.21783)
+3. [Qwen Technical Report](https://arxiv.org/abs/2309.16609)
+4. [Qwen2 Technical Report](https://arxiv.org/abs/2407.10671)
+5. [Qwen2-vl Technical Report](https://arxiv.org/abs/2409.12191)
+6. [DeepSeek LLM: Scaling Open-Source Language Models with Longtermism](https://arxiv.org/abs/2401.02954)
+7. [DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model](https://arxiv.org/abs/2405.04434)
+8. [Baichuan 2: Open Large-scale Language Models](https://arxiv.org/abs/2309.10305)
+9. [DataComp-LM: In search of the next generation of training sets for language models](https://arxiv.org/abs/2406.11794)
+10. [OLMo: Accelerating the Science of Language Models](https://arxiv.org/abs/2402.00838)
+11. [MAP-Neo: Highly Capable and Transparent Bilingual Large Language Model Series](https://arxiv.org/abs/2405.19327)
+12. [Chinese Tiny LLM: Pretraining a Chinese-Centric Large Language Model](https://arxiv.org/abs/2404.04167)
+13. [Phi-3 Technical Report: A Highly Capable Language Model Locally on Your Phone](https://arxiv.org/abs/2404.14219)
+14. [Jamba-1.5: Hybrid Transformer-Mamba Models at Scale](https://arxiv.org/abs/2408.12570v1)
+15. [Jamba: A Hybrid Transformer-Mamba Language Model](https://arxiv.org/abs/2403.19887)
+16. [Textbooks Are All You Need](https://arxiv.org/abs/2306.11644)
+17. [Unleashing the Power of Data Tsunami: A Comprehensive Survey on Data Assessment and Selection for Instruction Tuning of Language Models](https://arxiv.org/abs/2408.02085) `data`
+18. [OLMoE: Open Mixture-of-Experts Language Models](https://arxiv.org/abs/2409.02060)
+19. [Model Merging Paper](https://huggingface.co/collections/osanseviero/model-merging-65097893623330a3a51ead66)
+20. [Baichuan-Omni Technical Report](https://arxiv.org/abs/2410.08565)
+21. [1.5-Pints Technical Report: Pretraining in Days, Not Months – Your Language Model Thrives on Quality Data](https://arxiv.org/abs/2408.03506)
+22. [Baichuan Alignment Technical Report](https://arxiv.org/abs/2410.14940v1)
+23. [Hunyuan-Large: An Open-Source MoE Model with 52 Billion Activated Parameters by Tencent](https://arxiv.org/abs/2411.02265)
+24. [Molmo and PixMo: Open Weights and Open Data for State-of-the-Art Multimodal Models](https://arxiv.org/abs/2409.17146)
+25. [TÜLU 3: Pushing Frontiers in Open Language Model Post-Training](https://arxiv.org/abs/2411.15124)
+26. [Phi-4 Technical Report](https://arxiv.org/abs/2412.08905)
+27. [Expanding Performance Boundaries of Open-Source Multimodal Models with Model, Data, and Test-Time Scaling](https://arxiv.org/abs/2412.05271)
+28. [Qwen2.5 Technical Report](https://arxiv.org/abs/2412.15115)
+29. [YuLan-Mini: An Open Data-efficient Language Model](https://arxiv.org/abs/2412.17743)
+30. [An Introduction to Vision-Language Modeling](https://arxiv.org/abs/2405.17247)
+31. [DeepSeek V3 Technical Report](https://WangRongsheng/awesome-LLM-resourses/blob/main/docs/DeepSeek_V3.pdf)
+32. [2 OLMo 2 Furious](https://arxiv.org/abs/2501.00656)
+33. [Yi-Lightning Technical Report](https://arxiv.org/abs/2412.01253)
+34. [DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning](https://deepseek-ai/DeepSeek-R1)
+35. [KIMI K1.5](https://WangRongsheng/awesome-LLM-resourses/blob/main/docs/Kimi_k1.5.pdf)
+36. [Eagle 2: Building Post-Training Data Strategies from Scratch for Frontier Vision-Language Models](https://arxiv.org/abs/2501.14818)
+37. [Qwen2.5-VL Technical Report](https://arxiv.org/abs/2502.13923)
+38. [Baichuan-M1: Pushing the Medical Capability of Large Language Models](https://arxiv.org/abs/2502.12671)
+39. [Predictable Scale: Part I -- Optimal Hyperparameter Scaling Law in Large Language Model Pretraining](https://arxiv.org/abs/2503.04715)
+40. [SkyLadder: Better and Faster Pretraining via Context Window Scheduling](https://arxiv.org/abs/2503.15450)
+41. [Qwen2.5-Omni technical report](https://QwenLM/Qwen2.5-Omni/blob/main/assets/Qwen2.5_Omni.pdf)
+42. [Every FLOP Counts: Scaling a 300B Mixture-of-Experts LING LLM without Premium GPUs](https://arxiv.org/abs/2503.05139)
+43. [Gemma 3 Technical Report](https://arxiv.org/abs/2503.19786)
+44. [Open-Qwen2VL: Compute-Efficient Pre-Training of Fully-Open Multimodal LLMs on Academic Resources](https://arxiv.org/abs/2504.00595)
+45. [Pangu Ultra: Pushing the Limits of Dense Large Language Models on Ascend NPUs](https://arxiv.org/abs/2504.07866)
+46. [MiMo: Unlocking the Reasoning Potential of Language Model – From Pretraining to Posttraining](https://XiaomiMiMo/MiMo/blob/main/MiMo-7B-Technical-Report.pdf)
+47. [Phi-4 Technical Report](https://arxiv.org/abs/2412.08905)
+48. [Llama-Nemotron: Efficient Reasoning Models](https://arxiv.org/abs/2505.00949)
+49. [Qwen3 Technical Report](https://QwenLM/Qwen3/blob/main/Qwen3_Technical_Report.pdf)
+50. [MiMo-VL Technical Report](https://arxiv.org/abs/2506.03569v1)
+51. [ERNIE Technical Report](https://WangRongsheng/awesome-LLM-resources/blob/main/docs/ERNIE_Technical_Report_compressed.pdf)
+52. [Kwai Keye-VL Technical Report](https://arxiv.org/abs/2507.01949)
+53. [Kimi K2 Technical Report](https://MoonshotAI/Kimi-K2/blob/main/tech_report.pdf)
+54. [KAT-V1: Kwai-AutoThink Technical Report](https://arxiv.org/abs/2507.08297v3)
+55. [Step3](https://stepfun-ai/Step3)
+56. [SAIL-VL2 Technical Report](https://arxiv.org/abs/2509.14033)
+57. [LLaVA-OneVision-1.5: Fully Open Framework for Democratized Multimodal Training](https://arxiv.org/abs/2509.23661) [85M-Midtraining Data](https://huggingface.co/datasets/mvp-lab/LLaVA-OneVision-1.5-Mid-Training-85M) [22M Instruct Data](https://huggingface.co/datasets/mvp-lab/LLaVA-OneVision-1.5-Instruct-Data)
+58. [Olmo3](https://www.datocms-assets.com/64837/1763646865-olmo_3_technical_report-1.pdf): Charting a path through the model flow to lead open-source AI. [Website](https://allenai.org/blog/olmo3)
+59. [OpenMMReasoner](https://arxiv.org/abs/2511.16334)
+60. [Qwen3-VL Technical Report](https://arxiv.org/pdf/2511.21631)
+
+<div align="right">
+    <b><a href="#Contents">↥ back to top</a></b>
+</div>
+
+## 社区 Community
+
+1. [魔乐社区](https://modelers.cn/)
+2. [HuggingFace](https://huggingface.co/)
+3. [ModelScope](https://modelscope.cn/)
+4. [WiseModel](https://www.wisemodel.cn/)
+5. [OpenCSG](https://opencsg.com/)
+
+<div align="right">
+    <b><a href="#Contents">↥ back to top</a></b>
+</div>
+
+## 模型上下文协议 MCP
+
+1. [MCP是啥？技术原理是什么？一个视频搞懂MCP的一切。Windows系统配置MCP，Cursor,Cline 使用MCP](https://www.youtube.com/watch?v=McNRkd5CxFY)
+2. [MCP是什么？为啥是下一代AI标准？MCP原理+开发实战！在Cursor、Claude、Cline中使用MCP，让AI真正自动化！](https://www.youtube.com/watch?v=jGVsLeDxtQY)
+3. [从零编写MCP并发布上线，超简单！手把手教程](https://www.youtube.com/watch?v=a3U-JrFkA9s)
+
+MCP工具聚合：
+1. [smithery.ai](https://smithery.ai/)
+2. [mcp.so](https://mcp.so/)
+3. [modelcontextprotocol/servers](https://modelcontextprotocol/servers)
+4. [mcp.ad](https://mcp.ad/)
+5. [pulsemcp.com](https://www.pulsemcp.com/)
+6. [awesome-mcp-servers](https://punkpeye/awesome-mcp-servers)
+7. [glama.ai](https://glama.ai/mcp/servers)
+8. [mcp.composio.dev](https://mcp.composio.dev/)
+9. [awesome-mcp-list](https://MobinX/awesome-mcp-list)
+10. [mcpo](https://open-webui/mcpo)
+11. [FastMCP](https://jlowin/fastmcp)
+12. [sharemcp.cn](https://sharemcp.cn/)
+13. [mcpstore.co](https://mcpstore.co/)
+14. [FastAPI-MCP](https://tadata-org/fastapi_mcp)
+15. [modelscope/mcp](https://modelscope.cn/mcp)
+16. [mcpm.sh](https://pathintegral-institute/mcpm.sh)
+
+<div align="right">
+    <b><a href="#Contents">↥ back to top</a></b>
+</div>
+
+## 技能 Skills
+
+1. [Agent Skills (Claude Skills) 详细攻略，一期视频精通](https://www.bilibili.com/video/BV1HuiyBQE9G)
+2. [OpenClaw](https://docs.openclaw.ai/zh-CN)
+
+
+1. [awesome-claude-skills](https://ComposioHQ/awesome-claude-skills)
+2. [Anthropics Skills](https://anthropics/skills)
+3. [Skillsmp](https://skillsmp.com/)
+4. [awesome-claude-skills](https://BehiSecc/awesome-claude-skills)
+5. [ClawHub](https://clawhub.ai/)
+6. [水产市场](https://openclawmp.cc/)
+7. [Skills.Sh](https://skills.sh/)
+8. [awesome-agent-skills](https://VoltAgent/awesome-agent-skills)
+9. [llmbase](https://llmbase.ai/openclaw/)
+10. [awesome-openclaw-skills](https://VoltAgent/awesome-openclaw-skills)
+11. [claude-scientific-skills](https://K-Dense-AI/claude-scientific-skills)
+12. [LLMs-Universal-Life-Science-and-Clinical-Skills-](https://mdbabumiamssm/LLMs-Universal-Life-Science-and-Clinical-Skills-)
+13. [SkillHub](https://skillhub.tencent.com/#categories)
+14. [LabClaw](https://wu-yc/LabClaw)
+15. [Modelscope Skills](https://modelscope.cn/skills)
+16. [Agent Skill](https://agentskill.sh/)
+17. [mmx-cli](https://MiniMax-AI/cli)
+18. [cocoloop hub](https://hub.cocoloop.cn/)
+
+<div align="right">
+    <b><a href="#Contents">↥ back to top</a></b>
+</div>
+
+## 推理 Open o1
+
+> [!NOTE]
+> 
+> 开放的技术是我们永恒的追求
+
+1. https://atfortes/Awesome-LLM-Reasoning
+2. https://hijkzzz/Awesome-LLM-Strawberry
+3. https://wjn1996/Awesome-LLM-Reasoning-Openai-o1-Survey
+4. https://srush/awesome-o1
+5. https://open-thought/system-2-research
+6. https://ninehills/blog/issues/121
+7. https://OpenSource-O1/Open-O1
+8. https://GAIR-NLP/O1-Journey
+9. https://marlaman/show-me
+10. https://bklieger-groq/g1
+11. https://Jaimboh/Llamaberry-Chain-of-Thought-Reasoning-in-AI
+12. https://pseudotensor/open-strawberry
+13. https://huggingface.co/collections/peakji/steiner-preview-6712c6987110ce932a44e9a6
+14. https://SimpleBerry/LLaMA-O1
+15. https://huggingface.co/collections/Skywork/skywork-o1-open-67453df58e12f6c3934738d0
+16. https://huggingface.co/collections/Qwen/qwq-674762b79b75eac01735070a
+17. https://SkyworkAI/skywork-o1-prm-inference
+18. https://RifleZhang/LLaVA-Reasoner-DPO
+19. https://ADaM-BJTU
+20. https://ADaM-BJTU/OpenRFT
+21. https://RUCAIBox/Slow_Thinking_with_LLMs
+22. https://richards199999/Thinking-Claude
+23. https://huggingface.co/AGI-0/Art-v0-3B
+24. https://huggingface.co/deepseek-ai/DeepSeek-R1
+25. https://huggingface.co/deepseek-ai/DeepSeek-R1-Zero
+26. https://huggingface/open-r1
+27. https://hkust-nlp/simpleRL-reason
+28. https://Jiayi-Pan/TinyZero
+29. https://baichuan-inc/Baichuan-M1-14B
+30. https://EvolvingLMMs-Lab/open-r1-multimodal
+31. https://open-thoughts/open-thoughts
+32. Mini-R1: https://www.philschmid.de/mini-deepseek-r1
+33. LLaMA-Berry: https://arxiv.org/abs/2410.02884
+34. MCTS-DPO: https://arxiv.org/abs/2405.00451
+35. OpenR: https://openreasoner/openr
+36. https://arxiv.org/abs/2410.02725
+37. LLaVA-o1: https://arxiv.org/abs/2411.10440
+38. Marco-o1: https://arxiv.org/abs/2411.14405
+39. OpenAI o1 report: https://openai.com/index/deliberative-alignment
+40. DRT-o1: https://krystalan/DRT-o1
+41. Virgo：https://arxiv.org/abs/2501.01904
+42. HuatuoGPT-o1：https://arxiv.org/abs/2412.18925
+43. o1 roadmap：https://arxiv.org/abs/2412.14135
+44. Mulberry：https://arxiv.org/abs/2412.18319
+45. https://arxiv.org/abs/2412.09413
+46. https://arxiv.org/abs/2501.02497
+47. Search-o1:https://arxiv.org/abs/2501.05366v1
+48. https://arxiv.org/abs/2501.18585
+49. https://simplescaling/s1
+50. https://Deep-Agent/R1-V
+51. https://StarRing2022/R1-Nature
+52. https://Unakar/Logic-RL
+53. https://datawhalechina/unlock-deepseek
+54. https://GAIR-NLP/LIMO
+55. https://Zeyi-Lin/easy-r1
+56. https://jackfsuia/nanoRLHF/tree/main/examples/r1-v0
+57. https://FanqingM/R1-Multimodal-Journey
+58. https://dhcode-cpp/X-R1
+59. https://agentica-project/deepscaler
+60. https://ZihanWang314/RAGEN
+61. https://sail-sg/oat-zero
+62. https://TideDra/lmm-r1
+63. https://FlagAI-Open/OpenSeek
+64. https://SwanHubX/ascend_r1_turtorial
+65. https://om-ai-lab/VLM-R1
+66. https://wizardlancet/diagnosis_zero
+67. https://lsdefine/simple_GRPO
+68. https://brendanhogan/DeepSeekRL-Extended
+69. https://Wang-Xiaodong1899/Open-R1-Video
+70. https://lsdefine/simple_GRPO
+71. https://Open-Reasoner-Zero/Open-Reasoner-Zero
+72. https://lucasjinreal/Namo-R1
+73. https://hiyouga/EasyR1
+74. https://Fancy-MLLM/R1-Onevision
+75. https://tulerfeng/Video-R1
+76. https://huggingface.co/qihoo360/TinyR1-32B-Preview
+77. https://facebookresearch/swe-rl
+78. https://turningpoint-ai/VisualThinker-R1-Zero
+79. https://yuyq96/R1-Vision
+80. https://sungatetop/deepseek-r1-vision
+81. https://huggingface.co/qihoo360/Light-R1-32B
+82. https://Liuziyu77/Visual-RFT
+83. https://Mohammadjafari80/GSM8K-RLVR
+84. https://ModalMinds/MM-EUREKA
+85. https://joey00072/nanoGRPO
+86. https://PeterGriffinJin/Search-R1
+87. https://openi.pcl.ac.cn/PCL-Reasoner/GRPO-Training-Suite
+88. https://dvlab-research/Seg-Zero
+89. https://HumanMLLM/R1-Omni
+90. https://OpenManus/OpenManus-RL
+91. https://arxiv.org/pdf/2503.07536
+92. https://Osilly/Vision-R1
+93. https://LengSicong/MMR1
+94. https://phonism/CP-Zero
+95. https://SkyworkAI/Skywork-R1V
+96. https://arxiv.org/abs/2503.13939v1
+97. https://0russwest0/Agent-R1
+98. https://MetabrainAGI/Awaker2.5-R1
+99. https://LG-AI-EXAONE/EXAONE-Deep
+100. https://qiufengqijun/open-r1-reprod
+101. https://SUFE-AIFLM-Lab/Fin-R1
+102. https://sail-sg/understand-r1-zero
+103. https://baibizhe/Efficient-R1-VLLM
+104. https://hkust-nlp/simpleRL-reason
+105. https://arxiv.org/abs/2502.19655
+106. https://arxiv.org/abs/2503.21620v1
+107. https://arxiv.org/abs/2503.16081
+108. https://ShadeCloak/ADORA
+109. https://appletea233/Temporal-R1
+110. https://inclusionAI/AReaL
+111. https://lzhxmu/CPPO
+112. https://arxiv.org/abs/2503.23829
+113. https://TencentARC/SEED-Bench-R1
+114. https://McGill-NLP/nano-aha-moment
+115. https://VLM-RL/Ocean-R1
+116. https://OpenGVLab/VideoChat-R1
+117. https://ByteDance-Seed/Seed-Thinking-v1.5
+118. https://SkyworkAI/Skywork-OR1
+119. https://MoonshotAI/Kimi-VL
+120. https://arxiv.org/abs/2504.08600
+121. https://ZhangXJ199/TinyLLaVA-Video-R1
+122. https://arxiv.org/abs/2504.11914
+123. https://policy-gradient/GRPO-Zero
+124. https://linkangheng/PR1
+125. https://jiangxinke/Agentic-RAG-R1
+126. https://shangshang-wang/Tina
+127. https://aliyun/qwen-dianjin
+128. https://RAGEN-AI/RAGEN
+129. https://XiaomiMiMo/MiMo
+130. https://yuanzhoulvpi2017/nano_rl
+131. https://huggingface.co/a-m-team/AM-Thinking-v1
+132. https://huggingface.co/Intelligent-Internet/II-Medical-8B
+133. https://CSfufu/Revisual-R1
+
+<div align="right">
+    <b><a href="#Contents">↥ back to top</a></b>
+</div>
+
+## 推理 Open o3
+
+1. Mini-o3: https://arxiv.org/abs/2509.07969
+2. Simple-o3: https://arxiv.org/abs/2508.12109
+3. Thyme: https://arxiv.org/abs/2508.11630
+4. Open o3 Video: https://arxiv.org/abs/2510.20579
+
+<div align="right">
+    <b><a href="#Contents">↥ back to top</a></b>
+</div>
+
+## 小语言模型 Small Language Model
+
+1. https://jiahe7ay/MINI_LLM
+2. https://jingyaogong/minimind
+3. https://DLLXW/baby-llama2-chinese
+4. https://charent/ChatLM-mini-Chinese
+5. https://wdndev/tiny-llm-zh
+6. https://Tongjilibo/build_MiniLLM_from_scratch
+7. https://jzhang38/TinyLlama
+8. https://AI-Study-Han/Zero-Chatgpt
+9. https://loubnabnl/nanotron-smol-cluster ([使用Cosmopedia训练cosmo-1b](https://huggingface.co/blog/zh/cosmopedia))
+10. https://charent/Phi2-mini-Chinese
+11. https://allenai/OLMo
+12. https://keeeeenw/MicroLlama
+13. https://Chinese-Tiny-LLM/Chinese-Tiny-LLM
+14. https://leeguandong/MiniLLaMA3
+15. https://Pints-AI/1.5-Pints
+16. https://zhanshijinwat/Steel-LLM
+17. https://RUC-GSAI/YuLan-Mini
+18. https://Om-Alve/smolGPT
+19. https://skyzh/tiny-llm
+20. https://qibin0506/Cortex
+21. https://huggingface/picotron
+22. https://Alic-Li/Mini_RWKV_7
+23. https://huggingface.co/Nanbeige/Nanbeige4-3B-Thinking-2511 `23T tokens预训练模型`
+24. https://stepfun-ai/SteptronOss
+25. https://huggingface/nanowhale
+26. https://OpenBMB/ForgeTrain
+
+
+<div align="right">
+    <b><a href="#Contents">↥ back to top</a></b>
+</div>
+
+## 小多模态模型 Small Vision Language Model
+
+1. https://jingyaogong/minimind-v
+2. https://yuan

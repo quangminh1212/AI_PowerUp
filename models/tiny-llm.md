@@ -1,0 +1,149 @@
+# tiny-llm
+
+[![CI (main)](https://skyzh/tiny-llm/actions/workflows/main.yml/badge.svg)](https://skyzh/tiny-llm/actions/workflows/main.yml)
+
+tiny-llm is a hands-on course for systems engineers who want to understand LLM
+inference end to end. You can think of it as an LLM-serving counterpart to
+CMU's [Needle](https://dlsyscourse/hw1/tree/main/python/needle)
+project: build the path that loads a Qwen3 model, turns tokens into logits, and
+generates text.
+
+The course begins with array and matrix operations, then introduces kernels and
+serving machinery as the running model needs them. Keeping the implementation
+small enough to read end to end makes it possible to connect the equations to
+memory traffic, kernel occupancy, KV-cache growth, batching, and request
+scheduling.
+
+The course is built on MLX arrays and the MLX extension runtime, without using
+high-level neural-network layers. When a chapter teaches an operator, your
+solution implements that operator in Python, C++, or Metal rather than calling
+the corresponding optimized MLX operation. MLX remains the correctness oracle
+and performance baseline.
+
+## The Learning Path
+
+The course follows a four-week learning path:
+
+- **Week 1: From Matmul to Text.** Build a readable Qwen3 model
+  from array operations: attention, RoPE, GQA, RMSNorm, the MLP, sampling, and
+  the autoregressive loop.
+- **Week 2: A Step Closer to vLLM.** Add a KV cache, establish a
+  synchronized MLX baseline, and let profiles choose the next optimization.
+  The path moves from quantized decode matvec to fused model kernels, tiled
+  prefill, and split-K where the measured Qwen shapes need it.
+- **Week 3: Build a Mini vLLM.** Introduce continuous
+  batching and chunked admission, then make paged KV the canonical serving
+  layout. Decode attention and FlashAttention learn to read pages directly so
+  the scheduler does not rebuild dense history on every step.
+- **Week 4: Build a Coding Agent.** Start with a bounded coding-agent baseline.
+  Multi-turn sessions then motivate cache reuse, context compaction, rewind,
+  cooperative cancellation, and evaluation.
+
+## Why MLX and Qwen3?
+
+Apple silicon provides a practical local environment with one shared memory
+space and direct access to Metal kernels. Students can inspect the complete
+path on one machine instead of depending on an expensive CUDA GPU setup.
+
+Qwen3-4B is large enough to expose real weight-bandwidth, attention, and cache
+costs, but small enough to iterate on locally. Its grouped-query attention,
+QK normalization, BF16 activations, and 4-bit weights also keep the exercises
+close to current model-serving work.
+
+## Start Here
+
+The book is published at
+[skyzh.github.io/tiny-llm](https://skyzh.github.io/tiny-llm/). Begin with the
+[environment setup](https://skyzh.github.io/tiny-llm/setup.html), or verify an
+existing checkout with:
+
+```bash
+pdm install -v
+pdm run check-installation
+pdm run test-refsol -- -- -k week_1
+```
+
+The `tiny_llm` package is where students implement the exercises.
+`tiny_llm_ref` contains the reference solution used by the tests and benchmark
+appendix. The detailed chapter order and current status live in the
+[book summary](book/src/SUMMARY.md).
+
+## Roadmap
+
+The status columns track whether each chapter's complete learner checkpoint,
+focused tests, and rendered documentation are ready. Week 4 remains unpublished
+and is not yet part of the rendered daily course, so every Week 4 documentation
+cell remains 🚧 even when an executable draft exists. Rows 4.1–4.3 also remain
+🚧 for code and tests because their current focused checks cover narrower
+starter slices while the draft chapters describe larger cumulative exercises.
+
+The executable Week 4 checkpoints now cover structured actions, bounded
+workspace tools, exact command allowlisting, durable sessions, reusable
+generation caches, structured token compaction, cooperative cancellation,
+durable steering, write-ahead file-mutation recovery, checkpoints, undo, and
+session branches. The Day 7 checkpoint adds sealed inert task packages, frozen
+candidate snapshots, deterministic static held-out checks, forbidden-path
+grading, and evaluation metrics without importing or executing candidate code.
+
+The Week 4 CLI's workspace tools are read-only by default; persistent runs still
+write a sensitive transcript under `.tiny-llm/sessions`. Enabling writes or an
+exact command only makes that tool eligible. Once an eligible model-dispatched `write_file`,
+`edit_file`, or `run_command` action passes preflight, it still requires an
+interactive `y/N` approval, with anything other than an explicit yes treated as
+no. Command execution is not sandboxed by its working directory or by this
+prompt. Run the agent only against a disposable workspace; an allowed program
+can still read or modify paths outside that workspace. A model final means only
+that the loop finished; it is not proof that the task or its validation
+succeeded. Programmatic workspace undo is also default-No and requires a fresh
+explicit confirmation; the CLI does not yet expose checkpoint, undo, branch, or
+live-steering commands. Protected safety copies retained to avoid deleting
+concurrent bytes are reported for manual inspection and can accumulate across
+repeated writes or undo operations.
+
+Static evaluation keeps commands disabled and file writes default-No. Its
+Python checks use `ast.parse()` and literal-node inspection only; they do not
+import a candidate module. Executable pytest, compilers, task-local graders, and
+model-authored programs remain deferred until a container or virtual machine
+backend provides a real isolation boundary. The `evaluate-agent` command can
+inspect an inert package or grade its unchanged baseline without loading a model
+or approving a mutation.
+
+| Week + Chapter | Topic | Code | Test | Doc |
+|---|---|---|---|---|
+| 1.1 | Attention | ✅ | ✅ | ✅ |
+| 1.2 | RoPE | ✅ | ✅ | ✅ |
+| 1.3 | Grouped Query Attention | ✅ | ✅ | ✅ |
+| 1.4 | RMSNorm and MLP | ✅ | ✅ | ✅ |
+| 1.5 | Load the Model | ✅ | ✅ | ✅ |
+| 1.6 | Generate Responses (aka Decoding) | ✅ | ✅ | ✅ |
+| 1.7 | Sampling | ✅ | ✅ | ✅ |
+| 2.1 | KV Cache | ✅ | ✅ | 🚧 |
+| 2.2 | Benchmark and Profile | 🚧 | 🚧 | 🚧 |
+| 2.3 | Quantized Matvec | ✅ | ✅ | 🚧 |
+| 2.4 | Fused Model Kernels | 🚧 | 🚧 | 🚧 |
+| 2.5 | Fused Decode Attention | 🚧 | 🚧 | 🚧 |
+| 2.6 | SIMD-Matrix Prefill | ✅ | ✅ | 🚧 |
+| 2.7 | Split-K Prefill | ✅ | ✅ | 🚧 |
+| 3.1 | Continuous Batching | ✅ | ✅ | 🚧 |
+| 3.2 | Chunked Prefill | ✅ | ✅ | 🚧 |
+| 3.3 | Paged KV Cache | ✅ | ✅ | 🚧 |
+| 3.4 | Direct Paged Attention | ✅ | ✅ | 🚧 |
+| 3.5 | Paged FlashAttention | ✅ | ✅ | 🚧 |
+| 3.6 (optional) | Speculative Decoding | 🚧 | 🚧 | 🚧 |
+| 3.x (optional) | MoE (Mixture of Experts) | ✅ | ✅ | ✅ |
+| 4.1 | Agent Loop | 🚧 | 🚧 | 🚧 |
+| 4.2 | Tools | 🚧 | 🚧 | 🚧 |
+| 4.3 | Safety and Validation | 🚧 | 🚧 | 🚧 |
+| 4.4 | Interactive Sessions | ✅ | ✅ | 🚧 |
+| 4.5 | Context Compaction | ✅ | ✅ | 🚧 |
+| 4.6 | Control and Recovery | ✅ | ✅ | 🚧 |
+| 4.7 | Evaluation | ✅ | ✅ | 🚧 |
+
+Other topics not covered include quantized or compressed KV caches,
+cross-request prefix caching, fine-tuning, and long-context techniques.
+
+## Community
+
+Join skyzh's Discord server to study with the tiny-llm community.
+
+[![Join skyzh's Discord Server](book/src/discord-badge.svg)](https://skyzh.dev/join/discord)

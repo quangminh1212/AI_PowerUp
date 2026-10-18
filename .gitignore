@@ -1,0 +1,19 @@
+# README-only collection for AI repos (flat layout: <topic>/<repo>.md)
+# Whitelist mode: everything is ignored except the README .md files themselves.
+# If you ever need to commit something else on purpose: git add -f <path>
+
+*
+!*/
+!.gitignore
+!*.md
+!**/*.md
+
+# Machinery dirs stay excluded even if a fresh clone inside them ships .md files
+**/.git/
+**/__pycache__/
+**/node_modules/
+**/.venv/
+**/venv/
+**/.mypy_cache/
+**/.pytest_cache/
+**/.ipynb_checkpoints/

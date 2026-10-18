@@ -1,0 +1,2 @@
+Code Learning Assitant:
+A Code Learning Assistant is an interactive tool designed to help learners improve their programming skills through personalized guidance and real-time support. It offers explanations of coding concepts, helps debug errors, provides coding examples, and suggests best practices. By adapting to the learner’s level and style, it enhances understanding and accelerates the learning process, making coding more accessible and engaging for beginners and experienced developers alike.
